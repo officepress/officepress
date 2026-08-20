@@ -26,7 +26,7 @@ develop. Integrating apps need API tokens for direct access
 The following services are business process related.
 
  - `office/tables` - spreadsheets that convert directly to PostgreSQL
- - `office/drive` - local hosted files or connect to a CDN
+ - `office/files` - local hosted files or connect to a CDN
  - `office/forms` - Form Builder and Response Gathering
  - `office/shorts` - URL Shortener Links
  - `office/sign` - URL Shortener Links
