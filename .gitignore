@@ -51,6 +51,12 @@ coverage/
 !.env.*.example
 .data/
 
+# MCP publisher dependencies, cached models and generated index snapshots
+/.agents/scripts/mcp/node_modules/
+/.agents/scripts/mcp/models/
+/.agents/scripts/mcp/data/
+/.agents/scripts/mcp/*.env
+
 # Temporary files and operating-system metadata
 tmp/
 temp/

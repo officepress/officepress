@@ -1,0 +1,8 @@
+{
+  "command": "/Users/cblanquera/.nvm/versions/node/v22.14.0/bin/node",
+  "args": [
+    "/Users/cblanquera/server/projects/officepress/officepress/.agents/scripts/mcp/cli.mjs",
+    "serve",
+    "--watch"
+  ]
+}

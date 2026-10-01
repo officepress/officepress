@@ -79,3 +79,23 @@ python3 .agents/scripts/verify-stackpress-ingestion.py
 ```
 
 Keep dependency lockfiles, Idea schemas, knowledge files and website sources in version control. Dependencies, generated builds, local databases, private environment files and operating-system metadata are ignored.
+
+## Serve the KB through MCP
+
+The [Serve KB workflow](.agents/workflows/serve-kb.md) covers the installed publisher in `.agents/scripts/mcp/`. Markdown remains authoritative; the index is derived, and retrieval does not modify project knowledge.
+
+From the repository root, use Node.js 22.14 or newer:
+
+```bash
+node .agents/scripts/mcp/cli.mjs index
+node .agents/scripts/mcp/cli.mjs status
+node .agents/scripts/mcp/cli.mjs serve --watch
+```
+
+The last command speaks MCP over stdio. Configure a consuming client to launch it using the absolute publisher path; it is not a browser server. The [local client entry example](.agents/scripts/mcp/client-entry.example.json) contains this computer's verified Node and publisher paths. Adapt the client's enclosing configuration format and preserve its other servers. Clients start and stop their own publisher process; `--watch` refreshes the index after Markdown changes.
+
+The [project configuration](.agents/scripts/mcp/config.json) selects local embeddings using a pinned MiniLM model. The model is cached on this computer and downloads are disabled for offline operation. Keyword, semantic and hybrid retrieval preserve citations and authority labels. Native attachments are listed as metadata, not searchable extracted text.
+
+On a fresh checkout, install the isolated dependencies with `npm ci --prefix .agents/scripts/mcp --include=optional --omit=dev`. Set `embeddings.allow_download` to `true` for the first index build, then set it back to `false` and reindex after the model is cached. Dependencies, models and index data stay in the runtime's ignored directories. If semantic indexing is unavailable, status and search report the configured keyword fallback explicitly.
+
+Authenticated HTTP is also available through the workflow when required. Client registration and an HTTP service are separate setup steps; neither is enabled by the local stdio example.

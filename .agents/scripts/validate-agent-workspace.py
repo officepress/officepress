@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import argparse
+import json
+import os
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -31,6 +33,11 @@ MANAGED_RULE_FILES = (
     Path("workflows/spec-grill-session.md"),
     Path("workflows/spec-user-journeys.md"),
     Path("workflows/repair-zombie-reference-files.md"),
+)
+MCP_FILES = (
+    ".gitignore", "package.json", "package-lock.json", "config.example.json",
+    "config.json", "config.mjs", "corpus.mjs", "embeddings.mjs", "snapshots.mjs",
+    "retrieval.mjs", "references.mjs", "responses.mjs", "evaluation.mjs", "tokens.mjs", "server.mjs", "cli.mjs",
 )
 
 
@@ -189,6 +196,28 @@ def validate_required_surface(agents_dir: Path, reporter: Reporter) -> None:
         path = agents_dir / rel
         if not path.is_file():
             reporter.error(f"{rel} is missing from the managed Agent Workspace surface")
+
+    mcp_state = agents_dir / ".knowledge-mcp.json"
+    if mcp_state.exists():
+        try:
+            state = json.loads(mcp_state.read_text(encoding="utf-8"))
+            if state.get("schema_version") != 1 or state.get("enabled") is not True:
+                raise ValueError("unsupported MCP state")
+        except (ValueError, AttributeError) as error:
+            reporter.error(f"invalid MCP installation state: {error}")
+        for rel in [Path("workflows/serve-kb.md"), *(Path("scripts/mcp") / name for name in MCP_FILES)]:
+            if not (agents_dir / rel).is_file():
+                reporter.error(f"{rel} is missing from the enabled MCP surface")
+        config = agents_dir / "scripts/mcp/config.json"
+        if config.is_file():
+            try:
+                settings = json.loads(config.read_text(encoding="utf-8"))
+                if settings.get("schema_version") != 1 or not settings.get("project_id"):
+                    raise ValueError("schema_version or project_id missing")
+            except (ValueError, AttributeError) as error:
+                reporter.error(f"invalid MCP configuration: {error}")
+    elif (agents_dir / "workflows/serve-kb.md").exists():
+        reporter.warn("MCP workflow exists without its enablement record; inspect before opting in again")
 
     index = agents_dir / "context" / "index.md"
     if index.parent.exists() and not index.is_file():
@@ -354,12 +383,14 @@ def validate(target_root: Path) -> int:
         reporter.print()
         return 1
 
-    agent_files = sorted(
-        path.resolve()
-        for path in agents_dir.rglob("*.md")
-        if not is_relative_to(path.resolve(), resources_dir)
-        and not is_relative_to(path.resolve(), skills_dir)
-    )
+    agent_files = []
+    for directory, dirs, files in os.walk(agents_dir, followlinks=False):
+        parent = Path(directory)
+        dirs[:] = [name for name in dirs if not (parent / name).is_symlink()
+                   and parent / name not in (resources_dir, skills_dir, agents_dir / "scripts" / "mcp")]
+        agent_files.extend((parent / name).resolve() for name in files
+                           if name.endswith(".md") and not (parent / name).is_symlink())
+    agent_files.sort()
     validate_line_counts(agent_files, agents_dir, reporter)
     reference_files = validate_references(references_dir, agents_dir, reporter)
 

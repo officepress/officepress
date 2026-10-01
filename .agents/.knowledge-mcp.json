@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "enabled": true,
+  "files": {
+    ".gitignore": "d774b26f393c1c308e1fdb6ab9dd1d8c2eb87cda615881edc4e0688e4be601e0",
+    "package.json": "dd9b293f767af89ee2614b73ed9052dc600eb7b0dbf84ea77a03240758b7ca7b",
+    "package-lock.json": "e22770a7a9e8eb2176b380eb2677d9f04f77923200bbd0333f137bf7ba3b6ce6",
+    "config.example.json": "ab7709e35ddf2dedc3224e8fba1b74796d74b13d91c6941c5ebcb2a7aaa4f270",
+    "config.mjs": "2dd68831cac178721171b846bd0807fc0f86910c4f24dd5cf536eaaa990b58bb",
+    "corpus.mjs": "443cc5973ace727ebf86ed7b4348c836d6cb0ee181b6f271d0f5dd11f25ed0b3",
+    "embeddings.mjs": "50ad5103b3517c853f944fd3a84c60e7ef034a0f2a73ce2d1893a43c6d5f4d45",
+    "snapshots.mjs": "b7bf68b4252ccdec0497538b1caff31dadcc2587a84a7f0c89c45ee7629ffc1c",
+    "retrieval.mjs": "01d95dedbb1448f285ef79391b0503097771bbf6f2b73071acba7d4d81f6089f",
+    "references.mjs": "7fb7cc247e37d4c6b4d6b399b4721c6264054bf29c1023820843ed3d56ffdab3",
+    "responses.mjs": "31e7b46a74df677a1c6fd61d5b146bf633f294d286d5e0a0a708b28c281af76a",
+    "evaluation.mjs": "72d95bc6ec90a06b51141bf27b0c110505b3eb081bb60dde5fe4e0bd4a3bb664",
+    "tokens.mjs": "ab2aff89bedd05bdbc0b5119012cc61943833dcf34c5807128379f105ff7f508",
+    "server.mjs": "1a7333dccdbcf3bf661821d3cd2c58ff9f6c97b2ae89abc3e2ed512c27625f27",
+    "cli.mjs": "6e5421ec644fe601d02e9dba765e1f7d1dea208c92c11fac154dda183355f4bc"
+  }
+}

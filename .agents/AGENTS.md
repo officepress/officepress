@@ -80,4 +80,8 @@ warnings from `.agents/workflows/` or `.agents/skills/`.
 After setup and after each workflow pass, tell the user what changed, the validation result, any blocker or user decision still needed, and the recommended next step.
 
 When several next steps are realistic, include up to two useful alternatives. Use the [Agent Workspace Rules Reference](references/00001-agent-workspace-rules.md) when choosing the next step.
+
+## Serve Knowledge To Other Projects
+
+The optional MCP capability is enabled. Use the [Serve KB Workflow](workflows/serve-kb.md) to configure, index, serve, or repair access from other projects. Runtime assets live in `.agents/scripts/mcp/`; their dependencies, models, and generated data are tooling rather than Agent Files.
 <!-- agent-workspace-rules:end -->
