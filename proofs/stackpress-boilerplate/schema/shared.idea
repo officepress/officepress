@@ -1,0 +1,4 @@
+enum NoteState {
+  DRAFT "DRAFT"
+  PUBLISHED "PUBLISHED"
+}

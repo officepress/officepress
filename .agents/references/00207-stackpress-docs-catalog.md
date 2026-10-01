@@ -1,0 +1,59 @@
+# Stackpress docs retrieval map
+
+Owner: [Stackpress handbook](../context/stackpress.md). Choose the named contract or workflow; the linked sections preserve complete source text locally. Apply [OfficePress decisions](00205-stackpress-officepress-contract.md) first.
+
+- [API Reference; Most Used Paths; Runtime APIs; Data And Generation APIs](00244-stackpress-source-docs-readme-md.md) — load for `docs/README.md`, part 1/1.
+- [CLI Reference; Common Pattern; Flags; `--b <module>`](00245-stackpress-source-docs-cli-reference-md.md) — load for `docs/cli-reference.md`, part 1/1.
+- [Config Reference; Import Pattern; Top-Level Config Areas; `server`](00246-stackpress-source-docs-config-reference-md-part-1.md) — load for `docs/config-reference.md`, part 1/3.
+- [Common Keys; What It Affects; `brand`; Common Keys](00247-stackpress-source-docs-config-reference-md-part-2.md) — load for `docs/config-reference.md`, part 2/3.
+- [Shape; Example; `email`; Shape](00248-stackpress-source-docs-config-reference-md-part-3.md) — load for `docs/config-reference.md`, part 3/3.
+- [`stackpress · http`; Import; When To Use It; Export Inventory](00249-stackpress-source-docs-http-md-part-1.md) — load for `docs/http.md`, part 1/2.
+- [`cookie`; `session`; `withUnknownHost`; Integration Example](00250-stackpress-source-docs-http-md-part-2.md) — load for `docs/http.md`, part 2/2.
+- [Idea Reference; Table Of Contents; Built-In Types; Schema Attributes](00251-stackpress-source-docs-idea-reference-md-part-1.md) — load for `docs/idea-reference.md`, part 1/4.
+- [`@generated`; `@hashed`; `@id`; `@searchable`](00252-stackpress-source-docs-idea-reference-md-part-2.md) — load for `docs/idea-reference.md`, part 2/4.
+- [Character Count; Word Count; Format And Casing; Type Checks](00253-stackpress-source-docs-idea-reference-md-part-3.md) — load for `docs/idea-reference.md`, part 3/4.
+- [Rich Content Components; Structural Components; Relation And Link Components; Derived Families And Aliases](00254-stackpress-source-docs-idea-reference-md-part-4.md) — load for `docs/idea-reference.md`, part 4/4.
+- [`Language`; Import; Static Properties; Static Methods](00255-stackpress-source-docs-language-language-md.md) — load for `docs/language/Language.md`, part 1/1.
+- [Language Reference Details; Imports; Related](00256-stackpress-source-docs-language-readme-md.md) — load for `docs/language/README.md`, part 1/1.
+- [`stackpress · language`; Import; When To Use It; Export Inventory](00257-stackpress-source-docs-language-md.md) — load for `docs/language.md`, part 1/1.
+- [`stackpress · lib`; Import; When To Use It; Export Inventory](00258-stackpress-source-docs-lib-md.md) — load for `docs/lib.md`, part 1/1.
+- [`stackpress · mysql`; Import; When To Use It; Export Inventory](00259-stackpress-source-docs-mysql-md.md) — load for `docs/mysql.md`, part 1/1.
+- [`stackpress · pglite`; Import; When To Use It; Export Inventory](00260-stackpress-source-docs-pglite-md.md) — load for `docs/pglite.md`, part 1/1.
+- [`stackpress · pgsql`; Import; When To Use It; Export Inventory](00261-stackpress-source-docs-pgsql-md.md) — load for `docs/pgsql.md`, part 1/1.
+- [`stackpress · plugin`; Import; When To Use It; Export Inventory](00262-stackpress-source-docs-plugin-md.md) — load for `docs/plugin.md`, part 1/1.
+- [Runtime Class Details; Classes; Related](00263-stackpress-source-docs-runtime-readme-md.md) — load for `docs/runtime/README.md`, part 1/1.
+- [`Request`; Import; Instantiation; Properties](00264-stackpress-source-docs-runtime-request-md.md) — load for `docs/runtime/Request.md`, part 1/1.
+- [`Response`; Import; Instantiation; Properties](00265-stackpress-source-docs-runtime-response-md.md) — load for `docs/runtime/Response.md`, part 1/1.
+- [`Router`; Import; Instantiation; Properties](00266-stackpress-source-docs-runtime-router-md.md) — load for `docs/runtime/Router.md`, part 1/1.
+- [`Server`; Import; Instantiation; Properties](00267-stackpress-source-docs-runtime-server-md.md) — load for `docs/runtime/Server.md`, part 1/1.
+- [`Attribute`; Import; Instantiation; Properties](00268-stackpress-source-docs-schema-attribute-md.md) — load for `docs/schema/Attribute.md`, part 1/1.
+- [`Column`; Import; Instantiation; Properties](00269-stackpress-source-docs-schema-column-md.md) — load for `docs/schema/Column.md`, part 1/1.
+- [`Fieldset`; Import; Instantiation; Properties](00270-stackpress-source-docs-schema-fieldset-md.md) — load for `docs/schema/Fieldset.md`, part 1/1.
+- [`Model`; Import; Instantiation; Properties](00271-stackpress-source-docs-schema-model-md.md) — load for `docs/schema/Model.md`, part 1/1.
+- [Schema Reference Details; Classes; Related](00272-stackpress-source-docs-schema-readme-md.md) — load for `docs/schema/README.md`, part 1/1.
+- [`Schema`; Import; Instantiation; Properties](00273-stackpress-source-docs-schema-schema-md.md) — load for `docs/schema/Schema.md`, part 1/1.
+- [`stackpress · schema`; Import; When To Use It; Export Inventory](00274-stackpress-source-docs-schema-md-part-1.md) — load for `docs/schema.md`, part 1/2.
+- [Related](00275-stackpress-source-docs-schema-md-part-2.md) — load for `docs/schema.md`, part 2/2.
+- [Server Reference Details; Imports; Related](00276-stackpress-source-docs-server-readme-md.md) — load for `docs/server/README.md`, part 1/1.
+- [`Terminal`; Import; Instantiation; Properties](00277-stackpress-source-docs-server-terminal-md.md) — load for `docs/server/Terminal.md`, part 1/1.
+- [`stackpress · server`; Import; When To Use It; Export Inventory](00278-stackpress-source-docs-server-md.md) — load for `docs/server.md`, part 1/1.
+- [Session Reference Details; Imports; Related](00279-stackpress-source-docs-session-readme-md.md) — load for `docs/session/README.md`, part 1/1.
+- [`Session`; Import; Instantiation; Static Properties](00280-stackpress-source-docs-session-session-md.md) — load for `docs/session/Session.md`, part 1/1.
+- [`stackpress · session`; Import; When To Use It; Export Inventory](00281-stackpress-source-docs-session-md.md) — load for `docs/session.md`, part 1/1.
+- [`Engine`; Import; Instantiation; Common Operations](00282-stackpress-source-docs-sql-engine-md.md) — load for `docs/sql/Engine.md`, part 1/1.
+- [SQL Reference Details; Imports; Related](00283-stackpress-source-docs-sql-readme-md.md) — load for `docs/sql/README.md`, part 1/1.
+- [Builder Classes; Import; Common Builder Pattern; Builder Inventory](00284-stackpress-source-docs-sql-builders-md.md) — load for `docs/sql/builders.md`, part 1/1.
+- [Connection Adapters; Imports; Adapter Inventory; PGlite Example](00285-stackpress-source-docs-sql-connections-md.md) — load for `docs/sql/connections.md`, part 1/1.
+- [Dialect Classes; Import; When To Use Them; Dialect Inventory](00286-stackpress-source-docs-sql-dialects-md.md) — load for `docs/sql/dialects.md`, part 1/1.
+- [`stackpress · sql`; Import; When To Use It; Export Inventory](00287-stackpress-source-docs-sql-md.md) — load for `docs/sql.md`, part 1/1.
+- [`stackpress · sqlite`; Import; When To Use It; Export Inventory](00288-stackpress-source-docs-sqlite-md.md) — load for `docs/sqlite.md`, part 1/1.
+- [`stackpress`; Import; When To Use It; Export Inventory](00289-stackpress-source-docs-stackpress-md.md) — load for `docs/stackpress.md`, part 1/1.
+- [`stackpress · types`; Import; When To Use It; Type Families](00290-stackpress-source-docs-types-md.md) — load for `docs/types.md`, part 1/1.
+- [`stackpress · unocss`; Import; When To Use It; Export Inventory](00291-stackpress-source-docs-unocss-md.md) — load for `docs/unocss.md`, part 1/1.
+- [View Reference Details; Imports; Related](00292-stackpress-source-docs-view-readme-md.md) — load for `docs/view/README.md`, part 1/1.
+- [View Client Hooks; Import; Hooks; Example](00293-stackpress-source-docs-view-hooks-md.md) — load for `docs/view/hooks.md`, part 1/1.
+- [`setViewProps`; Import; Usage; Parameters](00294-stackpress-source-docs-view-setviewprops-md.md) — load for `docs/view/setViewProps.md`, part 1/1.
+- [`stackpress · view · client`; Import; When To Use It; Export Inventory](00295-stackpress-source-docs-view-client-md.md) — load for `docs/view-client.md`, part 1/1.
+- [`stackpress · view`; Import; When To Use It; Export Inventory](00296-stackpress-source-docs-view-md-part-1.md) — load for `docs/view.md`, part 1/2.
+- [`useLanguage`; Layout Components; Notification Helpers; `flash`](00297-stackpress-source-docs-view-md-part-2.md) — load for `docs/view.md`, part 2/2.
+- [`stackpress · whatwg`; Import; When To Use It; Export Inventory](00298-stackpress-source-docs-whatwg-md.md) — load for `docs/whatwg.md`, part 1/1.

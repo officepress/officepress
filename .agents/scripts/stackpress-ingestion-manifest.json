@@ -1,0 +1,2020 @@
+{
+  "source_commit": "a71d683051ba8350fdd12d6b5a33f268fdcc285f",
+  "sources": [
+    {
+      "path": ".agents/context/architecture-and-composition.md",
+      "sha256": "2aed92a7ee9278114dfef53322baa30233a7ad60f55634725748f64e69021466",
+      "references": [
+        ".agents/references/00210-stackpress-source-agents-context-architecture-and-composition-md.md"
+      ]
+    },
+    {
+      "path": ".agents/context/compatibility-and-maintenance.md",
+      "sha256": "3a2c2abae28100b18bdb0f15f0d867babbdfb5e5b0187cdf6f372399f88251d8",
+      "references": [
+        ".agents/references/00211-stackpress-source-agents-context-compatibility-and-maintenance-md.md"
+      ]
+    },
+    {
+      "path": ".agents/context/ecosystem-and-portability.md",
+      "sha256": "2eacda652d5bdad1bc94734af6788e2c844a82f0717ea358dae75e4a20f46513",
+      "references": [
+        ".agents/references/00212-stackpress-source-agents-context-ecosystem-and-portability-md.md"
+      ]
+    },
+    {
+      "path": ".agents/context/extension-and-contribution.md",
+      "sha256": "efdc13cc8d528fdffbe09821b4a121a52d705cf59459ac7f562dd1eb0002c6fe",
+      "references": [
+        ".agents/references/00213-stackpress-source-agents-context-extension-and-contribution-md-part-1.md",
+        ".agents/references/00214-stackpress-source-agents-context-extension-and-contribution-md-part-2.md"
+      ]
+    },
+    {
+      "path": ".agents/context/identity-and-principles.md",
+      "sha256": "789361b78581f1c8c137cf5f083fb9ed864b43b94aed0ef90822677523598b52",
+      "references": [
+        ".agents/references/00215-stackpress-source-agents-context-identity-and-principles-md.md"
+      ]
+    },
+    {
+      "path": ".agents/context/index.md",
+      "sha256": "6b2b55bbb3ba93576741739d09e30f3e0fcba2d0d69d9afc419c1b7918616039",
+      "references": [
+        ".agents/references/00216-stackpress-source-agents-context-index-md.md"
+      ]
+    },
+    {
+      "path": ".agents/context/interfaces-and-experience.md",
+      "sha256": "f0fbe7c2888615218ca8af0d0308c04b40acc74f6db811ab0764d06060beb803",
+      "references": [
+        ".agents/references/00217-stackpress-source-agents-context-interfaces-and-experience-md.md"
+      ]
+    },
+    {
+      "path": ".agents/context/modeling-and-generation.md",
+      "sha256": "11ffc3a0707e07704c28f20a48a72f1d615a9934e10728a44e1660e820b6789d",
+      "references": [
+        ".agents/references/00218-stackpress-source-agents-context-modeling-and-generation-md.md"
+      ]
+    },
+    {
+      "path": ".agents/context/runtime-and-operations.md",
+      "sha256": "72ebeda36157933605e4d5602d22701a3378164af5490a0c7c6ebc639198dac5",
+      "references": [
+        ".agents/references/00219-stackpress-source-agents-context-runtime-and-operations-md.md"
+      ]
+    },
+    {
+      "path": ".agents/references/00004-runtime-api-contracts.md",
+      "sha256": "379b61bbcb8b47ba5320547af8bf8e2ce3bbc7360f262ddfff9675a0d7dac69a",
+      "references": [
+        ".agents/references/00220-stackpress-source-agents-references-00004-runtime-api-contracts-md.md"
+      ]
+    },
+    {
+      "path": ".agents/references/00005-server-and-transport-contracts.md",
+      "sha256": "3381ca0930dd12d555e1e22673b2d05a4df104c6736f81bceb021c9f9338ce73",
+      "references": [
+        ".agents/references/00221-stackpress-source-agents-references-00005-server-and-transport-contracts-md-part-1.md",
+        ".agents/references/00222-stackpress-source-agents-references-00005-server-and-transport-contracts-md-part-2.md"
+      ]
+    },
+    {
+      "path": ".agents/references/00006-schema-api-contracts.md",
+      "sha256": "87b6fd9a8e43ebd54c9375d4d6e1fb7d867955411e38cb68ab09a3b1a60064ea",
+      "references": [
+        ".agents/references/00223-stackpress-source-agents-references-00006-schema-api-contracts-md-part-1.md",
+        ".agents/references/00224-stackpress-source-agents-references-00006-schema-api-contracts-md-part-2.md"
+      ]
+    },
+    {
+      "path": ".agents/references/00007-idea-language-catalog.md",
+      "sha256": "0fc7cd1b1dbdd1fff1c14dcd480b7de5ded413c1c179aa58a59821b151cb9f6d",
+      "references": [
+        ".agents/references/00225-stackpress-source-agents-references-00007-idea-language-catalog-md-part-1.md",
+        ".agents/references/00226-stackpress-source-agents-references-00007-idea-language-catalog-md-part-2.md"
+      ]
+    },
+    {
+      "path": ".agents/references/00008-configuration-catalog.md",
+      "sha256": "1981de44bf8e2a3938e04e501c3fbd23a54b75e256b4c8f625dc99bb0166f82c",
+      "references": [
+        ".agents/references/00227-stackpress-source-agents-references-00008-configuration-catalog-md-part-1.md",
+        ".agents/references/00228-stackpress-source-agents-references-00008-configuration-catalog-md-part-2.md"
+      ]
+    },
+    {
+      "path": ".agents/references/00009-cli-and-plugin-contracts.md",
+      "sha256": "86e2d156d4ceb0c367c5b4875f881b6a12d6d3af0c4b37439d4a52b4890b1ada",
+      "references": [
+        ".agents/references/00229-stackpress-source-agents-references-00009-cli-and-plugin-contracts-md.md"
+      ]
+    },
+    {
+      "path": ".agents/references/00010-sql-api-contracts.md",
+      "sha256": "cd24ca54863b3e714590c0554e67196e1d13eee119f3fc2516c8dff505210331",
+      "references": [
+        ".agents/references/00230-stackpress-source-agents-references-00010-sql-api-contracts-md-part-1.md",
+        ".agents/references/00231-stackpress-source-agents-references-00010-sql-api-contracts-md-part-2.md"
+      ]
+    },
+    {
+      "path": ".agents/references/00011-database-adapter-contracts.md",
+      "sha256": "1c395e2213fa63ebca388e8edb5a5a79d114898705e8ecb131a8c39d92daa06f",
+      "references": [
+        ".agents/references/00232-stackpress-source-agents-references-00011-database-adapter-contracts-md.md"
+      ]
+    },
+    {
+      "path": ".agents/references/00012-view-api-contracts.md",
+      "sha256": "648a237a6c7f697cb4d68c1bdd933522bc4a78c07f371674f34f4f1fb02c475d",
+      "references": [
+        ".agents/references/00233-stackpress-source-agents-references-00012-view-api-contracts-md-part-1.md",
+        ".agents/references/00234-stackpress-source-agents-references-00012-view-api-contracts-md-part-2.md"
+      ]
+    },
+    {
+      "path": ".agents/references/00013-session-language-contracts.md",
+      "sha256": "eb40b98b29282ecb1f9bf11c4556f3871557adc9ad2be2099376c0235edb770d",
+      "references": [
+        ".agents/references/00235-stackpress-source-agents-references-00013-session-language-contracts-md-part-1.md",
+        ".agents/references/00236-stackpress-source-agents-references-00013-session-language-contracts-md-part-2.md"
+      ]
+    },
+    {
+      "path": ".agents/references/00014-exports-types-generated-contracts.md",
+      "sha256": "f293d7046332e60f1509d4c2f00b2c044996f3c5cf1fee71f9608f6ca6d8bad6",
+      "references": [
+        ".agents/references/00237-stackpress-source-agents-references-00014-exports-types-generated-contracts-md-part-1.md",
+        ".agents/references/00238-stackpress-source-agents-references-00014-exports-types-generated-contracts-md-part-2.md"
+      ]
+    },
+    {
+      "path": ".agents/references/00015-operational-examples.md",
+      "sha256": "8e115a20caa64718697b488f9fe76d28dec36138accd12e870c3e5f43bf01b9e",
+      "references": [
+        ".agents/references/00239-stackpress-source-agents-references-00015-operational-examples-md-part-1.md",
+        ".agents/references/00240-stackpress-source-agents-references-00015-operational-examples-md-part-2.md"
+      ]
+    },
+    {
+      "path": ".agents/references/00016-idea-component-catalog.md",
+      "sha256": "690869e011c0a237ab1055bec28e258e5a38197bf97fd0e4c9a82bc84ee98ae5",
+      "references": [
+        ".agents/references/00241-stackpress-source-agents-references-00016-idea-component-catalog-md.md"
+      ]
+    },
+    {
+      "path": ".agents/references/00017-interface-exposure-examples.md",
+      "sha256": "98ecad045838761abccde37458b32e3cf51f0ef20595b17dc2fe11279d7a4fe4",
+      "references": [
+        ".agents/references/00242-stackpress-source-agents-references-00017-interface-exposure-examples-md.md"
+      ]
+    },
+    {
+      "path": ".agents/references/00018-contributor-source-patterns.md",
+      "sha256": "ceca478556dbb5162daa9df5a19a811f2961f6795952f15f3db1638396863c8d",
+      "references": [
+        ".agents/references/00243-stackpress-source-agents-references-00018-contributor-source-patterns-md.md"
+      ]
+    },
+    {
+      "path": "docs/README.md",
+      "sha256": "e4afacf0584b89bb2381b1cb8e8a235adc8c79615734dddd569d5d64e397fe77",
+      "references": [
+        ".agents/references/00244-stackpress-source-docs-readme-md.md"
+      ]
+    },
+    {
+      "path": "docs/cli-reference.md",
+      "sha256": "db83861b5296f4508038b3eafea62c2dbd6aa0ba5587b26ea1837b07cf4b9f98",
+      "references": [
+        ".agents/references/00245-stackpress-source-docs-cli-reference-md.md"
+      ]
+    },
+    {
+      "path": "docs/config-reference.md",
+      "sha256": "6d8351631daed857cb3636af5155d26ae85080a59e07759811a26dcee3914539",
+      "references": [
+        ".agents/references/00246-stackpress-source-docs-config-reference-md-part-1.md",
+        ".agents/references/00247-stackpress-source-docs-config-reference-md-part-2.md",
+        ".agents/references/00248-stackpress-source-docs-config-reference-md-part-3.md"
+      ]
+    },
+    {
+      "path": "docs/http.md",
+      "sha256": "46e13a7649db0a274fe4e2ba30e4831f9c1fc45ca89247b6f902fdc4753adffc",
+      "references": [
+        ".agents/references/00249-stackpress-source-docs-http-md-part-1.md",
+        ".agents/references/00250-stackpress-source-docs-http-md-part-2.md"
+      ]
+    },
+    {
+      "path": "docs/idea-reference.md",
+      "sha256": "4b34ae877f7bc0066fcb80e40a9803ffb7dcd84b8b2e296b867fcf7a7f87aefb",
+      "references": [
+        ".agents/references/00251-stackpress-source-docs-idea-reference-md-part-1.md",
+        ".agents/references/00252-stackpress-source-docs-idea-reference-md-part-2.md",
+        ".agents/references/00253-stackpress-source-docs-idea-reference-md-part-3.md",
+        ".agents/references/00254-stackpress-source-docs-idea-reference-md-part-4.md"
+      ]
+    },
+    {
+      "path": "docs/language/Language.md",
+      "sha256": "c8ebaece2467851b5cb4c419982f90ec49237b2b11a296294295d017788b084a",
+      "references": [
+        ".agents/references/00255-stackpress-source-docs-language-language-md.md"
+      ]
+    },
+    {
+      "path": "docs/language/README.md",
+      "sha256": "ed82a6f9ebbf33f236a9396ee62a7decad5a933cde5360fa78561b8eb8e62bba",
+      "references": [
+        ".agents/references/00256-stackpress-source-docs-language-readme-md.md"
+      ]
+    },
+    {
+      "path": "docs/language.md",
+      "sha256": "f97796096c0de0304697efcfade1bfa2e9842ae07899f5f7c8d48335ce676c77",
+      "references": [
+        ".agents/references/00257-stackpress-source-docs-language-md.md"
+      ]
+    },
+    {
+      "path": "docs/lib.md",
+      "sha256": "8ff5c882eab57865cfd8f855167fecb234060defe7d0f86b09f209784936558e",
+      "references": [
+        ".agents/references/00258-stackpress-source-docs-lib-md.md"
+      ]
+    },
+    {
+      "path": "docs/mysql.md",
+      "sha256": "0ff2cf2ab0795a4c0428cd4d6a25cbcbea698dfc0b821e7b446949f979683758",
+      "references": [
+        ".agents/references/00259-stackpress-source-docs-mysql-md.md"
+      ]
+    },
+    {
+      "path": "docs/pglite.md",
+      "sha256": "51e8ca044a6f3d5964bce892dc99e2a716b4a9180aa23947c27b139427c57418",
+      "references": [
+        ".agents/references/00260-stackpress-source-docs-pglite-md.md"
+      ]
+    },
+    {
+      "path": "docs/pgsql.md",
+      "sha256": "197ab41f77525adb08cb37afe7e488a165a96a10fb7314a1d2966e938cc1bec1",
+      "references": [
+        ".agents/references/00261-stackpress-source-docs-pgsql-md.md"
+      ]
+    },
+    {
+      "path": "docs/plugin.md",
+      "sha256": "eab54143ae0583e1341b388e6c73e8d181905144e40c91d01c438ce24dea7bf1",
+      "references": [
+        ".agents/references/00262-stackpress-source-docs-plugin-md.md"
+      ]
+    },
+    {
+      "path": "docs/runtime/README.md",
+      "sha256": "9beb2ccc6562d359c9c482077288f80cad5e00aa128a5a69bc483776fdfd2673",
+      "references": [
+        ".agents/references/00263-stackpress-source-docs-runtime-readme-md.md"
+      ]
+    },
+    {
+      "path": "docs/runtime/Request.md",
+      "sha256": "0eb59e267f8bfc0ec43dbf1d067afbf7fc954539cd1ab0470f22b58541a42903",
+      "references": [
+        ".agents/references/00264-stackpress-source-docs-runtime-request-md.md"
+      ]
+    },
+    {
+      "path": "docs/runtime/Response.md",
+      "sha256": "8131e5b5b5ac334d56e082e590eb143bb8679c3a70e6c5d2873e6bd2e7960486",
+      "references": [
+        ".agents/references/00265-stackpress-source-docs-runtime-response-md.md"
+      ]
+    },
+    {
+      "path": "docs/runtime/Router.md",
+      "sha256": "5b3878da5151fa5ed9bfaa299abd1c8ac365ec67be79d174ef1c5ba18654aa46",
+      "references": [
+        ".agents/references/00266-stackpress-source-docs-runtime-router-md.md"
+      ]
+    },
+    {
+      "path": "docs/runtime/Server.md",
+      "sha256": "7266ff9050934e6ffef84bca2cb342c7d8589f87ac98fbb22d0d278ed4e1f1d5",
+      "references": [
+        ".agents/references/00267-stackpress-source-docs-runtime-server-md.md"
+      ]
+    },
+    {
+      "path": "docs/schema/Attribute.md",
+      "sha256": "1bad80d0dd4714ec69b17073207bc38f20dbd117bcc1a0a5f5ed2a7439aebfc5",
+      "references": [
+        ".agents/references/00268-stackpress-source-docs-schema-attribute-md.md"
+      ]
+    },
+    {
+      "path": "docs/schema/Column.md",
+      "sha256": "125ec8d4e2ee5f4cf0c9d06902df687b7715bcdb9d3c243ea7f950ffb8a164fe",
+      "references": [
+        ".agents/references/00269-stackpress-source-docs-schema-column-md.md"
+      ]
+    },
+    {
+      "path": "docs/schema/Fieldset.md",
+      "sha256": "df3e370bf23c5304f72fae1d7bff351a92a450b6848d02960ab272e7d16ba92e",
+      "references": [
+        ".agents/references/00270-stackpress-source-docs-schema-fieldset-md.md"
+      ]
+    },
+    {
+      "path": "docs/schema/Model.md",
+      "sha256": "43e5e57d327c8e5248ef7d5eaf1d3f36a8d53266c876773f657ff9b412abd60e",
+      "references": [
+        ".agents/references/00271-stackpress-source-docs-schema-model-md.md"
+      ]
+    },
+    {
+      "path": "docs/schema/README.md",
+      "sha256": "ad69c700534ca08f2002f293ede6686ebf3dc062ed72c7f65df640ad9304e3cc",
+      "references": [
+        ".agents/references/00272-stackpress-source-docs-schema-readme-md.md"
+      ]
+    },
+    {
+      "path": "docs/schema/Schema.md",
+      "sha256": "e859e08140238c8735c0070ac6b8c33a725cd603e66bc0726c05dff07bd7ad6c",
+      "references": [
+        ".agents/references/00273-stackpress-source-docs-schema-schema-md.md"
+      ]
+    },
+    {
+      "path": "docs/schema.md",
+      "sha256": "48a44e3155a6da035f375f83f79a99bbac54d92ff0133e2a1d5f3bdda157ba38",
+      "references": [
+        ".agents/references/00274-stackpress-source-docs-schema-md-part-1.md",
+        ".agents/references/00275-stackpress-source-docs-schema-md-part-2.md"
+      ]
+    },
+    {
+      "path": "docs/server/README.md",
+      "sha256": "1aececb23b3a55f67deed8b86c16f0e620cb6975f8481bcd6a8317cc60aa2f0c",
+      "references": [
+        ".agents/references/00276-stackpress-source-docs-server-readme-md.md"
+      ]
+    },
+    {
+      "path": "docs/server/Terminal.md",
+      "sha256": "3726acebe0c07d3b7d4ac620709e89b52b97fc256083e32a2498c93f4201163b",
+      "references": [
+        ".agents/references/00277-stackpress-source-docs-server-terminal-md.md"
+      ]
+    },
+    {
+      "path": "docs/server.md",
+      "sha256": "446fc66dcab84873916c4f8099b65db70ccd5b6cb72982b47dc75b2ce725438b",
+      "references": [
+        ".agents/references/00278-stackpress-source-docs-server-md.md"
+      ]
+    },
+    {
+      "path": "docs/session/README.md",
+      "sha256": "46405633fedce30fa0a4451dea27c0151bcbe8173e5e8746b390c7c604bfc7da",
+      "references": [
+        ".agents/references/00279-stackpress-source-docs-session-readme-md.md"
+      ]
+    },
+    {
+      "path": "docs/session/Session.md",
+      "sha256": "01a2823378f09bd579668cb189329cdb24116dfaef22520c3fb8d9394370c578",
+      "references": [
+        ".agents/references/00280-stackpress-source-docs-session-session-md.md"
+      ]
+    },
+    {
+      "path": "docs/session.md",
+      "sha256": "e49887b3883e7a446c64f4d4062e8879a2b8b19f2f6f5cf8489682c6211aaa06",
+      "references": [
+        ".agents/references/00281-stackpress-source-docs-session-md.md"
+      ]
+    },
+    {
+      "path": "docs/sql/Engine.md",
+      "sha256": "01af953e223515e7e12a79187e12d043678705393df73ae640a1894ecaaccaa9",
+      "references": [
+        ".agents/references/00282-stackpress-source-docs-sql-engine-md.md"
+      ]
+    },
+    {
+      "path": "docs/sql/README.md",
+      "sha256": "5b01824f41eb3552572043c6c223d0b80c4e7a10648725ca68a37bb07098d898",
+      "references": [
+        ".agents/references/00283-stackpress-source-docs-sql-readme-md.md"
+      ]
+    },
+    {
+      "path": "docs/sql/builders.md",
+      "sha256": "8f265019f66150cbfe6688114d011310f2c6ccd0db949929905ec27155d65c95",
+      "references": [
+        ".agents/references/00284-stackpress-source-docs-sql-builders-md.md"
+      ]
+    },
+    {
+      "path": "docs/sql/connections.md",
+      "sha256": "0a71cf764fa788603f5cc3cc33ffa56b528ba65c300664faf41e509f993410bd",
+      "references": [
+        ".agents/references/00285-stackpress-source-docs-sql-connections-md.md"
+      ]
+    },
+    {
+      "path": "docs/sql/dialects.md",
+      "sha256": "720991c4bfbdc141b05e6b5fb89fdb2e45ff1f810e5283efd389f3c4f8ecfacb",
+      "references": [
+        ".agents/references/00286-stackpress-source-docs-sql-dialects-md.md"
+      ]
+    },
+    {
+      "path": "docs/sql.md",
+      "sha256": "3aabb77e88de40c95fe6ff795460fde9503109eff86f0485a6df90218e92fbf2",
+      "references": [
+        ".agents/references/00287-stackpress-source-docs-sql-md.md"
+      ]
+    },
+    {
+      "path": "docs/sqlite.md",
+      "sha256": "924796c454bda07637421a7cc536e382a3b86d4215e05502b37b7e988452ccba",
+      "references": [
+        ".agents/references/00288-stackpress-source-docs-sqlite-md.md"
+      ]
+    },
+    {
+      "path": "docs/stackpress.md",
+      "sha256": "72e18a160fa5ff646d81e5d9b43bde5a45c24aec9b01717ea7663ae477281bec",
+      "references": [
+        ".agents/references/00289-stackpress-source-docs-stackpress-md.md"
+      ]
+    },
+    {
+      "path": "docs/types.md",
+      "sha256": "cc50016f48b9c153f3e97b189d8d5c4b595ac1bf730e9dcb0543a0b3d6090064",
+      "references": [
+        ".agents/references/00290-stackpress-source-docs-types-md.md"
+      ]
+    },
+    {
+      "path": "docs/unocss.md",
+      "sha256": "6e901fa9d4fae5d6e82ca266164f4ff9a2d8d8939281509231a4126fa32b43bb",
+      "references": [
+        ".agents/references/00291-stackpress-source-docs-unocss-md.md"
+      ]
+    },
+    {
+      "path": "docs/view/README.md",
+      "sha256": "be5c1f7c06b812fed0de7a0810a8d8a7fa2bf6cb140f8d9b9b73f93dc16f4826",
+      "references": [
+        ".agents/references/00292-stackpress-source-docs-view-readme-md.md"
+      ]
+    },
+    {
+      "path": "docs/view/hooks.md",
+      "sha256": "ff18e4224bf2aea36e4c4c733cd9d84d16812d14ab0e9c63efd7fc72aebe9a85",
+      "references": [
+        ".agents/references/00293-stackpress-source-docs-view-hooks-md.md"
+      ]
+    },
+    {
+      "path": "docs/view/setViewProps.md",
+      "sha256": "fecd6a25059ee62b2ae0df195b9c6a0ec5a21a56fe8cf5c56770dc9e35933315",
+      "references": [
+        ".agents/references/00294-stackpress-source-docs-view-setviewprops-md.md"
+      ]
+    },
+    {
+      "path": "docs/view-client.md",
+      "sha256": "770c1f481efbaa5aaeba8462e400b83847bcefe23e003cd6857495e9f7b0b0ed",
+      "references": [
+        ".agents/references/00295-stackpress-source-docs-view-client-md.md"
+      ]
+    },
+    {
+      "path": "docs/view.md",
+      "sha256": "1d543026695fc5de5b82516955ffaaae03ae29f8f7bc311fe8def20fc1e3a251",
+      "references": [
+        ".agents/references/00296-stackpress-source-docs-view-md-part-1.md",
+        ".agents/references/00297-stackpress-source-docs-view-md-part-2.md"
+      ]
+    },
+    {
+      "path": "docs/whatwg.md",
+      "sha256": "87eba6dcf1ff09588fbfb933e8296a0a6bd007990ae482f64b33cb983d879657",
+      "references": [
+        ".agents/references/00298-stackpress-source-docs-whatwg-md.md"
+      ]
+    },
+    {
+      "path": "skills/README.md",
+      "sha256": "f8543ab3d2140d78e3761e8b795ed396a0153c7668bcf27ef9310ffbfcbeb936",
+      "references": [
+        ".agents/references/00299-stackpress-source-skills-readme-md-part-1.md",
+        ".agents/references/00300-stackpress-source-skills-readme-md-part-2.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-ai/SKILL.md",
+      "sha256": "fa3878858c57bf5d844cbfe042e543a8bc0cb752a26049f9dfdd9604c3d92de3",
+      "references": [
+        ".agents/references/00301-stackpress-source-skills-stackpress-ai-skill-md.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-app-coordinator/SKILL.md",
+      "sha256": "80419392e2bb2317ad31956fc2e2af3f36afaba63753122c365f6cdd52f85e6d",
+      "references": [
+        ".agents/references/00302-stackpress-source-skills-stackpress-app-coordinator-skill-md-part-1.md",
+        ".agents/references/00303-stackpress-source-skills-stackpress-app-coordinator-skill-md-part-2.md",
+        ".agents/references/00304-stackpress-source-skills-stackpress-app-coordinator-skill-md-part-3.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-app-discovery/SKILL.md",
+      "sha256": "b2c95be57347bbce8c5ec6133c0fbd794240116038cd4b27594df22339d37efa",
+      "references": [
+        ".agents/references/00305-stackpress-source-skills-stackpress-app-discovery-skill-md-part-1.md",
+        ".agents/references/00306-stackpress-source-skills-stackpress-app-discovery-skill-md-part-2.md",
+        ".agents/references/00307-stackpress-source-skills-stackpress-app-discovery-skill-md-part-3.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-app-scaffold/SKILL.md",
+      "sha256": "1b8631545cd8600ba7e30e1d41da6952395587ae561b24da457d94f4931edb52",
+      "references": [
+        ".agents/references/00308-stackpress-source-skills-stackpress-app-scaffold-skill-md.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-app-verification/SKILL.md",
+      "sha256": "f46ede7f10c271b44f48d48472c9dd30ea3240f51750fbe05ef929cca237714e",
+      "references": [
+        ".agents/references/00309-stackpress-source-skills-stackpress-app-verification-skill-md-part-1.md",
+        ".agents/references/00310-stackpress-source-skills-stackpress-app-verification-skill-md-part-2.md",
+        ".agents/references/00311-stackpress-source-skills-stackpress-app-verification-skill-md-part-3.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/SKILL.md",
+      "sha256": "3e1b732e099f99a7482c77307380583b0fd91b7b421971828c8ae8fcd7993b27",
+      "references": [
+        ".agents/references/00312-stackpress-source-skills-stackpress-idea-authoring-skill-md-part-1.md",
+        ".agents/references/00313-stackpress-source-skills-stackpress-idea-authoring-skill-md-part-2.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/references/column-attributes.md",
+      "sha256": "2a4fafd6c380c4d033f11311402562e6147bb534dc8062672190a20e0520ce56",
+      "references": [
+        ".agents/references/00314-stackpress-source-skills-stackpress-idea-authoring-references-column-attributes-md.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/references/field-components.md",
+      "sha256": "ab854f882205763e3364771f10c41206f941f982e7280b496d1fd7b31a5792b7",
+      "references": [
+        ".agents/references/00315-stackpress-source-skills-stackpress-idea-authoring-references-field-components-md-part-1.md",
+        ".agents/references/00316-stackpress-source-skills-stackpress-idea-authoring-references-field-components-md-part-2.md",
+        ".agents/references/00317-stackpress-source-skills-stackpress-idea-authoring-references-field-components-md-part-3.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/references/filter-components.md",
+      "sha256": "ee4b64f8b66126c4f1c7d471c7b937e2b5ee997c9ca62b4f9aac1d4a375a366b",
+      "references": [
+        ".agents/references/00318-stackpress-source-skills-stackpress-idea-authoring-references-filter-components-md.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/references/list-components.md",
+      "sha256": "cfc34a3c5e91f005f6d415eff94461d8064a78b205d48131d2ba0e069a593aa6",
+      "references": [
+        ".agents/references/00319-stackpress-source-skills-stackpress-idea-authoring-references-list-components-md.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/references/model-attributes.md",
+      "sha256": "b37efea4a1b0141816c8c110d4e0ed42f37c1dad2aa1c9c62122cb50e9436b84",
+      "references": [
+        ".agents/references/00320-stackpress-source-skills-stackpress-idea-authoring-references-model-attributes-md.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/references/span-components.md",
+      "sha256": "231196a45597c7cc013735f0967f193fa4595eff621312f2a7e1f4cb0cd36b9a",
+      "references": [
+        ".agents/references/00321-stackpress-source-skills-stackpress-idea-authoring-references-span-components-md.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/references/stackpress-builtins.md",
+      "sha256": "6c5939eb6db0577c6fb34253549a68debd44c9d49f307c01085b529c48bd174c",
+      "references": [
+        ".agents/references/00322-stackpress-source-skills-stackpress-idea-authoring-references-stackpress-builtins-md.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/references/stackpress-idea-patterns.md",
+      "sha256": "d7b22d19da01fd23aff29c9c9e3a610eda0c4c49fca67f542722910a40254298",
+      "references": [
+        ".agents/references/00323-stackpress-source-skills-stackpress-idea-authoring-references-stackpress-idea-patterns-md-part-1.md",
+        ".agents/references/00324-stackpress-source-skills-stackpress-idea-authoring-references-stackpress-idea-patterns-md-part-2.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/references/types.md",
+      "sha256": "07f87d3591e55dd567e185c76416a58d9bae33c878f851de67c7b083f2cfd80b",
+      "references": [
+        ".agents/references/00325-stackpress-source-skills-stackpress-idea-authoring-references-types-md.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/references/validators.md",
+      "sha256": "6ef3d23efb3705b39601475b074145617e7785cd7cf56f68fbfbe03145352483",
+      "references": [
+        ".agents/references/00326-stackpress-source-skills-stackpress-idea-authoring-references-validators-md.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/references/view-components.md",
+      "sha256": "1d057e1024d57d5236a68c0360db49f8e2b37773e926855652c8480986625b7c",
+      "references": [
+        ".agents/references/00327-stackpress-source-skills-stackpress-idea-authoring-references-view-components-md-part-1.md",
+        ".agents/references/00328-stackpress-source-skills-stackpress-idea-authoring-references-view-components-md-part-2.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-plugin-idea-generator/SKILL.md",
+      "sha256": "6cbe754fd795ec7633532236537a63e1390e0731467cc7e4b9c2bef1df9462f6",
+      "references": [
+        ".agents/references/00329-stackpress-source-skills-stackpress-plugin-idea-generator-skill-md-part-1.md",
+        ".agents/references/00330-stackpress-source-skills-stackpress-plugin-idea-generator-skill-md-part-2.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-plugin-idea-generator/references/runtime-reconnection.md",
+      "sha256": "7a996eeffe802e498ef7fdd1c26d006db4e7aee77878e5b4d17d013bbf5a3c64",
+      "references": [
+        ".agents/references/00331-stackpress-source-skills-stackpress-plugin-idea-generator-references-runtime-reconnection-md.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-plugin-idea-generator/references/transform-entry.md",
+      "sha256": "89c3fb1aea5ddd24d12c4a7cb0de1ef647c7759dacd67f98cd0b1bd239cb8eea",
+      "references": [
+        ".agents/references/00332-stackpress-source-skills-stackpress-plugin-idea-generator-references-transform-entry-md-part-1.md",
+        ".agents/references/00333-stackpress-source-skills-stackpress-plugin-idea-generator-references-transform-entry-md-part-2.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-plugin-idea-generator/references/ts-morph-common-methods.md",
+      "sha256": "ebf5c19e94de3bfc53ad6fcb3aa4cb0abe8bb4a0e675e6d19382548375422d85",
+      "references": [
+        ".agents/references/00334-stackpress-source-skills-stackpress-plugin-idea-generator-references-ts-morph-common-methods-md-part-1.md",
+        ".agents/references/00335-stackpress-source-skills-stackpress-plugin-idea-generator-references-ts-morph-common-methods-md-part-2.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-plugin-pages-events/SKILL.md",
+      "sha256": "c7776ad7c02e4adc4ed22bbe667eea1c7637887bd6146195e72bb9c1ca3d6b2a",
+      "references": [
+        ".agents/references/00336-stackpress-source-skills-stackpress-plugin-pages-events-skill-md-part-1.md",
+        ".agents/references/00337-stackpress-source-skills-stackpress-plugin-pages-events-skill-md-part-2.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-plugin-router/SKILL.md",
+      "sha256": "214c82bcd62fec95e2ff4d40828b812210511f3c180742788a10ec815b9e3dc9",
+      "references": [
+        ".agents/references/00338-stackpress-source-skills-stackpress-plugin-router-skill-md-part-1.md",
+        ".agents/references/00339-stackpress-source-skills-stackpress-plugin-router-skill-md-part-2.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-plugin-scaffold/SKILL.md",
+      "sha256": "b6878c735e82ae69bf03ad69697f9b26ad3009da70af92d40ea1193b556b9abd",
+      "references": [
+        ".agents/references/00340-stackpress-source-skills-stackpress-plugin-scaffold-skill-md-part-1.md",
+        ".agents/references/00341-stackpress-source-skills-stackpress-plugin-scaffold-skill-md-part-2.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-plugin-scaffold/references/plugin-scaffold.md",
+      "sha256": "be02183054456063123111b46d791ad524be99bbfded24abb939bb55cf82b7b8",
+      "references": [
+        ".agents/references/00342-stackpress-source-skills-stackpress-plugin-scaffold-references-plugin-scaffold-md-part-1.md",
+        ".agents/references/00343-stackpress-source-skills-stackpress-plugin-scaffold-references-plugin-scaffold-md-part-2.md",
+        ".agents/references/00344-stackpress-source-skills-stackpress-plugin-scaffold-references-plugin-scaffold-md-part-3.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-plugin-views/SKILL.md",
+      "sha256": "019dea507647ab9e2936f021649075a3c6609554e1bdc6692af96b336ab4121f",
+      "references": [
+        ".agents/references/00345-stackpress-source-skills-stackpress-plugin-views-skill-md-part-1.md",
+        ".agents/references/00346-stackpress-source-skills-stackpress-plugin-views-skill-md-part-2.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-plugin-views/references/stackpress-unocss.md",
+      "sha256": "7970312c43770a28dabd6f407033e6b67b50030070848cf572a646872fedc400",
+      "references": [
+        ".agents/references/00347-stackpress-source-skills-stackpress-plugin-views-references-stackpress-unocss-md-part-1.md",
+        ".agents/references/00348-stackpress-source-skills-stackpress-plugin-views-references-stackpress-unocss-md-part-2.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-router/SKILL.md",
+      "sha256": "ceff2d94720329d47d9e0d1bc4c851cf7e2e9eb5b9479a22ff38ef6175b93e1c",
+      "references": [
+        ".agents/references/00349-stackpress-source-skills-stackpress-router-skill-md.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-workflow-router/SKILL.md",
+      "sha256": "14782e5f0906dde7ac394716c289dc5215e6f884fa22ed394fcfb969879d720d",
+      "references": [
+        ".agents/references/00350-stackpress-source-skills-stackpress-workflow-router-skill-md-part-1.md",
+        ".agents/references/00351-stackpress-source-skills-stackpress-workflow-router-skill-md-part-2.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-workflow-router/references/drift-control.md",
+      "sha256": "bd5c4f45ea937a5691f2e0654ae43c63d6430e04e01afc0a9963175d55025e19",
+      "references": [
+        ".agents/references/00352-stackpress-source-skills-stackpress-workflow-router-references-drift-control-md.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-workflow-router/references/plugin-composition-example.md",
+      "sha256": "25995d51a448a2d9d32cfaaae677501cd8cffd816b35fdad45bb5c27e3ad4ee9",
+      "references": [
+        ".agents/references/00353-stackpress-source-skills-stackpress-workflow-router-references-plugin-composition-example-md.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-workflow-router/references/workflow-catalog.md",
+      "sha256": "6eb5e63c27340f524f4acfdf36ab2efc9c7667d43eb35cbda88ebc770736fcc6",
+      "references": [
+        ".agents/references/00354-stackpress-source-skills-stackpress-workflow-router-references-workflow-catalog-md-part-1.md",
+        ".agents/references/00355-stackpress-source-skills-stackpress-workflow-router-references-workflow-catalog-md-part-2.md"
+      ]
+    },
+    {
+      "path": "skills/stackpress-workflow-router/references/workflow-selection.md",
+      "sha256": "43983dce4ca9de6a007f93cbd96b7ba16e8aa7d81e550c554e3d94c97ba6642d",
+      "references": [
+        ".agents/references/00356-stackpress-source-skills-stackpress-workflow-router-references-workflow-selection-md.md"
+      ]
+    }
+  ],
+  "scope": "All Markdown in docs/ and skills/, domain context and references from .agents/. Source code, installed tooling and historical specs are provenance, not copied runtime dependencies.",
+  "inventory": [
+    {
+      "path": "docs/README.md",
+      "sha256": "e4afacf0584b89bb2381b1cb8e8a235adc8c79615734dddd569d5d64e397fe77",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/cli-reference.md",
+      "sha256": "db83861b5296f4508038b3eafea62c2dbd6aa0ba5587b26ea1837b07cf4b9f98",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/config-reference.md",
+      "sha256": "6d8351631daed857cb3636af5155d26ae85080a59e07759811a26dcee3914539",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/http.md",
+      "sha256": "46e13a7649db0a274fe4e2ba30e4831f9c1fc45ca89247b6f902fdc4753adffc",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/idea-reference.md",
+      "sha256": "4b34ae877f7bc0066fcb80e40a9803ffb7dcd84b8b2e296b867fcf7a7f87aefb",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/language/Language.md",
+      "sha256": "c8ebaece2467851b5cb4c419982f90ec49237b2b11a296294295d017788b084a",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/language/README.md",
+      "sha256": "ed82a6f9ebbf33f236a9396ee62a7decad5a933cde5360fa78561b8eb8e62bba",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/language.md",
+      "sha256": "f97796096c0de0304697efcfade1bfa2e9842ae07899f5f7c8d48335ce676c77",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/lib.md",
+      "sha256": "8ff5c882eab57865cfd8f855167fecb234060defe7d0f86b09f209784936558e",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/mysql.md",
+      "sha256": "0ff2cf2ab0795a4c0428cd4d6a25cbcbea698dfc0b821e7b446949f979683758",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/pglite.md",
+      "sha256": "51e8ca044a6f3d5964bce892dc99e2a716b4a9180aa23947c27b139427c57418",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/pgsql.md",
+      "sha256": "197ab41f77525adb08cb37afe7e488a165a96a10fb7314a1d2966e938cc1bec1",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/plugin.md",
+      "sha256": "eab54143ae0583e1341b388e6c73e8d181905144e40c91d01c438ce24dea7bf1",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/runtime/README.md",
+      "sha256": "9beb2ccc6562d359c9c482077288f80cad5e00aa128a5a69bc483776fdfd2673",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/runtime/Request.md",
+      "sha256": "0eb59e267f8bfc0ec43dbf1d067afbf7fc954539cd1ab0470f22b58541a42903",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/runtime/Response.md",
+      "sha256": "8131e5b5b5ac334d56e082e590eb143bb8679c3a70e6c5d2873e6bd2e7960486",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/runtime/Router.md",
+      "sha256": "5b3878da5151fa5ed9bfaa299abd1c8ac365ec67be79d174ef1c5ba18654aa46",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/runtime/Server.md",
+      "sha256": "7266ff9050934e6ffef84bca2cb342c7d8589f87ac98fbb22d0d278ed4e1f1d5",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/schema/Attribute.md",
+      "sha256": "1bad80d0dd4714ec69b17073207bc38f20dbd117bcc1a0a5f5ed2a7439aebfc5",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/schema/Column.md",
+      "sha256": "125ec8d4e2ee5f4cf0c9d06902df687b7715bcdb9d3c243ea7f950ffb8a164fe",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/schema/Fieldset.md",
+      "sha256": "df3e370bf23c5304f72fae1d7bff351a92a450b6848d02960ab272e7d16ba92e",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/schema/Model.md",
+      "sha256": "43e5e57d327c8e5248ef7d5eaf1d3f36a8d53266c876773f657ff9b412abd60e",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/schema/README.md",
+      "sha256": "ad69c700534ca08f2002f293ede6686ebf3dc062ed72c7f65df640ad9304e3cc",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/schema/Schema.md",
+      "sha256": "e859e08140238c8735c0070ac6b8c33a725cd603e66bc0726c05dff07bd7ad6c",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/schema.md",
+      "sha256": "48a44e3155a6da035f375f83f79a99bbac54d92ff0133e2a1d5f3bdda157ba38",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/server/README.md",
+      "sha256": "1aececb23b3a55f67deed8b86c16f0e620cb6975f8481bcd6a8317cc60aa2f0c",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/server/Terminal.md",
+      "sha256": "3726acebe0c07d3b7d4ac620709e89b52b97fc256083e32a2498c93f4201163b",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/server.md",
+      "sha256": "446fc66dcab84873916c4f8099b65db70ccd5b6cb72982b47dc75b2ce725438b",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/session/README.md",
+      "sha256": "46405633fedce30fa0a4451dea27c0151bcbe8173e5e8746b390c7c604bfc7da",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/session/Session.md",
+      "sha256": "01a2823378f09bd579668cb189329cdb24116dfaef22520c3fb8d9394370c578",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/session.md",
+      "sha256": "e49887b3883e7a446c64f4d4062e8879a2b8b19f2f6f5cf8489682c6211aaa06",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/sql/Engine.md",
+      "sha256": "01af953e223515e7e12a79187e12d043678705393df73ae640a1894ecaaccaa9",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/sql/README.md",
+      "sha256": "5b01824f41eb3552572043c6c223d0b80c4e7a10648725ca68a37bb07098d898",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/sql/builders.md",
+      "sha256": "8f265019f66150cbfe6688114d011310f2c6ccd0db949929905ec27155d65c95",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/sql/connections.md",
+      "sha256": "0a71cf764fa788603f5cc3cc33ffa56b528ba65c300664faf41e509f993410bd",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/sql/dialects.md",
+      "sha256": "720991c4bfbdc141b05e6b5fb89fdb2e45ff1f810e5283efd389f3c4f8ecfacb",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/sql.md",
+      "sha256": "3aabb77e88de40c95fe6ff795460fde9503109eff86f0485a6df90218e92fbf2",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/sqlite.md",
+      "sha256": "924796c454bda07637421a7cc536e382a3b86d4215e05502b37b7e988452ccba",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/stackpress.md",
+      "sha256": "72e18a160fa5ff646d81e5d9b43bde5a45c24aec9b01717ea7663ae477281bec",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/types.md",
+      "sha256": "cc50016f48b9c153f3e97b189d8d5c4b595ac1bf730e9dcb0543a0b3d6090064",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/unocss.md",
+      "sha256": "6e901fa9d4fae5d6e82ca266164f4ff9a2d8d8939281509231a4126fa32b43bb",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/view/README.md",
+      "sha256": "be5c1f7c06b812fed0de7a0810a8d8a7fa2bf6cb140f8d9b9b73f93dc16f4826",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/view/hooks.md",
+      "sha256": "ff18e4224bf2aea36e4c4c733cd9d84d16812d14ab0e9c63efd7fc72aebe9a85",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/view/setViewProps.md",
+      "sha256": "fecd6a25059ee62b2ae0df195b9c6a0ec5a21a56fe8cf5c56770dc9e35933315",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/view-client.md",
+      "sha256": "770c1f481efbaa5aaeba8462e400b83847bcefe23e003cd6857495e9f7b0b0ed",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/view.md",
+      "sha256": "1d543026695fc5de5b82516955ffaaae03ae29f8f7bc311fe8def20fc1e3a251",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "docs/whatwg.md",
+      "sha256": "87eba6dcf1ff09588fbfb933e8296a0a6bd007990ae482f64b33cb983d879657",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/README.md",
+      "sha256": "f8543ab3d2140d78e3761e8b795ed396a0153c7668bcf27ef9310ffbfcbeb936",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-ai/SKILL.md",
+      "sha256": "fa3878858c57bf5d844cbfe042e543a8bc0cb752a26049f9dfdd9604c3d92de3",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-ai/agents/openai.yaml",
+      "sha256": "24582b0038b840157eb4ccec3587b279f74d6c7d3accf32a26fdbe9c85056058",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": "skills/stackpress-app-coordinator/SKILL.md",
+      "sha256": "80419392e2bb2317ad31956fc2e2af3f36afaba63753122c365f6cdd52f85e6d",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-app-coordinator/agents/openai.yaml",
+      "sha256": "6333be2c8a6c020a90911b5a3823e291016f09815a320b134bd8ffc227b05860",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": "skills/stackpress-app-discovery/SKILL.md",
+      "sha256": "b2c95be57347bbce8c5ec6133c0fbd794240116038cd4b27594df22339d37efa",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-app-discovery/agents/openai.yaml",
+      "sha256": "ea2997fbf60d3474be851284c57c289f62bc2c7144f338de6cd8dc1b4476d853",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": "skills/stackpress-app-scaffold/SKILL.md",
+      "sha256": "1b8631545cd8600ba7e30e1d41da6952395587ae561b24da457d94f4931edb52",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-app-scaffold/agents/openai.yaml",
+      "sha256": "7d2d2b3a557c61494c489e8fb86186328a341faa5fef90f79c244ebb39f33b7b",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": "skills/stackpress-app-scaffold/assets/template/.env.sample",
+      "sha256": "5a99717968b1df7e73526e00730b2121a589a20e401b420d5f4460f239bc4a82",
+      "disposition": "source-code-retained-in-place"
+    },
+    {
+      "path": "skills/stackpress-app-scaffold/assets/template/config/build.ts",
+      "sha256": "c8405ef78d819b48816d2144fe515ce2c9c1ccf7d0fa67201d341874a753f798",
+      "disposition": "source-code-retained-in-place"
+    },
+    {
+      "path": "skills/stackpress-app-scaffold/assets/template/config/client.ts",
+      "sha256": "e2802c991d3c857b4b5f67f22e48b61e111ea3239ca4e3d20bc2520dfa74fc91",
+      "disposition": "source-code-retained-in-place"
+    },
+    {
+      "path": "skills/stackpress-app-scaffold/assets/template/config/common.ts",
+      "sha256": "7fbfd6a6b7b9fa2a69e133cd4655263a5958e985f5a4a2bdead6ac76d38508dd",
+      "disposition": "source-code-retained-in-place"
+    },
+    {
+      "path": "skills/stackpress-app-scaffold/assets/template/config/develop.ts",
+      "sha256": "4aef49f1e981bbffaec142519bd1e60c7a0471b438855cf8822335c1f6bf22be",
+      "disposition": "source-code-retained-in-place"
+    },
+    {
+      "path": "skills/stackpress-app-scaffold/assets/template/gitignore",
+      "sha256": "c2379318ddabe555bfa6a9f365d08fdf02f1dba07fa5a46e317a79d536a7410e",
+      "disposition": "source-code-retained-in-place"
+    },
+    {
+      "path": "skills/stackpress-app-scaffold/assets/template/package.json",
+      "sha256": "474570fa8594103d3ef9a9aaf5d58d24ceccbe236ec058f69450c65edd03e254",
+      "disposition": "source-code-retained-in-place"
+    },
+    {
+      "path": "skills/stackpress-app-scaffold/assets/template/plugins/app/pages/home.ts",
+      "sha256": "af0582a05c26375b42d0664f23fc33e1d57eaab8682008fc78d7fbaf78b49ad9",
+      "disposition": "source-code-retained-in-place"
+    },
+    {
+      "path": "skills/stackpress-app-scaffold/assets/template/plugins/app/plugin.ts",
+      "sha256": "9d8c25141f3652c3618315c4975a255e5cc02a5c2c07f44ef58632bf3e83e11a",
+      "disposition": "source-code-retained-in-place"
+    },
+    {
+      "path": "skills/stackpress-app-scaffold/assets/template/plugins/app/views/home.tsx",
+      "sha256": "a1bf8c82d328699d9c080c0012c59115a591c19124e4ad66c62e6ef6702ff9f2",
+      "disposition": "source-code-retained-in-place"
+    },
+    {
+      "path": "skills/stackpress-app-scaffold/assets/template/plugins/store/connect.ts",
+      "sha256": "527a325028bc47318a9c1d58b6e532f8ce4a4ed898d29420125a54b74f60496b",
+      "disposition": "source-code-retained-in-place"
+    },
+    {
+      "path": "skills/stackpress-app-scaffold/assets/template/plugins/store/plugin.ts",
+      "sha256": "b872296f738307a8dae1232313b298a35ac5dfd8b2cc1236b75110a4d0e59bf4",
+      "disposition": "source-code-retained-in-place"
+    },
+    {
+      "path": "skills/stackpress-app-scaffold/assets/template/plugins/store/populate.ts",
+      "sha256": "b0d11066f638b2ccc1b0087d91f4a32d2004f1f8a489581a66ba621f21e40a81",
+      "disposition": "source-code-retained-in-place"
+    },
+    {
+      "path": "skills/stackpress-app-scaffold/assets/template/schema.idea",
+      "sha256": "9bb6ad5df1cd1b02457e6d63953ff5a8ffceb2ed0b60e7f2b0de7c33d890a338",
+      "disposition": "source-code-retained-in-place"
+    },
+    {
+      "path": "skills/stackpress-app-scaffold/assets/template/tsconfig.json",
+      "sha256": "e8f58dee399b2496ea486daf06e019130776d1b5b7f233532c763cc5f9204dc8",
+      "disposition": "source-code-retained-in-place"
+    },
+    {
+      "path": "skills/stackpress-app-scaffold/assets/template/uno.config.ts",
+      "sha256": "54da9fcbdbbc77636265f78bea6355a0626653356379b12bdb184f53efad55a0",
+      "disposition": "source-code-retained-in-place"
+    },
+    {
+      "path": "skills/stackpress-app-verification/SKILL.md",
+      "sha256": "f46ede7f10c271b44f48d48472c9dd30ea3240f51750fbe05ef929cca237714e",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-app-verification/agents/openai.yaml",
+      "sha256": "2ffa6f36e61dd7e0ec211b8554099aa5f17f14b6152b7666f4f67a4bcc90acce",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/SKILL.md",
+      "sha256": "3e1b732e099f99a7482c77307380583b0fd91b7b421971828c8ae8fcd7993b27",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/agents/openai.yaml",
+      "sha256": "11144b3f5253d88910fd56a31210893943b8b4c53f8021ab9025015d2fc3e776",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/references/column-attributes.md",
+      "sha256": "2a4fafd6c380c4d033f11311402562e6147bb534dc8062672190a20e0520ce56",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/references/field-components.md",
+      "sha256": "ab854f882205763e3364771f10c41206f941f982e7280b496d1fd7b31a5792b7",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/references/filter-components.md",
+      "sha256": "ee4b64f8b66126c4f1c7d471c7b937e2b5ee997c9ca62b4f9aac1d4a375a366b",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/references/list-components.md",
+      "sha256": "cfc34a3c5e91f005f6d415eff94461d8064a78b205d48131d2ba0e069a593aa6",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/references/model-attributes.md",
+      "sha256": "b37efea4a1b0141816c8c110d4e0ed42f37c1dad2aa1c9c62122cb50e9436b84",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/references/span-components.md",
+      "sha256": "231196a45597c7cc013735f0967f193fa4595eff621312f2a7e1f4cb0cd36b9a",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/references/stackpress-builtins.md",
+      "sha256": "6c5939eb6db0577c6fb34253549a68debd44c9d49f307c01085b529c48bd174c",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/references/stackpress-idea-patterns.md",
+      "sha256": "d7b22d19da01fd23aff29c9c9e3a610eda0c4c49fca67f542722910a40254298",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/references/types.md",
+      "sha256": "07f87d3591e55dd567e185c76416a58d9bae33c878f851de67c7b083f2cfd80b",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/references/validators.md",
+      "sha256": "6ef3d23efb3705b39601475b074145617e7785cd7cf56f68fbfbe03145352483",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-idea-authoring/references/view-components.md",
+      "sha256": "1d057e1024d57d5236a68c0360db49f8e2b37773e926855652c8480986625b7c",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-plugin-idea-generator/SKILL.md",
+      "sha256": "6cbe754fd795ec7633532236537a63e1390e0731467cc7e4b9c2bef1df9462f6",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-plugin-idea-generator/agents/openai.yaml",
+      "sha256": "ae7ac9850426801138b484bd92b921c5d286efe1a343ebe0f2cef45319f912e5",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": "skills/stackpress-plugin-idea-generator/references/runtime-reconnection.md",
+      "sha256": "7a996eeffe802e498ef7fdd1c26d006db4e7aee77878e5b4d17d013bbf5a3c64",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-plugin-idea-generator/references/transform-entry.md",
+      "sha256": "89c3fb1aea5ddd24d12c4a7cb0de1ef647c7759dacd67f98cd0b1bd239cb8eea",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-plugin-idea-generator/references/ts-morph-common-methods.md",
+      "sha256": "ebf5c19e94de3bfc53ad6fcb3aa4cb0abe8bb4a0e675e6d19382548375422d85",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-plugin-pages-events/SKILL.md",
+      "sha256": "c7776ad7c02e4adc4ed22bbe667eea1c7637887bd6146195e72bb9c1ca3d6b2a",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-plugin-router/SKILL.md",
+      "sha256": "214c82bcd62fec95e2ff4d40828b812210511f3c180742788a10ec815b9e3dc9",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-plugin-router/agents/openai.yaml",
+      "sha256": "5611fba2889f0584b17ad3b9501a0c54c2fd3e552acd010c89f6b0a5d7ebd7c5",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": "skills/stackpress-plugin-scaffold/SKILL.md",
+      "sha256": "b6878c735e82ae69bf03ad69697f9b26ad3009da70af92d40ea1193b556b9abd",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-plugin-scaffold/agents/openai.yaml",
+      "sha256": "a2c2b1411a2613e4294990c0afaf67737a63e6e715f6c94ab50f4dd6ec8c26c9",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": "skills/stackpress-plugin-scaffold/references/plugin-scaffold.md",
+      "sha256": "be02183054456063123111b46d791ad524be99bbfded24abb939bb55cf82b7b8",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-plugin-views/SKILL.md",
+      "sha256": "019dea507647ab9e2936f021649075a3c6609554e1bdc6692af96b336ab4121f",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-plugin-views/agents/openai.yaml",
+      "sha256": "161dcad01505bedb23ba1559dc4efefc2d1514e64e5fc2aa575ae45bc20b6624",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": "skills/stackpress-plugin-views/references/stackpress-unocss.md",
+      "sha256": "7970312c43770a28dabd6f407033e6b67b50030070848cf572a646872fedc400",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-router/SKILL.md",
+      "sha256": "ceff2d94720329d47d9e0d1bc4c851cf7e2e9eb5b9479a22ff38ef6175b93e1c",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-router/agents/openai.yaml",
+      "sha256": "881263a69e10a4bccabbfde58c7aba3b38596ae00c49136319f742fba2758421",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": "skills/stackpress-workflow-router/SKILL.md",
+      "sha256": "14782e5f0906dde7ac394716c289dc5215e6f884fa22ed394fcfb969879d720d",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-workflow-router/agents/openai.yaml",
+      "sha256": "bbeabba032ef94de029c937ef96593ecc59a015228e905e8dbea1d1320995f9c",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": "skills/stackpress-workflow-router/references/drift-control.md",
+      "sha256": "bd5c4f45ea937a5691f2e0654ae43c63d6430e04e01afc0a9963175d55025e19",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-workflow-router/references/plugin-composition-example.md",
+      "sha256": "25995d51a448a2d9d32cfaaae677501cd8cffd816b35fdad45bb5c27e3ad4ee9",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-workflow-router/references/workflow-catalog.md",
+      "sha256": "6eb5e63c27340f524f4acfdf36ab2efc9c7667d43eb35cbda88ebc770736fcc6",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": "skills/stackpress-workflow-router/references/workflow-selection.md",
+      "sha256": "43983dce4ca9de6a007f93cbd96b7ba16e8aa7d81e550c554e3d94c97ba6642d",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/AGENTS.md",
+      "sha256": "cb40de6b3e5450da69b7e4dfb22dfbffef776279a7fd5682b76f73bc8beecb1b",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/TERMS.md",
+      "sha256": "223bf41ab50e28ed77ced3449050ab5d6552e13985cb601d5f082697f047a40a",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/context/architecture-and-composition.md",
+      "sha256": "2aed92a7ee9278114dfef53322baa30233a7ad60f55634725748f64e69021466",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/context/compatibility-and-maintenance.md",
+      "sha256": "3a2c2abae28100b18bdb0f15f0d867babbdfb5e5b0187cdf6f372399f88251d8",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/context/ecosystem-and-portability.md",
+      "sha256": "2eacda652d5bdad1bc94734af6788e2c844a82f0717ea358dae75e4a20f46513",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/context/extension-and-contribution.md",
+      "sha256": "efdc13cc8d528fdffbe09821b4a121a52d705cf59459ac7f562dd1eb0002c6fe",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/context/identity-and-principles.md",
+      "sha256": "789361b78581f1c8c137cf5f083fb9ed864b43b94aed0ef90822677523598b52",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/context/index.md",
+      "sha256": "6b2b55bbb3ba93576741739d09e30f3e0fcba2d0d69d9afc419c1b7918616039",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/context/interfaces-and-experience.md",
+      "sha256": "f0fbe7c2888615218ca8af0d0308c04b40acc74f6db811ab0764d06060beb803",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/context/modeling-and-generation.md",
+      "sha256": "11ffc3a0707e07704c28f20a48a72f1d615a9934e10728a44e1660e820b6789d",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/context/runtime-and-operations.md",
+      "sha256": "72ebeda36157933605e4d5602d22701a3378164af5490a0c7c6ebc639198dac5",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/references/00001-agent-workspace-rules.md",
+      "sha256": "e3b379112ba97c444c1b01d8d55cb8ec7cc56c103e29fa8572d12d7a1bdfc572",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/references/00002-intersection-points.md",
+      "sha256": "b206d2d34acdcaeacb90b971454b0f0f4a63922b5a94c83d39cc95276aa020bd",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/references/00003-reference-recovery-points.md",
+      "sha256": "ef8a892349ed960f42e314994e19143fc90c48e466d412a07317969017d33ece",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/references/00004-runtime-api-contracts.md",
+      "sha256": "379b61bbcb8b47ba5320547af8bf8e2ce3bbc7360f262ddfff9675a0d7dac69a",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/references/00005-server-and-transport-contracts.md",
+      "sha256": "3381ca0930dd12d555e1e22673b2d05a4df104c6736f81bceb021c9f9338ce73",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/references/00006-schema-api-contracts.md",
+      "sha256": "87b6fd9a8e43ebd54c9375d4d6e1fb7d867955411e38cb68ab09a3b1a60064ea",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/references/00007-idea-language-catalog.md",
+      "sha256": "0fc7cd1b1dbdd1fff1c14dcd480b7de5ded413c1c179aa58a59821b151cb9f6d",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/references/00008-configuration-catalog.md",
+      "sha256": "1981de44bf8e2a3938e04e501c3fbd23a54b75e256b4c8f625dc99bb0166f82c",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/references/00009-cli-and-plugin-contracts.md",
+      "sha256": "86e2d156d4ceb0c367c5b4875f881b6a12d6d3af0c4b37439d4a52b4890b1ada",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/references/00010-sql-api-contracts.md",
+      "sha256": "cd24ca54863b3e714590c0554e67196e1d13eee119f3fc2516c8dff505210331",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/references/00011-database-adapter-contracts.md",
+      "sha256": "1c395e2213fa63ebca388e8edb5a5a79d114898705e8ecb131a8c39d92daa06f",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/references/00012-view-api-contracts.md",
+      "sha256": "648a237a6c7f697cb4d68c1bdd933522bc4a78c07f371674f34f4f1fb02c475d",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/references/00013-session-language-contracts.md",
+      "sha256": "eb40b98b29282ecb1f9bf11c4556f3871557adc9ad2be2099376c0235edb770d",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/references/00014-exports-types-generated-contracts.md",
+      "sha256": "f293d7046332e60f1509d4c2f00b2c044996f3c5cf1fee71f9608f6ca6d8bad6",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/references/00015-operational-examples.md",
+      "sha256": "8e115a20caa64718697b488f9fe76d28dec36138accd12e870c3e5f43bf01b9e",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/references/00016-idea-component-catalog.md",
+      "sha256": "690869e011c0a237ab1055bec28e258e5a38197bf97fd0e4c9a82bc84ee98ae5",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/references/00017-interface-exposure-examples.md",
+      "sha256": "98ecad045838761abccde37458b32e3cf51f0ef20595b17dc2fe11279d7a4fe4",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/references/00018-contributor-source-patterns.md",
+      "sha256": "ceca478556dbb5162daa9df5a19a811f2961f6795952f15f3db1638396863c8d",
+      "disposition": "ingested-complete"
+    },
+    {
+      "path": ".agents/resources/2026-07-14-coordinated-github-release-policy.md",
+      "sha256": "9426639a2875fa17cc0becf534b511bc6a529b0e64a904f2ec4c729cbf91867e",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/scripts/validate-agent-workspace.py",
+      "sha256": "ed8df7fd55734747badfbb648fee82e3628868c3ced294c6b23700f5c9fc18d8",
+      "disposition": "source-code-retained-in-place"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/brief.md",
+      "sha256": "a06371dfdb5eaea00ed6c80222bfe20d1fe8317524dfd1044d39aa3e781bfc82",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/composition-map.md",
+      "sha256": "2f4e6d7a665af71f91bc457bed4f102315d1927aaf4bccc7c0eb20a39d756078",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/concept-dispositions.md",
+      "sha256": "efa907953fb06014d730f7fda2e5387b5d76234a6906ccc538be26b99ff08fc9",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/concepts.md",
+      "sha256": "f3cd6633af9c2626e71f4de2b79942701d9fce98555676a5f06decc30293a636",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/context-taxonomy.md",
+      "sha256": "541cc91c4b2687aed55abe8fb0c56985c92efbc3d50e23bc1f206a4bfaafa032",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/core-architecture.md",
+      "sha256": "74e06485baa7082d3cc73e3951206d285c04054d77d8896b882eb52ed9f06810",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/decisions.md",
+      "sha256": "ac472d2ae1cecb3fe6d9fdee28f93f1e391c50c929c7cadc1403e47bb4f7f578",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/extension-maintenance-system.md",
+      "sha256": "f5207251ab35c57f459774020837b1e66799e33ff50d50400b993e8927172dcd",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/index.md",
+      "sha256": "0d4606191310585a46e621c27ce467a7d1ece4048144d9a437bbdc6d428c7fbe",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/library-research-strategy.md",
+      "sha256": "8e3063f10f1b043acd257ca5827d8e843298fa1bc1b0797bd896169b912af964",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/operational-workflows.md",
+      "sha256": "83f911c14e358c40796476acc2a5129665b9ad9d2a5dd6af66787318f8f4d4b0",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/pattern-matrix.md",
+      "sha256": "0fd677d8ea08248d703fc62fabd55276be3a51c04f68586dbceca450671df508",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/phase5-decisions.md",
+      "sha256": "f03442975a5ee2385ba9e97619b169da50c77f6b8089f3b57596a42362c24d3b",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/phase6-artifact-validation.md",
+      "sha256": "4ead6bbd40f47306628fe8808424bd801d092eedc82ef30006a4ac83d9f18589",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/phase6-context-validation.md",
+      "sha256": "a152c6c1e6e07fb66f12a064ffe4c3307760b6226e32ccc4577b45fc3a2e67b7",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/phase6-decisions.md",
+      "sha256": "9b9e578c99cde9916d5bc76833cc3d386fe30bad113ae715c06074022edaaced",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/phase6-language-review.md",
+      "sha256": "92ec14998ff2dd4e6f41353362d082867af38a25b65160031f0c7570137f0a12",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/phase6-promotion-matrix.md",
+      "sha256": "ee08593ccd4595d872e2e39a14ffd5da83467f80947b0136aafd1f84fd25345f",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/phase6-taxonomy.md",
+      "sha256": "b8ebf990177b1c4685a771dbec1b36060fe0d5a44f61feba72b6408ef679780f",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/phase7-decisions.md",
+      "sha256": "76ce525c122997c63e8015a3769d8a634375268f0f386487c73ebc8164373d95",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/phase7-maintenance.md",
+      "sha256": "90bd13bbf6aef67a2b50d6a3e922abb0b61f814b97a1fee9ba57ac563e2471f9",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/phase8-coverage-matrix.md",
+      "sha256": "314bfe231b6f862e928841ef064a53a31ee5d7c1eb7c39cfaebe0fbf0ec78449",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/phase8-decisions.md",
+      "sha256": "a4fe4088f15ae27727d1d890962d7ed7a39c3d78945710cbb9ebb4dc5fb2c314",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/phase8-document-parity-results.md",
+      "sha256": "fa3ddcced29faa31bd87cc55f35c44a7140215e456abaa2f9b3f8b8a98e4890b",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/phase8-kb-only-generation.md",
+      "sha256": "401b9469dbdb3cc70ad0a595eb691d9021c96ec608344aa7040feeb4b910b3a5",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/phase8-parity-drafts/config-reference.md",
+      "sha256": "3f1dbe4e2add31a80a0ccc801bd6720cf65cbe23b7f8925669dfc5040e15e246",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/phase8-parity-drafts/http.md",
+      "sha256": "6b1358bf29ff060b987af77e4cab5a9c439c3232587d6ccb2b5ab2578b4cc417",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/phase8-parity-drafts/idea-reference.md",
+      "sha256": "3d85dc9b7941c84b282673df8afb6585afc62bd3533508e06b947ed6c2842ac4",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/phase8-parity-drafts/pgsql.md",
+      "sha256": "d208436b697809598e68293b8ebeb79958bcaa90a2e845a8f72d5c04504d757c",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/phase8-parity-drafts/runtime-server.md",
+      "sha256": "ebd2803a4e0c957439c54b3291f038a69722aa6d9d4ca745c40624954921a2f4",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/phase8-parity-drafts/session-language.md",
+      "sha256": "b35ef52cb4603e07080a55d6fa7c8b654145a1c240ef6e77307633d70a9ffc53",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/phase8-parity-drafts/sql-engine.md",
+      "sha256": "5220149abfa135984c95c6b18a6df4379f1965e033cfef0d5d92638527963abb",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/phase8-parity-drafts/view.md",
+      "sha256": "be51071548bb0a50df1aea573b45c98566776021ca74ef409fcc5a24f63ca458",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/phase8-reference-plan.md",
+      "sha256": "b75825e42b1e01c9effc6bba87764e0116310a2abe3c1b55282994b56a902a88",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/research-frui.md",
+      "sha256": "19121e1b52ef3b7642ed14f69258844d7a279089866aa63dcc7de8292ddd4943",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/research-idea-evidence.md",
+      "sha256": "420955cff8cc850cfe0865abe43fd4958b6e69345ee2fb66a1d9b1c35913f882",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/research-idea.md",
+      "sha256": "b285b96a52f9209c2b20ebf873372cf62d87c284f2227512848e67d2310cf404",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/research-ingest.md",
+      "sha256": "b2cd08ad0d21eb546d5a4f86479b1b01f166ce5eac2e6776348bc52bc035dc09",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/research-inquire.md",
+      "sha256": "e8c10e571e2ef5580c63633f6c0ee2f3732d509d227f5b50714a58b69bd953e1",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/research-lib-evidence.md",
+      "sha256": "32add995f870949f670affb424e03b68aa77e8a36fcf5cc750b619dbc2592a0c",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/research-lib.md",
+      "sha256": "a0588e71c73ed0bcef32f9d9b5dc777ec37242135099099bf77938f6c9000f3c",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/research-r22n.md",
+      "sha256": "df4870ad911d1ef93515b19b24e0eceb8234ed9d11c9d5049f76762b7e034c18",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/research-reactus.md",
+      "sha256": "18d971edfe2a3fbb103cccc9d49d48da3dcad7a191119533927af0698d716e17",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/research-stackpress-evidence.md",
+      "sha256": "3e3222c9aefe08c909fe8b18b11dcf65097aad8ecdd379c2c82b3c70947f8822",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/research-stackpress.md",
+      "sha256": "f0669b73b89fee29fa376ec94c159a897da1dbccf939e15a0f662ca5f607cef7",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/research.md",
+      "sha256": "17e5cb456d4c02bd01906bac307ec6a1cbf0fd7f53f7377236046753f9e51936",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/source-inventory.md",
+      "sha256": "96002d0652f3c16262ea7ed8c1ab33b152b08f83d8d4c0422057f9353d7b4d02",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/status.md",
+      "sha256": "3e0e94ab63c191df183d14bdbc19f3bf17237157458123c714d0d73f11d40a6e",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/topic-001-capability-operating-model.md",
+      "sha256": "a24dc0a1fcd224da5d77af4594ce31eda034d4ce308fe761c0f9643183149723",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/topic-002-idea-semantic-ownership.md",
+      "sha256": "640005dd95e92e3966768127bffdd536418399427026fa21313f924bc157796e",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/topic-003-generated-client-contract.md",
+      "sha256": "ebe72127a5548066e06db335e83b13e319ea8af75d03273f8a3c4524640a4393",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/topic-004-lifecycle-ownership.md",
+      "sha256": "8a29122f245e968c1e0ea7e741279c481b76551553e8b8358e43f53a5b1f43cd",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/topic-005-event-capability-bus.md",
+      "sha256": "90369776a18e3a71d904dd84580172143cc4d4d9952698099023f680fb786047",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/topic-006-data-reconciliation.md",
+      "sha256": "932bd76c56471f606d957874de84b7b08d1158e2d0b76fb3512da64fa9943a3b",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/topic-007-host-routed-react.md",
+      "sha256": "d6053f9e01cf07fc1a8d354cb1fe69abc1bd488de2b212643bddf7ae1c952a78",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/topic-008-configuration-policy.md",
+      "sha256": "c5fa1b9d8376697e282ad1efa01d4480d31eb87f8d4e96aa5f2853d079f0215f",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/topic-009-access-surface-adapters.md",
+      "sha256": "c2a6d1c98099bf69cc0a4bf81fa3e814dae6c0442fc9ef498637639bd5e2df7f",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/topic-010-package-reuse-distribution.md",
+      "sha256": "9f920efecd26dd75418cb5f4e0369fb71573bfe8abe8f736232c254f9f1ff704",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/topic-011-generated-ui-metadata.md",
+      "sha256": "5d02a877bb8f421514ad14ce7b787d333cd40a927b007332324d932f8fb423d2",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/topic-012-portability-adapters.md",
+      "sha256": "bb0e679afadfc1f6a37483a359639c6223afc5cbf70b2a31aca8e3e851e5d3a1",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/topic-013-compatibility-drift.md",
+      "sha256": "2b7407fc7ab0296a2484d440737a3a6eabe295b7eb94dbd70989584aa4ad10f2",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/topic-014-contributor-decision-system.md",
+      "sha256": "9d79016c2459eb733fdd962c749aba9ec0d6901dd7970c00debdeb00b615c90f",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00001-stackpress-kb-population/topic-backlog.md",
+      "sha256": "a8e8d2f21107e2683bfa611dac6807ce36dbb60edfc955686a172764155679f1",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00002-stackpress-contributor-guide/brief.md",
+      "sha256": "56f7b987400c9fb4bd8b695b271131b7b5c69eb57bc3b81fc0d89e03f09e4d99",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00002-stackpress-contributor-guide/decisions.md",
+      "sha256": "6a60c20c6c576fb8fec47d8588686768f9e2ac0bce705d3f76f5ad5cde75eca8",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00002-stackpress-contributor-guide/index.md",
+      "sha256": "71647cfe0d5b2250c22f122dcf7172cc43ae0924652f5fd237efb99d6de6be4c",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00002-stackpress-contributor-guide/phase1-package-inventory.md",
+      "sha256": "df1cc9c3b45a88fe7b80954dbd91295bee9c76602f8a457d5eb439b99910e130",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00002-stackpress-contributor-guide/phase2-pattern-matrix.md",
+      "sha256": "88b9dfc81b300b18571aacde742d58f22f42b1bcfc316bb20b99f74f0f8e4374",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00002-stackpress-contributor-guide/phase3-contract-traces.md",
+      "sha256": "ebfa7839729526d2c1cc39fb8ae2473e164447a29b9f4a3f37d98fdd98effc17",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00002-stackpress-contributor-guide/phase4-clarifications.md",
+      "sha256": "d83be072702bee2cd0ddbcee129c10f941b092d9ed9a33a6e61ad2a346f774fc",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00002-stackpress-contributor-guide/phase5-contributor-model.md",
+      "sha256": "e63ddf011be8a1602a56f86c250d0b28433f371395d8575a450338c9e9e0e261",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00002-stackpress-contributor-guide/phase5-placement-guide.md",
+      "sha256": "b3843510a1612e5b5bf2a35022254d2956a5caf480057ca6a330192ee2105046",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00002-stackpress-contributor-guide/phase5-verification-guide.md",
+      "sha256": "fc1ece7a3dda1db6c77ee3f9e0fa90417376cd2528a724f93ff3797840564aa0",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00002-stackpress-contributor-guide/phase6-baseline-answers-a.md",
+      "sha256": "88281b7c36b6dac241e40940b68c642a5ef2fb863cba012da5008a9ca21ae924",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00002-stackpress-contributor-guide/phase6-baseline-answers-b.md",
+      "sha256": "f346fce1864c33ca36f7f1f3f461b60ee7fb229051f6cbac4f82752c0449a579",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00002-stackpress-contributor-guide/phase6-baseline-answers-c.md",
+      "sha256": "e4c4193036a39d5c45232e03b0e8ec27ee5c4e5d722b1eacafa2dd814beb1133",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00002-stackpress-contributor-guide/phase6-baseline-results.md",
+      "sha256": "3b2bbd40a75601c58f969650bdf384a9bd683f2853fec38cf715753bd1e24b67",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00002-stackpress-contributor-guide/phase6-retrieval-plan.md",
+      "sha256": "9d2cfcf08d4fb071f89b2ac15b865eab62ad81568319fbeaa508f5a1427ca37c",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00002-stackpress-contributor-guide/phase7-promotion-proposal.md",
+      "sha256": "2f418ab166c01e6986cfa62e44132d099f31f89d02ecb8ef56f587de6a48dadc",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00002-stackpress-contributor-guide/phase8-final-answers.md",
+      "sha256": "2924c0a3aa17a7beb9fc07ee1b448a157d3c375c47a1151e9ccc66144a25f236",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00002-stackpress-contributor-guide/phase8-final-results.md",
+      "sha256": "77dc184b87a903846ad7a65ac9694de7e4e480fd31c811b9ef3687ba88a65f60",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00002-stackpress-contributor-guide/proofs.md",
+      "sha256": "8008ddff282facb067c6ba4936b87c8c826714c9ec8fdc221fbdc9a7a4610d88",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00002-stackpress-contributor-guide/research.md",
+      "sha256": "0242b9c507f9349a89869c324c10b3ab3fe69c88654601223694a799f261d062",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00002-stackpress-contributor-guide/setup-decisions.md",
+      "sha256": "1b0edcdde0d12877ff7859937d7c64386a73c44444d3769c29cf22f624ffc4a1",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00002-stackpress-contributor-guide/status.md",
+      "sha256": "b9510e46b1f834f909787b6f582221d6bbff0eda1c36a202a0ab1544af36bd4c",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00003-repository-metadata-cleanup/brief.md",
+      "sha256": "ac9476cd2b61c634c7de73b17c59b9e72b034026afd0ccc5c32b86c0e49489ce",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00003-repository-metadata-cleanup/decisions.md",
+      "sha256": "fe514378a622c7a25f1d8e7fed43bf7c182a7d0d1d62570b54e3fb9005d5f006",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00003-repository-metadata-cleanup/index.md",
+      "sha256": "cf9608006a61ef28dcd8a245a946489ba6eb28ef6ea69934f5ca2a11cac3eff8",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00003-repository-metadata-cleanup/proofs.md",
+      "sha256": "6e1617ddcf254920fef2efa3a9be3c12569530d8a565d782b5f3f4b6f86f2a13",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00003-repository-metadata-cleanup/research.md",
+      "sha256": "0aebec3f20000ea39876952c10702dd14042c14eae7d62694479ec43c804407b",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00003-repository-metadata-cleanup/status.md",
+      "sha256": "ad3d93c06fbbc95da8c320bd56c7208e67cfb292ed3e2f6acaccb87ab9e97704",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00003-repository-metadata-cleanup/tasks/00001-correct-root-package-roles.md",
+      "sha256": "865348863d854685f02a530cf79e7375d65f330d05caf61fa9f91b18fbb682fd",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00003-repository-metadata-cleanup/tasks/00002-remove-manifest-drift.md",
+      "sha256": "b5ffb44d00d44db5e86f3e1b5878201a13c82395b6ec1d948af63bef63b6a76f",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00003-repository-metadata-cleanup/tasks/sprint.md",
+      "sha256": "c344a658ee6ed7a478a73af3f0324de56f80baa47b5e25f28b35db8a2b492740",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/00003-repository-metadata-cleanup/tasks/status.md",
+      "sha256": "ce330f93ae0bd303ff02982726bf9a685cde2e16a70ee952ba31e7a25b5b1a2d",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/specs/manifest.md",
+      "sha256": "00e98aa30e9ca801f1cea88be6dfb35c4bd0658b713891daf7e73d78c411f98a",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/workflows/agent-file-creation.md",
+      "sha256": "9f940deb0da389fb8ba0af2fc9fea215e46b6a8d21a22c0095fa774a01485542",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/workflows/agent-file-ingestion.md",
+      "sha256": "c586670097002d2419fecd7c5cdc187da59987b70890a99a5c59341f46fbe760",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/workflows/context-initialization.md",
+      "sha256": "f4996a56683368ff3f6e57ab623b51b8a129d539d007f22c90d4bbba7fb714f9",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/workflows/repair-zombie-reference-files.md",
+      "sha256": "8d9054cc382ab6b4f8bde6509aefd6898b34dfb15697d9d9e75dfb4c73afa217",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/workflows/spec-driven-development.md",
+      "sha256": "7b8a1ebc4d998fb307abb849635cb4380b79668804ae98919fefe421ac5dbe94",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/workflows/spec-grill-session.md",
+      "sha256": "761c5f9cb28747db1d2af37539d61a16e9120ead831ae3e4d8159d4982344a9e",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/workflows/spec-task-implementation.md",
+      "sha256": "825c7b91605129d43c65572691e52885340080b23eece4126a96396a40c030e1",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/workflows/spec-user-journeys.md",
+      "sha256": "71976d4d28c1038eeb8fa04737c570c946aa08ebb1b1725b3bddfe7fe23a547c",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/workflows/stackpress-github-release.md",
+      "sha256": "50997c3a7faa0acd544aab8cd4920ae7cecf059456c5331299cf95b2591dac1f",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/workflows/stackpress-kb-maintenance.md",
+      "sha256": "c205a3928452ee5d1c1acb6373ef172d38181ead765ecda7e0a89aa628b15f0b",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    },
+    {
+      "path": ".agents/workflows/stackpress-package-public-surface.md",
+      "sha256": "7b178886f195b336b749b376d41f3e6277dd15afdb88191243f9e248814aba84",
+      "disposition": "tooling-or-historical-workspace-material-not-promoted"
+    }
+  ]
+}

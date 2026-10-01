@@ -1,0 +1,55 @@
+{
+  "name": "officepress-stackpress-boilerplate",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "plugins": [
+    "./plugins/app/plugin",
+    "./plugins/store/plugin",
+    "stackpress-schema",
+    "./plugins/data/plugin",
+    "./plugins/home/plugin",
+    "./plugins/notes/plugin"
+  ],
+  "scripts": {
+    "build": "node --import tsx scripts/build.ts",
+    "dev": "node --import tsx scripts/develop.ts",
+    "prove": "node scripts/prove.mjs",
+    "typecheck": "tsc --noEmit",
+    "generate": "node --import tsx scripts/generate.ts",
+    "serve": "node --import tsx scripts/serve.ts"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "0.3.15",
+    "@stackpress/ingest": "0.10.8",
+    "@stackpress/inquire": "0.10.8",
+    "@stackpress/inquire-pglite": "0.10.8",
+    "@stackpress/lib": "0.10.8",
+    "frui": "0.2.9",
+    "r22n": "1.0.10",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "stackpress-language": "0.10.8",
+    "stackpress-schema": "0.10.8",
+    "stackpress-sql": "0.10.8",
+    "stackpress-server": "0.10.8",
+    "pg": "8.16.3",
+    "@stackpress/inquire-pg": "0.10.8"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.5",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "5.1.4",
+    "reactus": "0.10.8",
+    "tsx": "4.21.0",
+    "typescript": "5.9.3",
+    "unocss": "66.6.6",
+    "vite": "7.3.6",
+    "vite-tsconfig-paths": "6.0.3",
+    "@types/pg": "8.15.6",
+    "ts-morph": "27.0.2",
+    "prettier": "3.8.1"
+  },
+  "description": "Shared Stackpress baseline and executable framework proof for OfficePress apps"
+}

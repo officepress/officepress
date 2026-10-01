@@ -1,0 +1,2 @@
+use "./schema/shared.idea"
+use "./plugins/notes/schema.idea"

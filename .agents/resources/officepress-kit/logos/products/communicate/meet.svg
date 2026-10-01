@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="meet">
+<defs>
+<clipPath id="op-meet-c">
+<rect width="96" height="96" rx="24"/>
+</clipPath>
+</defs>
+<g clip-path="url(#op-meet-c)">
+<rect width="96" height="96" fill="#2F5BEA"/>
+<ellipse cx="38" cy="48" rx="22" ry="22" fill="#FFFFFF" fill-opacity="0.55"/>
+<ellipse cx="58" cy="48" rx="22" ry="22" fill="#FFFFFF" fill-opacity="0.55"/>
+<path d="M48 30.4a22 22 0 0 1 0 35.2 22 22 0 0 1 0-35.2z" fill="#FFFFFF"/>
+</g>
+</svg>

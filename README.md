@@ -1,78 +1,81 @@
 # OfficePress
 
-A suite of self hosted office solutions
+**Make a well-run business easier to build.**
 
-## File Structure
+OfficePress provides ready-made tools for the work behind a business—designed to work together, adopted as needed, and run under the company’s control.
 
-This suite is broken down into 4 layers.
+“Office” refers to the back office: the operational functions that support a business. “Press” refers to published apps that companies can adopt and put to work in their own setups.
 
-### Infrastructure Systems (7)
+## This repository
 
-Cloud systems are stateless services that usually manages 3rd party 
-APIs and offers system level support via APIs primarily to apps WE 
-develop. Integrating apps need API tokens for direct access 
-(2-legged OAuth 2).
+This repository contains OfficePress product and implementation knowledge, the website, and a shared Stackpress application baseline.
 
- - `infra/geo` - GEO tools
- - `infra/logs` - System Log Management
- - `infra/auth` - Auth and Account Information
- - `infra/messages` - Message Transfer Protocol
- - `infra/products` - Product Information Cache
- - `infra/profiles` - Profile Information Cach
- - `infra/deploy` - AWS Lambda Deployer
+| Location | Contents |
+| --- | --- |
+| [Knowledge base](.agents/context/index.md) | Accepted product, brand, UI and technical guidance |
+| [References](.agents/references/) | Complete deferred documentation, source evidence and verification receipts |
+| [Resources](.agents/resources/) | Native design files and visual assets |
+| [Workflows](.agents/workflows/) | Knowledge maintenance and specification workflows |
+| [Website](docs/index.html) | Static OfficePress website and its local assets |
+| [Stackpress baseline](proofs/stackpress-boilerplate/README.md) | Runnable scaffold and framework proof shared by all apps |
+| [Agent instructions](AGENTS.md) | Repository entry point for coding and knowledge agents |
 
-### Office Apps (5)
+The [product catalogue](.agents/context/products.md) defines the suite’s 23 apps and their current scope. The baseline demonstrates shared framework mechanics; individual app features have their own implementation and acceptance work.
 
-The following services are business process related.
+## Technical foundation
 
- - `office/tables` - spreadsheets that convert directly to PostgreSQL
- - `office/files` - local hosted files or connect to a CDN
- - `office/forms` - Form Builder and Response Gathering
- - `office/shorts` - URL Shortener Links
- - `office/sign` - URL Shortener Links
+All OfficePress apps use **Stackpress**, with the current ecosystem baseline pinned to **0.10.8**. Read the [Stackpress handbook](.agents/context/stackpress.md) for scaffolding, configuration, plugins, data generation, views and verification.
 
-### Operation Apps (8)
+- Plugins separate responsibilities. Each dependent plugin checks its own required services in `plugin.ts`, then falls back or skips its feature registrations when unavailable.
+- Plugin activation changes take effect after restart. There is no live unloading or automatic dependency validation.
+- PostgreSQL is the production default; PGlite is used for local development and proofs.
+- Smaller responsibility-owned Idea files compose through a root `schema.idea`.
+- Reactus/React implements app views using the OfficePress design guidance.
 
-The following services are specific business process related.
+## Run the baseline
 
- - `operations/accounting` - Accounting Operations Tool
- - `operations/approvals` - Approval Workflow Platform
- - `operations/clients` - Customer Relation Management
- - `operations/content` - Content Management System
- - `operations/marketing` - Digital Marketing Analytics
- - `operations/resourcing` - Human Resource Management
- - `operations/support` - Support Ticket Tracker
- - `operations/vendors` - Vendor Management Systemr
+Use Node.js 22.14+ within the Node 22 line and npm. Commands run inside the proof directory; there is no root Node application.
 
-### Commerce Apps (4)
+```bash
+cd proofs/stackpress-boilerplate
+npm ci
+npm run generate
+npm run typecheck
+npm run build
+npm run dev
+```
 
-The following services are commerce operations related.
+The development shell is available at `http://127.0.0.1:3020`. Generation emits code; it does not initialize a database. See the [baseline README](proofs/stackpress-boilerplate/README.md) for production serving, database setup boundaries and adoption instructions.
 
- - `commerce/cart` - Cart and Checkout
- - `commerce/inventory` - Inventory Management System
- - `commerce/offers` - Product Information Management
- - `commerce/orders` - Order Processing System
+To exercise the complete sample in an isolated proof database:
 
-## Database Strategy
+```bash
+npm run prove
+npm run prove -- --postgres
+```
 
-Each service and app need to treat each other as strangers. Similar to 
-how we treat third-party APIs like Facebook, Google, etc. Since we copy 
-their user data into our app database, we are essentially duplicating 
-data across the net. The following pros/cons have been considered.
+The PostgreSQL variant uses Docker and a disposable container. Each run writes `receipts/latest.json` under the proof directory. The [retained proof evidence](.agents/references/00206-stackpress-proof-evidence.md) records the verified scope and limitations.
 
- - Duplicate data making the entire architecture more expensive
-   - On the other hand, if a data dependent service fails, will cause 
-     depending apps to fail as well.
-   - Makes each app and service separately saleable. Like if another 
-     company wants to buy our underlying tech, but not all of it.
-   - Makes app more flexible to switch out parts where available
-   - Removes long term separate dev team dependency for their app to 
-     work all the time. For example if Facebook fails, it's not the end 
-     of the world.
- - Syncing data when data changes. 
-   - Refer to strategies if Facebook/Google data changes... We would 
-     basically have to provision cases like that as well.
-   - We can sync changes using webhooks and event managers
-   - We can sync changes using `logs` + webhooks
-   - For systems that recently recovered, can rely on `logs` service 
-     or call each service to resync up.
+## Preview the website
+
+From the repository root:
+
+```bash
+python3 -m http.server 8000 --bind 127.0.0.1 --directory docs
+```
+
+Open `http://127.0.0.1:8000`. This serves the static website locally.
+
+## Maintain the knowledge base
+
+Start with the [context index](.agents/context/index.md) and [knowledge maintenance guidance](.agents/context/knowledge-maintenance.md). The KB is self-contained: complete text belongs in agent documents and linked references; resources are reserved for native or visual material that cannot be directly translated into agent files.
+
+Complete an affected document before splitting it, preserve its source coverage, and run these checks from the repository root:
+
+```bash
+python3 .agents/scripts/validate-agent-workspace.py
+python3 .agents/scripts/verify-officepress-ingestion.py
+python3 .agents/scripts/verify-stackpress-ingestion.py
+```
+
+Keep dependency lockfiles, Idea schemas, knowledge files and website sources in version control. Dependencies, generated builds, local databases, private environment files and operating-system metadata are ignored.

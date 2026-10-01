@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="calendar">
+<defs>
+<clipPath id="op-calendar-c">
+<rect width="96" height="96" rx="24"/>
+</clipPath>
+</defs>
+<g clip-path="url(#op-calendar-c)">
+<rect width="96" height="96" fill="#2F5BEA"/>
+<rect x="16" y="22" width="64" height="58" rx="10" fill="#FFFFFF"/>
+<rect x="16" y="38" width="64" height="4" fill="#2F5BEA"/>
+<rect x="30" y="14" width="6" height="16" rx="3" fill="#FFFFFF" fill-opacity="0.55"/>
+<rect x="60" y="14" width="6" height="16" rx="3" fill="#FFFFFF" fill-opacity="0.55"/>
+<rect x="52" y="52" width="14" height="14" rx="3" fill="#2F5BEA"/>
+</g>
+</svg>
