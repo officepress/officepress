@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OfficePress — Make a well‑run business easier to build</title>
+  <meta name="description" content="OfficePress provides ready-made tools for the work behind a business—designed to work together, adopted as needed, and run under the company’s control.">
+  <link rel="icon" href="assets/logos/officepress/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body id="top">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><!-- Lucide icons (ISC) -->
+<symbol id="i-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/> <rect width="20" height="8" x="2" y="14" rx="2" ry="2"/> <line x1="6" x2="6.01" y1="6" y2="6"/> <line x1="6" x2="6.01" y1="18" y2="18"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/> <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/> <path d="M2 12h20"/></symbol>
+<symbol id="i-building-2" viewBox="0 0 24 24"><path d="M10 12h4"/> <path d="M10 8h4"/> <path d="M14 21v-3a2 2 0 0 0-4 0v3"/> <path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"/> <path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/> <path d="M16 3.128a4 4 0 0 1 0 7.744"/> <path d="M22 21v-2a4 4 0 0 0-3-3.87"/> <circle cx="9" cy="7" r="4"/></symbol>
+<symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/> <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/> <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/> <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/> <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/></symbol>
+<symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/> <path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/> <path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+<symbol id="i-layout-grid" viewBox="0 0 24 24"><rect width="7" height="7" x="3" y="3" rx="1"/> <rect width="7" height="7" x="14" y="3" rx="1"/> <rect width="7" height="7" x="14" y="14" rx="1"/> <rect width="7" height="7" x="3" y="14" rx="1"/></symbol>
+<symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/> <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/> <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/> <circle cx="12" cy="7" r="4"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 5h16"/> <path d="M4 12h16"/> <path d="M4 19h16"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/> <path d="m6 6 12 12"/></symbol>
+<symbol id="i-inbox" viewBox="0 0 24 24"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/> <path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></symbol>
+<symbol id="i-calculator" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/> <line x1="8" x2="16" y1="6" y2="6"/> <line x1="16" x2="16" y1="14" y2="18"/> <path d="M16 10h.01"/> <path d="M12 10h.01"/> <path d="M8 10h.01"/> <path d="M12 14h.01"/> <path d="M8 14h.01"/> <path d="M12 18h.01"/> <path d="M8 18h.01"/></symbol>
+</svg>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ NAV ============ -->
+<header class="nav" data-open="false">
+  <div class="wrap nav__inner">
+    <a class="nav__brand" href="#top" aria-label="OfficePress home">
+      <img src="assets/logos/officepress/officepress-mark.svg" alt="" width="32" height="32">
+      <span>OfficePress</span>
+    </a>
+    <nav class="nav__links" id="nav-links" aria-label="Main">
+      <a href="#apps">Apps</a>
+      <a href="#self-hosted">Self-hosted</a>
+      <a href="#white-label">White label</a>
+      <a href="#promise">How it fits</a>
+      <a class="nav__menu-cta" href="#contact">Get started</a>
+    </nav>
+    <a class="btn btn--primary btn--sm nav__cta" href="#contact">Get started</a>
+    <button class="nav__toggle" type="button" aria-controls="nav-links" aria-expanded="false" aria-label="Open menu">
+      <svg class="icon icon--menu" aria-hidden="true"><use href="#i-menu"/></svg>
+      <svg class="icon icon--x" aria-hidden="true"><use href="#i-x"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap hero__grid">
+    <div>
+      <p class="eyebrow"><span class="windows" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Back-office software</p>
+      <h1 id="hero-title">Make a well‑run business easier to build.</h1>
+    </div>
+    <div class="hero__side">
+      <p class="lead">OfficePress provides ready-made tools for the work behind a business—designed to work together, adopted as needed, and run under the company’s control.</p>
+      <div class="actions">
+        <a class="btn btn--primary" href="#apps">Explore the apps <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        <a class="btn btn--secondary" href="#contact">Talk to us</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <ul class="facts" aria-label="At a glance">
+      <li><svg class="icon" aria-hidden="true"><use href="#i-layout-grid"/></svg><span><strong>23 apps</strong> across four business families</span></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-server"/></svg><span><strong>Self-hosted</strong> on your network or intranet</span></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-palette"/></svg><span><strong>White label</strong> with your brand and colours</span></li>
+    </ul>
+  </div>
+
+  <div class="wrap hero__visual">
+    <figure class="window">
+      <div class="window__bar" aria-hidden="true">
+        <span class="window__dots"><i></i><i></i><i></i></span>
+        <span class="window__url"><svg class="icon icon--sm"><use href="#i-lock"/></svg>inbox.yourcompany.local</span>
+      </div>
+      <img src="assets/screens/inbox-board.png" width="1440" height="1000" alt="The OfficePress Inbox app: a sidebar of mail folders and filters, and a board of email cards sorted into Inbox, Follow up and Done columns with reply deadlines.">
+    </figure>
+  </div>
+</section>
+
+<!-- ============ PROMISE ============ -->
+<section class="promise" id="promise" aria-labelledby="promise-title">
+  <div class="wrap">
+    <h2 id="promise-title" class="statement">Ready-made tools for the work behind a business.</h2>
+    <div class="pillars">
+      <article class="pillar">
+        <span class="pillar__no">01</span>
+        <h3>Designed to work together</h3>
+        <p>One account across the suite, one place for notifications from every app, and the same interface everywhere. Learn one app and you know them all.</p>
+      </article>
+      <article class="pillar">
+        <span class="pillar__no">02</span>
+        <h3>Adopted as needed</h3>
+        <p>Each app stands on its own. Start with the one the business needs today and add the next when it’s ready — no all-or-nothing rollout.</p>
+      </article>
+      <article class="pillar">
+        <span class="pillar__no">03</span>
+        <h3>Run under your control</h3>
+        <p>Host it on your own servers, decide who gets in, and put your brand on every screen. The tools work for the company, not the other way around.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPS ============ -->
+<section class="apps" id="apps" aria-labelledby="apps-title">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow"><span class="windows" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Back-office apps</p>
+        <h2 id="apps-title">Publishing the building blocks of a well‑run business.</h2>
+      </div>
+      <p class="section-head__text">Meticulously designed, turn-key software for each business unit — covering what most businesses need to function professionally, from the inbox to the invoice.</p>
+    </div>
+
+    <div class="families">
+      <article class="family" style="--fam:var(--communicate)">
+        <h3>Communicate</h3>
+        <p>Conversations with customers and the team.</p>
+        <ul>
+          <li><img src="assets/logos/products/communicate/inbox.svg" alt="" width="36" height="36">Inbox</li>
+          <li><img src="assets/logos/products/communicate/chat.svg" alt="" width="36" height="36">Chat</li>
+          <li><img src="assets/logos/products/communicate/meet.svg" alt="" width="36" height="36">Meet</li>
+          <li><img src="assets/logos/products/communicate/calendar.svg" alt="" width="36" height="36">Calendar</li>
+          <li><img src="assets/logos/products/communicate/support.svg" alt="" width="36" height="36">Support</li>
+          <li><img src="assets/logos/products/communicate/agent.svg" alt="" width="36" height="36">Agent</li>
+        </ul>
+      </article>
+      <article class="family" style="--fam:var(--create)">
+        <h3>Create</h3>
+        <p>Files, data, forms and content.</p>
+        <ul>
+          <li><img src="assets/logos/products/create/drive.svg" alt="" width="36" height="36">Drive</li>
+          <li><img src="assets/logos/products/create/tables.svg" alt="" width="36" height="36">Tables</li>
+          <li><img src="assets/logos/products/create/forms.svg" alt="" width="36" height="36">Forms</li>
+          <li><img src="assets/logos/products/create/whiteboards.svg" alt="" width="36" height="36">Whiteboards</li>
+          <li><img src="assets/logos/products/create/diagrams.svg" alt="" width="36" height="36">Diagrams</li>
+          <li><img src="assets/logos/products/create/content.svg" alt="" width="36" height="36">Content</li>
+        </ul>
+      </article>
+      <article class="family" style="--fam:var(--operate)">
+        <h3>Operate</h3>
+        <p>People, purchasing, money and sign-off.</p>
+        <ul>
+          <li><img src="assets/logos/products/operate/resourcing.svg" alt="" width="36" height="36">Resourcing</li>
+          <li><img src="assets/logos/products/operate/procurement.svg" alt="" width="36" height="36">Procurement</li>
+          <li><img src="assets/logos/products/operate/accounting.svg" alt="" width="36" height="36">Accounting</li>
+          <li><img src="assets/logos/products/operate/approvals.svg" alt="" width="36" height="36">Approvals</li>
+          <li><img src="assets/logos/products/operate/clients.svg" alt="" width="36" height="36">Clients</li>
+          <li><img src="assets/logos/products/operate/sign.svg" alt="" width="36" height="36">Sign</li>
+        </ul>
+      </article>
+      <article class="family" style="--fam:var(--commerce)">
+        <h3>Commerce</h3>
+        <p>Catalogue, orders, stock and payments.</p>
+        <ul>
+          <li><img src="assets/logos/products/commerce/products.svg" alt="" width="36" height="36">Products</li>
+          <li><img src="assets/logos/products/commerce/orders.svg" alt="" width="36" height="36">Orders</li>
+          <li><img src="assets/logos/products/commerce/inventory.svg" alt="" width="36" height="36">Inventory</li>
+          <li><img src="assets/logos/products/commerce/payments.svg" alt="" width="36" height="36">Payments</li>
+          <li><img src="assets/logos/products/commerce/fulfillments.svg" alt="" width="36" height="36">Fulfillments</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SELF-HOSTED ============ -->
+<section class="hosted" id="self-hosted" aria-labelledby="hosted-title">
+  <div class="wrap split">
+    <div class="split__text">
+      <p class="eyebrow eyebrow--dark"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-server"/></svg>Self-hosted</p>
+      <h2 id="hosted-title">Runs on your network.</h2>
+      <p class="split__lead">Every OfficePress app can be hosted on your own servers or intranet. Your business data stays where you put it, and you decide who can reach it.</p>
+      <ul class="checks">
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Install on your own servers or intranet</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Keep business data inside your network</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Set your own sign-in and access rules</li>
+      </ul>
+    </div>
+
+    <div class="netmap" role="img" aria-label="Diagram: OfficePress apps running on a server inside your company network, used by your team. The public internet is optional.">
+      <div class="netmap__outside">
+        <svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg>
+        <span>Public internet</span>
+        <span class="tag">Optional</span>
+      </div>
+      <div class="netmap__wall" aria-hidden="true"><span><svg class="icon icon--sm"><use href="#i-shield-check"/></svg>Your firewall</span></div>
+      <div class="netmap__zone">
+        <span class="netmap__label"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-building-2"/></svg>yourcompany.local</span>
+        <div class="netmap__server">
+          <span class="tile"><svg class="icon" aria-hidden="true"><use href="#i-server"/></svg></span>
+          <div class="netmap__server-text"><strong>OfficePress server</strong><span>Your hardware · your data</span></div>
+          <span class="status"><i></i>Running</span>
+        </div>
+        <ul class="netmap__apps">
+          <li><img src="assets/logos/products/communicate/inbox.svg" alt="" width="40" height="40">Inbox</li>
+          <li><img src="assets/logos/products/communicate/calendar.svg" alt="" width="40" height="40">Calendar</li>
+          <li><img src="assets/logos/products/create/drive.svg" alt="" width="40" height="40">Drive</li>
+          <li><img src="assets/logos/products/create/forms.svg" alt="" width="40" height="40">Forms</li>
+          <li><img src="assets/logos/products/operate/accounting.svg" alt="" width="40" height="40">Accounting</li>
+          <li><img src="assets/logos/products/operate/resourcing.svg" alt="" width="40" height="40">Resourcing</li>
+          <li><img src="assets/logos/products/commerce/orders.svg" alt="" width="40" height="40">Orders</li>
+          <li><img src="assets/logos/products/commerce/inventory.svg" alt="" width="40" height="40">Inventory</li>
+        </ul>
+        <div class="netmap__team"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>Your team signs in with your rules</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHITE LABEL ============ -->
+<section class="label" id="white-label" aria-labelledby="label-title">
+  <div class="wrap split split--reverse">
+    <div class="wl" id="wl-demo" style="--brand:#0E7490" aria-label="Preview of an OfficePress app in your brand" role="img">
+      <div class="wl__side">
+        <div class="wl__brand"><span class="wl__logo" id="wl-logo">N</span><span class="wl__name" id="wl-brand">Northwind</span></div>
+        <span class="wl__item wl__item--active"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Approvals</span>
+        <span class="wl__item"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-inbox"/></svg>Inbox</span>
+        <span class="wl__item"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-calculator"/></svg>Accounting</span>
+        <span class="wl__item"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-users"/></svg>Resourcing</span>
+        <span class="wl__item"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-layers"/></svg>Reports</span>
+      </div>
+      <div class="wl__main">
+        <div class="wl__head"><strong>Approvals</strong><span class="wl__avatar"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-user"/></svg></span></div>
+        <div class="wl__body">
+          <div class="wl__card">
+            <div class="wl__meta"><span>Northwind Billing</span><span>Wed</span></div>
+            <strong>Invoice NW-4471 · ₱48,200</strong>
+            <div class="wl__progress"><i style="width:72%"></i></div>
+            <div class="wl__row"><span class="wl__btn">Approve</span><span class="wl__btn wl__btn--ghost">View</span></div>
+          </div>
+          <div class="wl__card">
+            <div class="wl__meta"><span>Procurement</span><span>09:40</span></div>
+            <strong>Purchase request #218</strong>
+            <span class="wl__link">3 quotes attached</span>
+          </div>
+          <div class="wl__card wl__card--muted">
+            <div class="wl__meta"><span>Resourcing</span><span>Mon</span></div>
+            <strong>Leave request · Ana Cruz</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="split__text">
+      <p class="eyebrow"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-palette"/></svg>White label</p>
+      <h2 id="label-title">Your brand on every app.</h2>
+      <p class="split__lead">Set your logo, name and colours once, and every screen follows — in light and dark. The layout, spacing and contrast checks stay intact, so your apps look like yours and still feel professional.</p>
+      <div class="wl-controls">
+        <p class="wl-controls__title">Try it</p>
+        <label class="field"><span>Brand name</span><input id="wl-name" type="text" value="Northwind" maxlength="18" autocomplete="off"></label>
+        <fieldset class="field">
+          <legend>Brand colour</legend>
+          <div class="swatches">
+            <button type="button" class="swatch" style="--c:#0E7490" data-color="#0E7490" aria-pressed="true" aria-label="Teal"></button>
+            <button type="button" class="swatch" style="--c:#BE185D" data-color="#BE185D" aria-pressed="false" aria-label="Berry"></button>
+            <button type="button" class="swatch" style="--c:#4338CA" data-color="#4338CA" aria-pressed="false" aria-label="Indigo"></button>
+            <button type="button" class="swatch" style="--c:#3F6212" data-color="#3F6212" aria-pressed="false" aria-label="Olive"></button>
+            <button type="button" class="swatch" style="--c:#B45309" data-color="#B45309" aria-pressed="false" aria-label="Amber"></button>
+            <label class="swatch swatch--custom" title="Pick any colour"><span class="sr-only">Custom colour</span><input id="wl-color" type="color" value="#0E7490"></label>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING ============ -->
+<section class="closing" id="contact" aria-labelledby="closing-title">
+  <div class="wrap closing__inner">
+    <img src="assets/logos/officepress/officepress-mark.svg" alt="" width="72" height="72">
+    <h2 id="closing-title">A capable back office within reach of every business.</h2>
+    <p>Start with the app you need most. Host it yourself, brand it as your own, and grow into the rest of the suite.</p>
+    <div class="actions actions--center">
+      <!-- TODO: point these at the real demo / contact destinations -->
+      <a class="btn btn--primary" href="#" data-todo="demo">Request a demo <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      <a class="btn btn--secondary" href="#apps">Browse the apps</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__brand">
+      <img src="assets/logos/officepress/officepress-mark.svg" alt="" width="28" height="28">
+      <span><strong>OfficePress</strong><br><span class="muted">Publishing the building blocks of a well-run business.</span></span>
+    </div>
+    <nav class="footer__links" aria-label="Footer">
+      <a href="#apps">Apps</a>
+      <a href="#self-hosted">Self-hosted</a>
+      <a href="#white-label">White label</a>
+      <a href="#promise">How it fits</a>
+    </nav>
+    <p class="footer__copy muted">© 2026 OfficePress</p>
+  </div>
+</footer>
+</body>
+</html>

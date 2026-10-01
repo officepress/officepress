@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="tables">
+<defs>
+<clipPath id="op-tables-c">
+<rect width="96" height="96" rx="24"/>
+</clipPath>
+</defs>
+<g clip-path="url(#op-tables-c)">
+<rect width="96" height="96" fill="#6A3BE4"/>
+<rect x="16" y="18" width="64" height="60" rx="8" fill="#FFFFFF"/>
+<path d="M24 18H72A8 8 0 0 1 80 26V34H16V26A8 8 0 0 1 24 18Z" fill="#FFFFFF" fill-opacity="0.55"/>
+<rect x="36" y="18" width="3" height="60" fill="#6A3BE4"/>
+<rect x="57" y="18" width="3" height="60" fill="#6A3BE4"/>
+<rect x="16" y="34" width="64" height="3" fill="#6A3BE4"/>
+<rect x="16" y="53" width="64" height="3" fill="#6A3BE4"/>
+</g>
+</svg>

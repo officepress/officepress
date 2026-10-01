@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 96" width="360" height="96" role="img" aria-label="OfficePress">
+<defs>
+<clipPath id="op-lockup-light-c">
+<rect width="96" height="96" rx="24"/>
+</clipPath>
+</defs>
+<g clip-path="url(#op-lockup-light-c)">
+<rect width="96" height="96" fill="#6B7385"/>
+<rect x="16" y="40" width="24" height="40" rx="6" fill="#FFFFFF" fill-opacity="0.55"/>
+<rect x="32" y="16" width="48" height="64" rx="8" fill="#FFFFFF"/>
+<rect x="40" y="24" width="12" height="12" rx="3" fill="#2F5BEA"/>
+<rect x="60" y="24" width="12" height="12" rx="3" fill="#6A3BE4"/>
+<rect x="40" y="44" width="12" height="12" rx="3" fill="#E2551B"/>
+<rect x="60" y="44" width="12" height="12" rx="3" fill="#0F8F6A"/>
+<path d="M52 64H60A4 4 0 0 1 64 68V82H48V68A4 4 0 0 1 52 64Z" fill="#6B7385"/>
+</g>
+
+<text x="116" y="62" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="40" font-weight="700" letter-spacing="-1.2" fill="#15171C">OfficePress</text>
+</svg>
