@@ -2703,7 +2703,7 @@
   "drafts": [
     {
       "path": "references/00078-officepress-source-decisions.md",
-      "sha256": "cd21db80861dd34b3fffe78ad181e4e241588e3e533667388ff5c0a107684c40",
+      "sha256": "f54ff222ddf82ce57aa8dd194abea72bb6c29f268a50a604baf4496b63c0ce2a",
       "kind": "accepted user input and source reconciliation"
     },
     {
@@ -12192,5 +12192,175 @@
       }
     ],
     "variables_sha256": "4d05a19b3166468b6227c966dfa8875fd230a12c4772c6ae550957a4ca65b15e"
-  }
+  },
+  "source_archives": [
+    {
+      "source": "kit/css/families/commerce.css",
+      "path": "resources/officepress-kit/css/families/commerce.css",
+      "sha256": "85449745abea8df948de9803ec764c5f01ccfce4a8272ca18ba395ca9e7c1b9c",
+      "bytes": 2891,
+      "archived_at": "2026-10-02"
+    },
+    {
+      "source": "kit/css/families/communicate.css",
+      "path": "resources/officepress-kit/css/families/communicate.css",
+      "sha256": "fd86ade23b001e7657127899dd03487449bbdc338367fd2b5bcdab7360e206c7",
+      "bytes": 2888,
+      "archived_at": "2026-10-02"
+    },
+    {
+      "source": "kit/css/families/create.css",
+      "path": "resources/officepress-kit/css/families/create.css",
+      "sha256": "b79ef9f87d8df231cdf0df2b714198e5efaca0987d97f3872811bc31f0ec3eee",
+      "bytes": 2892,
+      "archived_at": "2026-10-02"
+    },
+    {
+      "source": "kit/css/families/operate.css",
+      "path": "resources/officepress-kit/css/families/operate.css",
+      "sha256": "0f1d89e1299dfc38c1355f478c47ad828b9d898902a98a0859cbfa36144d5c3a",
+      "bytes": 2902,
+      "archived_at": "2026-10-02"
+    },
+    {
+      "source": "kit/css/officepress.css",
+      "path": "resources/officepress-kit/css/officepress.css",
+      "sha256": "1f433c92287302acf739f2256965eef82dce98a7c56172ad5e373b6d6808e452",
+      "bytes": 67829,
+      "archived_at": "2026-10-02"
+    },
+    {
+      "source": "kit/js/icons.js",
+      "path": "resources/officepress-kit/js/icons.js",
+      "sha256": "69f5f659d5a6676a4c49287bbf41f1c721203fae2e30c376bc86ee25d25d39e9",
+      "bytes": 34031,
+      "archived_at": "2026-10-02"
+    },
+    {
+      "source": "kit/js/officepress.js",
+      "path": "resources/officepress-kit/js/officepress.js",
+      "sha256": "c42e52a5ecc674d37a9e80cbb727ce2cf42ff622d541438731bf1a7962426b99",
+      "bytes": 12289,
+      "archived_at": "2026-10-02"
+    },
+    {
+      "source": "kit/templates/app-board.html",
+      "path": "resources/officepress-kit/templates/app-board.html",
+      "sha256": "c378c5d0818f5b834b8da44e491aa92439690b6804ace6c38a9fc06017d30c54",
+      "bytes": 21572,
+      "archived_at": "2026-10-02"
+    },
+    {
+      "source": "kit/templates/auth/check-email.html",
+      "path": "resources/officepress-kit/templates/auth/check-email.html",
+      "sha256": "1be5434753e9578e77cbe5c0c6d68aab15a7a15a71d97c4dfee71b2c3316d1b0",
+      "bytes": 2727,
+      "archived_at": "2026-10-02"
+    },
+    {
+      "source": "kit/templates/auth/email.html",
+      "path": "resources/officepress-kit/templates/auth/email.html",
+      "sha256": "b89d756cabda6ac0de3767ee533949f3becc4664ed9a9518ecd2bb7603da0ebf",
+      "bytes": 3621,
+      "archived_at": "2026-10-02"
+    },
+    {
+      "source": "kit/templates/auth/forgot-password.html",
+      "path": "resources/officepress-kit/templates/auth/forgot-password.html",
+      "sha256": "a7459415b9a44eb92752021d178195be36865a7373a8ca241ce145cd9d337d41",
+      "bytes": 2766,
+      "archived_at": "2026-10-02"
+    },
+    {
+      "source": "kit/templates/auth/sign-in.html",
+      "path": "resources/officepress-kit/templates/auth/sign-in.html",
+      "sha256": "65f4cdd903b066b51f96447ca4ff99c151fb7aa7cedd2ba802aec35e7a5149d2",
+      "bytes": 3046,
+      "archived_at": "2026-10-02"
+    },
+    {
+      "source": "kit/templates/auth/two-factor.html",
+      "path": "resources/officepress-kit/templates/auth/two-factor.html",
+      "sha256": "4977d80a4ea5f4bf2aa89e99aefa15193a64c92ab400e0488710e98e1296b774",
+      "bytes": 3120,
+      "archived_at": "2026-10-02"
+    },
+    {
+      "source": "kit/templates/auth/username.html",
+      "path": "resources/officepress-kit/templates/auth/username.html",
+      "sha256": "db4cbf4fc63dcbfe36df6b7808fc42a7a586aa335ea997b5069f578c9d1f8af5",
+      "bytes": 3336,
+      "archived_at": "2026-10-02"
+    },
+    {
+      "source": "kit/templates/automation-builder.html",
+      "path": "resources/officepress-kit/templates/automation-builder.html",
+      "sha256": "cf74c33475da581d7c045352f94038b94594d1321fa167785a1c8223dd8546c1",
+      "bytes": 27807,
+      "archived_at": "2026-10-02"
+    },
+    {
+      "source": "kit/templates/automations.html",
+      "path": "resources/officepress-kit/templates/automations.html",
+      "sha256": "e5ef081a643d4538e19cc93d358f043b473d116af3dad440c8c6b5da6e308e1c",
+      "bytes": 21977,
+      "archived_at": "2026-10-02"
+    },
+    {
+      "source": "kit/templates/chat.html",
+      "path": "resources/officepress-kit/templates/chat.html",
+      "sha256": "f5fc6eb1fba54165d33a124306471250c434fb925eb1c381333288ea4d1d8ee2",
+      "bytes": 26881,
+      "archived_at": "2026-10-02"
+    },
+    {
+      "source": "kit/templates/form-builder.html",
+      "path": "resources/officepress-kit/templates/form-builder.html",
+      "sha256": "c24ced37f9b00c860efecee4e0c6fc1c06ca41fdca0f8bd75307e2f13d59beb4",
+      "bytes": 27978,
+      "archived_at": "2026-10-02"
+    },
+    {
+      "source": "kit/templates/message-template.html",
+      "path": "resources/officepress-kit/templates/message-template.html",
+      "sha256": "fd373d6107ed3d601f4b1e30c0d88804cea4bdab6c172eb69e307058b32cd084",
+      "bytes": 24370,
+      "archived_at": "2026-10-02"
+    },
+    {
+      "source": "kit/templates/settings-account.html",
+      "path": "resources/officepress-kit/templates/settings-account.html",
+      "sha256": "2f72b2ca04d3cdb39f322fa528fcfce7f05228726c3cb0b7e8d74ee5b8b209b9",
+      "bytes": 25020,
+      "archived_at": "2026-10-02"
+    },
+    {
+      "source": "kit/templates/settings-app-theme.html",
+      "path": "resources/officepress-kit/templates/settings-app-theme.html",
+      "sha256": "42b9b2613d3a6d558008c61a983755e49e8999fe5f31877e59f4c41e11133f31",
+      "bytes": 25204,
+      "archived_at": "2026-10-02"
+    },
+    {
+      "source": "kit/templates/settings-app-updates.html",
+      "path": "resources/officepress-kit/templates/settings-app-updates.html",
+      "sha256": "22f17bce97cf2efdc3ee400a6d74c1a82b08e2c929a8073d8fdfc90ee0633880",
+      "bytes": 26843,
+      "archived_at": "2026-10-02"
+    },
+    {
+      "source": "kit/templates/workflow-board.html",
+      "path": "resources/officepress-kit/templates/workflow-board.html",
+      "sha256": "672013729eb752bd01e77ebdcccc777cfda29274bfadb446535dd1152bbe8105",
+      "bytes": 28748,
+      "archived_at": "2026-10-02"
+    },
+    {
+      "source": "kit/templates/workflow-designer.html",
+      "path": "resources/officepress-kit/templates/workflow-designer.html",
+      "sha256": "c0e62b05a4c1aca6974b47d31cddecfbf99e48e455681b0e28777c8a1824fbd3",
+      "bytes": 26689,
+      "archived_at": "2026-10-02"
+    }
+  ]
 }

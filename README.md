@@ -14,7 +14,7 @@ This repository contains OfficePress product and implementation knowledge, the w
 | --- | --- |
 | [Knowledge base](.agents/context/index.md) | Accepted product, brand, UI and technical guidance |
 | [References](.agents/references/) | Complete deferred documentation, source evidence and verification receipts |
-| [Resources](.agents/resources/) | Native design files and visual assets |
+| [Resources](.agents/resources/) | Native design files, visual assets and the requested CSS/JavaScript/template archive |
 | [Workflows](.agents/workflows/) | Knowledge maintenance and specification workflows |
 | [Website](docs/index.html) | Static OfficePress website and its local assets |
 | [Stackpress baseline](proofs/stackpress-boilerplate/README.md) | Runnable scaffold and framework proof shared by all apps |
@@ -68,7 +68,7 @@ Open `http://127.0.0.1:8000`. This serves the static website locally.
 
 ## Maintain the knowledge base
 
-Start with the [context index](.agents/context/index.md) and [knowledge maintenance guidance](.agents/context/knowledge-maintenance.md). The KB is self-contained: complete text belongs in agent documents and linked references; resources are reserved for native or visual material that cannot be directly translated into agent files.
+Start with the [context index](.agents/context/index.md) and [knowledge maintenance guidance](.agents/context/knowledge-maintenance.md). The KB is self-contained: complete text belongs in agent documents and linked references; resources hold native or visual material and bounded source-code archives explicitly requested by the user. The [UI source catalogue](.agents/references/00359-officepress-ui-source-resources.md) links local style, functional and markup guidance and verifies the design guide plus all kit Markdown documentation.
 
 Complete an affected document before splitting it, preserve its source coverage, and run these checks from the repository root:
 

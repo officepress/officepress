@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en" data-mode="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>App settings · Inbox</title>
+  <link rel="icon" href="../logos/products/communicate/inbox.svg">
+  <!-- Apply saved / preferred mode before first paint (no flash) -->
+  <script>(function(){var m=localStorage.getItem("op-mode")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");var r=document.documentElement;r.setAttribute("data-mode",m);r.classList.add("op-no-motion");})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="../css/officepress.css">
+  <link rel="stylesheet" href="../css/families/communicate.css" id="op-family"><!-- family: communicate -->
+  <script src="../js/icons.js" defer></script>
+  <script src="../js/officepress.js" defer></script>
+</head>
+<body data-app="inbox">
+
+<div class="op-app op-app--no-aside" data-agent="closed">
+  <div class="op-main">
+    <!-- ===== HEADER · 64 px ===== -->
+    <header class="op-header">
+      <a class="op-icon-btn" href="app-board.html" aria-label="Back to app"><svg class="op-icon" aria-hidden="true"><use href="#i-arrow-left"/></svg></a>
+      <h1 class="op-header__title">App settings</h1>
+
+      <!-- Global actions: identical in every app, always in this order -->
+      <div class="op-globals">
+        <button class="op-icon-btn op-icon-btn--circle" type="button" aria-label="Notifications, 3 unread" aria-haspopup="dialog" aria-expanded="false" data-popover="pop-notifs"><svg class="op-icon" aria-hidden="true"><use href="#i-bell"/></svg><span class="op-icon-btn__dot" aria-hidden="true"></span></button>
+        <button class="op-icon-btn op-icon-btn--circle" type="button" aria-label="Agent" aria-pressed="false" data-action="toggle-agent"><svg class="op-icon" aria-hidden="true"><use href="#i-bot"/></svg></button>
+        <button class="op-icon-btn op-icon-btn--circle op-theme-btn" type="button" aria-label="Switch to dark mode" data-action="toggle-mode"><svg class="op-icon op-icon--sun" aria-hidden="true"><use href="#i-sun"/></svg><svg class="op-icon op-icon--moon" aria-hidden="true"><use href="#i-moon"/></svg></button>
+        <button class="op-icon-btn op-icon-btn--circle" type="button" aria-label="Account menu" aria-haspopup="menu" aria-expanded="false" data-popover="pop-user"><svg class="op-icon" aria-hidden="true"><use href="#i-user"/></svg></button>
+        <!-- Notifications · 380 px · account-wide -->
+        <section class="op-popover op-notifs" id="pop-notifs" role="dialog" aria-label="Notifications">
+          <div class="op-notifs__head">
+            <h2 class="op-title">Notifications</h2><span class="op-badge">3</span><span class="op-spacer"></span>
+            <button class="op-btn op-btn--link op-btn--compact" type="button"><svg class="op-icon op-icon--15" aria-hidden="true"><use href="#i-check-check"/></svg>Mark all read</button>
+            <button class="op-icon-btn op-icon-btn--small op-icon-btn--muted" type="button" aria-label="Notification settings"><svg class="op-icon op-icon--15" aria-hidden="true"><use href="#i-settings"/></svg></button>
+          </div>
+          <div class="op-tabs" role="tablist"><button class="op-tab" role="tab" aria-selected="true">All</button><button class="op-tab" role="tab" aria-selected="false">Mentions <span class="op-badge op-badge--neutral">1</span></button><button class="op-tab" role="tab" aria-selected="false">Agent <span class="op-badge op-badge--neutral">1</span></button></div>
+          <div class="op-notifs__list">
+            <div class="op-notifs__group op-overline">Today</div>
+            <article class="op-notif" data-unread>
+              <span class="op-avatar op-avatar--32 op-avatar--soft">AC</span>
+              <div class="op-notif__body"><div>Ana Cruz mentioned you in <strong>Warehouse move — dock schedule</strong></div><div class="op-notif__quote">@Mila can you confirm we print the labels at A3?</div><div class="op-notif__meta"><span class="op-app-tag">Inbox</span>12 min ago</div></div>
+              <span class="op-dot" aria-label="Unread"></span>
+            </article>
+            <article class="op-notif" data-unread>
+              <span class="op-icon-tile op-icon-tile--32 op-icon-tile--accent"><svg class="op-icon" aria-hidden="true"><use href="#i-bot"/></svg></span>
+              <div class="op-notif__body"><div>Inbox Agent finished drafting your reply to Ana Cruz</div><div class="op-notif__meta"><span class="op-app-tag">Inbox</span>18 min ago</div><div><button class="op-btn op-btn--primary op-btn--small" type="button">Review draft</button></div></div>
+              <span class="op-dot" aria-label="Unread"></span>
+            </article>
+            <article class="op-notif" data-unread>
+              <span class="op-icon-tile op-icon-tile--32 op-icon-tile--family" data-family="operate"><svg class="op-icon" aria-hidden="true"><use href="#i-calculator"/></svg></span>
+              <div class="op-notif__body"><div>Invoice NW-4471 (₱48,200) is waiting for your approval</div><div class="op-notif__meta"><span class="op-app-tag" data-family="operate">Accounting</span>1 hr ago</div><div class="op-row"><button class="op-btn op-btn--primary op-btn--small" type="button">Approve</button><button class="op-btn op-btn--secondary op-btn--small" type="button">View</button></div></div>
+              <span class="op-dot" aria-label="Unread"></span>
+            </article>
+            <div class="op-notifs__group op-overline">Earlier</div>
+            <article class="op-notif">
+              <span class="op-icon-tile op-icon-tile--32 op-icon-tile--neutral"><svg class="op-icon" aria-hidden="true"><use href="#i-shield-check"/></svg></span>
+              <div class="op-notif__body"><div>New sign-in to your account from Chrome on macOS · Manila</div><div class="op-notif__meta"><span class="op-app-tag" style="--op-app-tag:var(--op-text-2)">Account</span>Yesterday, 18:42</div><a class="op-small" href="#">Not you? Secure your account</a></div>
+            </article>
+            <article class="op-notif">
+              <span class="op-avatar op-avatar--32 op-avatar--soft">RD</span>
+              <div class="op-notif__body"><div>Rina Delgado assigned you <strong>Supplier onboarding documents</strong></div><div class="op-notif__meta"><span class="op-app-tag">Inbox</span>Mon</div></div>
+            </article>
+          </div>
+          <div class="op-notifs__foot"><a href="#">View all activity <svg class="op-icon op-icon--14" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+        </section>
+        <!-- User menu · 280 px -->
+        <div class="op-popover op-menu" id="pop-user" role="menu" aria-label="Account">
+          <div class="op-menu__identity"><span class="op-avatar op-avatar--40">MR</span><div class="op-grow"><div class="op-strong">Mila Reyes</div><div class="op-small op-muted">mila.reyes@officepress.ph</div></div></div>
+          <hr>
+          <a class="op-menu__item" role="menuitem" href="#"><svg class="op-icon" aria-hidden="true"><use href="#i-sliders-horizontal"/></svg><span>User Preferences</span></a>
+          <a class="op-menu__item" role="menuitem" href="settings-account.html"><svg class="op-icon" aria-hidden="true"><use href="#i-circle-user"/></svg><span>Account Settings</span></a>
+          <hr>
+          <!-- App-level items: render only when the user has access -->
+          <a class="op-menu__item" role="menuitem" href="settings-app-theme.html"><svg class="op-icon" aria-hidden="true"><use href="#i-settings"/></svg><span>App Settings</span><span class="op-caption op-muted">Inbox</span></a>
+          <a class="op-menu__item" role="menuitem" href="#"><svg class="op-icon" aria-hidden="true"><use href="#i-shield-check"/></svg><span>Admin Dashboard</span><span class="op-pill op-pill--tint">Admin</span></a>
+          <hr>
+          <button class="op-menu__item" role="menuitem" type="button"><svg class="op-icon" aria-hidden="true"><use href="#i-log-out"/></svg><span>Sign out</span></button>
+        </div>
+      </div>
+    </header>
+    <div class="op-body">
+      <!-- ===== CONTENT: replace with your screen ===== -->
+      <main class="op-content" id="content">
+        <div class="op-settings">
+          <nav class="op-settings__nav" aria-label="Inbox settings">
+            <span class="op-settings__heading op-overline">Inbox settings</span>
+            <a class="op-settings__item" href="#general"><span class="op-icon-slot"><svg class="op-icon" aria-hidden="true"><use href="#i-settings"/></svg></span>General</a>
+            <a class="op-settings__item" href="#theme" aria-current="true"><span class="op-icon-slot"><svg class="op-icon" aria-hidden="true"><use href="#i-palette"/></svg></span>Theme</a>
+            <a class="op-settings__item" href="#members"><span class="op-icon-slot"><svg class="op-icon" aria-hidden="true"><use href="#i-users"/></svg></span>Members</a>
+            <a class="op-settings__item" href="#agent"><span class="op-icon-slot"><svg class="op-icon" aria-hidden="true"><use href="#i-bot"/></svg></span>Agent</a>
+            <a class="op-settings__item" href="#integrations"><span class="op-icon-slot"><svg class="op-icon" aria-hidden="true"><use href="#i-plug"/></svg></span>Integrations</a>
+            <a class="op-settings__item" href="#notifications"><span class="op-icon-slot"><svg class="op-icon" aria-hidden="true"><use href="#i-bell"/></svg></span>Notifications</a>
+            <a class="op-settings__item" href="settings-app-updates.html"><span class="op-icon-slot"><svg class="op-icon" aria-hidden="true"><use href="#i-circle-arrow-up"/></svg></span>Updates<span class="op-badge op-badge--accent" aria-label="1 update available">1</span></a>
+            <div style="padding:var(--op-space-2) 0"><hr></div>
+            <a class="op-settings__item" href="app-board.html"><span class="op-icon-slot"><svg class="op-icon" aria-hidden="true"><use href="#i-arrow-left"/></svg></span>Back to App</a>
+          </nav>
+          <div class="op-settings__main"><div class="op-settings__column">
+            <section class="op-section">
+              <div class="op-section__head"><div><h2 class="op-section__title">Brand</h2><p class="op-section__desc">Replaces the app's logo and name at the top of the aside, in the browser tab and on the sign-in page.</p></div></div>
+              <div class="op-section__body">
+                <div class="op-row" style="align-items:flex-start;gap:var(--op-space-6)">
+                  <div class="op-fields op-grow">
+                    <div class="op-field"><span class="op-field__label">Logo</span><div class="op-row" style="gap:var(--op-space-3)"><span class="op-avatar op-avatar--square" style="width:56px;height:56px;border-radius:14px;background:#0E7490;color:#FFFFFF" data-op-allow="custom theme preview"><svg class="op-icon op-icon--bold" aria-hidden="true"><use href="#i-mail-open"/></svg></span><div class="op-stack"><div class="op-row"><button class="op-btn op-btn--secondary" type="button"><svg class="op-icon op-icon--15" aria-hidden="true"><use href="#i-upload"/></svg>Upload new</button><button class="op-btn op-btn--secondary" type="button">Remove</button></div><span class="op-field__hint">SVG or PNG, square, at least 256 × 256. Shown on a rounded tile.</span></div></div></div>
+                    <div class="op-field"><label class="op-field__label" for="f-brandname">Brand name</label><input class="op-input" id="f-brandname" value="Paperworks Inbox"><span class="op-field__hint">Up to 24 characters. Default: Inbox</span></div>
+                  </div>
+                  <div class="op-stack" style="width:240px"><span class="op-field__label">Preview</span>
+                    <div class="op-brand" style="padding:var(--op-space-3);border-radius:var(--op-radius-8);background:#0F2A33;color:#FFFFFF" data-op-allow="custom theme preview"><span class="op-brand__logo" style="background:#0E7490" data-op-allow="custom theme preview"><svg class="op-icon" aria-hidden="true"><use href="#i-mail-open"/></svg></span><span class="op-brand__name" style="font-size:13px">Paperworks Inbox</span><span class="op-caption" style="opacity:.6">Light</span></div>
+                    <div class="op-brand" style="padding:var(--op-space-3);border-radius:var(--op-radius-8);background:#071419;color:#FFFFFF" data-op-allow="custom theme preview"><span class="op-brand__logo" style="background:#0E7490" data-op-allow="custom theme preview"><svg class="op-icon" aria-hidden="true"><use href="#i-mail-open"/></svg></span><span class="op-brand__name" style="font-size:13px">Paperworks Inbox</span><span class="op-caption" style="opacity:.6">Dark</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="op-section__foot"><span class="op-small">Default: Inbox logo and name</span><button class="op-btn op-btn--secondary" type="button">Use defaults</button><button class="op-btn op-btn--primary" type="button">Save brand</button></div>
+            </section>
+            <section class="op-section">
+              <div class="op-section__head"><div><h2 class="op-section__title">Colours</h2><p class="op-section__desc">Starts from the Communicate family. Change a colour and the rest of the palette is rebuilt around it.</p></div></div>
+              <div class="op-section__body">
+                <div class="op-row"><div class="op-segmented" role="group" aria-label="Mode"><button type="button" aria-selected="true"><svg class="op-icon op-icon--14" aria-hidden="true"><use href="#i-sun"/></svg>Light</button><button type="button" aria-selected="false"><svg class="op-icon op-icon--14" aria-hidden="true"><use href="#i-moon"/></svg>Dark</button></div><span class="op-spacer"></span><span class="op-pill op-pill--tint op-pill--lg"><svg class="op-icon op-icon--12" aria-hidden="true"><use href="#i-paintbrush"/></svg>Customised · 3 changes</span></div>
+                <div class="op-item-row"><span class="op-swatch" style="background:#0E7490" data-op-allow="custom theme preview"></span><div class="op-item-row__text"><span class="op-strong">Accent</span><span class="op-small op-muted">App tile, buttons, links, progress</span><span class="op-row op-caption op-muted" style="gap:var(--op-space-2)"><span class="op-row" style="gap:4px"><svg class="op-icon op-icon--12" aria-hidden="true"><use href="#i-circle-check"/></svg>Text on white 5.4:1</span><span class="op-row" style="gap:4px"><svg class="op-icon op-icon--12" aria-hidden="true"><use href="#i-circle-check"/></svg>Button text 5.4:1</span></span></div>
+                  <div class="op-input-group" style="width:128px"><span class="op-icon" aria-hidden="true" style="width:auto;color:var(--op-text-2)">#</span><input class="op-input op-mono" value="0E7490" aria-label="Accent hex" style="padding-left:24px"></div>
+                  <div class="op-stack" style="gap:2px;width:112px"><span class="op-caption op-muted">Default</span><span class="op-row op-caption op-muted op-mono" style="gap:var(--op-space-1)"><span class="op-swatch op-swatch--sm" style="background:var(--op-accent)"></span>#2F5BEA</span></div>
+                  <button class="op-icon-btn op-icon-btn--compact op-icon-btn--muted" type="button" aria-label="Reset Accent"><svg class="op-icon" aria-hidden="true"><use href="#i-rotate-ccw"/></svg></button></div>
+                <hr>
+                <div class="op-item-row"><span class="op-swatch" style="background:#0F2A33" data-op-allow="custom theme preview"></span><div class="op-item-row__text"><span class="op-strong">Sidebar</span><span class="op-small op-muted">The aside background; always the darkest surface</span><span class="op-row op-caption op-muted" style="gap:var(--op-space-2)"><span class="op-row" style="gap:4px"><svg class="op-icon op-icon--12" aria-hidden="true"><use href="#i-circle-check"/></svg>Sidebar text 14.8:1</span><span class="op-row" style="gap:4px"><svg class="op-icon op-icon--12" aria-hidden="true"><use href="#i-circle-check"/></svg>Secondary text 7.0:1</span></span></div>
+                  <div class="op-input-group" style="width:128px"><span class="op-icon" aria-hidden="true" style="width:auto;color:var(--op-text-2)">#</span><input class="op-input op-mono" value="0F2A33" aria-label="Sidebar hex" style="padding-left:24px"></div>
+                  <div class="op-stack" style="gap:2px;width:112px"><span class="op-caption op-muted">Default</span><span class="op-row op-caption op-muted op-mono" style="gap:var(--op-space-1)"><span class="op-swatch op-swatch--sm" style="background:var(--op-nav)"></span>#18254E</span></div>
+                  <button class="op-icon-btn op-icon-btn--compact op-icon-btn--muted" type="button" aria-label="Reset Sidebar"><svg class="op-icon" aria-hidden="true"><use href="#i-rotate-ccw"/></svg></button></div>
+                <hr>
+                <div class="op-item-row"><span class="op-swatch" style="background:#F2F7F8" data-op-allow="custom theme preview"></span><div class="op-item-row__text"><span class="op-strong">Canvas</span><span class="op-small op-muted">Board background; toolbar and columns derive from it</span><span class="op-row op-caption op-muted" style="gap:var(--op-space-2)"><span class="op-row" style="gap:4px"><svg class="op-icon op-icon--12" aria-hidden="true"><use href="#i-circle-check"/></svg>Secondary text 5.6:1</span></span></div>
+                  <div class="op-input-group" style="width:128px"><span class="op-icon" aria-hidden="true" style="width:auto;color:var(--op-text-2)">#</span><input class="op-input op-mono" value="F2F7F8" aria-label="Canvas hex" style="padding-left:24px"></div>
+                  <div class="op-stack" style="gap:2px;width:112px"><span class="op-caption op-muted">Default</span><span class="op-row op-caption op-muted op-mono" style="gap:var(--op-space-1)"><span class="op-swatch op-swatch--sm" style="background:var(--op-canvas)"></span>#F3F5FB</span></div>
+                  <button class="op-icon-btn op-icon-btn--compact op-icon-btn--muted" type="button" aria-label="Reset Canvas"><svg class="op-icon" aria-hidden="true"><use href="#i-rotate-ccw"/></svg></button></div>
+                <div class="op-field"><span class="op-field__label">Quick picks for accent</span><div class="op-row" style="gap:var(--op-space-1)"><button class="op-icon-btn op-icon-btn--compact" type="button" aria-label="Use #2F5BEA" style="border-radius:999px;"><span style="width:24px;height:24px;border-radius:999px;background:#2F5BEA" data-op-allow="custom theme preview"></span></button><button class="op-icon-btn op-icon-btn--compact" type="button" aria-label="Use #0E7490" style="border-radius:999px;box-shadow:0 0 0 2px var(--op-text)"><span style="width:24px;height:24px;border-radius:999px;background:#0E7490" data-op-allow="custom theme preview"></span></button><button class="op-icon-btn op-icon-btn--compact" type="button" aria-label="Use #1D4ED8" style="border-radius:999px;"><span style="width:24px;height:24px;border-radius:999px;background:#1D4ED8" data-op-allow="custom theme preview"></span></button><button class="op-icon-btn op-icon-btn--compact" type="button" aria-label="Use #4338CA" style="border-radius:999px;"><span style="width:24px;height:24px;border-radius:999px;background:#4338CA" data-op-allow="custom theme preview"></span></button><button class="op-icon-btn op-icon-btn--compact" type="button" aria-label="Use #0F766E" style="border-radius:999px;"><span style="width:24px;height:24px;border-radius:999px;background:#0F766E" data-op-allow="custom theme preview"></span></button><button class="op-icon-btn op-icon-btn--compact" type="button" aria-label="Use #9D174D" style="border-radius:999px;"><span style="width:24px;height:24px;border-radius:999px;background:#9D174D" data-op-allow="custom theme preview"></span></button><button class="op-icon-btn op-icon-btn--compact" type="button" aria-label="Use #374151" style="border-radius:999px;"><span style="width:24px;height:24px;border-radius:999px;background:#374151" data-op-allow="custom theme preview"></span></button><span class="op-caption op-muted" style="margin-left:var(--op-space-2)">Other families' colours are hidden to keep apps distinct.</span></div></div>
+              </div>
+              <div class="op-section__foot"><button class="op-btn op-btn--secondary" type="button"><svg class="op-icon op-icon--15" aria-hidden="true"><use href="#i-rotate-ccw"/></svg>Reset to default</button><span class="op-spacer"></span><button class="op-btn op-btn--secondary" type="button">Cancel</button><button class="op-btn op-btn--primary" type="button">Save theme</button></div>
+            </section>
+          </div></div>
+        </div>
+      </main>
+      <!-- ===== AGENT PANEL · 400 px docked · sheet on mobile ===== -->
+      <aside class="op-agent" aria-label="Agent">
+        <div class="op-agent__head">
+          <span class="op-agent__mark"><svg class="op-icon" aria-hidden="true"><use href="#i-bot"/></svg></span>
+          <div class="op-grow"><div class="op-strong">Inbox Agent</div><div class="op-caption op-muted">Can read and act on this page</div></div>
+          <button class="op-icon-btn op-icon-btn--compact op-icon-btn--muted" type="button" aria-label="New chat"><svg class="op-icon" aria-hidden="true"><use href="#i-square-pen"/></svg></button>
+          <button class="op-icon-btn op-icon-btn--compact op-icon-btn--muted" type="button" aria-label="History"><svg class="op-icon" aria-hidden="true"><use href="#i-history"/></svg></button>
+          <button class="op-icon-btn op-icon-btn--compact op-icon-btn--muted" type="button" aria-label="Close agent" data-action="toggle-agent"><svg class="op-icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+        </div>
+        <div class="op-agent__context"><span class="op-overline">Context</span><span class="op-pill"><svg class="op-icon op-icon--12" aria-hidden="true"><use href="#i-layout-grid"/></svg>Inbox · this page</span></div>
+        <div class="op-agent__thread">
+          <span class="op-agent__mark" style="width:40px;height:40px;border-radius:var(--op-radius-12)"><svg class="op-icon op-icon--20" aria-hidden="true"><use href="#i-bot"/></svg></span>
+          <div class="op-stack"><h2 class="op-heading">What should we get done?</h2><p class="op-muted">I can read, sort, draft and schedule anything here. You'll see every change I make.</p></div>
+          <div class="op-stack">
+            <button class="op-agent__starter" type="button"><span class="op-icon-tile"><svg class="op-icon" aria-hidden="true"><use href="#i-list-checks"/></svg></span><span><span class="op-strong">Triage what's new</span><br><span class="op-small op-muted">Sort new items into the right column</span></span></button>
+            <button class="op-agent__starter" type="button"><span class="op-icon-tile"><svg class="op-icon" aria-hidden="true"><use href="#i-timer"/></svg></span><span><span class="op-strong">What's due today?</span><br><span class="op-small op-muted">Summarise SLAs under 24h</span></span></button>
+            <button class="op-agent__starter" type="button"><span class="op-icon-tile"><svg class="op-icon" aria-hidden="true"><use href="#i-pen-line"/></svg></span><span><span class="op-strong">Draft replies</span><br><span class="op-small op-muted">For everything waiting on me</span></span></button>
+          </div>
+        </div>
+        <form class="op-agent__composer" onsubmit="return false">
+          <label class="op-sr-only" for="agent-input">Message the agent</label>
+          <textarea id="agent-input" rows="2" placeholder="Ask the agent to do anything in Inbox…"></textarea>
+          <div class="op-agent__controls">
+            <button class="op-icon-btn op-icon-btn--compact op-icon-btn--muted" type="button" aria-label="Attach"><svg class="op-icon" aria-hidden="true"><use href="#i-paperclip"/></svg></button>
+            <button class="op-icon-btn op-icon-btn--compact op-icon-btn--muted" type="button" aria-label="Add context"><svg class="op-icon" aria-hidden="true"><use href="#i-at-sign"/></svg></button>
+            <span class="op-pill op-pill--neutral op-pill--lg"><svg class="op-icon op-icon--12" aria-hidden="true"><use href="#i-sparkles"/></svg>Auto</span>
+            <span class="op-spacer"></span>
+            <button class="op-icon-btn op-icon-btn--compact op-icon-btn--muted" type="button" aria-label="Voice input"><svg class="op-icon" aria-hidden="true"><use href="#i-mic"/></svg></button>
+            <button class="op-icon-btn op-send" type="submit" aria-label="Send"><svg class="op-icon op-icon--bold" aria-hidden="true"><use href="#i-arrow-up"/></svg></button>
+          </div>
+        </form>
+        <p class="op-agent__disclaimer">The agent can take actions in this app. Every action is logged and can be undone.</p>
+      </aside>
+    </div>
+  </div>
+  <div class="op-scrim" data-action="close-overlays" aria-hidden="true"></div>
+</div>
+</body>
+</html>

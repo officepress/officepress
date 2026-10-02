@@ -101,6 +101,26 @@ def verify_variables(root: Path, manifest: dict) -> None:
     assert sha(canonical(full)) == manifest['design']['variables_sha256'], 'Variable definitions changed'
 
 
+def verify_source_archives(root: Path, manifest: dict, recovered: dict[str, bytes]) -> set[str]:
+    """Keep explicitly requested file copies identical to complete KB source content."""
+    expected = {identity for identity in recovered
+                if identity.startswith(('kit/css/', 'kit/js/', 'kit/templates/'))}
+    archived = set()
+    paths = set()
+    for entry in manifest['source_archives']:
+        identity = entry['source']
+        assert identity in expected, 'Archive outside requested scope: ' + identity
+        assert identity not in archived, 'Duplicate source archive: ' + identity
+        assert entry['path'] == 'resources/officepress-kit/' + identity.removeprefix('kit/'), 'Archive destination mismatch'
+        data = (root / entry['path']).read_bytes()
+        assert sha(data) == entry['sha256'] and len(data) == entry['bytes'], 'Source archive mismatch: ' + entry['path']
+        assert data == recovered[identity], 'Archive differs from KB references: ' + identity
+        archived.add(identity)
+        paths.add(entry['path'])
+    assert archived == expected, 'Missing requested source archives: ' + ', '.join(sorted(expected - archived))
+    return paths
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--reconstruct', type=Path, help='Reconstruct the source snapshot in a new directory')
@@ -131,6 +151,7 @@ def main() -> None:
             # Treat the native file as opaque bytes; semantic extraction uses the design API.
             with source.open('rb') as stream:
                 assert hashlib.file_digest(stream, 'sha256').hexdigest() == entry['sha256'], 'Original asset drift: ' + entry['source']
+    archive_paths = verify_source_archives(root, manifest, recovered)
     for entry in manifest['drafts']:
         assert sha((root / entry['path']).read_bytes()) == entry['sha256'], 'Accepted input record changed: ' + entry['path']
     design_nodes(root, manifest)
@@ -140,7 +161,7 @@ def main() -> None:
     assert len(ids) == len(set(ids)), 'Duplicate source disposition'
     assert sum(i.startswith('kit/') for i in ids) == 263, 'Kit inventory count'
     actual_resources = {str(p.relative_to(root)) for p in (root / 'resources').rglob('*') if p.is_file()}
-    assert actual_resources == {r['path'] for r in manifest['resources']}, 'Unaccounted resource files'
+    assert actual_resources == {r['path'] for r in manifest['resources']} | archive_paths, 'Unaccounted resource files'
     assert len(re.findall(r'^## (?!Project and brand)', (root / manifest['drafts'][1]['path']).read_text(), re.M)) == 23, 'User product descriptions'
     if args.reconstruct:
         out = args.reconstruct.expanduser().resolve()
@@ -157,6 +178,7 @@ def main() -> None:
             shutil.copyfile(root / entry['path'], destination)
         print('Reconstructed offline source snapshot:', out)
     print(f'PASS: {len(recovered)} exact text/code sources; {len(manifest["resources"])} exact native/visual resources; {len(manifest["excluded"])} explicit metadata exclusions.')
+    print(f'PASS: {len(archive_paths)} requested CSS/JS/template archives match their complete reference content.')
     d = manifest['design']
     print(f'PASS: {d["node_count"]} design nodes, {d["text_node_count"]} content nodes, {d["variable_count"]} variables; 23 complete user product descriptions.')
     print('Offline verification complete; no external sources or network required.')

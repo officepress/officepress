@@ -17,7 +17,17 @@ Ingested 2026-10-01 from the supplied OfficePress kit, standalone UI guidelines,
 | User product descriptions | 23 | Full descriptions plus a family catalogue |
 | User corrections | 4 | Recorded with current rule and historical-source disposition |
 
-The kit inventory accounts for all 263 files. No Markdown, HTML, CSS, JavaScript, Python, JSON, license text or version text is stored in resources. `AGENTS.md`, `CLAUDE.md`, `README.md` and `llms.txt` are ingested as reference material, never installed as workspace instructions. Kit `.claude` instructions are retained as source evidence, not active skill packages.
+The kit inventory accounts for all 263 files. At the initial ingestion, no Markdown, HTML, CSS, JavaScript, Python, JSON, license text or version text was stored in resources. The 2026-10-02 addition below records the explicit exception for the requested CSS, JavaScript and template archive. `AGENTS.md`, `CLAUDE.md`, `README.md` and `llms.txt` are ingested as reference material, never installed as workspace instructions. Kit `.claude` instructions are retained as source evidence, not active skill packages.
+
+## Source-resource addition on 2026-10-02
+
+The user requested style, functional and markup source files for wireframes, designs and frontend code. Added 5 CSS files, 2 JavaScript files and 17 HTML templates under `resources/officepress-kit/`, preserving their subfolders. All 24 copies match both the supplied files and the complete reference content byte for byte. The original 263-file source inventory is unchanged; these are additional representations of existing ingested sources, recorded separately as `source_archives` in the manifest.
+
+Verified `index.html` and all 9 Markdown files recursively under the supplied `docs/` folder against their reconstructed references. All 10 files match exactly, including 13 reference chunks for the Markdown documents and 1 for the design guide. There are no missing documents. Use the [source-resource catalogue](00359-officepress-ui-source-resources.md) for the complete file mapping and how each source supports implementation.
+
+The verifier now checks all 231 resource files: 207 native/visual files plus 24 explicitly requested source archives. It rejects a missing, modified, extra or mismatched archive and still reconstructs the original source tree entirely offline. The original source blocks remain unchanged.
+
+The requested source comparison passes. A broader `--compare-originals` check on 2026-10-02 finds that the external `officepress.pen` has changed since the initial ingestion; all 53 textual inputs and the 206 original kit visual assets still match. The archived Pencil snapshot and its extracted references remain internally consistent and were not replaced in this update. The default offline fidelity check remains independent of external changes.
 
 ## Native design extraction
 
@@ -45,7 +55,7 @@ python3 .agents/scripts/validate-agent-workspace.py
 python3 .agents/scripts/verify-officepress-ingestion.py
 ```
 
-The default fidelity verifier reads no external source. It reconstructs every text file, compares its original hash/byte count, checks all local visual/native hashes, verifies unique source dispositions and exact design-node/variable coverage, and checks all 23 complete product descriptions.
+The default fidelity verifier reads no external source. It reconstructs every text file, compares its original hash/byte count, checks all local visual/native hashes and source-archive equality with the recovered reference content, verifies unique source dispositions and exact design-node/variable coverage, and checks all 23 complete product descriptions.
 
 Optional source comparison, when the original supplied files still exist:
 
@@ -61,7 +71,7 @@ python3 .agents/scripts/verify-officepress-ingestion.py --reconstruct /tmp/offic
 
 Reconstruction restores original source files and assets, including original instruction files, historical examples and known prototype discrepancies. It does not execute them. Use current context before adapting them into an application. The KB has no runtime dependence on this reconstructed tree.
 
-## Validation receipt
+## Initial validation receipt (2026-10-01)
 
 - Exact reconstruction of all 53 text inputs matches the original files, including comments, examples, empty objects, code and license notices.
 - All 207 local visual/native resource hashes match their original inputs.

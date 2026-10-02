@@ -30,6 +30,8 @@ Use sentence case, specific actions and realistic content. Keep body text left-a
 
 ## Complete system detail
 
+- [CSS, JavaScript and template resource guidance](../references/00359-officepress-ui-source-resources.md) — load when applying the system to wireframes, designs or frontend code and needing local whole-file examples.
+
 - [Standalone guidelines, all sections](../references/00071-ui-guidelines-md-introduction.md) — load when reading the original system rationale, tables, examples and motion rules; follow its local continuation links through the source map.
 - [Kit guidelines, all sections](../references/00026-docs-guidelines-md-introduction.md) — load when checking the implementation-oriented form of the rules.
 - [Exact family × mode token tables](../references/00082-officepress-active-token-tables.md) — load when choosing a semantic colour or comparing all eight combinations.

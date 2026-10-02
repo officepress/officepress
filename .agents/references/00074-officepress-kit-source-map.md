@@ -2,6 +2,7 @@
 
 Use this local map instead of looking up a historical source path in Documents or online. Full text/code/data remains available after semantic splitting. Source paths in evidence are provenance, not dependencies.
 
+- [Local CSS, JavaScript and template files](00359-officepress-ui-source-resources.md) — load when using source files for wireframes, designs or frontend code, or checking design-guide and Markdown ingestion.
 - [Inherited tooling instructions](00198-officepress-source-inherited-tooling-instructions.md) — load when looking up inherited tooling instructions.
 - [Written guidance](00199-officepress-source-written-guidance.md) — load when looking up written guidance.
 - [Style and behavior implementation](00200-officepress-source-style-and-behavior-implementation.md) — load when looking up style and behavior implementation.

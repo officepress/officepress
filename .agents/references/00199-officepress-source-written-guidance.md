@@ -48,7 +48,7 @@ These references contain complete source detail, with source paths and exact cov
 
 ## `kit/index.html`
 
-- [index](00038-index-html.md) — load when working with this written guidance section.
+- [Design guide and gallery](00038-index-html.md) — load when inspecting the complete `index.html` design guide, examples and inline behavior.
 
 ## `ui-guidelines.md`
 

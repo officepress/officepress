@@ -1,6 +1,6 @@
 # OfficePress UI kit
 
-The supplied kit is a vanilla HTML/CSS/JavaScript reference implementation. Its documentation, scripts, manifests and examples are fully translated into local references; its SVG/PNG assets are local resources. The KB does not need the original Documents directory or a website.
+The supplied kit is a vanilla HTML/CSS/JavaScript reference implementation. Its documentation, scripts, manifests and examples are fully translated into local references. Its SVG/PNG assets and the user-requested CSS, JavaScript and template copies are local resources. The KB does not need the original Documents directory or a website.
 
 ## Implementation structure
 
@@ -11,6 +11,15 @@ Load core `officepress.css`, then exactly one family stylesheet. Load `icons.js`
 The shared JS implements controls such as theme/aside toggles, popovers, agent-panel visibility, tabs, choice controls, dialogs and command-copy feedback. It is not a backend or a complete implementation of data fetching/saving, authentication, drag/drop or business workflows.
 
 Theme persistence uses `localStorage["op-mode"]` and `data-mode` on `<html>`. Aside persistence uses `op-aside:<body data-app>`. Review parameters select family/mode, collapsed aside, open agent and open popovers for inspecting a page. Keep the no-flash theme initialization.
+
+## Source files for wireframes, designs and frontend code
+
+- [CSS resources](../resources/officepress-kit/css/) provide style guidance: tokens, layout, components, family themes and motion.
+- [JavaScript resources](../resources/officepress-kit/js/) provide functional guidance: icon rendering, controls, events and UI state.
+- [Template resources](../resources/officepress-kit/templates/) provide markup guidance: page structure, shared chrome, controls and state examples.
+- [Source-file catalogue and ingestion checks](../references/00359-officepress-ui-source-resources.md) — load for individual file links, usage boundaries, and the complete design guide plus all nine Markdown documents.
+
+These exact source copies supplement the complete reference content. Apply current user decisions when adapting them; do not edit the archived bytes to resolve historical examples.
 
 ## Starting points
 

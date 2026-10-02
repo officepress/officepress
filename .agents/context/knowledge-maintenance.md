@@ -1,6 +1,6 @@
 # OfficePress knowledge maintenance
 
-This KB is self-contained. Context stores accepted reusable knowledge; linked references hold the complete deferred documentation, implementation examples, source evidence and extracted design records. Resources hold only native/visual files that cannot be faithfully replaced by prose: the Pencil source, SVG assets and PNG screenshots.
+This KB is self-contained. Context stores accepted reusable knowledge; linked references hold the complete deferred documentation, implementation examples, source evidence and extracted design records. Resources hold native/visual files that cannot be faithfully replaced by prose, plus the explicitly requested CSS, JavaScript and template source archive. Complete source knowledge remains in references; archived code is additional material for practical reuse.
 
 ## Authority and fidelity
 
@@ -11,7 +11,7 @@ Complete an affected Agent Document before splitting it. Preserve full sections,
 ## Maintenance procedure
 
 1. Read the relevant context and its linked references, plus the ingestion/update workflow.
-2. Capture the full incoming source and inventory its meaningful details. Keep directly translatable text in Agent Files; reserve resources for native/visual material under the user's ingestion rule.
+2. Capture the full incoming source and inventory its meaningful details. Keep directly translatable text in Agent Files. Use resources for native/visual material and bounded source-code archives explicitly requested by the user; an archive does not replace complete ingestion into references.
 3. Compare authority and intersections. Record explicit supersession while retaining useful history.
 4. Reconstruct the complete affected document, merge, then split by topic or retrieval task. Prefer ≤200 lines; no final Agent File may exceed 500.
 5. Repair all ownership/routing links. Keep source identity, hashes and recovery mappings consistent when changing a captured evidence block.
@@ -24,9 +24,11 @@ python3 .agents/scripts/validate-agent-workspace.py
 python3 .agents/scripts/verify-officepress-ingestion.py
 ```
 
-The second script reconstructs source content from local reference blocks, checks hashes and visual resources, and verifies the extracted Pencil record/variable coverage. Its manifest is local deterministic-check data in `.agents/scripts/`, not a separate source-of-truth store.
+The second script reconstructs source content from local reference blocks, checks hashes and visual resources, compares the requested source-code archives with the recovered content, and verifies the extracted Pencil record/variable coverage. Its manifest is local deterministic-check data in `.agents/scripts/`, not a separate source-of-truth store.
 
 ## Evidence and decisions
+
+- [UI source archive and documentation verification](../references/00359-officepress-ui-source-resources.md) — load for the 2026-10-02 archive scope and full design-guide/Markdown coverage.
 
 - [User corrections and source reconciliation](../references/00078-officepress-source-decisions.md) — load when deciding which source wins or interpreting a historical example.
 - [Source coverage and verification receipt](../references/00081-officepress-ingestion-coverage.md) — load when auditing completeness, exclusions or the boundary of proof.

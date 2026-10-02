@@ -1,6 +1,6 @@
 # Screen templates — local source map
 
-These references contain complete source detail, with source paths and exact coverage. Read the [context](../context/index.md) first. Original path names inside excerpts are historical paths; use the links below for local knowledge.
+These references contain complete source detail, with source paths and exact coverage. Read the [context](../context/index.md) first. Original path names inside excerpts are historical paths; use the links below for local knowledge. For directly reusable files, load the [local source-resource catalogue](00359-officepress-ui-source-resources.md), which links every archived CSS, JavaScript and template file and explains how to use them.
 
 ## `kit/templates/app-board.html`
 
