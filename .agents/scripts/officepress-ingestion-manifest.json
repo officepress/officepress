@@ -2668,6 +2668,152 @@
       "bytes": 3952049
     }
   ],
+  "generated_favicons": [
+    {
+      "source": "resources/officepress-kit/logos/officepress/favicon.svg",
+      "path": "resources/officepress-kit/favicons/officepress/favicon.ico",
+      "sha256": "593ed4423089ae6dee04207245b75e3efa0547b99702a09918b8aecc8387ca08",
+      "bytes": 782
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/commerce/fulfillments.svg",
+      "path": "resources/officepress-kit/favicons/products/commerce/fulfillments.ico",
+      "sha256": "fa3ed29e96f6329f5fbb03507c75bcb2b0532f1d71e25d450d2209086e661516",
+      "bytes": 717
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/commerce/inventory.svg",
+      "path": "resources/officepress-kit/favicons/products/commerce/inventory.ico",
+      "sha256": "2a602703daadfd7b8b5a5fa478efa1ccda5e32a414d957b652aed95031b57e77",
+      "bytes": 725
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/commerce/orders.svg",
+      "path": "resources/officepress-kit/favicons/products/commerce/orders.ico",
+      "sha256": "45218b876c77cfcc577c09e51cbd214f7c4a7500448c13864a4a64461fabe5a7",
+      "bytes": 654
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/commerce/payments.svg",
+      "path": "resources/officepress-kit/favicons/products/commerce/payments.ico",
+      "sha256": "0061925eaaf8848f590846323aedf9c9c1b155e36342b3e8e234cebc50cfc6ad",
+      "bytes": 740
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/commerce/products.svg",
+      "path": "resources/officepress-kit/favicons/products/commerce/products.ico",
+      "sha256": "f8a1c82849a203c690c933704e0dfb7528b3e3a4c3be8b2a558b563d0337ac56",
+      "bytes": 715
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/communicate/agent.svg",
+      "path": "resources/officepress-kit/favicons/products/communicate/agent.ico",
+      "sha256": "77f8e1e75371d3e8a96e93e97dce064c442243f5ca1dc6241028cabd669e2dca",
+      "bytes": 703
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/communicate/calendar.svg",
+      "path": "resources/officepress-kit/favicons/products/communicate/calendar.ico",
+      "sha256": "ec1816f63845a0cc2170ca8a649c5fb0046ceb06fa40c6f3f5e30546dc47a9bb",
+      "bytes": 676
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/communicate/chat.svg",
+      "path": "resources/officepress-kit/favicons/products/communicate/chat.ico",
+      "sha256": "cc2e95e973325d994d6f7f4d12d8d6c009116bb2224384b3b46dc5b0ee926399",
+      "bytes": 714
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/communicate/inbox.svg",
+      "path": "resources/officepress-kit/favicons/products/communicate/inbox.ico",
+      "sha256": "7d0cf345a0b4360dba32bd564526bce5b023355b20f0dd7ec966f19c90777003",
+      "bytes": 652
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/communicate/meet.svg",
+      "path": "resources/officepress-kit/favicons/products/communicate/meet.ico",
+      "sha256": "9e2635b348eeef7130f013cf3c17234f3802286146eb08d3ba741b348ee1dba7",
+      "bytes": 608
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/communicate/support.svg",
+      "path": "resources/officepress-kit/favicons/products/communicate/support.ico",
+      "sha256": "8fee9a32c23eaf3b336546d1ac216fa804d855c154d19a741230ca4d8f8e2184",
+      "bytes": 732
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/create/content.svg",
+      "path": "resources/officepress-kit/favicons/products/create/content.ico",
+      "sha256": "990d93a7cc47dbf4ba2380dd19b713cdeb04929dfef46444ab154d6bc6d4cae6",
+      "bytes": 717
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/create/diagrams.svg",
+      "path": "resources/officepress-kit/favicons/products/create/diagrams.ico",
+      "sha256": "898de68e73b25d760c21e2ab60c3459dfd7a277f950a6db60f1f330c997a0f76",
+      "bytes": 734
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/create/drive.svg",
+      "path": "resources/officepress-kit/favicons/products/create/drive.ico",
+      "sha256": "b190a02b67f2d9ddf27b0486b2659a06899c4eef8e1c6d4a2b3a2f9a3aa4d2ea",
+      "bytes": 594
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/create/forms.svg",
+      "path": "resources/officepress-kit/favicons/products/create/forms.ico",
+      "sha256": "6184cd275b7afad4a4077111beb3f6b7ffaa102956e9cdc83b1d1d9c1fdfdb82",
+      "bytes": 662
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/create/tables.svg",
+      "path": "resources/officepress-kit/favicons/products/create/tables.ico",
+      "sha256": "0244e65f8d951bf9b41a53665ad65fc0ea3305d0657e1eccafb854678f043230",
+      "bytes": 733
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/create/whiteboards.svg",
+      "path": "resources/officepress-kit/favicons/products/create/whiteboards.ico",
+      "sha256": "7d94b65fa36c4378d7f47d597cbb309a67c3ef030e0ef0aa800f175e24e4269c",
+      "bytes": 723
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/operate/accounting.svg",
+      "path": "resources/officepress-kit/favicons/products/operate/accounting.ico",
+      "sha256": "ea0a3947ca6604b123166e61608c7bd5afcec2cf4d8239ab56ec3d71934b978f",
+      "bytes": 681
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/operate/approvals.svg",
+      "path": "resources/officepress-kit/favicons/products/operate/approvals.ico",
+      "sha256": "a169b1501b68661ac56ce9d50a8866a3cca2adf3885902ddf95f1ba2e456a5e6",
+      "bytes": 764
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/operate/clients.svg",
+      "path": "resources/officepress-kit/favicons/products/operate/clients.ico",
+      "sha256": "f17c158f48f025e11d95f0a413a90f73d9b80adf2c12965251dbd9ed6292f282",
+      "bytes": 696
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/operate/procurement.svg",
+      "path": "resources/officepress-kit/favicons/products/operate/procurement.ico",
+      "sha256": "6f7d9f8e93d210183ae53f293d27d229840ef880bd91b5f289c81f8b5f034c9b",
+      "bytes": 657
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/operate/resourcing.svg",
+      "path": "resources/officepress-kit/favicons/products/operate/resourcing.ico",
+      "sha256": "a6afe3143806cb97e97658d618dc64d3e2c59b5fa78931b5926a67b0b90b4dd9",
+      "bytes": 730
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/operate/sign.svg",
+      "path": "resources/officepress-kit/favicons/products/operate/sign.ico",
+      "sha256": "9d072073f1a30bba4db8d039e20b798eaad4b8bfd111dab2213636eef7268778",
+      "bytes": 671
+    }
+  ],
   "excluded": [
     {
       "source": "kit/.DS_Store",

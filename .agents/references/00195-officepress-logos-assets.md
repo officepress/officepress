@@ -31,3 +31,34 @@ Load when choosing an existing visual asset or locating a local source screen. T
 | `kit/logos/products/operate/procurement.svg` | [Procurement — logos asset](../resources/officepress-kit/logos/products/operate/procurement.svg) |
 | `kit/logos/products/operate/resourcing.svg` | [Resourcing — logos asset](../resources/officepress-kit/logos/products/operate/resourcing.svg) |
 | `kit/logos/products/operate/sign.svg` | [Sign — logos asset](../resources/officepress-kit/logos/products/operate/sign.svg) |
+
+## Derived 16 × 16 ICO favicons
+
+These files were exported on 2026-10-07 from the corresponding SVG marks above. They are single-size 16 × 16 ICOs for browser tabs. The SVGs remain the source marks; use their visible-size guidance in [logo usage](00029-docs-logos-md.md) and the [current favicon rule](../context/brand.md#favicons).
+
+| Identity | ICO resource |
+|---|---|
+| OfficePress suite | [OfficePress suite favicon](../resources/officepress-kit/favicons/officepress/favicon.ico) |
+| Fulfillments (commerce) | [Fulfillments favicon](../resources/officepress-kit/favicons/products/commerce/fulfillments.ico) |
+| Inventory (commerce) | [Inventory favicon](../resources/officepress-kit/favicons/products/commerce/inventory.ico) |
+| Orders (commerce) | [Orders favicon](../resources/officepress-kit/favicons/products/commerce/orders.ico) |
+| Payments (commerce) | [Payments favicon](../resources/officepress-kit/favicons/products/commerce/payments.ico) |
+| Products (commerce) | [Products favicon](../resources/officepress-kit/favicons/products/commerce/products.ico) |
+| Agent (communicate) | [Agent favicon](../resources/officepress-kit/favicons/products/communicate/agent.ico) |
+| Calendar (communicate) | [Calendar favicon](../resources/officepress-kit/favicons/products/communicate/calendar.ico) |
+| Chat (communicate) | [Chat favicon](../resources/officepress-kit/favicons/products/communicate/chat.ico) |
+| Inbox (communicate) | [Inbox favicon](../resources/officepress-kit/favicons/products/communicate/inbox.ico) |
+| Meet (communicate) | [Meet favicon](../resources/officepress-kit/favicons/products/communicate/meet.ico) |
+| Support (communicate) | [Support favicon](../resources/officepress-kit/favicons/products/communicate/support.ico) |
+| Content (create) | [Content favicon](../resources/officepress-kit/favicons/products/create/content.ico) |
+| Diagrams (create) | [Diagrams favicon](../resources/officepress-kit/favicons/products/create/diagrams.ico) |
+| Drive (create) | [Drive favicon](../resources/officepress-kit/favicons/products/create/drive.ico) |
+| Forms (create) | [Forms favicon](../resources/officepress-kit/favicons/products/create/forms.ico) |
+| Tables (create) | [Tables favicon](../resources/officepress-kit/favicons/products/create/tables.ico) |
+| Whiteboards (create) | [Whiteboards favicon](../resources/officepress-kit/favicons/products/create/whiteboards.ico) |
+| Accounting (operate) | [Accounting favicon](../resources/officepress-kit/favicons/products/operate/accounting.ico) |
+| Approvals (operate) | [Approvals favicon](../resources/officepress-kit/favicons/products/operate/approvals.ico) |
+| Clients (operate) | [Clients favicon](../resources/officepress-kit/favicons/products/operate/clients.ico) |
+| Procurement (operate) | [Procurement favicon](../resources/officepress-kit/favicons/products/operate/procurement.ico) |
+| Resourcing (operate) | [Resourcing favicon](../resources/officepress-kit/favicons/products/operate/resourcing.ico) |
+| Sign (operate) | [Sign favicon](../resources/officepress-kit/favicons/products/operate/sign.ico) |

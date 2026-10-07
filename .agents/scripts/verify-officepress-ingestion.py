@@ -12,6 +12,7 @@ import html
 import json
 import re
 import shutil
+import struct
 from pathlib import Path
 
 
@@ -121,6 +122,31 @@ def verify_source_archives(root: Path, manifest: dict, recovered: dict[str, byte
     return paths
 
 
+def verify_generated_favicons(root: Path, manifest: dict) -> set[str]:
+    """Account for 16px ICO derivatives without adding them to source inventory."""
+    sources = {entry['path'] for entry in manifest['resources']
+               if entry['path'] == 'resources/officepress-kit/logos/officepress/favicon.svg'
+               or entry['path'].startswith('resources/officepress-kit/logos/products/')}
+    mapped = set()
+    paths = set()
+    for entry in manifest['generated_favicons']:
+        source = entry['source']
+        path = entry['path']
+        assert source in sources and source not in mapped, 'Invalid favicon source: ' + source
+        assert path == source.replace('/logos/', '/favicons/').removesuffix('.svg') + '.ico', 'Favicon destination mismatch: ' + path
+        data = (root / path).read_bytes()
+        assert sha(data) == entry['sha256'] and len(data) == entry['bytes'], 'Favicon mismatch: ' + path
+        assert len(data) >= 46 and struct.unpack_from('<HHH', data) == (0, 1, 1), 'Invalid ICO header: ' + path
+        width, height, _, _, _, _, size, offset = struct.unpack_from('<BBBBHHII', data, 6)
+        assert (width, height, size, offset) == (16, 16, len(data) - 22, 22), 'Invalid ICO entry: ' + path
+        assert data[22:38] == b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR', 'Invalid ICO image: ' + path
+        assert struct.unpack_from('>II', data, 38) == (16, 16), 'Invalid favicon PNG size: ' + path
+        mapped.add(source)
+        paths.add(path)
+    assert mapped == sources, 'Missing generated favicon for a source mark'
+    return paths
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--reconstruct', type=Path, help='Reconstruct the source snapshot in a new directory')
@@ -152,6 +178,7 @@ def main() -> None:
             with source.open('rb') as stream:
                 assert hashlib.file_digest(stream, 'sha256').hexdigest() == entry['sha256'], 'Original asset drift: ' + entry['source']
     archive_paths = verify_source_archives(root, manifest, recovered)
+    favicon_paths = verify_generated_favicons(root, manifest)
     for entry in manifest['drafts']:
         assert sha((root / entry['path']).read_bytes()) == entry['sha256'], 'Accepted input record changed: ' + entry['path']
     design_nodes(root, manifest)
@@ -161,7 +188,7 @@ def main() -> None:
     assert len(ids) == len(set(ids)), 'Duplicate source disposition'
     assert sum(i.startswith('kit/') for i in ids) == 263, 'Kit inventory count'
     actual_resources = {str(p.relative_to(root)) for p in (root / 'resources').rglob('*') if p.is_file()}
-    assert actual_resources == {r['path'] for r in manifest['resources']} | archive_paths, 'Unaccounted resource files'
+    assert actual_resources == {r['path'] for r in manifest['resources']} | archive_paths | favicon_paths, 'Unaccounted resource files'
     assert len(re.findall(r'^## (?!Project and brand)', (root / manifest['drafts'][1]['path']).read_text(), re.M)) == 23, 'User product descriptions'
     if args.reconstruct:
         out = args.reconstruct.expanduser().resolve()
@@ -179,6 +206,7 @@ def main() -> None:
         print('Reconstructed offline source snapshot:', out)
     print(f'PASS: {len(recovered)} exact text/code sources; {len(manifest["resources"])} exact native/visual resources; {len(manifest["excluded"])} explicit metadata exclusions.')
     print(f'PASS: {len(archive_paths)} requested CSS/JS/template archives match their complete reference content.')
+    print(f'PASS: {len(favicon_paths)} derived 16x16 ICO favicons match their recorded sources and hashes.')
     d = manifest['design']
     print(f'PASS: {d["node_count"]} design nodes, {d["text_node_count"]} content nodes, {d["variable_count"]} variables; 23 complete user product descriptions.')
     print('Offline verification complete; no external sources or network required.')

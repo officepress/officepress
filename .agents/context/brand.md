@@ -23,6 +23,12 @@ The suite mark uses a slate `#6B7385` tile, a white office building and four fam
 
 Wordmark lockups use Manrope Bold with tight tracking. App UI uses Inter; code-like values use JetBrains Mono under the typography rules. Use the on-light or on-dark lockup supplied for the background.
 
+## Favicons
+
+Use the suite [16 × 16 ICO](../resources/officepress-kit/favicons/officepress/favicon.ico) for OfficePress-wide pages and the matching product ICO for each app. Product files follow `favicons/products/<family>/<app>.ico`; the [favicon asset map](../references/00195-officepress-logos-assets.md) links every file to its SVG source. Keep each product's mark and family colour together.
+
+Copy the chosen ICO into the deployed app's public assets and point the document head at its served URL, for example `<link rel="icon" type="image/x-icon" sizes="16x16" href="/favicon.ico">`. The URL is an example, not the KB resource path. The existing SVGs remain the editable marks and may also be linked as SVG favicons where supported. Use the SVG product marks for visible UI placements of at least 20 px; do not enlarge the 16 px ICO for those placements.
+
 ## UI icons and brand marks
 
 Use the local Lucide icon set for interface actions. Product marks are product identity, not substitutes for every action icon. Use one icon library per surface, 1.5 px stroke beside regular text and 2 px beside bold, outline by default and fill only for an active state. Emoji may occur in message content but are not UI icons.
