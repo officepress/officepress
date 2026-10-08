@@ -65,30 +65,14 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | mfu6A/h47xa8 / mfu6A/I60pf | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"user","library":"lucide","fill":"$op-text"} |
 | FWQ2h / T4jqaV | frame / Body | {"name":"Body"} | {"width":"fill_container","height":"fill_container","fill":"$op-canvas","gap":24,"padding":[24,16,40,16]} |
 | R13yEQ / FWQ2h | frame / Settings Nav | {"name":"Settings Nav"} | {"width":240,"layout":"vertical","gap":4} |
-| x5cXDS / R13yEQ | frame / Tab General | {"name":"Tab General"} | {"width":"fill_container","height":36,"cornerRadius":4,"gap":12,"alignItems":"center"} |
+| x5cXDS / R13yEQ | frame / Tab About | {"name":"Tab About"} | {"width":"fill_container","height":36,"cornerRadius":4,"gap":12,"alignItems":"center"} |
 | raqzV / x5cXDS | frame / Icon Slot | {"name":"Icon Slot"} | {"width":36,"height":36,"justifyContent":"center","alignItems":"center"} |
-| nCK7Z / raqzV | icon / I | {"name":"I"} | {"width":16,"height":16,"icon":"settings","library":"lucide","fill":"$op-text-2"} |
-| vsUvZ / x5cXDS | text / L | {"name":"L","content":"General"} | {"fill":"$op-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
+| nCK7Z / raqzV | icon / I | {"name":"I"} | {"width":16,"height":16,"icon":"info","library":"lucide","fill":"$op-text-2"} |
+| vsUvZ / x5cXDS | text / L | {"name":"L","content":"About"} | {"fill":"$op-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
 | N29Jhc / R13yEQ | frame / Tab Theme | {"name":"Tab Theme"} | {"width":"fill_container","height":36,"fill":"$op-tint","cornerRadius":4,"gap":12,"alignItems":"center"} |
 | YH0lT / N29Jhc | frame / Icon Slot | {"name":"Icon Slot"} | {"width":36,"height":36,"justifyContent":"center","alignItems":"center"} |
 | JdKj1 / YH0lT | icon / I | {"name":"I"} | {"width":16,"height":16,"icon":"palette","library":"lucide","fill":"$op-accent-text"} |
 | FNoEW / N29Jhc | text / L | {"name":"L","content":"Theme"} | {"fill":"$op-on-tint","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"700"} |
-| b835zZ / R13yEQ | frame / Tab Members | {"name":"Tab Members"} | {"width":"fill_container","height":36,"cornerRadius":4,"gap":12,"alignItems":"center"} |
-| fuUdJ / b835zZ | frame / Icon Slot | {"name":"Icon Slot"} | {"width":36,"height":36,"justifyContent":"center","alignItems":"center"} |
-| p8A8bx / fuUdJ | icon / I | {"name":"I"} | {"width":16,"height":16,"icon":"users","library":"lucide","fill":"$op-text-2"} |
-| WaoAt / b835zZ | text / L | {"name":"L","content":"Members"} | {"fill":"$op-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
-| h7EeN / R13yEQ | frame / Tab Agent | {"name":"Tab Agent"} | {"width":"fill_container","height":36,"cornerRadius":4,"gap":12,"alignItems":"center"} |
-| lYKW7 / h7EeN | frame / Icon Slot | {"name":"Icon Slot"} | {"width":36,"height":36,"justifyContent":"center","alignItems":"center"} |
-| q2PWG / lYKW7 | icon / I | {"name":"I"} | {"width":16,"height":16,"icon":"bot","library":"lucide","fill":"$op-text-2"} |
-| w8zksb / h7EeN | text / L | {"name":"L","content":"Agent"} | {"fill":"$op-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
-| ah2Ps / R13yEQ | frame / Tab Integrations | {"name":"Tab Integrations"} | {"width":"fill_container","height":36,"cornerRadius":4,"gap":12,"alignItems":"center"} |
-| wCUak / ah2Ps | frame / Icon Slot | {"name":"Icon Slot"} | {"width":36,"height":36,"justifyContent":"center","alignItems":"center"} |
-| H2XqwP / wCUak | icon / I | {"name":"I"} | {"width":16,"height":16,"icon":"plug","library":"lucide","fill":"$op-text-2"} |
-| O6oGe / ah2Ps | text / L | {"name":"L","content":"Integrations"} | {"fill":"$op-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
-| q4HuZN / R13yEQ | frame / Tab Notifications | {"name":"Tab Notifications"} | {"width":"fill_container","height":36,"cornerRadius":4,"gap":12,"alignItems":"center"} |
-| O8rDvK / q4HuZN | frame / Icon Slot | {"name":"Icon Slot"} | {"width":36,"height":36,"justifyContent":"center","alignItems":"center"} |
-| A6dmW / O8rDvK | icon / I | {"name":"I"} | {"width":16,"height":16,"icon":"bell","library":"lucide","fill":"$op-text-2"} |
-| KGE3D / q4HuZN | text / L | {"name":"L","content":"Notifications"} | {"fill":"$op-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
 | TKbCq / R13yEQ | frame / Divider | {"name":"Divider"} | {"width":"fill_container","layout":"vertical","padding":[12,0]} |
 | lz1L4 / TKbCq | rectangle / Line | {"name":"Line"} | {"fill":"$op-border","width":"fill_container","height":1} |
 | zUWnS / R13yEQ | frame / Back to App | {"name":"Back to App"} | {"width":"fill_container","height":36,"cornerRadius":4,"gap":12,"alignItems":"center"} |

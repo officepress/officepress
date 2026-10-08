@@ -1,0 +1,13 @@
+model ComponentConversation {
+  id String @id
+  appId String
+  payload Hash
+  revision Integer @default(0)
+}
+model ComponentConversationState {
+  id String @id
+  appId String
+  ownerId String
+  payload Hash
+  revision Integer @default(0)
+}

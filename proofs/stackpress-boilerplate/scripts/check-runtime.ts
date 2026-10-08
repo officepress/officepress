@@ -16,7 +16,7 @@ async function main() {
   const server = await bootstrap(config);
   try {
     const disabled = new Set((process.env.OFFICEPRESS_DISABLED_PLUGINS || '').split(','));
-    const enabled = !['store', 'data', 'stackpress-schema', 'notes'].some(name => disabled.has(name));
+    const enabled = !['store', 'stackpress-schema', 'notes'].some(name => disabled.has(name));
     await checkNotes(server, enabled);
     if (process.argv[2] === 'init') {
       assert.equal(process.env.OFFICEPRESS_DISPOSABLE_PROOF, '1', 'Initialization is proof-only');
@@ -26,8 +26,8 @@ async function main() {
       const client = await server.plugin<ClientPlugin>('client')();
       assert.deepEqual(Object.keys(client.model), ['note']);
       await client.scripts.install(engine);
-      const created = await server.resolve('note-create', { id: 'proof-note', title: 'Persisted OfficePress proof', state: 'DRAFT' });
-      assert.equal(created.code, 200, JSON.stringify(created));
+      const populated = await server.resolve('populate');
+      assert.equal(populated.code, 200, JSON.stringify(populated));
       const invalid = await server.resolve('note-create', { id: 'invalid-note', title: '' });
       assert.notEqual(invalid.code, 200, 'Generated validation must reject an empty title');
     }

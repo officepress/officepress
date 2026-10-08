@@ -1,0 +1,13 @@
+model ShellItem {
+ id String @id
+ appId String
+ ownerId String
+ title String
+ revision Integer @default(0)
+}
+model ShellOperation {
+ id String @id
+ appId String
+ ownerId String
+ payload Hash
+}

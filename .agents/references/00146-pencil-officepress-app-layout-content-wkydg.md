@@ -1,4 +1,4 @@
-# OfficePress App Layout / Section · Account & app settings / Screens / Row · Updates / Shot · App settings · Updates · Up to date / App settings · Updates · Up to date / Main / Body / Content
+# OfficePress App Layout / Section · Account & app settings / Screens / Row · About / Shot · App settings · About · Up to date / App settings · About · Up to date / Main / Body / Content
 
 Owner: [Pencil design map](00075-officepress-pencil-design-map.md) — load when locating the screen, component or adjacent section.
 
@@ -14,7 +14,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | P84vMY / WkyDg | frame / Column | {"name":"Column"} | {"width":760,"layout":"vertical","gap":24} |
 | IIP9P / P84vMY | frame / Section · Version | {"name":"Section · Version"} | {"width":"fill_container","fill":"$op-surface","cornerRadius":12,"stroke":"$op-border","effect":[{"type":"shadow","shadowType":"outer","color":"$op-shadow-edge","blur":1},{"type":"shadow","shadowType":"outer","color":"$op-shadow-soft","offset":{"x":0,"y":1},"blur":3}],"layout":"vertical"} |
 | hOeDF / IIP9P | frame / Head | {"name":"Head"} | {"width":"fill_container","stroke":"$op-border","strokeWidth":{"bottom":1},"layout":"vertical","gap":4,"padding":[20,24]} |
-| g5RnK / hOeDF | text / Title | {"name":"Title","content":"Updates"} | {"fill":"$op-text","lineHeight":1.25,"fontFamily":"$op-font","fontSize":16,"fontWeight":"700"} |
+| g5RnK / hOeDF | text / Title | {"name":"Title","content":"Version and updates"} | {"fill":"$op-text","lineHeight":1.25,"fontFamily":"$op-font","fontSize":16,"fontWeight":"700"} |
 | MnXgc / hOeDF | text / Desc | {"name":"Desc","content":"Keep Inbox current with fixes and new features. Updates install on your server and apply to everyone in this workspace."} | {"fill":"$op-text-2","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
 | F6Kig / IIP9P | frame / Body | {"name":"Body"} | {"width":"fill_container","layout":"vertical","gap":20,"padding":24} |
 | qvYze / F6Kig | frame / Current Version | {"name":"Current Version"} | {"width":"fill_container","gap":12,"alignItems":"center"} |
@@ -128,5 +128,5 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | vvG4o / EdwXO | frame / Button · Show older versions | {"name":"Button · Show older versions"} | {"height":36,"fill":"$op-surface","cornerRadius":4,"stroke":"$op-border-strong","strokeWidth":1,"gap":8,"padding":[0,16],"alignItems":"center"} |
 | gKtbV / vvG4o | text / Label | {"name":"Label","content":"Show older versions"} | {"fill":"$op-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"700"} |
 | H5QX3t / tYgFi | frame / Caption | {"name":"Caption"} | {"width":1440,"layout":"vertical","gap":4} |
-| R2mre / H5QX3t | text / Label | {"name":"Label","content":"App settings · Updates — up to date"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":16,"fontWeight":"700"} |
+| R2mre / H5QX3t | text / Label | {"name":"Label","content":"App settings · About — up to date"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":16,"fontWeight":"700"} |
 | moumx / H5QX3t | text / Note | {"name":"Note","content":"No newer version: the update card, Update button and terminal guide link are hidden, and the nav badge clears. “Check for updates” stays available; while it runs the button shows a spinner and “Checking…”."} | {"fill":"$muted","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$font-display","fontSize":13,"fontWeight":"normal"} |

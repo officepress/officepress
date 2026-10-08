@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-05T06:27:40.000Z",
+  "scope": "About and theme contracts; isolated empty PGlite database",
+  "checks": [
+    "Publisher section preserved exactly with nested headings and fenced commands",
+    "Empty/missing/fenced-only Upgrade Instructions remain unavailable",
+    "Equal/older/newer/invalid/prerelease metadata classified without invented instructions",
+    "All eight exact family palettes meet body/accent contrast checks",
+    "Invalid theme values rejected with derived legible foregrounds",
+    "Theme saves are app-scoped and stale revisions cannot overwrite or recreate"
+  ],
+  "status": "passed",
+  "database": "/tmp/officepress-r004-p5rjGX"
+}

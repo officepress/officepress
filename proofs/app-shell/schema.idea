@@ -1,0 +1,5 @@
+use "./plugins/auth/schema.idea"
+use "./plugins/settings/theme/schema.idea"
+use "./plugins/app/schema.idea"
+use "./.fixtures/actions/schema.idea"
+use "./plugins/agent/schema.idea"

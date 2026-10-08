@@ -1,0 +1,9 @@
+{
+  "name": "@agent-native/core",
+  "version": "0.198.7",
+  "size": 9067956,
+  "unpackedSize": 30012411,
+  "shasum": "cfc4fbf69a08d6b9c507da8a51d05dda92025fba",
+  "integrity": "sha512-DlvdTBhAWS5NqAUL7PcNlY31JDi2RhBDFyivlQqcdhHzYEmqc1dSa+MAiqU0l2muhC6V7Dg1Gg+wWHNL4wfT+Q==",
+  "entryCount": 3978
+}

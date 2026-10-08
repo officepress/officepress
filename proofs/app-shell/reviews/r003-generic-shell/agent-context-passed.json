@@ -1,0 +1,191 @@
+{
+  "started": "2026-10-05T06:05:53.879Z",
+  "node": "v24.21.0",
+  "database": ".data/agent-context-fsGJFx",
+  "checks": [
+    {
+      "name": "Agent registers without action plugin or sample records",
+      "passed": true
+    },
+    {
+      "name": "App-context agent retains identity, CSRF and configured-model guards",
+      "passed": true
+    },
+    {
+      "name": "Real google/gemini-3.5-flash-lite reads app context; replay is stable and runs stay account-scoped",
+      "passed": true
+    },
+    {
+      "name": "Real openai/gpt-4o-mini reads app context; replay is stable and runs stay account-scoped",
+      "passed": true
+    },
+    {
+      "name": "Both real model runs leave the domain record store empty",
+      "passed": true
+    }
+  ],
+  "models": [
+    {
+      "requested": "google/gemini-3.5-flash-lite",
+      "calls": [
+        {
+          "id": "gen-1791180356-WLzFePLeGUnV1XiU97Vd",
+          "model": "google/gemini-3.5-flash-lite",
+          "provider": "Google",
+          "durationMs": 1408,
+          "usage": {
+            "prompt_tokens": 131,
+            "completion_tokens": 10,
+            "total_tokens": 141,
+            "cost": 0.0000643,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0000643,
+              "upstream_inference_prompt_cost": 0.0000393,
+              "upstream_inference_completions_cost": 0.000025
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "gen-1791180357-bAt7njSqhJOtR1PW6SgW",
+          "model": "google/gemini-3.5-flash-lite",
+          "provider": "Google",
+          "durationMs": 1082,
+          "usage": {
+            "prompt_tokens": 193,
+            "completion_tokens": 43,
+            "total_tokens": 236,
+            "cost": 0.0001654,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0001654,
+              "upstream_inference_prompt_cost": 0.0000579,
+              "upstream_inference_completions_cost": 0.0001075
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        }
+      ],
+      "context": {
+        "name": "OfficePress",
+        "version": "0.1.0",
+        "features": {
+          "agent": true,
+          "notifications": true,
+          "about": true,
+          "theme": true
+        },
+        "settings": {
+          "account": "/auth/account",
+          "about": "/settings/about",
+          "theme": "/settings/theme"
+        },
+        "permissions": "App information only. Domain actions are supplied by the adopting app."
+      },
+      "state": "done"
+    },
+    {
+      "requested": "openai/gpt-4o-mini",
+      "calls": [
+        {
+          "id": "gen-1791180358-FlolXrOjSETiDfIdyKsm",
+          "model": "openai/gpt-4o-mini",
+          "provider": "OpenAI",
+          "durationMs": 725,
+          "usage": {
+            "prompt_tokens": 148,
+            "completion_tokens": 10,
+            "total_tokens": 158,
+            "cost": 0.0000282,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0000282,
+              "upstream_inference_prompt_cost": 0.0000222,
+              "upstream_inference_completions_cost": 0.000006
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "gen-1791180359-p0hyYhRB3dZbbnhXJLkR",
+          "model": "openai/gpt-4o-mini",
+          "provider": "OpenAI",
+          "durationMs": 1058,
+          "usage": {
+            "prompt_tokens": 235,
+            "completion_tokens": 47,
+            "total_tokens": 282,
+            "cost": 0.00006345,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.00006345,
+              "upstream_inference_prompt_cost": 0.00003525,
+              "upstream_inference_completions_cost": 0.0000282
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        }
+      ],
+      "context": {
+        "name": "OfficePress",
+        "version": "0.1.0",
+        "features": {
+          "agent": true,
+          "notifications": true,
+          "about": true,
+          "theme": true
+        },
+        "settings": {
+          "account": "/auth/account",
+          "about": "/settings/about",
+          "theme": "/settings/theme"
+        },
+        "permissions": "App information only. Domain actions are supplied by the adopting app."
+      },
+      "state": "done"
+    }
+  ],
+  "status": "passed",
+  "finished": "2026-10-05T06:06:00.213Z"
+}

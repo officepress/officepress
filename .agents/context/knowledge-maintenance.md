@@ -28,6 +28,8 @@ The second script reconstructs source content from local reference blocks, check
 
 ## Evidence and decisions
 
+- [Current native design revision and recovery](../references/00360-officepress-about-menu-revision.md) — load when comparing About with historical Updates examples or checking prior design-record preservation.
+
 - [UI source archive and documentation verification](../references/00359-officepress-ui-source-resources.md) — load for the 2026-10-02 archive scope and full design-guide/Markdown coverage.
 
 - [User corrections and source reconciliation](../references/00078-officepress-source-decisions.md) — load when deciding which source wins or interpreting a historical example.
@@ -40,3 +42,9 @@ The second script reconstructs source content from local reference blocks, check
 ## Stackpress source coverage
 
 Use the [Stackpress handbook](stackpress.md) for accepted implementation rules and full local source retrieval. Run `python3 .agents/scripts/verify-stackpress-ingestion.py` alongside the existing checks after changing these references. The source manifest records exact recovery hashes and explicit scope dispositions.
+
+## MCP index updates require an explicit request
+
+User direction on 2026-10-02: do not update the MCP index unless the user says to do so. Editing knowledge, researching, validating, committing or pushing does not authorize indexing. Leave the published snapshot stale when source documents change; local Markdown remains authoritative.
+
+Do not run index/rebuild/force commands or start/restart the KB server as a routine follow-up: the current server startup can rebuild, and watch mode can refresh on file changes. Do not enable watch mode without explicit authorization for automatic updates. If serving work would trigger indexing, explain that dependency before proceeding. This project policy takes precedence over generic indexing advice in the [Serve KB workflow](../workflows/serve-kb.md). The deterministic workspace and ingestion validators are still required and do not publish an index.

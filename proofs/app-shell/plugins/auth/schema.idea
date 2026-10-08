@@ -1,0 +1,14 @@
+// Reuse the exact framework identity models; do not create competing copies.
+use "../../node_modules/stackpress-session/schema.idea"
+
+// App-owned, expiring one-use grants around the framework's challenge handlers.
+model IdentityChallenge {
+  id String @id
+  kind String
+  authId String
+  profileId String
+  challenge String
+  issued Datetime
+  expires Datetime
+  used Boolean @default(false)
+}

@@ -9,6 +9,19 @@ Owner: OfficePress knowledge-base context. Load this reference when sources disa
 3. **Updates:** “yes this is correct. update commands should be relevant to the version being upgraded.” Sample versions, dates, changelogs, timing, shell commands and installation methods are demonstration content. A real upgrade guide must be specific to installed version, target version and actual installation method, include backup, version check and rollback, and never run copied demo commands.
 4. **Design source:** the user supplied `/Users/cblanquera/Documents/officepress.pen` and identified `https://www.pen.dev` as its editor. The native file is now included locally. Its text, variables, themes, reusable-component identities and node properties are extracted into references; visual geometry remains in the native resource and SVG/PNG resources. No remote design service is needed to read the extracted knowledge.
 
+## User decisions accepted on 2026-10-02
+
+- App Settings has **About** and **Theme**. About replaces Updates and covers version, updates and change log. The user's menu cleanup supersedes older extra-tab examples without removing the corresponding global header controls.
+- Agent and Notification settings belong in Stackpress configuration. The schema/API keys and adapter behavior are proof work, not established built-ins.
+- Upgrade proof scope is version checks and instructions for the installed version, not app-executed upgrades.
+- Agent-native package adoption versus a Stackpress-native adaptation remains undecided: the user said “im actually not sure...”. Retain this as a spec research/proof question, not accepted architecture.
+
+See the [current design revision and exact recovery](00360-officepress-about-menu-revision.md) when applying these corrections or comparing earlier source records.
+
+## User decisions accepted on 2026-10-05
+
+Use GitHub Releases. Each release must include an **Upgrade Instructions** section. The app reiterates that section faithfully; it does not generate, paraphrase or append upgrade steps. This supersedes a separate JSON release manifest and app-authored installation-recipe engine. Earlier backup/version-verification/rollback guidance concerns content authored by release publishers; it is not permission for the app to supplement the source notes. Preserve source templates unchanged as history. Exact reply: [Q-005a in the grill ledger](../specs/00001-reusable-app-shell-and-component-proofs/questions.md).
+
 ## Source precedence
 
 - Latest explicit user decisions and product descriptions define the accepted meaning and scope.

@@ -10,7 +10,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 
 | ID / parent | Type / name | Exact text, context and flags | Layout and styling properties |
 |---|---|---|---|
-| fgzpp / root | frame / OfficePress Common Modules | {"name":"OfficePress Common Modules"} | {"x":0,"y":13871,"width":3080,"fill":"$bg","layout":"vertical","gap":96,"padding":80} |
+| fgzpp / root | frame / OfficePress Common Modules | {"name":"OfficePress Common Modules"} | {"x":-3828,"y":5823,"width":3080,"fill":"$bg","layout":"vertical","gap":96,"padding":80} |
 | VxgGf / fgzpp | frame / Header | {"name":"Header"} | {"width":"fill_container","layout":"vertical","gap":16} |
 | zOZ1D / VxgGf | text / Eyebrow | {"name":"Eyebrow","content":"OFFICEPRESS  /  COMMON MODULES  /  FROM THE INBOX, HRIS, ORDER PROCESSING AND TICKET TRACKER WIREFRAMES"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":12,"fontWeight":"normal","letterSpacing":1.5} |
 | OMFE3 / VxgGf | text / Title | {"name":"Title","content":"Build it once. Theme it per app."} | {"fill":"$ink","fontFamily":"$font-display","fontSize":56,"fontWeight":"700","letterSpacing":-2} |

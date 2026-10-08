@@ -1,0 +1,655 @@
+{
+  "id": "2026-10-05T04-21-33-209Z",
+  "startedAt": "2026-10-05T04:21:33.210Z",
+  "node": "v24.21.0",
+  "scope": "P-00 portable agent-native host SDK versus Stackpress direct actions; full embedded runtime not integrated",
+  "checks": [
+    {
+      "name": "same-caller permissions",
+      "passed": true
+    },
+    {
+      "name": "company boundary",
+      "passed": true
+    },
+    {
+      "name": "stale version rejection",
+      "passed": true
+    },
+    {
+      "name": "duplicate/lost-reply replay",
+      "passed": true
+    },
+    {
+      "name": "operation reuse rejection",
+      "passed": true
+    },
+    {
+      "name": "cancel-after-commit explicit Undo",
+      "passed": true
+    },
+    {
+      "name": "restart retained receipts",
+      "passed": true
+    },
+    {
+      "name": "Stackpress 0.10.8 HTTP runtime started",
+      "passed": true
+    },
+    {
+      "name": "actual published SDK lists only the three allowed actions",
+      "passed": true
+    },
+    {
+      "name": "context is explicit route/resource/record without credentials",
+      "passed": true
+    },
+    {
+      "name": "UI reaches shared backend action",
+      "passed": true
+    },
+    {
+      "name": "UI Undo reaches shared backend action",
+      "passed": true
+    },
+    {
+      "name": "stackpress-native: stale context rejected",
+      "passed": true
+    },
+    {
+      "name": "stackpress-native: lost reply/duplicate does not repeat mutation",
+      "passed": true
+    },
+    {
+      "name": "stackpress-native: explicit Undo restores prior title",
+      "passed": true
+    },
+    {
+      "name": "real agent cancellation after commit retains mutation card",
+      "passed": true
+    },
+    {
+      "name": "stackpress-native: real google/gemini-3.5-flash-lite read and mutation",
+      "passed": true
+    },
+    {
+      "name": "stackpress-native: Undo after google/gemini-3.5-flash-lite",
+      "passed": true
+    },
+    {
+      "name": "stackpress-native: real openai/gpt-4o-mini read and mutation",
+      "passed": true
+    },
+    {
+      "name": "stackpress-native: Undo after openai/gpt-4o-mini",
+      "passed": true
+    },
+    {
+      "name": "agent-native-portable-sdk: stale context rejected",
+      "passed": true
+    },
+    {
+      "name": "agent-native-portable-sdk: lost reply/duplicate does not repeat mutation",
+      "passed": true
+    },
+    {
+      "name": "agent-native-portable-sdk: explicit Undo restores prior title",
+      "passed": true
+    },
+    {
+      "name": "agent-native-portable-sdk: real google/gemini-3.5-flash-lite read and mutation",
+      "passed": true
+    },
+    {
+      "name": "agent-native-portable-sdk: Undo after google/gemini-3.5-flash-lite",
+      "passed": true
+    },
+    {
+      "name": "agent-native-portable-sdk: real openai/gpt-4o-mini read and mutation",
+      "passed": true
+    },
+    {
+      "name": "agent-native-portable-sdk: Undo after openai/gpt-4o-mini",
+      "passed": true
+    },
+    {
+      "name": "SDK cannot elevate viewer session",
+      "passed": true
+    },
+    {
+      "name": "native action cannot elevate viewer session",
+      "passed": true
+    },
+    {
+      "name": "HTTP rejects wrong origin and missing CSRF",
+      "passed": true
+    },
+    {
+      "name": "HTTP rejects missing caller session",
+      "passed": true
+    },
+    {
+      "name": "SDK rejects wrong origin and wrong window source",
+      "passed": true
+    },
+    {
+      "name": "SDK default host commands disabled",
+      "passed": true
+    },
+    {
+      "name": "SDK stop removes message listener",
+      "passed": true
+    },
+    {
+      "name": "SDK bridge restarts",
+      "passed": true
+    },
+    {
+      "name": "browser has no unhandled errors",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "server shutdown closes listener",
+      "passed": true
+    },
+    {
+      "name": "runtime restart preserves action state",
+      "passed": true
+    },
+    {
+      "name": "dependent routes absent with domain plugin disabled",
+      "passed": true
+    },
+    {
+      "name": "dependent runtime absent with domain disabled",
+      "passed": true
+    }
+  ],
+  "models": [
+    {
+      "candidate": "stackpress-native",
+      "model": "google/gemini-3.5-flash-lite",
+      "passed": true,
+      "elapsedMs": 3094,
+      "text": "Stopped. Completed actions remain recorded.",
+      "cards": [
+        {
+          "operationId": "cb283669-ac5b-4e1b-b612-d3e41bba91da:0",
+          "name": "read_item",
+          "input": {},
+          "result": {
+            "id": "proof-item",
+            "title": "Planning notes",
+            "version": 5,
+            "companyId": "officepress-proof"
+          },
+          "state": "done"
+        },
+        {
+          "operationId": "cb283669-ac5b-4e1b-b612-d3e41bba91da:1",
+          "name": "rename_item",
+          "input": {
+            "expectedVersion": 5,
+            "title": "Reviewed with agent"
+          },
+          "result": {
+            "id": "proof-item",
+            "title": "Reviewed with agent",
+            "version": 6,
+            "companyId": "officepress-proof",
+            "operationId": "cb283669-ac5b-4e1b-b612-d3e41bba91da:1",
+            "replayed": false
+          },
+          "state": "done"
+        }
+      ],
+      "calls": [
+        {
+          "id": "gen-1791174095-SRsWsA3vTohByhMZsxWy",
+          "model": "google/gemini-3.5-flash-lite",
+          "usage": {
+            "prompt_tokens": 207,
+            "completion_tokens": 10,
+            "total_tokens": 217,
+            "cost": 8.71e-05,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 8.71e-05,
+              "upstream_inference_prompt_cost": 6.21e-05,
+              "upstream_inference_completions_cost": 2.5e-05
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "gen-1791174097-5AxZFW8WPghoH82PsqT8",
+          "model": "google/gemini-3.5-flash-lite",
+          "usage": {
+            "prompt_tokens": 236,
+            "completion_tokens": 23,
+            "total_tokens": 259,
+            "cost": 0.0001283,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0001283,
+              "upstream_inference_prompt_cost": 7.08e-05,
+              "upstream_inference_completions_cost": 5.75e-05
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        }
+      ],
+      "cancelled": true
+    },
+    {
+      "candidate": "stackpress-native",
+      "model": "openai/gpt-4o-mini",
+      "passed": true,
+      "elapsedMs": 2634,
+      "text": "The item has been successfully renamed to \"Reviewed with agent.\"",
+      "cards": [
+        {
+          "operationId": "d1d9bca2-582c-4867-a592-5356f1094561:0",
+          "name": "read_item",
+          "input": {},
+          "result": {
+            "id": "proof-item",
+            "title": "Planning notes",
+            "version": 7,
+            "companyId": "officepress-proof"
+          },
+          "state": "done"
+        },
+        {
+          "operationId": "d1d9bca2-582c-4867-a592-5356f1094561:1",
+          "name": "rename_item",
+          "input": {
+            "title": "Reviewed with agent",
+            "expectedVersion": 7
+          },
+          "result": {
+            "id": "proof-item",
+            "title": "Reviewed with agent",
+            "version": 8,
+            "companyId": "officepress-proof",
+            "operationId": "d1d9bca2-582c-4867-a592-5356f1094561:1",
+            "replayed": false
+          },
+          "state": "done"
+        }
+      ],
+      "calls": [
+        {
+          "id": "gen-1791174098-bfJKPb571ptdBjmpuJua",
+          "model": "openai/gpt-4o-mini",
+          "usage": {
+            "prompt_tokens": 215,
+            "completion_tokens": 10,
+            "total_tokens": 225,
+            "cost": 3.825e-05,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 3.825e-05,
+              "upstream_inference_prompt_cost": 3.225e-05,
+              "upstream_inference_completions_cost": 6e-06
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "gen-1791174099-jhv1VGYJvYXABvzeUxpe",
+          "model": "openai/gpt-4o-mini",
+          "usage": {
+            "prompt_tokens": 255,
+            "completion_tokens": 21,
+            "total_tokens": 276,
+            "cost": 5.085e-05,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 5.085e-05,
+              "upstream_inference_prompt_cost": 3.825e-05,
+              "upstream_inference_completions_cost": 1.26e-05
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "gen-1791174100-0L2GCHgPEBO8b5ZLYOBB",
+          "model": "openai/gpt-4o-mini",
+          "usage": {
+            "prompt_tokens": 340,
+            "completion_tokens": 13,
+            "total_tokens": 353,
+            "cost": 5.88e-05,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 5.88e-05,
+              "upstream_inference_prompt_cost": 5.1e-05,
+              "upstream_inference_completions_cost": 7.8e-06
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        }
+      ],
+      "cancelled": false
+    },
+    {
+      "candidate": "agent-native-portable-sdk",
+      "model": "google/gemini-3.5-flash-lite",
+      "passed": true,
+      "elapsedMs": 3220,
+      "text": "The item was read (title: \"Planning notes\", version: 11) and successfully renamed to \"Reviewed with agent\" (new version: 12).",
+      "cards": [
+        {
+          "operationId": "44ceedae-4a23-4f3e-ae4f-299583c2d0b1:0",
+          "name": "read_item",
+          "input": {},
+          "result": {
+            "id": "proof-item",
+            "title": "Planning notes",
+            "version": 11,
+            "companyId": "officepress-proof"
+          },
+          "state": "done"
+        },
+        {
+          "operationId": "44ceedae-4a23-4f3e-ae4f-299583c2d0b1:1",
+          "name": "rename_item",
+          "input": {
+            "expectedVersion": 11,
+            "title": "Reviewed with agent"
+          },
+          "result": {
+            "id": "proof-item",
+            "title": "Reviewed with agent",
+            "version": 12,
+            "companyId": "officepress-proof",
+            "operationId": "44ceedae-4a23-4f3e-ae4f-299583c2d0b1:1",
+            "replayed": false
+          },
+          "state": "done"
+        }
+      ],
+      "calls": [
+        {
+          "id": "gen-1791174101-wYW318cguf1KVxZsbRWU",
+          "model": "google/gemini-3.5-flash-lite",
+          "usage": {
+            "prompt_tokens": 207,
+            "completion_tokens": 10,
+            "total_tokens": 217,
+            "cost": 8.71e-05,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 8.71e-05,
+              "upstream_inference_prompt_cost": 6.21e-05,
+              "upstream_inference_completions_cost": 2.5e-05
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "gen-1791174102-kAdy0qTs0YfV914vH6KB",
+          "model": "google/gemini-3.5-flash-lite",
+          "usage": {
+            "prompt_tokens": 237,
+            "completion_tokens": 24,
+            "total_tokens": 261,
+            "cost": 0.0001311,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0001311,
+              "upstream_inference_prompt_cost": 7.11e-05,
+              "upstream_inference_completions_cost": 6e-05
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "gen-1791174103-e7gbEa6pCv6R43lEXOSG",
+          "model": "google/gemini-3.5-flash-lite",
+          "usage": {
+            "prompt_tokens": 314,
+            "completion_tokens": 34,
+            "total_tokens": 348,
+            "cost": 0.0001792,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0.0001792,
+              "upstream_inference_prompt_cost": 9.42e-05,
+              "upstream_inference_completions_cost": 8.5e-05
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        }
+      ],
+      "cancelled": false
+    },
+    {
+      "candidate": "agent-native-portable-sdk",
+      "model": "openai/gpt-4o-mini",
+      "passed": true,
+      "elapsedMs": 2506,
+      "text": "The item has been successfully renamed to \"Reviewed with agent.\"",
+      "cards": [
+        {
+          "operationId": "76463811-12f0-4bcb-8c4d-2ec1d7930293:0",
+          "name": "read_item",
+          "input": {},
+          "result": {
+            "id": "proof-item",
+            "title": "Planning notes",
+            "version": 13,
+            "companyId": "officepress-proof"
+          },
+          "state": "done"
+        },
+        {
+          "operationId": "76463811-12f0-4bcb-8c4d-2ec1d7930293:1",
+          "name": "rename_item",
+          "input": {
+            "title": "Reviewed with agent",
+            "expectedVersion": 13
+          },
+          "result": {
+            "id": "proof-item",
+            "title": "Reviewed with agent",
+            "version": 14,
+            "companyId": "officepress-proof",
+            "operationId": "76463811-12f0-4bcb-8c4d-2ec1d7930293:1",
+            "replayed": false
+          },
+          "state": "done"
+        }
+      ],
+      "calls": [
+        {
+          "id": "gen-1791174104-u28BltybbNrGcG9VxI9l",
+          "model": "openai/gpt-4o-mini",
+          "usage": {
+            "prompt_tokens": 215,
+            "completion_tokens": 10,
+            "total_tokens": 225,
+            "cost": 3.825e-05,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 3.825e-05,
+              "upstream_inference_prompt_cost": 3.225e-05,
+              "upstream_inference_completions_cost": 6e-06
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "gen-1791174105-3EoBWE0WQZqq6KivFsmK",
+          "model": "openai/gpt-4o-mini",
+          "usage": {
+            "prompt_tokens": 255,
+            "completion_tokens": 21,
+            "total_tokens": 276,
+            "cost": 5.085e-05,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 5.085e-05,
+              "upstream_inference_prompt_cost": 3.825e-05,
+              "upstream_inference_completions_cost": 1.26e-05
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        },
+        {
+          "id": "gen-1791174105-QFNh0EdCa3maEIykY4j4",
+          "model": "openai/gpt-4o-mini",
+          "usage": {
+            "prompt_tokens": 342,
+            "completion_tokens": 13,
+            "total_tokens": 355,
+            "cost": 5.91e-05,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 5.91e-05,
+              "upstream_inference_prompt_cost": 5.13e-05,
+              "upstream_inference_completions_cost": 7.8e-06
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          }
+        }
+      ],
+      "cancelled": false
+    }
+  ],
+  "failures": [],
+  "sdk": {
+    "name": "@agent-native/core",
+    "version": "0.198.7",
+    "size": 9067956,
+    "unpackedSize": 30012411,
+    "shasum": "cfc4fbf69a08d6b9c507da8a51d05dda92025fba",
+    "integrity": "sha512-DlvdTBhAWS5NqAUL7PcNlY31JDi2RhBDFyivlQqcdhHzYEmqc1dSa+MAiqU0l2muhC6V7Dg1Gg+wWHNL4wfT+Q==",
+    "entryCount": 3978
+  },
+  "browser": "154.0.8037.93",
+  "finishedAt": "2026-10-05T04:21:48.568Z",
+  "passed": true,
+  "fingerprints": {
+    "package.json": "e87635f4bb1a052d05fa12acdd33552c5b57d27883f501f549589dfb6e16908c",
+    "package-lock.json": "df3f06514f6d39a89bae2e355dfc874e4700330f102df031b30d64e4b8e5696e",
+    "plugins/agent-runtime/openrouter.ts": "0cf51132081d67896e4c10aeaf5f5aee1c9ba056709b174ab3fc68d25a72617d",
+    "plugins/agent-domain/store.ts": "30c598f28cc045eef64c522be1fa9cf8121e759d65011056816e111b5df48331",
+    "plugins/bridge-host/plugin.ts": "fe9722f9d287d2920cdb1293705ba09e5ef9f0bbd7c556dd7b984ab6c0fada58",
+    "plugins/bridge-host/pages.ts": "9dc69d2d778edf726a5d3c3eb334d9692092265218fc0ac42eb0b26c5f9e03df",
+    "scripts/prove.ts": "518e605a6eca664ae3b6d520bcec07c780e8dc786df38de35a415fa891b2482b"
+  },
+  "recommendation": "Use the Stackpress-native shared action runner for P-01. The actual portable SDK bridge works independently when origin/source and backend authority are explicit, but adds a frame boundary without removing the need for a host-owned model runner. Full embedded framework integration remains unproved and has baseline peer/runtime differences."
+}

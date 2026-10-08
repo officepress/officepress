@@ -6,7 +6,7 @@ Keep common definitions with separate dev/build/live overrides. Validate environ
 
 The baseline's custom Ingest/Reactus shell owns rendering. Do not also load the aggregate view plugin into it. Compose needed framework packages explicitly and guard their integration when required services are absent.
 
-Supply client output/module/package/tsconfig and root Idea input. The researched generator reads `cli.idea` and explicit input arguments; don't assume the differently named public type is the implementation. Keep paths anchored to the app root and storage separate from disposable output.
+Supply client output/module/package/tsconfig and root Idea input. The researched generator reads `cli.idea` and explicit input arguments; don't assume the differently named public type is the implementation. Keep paths anchored to the app root. Put disposable development PGlite data in `.build/database/`; keep durable production storage and migration history outside disposable build output.
 
 Project only safe values into browser props. Do not serialize request cookies, authorization headers, database config or full private sessions. Authorization must protect each exposed HTTP/event/job boundary; `ctx.resolve()` is not proof of access control.
 

@@ -102,6 +102,39 @@ def verify_variables(root: Path, manifest: dict) -> None:
     assert sha(canonical(full)) == manifest['design']['variables_sha256'], 'Variable definitions changed'
 
 
+def verify_design_history(root: Path, manifest: dict, current: list[dict]) -> int:
+    """Recover prior extraction revisions without making them current knowledge."""
+    nodes = {n['id']: n for n in current}
+    native_hash = next(r['sha256'] for r in manifest['resources'] if r['source'] == 'officepress.pen')
+    recovered_count = 0
+    for revision in reversed(manifest.get('design_history', [])):
+        assert revision['after_native_sha256'] == native_hash, 'Broken design revision chain'
+        text = (root / revision['path']).read_text()
+        body = text.split('<!-- officepress-design-history:start -->\n~~~~jsonl\n', 1)[1].split('~~~~\n<!-- officepress-design-history:end -->', 1)[0]
+        records = [json.loads(line) for line in body.splitlines() if line]
+        assert sha(canonical(records)) == revision['sha256'], 'Prior design records changed'
+        assert sum(r['kind'] == 'changed' for r in records) == revision['changed']
+        assert sum(r['kind'] == 'removed' for r in records) == revision['removed']
+        seen = set()
+        for entry in records:
+            node = entry['node']
+            identity = node['id']
+            assert identity not in seen, 'Duplicate historical design node'
+            seen.add(identity)
+            assert entry['kind'] in ('changed', 'removed'), 'Unknown historical node disposition'
+            assert (identity in nodes) == (entry['kind'] == 'changed'), 'Historical node disposition mismatch'
+            nodes[identity] = node
+        for identity in revision['added_ids']:
+            assert identity in nodes and identity not in seen, 'Invalid added-node reversal'
+            del nodes[identity]
+        prior = sorted(nodes.values(), key=lambda n: n['id'])
+        assert len(prior) == revision['before_node_count'], 'Prior design count mismatch'
+        assert sha(canonical(prior)) == revision['before_nodes_sha256'], 'Prior extraction did not recover exactly'
+        native_hash = revision['before_native_sha256']
+        recovered_count += 1
+    return recovered_count
+
+
 def verify_source_archives(root: Path, manifest: dict, recovered: dict[str, bytes]) -> set[str]:
     """Keep explicitly requested file copies identical to complete KB source content."""
     expected = {identity for identity in recovered
@@ -173,7 +206,7 @@ def main() -> None:
         assert sha(data) == entry['sha256'] and len(data) == entry['bytes'], 'Resource mismatch: ' + entry['path']
         assert Path(entry['path']).suffix in ('.svg', '.png', '.pen'), 'Unexpected textual resource'
         if args.compare_originals:
-            source = Path('/Users/cblanquera/Documents/officepress.pen') if entry['source'] == 'officepress.pen' else Path('/Users/cblanquera/Documents/officepress-kit') / entry['source'].removeprefix('kit/')
+            source = (root.parent / entry['provenance']) if entry.get('provenance') else (Path('/Users/cblanquera/Documents/officepress.pen') if entry['source'] == 'officepress.pen' else Path('/Users/cblanquera/Documents/officepress-kit') / entry['source'].removeprefix('kit/'))
             # Treat the native file as opaque bytes; semantic extraction uses the design API.
             with source.open('rb') as stream:
                 assert hashlib.file_digest(stream, 'sha256').hexdigest() == entry['sha256'], 'Original asset drift: ' + entry['source']
@@ -181,7 +214,8 @@ def main() -> None:
     favicon_paths = verify_generated_favicons(root, manifest)
     for entry in manifest['drafts']:
         assert sha((root / entry['path']).read_bytes()) == entry['sha256'], 'Accepted input record changed: ' + entry['path']
-    design_nodes(root, manifest)
+    current_nodes = design_nodes(root, manifest)
+    history_count = verify_design_history(root, manifest, current_nodes)
     verify_variables(root, manifest)
     # Every meaningful kit file has one disposition; OS metadata is explicit.
     ids = [s['id'] for s in manifest['sources']] + [s['source'] for s in manifest['resources']] + [s['source'] for s in manifest['excluded']]
@@ -207,6 +241,7 @@ def main() -> None:
     print(f'PASS: {len(recovered)} exact text/code sources; {len(manifest["resources"])} exact native/visual resources; {len(manifest["excluded"])} explicit metadata exclusions.')
     print(f'PASS: {len(archive_paths)} requested CSS/JS/template archives match their complete reference content.')
     print(f'PASS: {len(favicon_paths)} derived 16x16 ICO favicons match their recorded sources and hashes.')
+    print(f'PASS: {history_count} prior design extraction revisions recover exactly from local history.')
     d = manifest['design']
     print(f'PASS: {d["node_count"]} design nodes, {d["text_node_count"]} content nodes, {d["variable_count"]} variables; 23 complete user product descriptions.')
     print('Offline verification complete; no external sources or network required.')

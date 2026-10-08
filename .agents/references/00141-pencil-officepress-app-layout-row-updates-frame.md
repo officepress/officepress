@@ -1,4 +1,4 @@
-# OfficePress App Layout / Section · Account & app settings / Screens / Row · Updates — frame
+# OfficePress App Layout / Section · Account & app settings / Screens / Row · About — frame
 
 Owner: [Pencil design map](00075-officepress-pencil-design-map.md) — load when locating the screen, component or adjacent section.
 
@@ -10,9 +10,9 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 
 | ID / parent | Type / name | Exact text, context and flags | Layout and styling properties |
 |---|---|---|---|
-| o7dF4 / mPPSw | frame / Row · Updates | {"name":"Row · Updates"} | {"gap":40} |
-| odO7S / o7dF4 | frame / Shot · App settings · Updates | {"name":"Shot · App settings · Updates"} | {"layout":"vertical","gap":14} |
-| Kf2t5 / odO7S | frame / App settings · Updates | {"name":"App settings · Updates","theme":{"mode":"light","family":"communicate"}} | {"clip":true,"width":1440,"height":1321,"fill":"$op-canvas","cornerRadius":12,"stroke":"$line","strokeWidth":1,"effect":{"type":"shadow","shadowType":"outer","color":"#15171C14","offset":{"x":0,"y":8},"blur":24}} |
+| o7dF4 / mPPSw | frame / Row · About | {"name":"Row · About"} | {"gap":40} |
+| odO7S / o7dF4 | frame / Shot · App settings · About | {"name":"Shot · App settings · About"} | {"layout":"vertical","gap":14} |
+| Kf2t5 / odO7S | frame / App settings · About | {"name":"App settings · About","theme":{"mode":"light","family":"communicate"}} | {"clip":true,"width":1440,"height":1321,"fill":"$op-canvas","cornerRadius":12,"stroke":"$line","strokeWidth":1,"effect":{"type":"shadow","shadowType":"outer","color":"#15171C14","offset":{"x":0,"y":8},"blur":24}} |
 | yMqZv / Kf2t5 | frame / Main | {"name":"Main"} | {"width":"fill_container","height":"fill_container","layout":"vertical"} |
 | SbTuc / yMqZv | frame / Header | {"name":"Header","theme":{"mode":"light","family":"communicate"}} | {"width":"fill_container","height":64,"fill":"$op-surface","stroke":"$op-border","strokeWidth":{"bottom":1},"gap":12,"padding":[0,16],"alignItems":"center"} |
 | SbTuc/NL2v5 / SbTuc | frame / Sidebar Toggle | {"name":"Sidebar Toggle"} | {"width":36,"height":36,"cornerRadius":4,"justifyContent":"center","alignItems":"center"} |
@@ -37,34 +37,14 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | SbTuc/h47xa8 / SbTuc/I60pf | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"user","library":"lucide","fill":"$op-text"} |
 | AZ7sJ / yMqZv | frame / Body | {"name":"Body"} | {"width":"fill_container","height":"fill_container","fill":"$op-canvas","gap":24,"padding":[24,16,40,16]} |
 | YlWbu / AZ7sJ | frame / Settings Nav | {"name":"Settings Nav"} | {"width":240,"layout":"vertical","gap":4} |
-| xz4zz / YlWbu | frame / Tab General | {"name":"Tab General"} | {"width":"fill_container","height":36,"cornerRadius":4,"gap":12,"alignItems":"center"} |
-| GPLwS / xz4zz | frame / Icon Slot | {"name":"Icon Slot"} | {"width":36,"height":36,"justifyContent":"center","alignItems":"center"} |
-| z0Awj / GPLwS | icon / I | {"name":"I"} | {"width":16,"height":16,"icon":"settings","library":"lucide","fill":"$op-text-2"} |
-| FpV71 / xz4zz | text / L | {"name":"L","content":"General"} | {"fill":"$op-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
 | xM1HL / YlWbu | frame / Tab Theme | {"name":"Tab Theme"} | {"width":"fill_container","height":36,"cornerRadius":4,"gap":12,"alignItems":"center"} |
 | NfYB6 / xM1HL | frame / Icon Slot | {"name":"Icon Slot"} | {"width":36,"height":36,"justifyContent":"center","alignItems":"center"} |
 | pgjoY / NfYB6 | icon / I | {"name":"I"} | {"width":16,"height":16,"icon":"palette","library":"lucide","fill":"$op-text-2"} |
 | ozHQg / xM1HL | text / L | {"name":"L","content":"Theme"} | {"fill":"$op-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
-| noSVT / YlWbu | frame / Tab Members | {"name":"Tab Members"} | {"width":"fill_container","height":36,"cornerRadius":4,"gap":12,"alignItems":"center"} |
-| TnDW5 / noSVT | frame / Icon Slot | {"name":"Icon Slot"} | {"width":36,"height":36,"justifyContent":"center","alignItems":"center"} |
-| n4ZBI / TnDW5 | icon / I | {"name":"I"} | {"width":16,"height":16,"icon":"users","library":"lucide","fill":"$op-text-2"} |
-| v6SIMs / noSVT | text / L | {"name":"L","content":"Members"} | {"fill":"$op-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
-| vklgF / YlWbu | frame / Tab Agent | {"name":"Tab Agent"} | {"width":"fill_container","height":36,"cornerRadius":4,"gap":12,"alignItems":"center"} |
-| XcTRm / vklgF | frame / Icon Slot | {"name":"Icon Slot"} | {"width":36,"height":36,"justifyContent":"center","alignItems":"center"} |
-| M0iWm / XcTRm | icon / I | {"name":"I"} | {"width":16,"height":16,"icon":"bot","library":"lucide","fill":"$op-text-2"} |
-| uOxVm / vklgF | text / L | {"name":"L","content":"Agent"} | {"fill":"$op-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
-| U2lkJP / YlWbu | frame / Tab Integrations | {"name":"Tab Integrations"} | {"width":"fill_container","height":36,"cornerRadius":4,"gap":12,"alignItems":"center"} |
-| E7WjA / U2lkJP | frame / Icon Slot | {"name":"Icon Slot"} | {"width":36,"height":36,"justifyContent":"center","alignItems":"center"} |
-| KR37G / E7WjA | icon / I | {"name":"I"} | {"width":16,"height":16,"icon":"plug","library":"lucide","fill":"$op-text-2"} |
-| XBXOE / U2lkJP | text / L | {"name":"L","content":"Integrations"} | {"fill":"$op-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
-| WikLc / YlWbu | frame / Tab Notifications | {"name":"Tab Notifications"} | {"width":"fill_container","height":36,"cornerRadius":4,"gap":12,"alignItems":"center"} |
-| h1OkM2 / WikLc | frame / Icon Slot | {"name":"Icon Slot"} | {"width":36,"height":36,"justifyContent":"center","alignItems":"center"} |
-| QYvyr / h1OkM2 | icon / I | {"name":"I"} | {"width":16,"height":16,"icon":"bell","library":"lucide","fill":"$op-text-2"} |
-| j6l8W / WikLc | text / L | {"name":"L","content":"Notifications"} | {"fill":"$op-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
-| G223K / YlWbu | frame / Tab Updates | {"name":"Tab Updates"} | {"width":"fill_container","height":36,"fill":"$op-tint","cornerRadius":4,"gap":12,"padding":[0,8,0,0],"alignItems":"center"} |
+| G223K / YlWbu | frame / Tab About | {"name":"Tab About"} | {"width":"fill_container","height":36,"fill":"$op-tint","cornerRadius":4,"gap":12,"padding":[0,8,0,0],"alignItems":"center"} |
 | tPLlr / G223K | frame / Icon Slot | {"name":"Icon Slot"} | {"width":36,"height":36,"justifyContent":"center","alignItems":"center"} |
-| OgwLi / tPLlr | icon / I | {"name":"I"} | {"width":16,"height":16,"icon":"circle-arrow-up","library":"lucide","fill":"$op-accent-text"} |
-| NzJYF / G223K | text / L | {"name":"L","content":"Updates"} | {"fill":"$op-on-tint","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"700"} |
+| OgwLi / tPLlr | icon / I | {"name":"I"} | {"width":16,"height":16,"icon":"info","library":"lucide","fill":"$op-accent-text"} |
+| NzJYF / G223K | text / L | {"name":"L","content":"About"} | {"fill":"$op-on-tint","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"700"} |
 | eFMut / G223K | frame / Spacer | {"name":"Spacer"} | {"width":"fill_container","height":1} |
 | k6UL8 / G223K | frame / Badge | {"name":"Badge"} | {"height":20,"fill":"$op-accent-strong","cornerRadius":999,"padding":[0,6],"justifyContent":"center","alignItems":"center"} |
 | Bg0gx / k6UL8 | text / T | {"name":"T","content":"1"} | {"fill":"$op-on-accent","lineHeight":1,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700"} |

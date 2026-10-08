@@ -7,7 +7,6 @@
     "./plugins/app/plugin",
     "./plugins/store/plugin",
     "stackpress-schema",
-    "./plugins/data/plugin",
     "./plugins/home/plugin",
     "./plugins/notes/plugin"
   ],

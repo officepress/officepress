@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="whiteboards">
+<defs>
+<clipPath id="op-whiteboards-c">
+<rect width="96" height="96" rx="24"/>
+</clipPath>
+</defs>
+<g clip-path="url(#op-whiteboards-c)">
+<rect width="96" height="96" fill="#6A3BE4"/>
+<rect x="28" y="62" width="5" height="18" rx="2" fill="#FFFFFF" fill-opacity="0.55"/>
+<rect x="63" y="62" width="5" height="18" rx="2" fill="#FFFFFF" fill-opacity="0.55"/>
+<rect x="16" y="16" width="64" height="50" rx="6" fill="#FFFFFF"/>
+<path d="M26 48c6-20 14-22 18-10s10 14 16 2 6-12 10-10" fill="none" stroke="#6A3BE4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

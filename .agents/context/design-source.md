@@ -2,7 +2,7 @@
 
 The native Pencil file is preserved locally along with the written knowledge extracted from it. Consult the extracted references for text, variables and component metadata; use the native asset when editing graphical geometry.
 
-The design extraction covers 18 root frames, 11 reusable components, 8,837 resolved nodes, 2,828 nodes with content, and 205 variable definitions. The theme axes are mode and family. Resolved instances use full instance paths so inherited content remains traceable.
+The design extraction covers 18 root frames, 11 reusable components, 8,761 resolved nodes, 2,809 nodes with content, and 205 variable definitions. The theme axes are mode and family. Resolved instances use full instance paths so inherited content remains traceable.
 
 ## Design areas
 
@@ -14,6 +14,8 @@ The design extraction covers 18 root frames, 11 reusable components, 8,837 resol
 - Reusable components: shell preview, header, sidebar/rail, board content, user popover, agent panel/empty state, notifications/empty state and workflow card.
 
 ## Retrieval
+
+- [About menu revision and lossless history](../references/00360-officepress-about-menu-revision.md) — load for the current two-tab settings menu, config-owned Agent/Notification settings, and preservation of changed or removed design records.
 
 - [Complete screen and component map](../references/00075-officepress-pencil-design-map.md) — load when finding all text and structural/style properties by design section.
 - [Full variable and theme map](../references/00076-officepress-pencil-variable-map.md) — load when resolving a token or comparing active op-* values with historical namespaces.

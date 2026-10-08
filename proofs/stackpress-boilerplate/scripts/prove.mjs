@@ -99,7 +99,7 @@ try {
   ts('Reactus client/server/CSS build', 'scripts/build.ts');
   await httpCheck('Development HTTP and safe serialized props', 'scripts/develop.ts', base, true);
   await httpCheck('Built production HTTP with explicit proof PGlite adapter', 'scripts/serve.ts', base, true, true);
-  for (const disabled of ['notes', 'store', 'data', 'stackpress-schema']) {
+  for (const disabled of ['notes', 'store', 'stackpress-schema']) {
     const env = { ...base, OFFICEPRESS_DISABLED_PLUGINS: disabled };
     ts(`Dependency registration checks: ${disabled} disabled`, 'scripts/check-runtime.ts', ['dependencies'], env);
     await httpCheck(`Shell survives and feature route absent: ${disabled}`, 'scripts/serve.ts', env, false, true);
@@ -124,7 +124,7 @@ try {
     delete env.DATABASE_ADAPTER;
     await httpCheck('Production defaults to PostgreSQL and serves built app', 'scripts/serve.ts', env, true, true);
     receipt.postgresImage = 'postgres:17-alpine';
-  } else receipt.limitations.push('PostgreSQL was not tested in this run; use npm run prove -- --postgres.');
+  } else receipt.limitations.push('This run used PGlite; direct PostgreSQL execution was not performed.');
   assert.equal(await fs.readFile(marker, 'utf8'), 'unrelated build sibling must survive');
   checks.push({ name: 'Unrelated build sibling preserved; proof never deletes shared build/data directories', passed: true });
   receipt.status = 'passed';
@@ -138,6 +138,7 @@ try {
     const result = spawnSync('docker', ['rm', '-f', container], { encoding: 'utf8' });
     if (result.status !== 0) { receipt.cleanupError = result.stderr; receipt.status = 'failed'; process.exitCode = 1; }
   }
+  await fs.rm(scratch, { recursive: true, force: true });
   await fs.unlink(marker);
   receipt.finished = new Date().toISOString();
   await fs.mkdir(path.join(root, 'receipts'), { recursive: true });

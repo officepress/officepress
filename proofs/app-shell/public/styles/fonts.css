@@ -1,0 +1,8 @@
+/* Local Inter asset, SIL OFL; provenance and license are alongside the font. */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/inter/inter-latin-wght-normal.woff2") format("woff2");
+}

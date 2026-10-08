@@ -1,0 +1,51 @@
+/* ==========================================================================
+   OfficePress UI — Operate family
+   Apps: Resourcing · Procurement · Accounting · Approvals · Clients · Sign
+   --------------------------------------------------------------------------
+   Load AFTER officepress.css. Load exactly one family file per app.
+   Contrast-checked: text >= 4.6:1 on its surface, accent text >= 4.5:1.
+   Use --op-accent-text for links and --op-accent-strong for button fills.
+   ========================================================================== */
+
+:root,
+[data-mode="light"] {
+  --op-canvas:        #F9F6F5;  /* Board background */
+  --op-toolbar:       #F6F0EE;  /* Toolbar strip, between header and canvas */
+  --op-column:        #F4EEEB;  /* Column / grouping panels */
+  --op-surface:       #FFFFFF;  /* Cards, header, dialogs */
+  --op-sunken:        #F8F3F1;  /* Inputs, toggles */
+  --op-border:        #ECE1DD;  /* Hairlines, dividers */
+  --op-border-strong: #E0CFC8;  /* Input outlines, dashed slots */
+  --op-text:          #352722;  /* Primary text, icons */
+  --op-text-2:        #756761;  /* Secondary text, meta, icons */
+  --op-accent:        #E2551B;  /* Brand fill: app tile, bars, key icons */
+  --op-accent-text:   #C74B18;  /* Accent used as text or links */
+  --op-accent-strong: #AB4014;  /* Primary button fill, urgent bars */
+  --op-tint:          #FBF3F0;  /* Selected / count badge background */
+  --op-tint-2:        #F6E4DC;  /* Progress tracks, hover */
+  --op-on-tint:       #B94616;  /* Text on tint */
+  --op-nav:           #412D25;  /* Sidebar — darkest surface */
+  --op-nav-text:      #FFFFFF;  /* Sidebar text */
+  --op-nav-text-2:    #CBBAB3;  /* Sidebar secondary text */
+}
+
+[data-mode="dark"] {
+  --op-canvas:        #1C1411;  /* Board background */
+  --op-toolbar:       #251A16;  /* Toolbar strip, between header and canvas */
+  --op-column:        #251B17;  /* Column / grouping panels */
+  --op-surface:       #2D211C;  /* Cards, header, dialogs */
+  --op-sunken:        #221915;  /* Inputs, toggles */
+  --op-border:        #4D3A33;  /* Hairlines, dividers */
+  --op-border-strong: #5F4A42;  /* Input outlines, dashed slots */
+  --op-text:          #F6EFEC;  /* Primary text, icons */
+  --op-text-2:        #B8A9A2;  /* Secondary text, meta, icons */
+  --op-accent:        #E6622C;  /* Brand fill: app tile, bars, key icons */
+  --op-accent-text:   #EA7D50;  /* Accent used as text or links */
+  --op-accent-strong: #F1A98C;  /* Primary button fill, urgent bars */
+  --op-tint:          #533428;  /* Selected / count badge background */
+  --op-tint-2:        #643F30;  /* Progress tracks, hover */
+  --op-on-tint:       #F2B094;  /* Text on tint */
+  --op-nav:           #16100D;  /* Sidebar — darkest surface */
+  --op-nav-text:      #F6EFEC;  /* Sidebar text */
+  --op-nav-text-2:    #AA9992;  /* Sidebar secondary text */
+}

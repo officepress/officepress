@@ -4,7 +4,28 @@ Every OfficePress app uses Stackpress. The accepted ecosystem baseline is **0.10
 
 Plugins separate responsibilities. They may be disabled after a restart. Each dependent plugin checks its own services in `plugin.ts`, then falls back or returns before registering its feature listeners/routes. There is no automatic dependency validation or live unloading.
 
-PostgreSQL is the production default; PGlite serves development and proofs. Keep Idea files small and compose them from a root schema. Smaller files are the user's authoring/performance recommendation, not a proven incremental compiler feature.
+PostgreSQL is the production default; PGlite is the preferred disposable development substitute for PostgreSQL and CockroachDB. Use `.build/database/` and config `database.populate` fixtures; a separate cross-engine compatibility proof is not required. Keep Idea files small and compose them from a root schema. Smaller files are the user's authoring/performance recommendation, not a proven incremental compiler feature.
+
+## Route creation defaults
+
+Unless the user specifies otherwise, browser page paths follow `/[dashboard?]/[model]/[action]/[unique?]`. The optional `dashboard` segment identifies pages for a specific set of users. Use the model name in lowercase dash format for `model`. Typical actions are `search`, `create`, `detail`, `update`, `remove`, `import` and `export`; a custom action is also valid. The optional `unique` segment is usually a row ID but may be another unique value.
+
+Examples: `/profile/search`, `/profile/create`, `/profile/detail/abc123`, `/admin/profile/update/abc123`.
+
+Use the path to load a page, a `?` query string for variations of that page, and a `#` fragment to navigate within the existing page. For a detail page, `/admin/profile/detail/abc123` is correct; `/admin/profile?id=abc123` and `/admin/profile#page-abc123` are not detail-page routes.
+
+API paths use these method and path pairs by default:
+
+| Method and path | Behavior |
+| --- | --- |
+| `GET /api/v1/[model]` | Return a list of the model. |
+| `POST /api/v1/[model]` | Create a model record. |
+| `PUT /api/v1/[model]` | Import many model records. |
+| `GET /api/v1/[model]/[unique]` | Return one model record. |
+| `PUT /api/v1/[model]/[unique]` | Update one model record. |
+| `DELETE /api/v1/[model]/[unique]` | Remove one model record. |
+
+The browser page pattern applies only to browser page paths; API paths use the separate pattern above.
 
 ## Task routes
 

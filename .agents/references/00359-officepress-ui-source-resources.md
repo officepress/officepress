@@ -1,5 +1,7 @@
 # OfficePress UI source resources
 
+Current menu: use **About** and **Theme**, with Agent/Notification settings in Stackpress config. Load the [About revision](00360-officepress-about-menu-revision.md) before adapting the historical Updates examples.
+
 Owner: [OfficePress UI kit](../context/ui-kit.md). Load this map when creating wireframes, designs or frontend code and needing directly reusable source files, or when auditing the design guide and written documentation.
 
 ## Scope and authority

@@ -1,5 +1,7 @@
 # OfficePress screen templates and behavior
 
+Current menu: use **About** and **Theme**, with Agent/Notification settings in Stackpress config. Load the [About revision](00360-officepress-about-menu-revision.md) before adapting the historical Updates examples.
+
 Owner: [Shared app experience](../context/shared-app-experience.md). Load when selecting a template, locating full source markup or distinguishing prototype UI from actual product behavior.
 
 The kit has 11 app templates and 6 authentication templates. Most app templates carry repeated shell/nav/popover/agent markup; this repetition is preserved for exact recovery. Use current context to reconcile historical sample names and auth options.

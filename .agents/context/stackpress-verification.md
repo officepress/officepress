@@ -4,7 +4,7 @@ A scaffold is complete only after its declared checks pass. Record commands, res
 
 Cover generation and runtime reconnection, all maintained TypeScript, built JS/CSS/static assets, development HTTP and built production HTTP. Exercise feature enablement, disablement, missing required providers and restart restoration. Confirm absent routes/listeners and continued independent behavior.
 
-Use unique proof-owned database/output directories. Test persistence across restart and preservation of unrelated data. PostgreSQL connectivity and adapter behavior require their own actual integration check; PGlite does not establish those results.
+Use the normal `.build/database/` PGlite database for development and a uniquely named scratch database only when a proof requires isolation. Test persistence across restart, then remove run-owned scratch data after its connections close while preserving unrelated files. The current adoption policy treats PGlite as the development substitute for PostgreSQL and CockroachDB; do not add or require a separate cross-engine compatibility proof. A receipt must still name the adapter it actually exercised, without claiming direct production-engine execution.
 
 - [Proof evidence and coverage](../references/00206-stackpress-proof-evidence.md) — load for actual findings, source completeness and outstanding proof boundaries.
 

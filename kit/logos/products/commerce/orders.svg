@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="orders">
+<defs>
+<clipPath id="op-orders-c">
+<rect width="96" height="96" rx="24"/>
+</clipPath>
+</defs>
+<g clip-path="url(#op-orders-c)">
+<rect width="96" height="96" fill="#0F8F6A"/>
+<path d="M22 14h52v68l-6.5-6-6.5 6-6.5-6-6.5 6-6.5-6-6.5 6-6.5-6-6.5 6z" fill="#FFFFFF"/>
+<rect x="30" y="26" width="36" height="6" rx="3" fill="#0F8F6A"/>
+<rect x="30" y="40" width="36" height="6" rx="3" fill="#0F8F6A"/>
+<rect x="30" y="54" width="20" height="6" rx="3" fill="#0F8F6A"/>
+<rect x="56" y="54" width="10" height="6" rx="3" fill="#FFFFFF" fill-opacity="0.55"/>
+</g>
+</svg>

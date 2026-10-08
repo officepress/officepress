@@ -1,4 +1,4 @@
-# OfficePress App Layout / Section · Account & app settings / Screens / Row · Updates / Shot · App settings · Updates / App settings · Updates / Main / Body / Content
+# OfficePress App Layout / Section · Account & app settings / Screens / Row · About / Shot · App settings · About / App settings · About / Main / Body / Content
 
 Owner: [Pencil design map](00075-officepress-pencil-design-map.md) — load when locating the screen, component or adjacent section.
 
@@ -14,7 +14,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | CXG6T / V04H0 | frame / Column | {"name":"Column"} | {"width":760,"layout":"vertical","gap":24} |
 | ktHaV / CXG6T | frame / Section · Version | {"name":"Section · Version"} | {"width":"fill_container","fill":"$op-surface","cornerRadius":12,"stroke":"$op-border","effect":[{"type":"shadow","shadowType":"outer","color":"$op-shadow-edge","blur":1},{"type":"shadow","shadowType":"outer","color":"$op-shadow-soft","offset":{"x":0,"y":1},"blur":3}],"layout":"vertical"} |
 | DoSKp / ktHaV | frame / Head | {"name":"Head"} | {"width":"fill_container","stroke":"$op-border","strokeWidth":{"bottom":1},"layout":"vertical","gap":4,"padding":[20,24]} |
-| s3Q8WQ / DoSKp | text / Title | {"name":"Title","content":"Updates"} | {"fill":"$op-text","lineHeight":1.25,"fontFamily":"$op-font","fontSize":16,"fontWeight":"700"} |
+| s3Q8WQ / DoSKp | text / Title | {"name":"Title","content":"Version and updates"} | {"fill":"$op-text","lineHeight":1.25,"fontFamily":"$op-font","fontSize":16,"fontWeight":"700"} |
 | pqx1X / DoSKp | text / Desc | {"name":"Desc","content":"Keep Inbox current with fixes and new features. Updates install on your server and apply to everyone in this workspace."} | {"fill":"$op-text-2","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
 | kEPJp / ktHaV | frame / Body | {"name":"Body"} | {"width":"fill_container","layout":"vertical","gap":20,"padding":24} |
 | oXZrt / kEPJp | frame / Current Version | {"name":"Current Version"} | {"width":"fill_container","gap":12,"alignItems":"center"} |
@@ -140,5 +140,5 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | WsdET / sU1AO | frame / Button · Show older versions | {"name":"Button · Show older versions"} | {"height":36,"fill":"$op-surface","cornerRadius":4,"stroke":"$op-border-strong","strokeWidth":1,"gap":8,"padding":[0,16],"alignItems":"center"} |
 | k5HBQ / WsdET | text / Label | {"name":"Label","content":"Show older versions"} | {"fill":"$op-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"700"} |
 | Mwu3K / odO7S | frame / Caption | {"name":"Caption"} | {"width":1440,"layout":"vertical","gap":4} |
-| V71TK / Mwu3K | text / Label | {"name":"Label","content":"App settings · Updates — update available"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":16,"fontWeight":"700"} |
-| m1a6QA / Mwu3K | text / Note | {"name":"Note","content":"Shown to app admins. The status card switches between “Up to date” and “Update available”; the Update button and the terminal guide link only appear when a newer version exists. Auto-check runs daily and only notifies — it never installs without an admin."} | {"fill":"$muted","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$font-display","fontSize":13,"fontWeight":"normal"} |
+| V71TK / Mwu3K | text / Label | {"name":"Label","content":"App settings · About — update available"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":16,"fontWeight":"700"} |
+| m1a6QA / Mwu3K | text / Note | {"name":"Note","content":"Shown to app admins. About shows the installed version, updates and the change log. The status card switches between “Up to date” and “Update available”; the Update button and the terminal guide link only appear when a newer version exists. Auto-check runs daily and only notifies — it never installs without an admin."} | {"fill":"$muted","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$font-display","fontSize":13,"fontWeight":"normal"} |

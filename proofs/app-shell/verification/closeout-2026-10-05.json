@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-10-05T05:03:10.982385+00:00",
+  "scope": "P-00/P-01 bounded proof closeout; not production acceptance",
+  "workspaceValidator": "passed; 13 pre-existing preferred-length warnings only",
+  "officepressIngestion": "53 exact sources, 207 resources, 24 source archives and prior design extraction recover locally",
+  "stackpressIngestion": "105 sources from 147 local sections recover exactly",
+  "mcp": "22 data-file hashes unchanged; no indexing/server restart/watch enabled",
+  "sourceFingerprints": "P-00 and P-01 retained source fingerprints match current proof files",
+  "credentialExclusion": "Configured OpenRouter key and mail password absent from Git-visible proof files; root .env ignored/untracked",
+  "cleanup": "No proof-owned server process or PostgreSQL container remains",
+  "evidenceSHA256": {
+    "README.md": "91a22d47263a33b11d1e508db7c5682f1486d23c1707a4701c82377cad28959c",
+    "about-upgrade.png": "1277f32e86f13e94610697a3d45a21e012de57c4bf4f9a496d49035576aa4dd0",
+    "account.png": "fb3e1b124aa78e39665f9717017920ccf063f52ec87e4d3a0a42abeda465ca02",
+    "agent-result.png": "20bee072b4d42331d03826cd72632615cfe991316347181549ee10ffb525ac20",
+    "config-2026-10-05.json": "e7047674019b81531b43adaed29fc580793283e07b4d1d3e5eccb2e34044ac49",
+    "dark-theme.png": "3b9a23b374b4a18f6175868bca691821167512b8ed4953b27a15209ba2b0ec22",
+    "desktop-agent.png": "e3565587c775ffd99e98d37d25519315e231b3b28b798eba4752bebebaf7e618",
+    "desktop-dark.png": "31065ad3d7335ea40932d843428d7376ad01c7fa794cd49baecce0c21515c05d",
+    "mobile-details.png": "c4c4d3fa0bbe4784d6980d1b0f9a8eb8b56c28afe9e8b08b7cf4d0a9b4e43c7a",
+    "mobile-theme.png": "bb02cf5bd6d2d0745041d691c83a34546141ef469018f7fdde68182f0fc9259a",
+    "notifications.png": "7cc8663c2abdf2162728eb1d307cf0c9b6aa2e6c7b2b980370842b2ffdde2d45",
+    "p01-2026-10-05.json": "2062b8355f62a238fce4dbdd7d9bb3999369d378d72c09ad8930b5ee4f817087",
+    "postgres-2026-10-05.json": "358226cad33c2004c7cabc01fc7837335fb144066143bcf467e429cff43f9272",
+    "signin.png": "eb8af3bd22425c3e7222bc9342d44db84c4e57c5503233011a8d31ffbbe4cc44"
+  }
+}

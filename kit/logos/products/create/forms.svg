@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="forms">
+<defs>
+<clipPath id="op-forms-c">
+<rect width="96" height="96" rx="24"/>
+</clipPath>
+</defs>
+<g clip-path="url(#op-forms-c)">
+<rect width="96" height="96" fill="#6A3BE4"/>
+<rect x="20" y="14" width="56" height="68" rx="8" fill="#FFFFFF"/>
+<rect x="28" y="24" width="40" height="8" rx="4" fill="#6A3BE4"/>
+<rect x="28" y="38" width="40" height="8" rx="4" fill="#6A3BE4"/>
+<rect x="28" y="54" width="14" height="14" rx="3" fill="#6A3BE4"/>
+<path d="M31 61l3 3 5-7" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="46" y="58" width="22" height="6" rx="3" fill="#6A3BE4"/>
+</g>
+</svg>

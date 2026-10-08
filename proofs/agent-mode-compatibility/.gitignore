@@ -1,0 +1,8 @@
+.build/
+node_modules/
+receipts/
+.env
+.env.*
+!.env.example
+
+.data/

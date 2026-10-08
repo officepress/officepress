@@ -1,5 +1,5 @@
 {
-  "version": "2.19",
+  "version": "2.20",
   "children": [
     {
       "type": "frame",
@@ -26569,7 +26569,8 @@
                       "width": "fill_container",
                       "content": "The Q3 count is off by fourteen reams.",
                       "fontFamily": "$op-font",
-                      "fontSize": 12
+                      "fontSize": 12,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -43025,7 +43026,7 @@
                                         {
                                           "type": "frame",
                                           "id": "x5cXDS",
-                                          "name": "Tab General",
+                                          "name": "Tab About",
                                           "width": "fill_container",
                                           "height": 36,
                                           "cornerRadius": 4,
@@ -43047,7 +43048,7 @@
                                                   "name": "I",
                                                   "width": 16,
                                                   "height": 16,
-                                                  "icon": "settings",
+                                                  "icon": "info",
                                                   "library": "lucide",
                                                   "fill": "$op-text-2"
                                                 }
@@ -43058,7 +43059,7 @@
                                               "id": "vsUvZ",
                                               "name": "L",
                                               "fill": "$op-text",
-                                              "content": "General",
+                                              "content": "About",
                                               "lineHeight": 1.5,
                                               "fontFamily": "$op-font",
                                               "fontSize": 13,
@@ -43108,182 +43109,6 @@
                                               "fontFamily": "$op-font",
                                               "fontSize": 13,
                                               "fontWeight": "700"
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "frame",
-                                          "id": "b835zZ",
-                                          "name": "Tab Members",
-                                          "width": "fill_container",
-                                          "height": 36,
-                                          "cornerRadius": 4,
-                                          "gap": 12,
-                                          "alignItems": "center",
-                                          "children": [
-                                            {
-                                              "type": "frame",
-                                              "id": "fuUdJ",
-                                              "name": "Icon Slot",
-                                              "width": 36,
-                                              "height": 36,
-                                              "justifyContent": "center",
-                                              "alignItems": "center",
-                                              "children": [
-                                                {
-                                                  "type": "icon",
-                                                  "id": "p8A8bx",
-                                                  "name": "I",
-                                                  "width": 16,
-                                                  "height": 16,
-                                                  "icon": "users",
-                                                  "library": "lucide",
-                                                  "fill": "$op-text-2"
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "type": "text",
-                                              "id": "WaoAt",
-                                              "name": "L",
-                                              "fill": "$op-text",
-                                              "content": "Members",
-                                              "lineHeight": 1.5,
-                                              "fontFamily": "$op-font",
-                                              "fontSize": 13,
-                                              "fontWeight": "normal"
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "frame",
-                                          "id": "h7EeN",
-                                          "name": "Tab Agent",
-                                          "width": "fill_container",
-                                          "height": 36,
-                                          "cornerRadius": 4,
-                                          "gap": 12,
-                                          "alignItems": "center",
-                                          "children": [
-                                            {
-                                              "type": "frame",
-                                              "id": "lYKW7",
-                                              "name": "Icon Slot",
-                                              "width": 36,
-                                              "height": 36,
-                                              "justifyContent": "center",
-                                              "alignItems": "center",
-                                              "children": [
-                                                {
-                                                  "type": "icon",
-                                                  "id": "q2PWG",
-                                                  "name": "I",
-                                                  "width": 16,
-                                                  "height": 16,
-                                                  "icon": "bot",
-                                                  "library": "lucide",
-                                                  "fill": "$op-text-2"
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "type": "text",
-                                              "id": "w8zksb",
-                                              "name": "L",
-                                              "fill": "$op-text",
-                                              "content": "Agent",
-                                              "lineHeight": 1.5,
-                                              "fontFamily": "$op-font",
-                                              "fontSize": 13,
-                                              "fontWeight": "normal"
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "frame",
-                                          "id": "ah2Ps",
-                                          "name": "Tab Integrations",
-                                          "width": "fill_container",
-                                          "height": 36,
-                                          "cornerRadius": 4,
-                                          "gap": 12,
-                                          "alignItems": "center",
-                                          "children": [
-                                            {
-                                              "type": "frame",
-                                              "id": "wCUak",
-                                              "name": "Icon Slot",
-                                              "width": 36,
-                                              "height": 36,
-                                              "justifyContent": "center",
-                                              "alignItems": "center",
-                                              "children": [
-                                                {
-                                                  "type": "icon",
-                                                  "id": "H2XqwP",
-                                                  "name": "I",
-                                                  "width": 16,
-                                                  "height": 16,
-                                                  "icon": "plug",
-                                                  "library": "lucide",
-                                                  "fill": "$op-text-2"
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "type": "text",
-                                              "id": "O6oGe",
-                                              "name": "L",
-                                              "fill": "$op-text",
-                                              "content": "Integrations",
-                                              "lineHeight": 1.5,
-                                              "fontFamily": "$op-font",
-                                              "fontSize": 13,
-                                              "fontWeight": "normal"
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "frame",
-                                          "id": "q4HuZN",
-                                          "name": "Tab Notifications",
-                                          "width": "fill_container",
-                                          "height": 36,
-                                          "cornerRadius": 4,
-                                          "gap": 12,
-                                          "alignItems": "center",
-                                          "children": [
-                                            {
-                                              "type": "frame",
-                                              "id": "O8rDvK",
-                                              "name": "Icon Slot",
-                                              "width": 36,
-                                              "height": 36,
-                                              "justifyContent": "center",
-                                              "alignItems": "center",
-                                              "children": [
-                                                {
-                                                  "type": "icon",
-                                                  "id": "A6dmW",
-                                                  "name": "I",
-                                                  "width": 16,
-                                                  "height": 16,
-                                                  "icon": "bell",
-                                                  "library": "lucide",
-                                                  "fill": "$op-text-2"
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "type": "text",
-                                              "id": "KGE3D",
-                                              "name": "L",
-                                              "fill": "$op-text",
-                                              "content": "Notifications",
-                                              "lineHeight": 1.5,
-                                              "fontFamily": "$op-font",
-                                              "fontSize": 13,
-                                              "fontWeight": "normal"
                                             }
                                           ]
                                         },
@@ -45491,7 +45316,7 @@
                               "fill": "$muted",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
-                              "content": "Brand and colour for this app only. Colours start from the family defaults; only accent, sidebar and canvas are editable, and everything else (tints, text-safe accents, borders) is derived and contrast-checked. Reset restores the family defaults.",
+                              "content": "Brand and colour for this app only. App settings has two tabs: About (version, updates and change log) and Theme. Colours start from the family defaults; only accent, sidebar and canvas are editable, and everything else (tints, text-safe accents, borders) is derived and contrast-checked. Reset restores the family defaults.",
                               "lineHeight": 1.5,
                               "fontFamily": "$font-display",
                               "fontSize": 13,
@@ -45506,20 +45331,20 @@
                 {
                   "type": "frame",
                   "id": "o7dF4",
-                  "name": "Row · Updates",
+                  "name": "Row · About",
                   "gap": 40,
                   "children": [
                     {
                       "type": "frame",
                       "id": "odO7S",
-                      "name": "Shot · App settings · Updates",
+                      "name": "Shot · App settings · About",
                       "layout": "vertical",
                       "gap": 14,
                       "children": [
                         {
                           "type": "frame",
                           "id": "Kf2t5",
-                          "name": "App settings · Updates",
+                          "name": "App settings · About",
                           "theme": {
                             "mode": "light",
                             "family": "communicate"
@@ -45596,17 +45421,24 @@
                                       "children": [
                                         {
                                           "type": "frame",
-                                          "id": "xz4zz",
-                                          "name": "Tab General",
+                                          "id": "G223K",
+                                          "name": "Tab About",
                                           "width": "fill_container",
                                           "height": 36,
+                                          "fill": "$op-tint",
                                           "cornerRadius": 4,
                                           "gap": 12,
+                                          "padding": [
+                                            0,
+                                            8,
+                                            0,
+                                            0
+                                          ],
                                           "alignItems": "center",
                                           "children": [
                                             {
                                               "type": "frame",
-                                              "id": "GPLwS",
+                                              "id": "tPLlr",
                                               "name": "Icon Slot",
                                               "width": 36,
                                               "height": 36,
@@ -45615,26 +45447,60 @@
                                               "children": [
                                                 {
                                                   "type": "icon",
-                                                  "id": "z0Awj",
+                                                  "id": "OgwLi",
                                                   "name": "I",
                                                   "width": 16,
                                                   "height": 16,
-                                                  "icon": "settings",
+                                                  "icon": "info",
                                                   "library": "lucide",
-                                                  "fill": "$op-text-2"
+                                                  "fill": "$op-accent-text"
                                                 }
                                               ]
                                             },
                                             {
                                               "type": "text",
-                                              "id": "FpV71",
+                                              "id": "NzJYF",
                                               "name": "L",
-                                              "fill": "$op-text",
-                                              "content": "General",
+                                              "fill": "$op-on-tint",
+                                              "content": "About",
                                               "lineHeight": 1.5,
                                               "fontFamily": "$op-font",
                                               "fontSize": 13,
-                                              "fontWeight": "normal"
+                                              "fontWeight": "700"
+                                            },
+                                            {
+                                              "type": "frame",
+                                              "id": "eFMut",
+                                              "name": "Spacer",
+                                              "width": "fill_container",
+                                              "height": 1
+                                            },
+                                            {
+                                              "type": "frame",
+                                              "id": "k6UL8",
+                                              "name": "Badge",
+                                              "height": 20,
+                                              "fill": "$op-accent-strong",
+                                              "cornerRadius": 999,
+                                              "padding": [
+                                                0,
+                                                6
+                                              ],
+                                              "justifyContent": "center",
+                                              "alignItems": "center",
+                                              "children": [
+                                                {
+                                                  "type": "text",
+                                                  "id": "Bg0gx",
+                                                  "name": "T",
+                                                  "fill": "$op-on-accent",
+                                                  "content": "1",
+                                                  "lineHeight": 1,
+                                                  "fontFamily": "$op-font",
+                                                  "fontSize": 11,
+                                                  "fontWeight": "700"
+                                                }
+                                              ]
                                             }
                                           ]
                                         },
@@ -45679,267 +45545,6 @@
                                               "fontFamily": "$op-font",
                                               "fontSize": 13,
                                               "fontWeight": "normal"
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "frame",
-                                          "id": "noSVT",
-                                          "name": "Tab Members",
-                                          "width": "fill_container",
-                                          "height": 36,
-                                          "cornerRadius": 4,
-                                          "gap": 12,
-                                          "alignItems": "center",
-                                          "children": [
-                                            {
-                                              "type": "frame",
-                                              "id": "TnDW5",
-                                              "name": "Icon Slot",
-                                              "width": 36,
-                                              "height": 36,
-                                              "justifyContent": "center",
-                                              "alignItems": "center",
-                                              "children": [
-                                                {
-                                                  "type": "icon",
-                                                  "id": "n4ZBI",
-                                                  "name": "I",
-                                                  "width": 16,
-                                                  "height": 16,
-                                                  "icon": "users",
-                                                  "library": "lucide",
-                                                  "fill": "$op-text-2"
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "type": "text",
-                                              "id": "v6SIMs",
-                                              "name": "L",
-                                              "fill": "$op-text",
-                                              "content": "Members",
-                                              "lineHeight": 1.5,
-                                              "fontFamily": "$op-font",
-                                              "fontSize": 13,
-                                              "fontWeight": "normal"
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "frame",
-                                          "id": "vklgF",
-                                          "name": "Tab Agent",
-                                          "width": "fill_container",
-                                          "height": 36,
-                                          "cornerRadius": 4,
-                                          "gap": 12,
-                                          "alignItems": "center",
-                                          "children": [
-                                            {
-                                              "type": "frame",
-                                              "id": "XcTRm",
-                                              "name": "Icon Slot",
-                                              "width": 36,
-                                              "height": 36,
-                                              "justifyContent": "center",
-                                              "alignItems": "center",
-                                              "children": [
-                                                {
-                                                  "type": "icon",
-                                                  "id": "M0iWm",
-                                                  "name": "I",
-                                                  "width": 16,
-                                                  "height": 16,
-                                                  "icon": "bot",
-                                                  "library": "lucide",
-                                                  "fill": "$op-text-2"
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "type": "text",
-                                              "id": "uOxVm",
-                                              "name": "L",
-                                              "fill": "$op-text",
-                                              "content": "Agent",
-                                              "lineHeight": 1.5,
-                                              "fontFamily": "$op-font",
-                                              "fontSize": 13,
-                                              "fontWeight": "normal"
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "frame",
-                                          "id": "U2lkJP",
-                                          "name": "Tab Integrations",
-                                          "width": "fill_container",
-                                          "height": 36,
-                                          "cornerRadius": 4,
-                                          "gap": 12,
-                                          "alignItems": "center",
-                                          "children": [
-                                            {
-                                              "type": "frame",
-                                              "id": "E7WjA",
-                                              "name": "Icon Slot",
-                                              "width": 36,
-                                              "height": 36,
-                                              "justifyContent": "center",
-                                              "alignItems": "center",
-                                              "children": [
-                                                {
-                                                  "type": "icon",
-                                                  "id": "KR37G",
-                                                  "name": "I",
-                                                  "width": 16,
-                                                  "height": 16,
-                                                  "icon": "plug",
-                                                  "library": "lucide",
-                                                  "fill": "$op-text-2"
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "type": "text",
-                                              "id": "XBXOE",
-                                              "name": "L",
-                                              "fill": "$op-text",
-                                              "content": "Integrations",
-                                              "lineHeight": 1.5,
-                                              "fontFamily": "$op-font",
-                                              "fontSize": 13,
-                                              "fontWeight": "normal"
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "frame",
-                                          "id": "WikLc",
-                                          "name": "Tab Notifications",
-                                          "width": "fill_container",
-                                          "height": 36,
-                                          "cornerRadius": 4,
-                                          "gap": 12,
-                                          "alignItems": "center",
-                                          "children": [
-                                            {
-                                              "type": "frame",
-                                              "id": "h1OkM2",
-                                              "name": "Icon Slot",
-                                              "width": 36,
-                                              "height": 36,
-                                              "justifyContent": "center",
-                                              "alignItems": "center",
-                                              "children": [
-                                                {
-                                                  "type": "icon",
-                                                  "id": "QYvyr",
-                                                  "name": "I",
-                                                  "width": 16,
-                                                  "height": 16,
-                                                  "icon": "bell",
-                                                  "library": "lucide",
-                                                  "fill": "$op-text-2"
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "type": "text",
-                                              "id": "j6l8W",
-                                              "name": "L",
-                                              "fill": "$op-text",
-                                              "content": "Notifications",
-                                              "lineHeight": 1.5,
-                                              "fontFamily": "$op-font",
-                                              "fontSize": 13,
-                                              "fontWeight": "normal"
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "frame",
-                                          "id": "G223K",
-                                          "name": "Tab Updates",
-                                          "width": "fill_container",
-                                          "height": 36,
-                                          "fill": "$op-tint",
-                                          "cornerRadius": 4,
-                                          "gap": 12,
-                                          "padding": [
-                                            0,
-                                            8,
-                                            0,
-                                            0
-                                          ],
-                                          "alignItems": "center",
-                                          "children": [
-                                            {
-                                              "type": "frame",
-                                              "id": "tPLlr",
-                                              "name": "Icon Slot",
-                                              "width": 36,
-                                              "height": 36,
-                                              "justifyContent": "center",
-                                              "alignItems": "center",
-                                              "children": [
-                                                {
-                                                  "type": "icon",
-                                                  "id": "OgwLi",
-                                                  "name": "I",
-                                                  "width": 16,
-                                                  "height": 16,
-                                                  "icon": "circle-arrow-up",
-                                                  "library": "lucide",
-                                                  "fill": "$op-accent-text"
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "type": "text",
-                                              "id": "NzJYF",
-                                              "name": "L",
-                                              "fill": "$op-on-tint",
-                                              "content": "Updates",
-                                              "lineHeight": 1.5,
-                                              "fontFamily": "$op-font",
-                                              "fontSize": 13,
-                                              "fontWeight": "700"
-                                            },
-                                            {
-                                              "type": "frame",
-                                              "id": "eFMut",
-                                              "name": "Spacer",
-                                              "width": "fill_container",
-                                              "height": 1
-                                            },
-                                            {
-                                              "type": "frame",
-                                              "id": "k6UL8",
-                                              "name": "Badge",
-                                              "height": 20,
-                                              "fill": "$op-accent-strong",
-                                              "cornerRadius": 999,
-                                              "padding": [
-                                                0,
-                                                6
-                                              ],
-                                              "justifyContent": "center",
-                                              "alignItems": "center",
-                                              "children": [
-                                                {
-                                                  "type": "text",
-                                                  "id": "Bg0gx",
-                                                  "name": "T",
-                                                  "fill": "$op-on-accent",
-                                                  "content": "1",
-                                                  "lineHeight": 1,
-                                                  "fontFamily": "$op-font",
-                                                  "fontSize": 11,
-                                                  "fontWeight": "700"
-                                                }
-                                              ]
                                             }
                                           ]
                                         },
@@ -46074,7 +45679,7 @@
                                                       "id": "s3Q8WQ",
                                                       "name": "Title",
                                                       "fill": "$op-text",
-                                                      "content": "Updates",
+                                                      "content": "Version and updates",
                                                       "lineHeight": 1.25,
                                                       "fontFamily": "$op-font",
                                                       "fontSize": 16,
@@ -47622,7 +47227,7 @@
                               "id": "V71TK",
                               "name": "Label",
                               "fill": "$ink",
-                              "content": "App settings · Updates — update available",
+                              "content": "App settings · About — update available",
                               "fontFamily": "$font-display",
                               "fontSize": 16,
                               "fontWeight": "700"
@@ -47634,7 +47239,7 @@
                               "fill": "$muted",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
-                              "content": "Shown to app admins. The status card switches between “Up to date” and “Update available”; the Update button and the terminal guide link only appear when a newer version exists. Auto-check runs daily and only notifies — it never installs without an admin.",
+                              "content": "Shown to app admins. About shows the installed version, updates and the change log. The status card switches between “Up to date” and “Update available”; the Update button and the terminal guide link only appear when a newer version exists. Auto-check runs daily and only notifies — it never installs without an admin.",
                               "lineHeight": 1.5,
                               "fontFamily": "$font-display",
                               "fontSize": 13,
@@ -47647,14 +47252,14 @@
                     {
                       "type": "frame",
                       "id": "BCtq4",
-                      "name": "Shot · App settings · Updates · Terminal guide",
+                      "name": "Shot · App settings · About · Terminal guide",
                       "layout": "vertical",
                       "gap": 14,
                       "children": [
                         {
                           "type": "frame",
                           "id": "Uozi6",
-                          "name": "App settings · Updates · Terminal guide",
+                          "name": "App settings · About · Terminal guide",
                           "theme": {
                             "mode": "light",
                             "family": "communicate"
@@ -47731,17 +47336,24 @@
                                       "children": [
                                         {
                                           "type": "frame",
-                                          "id": "WdqKG",
-                                          "name": "Tab General",
+                                          "id": "n2ycn",
+                                          "name": "Tab About",
                                           "width": "fill_container",
                                           "height": 36,
+                                          "fill": "$op-tint",
                                           "cornerRadius": 4,
                                           "gap": 12,
+                                          "padding": [
+                                            0,
+                                            8,
+                                            0,
+                                            0
+                                          ],
                                           "alignItems": "center",
                                           "children": [
                                             {
                                               "type": "frame",
-                                              "id": "k2zV1H",
+                                              "id": "BOKa0",
                                               "name": "Icon Slot",
                                               "width": 36,
                                               "height": 36,
@@ -47750,26 +47362,60 @@
                                               "children": [
                                                 {
                                                   "type": "icon",
-                                                  "id": "Tlsra",
+                                                  "id": "dNCdj",
                                                   "name": "I",
                                                   "width": 16,
                                                   "height": 16,
-                                                  "icon": "settings",
+                                                  "icon": "info",
                                                   "library": "lucide",
-                                                  "fill": "$op-text-2"
+                                                  "fill": "$op-accent-text"
                                                 }
                                               ]
                                             },
                                             {
                                               "type": "text",
-                                              "id": "CZiuw",
+                                              "id": "GyisK",
                                               "name": "L",
-                                              "fill": "$op-text",
-                                              "content": "General",
+                                              "fill": "$op-on-tint",
+                                              "content": "About",
                                               "lineHeight": 1.5,
                                               "fontFamily": "$op-font",
                                               "fontSize": 13,
-                                              "fontWeight": "normal"
+                                              "fontWeight": "700"
+                                            },
+                                            {
+                                              "type": "frame",
+                                              "id": "MYbOD",
+                                              "name": "Spacer",
+                                              "width": "fill_container",
+                                              "height": 1
+                                            },
+                                            {
+                                              "type": "frame",
+                                              "id": "fU3Ao",
+                                              "name": "Badge",
+                                              "height": 20,
+                                              "fill": "$op-accent-strong",
+                                              "cornerRadius": 999,
+                                              "padding": [
+                                                0,
+                                                6
+                                              ],
+                                              "justifyContent": "center",
+                                              "alignItems": "center",
+                                              "children": [
+                                                {
+                                                  "type": "text",
+                                                  "id": "Z5eaGq",
+                                                  "name": "T",
+                                                  "fill": "$op-on-accent",
+                                                  "content": "1",
+                                                  "lineHeight": 1,
+                                                  "fontFamily": "$op-font",
+                                                  "fontSize": 11,
+                                                  "fontWeight": "700"
+                                                }
+                                              ]
                                             }
                                           ]
                                         },
@@ -47814,267 +47460,6 @@
                                               "fontFamily": "$op-font",
                                               "fontSize": 13,
                                               "fontWeight": "normal"
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "frame",
-                                          "id": "zWgTI",
-                                          "name": "Tab Members",
-                                          "width": "fill_container",
-                                          "height": 36,
-                                          "cornerRadius": 4,
-                                          "gap": 12,
-                                          "alignItems": "center",
-                                          "children": [
-                                            {
-                                              "type": "frame",
-                                              "id": "imsSz",
-                                              "name": "Icon Slot",
-                                              "width": 36,
-                                              "height": 36,
-                                              "justifyContent": "center",
-                                              "alignItems": "center",
-                                              "children": [
-                                                {
-                                                  "type": "icon",
-                                                  "id": "QeUJi",
-                                                  "name": "I",
-                                                  "width": 16,
-                                                  "height": 16,
-                                                  "icon": "users",
-                                                  "library": "lucide",
-                                                  "fill": "$op-text-2"
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "type": "text",
-                                              "id": "QNrd0",
-                                              "name": "L",
-                                              "fill": "$op-text",
-                                              "content": "Members",
-                                              "lineHeight": 1.5,
-                                              "fontFamily": "$op-font",
-                                              "fontSize": 13,
-                                              "fontWeight": "normal"
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "frame",
-                                          "id": "jAZZT",
-                                          "name": "Tab Agent",
-                                          "width": "fill_container",
-                                          "height": 36,
-                                          "cornerRadius": 4,
-                                          "gap": 12,
-                                          "alignItems": "center",
-                                          "children": [
-                                            {
-                                              "type": "frame",
-                                              "id": "jgifY",
-                                              "name": "Icon Slot",
-                                              "width": 36,
-                                              "height": 36,
-                                              "justifyContent": "center",
-                                              "alignItems": "center",
-                                              "children": [
-                                                {
-                                                  "type": "icon",
-                                                  "id": "gBCT6",
-                                                  "name": "I",
-                                                  "width": 16,
-                                                  "height": 16,
-                                                  "icon": "bot",
-                                                  "library": "lucide",
-                                                  "fill": "$op-text-2"
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "type": "text",
-                                              "id": "tLrxm",
-                                              "name": "L",
-                                              "fill": "$op-text",
-                                              "content": "Agent",
-                                              "lineHeight": 1.5,
-                                              "fontFamily": "$op-font",
-                                              "fontSize": 13,
-                                              "fontWeight": "normal"
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "frame",
-                                          "id": "AkmaM",
-                                          "name": "Tab Integrations",
-                                          "width": "fill_container",
-                                          "height": 36,
-                                          "cornerRadius": 4,
-                                          "gap": 12,
-                                          "alignItems": "center",
-                                          "children": [
-                                            {
-                                              "type": "frame",
-                                              "id": "uYuZ5",
-                                              "name": "Icon Slot",
-                                              "width": 36,
-                                              "height": 36,
-                                              "justifyContent": "center",
-                                              "alignItems": "center",
-                                              "children": [
-                                                {
-                                                  "type": "icon",
-                                                  "id": "SKcVq",
-                                                  "name": "I",
-                                                  "width": 16,
-                                                  "height": 16,
-                                                  "icon": "plug",
-                                                  "library": "lucide",
-                                                  "fill": "$op-text-2"
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "type": "text",
-                                              "id": "q3LVl",
-                                              "name": "L",
-                                              "fill": "$op-text",
-                                              "content": "Integrations",
-                                              "lineHeight": 1.5,
-                                              "fontFamily": "$op-font",
-                                              "fontSize": 13,
-                                              "fontWeight": "normal"
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "frame",
-                                          "id": "D1tyRY",
-                                          "name": "Tab Notifications",
-                                          "width": "fill_container",
-                                          "height": 36,
-                                          "cornerRadius": 4,
-                                          "gap": 12,
-                                          "alignItems": "center",
-                                          "children": [
-                                            {
-                                              "type": "frame",
-                                              "id": "J9BKd",
-                                              "name": "Icon Slot",
-                                              "width": 36,
-                                              "height": 36,
-                                              "justifyContent": "center",
-                                              "alignItems": "center",
-                                              "children": [
-                                                {
-                                                  "type": "icon",
-                                                  "id": "tJslR",
-                                                  "name": "I",
-                                                  "width": 16,
-                                                  "height": 16,
-                                                  "icon": "bell",
-                                                  "library": "lucide",
-                                                  "fill": "$op-text-2"
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "type": "text",
-                                              "id": "M9hF3",
-                                              "name": "L",
-                                              "fill": "$op-text",
-                                              "content": "Notifications",
-                                              "lineHeight": 1.5,
-                                              "fontFamily": "$op-font",
-                                              "fontSize": 13,
-                                              "fontWeight": "normal"
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "frame",
-                                          "id": "n2ycn",
-                                          "name": "Tab Updates",
-                                          "width": "fill_container",
-                                          "height": 36,
-                                          "fill": "$op-tint",
-                                          "cornerRadius": 4,
-                                          "gap": 12,
-                                          "padding": [
-                                            0,
-                                            8,
-                                            0,
-                                            0
-                                          ],
-                                          "alignItems": "center",
-                                          "children": [
-                                            {
-                                              "type": "frame",
-                                              "id": "BOKa0",
-                                              "name": "Icon Slot",
-                                              "width": 36,
-                                              "height": 36,
-                                              "justifyContent": "center",
-                                              "alignItems": "center",
-                                              "children": [
-                                                {
-                                                  "type": "icon",
-                                                  "id": "dNCdj",
-                                                  "name": "I",
-                                                  "width": 16,
-                                                  "height": 16,
-                                                  "icon": "circle-arrow-up",
-                                                  "library": "lucide",
-                                                  "fill": "$op-accent-text"
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "type": "text",
-                                              "id": "GyisK",
-                                              "name": "L",
-                                              "fill": "$op-on-tint",
-                                              "content": "Updates",
-                                              "lineHeight": 1.5,
-                                              "fontFamily": "$op-font",
-                                              "fontSize": 13,
-                                              "fontWeight": "700"
-                                            },
-                                            {
-                                              "type": "frame",
-                                              "id": "MYbOD",
-                                              "name": "Spacer",
-                                              "width": "fill_container",
-                                              "height": 1
-                                            },
-                                            {
-                                              "type": "frame",
-                                              "id": "fU3Ao",
-                                              "name": "Badge",
-                                              "height": 20,
-                                              "fill": "$op-accent-strong",
-                                              "cornerRadius": 999,
-                                              "padding": [
-                                                0,
-                                                6
-                                              ],
-                                              "justifyContent": "center",
-                                              "alignItems": "center",
-                                              "children": [
-                                                {
-                                                  "type": "text",
-                                                  "id": "Z5eaGq",
-                                                  "name": "T",
-                                                  "fill": "$op-on-accent",
-                                                  "content": "1",
-                                                  "lineHeight": 1,
-                                                  "fontFamily": "$op-font",
-                                                  "fontSize": 11,
-                                                  "fontWeight": "700"
-                                                }
-                                              ]
                                             }
                                           ]
                                         },
@@ -48209,7 +47594,7 @@
                                                       "id": "XSJAT",
                                                       "name": "Title",
                                                       "fill": "$op-text",
-                                                      "content": "Updates",
+                                                      "content": "Version and updates",
                                                       "lineHeight": 1.25,
                                                       "fontFamily": "$op-font",
                                                       "fontSize": 16,
@@ -50695,7 +50080,7 @@
                               "id": "t6OwM",
                               "name": "Label",
                               "fill": "$ink",
-                              "content": "App settings · Updates — terminal guide",
+                              "content": "App settings · About — terminal guide",
                               "fontFamily": "$font-display",
                               "fontSize": 16,
                               "fontWeight": "700"
@@ -50720,14 +50105,14 @@
                     {
                       "type": "frame",
                       "id": "tYgFi",
-                      "name": "Shot · App settings · Updates · Up to date",
+                      "name": "Shot · App settings · About · Up to date",
                       "layout": "vertical",
                       "gap": 14,
                       "children": [
                         {
                           "type": "frame",
                           "id": "ov1Cv",
-                          "name": "App settings · Updates · Up to date",
+                          "name": "App settings · About · Up to date",
                           "theme": {
                             "mode": "light",
                             "family": "communicate"
@@ -50804,17 +50189,24 @@
                                       "children": [
                                         {
                                           "type": "frame",
-                                          "id": "ewYui",
-                                          "name": "Tab General",
+                                          "id": "sx5Qf",
+                                          "name": "Tab About",
                                           "width": "fill_container",
                                           "height": 36,
+                                          "fill": "$op-tint",
                                           "cornerRadius": 4,
                                           "gap": 12,
+                                          "padding": [
+                                            0,
+                                            8,
+                                            0,
+                                            0
+                                          ],
                                           "alignItems": "center",
                                           "children": [
                                             {
                                               "type": "frame",
-                                              "id": "gx1kD",
+                                              "id": "Icpmg",
                                               "name": "Icon Slot",
                                               "width": 36,
                                               "height": 36,
@@ -50823,26 +50215,33 @@
                                               "children": [
                                                 {
                                                   "type": "icon",
-                                                  "id": "JYSCo",
+                                                  "id": "X7IRWA",
                                                   "name": "I",
                                                   "width": 16,
                                                   "height": 16,
-                                                  "icon": "settings",
+                                                  "icon": "info",
                                                   "library": "lucide",
-                                                  "fill": "$op-text-2"
+                                                  "fill": "$op-accent-text"
                                                 }
                                               ]
                                             },
                                             {
                                               "type": "text",
-                                              "id": "n7gxi",
+                                              "id": "ntxz5",
                                               "name": "L",
-                                              "fill": "$op-text",
-                                              "content": "General",
+                                              "fill": "$op-on-tint",
+                                              "content": "About",
                                               "lineHeight": 1.5,
                                               "fontFamily": "$op-font",
                                               "fontSize": 13,
-                                              "fontWeight": "normal"
+                                              "fontWeight": "700"
+                                            },
+                                            {
+                                              "type": "frame",
+                                              "id": "DKQDS",
+                                              "name": "Spacer",
+                                              "width": "fill_container",
+                                              "height": 1
                                             }
                                           ]
                                         },
@@ -50887,240 +50286,6 @@
                                               "fontFamily": "$op-font",
                                               "fontSize": 13,
                                               "fontWeight": "normal"
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "frame",
-                                          "id": "IBOWj",
-                                          "name": "Tab Members",
-                                          "width": "fill_container",
-                                          "height": 36,
-                                          "cornerRadius": 4,
-                                          "gap": 12,
-                                          "alignItems": "center",
-                                          "children": [
-                                            {
-                                              "type": "frame",
-                                              "id": "K2RlU",
-                                              "name": "Icon Slot",
-                                              "width": 36,
-                                              "height": 36,
-                                              "justifyContent": "center",
-                                              "alignItems": "center",
-                                              "children": [
-                                                {
-                                                  "type": "icon",
-                                                  "id": "J1nkPJ",
-                                                  "name": "I",
-                                                  "width": 16,
-                                                  "height": 16,
-                                                  "icon": "users",
-                                                  "library": "lucide",
-                                                  "fill": "$op-text-2"
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "type": "text",
-                                              "id": "py2Ol",
-                                              "name": "L",
-                                              "fill": "$op-text",
-                                              "content": "Members",
-                                              "lineHeight": 1.5,
-                                              "fontFamily": "$op-font",
-                                              "fontSize": 13,
-                                              "fontWeight": "normal"
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "frame",
-                                          "id": "vOUKz",
-                                          "name": "Tab Agent",
-                                          "width": "fill_container",
-                                          "height": 36,
-                                          "cornerRadius": 4,
-                                          "gap": 12,
-                                          "alignItems": "center",
-                                          "children": [
-                                            {
-                                              "type": "frame",
-                                              "id": "cFRrH",
-                                              "name": "Icon Slot",
-                                              "width": 36,
-                                              "height": 36,
-                                              "justifyContent": "center",
-                                              "alignItems": "center",
-                                              "children": [
-                                                {
-                                                  "type": "icon",
-                                                  "id": "cyQH5",
-                                                  "name": "I",
-                                                  "width": 16,
-                                                  "height": 16,
-                                                  "icon": "bot",
-                                                  "library": "lucide",
-                                                  "fill": "$op-text-2"
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "type": "text",
-                                              "id": "LfvuV",
-                                              "name": "L",
-                                              "fill": "$op-text",
-                                              "content": "Agent",
-                                              "lineHeight": 1.5,
-                                              "fontFamily": "$op-font",
-                                              "fontSize": 13,
-                                              "fontWeight": "normal"
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "frame",
-                                          "id": "mmcZc",
-                                          "name": "Tab Integrations",
-                                          "width": "fill_container",
-                                          "height": 36,
-                                          "cornerRadius": 4,
-                                          "gap": 12,
-                                          "alignItems": "center",
-                                          "children": [
-                                            {
-                                              "type": "frame",
-                                              "id": "qHU7B",
-                                              "name": "Icon Slot",
-                                              "width": 36,
-                                              "height": 36,
-                                              "justifyContent": "center",
-                                              "alignItems": "center",
-                                              "children": [
-                                                {
-                                                  "type": "icon",
-                                                  "id": "Q75pV",
-                                                  "name": "I",
-                                                  "width": 16,
-                                                  "height": 16,
-                                                  "icon": "plug",
-                                                  "library": "lucide",
-                                                  "fill": "$op-text-2"
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "type": "text",
-                                              "id": "DQSqh",
-                                              "name": "L",
-                                              "fill": "$op-text",
-                                              "content": "Integrations",
-                                              "lineHeight": 1.5,
-                                              "fontFamily": "$op-font",
-                                              "fontSize": 13,
-                                              "fontWeight": "normal"
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "frame",
-                                          "id": "G2sq1",
-                                          "name": "Tab Notifications",
-                                          "width": "fill_container",
-                                          "height": 36,
-                                          "cornerRadius": 4,
-                                          "gap": 12,
-                                          "alignItems": "center",
-                                          "children": [
-                                            {
-                                              "type": "frame",
-                                              "id": "PzRwr",
-                                              "name": "Icon Slot",
-                                              "width": 36,
-                                              "height": 36,
-                                              "justifyContent": "center",
-                                              "alignItems": "center",
-                                              "children": [
-                                                {
-                                                  "type": "icon",
-                                                  "id": "YCOrE",
-                                                  "name": "I",
-                                                  "width": 16,
-                                                  "height": 16,
-                                                  "icon": "bell",
-                                                  "library": "lucide",
-                                                  "fill": "$op-text-2"
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "type": "text",
-                                              "id": "WRcMp",
-                                              "name": "L",
-                                              "fill": "$op-text",
-                                              "content": "Notifications",
-                                              "lineHeight": 1.5,
-                                              "fontFamily": "$op-font",
-                                              "fontSize": 13,
-                                              "fontWeight": "normal"
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "frame",
-                                          "id": "sx5Qf",
-                                          "name": "Tab Updates",
-                                          "width": "fill_container",
-                                          "height": 36,
-                                          "fill": "$op-tint",
-                                          "cornerRadius": 4,
-                                          "gap": 12,
-                                          "padding": [
-                                            0,
-                                            8,
-                                            0,
-                                            0
-                                          ],
-                                          "alignItems": "center",
-                                          "children": [
-                                            {
-                                              "type": "frame",
-                                              "id": "Icpmg",
-                                              "name": "Icon Slot",
-                                              "width": 36,
-                                              "height": 36,
-                                              "justifyContent": "center",
-                                              "alignItems": "center",
-                                              "children": [
-                                                {
-                                                  "type": "icon",
-                                                  "id": "X7IRWA",
-                                                  "name": "I",
-                                                  "width": 16,
-                                                  "height": 16,
-                                                  "icon": "circle-arrow-up",
-                                                  "library": "lucide",
-                                                  "fill": "$op-accent-text"
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "type": "text",
-                                              "id": "ntxz5",
-                                              "name": "L",
-                                              "fill": "$op-on-tint",
-                                              "content": "Updates",
-                                              "lineHeight": 1.5,
-                                              "fontFamily": "$op-font",
-                                              "fontSize": 13,
-                                              "fontWeight": "700"
-                                            },
-                                            {
-                                              "type": "frame",
-                                              "id": "DKQDS",
-                                              "name": "Spacer",
-                                              "width": "fill_container",
-                                              "height": 1
                                             }
                                           ]
                                         },
@@ -51255,7 +50420,7 @@
                                                       "id": "g5RnK",
                                                       "name": "Title",
                                                       "fill": "$op-text",
-                                                      "content": "Updates",
+                                                      "content": "Version and updates",
                                                       "lineHeight": 1.25,
                                                       "fontFamily": "$op-font",
                                                       "fontSize": 16,
@@ -52656,7 +51821,7 @@
                               "id": "R2mre",
                               "name": "Label",
                               "fill": "$ink",
-                              "content": "App settings · Updates — up to date",
+                              "content": "App settings · About — up to date",
                               "fontFamily": "$font-display",
                               "fontSize": 16,
                               "fontWeight": "700"
@@ -58244,8 +57409,8 @@
     {
       "type": "frame",
       "id": "fgzpp",
-      "x": 0,
-      "y": 13871,
+      "x": -3828,
+      "y": 5823,
       "name": "OfficePress Common Modules",
       "width": 3080,
       "fill": "$bg",

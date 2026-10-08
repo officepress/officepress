@@ -18,6 +18,7 @@ This repository contains OfficePress product and implementation knowledge, the w
 | [Workflows](.agents/workflows/) | Knowledge maintenance and specification workflows |
 | [Website](docs/index.html) | Static OfficePress website and its local assets |
 | [Stackpress baseline](proofs/stackpress-boilerplate/README.md) | Runnable scaffold and framework proof shared by all apps |
+| [Common components](proofs/common-components/README.md) | Separate proof on the approved shell: workflows, automations, templates, forms and chat |
 | [Agent instructions](AGENTS.md) | Repository entry point for coding and knowledge agents |
 
 The [product catalogue](.agents/context/products.md) defines the suite’s 23 apps and their current scope. The baseline demonstrates shared framework mechanics; individual app features have their own implementation and acceptance work.

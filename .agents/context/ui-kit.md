@@ -19,7 +19,7 @@ Theme persistence uses `localStorage["op-mode"]` and `data-mode` on `<html>`. As
 - [Template resources](../resources/officepress-kit/templates/) provide markup guidance: page structure, shared chrome, controls and state examples.
 - [Source-file catalogue and ingestion checks](../references/00359-officepress-ui-source-resources.md) — load for individual file links, usage boundaries, and the complete design guide plus all nine Markdown documents.
 
-These exact source copies supplement the complete reference content. Apply current user decisions when adapting them; do not edit the archived bytes to resolve historical examples.
+The [current About menu revision](../references/00360-officepress-about-menu-revision.md) supersedes the archived Updates and extra-tab examples. These exact source copies supplement the complete reference content. Apply current user decisions when adapting them; do not edit the archived bytes to resolve historical examples.
 
 ## Starting points
 

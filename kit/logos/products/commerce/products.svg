@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="products">
+<defs>
+<clipPath id="op-products-c">
+<rect width="96" height="96" rx="24"/>
+</clipPath>
+</defs>
+<g clip-path="url(#op-products-c)">
+<rect width="96" height="96" fill="#0F8F6A"/>
+<path d="M28 38l16-20h30q6 0 6 6v34q0 6-6 6h-30z" fill="#FFFFFF" fill-opacity="0.55"/>
+<path d="M16 52l16-20h30q6 0 6 6v34q0 6-6 6h-30z" fill="#FFFFFF"/>
+<ellipse cx="32" cy="54" rx="4" ry="4" fill="#0F8F6A"/>
+</g>
+</svg>

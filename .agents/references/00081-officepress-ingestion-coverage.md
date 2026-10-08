@@ -29,14 +29,18 @@ The verifier now checks all 231 resource files: 207 native/visual files plus 24 
 
 The requested source comparison passes. A broader `--compare-originals` check on 2026-10-02 finds that the external `officepress.pen` has changed since the initial ingestion; all 53 textual inputs and the 206 original kit visual assets still match. The archived Pencil snapshot and its extracted references remain internally consistent and were not replaced in this update. The default offline fidelity check remains independent of external changes.
 
+## Current native revision on 2026-10-02
+
+The user replaced the repository Pencil file and requested KB reconciliation. The [About menu revision receipt](00360-officepress-about-menu-revision.md) records the current file hash, source deltas and lossless prior-record recovery. This supersedes the earlier external-file drift note above: the repository native file is now the authoritative input, and the Documents copy is no longer the comparison target for Pencil. Historical kit source files and visual assets are unchanged.
+
 ## Native design extraction
 
 | Item | Count / disposition |
 |---|---|
 | Root frames | 18 |
 | Reusable components | 11 |
-| Resolved nodes | 8,837 |
-| Nodes with content | 2,828 |
+| Resolved nodes | 8,761 |
+| Nodes with content | 2,809 |
 | Variables | 205, including all themed values and legacy namespaces |
 | Theme axes | mode: light/dark; family: communicate/create/operate/commerce |
 | Extracted node references | 89 cohesive screen/component sections |

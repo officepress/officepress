@@ -16,6 +16,9 @@ export function database(mode: 'development' | 'production') {
   return {
     adapter,
     url: process.env.DATABASE_URL,
-    directory: path.resolve(process.env.PGLITE_DIR || path.join(cwd, '.data', 'pglite'))
+    directory: path.resolve(process.env.PGLITE_DIR || path.join(build, 'database', 'pglite')),
+    populate: [
+      { event: 'note-create', data: { id: 'proof-note', title: 'Persisted OfficePress proof', state: 'DRAFT' } }
+    ]
   };
 }

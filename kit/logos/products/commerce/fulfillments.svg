@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="fulfillments">
+<defs>
+<clipPath id="op-fulfillments-c">
+<rect width="96" height="96" rx="24"/>
+</clipPath>
+</defs>
+<g clip-path="url(#op-fulfillments-c)">
+<rect width="96" height="96" fill="#0F8F6A"/>
+<rect x="14" y="26" width="44" height="36" rx="5" fill="#FFFFFF"/>
+<path d="M60 38h12l10 12v12h-22z" fill="#FFFFFF"/>
+<rect x="64" y="42" width="8" height="8" rx="2" fill="#0F8F6A"/>
+<ellipse cx="29" cy="65" rx="9" ry="9" fill="#0F8F6A"/>
+<ellipse cx="69" cy="65" rx="9" ry="9" fill="#0F8F6A"/>
+<ellipse cx="29" cy="65" rx="5" ry="5" fill="#FFFFFF" fill-opacity="0.55"/>
+<ellipse cx="69" cy="65" rx="5" ry="5" fill="#FFFFFF" fill-opacity="0.55"/>
+</g>
+</svg>

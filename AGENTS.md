@@ -23,10 +23,13 @@
 - Each dependent plugin owns its dependency checks in `plugin.ts`. If required services are absent, fall back or return before registering feature listeners, routes, workers or navigation. Required security boundaries fail closed.
 - Activation changes require restart. Do not introduce automatic dependency validation or live unloading. Disabling a plugin preserves its data; removing schema requires an explicit migration.
 - Use PostgreSQL by default in production and PGlite for development/proofs. Never silently fall back to PGlite when production PostgreSQL is unavailable.
+- Use `.build/database/` for the one disposable development PGlite database. Keep repeatable fixtures in config `database.populate`, and clean up closed, run-owned scratch databases. Treat PGlite as the development substitute for PostgreSQL and CockroachDB; no separate cross-engine compatibility proof is required.
 - Compose smaller responsibility-owned Idea files from a root `schema.idea`. Keep code generation, database changes and rendering builds separate.
 - Apply OfficePress product, brand and UI guidance when adapting the baseline. Preserve existing source-of-truth decisions instead of inferring features from a generic template.
 
 ## Verification and data care
+
+Update the MCP index only when the user explicitly requests it. Knowledge edits and validation do not authorize indexing. Starting/restarting the MCP server or enabling watch mode may rebuild it; follow [the indexing policy](.agents/context/knowledge-maintenance.md#mcp-index-updates-require-an-explicit-request).
 
 After knowledge changes, run from the repository root:
 
@@ -41,8 +44,8 @@ For baseline implementation changes, run the relevant checks inside `proofs/stac
 ```bash
 npm run typecheck
 npm run prove
-# Include when changing PostgreSQL behavior; requires Docker:
-npm run prove -- --postgres
+# The existing Docker PostgreSQL variant is optional; cross-engine compatibility
+# is not a required proof gate for this development policy.
 ```
 
 Use the baseline README for installation, generation, building and serving. For documentation-only changes, check links and ignore rules as applicable; do not rerun the application proof without a reason.

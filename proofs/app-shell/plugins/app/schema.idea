@@ -1,0 +1,10 @@
+model ShellNotice {
+ id String @id
+ appId String
+ ownerId String
+ category String
+ title String
+ href String
+ read Boolean @default(false)
+ created Datetime @default("now()")
+}

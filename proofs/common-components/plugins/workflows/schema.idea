@@ -1,0 +1,19 @@
+// Workflow definitions are mutable; payload.status is draft or published.
+model ComponentWorkflow {
+ id String @id
+ appId String
+ payload Hash
+ revision Integer @default(1)
+}
+// Legacy archive retained for data compatibility only; runtime does not read or write it.
+model ComponentWorkflowPublication {
+ id String @id
+ appId String
+ payload Hash
+}
+model ComponentWorkflowCard {
+ id String @id
+ appId String
+ payload Hash
+ revision Integer @default(1)
+}

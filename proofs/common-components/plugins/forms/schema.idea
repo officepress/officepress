@@ -1,0 +1,7 @@
+model ComponentForm {
+  id String @id
+  appId String
+  ownerId String
+  payload Hash
+  revision Integer @default(1)
+}

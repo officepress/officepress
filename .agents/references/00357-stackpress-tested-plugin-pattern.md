@@ -36,9 +36,9 @@ This is a public local demonstration. A real feature must additionally enforce i
 
 ## Framework integration guard
 
-The 0.10.8 framework SQL plugin assumes a `client` service. Its registration code is reusable, but does not implement an OfficePress dependency policy. The local data adapter calls it from a late `config` listener only when both `database` and `client` exist. This adds the SQL `listen` and `idea` contributions before those phases run. If either is absent, the adapter returns without registering SQL behavior. See [the integration adapter](../../proofs/stackpress-boilerplate/plugins/data/plugin.ts).
+The 0.10.8 framework SQL plugin assumes a `client` service. Its registration code is reusable, but does not implement an OfficePress dependency policy. The local store plugin now calls it from a late `config` listener only when both `database` and `client` exist. This adds the SQL `listen` and `idea` contributions before those phases run. If either is absent, store returns without registering SQL behavior. See [the store integration](../../proofs/stackpress-boilerplate/plugins/store/plugin.ts). The earlier standalone `data` adapter was merged into store by the 2026-10-08 user direction.
 
-Keep this decision within the integration plugin. Bootstrap only selects modules and sequences lifecycle events; it does not validate a global dependency graph. For providers with different priorities, choose dependency-check timing explicitly and test it.
+Keep this decision within the owning store plugin. Bootstrap only selects modules and sequences lifecycle events; it does not validate a global dependency graph. For providers with different priorities, choose dependency-check timing explicitly and test it.
 
 ## Internal event absence
 
@@ -83,4 +83,4 @@ Reactus `buildAllClients`, `buildAllAssets` and `buildAllPages` each return arra
 
 Keep generated client, built server and browser assets distinct. Live config points to built paths and serves copied public assets. The proof checks that production HTML references a built client script, omits the Vite development client and serves its referenced JS/CSS.
 
-Database storage is outside normal build output (`.data/pglite`). Verification uses unique `.build/proof-*` directories and never removes the whole `.build`. Temporary proof servers and the owned PostgreSQL container are stopped; run artifacts remain inspectable.
+The historical baseline receipt used `.data/pglite` and retained unique `.build/proof-*` directories. The current development default is `.build/database/pglite`, with repeatable fixtures in config `database.populate`; fresh isolated proof directories are removed after their connections close and receipts are saved. Never remove the whole `.build`. The earlier optional PostgreSQL container proof remains historical evidence, not a required cross-engine compatibility gate.

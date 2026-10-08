@@ -1,0 +1,150 @@
+{
+  "started": "2026-10-05T05:31:20.437Z",
+  "node": "v24.21.0",
+  "packages": {
+    "stackpress-session": "0.10.8",
+    "stackpress-csrf": "0.10.8",
+    "@stackpress/ingest": "0.10.8"
+  },
+  "command": "node --import tsx scripts/prove-identity.ts",
+  "database": ".data/identity-xv2s3E",
+  "checks": [
+    {
+      "name": "Anonymous account access fails closed",
+      "passed": true
+    },
+    {
+      "name": "Login rejects missing CSRF token",
+      "passed": true
+    },
+    {
+      "name": "Built-in email signin rejects invalid credentials",
+      "passed": true
+    },
+    {
+      "name": "Built-in email signin succeeds and preserves multiple Set-Cookie revisions",
+      "passed": true
+    },
+    {
+      "name": "Authenticated account view uses actual Profile/Auth records",
+      "passed": true
+    },
+    {
+      "name": "Account update adds missing framework CSRF protection",
+      "passed": true
+    },
+    {
+      "name": "Read-only role cannot write account fields",
+      "passed": true
+    },
+    {
+      "name": "Built-in profile update persists",
+      "passed": true
+    },
+    {
+      "name": "Built-in password update rejects wrong current password",
+      "passed": true
+    },
+    {
+      "name": "Configured 12-character password policy rejects short passwords",
+      "passed": true
+    },
+    {
+      "name": "Built-in password update persists",
+      "passed": true
+    },
+    {
+      "name": "Changed password authenticates through built-in signin",
+      "passed": true
+    },
+    {
+      "name": "Built-in authenticator setup verifies TOTP with one-step clock drift",
+      "passed": true
+    },
+    {
+      "name": "Built-in TOTP rejects invalid code",
+      "passed": true
+    },
+    {
+      "name": "Built-in TOTP challenge completes a real session",
+      "passed": true
+    },
+    {
+      "name": "Consumed TOTP challenge cannot be replayed in the same second",
+      "passed": true
+    },
+    {
+      "name": "A twenty-minute-old TOTP challenge is expired",
+      "passed": true
+    },
+    {
+      "name": "Concurrent redemption permits one successful session and rejects the replay",
+      "passed": true
+    },
+    {
+      "name": "Account summary does not leak the authenticator secret",
+      "passed": true
+    },
+    {
+      "name": "GET cannot remove an authenticator",
+      "passed": true
+    },
+    {
+      "name": "Foreign authenticator id cannot be removed",
+      "passed": true
+    },
+    {
+      "name": "Built-in authenticator removal works only for the owner with POST and CSRF",
+      "passed": true
+    },
+    {
+      "name": "Built-in export downloads the Profile scope without credentials",
+      "passed": true
+    },
+    {
+      "name": "Expired session rejected by live identity boundary",
+      "passed": true
+    },
+    {
+      "name": "Challenge boundary rejects unissued email links",
+      "passed": true
+    },
+    {
+      "name": "Characterized built-in remove: credentials deactivate but Profile remains; other account survives",
+      "passed": true
+    },
+    {
+      "name": "Account with no active credentials cannot keep using a prior session",
+      "passed": true
+    },
+    {
+      "name": "Purge confirmation GET is read-only and explains the exact app-owned scope",
+      "passed": true
+    },
+    {
+      "name": "Purge requires an authenticated writer, valid CSRF and exact typed confirmation",
+      "passed": true
+    },
+    {
+      "name": "Purge removes four owned record categories in the configured app and ignores forged scope",
+      "passed": true
+    },
+    {
+      "name": "Other app records and another user’s records survive current-app purge",
+      "passed": true
+    },
+    {
+      "name": "Purge preserves Profile/Auth, challenge history, company theme and usable sign-in",
+      "passed": true
+    }
+  ],
+  "status": "passed",
+  "limitations": [
+    "Forgot-password and cross-app deletion are unavailable in stackpress-session 0.10.8; warning screens do not pretend otherwise.",
+    "P-01 validates email-code and magic-link rendering/invalid challenges only; real SMTP example sends belong to the later message-template proof.",
+    "An app-owned persistent challenge ledger adds a five-minute TTL and atomic one-use redemption around the unchanged built-in verification handlers.",
+    "Ingest cookie serialization and several identity guards require the documented app-owned 0.10.8 adapters.",
+    "Built-in remove deactivates Auth rows but leaves Profile active because its reused response skips generated profile-remove; it is not exposed as product deletion."
+  ],
+  "finished": "2026-10-05T05:31:24.738Z"
+}

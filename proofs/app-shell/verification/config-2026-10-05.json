@@ -1,0 +1,386 @@
+{
+  "id": "2026-10-05T04-55-43-612Z",
+  "started": "2026-10-05T04:55:43.612Z",
+  "node": "v24.21.0",
+  "command": "node --import tsx scripts/prove-config.ts",
+  "scope": "Built-server restart and independent plugin dependency/configuration contracts; no model calls",
+  "buildStatus": "Caller explicitly confirmed fresh final build",
+  "checks": [
+    {
+      "name": "Config proof installs and seeds only its new empty PGlite database",
+      "passed": true
+    },
+    {
+      "name": "Built server renders authenticated compiled shell",
+      "passed": true
+    },
+    {
+      "name": "Production asset routing does not start Vite development middleware",
+      "passed": true
+    },
+    {
+      "name": "First built server closes its listener and database",
+      "passed": true
+    },
+    {
+      "name": "Same private session seed retains builtin identity and persisted item/theme/read-state after restart",
+      "passed": true
+    },
+    {
+      "name": "Fresh builtin password login succeeds after built-server restart",
+      "passed": true
+    },
+    {
+      "name": "Actual compiled browser hydrates persisted record and theme without page errors",
+      "passed": true
+    },
+    {
+      "name": "agent configured off: dependent services and routes are absent",
+      "passed": true,
+      "detail": {
+        "agent": {
+          "registered": false,
+          "status": 404
+        }
+      }
+    },
+    {
+      "name": "agent configured off: shell omits unavailable navigation",
+      "passed": true
+    },
+    {
+      "name": "agent key missing: dependent services and routes are absent",
+      "passed": true,
+      "detail": {
+        "agent": {
+          "registered": false,
+          "status": 404
+        }
+      }
+    },
+    {
+      "name": "agent key missing: shell omits unavailable navigation",
+      "passed": true
+    },
+    {
+      "name": "agent provider unsupported: dependent services and routes are absent",
+      "passed": true,
+      "detail": {
+        "agent": {
+          "registered": false,
+          "status": 404
+        }
+      }
+    },
+    {
+      "name": "agent provider unsupported: shell omits unavailable navigation",
+      "passed": true
+    },
+    {
+      "name": "agent models malformed: dependent services and routes are absent",
+      "passed": true,
+      "detail": {
+        "agent": {
+          "registered": false,
+          "status": 404
+        }
+      }
+    },
+    {
+      "name": "agent models malformed: shell omits unavailable navigation",
+      "passed": true
+    },
+    {
+      "name": "agent configuration absent: dependent services and routes are absent",
+      "passed": true,
+      "detail": {
+        "agent": {
+          "registered": false,
+          "status": 404
+        }
+      }
+    },
+    {
+      "name": "agent configuration absent: shell omits unavailable navigation",
+      "passed": true
+    },
+    {
+      "name": "notifications configured off: dependent services and routes are absent",
+      "passed": true,
+      "detail": {
+        "notifications": {
+          "registered": false,
+          "status": 404
+        }
+      }
+    },
+    {
+      "name": "notifications configured off: shell omits unavailable navigation",
+      "passed": true
+    },
+    {
+      "name": "notification adapter unsupported: dependent services and routes are absent",
+      "passed": true,
+      "detail": {
+        "notifications": {
+          "registered": false,
+          "status": 404
+        }
+      }
+    },
+    {
+      "name": "notification adapter unsupported: shell omits unavailable navigation",
+      "passed": true
+    },
+    {
+      "name": "notification categories malformed: dependent services and routes are absent",
+      "passed": true,
+      "detail": {
+        "notifications": {
+          "registered": false,
+          "status": 404
+        }
+      }
+    },
+    {
+      "name": "notification categories malformed: shell omits unavailable navigation",
+      "passed": true
+    },
+    {
+      "name": "notification configuration absent: dependent services and routes are absent",
+      "passed": true,
+      "detail": {
+        "notifications": {
+          "registered": false,
+          "status": 404
+        }
+      }
+    },
+    {
+      "name": "notification configuration absent: shell omits unavailable navigation",
+      "passed": true
+    },
+    {
+      "name": "store plugin absent: dependent services and routes are absent",
+      "passed": true,
+      "detail": {
+        "agent": {
+          "registered": false,
+          "status": 404
+        },
+        "notifications": {
+          "registered": false,
+          "status": 404
+        },
+        "actions": {
+          "registered": false,
+          "status": 404
+        },
+        "theme": {
+          "registered": false,
+          "status": 404
+        }
+      }
+    },
+    {
+      "name": "store plugin absent: shell omits unavailable navigation",
+      "passed": true
+    },
+    {
+      "name": "schema plugin absent: dependent services and routes are absent",
+      "passed": true,
+      "detail": {
+        "agent": {
+          "registered": false,
+          "status": 404
+        },
+        "notifications": {
+          "registered": false,
+          "status": 404
+        },
+        "actions": {
+          "registered": false,
+          "status": 404
+        },
+        "theme": {
+          "registered": false,
+          "status": 404
+        }
+      }
+    },
+    {
+      "name": "schema plugin absent: shell omits unavailable navigation",
+      "passed": true
+    },
+    {
+      "name": "data integration absent: dependent services and routes are absent",
+      "passed": true,
+      "detail": {
+        "agent": {
+          "registered": false,
+          "status": 404
+        },
+        "notifications": {
+          "registered": false,
+          "status": 404
+        },
+        "actions": {
+          "registered": false,
+          "status": 404
+        },
+        "theme": {
+          "registered": false,
+          "status": 404
+        }
+      }
+    },
+    {
+      "name": "data integration absent: shell omits unavailable navigation",
+      "passed": true
+    },
+    {
+      "name": "action plugin absent: dependent services and routes are absent",
+      "passed": true,
+      "detail": {
+        "agent": {
+          "registered": false,
+          "status": 404
+        },
+        "actions": {
+          "registered": false,
+          "status": 404
+        }
+      }
+    },
+    {
+      "name": "action plugin absent: shell omits unavailable navigation",
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "source": {
+    "plugins/about/components/About.tsx": "9c6ce63e7fdb2cbb5e8cf2ac1e31419be5b6e38935b5b9484ffd90e921d287f6",
+    "plugins/about/plugin.ts": "30da33bd30d762c7cbac7d7ab08407241a7f4d1855bdcd87959826b6492291b8",
+    "plugins/about/releases.ts": "b87732defbba44a148f06dd315ec57a80922d42a78fc21fc1cdf2567db904d09",
+    "plugins/about/tests/contract.ts": "843e02e3b1c7ae705ccb914a5929aa39e7a5731ee8ddd13f76b03f608cd38ce2",
+    "plugins/actions/domain.ts": "3b218e4164a4bc0dd06cc4f9ab50f3f60dcdd13d0f4259c709b061a7b99c98ed",
+    "plugins/actions/plugin.ts": "ce683224a98fa53f9b4d8085a44d3956c65faba7a29689e7a424f4102d59d9d9",
+    "plugins/actions/schema.idea": "6345f4c03fb433d006475b492ebc9645b8fe87f1fe9b153d7120137b6245cdf2",
+    "plugins/actions/tests/contract.ts": "32bc6e00b130fe70f10ee433a47cb35e0f7eb4107eea58b09590340855c5decb",
+    "plugins/agent/components/Agent.tsx": "7a62f2b960ced506c6e5e1547217edd2479359068df8a989a59a173a82e128e6",
+    "plugins/agent/openrouter.ts": "b7ba31dbf4b48be48cd968648d17a90a74914d568d7c9005b1b6737c58cc68f3",
+    "plugins/agent/plugin.ts": "2aabb00855bcd0205c745c224dd2f06b703caacdb9e5b088285148d348137b75",
+    "plugins/agent/schema.idea": "45f221533b8ec3c442877ae9180fe1653588fd070aa8c554a5900d6abae87c52",
+    "plugins/app/client.ts": "f45186769d8d5c67fbb9d4cf232b9336d2ab3776146a9b99e86aba9eb18e1813",
+    "plugins/app/components/Provider.tsx": "229af8f1709424c4be9ece20204664813d3402bb8093cffc41ba8c146279504d",
+    "plugins/app/components/server/ServerContext.ts": "a5595e505b944db84ba90528e78c571ab96c848f0812b38a5e13058f6a1c29b7",
+    "plugins/app/components/server/ServerProvider.tsx": "38a3daba7e7c06242ac1a10d4b08be6e4a3a1cbf5b695647eaa75543592377e8",
+    "plugins/app/components/server/ServerRequest.ts": "9905f3fe746455401007928ceed48700481ee0256edb7b55520b62b5f35791ee",
+    "plugins/app/components/server/ServerResponse.ts": "d56c2e382866f6d904a59630ec650399bf145d953ac642fe395cc107bb5e6a69",
+    "plugins/app/components/server/ServerSession.ts": "2a3d5ee86c30c13d68b699be799d74a2891e98d12dd6e15085efb212e7edb088",
+    "plugins/app/components/server/helpers.ts": "aadc254f881bde9320ebad25521622cf4561875f4127833c1478b91a6cefc26f",
+    "plugins/app/components/server/hooks.ts": "073c6f0f8834a8c3795b0677553727e2117adb25ecc639d64aae57fcdff4503a",
+    "plugins/app/components/server/types.ts": "629bb9571f54d00f896824734204de4a63eeb4ae513f3cb7c6f127b41c4c7703",
+    "plugins/app/plugin.ts": "e26ff7f860df9d65a8cb4de5595a6e0d4fb4800931f86caafda3841ac35f9014",
+    "plugins/app/types.ts": "58562996f63f83e40acb277751b8c2e107b7acf6bb39aaf0d5f4ee0ebecfc37a",
+    "plugins/app/view.ts": "6fb77b19664c3c639ec1be9ce02f2dc511cdc08b74853369e9d1858a97f3b1de",
+    "plugins/data/plugin.ts": "23b60e6e24025dcd3825fcb8840ee29196d1f6a839964c56e372b2977fc00c7d",
+    "plugins/identity/README.md": "324f55520544c3ea40694a58e65c283170cd1feed299deff8d0b990a3b2098ea",
+    "plugins/identity/challenges.ts": "f66d3c2daf677a942fc888b3cfbaff5841f26e87ea701762f8233b8072a99588",
+    "plugins/identity/cookies.ts": "b5853c2c054573e30d5bedf5c108d8403c9f07f863bdea61b9a42f58aaaa0277",
+    "plugins/identity/fixtures.ts": "31f1b6e8c8f5d2fc590189d3f93ae1186db52a789f7651643a15ac75c9e6c5ae",
+    "plugins/identity/framework.ts": "a7f7c6834a3c3faa36e743d1b7e7c7fc4bbb6afe3bc6ffa0c0277541ea986688",
+    "plugins/identity/plugin.ts": "e109ad6a6cb8827d9d9016891a47e9195bf0e9d97d3d28d8797628eb03b537ef",
+    "plugins/identity/purge.ts": "a06692b8ca4efcbf0c4ddf8de75e2eca832cf08dcd6f538ffff5d274d7dca3e0",
+    "plugins/identity/schema-adapter.ts": "fa6a4ab68a11b5c39e9ee6bb78ef68f6c097b10a4e15e40b8cc10b1a86d99a07",
+    "plugins/identity/schema.idea": "d1c9cba55be0e8bf97cb557ea3d59fb34e122e276fe7349f513e833d60222c7a",
+    "plugins/identity/tests/contract.ts": "378e60dd3afa47592c5664618d46974c172db26adc23f03a2d84bc27bc20e080",
+    "plugins/identity/types.ts": "75280ae7b873c428e79657a47dac096109407c2a1b65b7cfe48b65d05f0b870e",
+    "plugins/identity/views/page.tsx": "d41ff40b6d43bd53c9914f0f69e13dd605796cce8fd457a9b5fb6bcc9914f9ed",
+    "plugins/notifications/components/Notifications.tsx": "1eb57a6eafc0293e23e6c68fe359d162ba2149e616cea691f7e1ba050d86a6e2",
+    "plugins/notifications/plugin.ts": "e38f3b6426da03740856756e08ae436dab140b70bfee67c594b22d6a1d53a7f9",
+    "plugins/notifications/schema.idea": "a20aea7fb784d7e62b3af0d53d7263046e39e9dab473a8f3cf2cfc5954e439a5",
+    "plugins/shell/components/Frame.tsx": "af839bdb8fb75f1248766d7d1fb945ba4aba2876f978dfc2225749ec735d37cc",
+    "plugins/shell/components/Icon.tsx": "80996ece8edc2ee373e1d05843a8acf400249b8c457a9558a5de04696ee82ea3",
+    "plugins/shell/fixtures.ts": "07e29f347f980c5a48f8e451b6a7998f603d8067d48599f85139a077ff7cf843",
+    "plugins/shell/plugin.ts": "91b7af625a69069d905920359b2bd9894989096dc369a75dd2f54463f12b4b45",
+    "plugins/shell/tests/browser.ts": "36ccecc34e0fb76aa6b48331739c8acdf42d4bd8da96b6d92a596e8979c29887",
+    "plugins/shell/tests/config.ts": "c6fc1d25b2c959db13b3006997fa3de3fd53ebd81d9fcb5ad4df3f815a89208c",
+    "plugins/shell/types.ts": "dbd47af61ab59c02557bba79fbd19ee5f6b2bcd4bab258c6b850c9a9f6b5661c",
+    "plugins/shell/views/index.tsx": "ae0f2832d8690f0f94460816dceca97bd4f8d6c0e15414be68a7b9b3832bd22a",
+    "plugins/store/connect.ts": "e79ffad116065e8772a4cb82a82510d09d91d6b22766c3f7d306ac1967ccbf25",
+    "plugins/store/plugin.ts": "6e6e339537d27e1c6758144c1523c13f7cf23ca7f618867da6fb2acdb157f267",
+    "plugins/store/serialize.ts": "1a802c74d1bae69ce39477e450c45e8e792b8142cbf33184f96d992463aa7dbf",
+    "plugins/theme/client.ts": "c7d6fe1424e5f47804234bd2cd1a18e153282f8b4a9a33bde273c47ec80d3fbf",
+    "plugins/theme/components/Theme.tsx": "f28993bc7d35eba8a48506eb767f15bd9f824cd53ead4d00102bdbcfd167a6d7",
+    "plugins/theme/domain.ts": "d5af28add9fe967f20b68ef8198a7d4f436dbde0ae3b870fcdeaafec8b3d7b63",
+    "plugins/theme/families.ts": "e180081b188d75bcbc522b54a97cac41ec252807b61752733e28dc1b6efab569",
+    "plugins/theme/plugin.ts": "f1e5efb5d05a8cc9aaf0da7a95f3cf2a0ff0cd6e2b73267b3489aec5ddb7f43b",
+    "plugins/theme/schema.idea": "930e11dd514013301ef106734d11d811b13d3b70f0230523f890bcee0f24830a",
+    "plugins/theme/tests/contract.ts": "bf1bd3667bb036c41d6cf04dcfa65972d972dd38a67067851f6219ae1fb9370e",
+    "config/build.ts": "0c0249ad41a45c02e1ee711c3ab60606119e7083f61b94e56dc2d1b2d29d75cd",
+    "config/common.ts": "fff6e8ab96d52bf4789af61e0d00de0812c8cc0f5eb96c02bc2ffbad9d7f2b46",
+    "config/dev.ts": "f43646f516a39c7a18d17db8d4bae0d7c6ccac8010f041c788a5d982a4bd76c0",
+    "config/live.ts": "a58c94d87f4015adef1d769991d3eb5c091007311b3eca10a6bbbdb1e8d0ff1d",
+    "config/officepress.ts": "ba4cb13285c9f9a4a52d72fd3f0221160a5da60eb605752f2384dcdbdc4460b9",
+    "scripts/build.ts": "d54ed05da6b4502fa08f0b78acadb00c3278e3852dc55c494611beedd2597e13",
+    "scripts/develop.ts": "b92c97156b83059d590b08d8e5704787fcde41f31f8f1dcacf39f3df081bae4b",
+    "scripts/generate.ts": "a69aa0bbe988ca47f9207d7b65738d102eb9220936e0f428ac51f7cb45331014",
+    "scripts/init-proof.ts": "37a0da4775ec9a965a3079ddef0038f7816c01e20696fa32f0934cbcfa73ba20",
+    "scripts/prove-config.ts": "fddd8c2a4e890e020163c97d8282c40a56acd63df6a75a72ffe3a2813a5d9d2d",
+    "scripts/prove-identity.ts": "fb985e5202fe1023b78854ed2446e122efe89d5b3513073dbce1202c6dea3af8",
+    "scripts/prove-postgres.ts": "acbcdaa1284f9639dee2a1e948759078074a1dec2a8710bf2f5fb97034fb8998",
+    "scripts/prove.ts": "2f9e3bd250750cf7eceb176f5fe059bd44d1c001c615346f852d341cf1fbfab7",
+    "scripts/serve.ts": "321311e43ec0d073456970bea37f07d16efde3b214daeb8e695ef6f08134d90e"
+  },
+  "build": {
+    ".build/server/index-pU1XAgld.js": "c9faff2a6f63563d7686964bb39e653aad5519893c5b3effb472518ce6563f18",
+    ".build/server/page-LUAwp03U.js": "ed94378d4ae9ef9ae21004437c5dc6a661d322730feee6a2e4fecbb3fbf9c0ff",
+    ".build/public/assets/index-CIVwzEl1.css": "52c9af28a4f57fcc511849bae6ebab19226c73ded6ea922edfb25dd66d7df86c",
+    ".build/public/assets/page-CIVwzEl1.css": "52c9af28a4f57fcc511849bae6ebab19226c73ded6ea922edfb25dd66d7df86c",
+    ".build/public/client/index-pU1XAgld.js": "80decbb7dc06a3f7eb0928a213f455c4621e09611a5f50f61a205b91ad2d0863",
+    ".build/public/client/page-LUAwp03U.js": "1e7addf7fd13fa0327dd8b73eaf9ca6213a1667457f72284a25ccc48f2decf4d",
+    ".build/public/favicon.ico": "6d75680f73a0a43af535c6bf9369ac78b921263012cb44d560a359c1208713a6",
+    ".build/public/icons.svg": "0f6c7bd08eba243fa8ba55b90d8a3b206ad323e0df663017a889857281b11bac",
+    ".build/public/logo.png": "57fe24435b98abc31d6f27285c4ddf918165648436d722706c3b24b948216fec",
+    ".build/public/logo.svg": "7ed269174e411d737bbae9b4987c287d21e306ac33cead662b3a37ae9402fd87",
+    ".build/public/mode.js": "328d8e37a16d5e201ddc50b621241b8b3535e0db3cbf5a25b3f86dda1cf320ea",
+    ".build/public/styles/globals.css": "683a6146c1facbad76e3c164f631dced067b25419b3459433e56c51d689909ac",
+    ".build/public/styles/kit/families/commerce.css": "85449745abea8df948de9803ec764c5f01ccfce4a8272ca18ba395ca9e7c1b9c",
+    ".build/public/styles/kit/families/communicate.css": "fd86ade23b001e7657127899dd03487449bbdc338367fd2b5bcdab7360e206c7",
+    ".build/public/styles/kit/families/create.css": "b79ef9f87d8df231cdf0df2b714198e5efaca0987d97f3872811bc31f0ec3eee",
+    ".build/public/styles/kit/families/operate.css": "0f1d89e1299dfc38c1355f478c47ad828b9d898902a98a0859cbfa36144d5c3a",
+    ".build/public/styles/kit/officepress.css": "1f433c92287302acf739f2256965eef82dce98a7c56172ad5e373b6d6808e452",
+    ".build/public/styles/reset.css": "8c22bfd736984092684c12d482ca49838f08a0069687fa9801b1ba2a972b598c",
+    ".build/public/styles/shell.css": "04764589527af99ff93ed0a637bbbcc773fbaba7d0c8c09614b9e98688a60a64"
+  },
+  "database": ".data/p01-config-2026-10-05T04-55-43-612Z",
+  "browser": "154.0.8037.93",
+  "sourcesChangedDuringRun": [],
+  "buildChangedDuringRun": [],
+  "finished": "2026-10-05T04:55:48.361Z",
+  "status": "passed",
+  "cleanup": "Owned HTTP listeners, Chrome and PGlite connections closed. Owned database retained; no production database accessed.",
+  "dependencies": {
+    "@electric-sql/pglite": "0.3.15",
+    "@stackpress/ingest": "0.10.8",
+    "@stackpress/inquire": "0.10.8",
+    "@stackpress/inquire-pg": "0.10.8",
+    "@stackpress/inquire-pglite": "0.10.8",
+    "@stackpress/lib": "0.10.8",
+    "frui": "0.2.9",
+    "marked": "15.0.12",
+    "pg": "8.16.3",
+    "r22n": "1.0.10",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "semver": "7.7.3",
+    "stackpress-csrf": "0.10.8",
+    "stackpress-email": "0.10.8",
+    "stackpress-language": "0.10.8",
+    "stackpress-schema": "0.10.8",
+    "stackpress-server": "0.10.8",
+    "stackpress-session": "0.10.8",
+    "stackpress-sql": "0.10.8"
+  }
+}

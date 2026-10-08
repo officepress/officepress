@@ -12,7 +12,7 @@ Imported source instructions remain available in full. Their generic scaffold, d
 
 ## Separation of responsibility
 
-A plugin owns a coherent capability, including its appropriate model definitions, services, handlers and views. A plugin is not a container for the entire application. `app` owns shared HTTP/rendering mechanics; `store` owns connection selection/registration. Feature logic belongs in responsibility-specific plugins. Do not make one plugin per technical layer without considering whether the capability can operate independently.
+A plugin owns a coherent capability, including its appropriate model definitions, services, handlers and views. A plugin is not a container for the entire application. `app` owns shared HTTP/rendering mechanics; `store` owns connection selection/registration and guarded Stackpress SQL integration. Do not keep a separate `data` bridge plugin. Use `plugins/auth` for authentication, `plugins/settings/theme`, `plugins/settings/about` and `plugins/settings/shell` for the shared settings/frame group, and root `.fixtures/actions` for the proof-only action example. Feature logic belongs in responsibility-specific plugins. Do not make one plugin per technical layer without considering whether the capability can operate independently.
 
 Decide a boundary by asking: can this capability be disabled, what service does it provide, what does it require, and what should still work without it? Separate independent integrations, communication channels, mock/proof data and optional enhancements when they have different activation or ownership boundaries. Avoid a dependency cycle disguised as several directories.
 
@@ -52,13 +52,13 @@ Keep private database URLs, seeds, cookies and authorization headers out of rend
 
 ## Database policy and operations
 
-PostgreSQL is the production default across OfficePress. PGlite is the default for local development and disposable proofs. Select the adapter explicitly by environment; do not silently fall back from unavailable PostgreSQL to PGlite in production.
+PostgreSQL is the production default across OfficePress. Prefer PGlite for local development and proofs to reduce compute use; treat it as the development substitute for PostgreSQL and CockroachDB without requiring a separate cross-engine compatibility proof. This is a development policy, not evidence of direct execution on every engine. Select the adapter explicitly by environment; do not silently fall back from unavailable PostgreSQL to PGlite in production.
 
-Keep database files outside disposable build output. Put proof databases in unique proof-owned directories. Never recursively delete `.build` when it could contain a user's database or migration history. Only remove artifacts owned by the current disposable run.
+Put the one current development PGlite database in `.build/database/` instead of root `.data/`. It is temporary and disposable; do not retain multiple app-database versions. Use a unique proof-owned scratch directory only for an isolated run, then close it and remove that run's directory when no longer needed. Inspect existing review data before removing it. Never recursively delete `.build`; keep real production data and migration history outside disposable output.
 
 Separate code generation, schema change application, data population and rendering build. Generated revisions and SQL migration files do not by themselves prove an applied migration. Commands such as push, install, purge and uninstall can destroy data depending on state; inspect the installed version's implementation and target before running. Proof schema initialization may only target an empty disposable database.
 
-Use migration review and backups for real data. Parameterize values through the SQL API; keep database constraints and permissions authoritative. Validate PostgreSQL independently: a PGlite pass does not establish PostgreSQL connectivity, pooling or deployment behavior.
+Use migration review and backups for real data. Parameterize values through the SQL API; keep database constraints and permissions authoritative. Keep repeatable development fixtures in config `database.populate` as event/data entries and run them explicitly against a fresh disposable database. A build alone does not apply schema or repopulate data.
 
 ## Idea ownership and generation
 
@@ -82,4 +82,4 @@ Verify locked versions, root Idea imports, generated client exports and runtime 
 
 Exercise a feature enabled, explicitly disabled, and missing each required dependency. Confirm no feature routes/listeners remain while the shell and independent features work; restore the dependency after restart. Check optional fallbacks separately. Test persistence across a restart and ensure proof cleanup leaves unrelated data intact.
 
-Record actual commands, environment, package versions, checks, failures and limitations in a local receipt. A passing scaffold proof proves only its enumerated mechanics. PostgreSQL integration and production security remain unverified until exercised directly. Do not turn a future check into a passed claim.
+Record actual commands, environment, package versions, checks, failures and limitations in a local receipt. A passing scaffold proof proves only its enumerated mechanics. Direct production-engine execution and production security remain unverified until exercised; the development compatibility assumption does not require a separate proof or turn unrun checks into passed checks.

@@ -1,0 +1,12 @@
+.build/
+node_modules/
+receipts/
+.env
+.env.*
+!.env.example
+
+.data/
+
+# Disposable browser traces and screenshots; retain reviewed evidence in verification/.
+.playwright-cli/
+output/playwright/

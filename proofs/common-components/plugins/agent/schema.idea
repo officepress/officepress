@@ -1,0 +1,6 @@
+model ShellAgentRun {
+ id String @id
+ appId String
+ ownerId String
+ payload Hash
+}

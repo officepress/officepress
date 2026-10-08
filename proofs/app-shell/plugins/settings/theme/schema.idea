@@ -1,0 +1,6 @@
+model ShellTheme {
+ id String @id
+ appId String
+ payload Hash
+ revision Integer @default(0)
+}

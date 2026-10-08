@@ -1,0 +1,127 @@
+/* Extend hover and selected fills to the shell edge without shifting icon/text alignment. */
+.op-aside .component-nav-link {
+  margin-inline: -16px;
+  padding-inline: 16px;
+  border-radius: 0;
+}
+.rail .app-aside .op-nav {
+  width: 64px;
+}
+.rail .app-aside .component-nav-link {
+  margin-inline: 0;
+  width: 64px;
+}
+.app-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: auto;
+}
+.component-empty {
+  padding: 24px;
+}
+.component-details {
+  width: 280px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  background: var(--op-surface);
+  border-left: 1px solid var(--op-border);
+  min-height: 0;
+}
+.component-details-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow: auto;
+  min-height: 0;
+}
+.component-details-body dl {
+  overflow-wrap: anywhere;
+}
+.mobile-panel.details {
+  display: flex;
+  flex-direction: column;
+  width: min(400px, 100vw);
+  right: 0;
+  left: auto;
+  background: var(--op-surface);
+}
+.component-alert {
+  margin: 12px 16px;
+  padding: 12px;
+  border: 1px solid var(--op-border);
+  border-radius: 8px;
+  background: var(--op-surface);
+}
+.component-alert[role="alert"] {
+  color: var(--op-danger);
+}
+@media (max-width: 767px) {
+  .app-main {
+    width: 100%;
+  }
+  .component-details {
+    display: none;
+  }
+}
+
+/* The shell, not a feature's scroll area, owns the right dock. */
+.component-details {
+  position: relative;
+  max-width: min(640px, calc(100vw - 180px));
+}
+.component-details--expanded {
+  flex: 1;
+  width: auto;
+  max-width: none;
+}
+.component-details-head {
+  flex: none;
+  min-height: 64px;
+  padding: 12px 20px;
+  gap: 8px;
+}
+.component-details-head h2 {
+  min-width: 0;
+  margin: 0;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.component-details-body {
+  flex: 1;
+  overscroll-behavior: contain;
+}
+.component-details-resize {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  bottom: 0;
+  left: -4px;
+  width: 8px;
+  cursor: col-resize;
+  touch-action: none;
+}
+.component-details-resize:hover,
+.component-details-resize:focus-visible {
+  background: var(--op-accent);
+  opacity: 0.45;
+}
+.Toastify__toast {
+  font-family: var(--op-font, inherit);
+  font-size: 14px;
+}
+.Toastify__toast-container {
+  z-index: 10000;
+}
+@media (max-width: 767px) {
+  .mobile-panel.details {
+    width: 100%;
+  }
+}
+
+.main-frame[hidden] {
+  display: none;
+}

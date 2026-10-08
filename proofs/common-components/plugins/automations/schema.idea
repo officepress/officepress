@@ -1,0 +1,19 @@
+// Definitions save Draft/Active/Paused status; runs retain immutable event/action snapshots.
+// Keep historical publication rows; removing their schema requires an explicit migration.
+model ComponentAutomation {
+ id String @id
+ appId String
+ payload Hash
+ revision Integer @default(1)
+}
+model ComponentAutomationPublication {
+ id String @id
+ appId String
+ payload Hash
+}
+model ComponentAutomationRun {
+ id String @id
+ appId String
+ payload Hash
+ revision Integer @default(1)
+}

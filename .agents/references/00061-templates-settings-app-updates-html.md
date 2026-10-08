@@ -1,5 +1,7 @@
 # settings-app-updates.html — settings-app-updates
 
+Current menu: use **About** and **Theme**, with Agent/Notification settings in Stackpress config. Load the [About revision](00360-officepress-about-menu-revision.md) before adapting the historical Updates examples.
+
 Source: `kit/templates/settings-app-updates.html`, original lines 1–215. Captured 2026-10-01; SHA-256 is in the coverage manifest.
 
 Load when working with this documented rule, example, implementation or data structure.

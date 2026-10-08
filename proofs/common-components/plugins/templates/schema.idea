@@ -1,0 +1,18 @@
+model ComponentTemplate {
+ id String @id
+ appId String
+ payload Hash
+ revision Integer @default(0)
+}
+model ComponentTemplateVersion {
+ id String @id
+ appId String
+ templateId String
+ payload Hash
+}
+model ComponentTemplateDispatch {
+ id String @id
+ appId String
+ templateId String
+ payload Hash
+}
