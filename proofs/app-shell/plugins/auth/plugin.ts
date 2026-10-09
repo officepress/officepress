@@ -1,12 +1,14 @@
 import type { HttpServer } from "@stackpress/ingest";
+import { normalizeIdentitySchema } from "./schema-adapter.js";
 import { Session } from "stackpress-session";
 import csrfPlugin from "stackpress-csrf/plugin";
 import type { CsrfPlugin } from "stackpress-csrf/types";
-import type { Caller, Identity } from "./types.js";
+import type { Identity } from "./types.js";
 import { frameworkHandler } from "./framework.js";
 import { preserveCookies } from "./cookies.js";
 import { ChallengeLedger } from "./challenges.js";
-import { purgeCurrentApp } from "./purge.js";
+import type { AppData } from "../app/types.js";
+import { createIdentity } from "./identity.js";
 import { validateTheme, type ThemeState } from "../settings/theme/client.js";
 
 const pages: Array<[string, string, boolean]> = [
@@ -26,6 +28,7 @@ const pages: Array<[string, string, boolean]> = [
 ];
 
 export default function plugin(server: HttpServer) {
+  server.on("idea", normalizeIdentitySchema, 1000);
   // Config callbacks run before every dependent feature's listen/route guards.
   csrfPlugin(server as unknown as Parameters<typeof csrfPlugin>[0]);
   server.on(
@@ -46,72 +49,13 @@ export default function plugin(server: HttpServer) {
       ctx.register("session", Session);
       ctx.register(
         "identity-challenges",
-        new ChallengeLedger(ctx.plugin("database")),
+        new ChallengeLedger(
+          ctx.plugin("database"),
+          ctx.config.path("auth.base", "/auth"),
+        ),
       );
       const csrf = ctx.plugin<CsrfPlugin>("csrf");
-      const identity: Identity = {
-        ready: () =>
-          Boolean(
-            ctx.listeners["profile-detail"]?.size &&
-            ctx.listeners["auth-search"]?.size,
-          ),
-        async caller(req) {
-          if (!identity.ready()) return null;
-          const data = await Session.load(req).data();
-          // Framework JWTs have no default expiry. Enforce an eight-hour ceiling
-          // and reload the profile so deletion/role changes take effect immediately.
-          if (
-            !data?.id ||
-            typeof data.iat !== "number" ||
-            Date.now() / 1000 - data.iat > 8 * 3600
-          )
-            return null;
-          const profile = await ctx.resolve<Caller & { active: boolean }>(
-            "profile-detail",
-            { id: data.id },
-          );
-          if (profile.code !== 200 || !profile.results?.active) return null;
-          const auth = await ctx.resolve<Array<{ id: string }>>("auth-search", {
-            columns: ["id"],
-            eq: { profileId: data.id, active: true },
-          });
-          if (auth.code !== 200 || !auth.results?.length) return null;
-          const { id, name, roles } = profile.results;
-          return { id, name, roles: Array.isArray(roles) ? roles : [] };
-        },
-        async requireUser(req, res) {
-          const caller = await identity.caller(req);
-          if (!caller)
-            res
-              .setError("Sign in to continue.")
-              .statusCode(401, "Unauthorized");
-          return caller;
-        },
-        async requireAdmin(req, res) {
-          const caller = await identity.requireUser(req, res);
-          if (!caller) return null;
-          if (!caller.roles.includes("ADMIN")) {
-            res
-              .setError("Administrator access is required.")
-              .statusCode(403, "Forbidden");
-            return null;
-          }
-          return caller;
-        },
-        csrf(req, res) {
-          return csrf.valid(req, res);
-        },
-        async publicProps(req, res) {
-          const existing =
-            res.data.path<{ token?: string }>("csrf", {}).token ||
-            req.session.get("csrf");
-          const token =
-            typeof existing === "string" && existing
-              ? existing
-              : csrf.generate(res, ctx as any);
-          return { user: await identity.caller(req), csrf: token };
-        },
-      };
+      const identity = createIdentity(ctx, csrf);
       ctx.register("identity", identity);
     },
     -300,
@@ -120,16 +64,11 @@ export default function plugin(server: HttpServer) {
     "listen",
     ({ ctx }) => {
       if (!ctx.plugin<Identity>("identity")?.ready()) return;
-      for (const [event, handler] of [
-        ["auth-signin", "auth/events/signin"],
-        ["auth-signup", "auth/events/signup"],
-      ] as const) {
-        ctx.on(event, async (props) => {
-          await (
-            await frameworkHandler(handler)
-          )(props);
-        });
-      }
+      ctx.on("auth-signin", async (props) => {
+        await (
+          await frameworkHandler("auth/events/signin")
+        )(props);
+      });
       ctx.on("me", async ({ req, res }) => {
         res.results((await ctx.plugin<Identity>("identity").caller(req)) || {});
       });
@@ -154,9 +93,12 @@ export default function plugin(server: HttpServer) {
     const identity = ctx.plugin<Identity>("identity");
     if (!identity?.ready() || !ctx.plugin("reactus")) return;
     const base = ctx.config.path("auth.base", "/auth");
-    const setThemeProps = async (
+    const preparePage = async (
       res: Parameters<Identity["publicProps"]>[1],
+      page: string,
     ) => {
+      res.data.set("identityBase", base);
+      res.data.set("identityPage", page);
       res.data.set(
         "identityFamily",
         ctx.config.path("officepress.family", "operate"),
@@ -173,7 +115,7 @@ export default function plugin(server: HttpServer) {
       for (const method of ["GET", "POST"] as const) {
         ctx.route(method, base + suffix, async (props) => {
           const { req, res } = props;
-          await setThemeProps(res);
+          await preparePage(res, suffix);
           const caller = protectedPage
             ? await identity.requireUser(req, res)
             : null;
@@ -239,13 +181,9 @@ export default function plugin(server: HttpServer) {
           // dedicated authenticated setup page is allowed to expose that secret.
           const result = res.body as any;
           if (result?.auth?.["2fa"]) delete result.auth["2fa"].token;
-          const safe = await identity.publicProps(req, res);
-          res.data.set("identity", safe);
-          res.data.set("identityPage", suffix);
-          res.data.set(
-            "identityFamily",
-            ctx.config.path("officepress.family", "operate"),
-          );
+          // Framework account writes may change the current profile/credentials.
+          if (method === "POST" && protectedPage) identity.invalidate(req);
+          res.data.set("identity", await identity.publicProps(req, res));
         });
         ctx.view.route(
           method,
@@ -260,15 +198,12 @@ export default function plugin(server: HttpServer) {
       res.session.delete(Session.key);
       res.redirect(base + "/signin");
     });
-    const purgeReady = [
-      "shell-item-detail",
-      "shell-operation-detail",
-      "shell-notice-detail",
-      "shell-agent-run-detail",
-    ].every((event) => Boolean(ctx.listeners[event]?.size));
+    // The app owns its data scope; identity owns only this HTTP authorization.
+    const appData = ctx.plugin<AppData>("app-data");
+    const purgeReady = Boolean(appData?.ready());
     if (purgeReady) {
       ctx.post(base + "/account/security/purge", async ({ req, res }) => {
-        await setThemeProps(res);
+        await preparePage(res, "/account/security/purge");
         const caller = await identity.requireUser(req, res);
         if (!caller || !identity.csrf(req, res)) return;
         if (caller.roles.includes("READONLY")) {
@@ -278,22 +213,13 @@ export default function plugin(server: HttpServer) {
           return;
         }
         res.data.set("identity", await identity.publicProps(req, res));
-        res.data.set("identityPage", "/account/security/purge");
-        res.data.set(
-          "identityFamily",
-          ctx.config.path("officepress.family", "operate"),
-        );
         res.data.set("identityPurgeReady", true);
         if (req.data("confirmation") !== "Purge") {
           res.setError("Type Purge to confirm this action.").statusCode(400);
           return;
         }
-        // Neither scope value comes from the submitted form.
-        const counts = await purgeCurrentApp(
-          ctx.plugin("database"),
-          ctx.config.path("officepress.appId", ""),
-          caller.id,
-        );
+        // The app fixes appId; the verified caller supplies ownerId.
+        const counts = await appData.purge(caller.id);
         res.results({ purged: counts });
         res.data.set("identityPurgeComplete", true);
       });
@@ -312,18 +238,13 @@ export default function plugin(server: HttpServer) {
       "/account/security/purge",
     ]) {
       ctx.get(base + page, async ({ req, res }) => {
-        await setThemeProps(res);
+        await preparePage(res, page);
         if (
           page.startsWith("/account") &&
           !(await identity.requireUser(req, res))
         )
           return;
         res.data.set("identity", await identity.publicProps(req, res));
-        res.data.set("identityPage", page);
-        res.data.set(
-          "identityFamily",
-          ctx.config.path("officepress.family", "operate"),
-        );
         if (page === "/account/security/purge")
           res.data.set("identityPurgeReady", purgeReady);
         res.statusCode(200);

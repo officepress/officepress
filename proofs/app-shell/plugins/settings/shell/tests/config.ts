@@ -1,10 +1,10 @@
 import assert from "node:assert/strict";
-import type { Config } from "../../../app/types.js";
+import type { AppData, Config } from "../../../app/types.js";
 import type Engine from "@stackpress/inquire/Engine";
 import type { ClientPlugin } from "stackpress-sql/types";
 import { chromium } from "playwright";
 import { randomUUID } from "node:crypto";
-import { bootstrap } from "../../../../bootstrap/server.js";
+import { bootstrap } from "../../../../tests/bootstrap.js";
 import { seedShell } from "../fixtures.js";
 import { BrowserSession } from "../../../auth/tests/contract.js";
 
@@ -360,6 +360,22 @@ export async function proveConfig(base: Config, check: Check) {
             "Agent remains available without the domain action example",
             !!runtime.server.plugin("agent"),
           );
+        }
+        if (
+          variant.disabled?.some((name) =>
+            ["store", "stackpress-schema"].includes(name),
+          )
+        ) {
+          const appData = runtime.server.plugin<AppData>("app-data");
+          assert.equal(appData.ready(), false);
+          assert.ok(
+            ![...runtime.server.routes.values()].some(
+              (route) =>
+                route.method === "POST" &&
+                route.path === "/auth/account/security/purge",
+            ),
+          );
+          check(`${variant.name}: app-data purge action is unavailable`, true);
         }
         const details: Record<string, unknown> = {};
         let absent = true;

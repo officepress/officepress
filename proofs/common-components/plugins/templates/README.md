@@ -101,7 +101,7 @@ contracts. Additional automatic values are `card.title`, `card.assignees`,
 `stage.name` and `workflow.name`; custom variable inputs may interpolate those
 values. Each accepted automation run retains its rendered template snapshot before
 waiting. The existing mail adapter limits sends to its configured proof recipient;
-no other channel transport is introduced. See [round 7](../../reviews/r007-card-event-automations/notes.md).
+no other channel transport is introduced. See [round 7](../../tests/evidence/reviews/r007-card-event-automations/notes.md).
 
 ## Clean page routing (review round 14)
 
@@ -111,7 +111,7 @@ of the saved draft with variables retained. New message saves a new draft throug
 its existing guarded API then opens that record's update path. No create page is
 needed. The old `/message-templates` route redirects to the list. Unsaved editor
 navigation warns before leaving; nonexistent IDs never fall back to another item.
-See [round 14](../../reviews/r014-clean-paths/notes.md).
+See [round 14](../../tests/evidence/reviews/r014-clean-paths/notes.md).
 
 ## Message editor feedback (review round 15)
 
@@ -120,8 +120,8 @@ heading, following the user's annotations. Existing record channels and provider
 boundaries remain intact. The HTML/Plain text shape follows the supplied
 [Resourcing template reference](https://wireframes.blanquera.com/hris/r031-careers-employee-portal/template-form?template=interview-invitation)
 with OfficePress colors. Copy the `sanitize-html` dependency when adopting this
-plugin. See [round 15](../../reviews/r015-message-editor/notes.md).
+plugin. See [round 15](../../tests/evidence/reviews/r015-message-editor/notes.md).
 
-[Round 16](../../reviews/r016-message-wysiwyg/notes.md) adds the visual HTML editor
+[Round 16](../../tests/evidence/reviews/r016-message-wysiwyg/notes.md) adds the visual HTML editor
 and Source code toggle, and removes View message from the update-page header.
 The read-only detail route remains available from the Messages list.

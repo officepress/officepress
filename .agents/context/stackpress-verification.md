@@ -10,3 +10,5 @@ Use the normal `.build/database/` PGlite database for development and a uniquely
 
 - [Complete implementation contract](../references/00205-stackpress-officepress-contract.md) — load for full rules, lifecycle details, exceptions and accepted decisions.
 - [Stackpress handbook](stackpress.md) — load to find complete local API and specialist workflow references.
+
+- [Yarn, CLI scripts and proof layout](../references/00373-stackpress-yarn-cli-and-proof-layout.md) — load when changing package scripts, migrating config/bootstrap paths, aggregating plugin tests or storing proof evidence; records the accepted 2026-10-08 conventions and upstream provenance.

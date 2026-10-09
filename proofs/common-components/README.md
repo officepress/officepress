@@ -3,15 +3,16 @@
 A separate Stackpress application copied from the user-approved [app shell](../app-shell/APPROVAL.md).
 It has four working left-menu entries: Workflows, Messages, Forms
 and Chat View. Automations belong to individual workflow stages; open a stage’s
-lightning control or its Automations button in the workflow editor. The shell implementation and database on port 3020
-are independent of this proof on port **3040**.
+lightning control or its Automations button in the workflow editor. The shell
+implementation and database are independent of this proof; devmetrics assigns
+each review its own port.
 
 This is a reusable implementation example awaiting its own manual review. It
-does not certify production readiness of an adopting app. See the [review notes](reviews/r001-common-components/README.md)
+does not certify production readiness of an adopting app. See the [review notes](tests/evidence/reviews/r001-common-components/README.md)
 for the original evidence, bounded adapters and known limits. The latest
-[workflow feedback round](reviews/r002-workflow-feedback/notes.md) supersedes the
+[workflow feedback round](tests/evidence/reviews/r002-workflow-feedback/notes.md) supersedes the
 original top-level Automations entry and card-details layout. The
-[workflow simplification round](reviews/r003-workflow-simplification/notes.md)
+[workflow simplification round](tests/evidence/reviews/r003-workflow-simplification/notes.md)
 replaces workflow versions/entry restrictions with Draft/Published and any-column
 movement, adds the workflow list and simplifies stage automations.
 
@@ -35,7 +36,7 @@ Automations is a plugin even though its UI is reached through a workflow stage.
 | [`app`](plugins/app/plugin.ts) | Keeps one Reactus renderer, safe page props, public-file handling and the guarded account notification feed for all routes. |
 | [`store`](plugins/store/plugin.ts) | Selects and closes the PostgreSQL or PGlite connection and registers Stackpress SQL after the generated client is available. |
 | `stackpress-schema` | Generates and loads the composed Idea client without tying generation to database installation or UI builds. |
-| [`auth`](plugins/auth/plugin.ts) | Provides authentication, caller/role checks, session and CSRF boundaries used by the feature plugins. Its public service key remains `identity`. |
+| [`auth`](plugins/auth/plugin.ts) | Delegates authentication to Stackpress and supplies live caller/role checks, session and CSRF boundaries used by the feature plugins. Its public service key remains `identity`. |
 | [`theme`](plugins/settings/theme/plugin.ts) | Owns app branding and colour preferences independently of feature state. |
 | [`about`](plugins/settings/about/plugin.ts) | Owns release checks and Upgrade Instructions display. |
 | [`actions`](.fixtures/actions/plugin.ts) | Retains the shell's isolated action/Undo fixture; it is not required by the new domain features. |
@@ -51,37 +52,49 @@ Automations is a plugin even though its UI is reached through a workflow stage.
 
 ## Run locally
 
-Use Node 24 and npm in this directory. Stackpress ecosystem packages are 0.10.8.
-Install, generate code, initialize a new disposable database, build, then serve:
+Use Node 24 and Yarn 1.22.22. Stackpress ecosystem packages remain pinned to
+0.10.8. `yarn.lock` is the dependency lockfile; there is no npm lockfile.
 
 ```sh
-npm ci
-npm run generate
-OFFICEPRESS_DISPOSABLE_PROOF=1 npm run init:proof
-npm run build
-DATABASE_ADAPTER=pglite npm run serve
+yarn install --frozen-lockfile
+yarn generate
+yarn typecheck
+yarn build
+# First inspect the target: push can replace schema and data.
+# Use these only for an intentionally disposable local proof database.
+OFFICEPRESS_DISPOSABLE_PROOF=1 PGLITE_DIR="$PWD/.build/database/pglite" yarn push
+OFFICEPRESS_DISPOSABLE_PROOF=1 PGLITE_DIR="$PWD/.build/database/pglite" yarn populate
+devmetrics start --summary "Proof development review" -- 'PORT={port} yarn dev'
+# Or preview the already-built assets:
+devmetrics start --summary "Proof built preview" -- 'PORT={port} yarn preview'
 ```
 
-Open `http://127.0.0.1:3040/`. The initializer refuses an existing database;
-do not rerun it for ordinary starts. Subsequent starts need only the last command.
-Fixture sign-in: `admin@officepress.test` / `OfficePress-proof-123!`.
-Also available: `member@officepress.test`, `readonly@officepress.test`,
-`other@officepress.test`, with the same public fixture password. These credentials
-are for the disposable local proof only. Form administration and workflow/rule
-design require the administrator; ordinary operators can work cards and messages.
+Use the URL and stop time printed by devmetrics, and stop that assigned port
+when finished. The proofs have independent databases and assigned ports.
+Development disables the extra HMR listener; restart/reload after changes.
+`dev:clean` removes only `node_modules/.vite`. No command deletes `.build`.
 
-`npm run dev` uses source rendering and a separate HMR port 24680. Prefer the
-built preview above for manual review. Rebuild after source changes before
-restarting the built preview. Generation does not install tables or build views.
+`config/develop.ts` configures source rendering, `config/build.ts` rendering
+builds, `config/preview.ts` built local PGlite serving, and
+`config/production.ts` production PostgreSQL serving. `config/client.ts` shares
+the composed development generator. Each exports an awaited default bootstrap;
+shared startup lives in `tests/bootstrap.ts`. Generation normalizes
+identity schema through the auth plugin's `idea` listener and writes generated
+client/revision metadata without applying database changes. `migrate` writes SQL
+to `migrations/` (override `OFFICEPRESS_MIGRATIONS_DIR` for an isolated check).
+`push`, `populate` and `purge` require an explicit disposable PGlite target.
+Ordinary startup never installs, seeds, or migrates data. `push` is a framework
+database command, unrelated to Git push, and may replace tables on first install.
 
-The database defaults to `.build/database/pglite`, the app ID to `common-components-proof`,
-and the session cookie to `officepress-components-session`. Override `PGLITE_DIR`,
-`PORT`, `OFFICEPRESS_APP_ID` when needed. `PROOF_SESSION_SEED` stabilizes local
-sessions across restarts; without it, restarting requires signing in again.
-Production selects PostgreSQL and requires `DATABASE_URL`; it never silently
-falls back to PGlite. Config `database.populate` selects repeatable sample
-accounts and component fixture sets for a fresh disposable database. Ordinary
-builds do not reset or repopulate the database.
+Production `yarn serve` requires `DATABASE_URL`; it never silently falls back to
+PGlite. Start it through devmetrics with `PORT={port}`. Root `.env` is loaded by
+`config/officepress.ts`; credentials remain server-only. Keep private persistent
+`PROOF_SESSION_SEED` (32+ characters) and `PROOF_DATABASE_SEED` when adopting;
+never rotate the database seed without migration. Local public fixture accounts
+are `admin@officepress.test`, `member@officepress.test`, `other@officepress.test`
+and `readonly@officepress.test`, with password `OfficePress-proof-123!`.
+Never use these accounts in production. Preserve existing review databases;
+proof tests use fresh scratch directories and remove them after closing.
 
 ## Features and adoption units
 
@@ -126,24 +139,34 @@ installed dependencies and optional provider credentials.
 
 ## Verify
 
+[Test evidence](tests/evidence/README.md) uses `tests/evidence/playwright/` for
+browser captures, `tests/evidence/verification/` for retained reports, and
+`tests/evidence/receipts/` / `tests/evidence/reviews/` for run results and reviews.
+
+
 ```sh
-npm run typecheck
-npm run build
-npm run prove
-# Sends exactly one template example and one Chat email to MAIL_TEST_EMAIL:
-npm run prove:smtp
+yarn typecheck
+yarn build
+devmetrics start --summary "Component contract tests" -- 'PORT={port} yarn test'
 ```
 
-The proof creates an isolated, empty PGlite directory and temporary loopback HTTP
-server, then closes them. Receipts retain source hashes, results and limitations;
-failed receipts are kept. Contract tests cover authorization/CSRF, validation,
-atomic conflicts, legacy workflow compatibility, mutable workflow status, immutable
-form/template/automation history, restart and plugin absence.
-Real sends use the already configured root `.env` values `MAIL_TEST_HOST`,
-`MAIL_TEST_PORT`, `MAIL_TEST_EMAIL`, `MAIL_TEST_USER`, `MAIL_TEST_PASS`.
-Only that designated account is allowed; no credentials enter client bundles or
-receipts. A successful call means SMTP acceptance, not confirmed mailbox delivery.
-No automatic mail retries or delivery reconciliation are implemented.
+`tests/plugins/all.test.ts` imports all six component plugin contract modules;
+workflow and automation suites import their nested task, assignment, card-event
+and edge-case tests. Plugins without a test directory need no empty placeholder.
+The suite creates an isolated empty PGlite database, exercises real HTTP and
+restart/absence contracts, and closes listeners/workers/database before cleanup.
+Authorization/CSRF, validation, atomic conflicts, legacy workflow compatibility,
+mutable status and immutable form/template/automation history remain covered.
+Receipts keep source hashes, results and limitations, including failures.
+
+An explicitly requested live SMTP campaign can use
+`OFFICEPRESS_SMTP_TESTS=1` with the same managed `yarn test` command. It sends
+exactly one template example and one Chat email to the designated
+`MAIL_TEST_EMAIL`; ordinary tests use a controlled transport and send no email.
+Root `.env` supplies `MAIL_TEST_HOST`, `MAIL_TEST_PORT`, `MAIL_TEST_EMAIL`,
+`MAIL_TEST_USER` and `MAIL_TEST_PASS`. Credentials never enter bundles or receipts.
+SMTP acceptance does not establish mailbox delivery; there are no automatic
+retries or delivery reconciliation.
 
 The inherited agent can read app information. This proof adds no AI tools for
 the new domain features and does not repeat model acceptance tests. The app-shell
@@ -153,24 +176,24 @@ production-scale data/provider architecture remain separate work.
 
 ## Latest workflow review
 
-[Round 4](reviews/r004-workflow-assignees-sla/notes.md) adds multiple card/stage
+[Round 4](tests/evidence/reviews/r004-workflow-assignees-sla/notes.md) adds multiple card/stage
 assignees, avatar-only cards, elapsed SLA progress bars, stage settings shortcuts,
 and draft-preserving Automations navigation. Its isolated local proof passed
 49 checks; typecheck, build and desktop/mobile browser checks passed. This is
 reviewable local proof evidence; common-components approval remains pending.
 
-[Round 5](reviews/r005-card-details-toolbar/notes.md) refines card details with
+[Round 5](tests/evidence/reviews/r005-card-details-toolbar/notes.md) refines card details with
 Todo, the stage selector below its checkboxes, and a live SLA bar/due label above
 Files. It also fixes toolbar wrapping, uses an arrow-only back button and Edit,
 and removes the designer breadcrumb. Typecheck/build and browser checks passed.
 
-[Round 6](reviews/r006-dynamic-stage-tasks/notes.md) makes current-stage tasks
+[Round 6](tests/evidence/reviews/r006-dynamic-stage-tasks/notes.md) makes current-stage tasks
 dynamic in backend reads and saves, preserving surviving completion and removing
 stale copies. Card titles replace REQUEST/ID, with grips on the left; empty
 checklists have no progress count. The isolated proof passed 54 checks, with
 typecheck/build and browser verification; existing review data was preserved.
 
-[Round 7](reviews/r007-card-event-automations/notes.md) replaces automation publishing
+[Round 7](tests/evidence/reviews/r007-card-event-automations/notes.md) replaces automation publishing
 with Draft/Active/Paused, adds card-action events, typed conditions, seven supported
 actions and working run settings, connects stage forms and template messages, and
 applies the stage/Form Builder layout corrections. Task data remains dynamic by
@@ -178,41 +201,41 @@ stage. Message tests use a controlled transport and do not send real email.
 
 ## Latest Chat View review
 
-[Round 8](reviews/r008-chat-messenger/notes.md) uses the Inbox r015 messenger
+[Round 8](tests/evidence/reviews/r008-chat-messenger/notes.md) uses the Inbox r015 messenger
 shape with current OfficePress colors: compact conversation previews, rounded
 bubbles with external sender/time labels, a slim composer and on-demand details.
 Drafts, notes, templates, status and existing provider boundaries remain intact.
 Typecheck/build, 62 contract/HTTP checks and desktop/mobile browser checks passed.
 
-[Round 9](reviews/r009-message-requests/notes.md) corrects the missing Messages
+[Round 9](tests/evidence/reviews/r009-message-requests/notes.md) corrects the missing Messages
 and Requests navigation, adds persisted request acceptance/block/delete/undo,
 and makes app-sidebar hover/active backgrounds reach both edges. Existing
 conversations remain in Messages. The 64-check suite and desktop/mobile checks
 passed; request sender recognition and provider integrations remain bounded.
 
-[Round 10](reviews/r010-request-list/notes.md) removes subjects and action buttons
+[Round 10](tests/evidence/reviews/r010-request-list/notes.md) removes subjects and action buttons
 from request list cards, retaining those controls in the full preview. Typecheck,
 build and browser verification passed.
 
 ## Latest Forms review
 
-[Round 11](reviews/r011-forms-list-drag/notes.md) starts on a forms list with direct
+[Round 11](tests/evidence/reviews/r011-forms-list-drag/notes.md) starts on a forms list with direct
 editor links, removes Reload and fixes question dragging with pointer capture.
 Typecheck, builds, the 64-check suite and browser save/reopen verification passed.
 
-[Round 12](reviews/r012-forms-save/notes.md) renames navigation to Forms/Messages,
+[Round 12](tests/evidence/reviews/r012-forms-save/notes.md) renames navigation to Forms/Messages,
 replaces the editor's back/title row with Form Name and Draft/Active fields,
 and provides one Save action for edits and status. Active saves retain immutable
 response history. Typecheck, builds, 66 checks and browser save/reload checks passed.
 
-[Round 13](reviews/r013-forms-toolbar/notes.md) removes the list Status column
+[Round 13](tests/evidence/reviews/r013-forms-toolbar/notes.md) removes the list Status column
 and editor Status selector, moves Save beside Form Name and uses Update Form as
 the editor heading. Save makes the form available for responses. Typecheck,
 build, 66 checks and browser activation/reopening checks passed.
 
 ## Clean page routes
 
-[Round 14](reviews/r014-clean-paths/notes.md) makes each screen addressable directly.
+[Round 14](tests/evidence/reviews/r014-clean-paths/notes.md) makes each screen addressable directly.
 Messages starts on a list; clicking a message row opens its update form.
 
 | Path | Screen |
@@ -235,11 +258,24 @@ Typecheck, builds, 67 checks and browser navigation/save/reload checks passed.
 
 ## Latest Messages review
 
-[Round 15](reviews/r015-message-editor/notes.md) removes Channel/Viber controls and
+[Round 15](tests/evidence/reviews/r015-message-editor/notes.md) removes Channel/Viber controls and
 the Message content header. Separate HTML and Plain text editors, matching previews
 and saved-content tabs preserve both alternatives. Existing messages remain
 compatible; the server and preview apply the same restricted HTML policy.
 
-[Round 16](reviews/r016-message-wysiwyg/notes.md) makes HTML a WYSIWYG editor with
+[Round 16](tests/evidence/reviews/r016-message-wysiwyg/notes.md) makes HTML a WYSIWYG editor with
 a Source code toggle, retained formatting/variable selections and native undo.
 It also removes View message from the update-page header.
+
+Current script migration checks: [Yarn and CLI verification](tests/evidence/verification/yarn-verification.md), including command outputs, managed HTTP checks and final test results.
+
+## Auth integration refinements
+
+The test aggregator runs the local [auth contract](plugins/auth/tests/contract.ts)
+under both default and custom auth bases, independently of domain tests. The
+[identity service](plugins/auth/identity.ts) shares caller lookups within each
+request and invalidates after account writes. [App-owned purge](plugins/app/purge.ts)
+provides the explicit four-table shell-data map; auth only checks the verified
+caller, CSRF, writable role and typed confirmation before calling `app-data`.
+Component business records remain outside that existing purge map. Adopters
+must review their own domain scope. Version-specific auth guards remain in place.

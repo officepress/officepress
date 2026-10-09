@@ -3,7 +3,7 @@
 Status: Implemented / awaiting manual approval. The suite remains Planning / Not
 Frozen; this bounded proof does not create frozen production implementation tasks.
 Owner: [spec index](index.md). Read [the runnable README](../../../proofs/common-components/README.md)
-and [visual/review notes](../../../proofs/common-components/reviews/r001-common-components/README.md)
+and [visual/review notes](../../../proofs/common-components/tests/evidence/reviews/r001-common-components/README.md)
 before copying or evaluating the implementation.
 
 The user approved app-shell and explicitly requested a separate proof based on it,
@@ -76,13 +76,13 @@ unproved. New common-components approval is pending. MCP index was not updated.
 
 The user requested Stackpress Toastify, working card drag/drop, the
 chrisai-designing wireframe right-panel layout, and stage-owned Automations.
-[Round 2 notes](../../../proofs/common-components/reviews/r002-workflow-feedback/notes.md)
+[Round 2 notes](../../../proofs/common-components/tests/evidence/reviews/r002-workflow-feedback/notes.md)
 record the correction, screenshots and current checks. This supersedes the first
 round's menu and inset-card layout; it does not discard its historical receipts.
 
 ## Workflow simplification round — 2026-10-06
 
-[Round 3 notes](../../../proofs/common-components/reviews/r003-workflow-simplification/notes.md)
+[Round 3 notes](../../../proofs/common-components/tests/evidence/reviews/r003-workflow-simplification/notes.md)
 map every annotation to UI/backend changes. Receipt `2026-10-06T02-39-55-045Z`
 passed 46 checks, including legacy payload compatibility, unrestricted destinations,
 status persistence, current definitions on old cards, stale saves and retired HTTP
@@ -93,7 +93,7 @@ receipts as historical evidence. Common-components manual approval remains pendi
 
 ## Multiple assignees and SLA round — 2026-10-06
 
-[Round 4](../../../proofs/common-components/reviews/r004-workflow-assignees-sla/notes.md)
+[Round 4](../../../proofs/common-components/tests/evidence/reviews/r004-workflow-assignees-sla/notes.md)
 records D-24's eight corrections: multiple card/stage assignees, avatar-only cards,
 live elapsed SLA bars, clickable Automations with preserved drafts, centered header
 and direct stage-settings cogs. Receipt `2026-10-06T04-10-00-366Z` passed 49 checks;
@@ -104,7 +104,7 @@ integration and component-specific PostgreSQL verification are unproved.
 
 ## Dynamic stage task correction — 2026-10-06
 
-[Round 6](../../../proofs/common-components/reviews/r006-dynamic-stage-tasks/notes.md)
+[Round 6](../../../proofs/common-components/tests/evidence/reviews/r006-dynamic-stage-tasks/notes.md)
 records D-25: current-stage tasks drive backend and UI checklists, including
 existing cards after definition edits. Stable IDs preserve surviving completion;
 removed copies disappear and stale writes fail. Card headings now start with a
@@ -117,7 +117,7 @@ and the existing production/adopter limitations remain outstanding.
 
 ## Card event automation correction — 2026-10-06
 
-[Round 7](../../../proofs/common-components/reviews/r007-card-event-automations/notes.md)
+[Round 7](../../../proofs/common-components/tests/evidence/reviews/r007-card-event-automations/notes.md)
 records D-26's eleven annotations and supersedes the automation Publish workflow.
 Definitions save Draft/Active/Paused; events and typed conditions match actual card
 mutations. Seven actions include task state, assignees, comments, bounded text

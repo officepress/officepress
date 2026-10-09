@@ -10,7 +10,7 @@ planned. The first grill's exact answers and accepted decisions are unchanged.
 | Proof | Result | Local source and evidence |
 |---|---|---|
 | P-00 agent comparison | Proved within the portable comparison boundary: 40 checks passed. Full framework embedding remains unproved. | [Implementation and copy contract](../../../proofs/agent-mode-compatibility/README.md); [exact receipt](../../../proofs/agent-mode-compatibility/verification/p00-2026-10-05.json). |
-| P-01 shell | Executed; 61 combined checks, 33 built/configuration checks and 11 PostgreSQL checks passed. Full S-01–S-06 exit is inconclusive because explicit paths remain uncovered/unavailable. | [Runnable shell and adoption instructions](../../../proofs/app-shell/README.md); [reviewed receipts, coverage matrix and screenshots](../../../proofs/app-shell/verification/README.md). |
+| P-01 shell | Executed; 61 combined checks, 33 built/configuration checks and 11 PostgreSQL checks passed. Full S-01–S-06 exit is inconclusive because explicit paths remain uncovered/unavailable. | [Runnable shell and adoption instructions](../../../proofs/app-shell/README.md); [reviewed receipts, coverage matrix and screenshots](../../../proofs/app-shell/tests/evidence/verification/README.md). |
 
 Both proofs passed typecheck and build on Node 24.21.0, with Chrome
 154.0.8037.93. P-01 retains the accepted Stackpress 0.10.8 ecosystem and composed
@@ -138,7 +138,7 @@ explicitly deferred. No fallback or deferral is silently accepted by this result
 Additional limits: no full-shell process-crash reconciliation of a running agent,
 no complete adverse agent/network browser matrix, no manual screen-reader audit,
 no live notification transport, and no P-06 independent-consumer proof. The
-[coverage matrix](../../../proofs/app-shell/verification/README.md#coverage-against-the-contract)
+[coverage matrix](../../../proofs/app-shell/tests/evidence/verification/README.md#coverage-against-the-contract)
 separates each S-01–S-06 result from its uncovered boundary.
 
 The READMEs document source copying, dependency pins, server config, schema

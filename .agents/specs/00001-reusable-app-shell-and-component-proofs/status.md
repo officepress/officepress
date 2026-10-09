@@ -120,7 +120,7 @@ Exact user direction: “The app-shell proof is approved now. Can we do another 
 
 Recorded the approval; copied source into a separate app/database/session with five menu entries and independent feature plugins. [The result record](common-components-result.md) preserves scope, checks, source/copy boundaries and limits. New proof approval remains pending. Existing archives, previous receipts and the broader Planning / Not Frozen status are preserved. MCP indexing still requires a fresh user request.
 
-Subsequent feedback supersedes the five-entry navigation: “Automations are for stages in workflows not a top level menu item.” The same review requests Stackpress Toastify, functional card dragging and the chrisai-designing right-panel pattern. [Round 2](../../../proofs/common-components/reviews/r002-workflow-feedback/notes.md) records implementation and verification; common-components approval remains pending.
+Subsequent feedback supersedes the five-entry navigation: “Automations are for stages in workflows not a top level menu item.” The same review requests Stackpress Toastify, functional card dragging and the chrisai-designing right-panel pattern. [Round 2](../../../proofs/common-components/tests/evidence/reviews/r002-workflow-feedback/notes.md) records implementation and verification; common-components approval remains pending.
 
 ## 2026-10-06 — Workflow simplification
 
@@ -130,7 +130,7 @@ workflow publications, WIP, allowed-next-stage lists and entry prerequisites are
 removed from active UI/backend behavior. Current definitions serve existing cards
 without rewriting their history. Stage automations lose statistics/search and move
 their context/title below the actions. Legacy data remains compatible and archived
-publication rows are preserved. [Round 3](../../../proofs/common-components/reviews/r003-workflow-simplification/notes.md)
+publication rows are preserved. [Round 3](../../../proofs/common-components/tests/evidence/reviews/r003-workflow-simplification/notes.md)
 records all corrections, 46 passing checks, final typecheck/build and desktop/mobile
 browser evidence. Manual data was backed up; mutations were tested in an isolated DB.
 The approved app-shell source remains untouched and common-components approval is
@@ -138,7 +138,7 @@ pending. No MCP indexing, commit or push occurred.
 
 ## 2026-10-06 — Multiple assignees and SLA progress
 
-D-24 records eight further workflow annotations. [Round 4](../../../proofs/common-components/reviews/r004-workflow-assignees-sla/notes.md)
+D-24 records eight further workflow annotations. [Round 4](../../../proofs/common-components/tests/evidence/reviews/r004-workflow-assignees-sla/notes.md)
 implements multiple card/stage assignees through UI and persistence, legacy owner
 compatibility, avatar-only cards, elapsed SLA bars, direct stage settings and
 draft-preserving Automations access. The isolated local proof passed 49 checks;
@@ -147,7 +147,7 @@ was backed up before restart. Common-components approval remains pending.
 
 ## 2026-10-06 — Dynamic current-stage tasks
 
-D-25 and [round 6](../../../proofs/common-components/reviews/r006-dynamic-stage-tasks/notes.md)
+D-25 and [round 6](../../../proofs/common-components/tests/evidence/reviews/r006-dynamic-stage-tasks/notes.md)
 correct stale task copies in the backend and UI and simplify card headings.
 The isolated PGlite/API proof passed 54 checks; final typecheck/build and desktop/
 mobile browser checks passed. Current-stage task edits update existing cards,
@@ -157,7 +157,7 @@ production/adopter validation remain separate; no MCP indexing was requested.
 
 ## 2026-10-06 — Card event automations and attached forms
 
-D-26 and [round 7](../../../proofs/common-components/reviews/r007-card-event-automations/notes.md)
+D-26 and [round 7](../../../proofs/common-components/tests/evidence/reviews/r007-card-event-automations/notes.md)
 apply all eleven annotations: saved automation statuses, fourteen card events,
 typed conditions, seven actions, working run-setting checkboxes, stage form
 attachment, stage layout and removal of Form Builder Outline. The final isolated

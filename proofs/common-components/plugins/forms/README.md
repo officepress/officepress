@@ -99,7 +99,7 @@ require ADMIN/MEMBER. Ordinary public endpoints retain their signed-in/token and
 revocation rules; the attached interface does not grant stored-response access.
 The existing AnswerForm accepts an optional submit callback for this integration.
 Responses keep immutable published-form meaning. File-question storage remains
-an adopter requirement. See [round 7](../../reviews/r007-card-event-automations/notes.md).
+an adopter requirement. See [round 7](../../tests/evidence/reviews/r007-card-event-automations/notes.md).
 
 ## Forms list and editor navigation (review round 11)
 
@@ -111,7 +111,7 @@ Unsaved drafts use the browser's navigation warning.
 Question reordering uses pointer capture with an insertion marker, an explicit
 touch drag handle and keyboard arrow support. Existing move buttons remain.
 Reordering preserves field identities. Draft-only saves leave published versions unchanged.
-See [round 11](../../reviews/r011-forms-list-drag/notes.md) for browser evidence.
+See [round 11](../../tests/evidence/reviews/r011-forms-list-drag/notes.md) for browser evidence.
 
 ## Name, status and one Save action (review round 12; UI revised in round 13)
 
@@ -131,7 +131,7 @@ the legacy publish operation remains available through the service/API.
 The new editor always supplies status, so saving edits to an Active form updates
 the definition available to new respondents. Earlier responses retain their exact
 publication meaning. Stable field identities and names remain protected.
-See [round 12](../../reviews/r012-forms-save/notes.md) for verification evidence.
+See [round 12](../../tests/evidence/reviews/r012-forms-save/notes.md) for verification evidence.
 
 ## Save beside Form Name (review round 13)
 
@@ -145,7 +145,7 @@ Save is enabled for an inactive form even without edits, so new forms and forms
 closed through Share can be activated. Stop accepting responses remains in Share.
 This does not change sharing permissions, token checks or expiration rules.
 Service status support, stored history and the optional-status API remain intact.
-See [round 13](../../reviews/r013-forms-toolbar/notes.md).
+See [round 13](../../tests/evidence/reviews/r013-forms-toolbar/notes.md).
 
 ## Clean paths (review round 14)
 
@@ -153,4 +153,4 @@ See [round 13](../../reviews/r013-forms-toolbar/notes.md).
 creates its record then opens its update URL. The old `/forms` and query-based
 editor URLs redirect to these paths. Unsaved navigation protection remains.
 Respondent `/forms/fill` links and guarded APIs are unchanged.
-See [round 14](../../reviews/r014-clean-paths/notes.md).
+See [round 14](../../tests/evidence/reviews/r014-clean-paths/notes.md).

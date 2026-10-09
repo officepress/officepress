@@ -44,3 +44,5 @@ The browser page pattern applies only to browser page paths; API paths use the s
 - [Framework knowledge map](../references/00209-stackpress-knowledge-catalog.md) — choose deeper architecture, runtime, portability and contract explanations.
 
 The references contain the complete imported text locally. Imported generic examples are subordinate to the OfficePress contract. External paths and URLs inside source blocks establish provenance; they are not required dependencies for KB retrieval.
+
+- [Yarn, CLI scripts and proof layout](../references/00373-stackpress-yarn-cli-and-proof-layout.md) — load when changing package scripts, migrating config/bootstrap paths, aggregating plugin tests or storing proof evidence; records the accepted 2026-10-08 conventions and upstream provenance.

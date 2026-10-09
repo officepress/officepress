@@ -13,8 +13,12 @@ type Challenge = {
   expiresMs: number;
   used: boolean;
 };
-function target(url: URL) {
-  const found = url.pathname.match(/^\/auth\/signin\/(2fa|otp|link)\/(.+)$/);
+function target(url: URL, base: string) {
+  const prefix = base + "/signin/";
+  if (!url.pathname.startsWith(prefix)) return null;
+  const found = url.pathname
+    .slice(prefix.length)
+    .match(/^(2fa|otp|link)\/(.+)$/);
   if (!found) return null;
   const parts = found[2].split("/").map(decodeURIComponent);
   if (found[1] === "2fa" && parts.length === 3)
@@ -37,10 +41,13 @@ export class ChallengeLedger {
   /** Injectable for expiry tests; production/default always uses Date.now. */
   now = () => Date.now();
   readonly ttlMs = 5 * 60 * 1000;
-  constructor(readonly database: Engine) {}
+  constructor(
+    readonly database: Engine,
+    readonly base = "/auth",
+  ) {}
   async issue(location: string, origin: string) {
     const url = new URL(location, origin);
-    const expected = target(url);
+    const expected = target(url, this.base);
     if (!expected) return location;
     const id = randomUUID();
     const issued = new Date(this.now());
@@ -66,7 +73,7 @@ export class ChallengeLedger {
     ctx: HttpServer<any>,
     handler: ServerAction<any, any, any, any>,
   ) {
-    const expected = target(req.url);
+    const expected = target(req.url, this.base);
     if (!expected) {
       await handler(ctx.props(req, res));
       await this.issueRedirect(req, res);
@@ -104,7 +111,8 @@ export class ChallengeLedger {
         res.session.revisions.get(Session.key)?.action === "set";
       const next = res.headers.get("Location");
       const nextChallenge =
-        typeof next === "string" && !!target(new URL(next, req.url.origin));
+        typeof next === "string" &&
+        !!target(new URL(next, req.url.origin), this.base);
       if (sessionIssued || (res.redirected && nextChallenge)) {
         await this.database.query(
           'UPDATE "identity_challenge" SET "used" = true WHERE "id" = ? AND "used" = false',
@@ -120,7 +128,7 @@ export class ChallengeLedger {
     if (
       res.redirected &&
       typeof location === "string" &&
-      target(new URL(location, req.url.origin))
+      target(new URL(location, req.url.origin), this.base)
     ) {
       res.headers.set("Location", await this.issue(location, req.url.origin));
     }

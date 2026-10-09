@@ -55,7 +55,7 @@ their retention/export/purge policy. Plugin disabling preserves all records.
 
 ## Messages and Requests
 
-[Round 9](../../reviews/r009-message-requests/notes.md) replaces status filter pills
+[Round 9](../../tests/evidence/reviews/r009-message-requests/notes.md) replaces status filter pills
 with Messages and Requests navigation. Messages counts unread conversations;
 Requests counts pending requests. Channel selection remains in the list footer.
 The message's support status is independent of its inbox classification.

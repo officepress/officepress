@@ -2,7 +2,7 @@ import type { HttpServer } from "@stackpress/ingest";
 import type { Config } from "../plugins/app/types.js";
 import type { ComponentPopulate } from "../config/fixtures.js";
 import { seedIdentity } from "../plugins/auth/fixtures.js";
-import { seedComponents } from "../scripts/seed-components.js";
+import { seedComponents } from "./seed-components.js";
 
 // The configured populate event exists only for explicitly disposable proof data.
 export default function plugin(server: HttpServer<Config>) {

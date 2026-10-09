@@ -105,9 +105,59 @@ function Input({
     </div>
   );
 }
+/** Share profile fields while preserving each existing page's field order. */
+function ProfileFields({
+  result,
+  name = result.name,
+  emailFirst = false,
+}: {
+  result: Result;
+  name?: string;
+  emailFirst?: boolean;
+}) {
+  const email = (
+    <Input
+      label="Email address"
+      name="email"
+      type="email"
+      value={result.auth?.email?.token}
+      required={false}
+    />
+  );
+  const username = (
+    <Input
+      label="Username"
+      name="username"
+      value={result.auth?.username?.token}
+      required={false}
+    />
+  );
+  return (
+    <>
+      <Input label="Name" name="name" value={name} />
+      <Input
+        label="Image URL"
+        name="image"
+        type="url"
+        value={result.image || ""}
+        required={false}
+      />
+      {emailFirst ? email : username}
+      {emailFirst ? username : email}
+      <Input
+        label="Current password (when adding a sign-in method)"
+        name="current"
+        type="password"
+        required={false}
+      />
+    </>
+  );
+}
+
 export default function Page(props: PageProps) {
   const data = props.data as Record<string, any>;
   const page = data.identityPage || "/signin";
+  const base = data.identityBase || "/auth";
   const identity = data.identity || {};
   const result = (props.response.results || {}) as Result;
   const account = page.startsWith("/account");
@@ -124,7 +174,7 @@ export default function Page(props: PageProps) {
   if (status === 401) {
     title = "Sign in to continue";
     body = (
-      <a className="op-btn op-btn--primary" href="/auth/signin">
+      <a className="op-btn op-btn--primary" href={base + "/signin"}>
         Sign in
       </a>
     );
@@ -132,7 +182,7 @@ export default function Page(props: PageProps) {
     body = (
       <>
         <div className="op-stack app-auth-methods">
-          <a className="op-method" href="/auth/signin/username">
+          <a className="op-method" href={base + "/signin/username"}>
             <span className="op-icon-tile op-icon-tile--40">
               <Icon name="at-sign" />
             </span>
@@ -145,7 +195,7 @@ export default function Page(props: PageProps) {
             </span>
             <Icon name="arrow-right" />
           </a>
-          <a className="op-method" href="/auth/signin/email">
+          <a className="op-method" href={base + "/signin/email"}>
             <span className="op-icon-tile op-icon-tile--40">
               <Icon name="mail" />
             </span>
@@ -208,7 +258,7 @@ export default function Page(props: PageProps) {
             <>
               <Input label="Password" name="secret" type="password" />
               <div className="op-links app-signin-links">
-                <a href="/auth/forgot-password">Forgot password?</a>
+                <a href={base + "/forgot-password"}>Forgot password?</a>
               </div>
               <button className="op-btn op-btn--primary op-btn--large op-btn--block">
                 Sign in
@@ -261,7 +311,7 @@ export default function Page(props: PageProps) {
         <div className="identity-note">
           Password reset is unavailable. No reset email has been sent.
         </div>
-        <a href="/auth/signin/email">Return to sign in</a>
+        <a href={base + "/signin/email"}>Return to sign in</a>
       </>
     );
   } else if (page === "/account/update") {
@@ -269,33 +319,7 @@ export default function Page(props: PageProps) {
     body = (
       <form className="op-fields" method="post">
         {token}
-        <Input label="Name" name="name" value={result.name} />
-        <Input
-          label="Image URL"
-          name="image"
-          type="url"
-          value={result.image || ""}
-          required={false}
-        />
-        <Input
-          label="Email address"
-          name="email"
-          type="email"
-          value={result.auth?.email?.token}
-          required={false}
-        />
-        <Input
-          label="Username"
-          name="username"
-          value={result.auth?.username?.token}
-          required={false}
-        />
-        <Input
-          label="Current password (when adding a sign-in method)"
-          name="current"
-          type="password"
-          required={false}
-        />
+        <ProfileFields result={result} emailFirst />
         <button className="op-btn op-btn--primary">Save profile</button>
       </form>
     );
@@ -364,7 +388,8 @@ export default function Page(props: PageProps) {
           <p>
             <a
               href={
-                "/auth/account/security/2fa/remove?authId=" +
+                base +
+                "/account/security/2fa/remove?authId=" +
                 encodeURIComponent(result.authId)
               }
             >
@@ -416,7 +441,7 @@ export default function Page(props: PageProps) {
         {data.identityPurgeComplete ? (
           <div className="identity-note" role="status">
             Your app data has been purged. Your OfficePress account is still
-            active. <a href="/auth/account">Return to account settings</a>.
+            active. <a href={base + "/account"}>Return to account settings</a>.
           </div>
         ) : data.identityPurgeReady ? (
           <form className="op-fields" method="post">
@@ -444,20 +469,26 @@ export default function Page(props: PageProps) {
         </p>
         <hr className="identity-divider" />
         <p>
-          <a href="/auth/account/security/export">Export account data</a>
+          <a href={base + "/account/security/export"}>Export account data</a>
         </p>
         <p>
-          <a href="/auth/account/security/purge">Purge app data</a>
+          <a href={base + "/account/security/purge"}>Purge app data</a>
         </p>
         <p>
-          <a href="/auth/account/security/remove">Delete OfficePress account</a>
+          <a href={base + "/account/security/remove"}>
+            Delete OfficePress account
+          </a>
         </p>
       </>
     );
   } else {
     title = "Personal information";
     body = (
-      <form className="op-fields" method="post" action="/auth/account/update">
+      <form
+        className="op-fields"
+        method="post"
+        action={base + "/account/update"}
+      >
         {token}
         <div className="app-profile-grid">
           <div className="app-profile-preview">
@@ -471,36 +502,9 @@ export default function Page(props: PageProps) {
             <span className="op-small op-muted">Your workspace profile</span>
           </div>
           <div className="op-fields">
-            <Input
-              label="Name"
-              name="name"
-              value={result.name || identity.user?.name}
-            />
-            <Input
-              label="Image URL"
-              name="image"
-              type="url"
-              value={result.image || ""}
-              required={false}
-            />
-            <Input
-              label="Username"
-              name="username"
-              value={result.auth?.username?.token}
-              required={false}
-            />
-            <Input
-              label="Email address"
-              name="email"
-              type="email"
-              value={result.auth?.email?.token}
-              required={false}
-            />
-            <Input
-              label="Current password (when adding a sign-in method)"
-              name="current"
-              type="password"
-              required={false}
+            <ProfileFields
+              result={result}
+              name={result.name || identity.user?.name}
             />
           </div>
         </div>
@@ -528,31 +532,31 @@ export default function Page(props: PageProps) {
   );
   const navigation = [
     [
-      "/auth/account",
+      base + "/account",
       "user",
       "Personal information",
       page === "/account" || page === "/account/update",
     ],
     [
-      "/auth/account/security/password",
+      base + "/account/security/password",
       "key-round",
       "Password",
       page === "/account/security/password",
     ],
     [
-      "/auth/account/security/2fa",
+      base + "/account/security/2fa",
       "shield-check",
       "Two-factor",
       page.includes("/security/2fa"),
     ],
     [
-      "/auth/account/security/export",
+      base + "/account/security/export",
       "download",
       "Export data",
       page.includes("/security/export"),
     ],
     [
-      "/auth/account/security",
+      base + "/account/security",
       "triangle-alert",
       "Danger zone",
       page === "/account/security" ||
@@ -572,7 +576,7 @@ export default function Page(props: PageProps) {
             <ModeButton />
             <a
               className="op-icon-btn op-icon-btn--circle"
-              href="/auth/account"
+              href={base + "/account"}
               aria-label="Account settings"
             >
               <Icon name="user" />
@@ -629,7 +633,7 @@ export default function Page(props: PageProps) {
     <div className="identity-page op-auth">
       <header className="op-auth__top">
         <a
-          href="/auth/signin"
+          href={base + "/signin"}
           className="op-brand__logo"
           aria-label={theme.brand}
         >
@@ -642,7 +646,7 @@ export default function Page(props: PageProps) {
         <div className="op-auth__column">
           <div className="op-auth__head">
             {page !== "/signin" && (
-              <a className="op-auth__back" href="/auth/signin">
+              <a className="op-auth__back" href={base + "/signin"}>
                 <Icon name="arrow-left" />
                 All sign-in options
               </a>

@@ -84,3 +84,51 @@ Reactus `buildAllClients`, `buildAllAssets` and `buildAllPages` each return arra
 Keep generated client, built server and browser assets distinct. Live config points to built paths and serves copied public assets. The proof checks that production HTML references a built client script, omits the Vite development client and serves its referenced JS/CSS.
 
 The historical baseline receipt used `.data/pglite` and retained unique `.build/proof-*` directories. The current development default is `.build/database/pglite`, with repeatable fixtures in config `database.populate`; fresh isolated proof directories are removed after their connections close and receipts are saved. Never remove the whole `.build`. The earlier optional PostgreSQL container proof remains historical evidence, not a required cross-engine compatibility gate.
+
+## Identity integration and app-data ownership
+
+The user accepted the auth simplifications on 2026-10-09 for both
+[app-shell](../../proofs/app-shell/plugins/auth/README.md) and
+[common-components](../../proofs/common-components/plugins/auth/README.md).
+Framework password/TOTP verification, profile/password operations and JWT signing
+remain delegated to the installed 0.10.8 handlers. Public handler exports are not
+available, so the pinned `framework.ts` integration seam remains.
+
+The auth-owned `identity.ts` shares a pending caller lookup through weak request
+keys. It verifies JWT/session age and reads current active profile, roles and
+credentials once per request. `invalidate(req)` forces a fresh projection after
+account writes. Each subsequent request reloads identity; no process-wide user
+cache or JWT-role-only authorization is introduced. The shared page helper owns
+base/page/family/theme props, and shared profile fields preserve visible order.
+
+The app-owned `purge.ts` implements `AppData` from `plugins/app/types.ts`,
+registered as `app-data` during config. Availability is checked after generated
+listeners exist. Auth checks `ready()` before registering the destructive POST;
+GET keeps the unavailable explanation. The service rechecks availability and
+fixes the app ID from config. Auth supplies only the verified caller ID after
+CSRF, writable-role and exact typed-confirmation checks. It never imports a
+private domain implementation or accepts a deletion scope from HTTP input.
+
+The four-table shell-data ownership map and transaction remain unchanged.
+Common-component business tables are outside that map. Identity, challenge
+history, company theme, other apps and other users remain preserved. An adopter
+must supply its own reviewed map rather than treating this proof scope as a
+universal purge contract.
+
+Challenge matching and auth-page links use configured `auth.base`, including
+nested custom prefixes. No unused `auth-signup` event or public signup/phone
+route is registered; disposable fixtures continue using framework AuthActions.
+
+[App-shell contracts](../../proofs/app-shell/plugins/auth/tests/contract.ts) and
+[common-components contracts](../../proofs/common-components/plugins/auth/tests/contract.ts)
+run under both default and custom bases through their normal test aggregators.
+They retain credential, CSRF, READONLY, ownership, secret-redaction, age,
+expiry/replay/concurrency and purge-isolation checks, with added request reuse,
+post-write invalidation and next-request role/activation cases. Missing store or
+generated schema keeps purge unavailable. Fresh receipts are written to each
+proof’s `tests/evidence/receipts/`; inspect them before reporting a pass.
+
+Cookie preservation, schema normalization, omitted-phone handling, CSRF/GET/
+ownership guards, event-override filtering, local redirects, secret redaction and
+the persistent challenge ledger remain required for this installed version.
+Remove an adapter only after equivalent unwrapped-framework checks pass.

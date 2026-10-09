@@ -85,12 +85,12 @@ in retained records, but saving edits requires selecting supported controls.
 
 ## Verification and limits
 
-`npm run prove` uses isolated PGlite, fake clocks, controlled failure adapters and
+the managed `yarn test` command uses isolated PGlite, fake clocks, controlled failure adapters and
 an in-memory mail transport for these new automation message checks. No real SMTP
 is sent by that command. The suite covers event chains, statuses/queued work,
 typed conditions, form submissions, immutable snapshots, stale saves, checkpoints,
 missing providers and uncertain handoffs. HTTP tests reject retired commands.
-See [round 7](../../reviews/r007-card-event-automations/notes.md) for browser evidence.
+See [round 7](../../tests/evidence/reviews/r007-card-event-automations/notes.md) for browser evidence.
 
 This is a single-process local proof, not distributed scheduling or production
 acceptance. The event notification follows the committed card mutation; it is not

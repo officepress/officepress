@@ -26,3 +26,14 @@ export type Config = typeof import("../../config/officepress.js").settings & {
   view: Partial<ReactusConfig>;
 };
 export type ViewPlugin = ReturnType<typeof reactus>;
+
+/** Internal app-data contract. HTTP callers must pass identity/CSRF policy first. */
+export type AppData = {
+  ready(): boolean;
+  purge(ownerId: string): Promise<{
+    items: number;
+    operations: number;
+    notifications: number;
+    agentRuns: number;
+  }>;
+};

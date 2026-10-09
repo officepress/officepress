@@ -11,6 +11,7 @@ export const build = path.resolve(
 );
 export const client = {
   lang: "js",
+  revisions: path.join(build, "revisions"),
   package: "officepress-client",
   module: path.join(build, "client", "index.js"),
   build: path.join(build, "client"),
@@ -29,8 +30,20 @@ export function database(mode: "development" | "production") {
     directory: path.resolve(
       process.env.PGLITE_DIR || path.join(build, "database", "pglite"),
     ),
-    populate: mode === "development" ? [
-      { event: "proof-components-populate", data: { accounts: fixtureAccounts, components: [...componentFixtures] } },
-    ] : [],
+    migrations: path.resolve(
+      process.env.OFFICEPRESS_MIGRATIONS_DIR || path.join(cwd, "migrations"),
+    ),
+    populate:
+      mode === "development"
+        ? [
+            {
+              event: "proof-components-populate",
+              data: {
+                accounts: fixtureAccounts,
+                components: [...componentFixtures],
+              },
+            },
+          ]
+        : [],
   };
 }

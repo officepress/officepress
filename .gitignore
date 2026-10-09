@@ -49,6 +49,7 @@ coverage/
 .env.*
 !.env.example
 !.env.*.example
+!/.agents/skills/stackpress-app-scaffold/assets/template/.env.sample
 .data/
 
 # MCP publisher dependencies, cached models and generated index snapshots

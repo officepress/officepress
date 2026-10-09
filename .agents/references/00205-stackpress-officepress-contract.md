@@ -18,6 +18,16 @@ Decide a boundary by asking: can this capability be disabled, what service does 
 
 A dependency is a documented public service or event contract, not an import of another plugin's private implementation. Put shared types in a browser-safe contract module when needed. State required services, optional services, unavailable behavior and registration timing in each plugin's documentation.
 
+## Identity integration and app-data ownership
+
+The 2026-10-09 accepted refinements apply to both app-shell and common-components proofs. Stackpress remains the owner of credential/password/TOTP verification and signed-token creation. The local auth plugin provides OfficePress views, current-user projection and access policy, plus the documented 0.10.8 compatibility/security adapters. Do not remove those adapters merely because framework auth exists; first prove equivalent behavior against the installed framework.
+
+`identity.caller(req)` shares a pending safe `{id,name,roles}` projection only within the same request. A new request verifies the token, eight-hour session-age ceiling, active profile, current roles and active credentials again. Writers using the same request call `identity.invalidate(req)` before preparing post-mutation props. Do not turn this into a process-wide user cache or rely on stale JWT roles. One page-preparation helper owns auth base/page/family/theme props; shared profile fields retain the existing field order.
+
+The app plugin registers the public browser-safe `AppData` type under `app-data`. Its `ready()` checks database, generated client, configured app ID and required generated model listeners. Auth registers the purge POST only when that provider is ready; the provider rechecks availability at invocation. Auth owns caller, writable role, CSRF and exact `Purge` confirmation checks. App owns the trusted app ID, reviewed table map, transaction and owner scoping. No submitted app ID, owner ID or table name controls deletion. The current map remains limited to shell items, operations, notices and agent runs; moving ownership does not add common-component business tables or delete identity, company theme, other apps or other users. Adopters review their own scope explicitly.
+
+Routes, challenge matching and auth-page links use the same `auth.base` (default `/auth`). The unused signup event is removed without adding public signup; proof fixtures retain direct framework AuthActions. Both proofs run the real auth contract at default and custom bases, including expiry, replay, concurrent redemption, request reuse/invalidation, current roles/activation, cookie preservation and scoped purge. The detailed [identity integration pattern](00357-stackpress-tested-plugin-pattern.md#identity-integration-and-app-data-ownership) links implementation and test owners. This remains bounded proof evidence, not production security acceptance.
+
 ## Activation and dependencies
 
 Changes take effect after restart. There is no live unloading and no automatic dependency validation. The plugin that needs another plugin's service must check for it in its own `plugin.ts` and fall back or disable gracefully.
@@ -40,9 +50,9 @@ Use `pages/` for HTTP-oriented handlers, `events/` for reusable business actions
 
 ## Scaffolding and configuration
 
-Copy the maintained baseline to a new empty destination, without node_modules, receipts, generated output, databases or secret environment files. Rename package, product copy and marks; preserve structure and dependency pins unless deliberately upgraded. Install using the included lockfile. Scaffold creation alone is not completion: generate, check, build and exercise the runtime.
+Copy the maintained baseline to a new empty destination, without node_modules, receipts, generated output, databases or secret environment files. Rename package, product copy and marks; preserve structure and dependency pins unless deliberately upgraded. Use Yarn with `yarn.lock` and `yarn install --frozen-lockfile`; remove npm lockfiles when migrating an app. Scaffold creation alone is not completion: generate, check, build and exercise the runtime.
 
-Maintain separate development, build and live config with common path/client/database definitions. Type-check scripts as well as config and plugins. Do not leave `config/live.ts` or `scripts/serve.ts` empty. Treat executable TypeScript configuration as code: later spread/duplicate keys override earlier ones.
+Maintain `config/develop.ts`, `config/build.ts`, `config/production.ts`, `config/preview.ts` and `config/client.ts` with common path/client/database definitions and awaited default bootstraps for CLI dispatch. For these proofs, keep the shared bootstrap helper at `tests/bootstrap.ts`; CLI configs and integration tests both import it. Type-check tests and scripts as well as config and plugins. Use Stackpress CLI commands instead of duplicate executable wrappers. Treat executable TypeScript configuration as code: later spread/duplicate keys override earlier ones.
 
 Use one rendering owner. The supplied proof uses its own Ingest/Reactus shell; loading the aggregate Stackpress view plugin too would create competing rendering configuration. Compose the schema/SQL packages deliberately and document adapter wrappers where framework plugins assume services.
 
@@ -83,3 +93,7 @@ Verify locked versions, root Idea imports, generated client exports and runtime 
 Exercise a feature enabled, explicitly disabled, and missing each required dependency. Confirm no feature routes/listeners remain while the shell and independent features work; restore the dependency after restart. Check optional fallbacks separately. Test persistence across a restart and ensure proof cleanup leaves unrelated data intact.
 
 Record actual commands, environment, package versions, checks, failures and limitations in a local receipt. A passing scaffold proof proves only its enumerated mechanics. Direct production-engine execution and production security remain unverified until exercised; the development compatibility assumption does not require a separate proof or turn unrun checks into passed checks.
+
+## Yarn, CLI scripts and proof layout
+
+The user decision on 2026-10-08 supersedes older npm/dev/live/custom-wrapper examples. [CLI and test conventions](00373-stackpress-yarn-cli-and-proof-layout.md) records the upstream script inventory, scoped adaptations, plugin test aggregation and evidence paths; load it before changing app manifests or runners.

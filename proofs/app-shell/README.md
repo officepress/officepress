@@ -30,7 +30,7 @@ The [copy map](#copy-and-adapt) gives the detailed adoption contract.
 
 | Plugin | Why it has its own boundary |
 | --- | --- |
-| [`app`](plugins/app/plugin.ts) | Owns the single Reactus rendering bridge, safe page props, public-file serving and the guarded account notification feed shared by every screen. |
+| [`app`](plugins/app/plugin.ts) | Owns the single Reactus rendering bridge, safe page props, public-file serving the guarded account notification feed shared by every screen and the app-owned data-purge service. |
 | [`store`](plugins/store/plugin.ts) | Chooses and closes the PostgreSQL or PGlite connection and registers Stackpress SQL once the generated client is available. |
 | `stackpress-schema` | Supplies Stackpress Idea generation and the generated-client loader; schema generation remains separate from database installation and rendering builds. |
 | [`auth`](plugins/auth/plugin.ts) | Owns authentication, session/caller projection, CSRF and account routes so feature plugins can require a verified caller. Its public service key remains `identity`. |
@@ -43,83 +43,83 @@ The [copy map](#copy-and-adapt) gives the detailed adoption contract.
 
 ## Run locally
 
-Tested runtime: Node **24.21.0**. Stackpress ecosystem packages stay on **0.10.8**.
+Use Node 24 and Yarn 1.22.22. Stackpress ecosystem packages remain pinned to
+0.10.8. `yarn.lock` is the dependency lockfile; there is no npm lockfile.
 
-```bash
-npm ci
-npm run generate
-npm run typecheck
-npm run build
-# Only a new, empty database may be initialized:
-OFFICEPRESS_DISPOSABLE_PROOF=1 npm run init:proof
-npm run dev
+```sh
+yarn install --frozen-lockfile
+yarn generate
+yarn typecheck
+yarn build
+# First inspect the target: push can replace schema and data.
+# Use these only for an intentionally disposable local proof database.
+OFFICEPRESS_DISPOSABLE_PROOF=1 PGLITE_DIR="$PWD/.build/database/pglite" yarn push
+OFFICEPRESS_DISPOSABLE_PROOF=1 PGLITE_DIR="$PWD/.build/database/pglite" yarn populate
+devmetrics start --summary "Proof development review" -- 'PORT={port} yarn dev'
+# Or preview the already-built assets:
+devmetrics start --summary "Proof built preview" -- 'PORT={port} yarn preview'
 ```
 
-Open `http://127.0.0.1:3020`. Disposable fixture users are
-`admin@officepress.test`, `member@officepress.test`, `other@officepress.test` and
-`readonly@officepress.test`; their public fixture password is
-`OfficePress-proof-123!`. Never seed these accounts in a real app database.
+Use the URL and stop time printed by devmetrics, and stop that assigned port
+when finished. The proofs have independent databases and assigned ports.
+Development disables the extra HMR listener; restart/reload after changes.
+`dev:clean` removes only `node_modules/.vite`. No command deletes `.build`.
 
-`config/officepress.ts` explicitly loads repository-root `.env`; no credential
-file is copied here. The provided `OPENROUTER_TEST_KEY` stays server-only. SMTP
-credentials are not used by P-01. Session signing and database identifier
-seeds are separate settings. Set private, persistent `PROOF_SESSION_SEED`
-(32+ characters) and `PROOF_DATABASE_SEED` when adapting this proof; the local
-session default is random on each process start, and the database default is
-explicitly disposable. Never rotate the database seed without a data migration.
+`config/develop.ts` configures source rendering, `config/build.ts` rendering
+builds, `config/preview.ts` built local PGlite serving, and
+`config/production.ts` production PostgreSQL serving. `config/client.ts` shares
+the composed development generator. Each exports an awaited default bootstrap;
+shared startup lives in `tests/bootstrap.ts`. Generation normalizes
+identity schema through the auth plugin's `idea` listener and writes generated
+client/revision metadata without applying database changes. `migrate` writes SQL
+to `migrations/` (override `OFFICEPRESS_MIGRATIONS_DIR` for an isolated check).
+`push`, `populate` and `purge` require an explicit disposable PGlite target.
+Ordinary startup never installs, seeds, or migrates data. `push` is a framework
+database command, unrelated to Git push, and may replace tables on first install.
 
-The current development database is `.build/database/pglite`. Sample accounts,
-items and notices are declared through config `database.populate` and installed
-only by the explicit disposable initializer. Use `PGLITE_DIR` to select another
-temporary local database. Production serving
-defaults to PostgreSQL and requires `DATABASE_URL`; it never falls back silently.
-For deliberate local verification of built assets only:
-
-```bash
-DATABASE_ADAPTER=pglite npm run serve
-```
-
-Code generation writes `.build/client`; it neither installs nor resets a
-database. Building writes rendering/assets. Ordinary server startup never seeds
-or migrates data. Initialization refuses nonempty databases. Proof runs remove
-their own closed scratch databases while retaining receipts. Do not delete the
-entire `.build` directory to clean a database.
+Production `yarn serve` requires `DATABASE_URL`; it never silently falls back to
+PGlite. Start it through devmetrics with `PORT={port}`. Root `.env` is loaded by
+`config/officepress.ts`; credentials remain server-only. Keep private persistent
+`PROOF_SESSION_SEED` (32+ characters) and `PROOF_DATABASE_SEED` when adopting;
+never rotate the database seed without migration. Local public fixture accounts
+are `admin@officepress.test`, `member@officepress.test`, `other@officepress.test`
+and `readonly@officepress.test`, with password `OfficePress-proof-123!`.
+Never use these accounts in production. Preserve existing review databases;
+proof tests use fresh scratch directories and remove them after closing.
 
 ## Reproduce the proof
 
-```bash
-npm run generate
-npm run typecheck
-npm run build
-npm run prove
-npm run prove:config
-npm run prove:agent-context
+```sh
+yarn generate
+yarn typecheck
+yarn build
+devmetrics start --summary "Shell contract tests" -- 'PORT={port} OFFICEPRESS_FINAL_BUILD=1 yarn test'
+# Explicit optional live browser and model campaign (requires Chrome/provider key):
+devmetrics start --summary "Shell live model tests" -- 'PORT={port} OFFICEPRESS_FINAL_BUILD=1 OFFICEPRESS_LIVE_TESTS=1 yarn test'
 ```
 
-Chrome must be installed. `prove` creates a unique empty PGlite database and
-runs real identity handlers, SQL contracts and browser interactions, including
-bounded real OpenRouter calls and a live GitHub Releases query. `prove:config`
-uses the freshly built renderer and checks restart persistence and configuration
-absence. The existing optional `npm run prove:postgres` command uses Docker and
-a disposable PostgreSQL 17 container; cross-engine compatibility is not a
-required development proof. No script targets a production database or sends email.
+`tests/plugins/all.test.ts` imports all existing plugin test modules plus the
+fixture action contract, and runs the shared proof runners sequentially. The
+normal suite covers identity, SQL, settings, compiled-browser hydration,
+notification isolation, missing providers and persistence across restarts.
+`OFFICEPRESS_LIVE_TESTS=1` adds the existing real OpenRouter/GitHub browser
+campaign and action-free model context checks. Optional network checks are
+reported separately; no email is sent by this proof. The identity suite also runs under a custom auth base, verifies request reuse
+and post-write invalidation, and checks the app-owned purge provider. The
+redundant standalone identity and PostgreSQL executable wrappers were removed; identity stays in the normal
+suite, and cross-engine compatibility remains outside the required proof gate.
 
-`prove:agent-context` runs both real configured models with the action-example
-plugin disabled and no domain records. It checks identity/CSRF/model guards,
-run replay and account isolation against a fresh PGlite database.
+Timestamped `tests/evidence/receipts/` retain failures as well as successes.
+Browser captures go in `tests/evidence/playwright/`; reviewed reports remain in
+[verification](tests/evidence/verification/README.md) and `tests/evidence/reviews/`.
+Old receipts preserve the commands and paths actually used at their run time.
 
-Timestamped `receipts/` retain failures as well as successful runs. Browser
-screenshots are under `output/playwright/`. Reviewed, self-contained evidence is
-retained in [verification](verification/README.md). Development switches
-`npm run prove -- --ui` and `--ui --settings` omit identity checks or earlier UI
-checks; their receipts must not be used as full acceptance evidence.
-
-The [round 2 styling review](reviews/r002-kit-alignment/notes.md) records the
+The [round 2 styling review](tests/evidence/reviews/r002-kit-alignment/notes.md) records the
 subsequent alignment with the local OfficePress kit, desktop/mobile screenshots
 and fresh identity checks. It preserves the earlier functional receipts and
 distinguishes those runs from the current visual review.
 
-The [round 3 generic-shell review](reviews/r003-generic-shell/notes.md) supersedes
+The [round 3 generic-shell review](tests/evidence/reviews/r003-generic-shell/notes.md) supersedes
 the sample workspace UI: one desktop header toggle, branded mobile navigation,
 and an agent panel that expands across the content area and restores to its dock.
 
@@ -127,7 +127,7 @@ and an agent panel that expands across the content area and restores to its dock
 
 | Copy | Responsibility and contract |
 |---|---|
-| `plugins/app`, `bootstrap`, `config`, build/serve scripts | Single renderer, safe serialized props, CSP, public assets, app-owned notification routes/components/schema and restart-based module selection. Notifications retain per-account read state and All/Mentions/Agent filtering; no live provider/subscription is claimed. Built serving bypasses upstream Vite middleware creation. |
+| `plugins/app`, `tests/bootstrap.ts`, `config`, CLI manifest scripts | Single renderer, safe serialized props, CSP, public assets, app-owned notification routes/components/schema and restart-based module selection. Notifications retain per-account read state and All/Mentions/Agent filtering; no live provider/subscription is claimed. Built serving bypasses upstream Vite middleware creation. |
 | `plugins/store` | Explicit PostgreSQL/PGlite connection, guarded Stackpress SQL registration and shutdown. This baseline owns one connection; its serializer prevents another request joining a transaction. A pooled adopter needs a transaction-bound connection instead. |
 | Root `schema.idea`, `stackpress-schema` | Composed generated models and client loading. Keep generation separate from migrations; do not change composed models when disabling runtime plugins. |
 | `plugins/auth` | Actual pinned Stackpress handlers, current caller/role checks, CSRF, cookie and schema adapters, expiring one-use challenges, and branded auth/account views. Read its [complete contract](plugins/auth/README.md). |
@@ -190,7 +190,9 @@ provider results from fixtures, PGlite from PostgreSQL, and implemented behavior
 from uncovered contract cases. Do not treat styled unavailable screens as a
 completed recovery, delivery or cross-app deletion workflow.
 
-The [round 4 settings review](reviews/r004-settings-alignment/notes.md) applies
+The [round 4 settings review](tests/evidence/reviews/r004-settings-alignment/notes.md) applies
 menu/account copy feedback and aligns About and Theme with the native design's
 card composition. It records current checks, screenshots and remaining bounded
 adaptations for manual review.
+
+Current script migration checks: [Yarn and CLI verification](tests/evidence/verification/yarn-verification.md), including command outputs, managed HTTP checks and final test results.

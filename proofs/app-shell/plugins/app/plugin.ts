@@ -8,6 +8,8 @@ import type Engine from "@stackpress/inquire/Engine";
 import type { Config } from "./types.js";
 import type { Identity } from "../auth/types.js";
 import * as view from "./view.js";
+import { createAppData } from "./purge.js";
+import { buildApp } from "./build.js";
 
 const mime: Record<string, string> = {
   ".html": "text/html",
@@ -24,8 +26,14 @@ const mime: Record<string, string> = {
 };
 
 export default function plugin(server: HttpServer<Config>) {
+  // The CLI dispatches rendering builds to their app owner.
+  server.on("build", async ({ ctx, res }) => {
+    await buildApp(ctx);
+    res.statusCode(200);
+  });
   server.on("config", ({ ctx }) => {
     view.config(ctx);
+    ctx.register("app-data", createAppData(ctx));
   });
 
   server.on("route", ({ ctx }) => {

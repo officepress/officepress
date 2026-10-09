@@ -16,7 +16,7 @@ export async function proveBrowser(
     models: any[] = [],
     limitations: string[] = [];
   let liveRelease: any;
-  const output = path.join(root, "output/playwright", id);
+  const output = path.join(root, "tests/evidence/playwright", id);
   await fs.mkdir(output, { recursive: true });
   try {
     const context = await browser.newContext({

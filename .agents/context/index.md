@@ -11,6 +11,6 @@ Start here. These topic files hold the accepted reusable context; their linked r
 - [Design source](design-source.md) — load when looking up Pencil text, variables, components or native assets.
 - [Knowledge maintenance](knowledge-maintenance.md) — load when resolving authority, checking coverage, updating the KB without data loss or applying the explicit-request-only MCP indexing rule.
 
-- [Stackpress implementation handbook](stackpress.md) — load for all app scaffolding, plugins, configuration, data generation, views and verification.
+- [Stackpress implementation handbook](stackpress.md) — load for all app scaffolding, plugins, Yarn/CLI scripts, bootstrap configuration, plugin tests, data generation, views and verification.
 
 - [Reusable proof guidance](reusable-proofs.md) — load for the adopted goal, common constraints, mutable Draft/Published workflows, form/template publication, elapsed SLA and stale-write rules; follow its spec link for current planning.

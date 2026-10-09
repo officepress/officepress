@@ -139,7 +139,7 @@ open Automations with unsaved edits, including zero tasks. A new unsaved stage
 opens a save-and-continue screen; saving is explicit and never silently performed
 by navigation. Header title and button are vertically centered.
 
-[Round 4](../../reviews/r004-workflow-assignees-sla/notes.md) records browser and
+[Round 4](../../tests/evidence/reviews/r004-workflow-assignees-sla/notes.md) records browser and
 49-check local proof evidence. Personnel directory integration, component-specific
 PostgreSQL validation and production acceptance remain outside this proof.
 
@@ -150,7 +150,7 @@ stage has positive hours, the shared live SLA component shows its progress and
 `enteredAt + hours` due date/time (browser locale and time zone) immediately before
 Files. The board toolbar uses an arrow-only back control with an accessible label,
 Edit and New card; search and actions wrap against available panel width. The
-workflow designer omits its breadcrumb. See [round 5](../../reviews/r005-card-details-toolbar/notes.md).
+workflow designer omits its breadcrumb. See [round 5](../../tests/evidence/reviews/r005-card-details-toolbar/notes.md).
 
 ## Dynamic stage tasks and compact card headings
 
@@ -169,7 +169,7 @@ action rather than treating its output as an obsolete stage-template copy.
 
 Cards start with their title and a left-side grip; the REQUEST/ID caption is gone.
 Empty checklists show no board task count or Todo count badge and no old checkbox.
-The details stage selector remains usable. [Round 6](../../reviews/r006-dynamic-stage-tasks/notes.md)
+The details stage selector remains usable. [Round 6](../../tests/evidence/reviews/r006-dynamic-stage-tasks/notes.md)
 records the latest annotation coverage, backend/API proof and browser evidence.
 
 ## Card events and attached forms (review round 7)
@@ -200,7 +200,7 @@ Card details reuse the Form Builder respondent component and expose comment edit
 remove and file remove controls so those actions can emit corresponding events.
 Form Builder is optional; attached-form use fails explicitly when unavailable.
 
-[Round 7](../../reviews/r007-card-event-automations/notes.md) documents integration,
+[Round 7](../../tests/evidence/reviews/r007-card-event-automations/notes.md) documents integration,
 including automation action/event chaining. The existing dynamic-stage task
 projection remains authoritative; removed task definitions cannot be checked by
 a new automation action.
@@ -213,4 +213,4 @@ its first successful save replaces the URL with the saved record's update path.
 Opening Create does not write a database record. An optional stage fragment on
 update links preserves stage-settings selection. Existing automation subviews
 remain within their workflow page. `/workflows` redirects to the list.
-See [round 14](../../reviews/r014-clean-paths/notes.md).
+See [round 14](../../tests/evidence/reviews/r014-clean-paths/notes.md).
