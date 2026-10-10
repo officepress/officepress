@@ -1,55 +1,94 @@
-import { useState } from "react";
-import Icon from "../../../app/components/Icon.js";
-import { contrast, foreground, type Theme, type Family } from "../client.js";
-import { families } from "../families.js";
-const keys = ["accent", "sidebar", "canvas"] as const;
-const descriptions = {
-  accent: "App tile, buttons, links, progress",
-  sidebar: "The aside background",
-  canvas: "App background; surrounding surfaces derive from it",
+//modules
+import { useState } from 'react';
+
+//client
+import type { Theme, Family } from '../client.js';
+import { getContrastRatio, getForeground } from '../client.js';
+import { families } from '../families.js';
+import Icon from '../../../app/components/Icon.js';
+
+//--------------------------------------------------------------------//
+// Types
+
+//current palette plus the enclosing editor callbacks for local colour edits
+type ColoursProps = {
+  value: Theme,
+  onChange: (value: Theme) => void,
+  baseline: Theme,
+  saved: Theme,
+  family: Family,
+  disabled: boolean,
+  onSave: () => void,
+  logo: string
 };
+
+//--------------------------------------------------------------------//
+// Constants
+
+const descriptions = {
+  accent: 'App tile, buttons, links, progress',
+  sidebar: 'The aside background',
+  canvas: 'App background; surrounding surfaces derive from it'
+};
+
+const keys = [ 'accent', 'sidebar', 'canvas' ] as const;
+
+//--------------------------------------------------------------------//
+// Entry point
+
+/**
+ * Edit the theme palette with browser previews and contrast feedback;
+ * persistence remains with the enclosing theme settings component.
+ */
 export default function Colours({
   value,
   onChange,
   baseline,
   saved,
   family,
-  disabled,
+  disabled: isDisabled,
   onSave,
-  logo,
-}: {
-  value: Theme;
-  onChange: (value: Theme) => void;
-  baseline: Theme;
-  saved: Theme;
-  family: Family;
-  disabled: boolean;
-  onSave: () => void;
-  logo: string;
-}) {
-  const [mode, setMode] = useState<"light" | "dark">("light");
+  logo
+}: ColoursProps) {
+  //--------------------------------------------------------------------//
+  // State and lifecycle references
+
+  const [ mode, setMode ] = useState<'light' | 'dark'>('light');
+
+  //--------------------------------------------------------------------//
+  // Derived presentation
+
   const dark = families[family].dark;
   const colours = Object.fromEntries(
     keys.map((key) => [
       key,
-      mode === "dark"
-        ? dark[key === "sidebar" ? "nav" : key]
+      mode === 'dark'
+        ? dark[key === 'sidebar' ? 'nav' : key]
         : /^#[\da-f]{6}$/i.test(value[key])
           ? value[key]
-          : baseline[key],
-    ]),
+          : baseline[key]
+    ])
   ) as Pick<Theme, (typeof keys)[number]>;
   const changes = keys.filter(
-    (key) => value[key].toUpperCase() !== baseline[key].toUpperCase(),
+    (key) => value[key].toUpperCase() !== baseline[key].toUpperCase()
   ).length;
-  const readOnly = disabled || mode === "dark";
+  const isReadOnly = isDisabled || mode === 'dark';
+
+  //--------------------------------------------------------------------//
+  // Interaction handlers
+
+  //restore the selected visual family’s default color values in the editor
   const reset = (source: Theme) =>
     onChange({
       ...value,
       accent: source.accent,
       sidebar: source.sidebar,
-      canvas: source.canvas,
+      canvas: source.canvas
     });
+
+  //--------------------------------------------------------------------//
+  // Render or public hook result
+
   return (
     <section className="op-section" aria-labelledby="colours-title">
       <div className="op-section__head">
@@ -70,28 +109,28 @@ export default function Colours({
             role="group"
             aria-label="Colour preview mode"
           >
-            {(["light", "dark"] as const).map((option) => (
+            {([ 'light', 'dark' ] as const).map((option) => (
               <button
                 key={option}
                 type="button"
                 aria-pressed={mode === option}
                 onClick={() => setMode(option)}
               >
-                <Icon name={option === "light" ? "sun" : "moon"} />
-                {option === "light" ? "Light" : "Dark"}
+                <Icon name={option === 'light' ? 'sun' : 'moon'} />
+                {option === 'light' ? 'Light' : 'Dark'}
               </button>
             ))}
           </div>
           <span className="op-pill op-pill--tint">
             <Icon name="paintbrush" />
-            {mode === "dark"
-              ? "Family palette"
+            {mode === 'dark'
+              ? 'Family palette'
               : changes
-                ? `Customised · ${changes} ${changes === 1 ? "change" : "changes"}`
-                : "Family defaults"}
+                ? `Customised · ${changes} ${changes === 1 ? 'change' : 'changes'}`
+                : 'Family defaults'}
           </span>
         </div>
-        {mode === "dark" && (
+        {mode === 'dark' && (
           <p className="op-small op-muted">
             Dark mode uses the family palette. Custom colours apply in light
             mode.
@@ -101,8 +140,8 @@ export default function Colours({
           {keys.map((key) => {
             const label = key[0].toUpperCase() + key.slice(1);
             const hex = colours[key];
-            const ratio = contrast(foreground(hex), hex).toFixed(1);
-            const defaultHex = mode === "dark" ? hex : baseline[key];
+            const ratio = getContrastRatio(getForeground(hex), hex).toFixed(1);
+            const defaultHex = mode === 'dark' ? hex : baseline[key];
             return (
               <div className="app-colour-row" key={key}>
                 <span
@@ -124,11 +163,11 @@ export default function Colours({
                   id={`colour-${key}`}
                   className="op-input op-mono"
                   aria-label={`${key} colour`}
-                  value={mode === "dark" ? hex : value[key]}
-                  onChange={(e) =>
-                    onChange({ ...value, [key]: e.target.value })
+                  value={mode === 'dark' ? hex : value[key]}
+                  onChange={(event) =>
+                    onChange({ ...value, [key]: event.target.value })
                   }
-                  disabled={readOnly}
+                  disabled={isReadOnly}
                 />
                 <div className="app-colour-default op-caption op-muted">
                   <span>Default</span>
@@ -143,7 +182,7 @@ export default function Colours({
                 <button
                   className="op-icon-btn op-icon-btn--compact"
                   aria-label={`Reset ${label}`}
-                  disabled={readOnly}
+                  disabled={isReadOnly}
                   onClick={() => onChange({ ...value, [key]: baseline[key] })}
                 >
                   <Icon name="rotate-ccw" />
@@ -157,12 +196,12 @@ export default function Colours({
           <div className="app-quick-picks">
             {[
               baseline.accent,
-              "#0E7490",
-              "#1D4ED8",
-              "#4338CA",
-              "#0F766E",
-              "#9D174D",
-              "#374151",
+              '#0E7490',
+              '#1D4ED8',
+              '#4338CA',
+              '#0F766E',
+              '#9D174D',
+              '#374151'
             ].map((hex) => (
               <button
                 key={hex}
@@ -170,7 +209,7 @@ export default function Colours({
                 type="button"
                 aria-label={`Use ${hex}`}
                 aria-pressed={value.accent.toUpperCase() === hex.toUpperCase()}
-                disabled={readOnly}
+                disabled={isReadOnly}
                 onClick={() => onChange({ ...value, accent: hex })}
               >
                 <span style={{ background: hex }} />
@@ -183,14 +222,14 @@ export default function Colours({
           aria-label="Theme preview"
           style={{
             background: colours.canvas,
-            color: foreground(colours.canvas),
+            color: getForeground(colours.canvas)
           }}
         >
           <div
             className="app-theme-preview__aside"
             style={{
               background: colours.sidebar,
-              color: foreground(colours.sidebar),
+              color: getForeground(colours.sidebar)
             }}
           >
             <div>
@@ -207,7 +246,7 @@ export default function Colours({
               className="app-preview-button"
               style={{
                 background: colours.accent,
-                color: foreground(colours.accent),
+                color: getForeground(colours.accent)
               }}
             >
               Primary action
@@ -225,7 +264,7 @@ export default function Colours({
       <div className="op-section__foot app-settings-footer">
         <button
           className="op-btn op-btn--secondary"
-          disabled={readOnly}
+          disabled={isReadOnly}
           onClick={() => reset(baseline)}
         >
           <Icon name="rotate-ccw" />
@@ -234,14 +273,14 @@ export default function Colours({
         <span className="op-spacer" />
         <button
           className="op-btn op-btn--secondary"
-          disabled={readOnly}
+          disabled={isReadOnly}
           onClick={() => reset(saved)}
         >
           Cancel
         </button>
         <button
           className="op-btn op-btn--primary"
-          disabled={readOnly}
+          disabled={isReadOnly}
           onClick={onSave}
         >
           Save theme
@@ -249,4 +288,4 @@ export default function Colours({
       </div>
     </section>
   );
-}
+};

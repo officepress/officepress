@@ -1,0 +1,31 @@
+{
+  "files": 31,
+  "nodeCasesPerCampaign": 7,
+  "campaigns": [
+    {
+      "campaign": "offline",
+      "receipt": "proofs/agent-mode-compatibility/tests/evidence/receipts/2026-10-10T12-19-37-910Z.json",
+      "checks": 32,
+      "status": "passed",
+      "fingerprintComparisons": 34,
+      "ownedScratchRemoved": true,
+      "limitations": [],
+      "models": 0
+    },
+    {
+      "campaign": "live",
+      "receipt": "proofs/agent-mode-compatibility/tests/evidence/receipts/2026-10-10T12-19-59-804Z.json",
+      "checks": 41,
+      "status": "passed",
+      "fingerprintComparisons": 34,
+      "ownedScratchRemoved": true,
+      "limitations": [],
+      "models": 4
+    }
+  ],
+  "checks": 73,
+  "typecheck": "passed",
+  "build": "passed",
+  "generation": "not applicable",
+  "staticFindings": 0
+}

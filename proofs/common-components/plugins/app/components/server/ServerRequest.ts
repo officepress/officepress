@@ -3,14 +3,23 @@ import type {
   Method,
   UnknownNest,
   CallableMap,
-  CallableNest,
-} from "@stackpress/lib/types";
-import { map } from "@stackpress/lib/Map";
-import { nest } from "@stackpress/lib/Nest";
+  CallableNest
+} from '@stackpress/lib/types';
+import { map } from '@stackpress/lib/Map';
+import { nest } from '@stackpress/lib/Nest';
+
+//client
+import type { ServerRequestProps } from './types.js';
+
+//--------------------------------------------------------------------//
+// Types
+
 //stackpress-view
-import type { ServerRequestProps } from "./types.js";
 
 export type { ServerRequestProps };
+
+//--------------------------------------------------------------------//
+// Classes
 
 /**
  * Client version of request. Readonly.
@@ -23,18 +32,16 @@ export default class Request<I extends UnknownNest = UnknownNest> {
   //session controller
   public readonly session: CallableMap<string, string | string[]>;
   //url controller
-  public readonly url = new URL("http://unknownhost/");
+  public readonly url = new URL('http://unknownhost/');
   //request method
   public readonly method: Method;
 
-  /**
-   * Sets request defaults
-   */
+  //sets request defaults
   public constructor(config: ServerRequestProps<I>) {
     this.data = nest(config.data);
     this.url = new URL(config.url.href);
     this.headers = map(Object.entries(config.headers));
     this.session = map(Object.entries(config.session));
-    this.method = config.method || "GET";
+    this.method = config.method || 'GET';
   }
-}
+};

@@ -1,27 +1,38 @@
-import Icon from "../../app/components/Icon.js";
-import {
-  conditionLabels,
-  operators,
-  type Condition,
-  type ConditionField,
-} from "../types.js";
+//client
+import type { Condition, ConditionField } from '../types.js';
+import { getConditionOperators } from '../conditions.js';
+import { conditionLabels } from '../types.js';
+import Icon from '../../app/components/Icon.js';
+
+//--------------------------------------------------------------------//
+// Types
+
+//one typed matching condition and the selected workflow/card field options
+type ConditionEditorProps = {
+  condition: Condition,
+  index: number,
+  hasForms: boolean,
+  change: (value: Condition) => void,
+  remove: () => void
+};
+
+//--------------------------------------------------------------------//
+// Entry point
+
+/**
+ * Render field-specific automation predicates and accepted operator choices.
+ */
 export default function ConditionEditor({
   condition,
   index,
   hasForms,
   change,
-  remove,
-}: {
-  condition: Condition;
-  index: number;
-  hasForms: boolean;
-  change: (value: Condition) => void;
-  remove: () => void;
-}) {
-  const count =
+  remove
+}: ConditionEditorProps) {
+  const isCountField =
     Object.hasOwn(conditionLabels, condition.field) &&
-    condition.field !== "title" &&
-    condition.field !== "assigned-to";
+    condition.field !== 'title' &&
+    condition.field !== 'assigned-to';
   return (
     <div className="auto-condition">
       <label className="op-field">
@@ -34,9 +45,8 @@ export default function ConditionEditor({
             const field = event.target.value as ConditionField;
             change({
               field,
-              operator: operators(field)[0],
-              value:
-                field === "assigned-to" ? [""] : field === "title" ? "" : 0,
+              operator: getConditionOperators(field)[0],
+              value: field === 'assigned-to' ? [ '' ] : field === 'title' ? '' : 0
             });
           }}
         >
@@ -44,8 +54,8 @@ export default function ConditionEditor({
             <option value={condition.field}>Choose a supported field</option>
           )}
           {Object.entries(conditionLabels)
-            .filter(([key]) => hasForms || !key.startsWith("forms-"))
-            .map(([key, label]) => (
+            .filter(([ key ]) => hasForms || !key.startsWith('forms-'))
+            .map(([ key, label ]) => (
               <option key={key} value={key}>
                 {label}
               </option>
@@ -61,23 +71,25 @@ export default function ConditionEditor({
           onChange={(event) =>
             change({
               ...condition,
-              operator: event.target.value as Condition["operator"],
+              operator: event.target.value as Condition['operator']
             })
           }
         >
-          {!operators(condition.field).includes(condition.operator) && (
+          {!getConditionOperators(condition.field).includes(
+            condition.operator
+          ) && (
             <option value={condition.operator}>
               Choose a supported operator
             </option>
           )}
-          {operators(condition.field).map((operator) => (
+          {getConditionOperators(condition.field).map((operator) => (
             <option key={operator} value={operator}>
-              {operator.replace("-", " ")}
+              {operator.replace('-', ' ')}
             </option>
           ))}
         </select>
       </label>
-      {condition.field === "assigned-to" ? (
+      {condition.field === 'assigned-to' ? (
         <fieldset className="op-field auto-name-list">
           <legend className="op-field__label">Assignees</legend>
           {(condition.value as string[]).map((name, row) => (
@@ -89,9 +101,10 @@ export default function ConditionEditor({
                 onChange={(event) =>
                   change({
                     ...condition,
-                    value: (condition.value as string[]).map((value, i) =>
-                      i === row ? event.target.value : value,
-                    ),
+                    value: (condition.value as string[]).map(
+                      (value, itemIndex) =>
+                        itemIndex === row ? event.target.value : value
+                    )
                   })
                 }
               />
@@ -102,8 +115,8 @@ export default function ConditionEditor({
                   change({
                     ...condition,
                     value: (condition.value as string[]).filter(
-                      (_, i) => i !== row,
-                    ),
+                      (_, itemIndex) => itemIndex !== row
+                    )
                   })
                 }
               >
@@ -116,7 +129,7 @@ export default function ConditionEditor({
             onClick={() =>
               change({
                 ...condition,
-                value: [...(condition.value as string[]), ""],
+                value: [ ...(condition.value as string[]), '' ]
               })
             }
           >
@@ -125,18 +138,22 @@ export default function ConditionEditor({
         </fieldset>
       ) : (
         <label className="op-field">
-          <span className="op-field__label">{count ? "Count" : "Text"}</span>
+          <span className="op-field__label">
+            {isCountField ? 'Count' : 'Text'}
+          </span>
           <input
             className="op-input"
             aria-label={`Condition ${index + 1} value`}
-            type={count ? "number" : "text"}
-            min={count ? 0 : undefined}
-            step={count ? 1 : undefined}
+            type={isCountField ? 'number' : 'text'}
+            min={isCountField ? 0 : undefined}
+            step={isCountField ? 1 : undefined}
             value={condition.value as string | number}
             onChange={(event) =>
               change({
                 ...condition,
-                value: count ? Number(event.target.value) : event.target.value,
+                value: isCountField
+                  ? Number(event.target.value)
+                  : event.target.value
               })
             }
           />
@@ -151,4 +168,4 @@ export default function ConditionEditor({
       </button>
     </div>
   );
-}
+};

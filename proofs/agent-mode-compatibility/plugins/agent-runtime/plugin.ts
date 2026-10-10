@@ -1,8 +1,22 @@
+//modules
 import type { HttpServer } from '@stackpress/ingest';
-import { runAgent } from './openrouter.js';
-export default function plugin(server: HttpServer) {
-  server.on('config', ({ ctx }) => {
-    if (!ctx.plugin('agent-domain') || !process.env.OPENROUTER_TEST_KEY) return;
-    ctx.register('agent-runtime', runAgent);
-  }, -200);
-}
+
+/**
+ * Register the model runtime after the action store, then expose agent runs
+ * only while both providers are available.
+ */
+export default function registerAgentRuntimePlugin(server: HttpServer) {
+  //--------------------------------------------------------------------//
+  // Provider configuration
+
+  //run at -200 after the domain store’s -100 configuration
+  server.on('config', () => import('./events/config.js'), -200);
+  //--------------------------------------------------------------------//
+  // Reusable event registration
+
+  //expose the operation only after its providers have been registered
+  server.on('listen', ({ ctx }) => {
+    if (!ctx.plugin('agent-domain') || !ctx.plugin('agent-runtime')) return;
+    ctx.on('agent-run', () => import('./events/run.js'));
+  });
+};

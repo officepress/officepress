@@ -1,32 +1,37 @@
 {
   "compilerOptions": {
     "allowJs": true,
-    "lib": [ "es2022", "dom", "dom.iterable" ],
+    "lib": [
+      "es2022",
+      "dom",
+      "dom.iterable"
+    ],
     "module": "nodenext",
     "jsx": "react-jsx",
-
     "esModuleInterop": true,
     "preserveConstEnums": true,
     "skipLibCheck": true,
     "strict": true,
-
     "declaration": true,
     "removeComments": true,
     "sourceMap": false,
     "target": "es2022",
-
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-
     "moduleResolution": "nodenext",
-
-    "types": [ "node" ]
+    "types": [
+      "node"
+    ]
   },
   "include": [
     "config/**/*.ts",
-    "bootstrap/**/*.ts",
     "plugins/**/*.ts",
     "plugins/**/*.tsx",
+    "tests/**/*.ts"
   ],
-  "exclude": [ "dist", "node_modules", "tests" ]
+  "exclude": [
+    "dist",
+    "node_modules",
+    "tests/evidence"
+  ]
 }

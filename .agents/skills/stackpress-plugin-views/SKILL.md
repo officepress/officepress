@@ -8,6 +8,21 @@ description: Use when an agent needs to implement or revise handwritten Stackpre
 Implement handwritten Stackpress plugin pages using the normal `pages/` plus
 `views/` contract instead of improvising React page structure.
 
+
+## OfficePress local contract reinforcement
+
+Local augmentation, 2026-10-09 (condensed 2026-10-10): before implementation,
+load root `AGENTS.md`, the project
+[logic-pattern catalog](../../context/stackpress-logic-patterns.md) and the
+[lazy-registration contract](../../references/00374-stackpress-lazy-registration-and-pattern-maintenance.md).
+Those owners carry the OfficePress deltas — `plugin.ts` as wiring/guards only,
+lazy `ctx.get("/api/about", () => import("./pages/read.js"))` page/event
+registration with separate `ctx.view` bindings, Yarn/CLI dispatch, the pattern
+guard plus affected Yarn/runtime checks, and KB pattern maintenance without MCP
+indexing — and supersede any conflicting generic guidance in this skill.
+
+For these OfficePress Reactus development configs, also load the [cold-cache hydration correction](../../references/00381-stackpress-views-and-browser-contracts.md#officepress-reactus-development-hydration-verification) before changing dependency discovery. Keep browser console/page-error assertions; a clean built bundle alone cannot validate virtual development hydration entries.
+
 ## Overview
 
 Treat Stackpress page views as a framework contract, not generic TSX.

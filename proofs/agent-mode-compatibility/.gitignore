@@ -1,8 +1,11 @@
 .build/
 node_modules/
-receipts/
+tests/evidence/receipts/
 .env
 .env.*
 !.env.example
-
 .data/
+
+tests/evidence/playwright/*
+!tests/evidence/playwright/p00-2026-10-05T04-18-57-002Z.png
+!tests/evidence/playwright/p00-2026-10-05T04-21-33-209Z.png

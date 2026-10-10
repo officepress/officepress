@@ -1,167 +1,191 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import type { Caller } from "../../auth/types.js";
-import Icon from "../../settings/shell/components/Icon.js";
-import { routeRecordId } from "../../app/routing.js";
-import MessageList from "./MessageList.js";
-import MessageDetail from "./MessageDetail.js";
-import MessageBodyEditor from "./MessageBodyEditor.js";
-import type { MessageBodyEditorHandle } from "./MessageBodyEditor.js";
-import ContentTabs from "./ContentTabs.js";
-import type { ContentMode } from "./ContentTabs.js";
-import { editableDraft } from "../content.js";
-import { api } from "../../app/client.js";
-import type { Dispatch, TemplateDraft, TemplateRecord } from "../types.js";
+//modules
+import { useEffect, useMemo, useRef, useState } from 'react';
+
+//client
+import type { Caller } from '../../auth/types.js';
+import type { Dispatch, TemplateDraft, TemplateRecord } from '../types.js';
+import type { ContentMode } from './ContentTabs.js';
+import type { MessageBodyEditorHandle } from './MessageBodyEditor.js';
+import { requestJson } from '../../app/client.js';
+import { routeRecordId } from '../../app/routing.js';
 import {
   automatic,
   channelLabels,
   newDraft,
   renderDraft,
   sampleValues,
-  variables,
-} from "../client.js";
-type State = {
-  records: TemplateRecord[];
-  dispatches: Dispatch[];
-  mailReady: boolean;
+  getVariables
+} from '../client.js';
+import { editableDraft } from '../content.js';
+import Icon from '../../settings/shell/components/Icon.js';
+import ContentTabs from './ContentTabs.js';
+import MessageBodyEditor from './MessageBodyEditor.js';
+import MessageDetail from './MessageDetail.js';
+import MessageList from './MessageList.js';
+
+//--------------------------------------------------------------------//
+// Types
+
+//caller, initial template state and CSRF for save/publish/send requests
+type MessageTemplatesProps = {
+  csrf: string,
+  user: Caller,
+  path: string
 };
-export default function MessageTemplates({
-  csrf,
-  user,
-  path,
-}: {
-  csrf: string;
-  user: Caller;
-  path: string;
-}) {
-  const recordId = routeRecordId(path),
-    isList = path === "/message/search",
-    isDetail = path.startsWith("/message/detail/");
-  const [state, setState] = useState<State>({
+
+type State = {
+  records: TemplateRecord[],
+  dispatches: Dispatch[],
+  mailReady: boolean
+};
+
+//--------------------------------------------------------------------//
+// Hooks
+
+/**
+ * Keep template selection, draft edits and revision checks together.
+ */
+function useMessageTemplates({ csrf, user, path }: MessageTemplatesProps) {
+  //--------------------------------------------------------------------//
+  // State and lifecycle references
+
+  //keep server records separate from the local draft and its display-only
+  // preview
+  const [ state, setState ] = useState<State>({
     records: [],
     dispatches: [],
-    mailReady: false,
+    mailReady: false
   });
-  const [selected, setSelected] = useState<TemplateRecord | null>(null),
-    [draft, setDraft] = useState<TemplateDraft>(newDraft);
-  const [values, setValues] = useState<Record<string, string>>(sampleValues),
-    [newVariable, setNewVariable] = useState("");
-  const [error, setError] = useState(""),
-    [notice, setNotice] = useState(""),
-    [busy, setBusy] = useState(false),
-    [loading, setLoading] = useState(true);
-  const [mode, setMode] = useState<ContentMode>("html");
-  const isHTML = draft.channel === "email" && mode === "html";
+  const [ selected, setSelected ] = useState<TemplateRecord | null>(null);
+  const [ draft, setDraft ] = useState<TemplateDraft>(newDraft);
+  const [ values, setValues ] = useState<Record<string, string>>(sampleValues);
+  const [ newVariable, setNewVariable ] = useState('');
+  const [ error, setError ] = useState('');
+  const [ notice, setNotice ] = useState('');
+  const [ isBusy, setIsBusy ] = useState(false);
+  const [ isLoading, setIsLoading ] = useState(true);
+  const [ mode, setMode ] = useState<ContentMode>('html');
+  const editor = useRef<MessageBodyEditorHandle>(null);
+  const detected = useMemo(() => getVariables(draft), [ draft ]);
+  //preview rendering is side-effect-free and reports local substitution
+  // errors
+  const preview = useMemo(() => {
+    try {
+      return { result: renderDraft(draft, values, values), error: '' };
+    } catch (caughtError) {
+      return { result: undefined, error: (caughtError as Error).message };
+    }
+  }, [ draft, values ]);
+
+  //--------------------------------------------------------------------//
+  // Derived presentation
+
+  const recordId = routeRecordId(path);
+  const isList = path === '/message/search';
+  const isDetail = path.startsWith('/message/detail/');
+  const isHTML = draft.channel === 'email' && mode === 'html';
   const activeBody =
-    draft.channel === "email" && !isHTML ? draft.textBody || "" : draft.body;
-  const editor = useRef<MessageBodyEditorHandle>(null),
-    writable = user.roles.some((role) => ["ADMIN", "MEMBER"].includes(role));
+    draft.channel === 'email' && !isHTML ? draft.textBody || '' : draft.body;
+  const canWrite = user.roles.some((role) =>
+    [ 'ADMIN', 'MEMBER' ].includes(role)
+  );
+  //derive unsaved state by comparing the draft with the saved selection
+  const isDirty =
+    !!selected && JSON.stringify(draft) !== JSON.stringify(selected.draft);
+
+  //--------------------------------------------------------------------//
+  // Interaction handlers
+
+  //load templates and normalize the route-selected draft for HTML/text
+  // editing
   const load = async (id = recordId) => {
-    const next = await api<State>("/api/templates");
+    const next = await requestJson<State>('/api/templates');
     setState(next);
-    const item = next.records.find((r) => r.id === id);
+    const item = next.records.find(
+      (candidateTemplate) => candidateTemplate.id === id
+    );
     if (item) {
       const normalized = { ...item, draft: editableDraft(item.draft) };
       setSelected(normalized);
       setDraft(normalized.draft);
     }
   };
-  useEffect(() => {
-    load()
-      .catch((e) => setError(e.message))
-      .finally(() => setLoading(false));
-  }, [recordId]);
-  const dirty =
-    !!selected && JSON.stringify(draft) !== JSON.stringify(selected.draft);
-  useEffect(() => {
-    if (!dirty) return;
-    const warn = (event: BeforeUnloadEvent) => {
-      event.preventDefault();
-      event.returnValue = "";
-    };
-    window.addEventListener("beforeunload", warn);
-    return () => window.removeEventListener("beforeunload", warn);
-  }, [dirty]);
-  const detected = useMemo(() => variables(draft), [draft]);
-  const preview = useMemo(() => {
-    try {
-      return { result: renderDraft(draft, values, values), error: "" };
-    } catch (e) {
-      return { result: undefined, error: (e as Error).message };
-    }
-  }, [draft, values]);
+  //merge a local draft patch without changing the published template
   const update = (change: Partial<TemplateDraft>) =>
-    setDraft((d) => ({ ...d, ...change }));
-
-  /** Apply edits only to the selected representation. */
+    setDraft((previousDraft) => ({ ...previousDraft, ...change }));
+  //apply edits only to the selected representation
   const updateBody = (body: string) =>
     update(
-      draft.channel === "email" && !isHTML ? { textBody: body } : { body },
+      draft.channel === 'email' && !isHTML ? { textBody: body } : { body }
     );
-
+  //create the authorized templates record with its initial state
   const create = async () => {
-    setBusy(true);
-    setError("");
+    setIsBusy(true);
+    setError('');
     try {
-      const item = await api<TemplateRecord>(
-        "/api/templates/save",
+      const item = await requestJson<TemplateRecord>(
+        '/api/templates/save',
         { revision: 0, draft: newDraft() },
-        csrf,
+        csrf
       );
-      location.assign("/message/update/" + encodeURIComponent(item.id));
-    } catch (e) {
-      setError((e as Error).message);
-      setBusy(false);
+      location.assign('/message/update/' + encodeURIComponent(item.id));
+    } catch (caughtError) {
+      setError((caughtError as Error).message);
+      setIsBusy(false);
     }
   };
-  const run = async (action: "save" | "publish" | "send") => {
-    setBusy(true);
-    setError("");
-    setNotice("");
+  //forward save/publish/send to the server and display its persisted
+  // outcome
+  const run = async (action: 'save' | 'publish' | 'send') => {
+    setIsBusy(true);
+    setError('');
+    setNotice('');
     try {
-      if (action === "send") {
-        const dispatch = await api<Dispatch>(
-          "/api/templates/send",
+      if (action === 'send') {
+        const dispatch = await requestJson<Dispatch>(
+          '/api/templates/send',
           { id: selected?.id, context: values, values },
-          csrf,
+          csrf
         );
         setNotice(
           dispatch.result.accepted
-            ? "The SMTP server accepted the example message for sending."
-            : dispatch.result.error || "The send call returned an error.",
+            ? 'The SMTP server accepted the example message for sending.'
+            : dispatch.result.error || 'The send call returned an error.'
         );
-        const next = await api<State>("/api/templates");
+        const next = await requestJson<State>('/api/templates');
         setState(next);
       } else {
         let saved = selected;
         if (
-          action === "save" ||
+          action === 'save' ||
           !selected ||
           JSON.stringify(draft) !== JSON.stringify(selected.draft)
         )
-          saved = await api<TemplateRecord>(
-            "/api/templates/save",
+          saved = await requestJson<TemplateRecord>(
+            '/api/templates/save',
             { id: selected?.id, revision: selected?.revision || 0, draft },
-            csrf,
+            csrf
           );
-        if (action === "publish")
-          saved = await api<TemplateRecord>(
-            "/api/templates/publish",
+        if (action === 'publish')
+          saved = await requestJson<TemplateRecord>(
+            '/api/templates/publish',
             { id: saved?.id, revision: saved?.revision },
-            csrf,
+            csrf
           );
         await load(saved?.id);
         setNotice(
-          action === "publish"
-            ? "Message published. New uses will use this version."
-            : "Draft saved.",
+          action === 'publish'
+            ? 'Message published. New uses will use this version.'
+            : 'Draft saved.'
         );
       }
-    } catch (e) {
-      setError((e as Error).message);
+    } catch (caughtError) {
+      setError((caughtError as Error).message);
     } finally {
-      setBusy(false);
+      setIsBusy(false);
     }
   };
+  //add a valid custom variable to the draft’s declared variable list
   const addVariable = () => {
     const name = newVariable.trim();
     if (
@@ -170,17 +194,124 @@ export default function MessageTemplates({
       draft.custom.includes(name)
     ) {
       setError(
-        "Use a unique variable name with letters, numbers and underscores.",
+        'Use a unique variable name with letters, numbers and underscores.'
       );
       return;
     }
-    update({ custom: [...draft.custom, name] });
-    setValues((v) => ({ ...v, [name]: "" }));
-    setNewVariable("");
-    setError("");
-    editor.current?.insert("{{" + name + "}}");
+    update({ custom: [ ...draft.custom, name ] });
+    setValues((previousValues) => ({ ...previousValues, [name]: '' }));
+    setNewVariable('');
+    setError('');
+    editor.current?.insert('{{' + name + '}}');
   };
-  if (loading)
+
+  //--------------------------------------------------------------------//
+  // Browser effects
+
+  //synchronize browser resources after state, derived values and handlers
+  // are ready
+
+  useEffect(() => {
+    load()
+      .catch((caughtError) => setError(caughtError.message))
+      .finally(() => setIsLoading(false));
+  }, [ recordId ]);
+  useEffect(() => {
+    if (!isDirty) return;
+    //prevent silent loss of an edited draft during browser navigation
+    const warn = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = '';
+    };
+    window.addEventListener('beforeunload', warn);
+    return () => window.removeEventListener('beforeunload', warn);
+  }, [ isDirty ]);
+
+  //--------------------------------------------------------------------//
+  // Render or public hook result
+
+  //expose only state and handlers read by the presentation below
+  return {
+    isList,
+    isDetail,
+    state,
+    selected,
+    draft,
+    values,
+    setValues,
+    newVariable,
+    setNewVariable,
+    error,
+    setError,
+    notice,
+    busy: isBusy,
+    loading: isLoading,
+    mode,
+    setMode,
+    isHTML,
+    activeBody,
+    editor,
+    writable: canWrite,
+    load,
+    detected,
+    preview,
+    update,
+    updateBody,
+    create,
+    run,
+    addVariable
+  };
+}
+
+//--------------------------------------------------------------------//
+// Entry point
+
+/**
+ * Render the templates workspace from its local interaction hook.
+ */
+export default function MessageTemplates({
+  csrf,
+  user,
+  path
+}: MessageTemplatesProps) {
+  //--------------------------------------------------------------------//
+  // State and lifecycle references
+
+  const {
+    isList,
+    isDetail,
+    state,
+    selected,
+    draft,
+    values,
+    setValues,
+    newVariable,
+    setNewVariable,
+    error,
+    setError,
+    notice,
+    busy: isBusy,
+    loading: isLoading,
+    mode,
+    setMode,
+    isHTML,
+    activeBody,
+    editor,
+    writable: canWrite,
+    load,
+    detected,
+    preview,
+    update,
+    updateBody,
+    create,
+    run,
+    addVariable
+  } = useMessageTemplates({ csrf, user, path });
+
+  //--------------------------------------------------------------------//
+  // Render or public hook result
+
+  if (isLoading)
     return (
       <div className="op-page">
         <p className="op-muted" role="status">
@@ -192,8 +323,8 @@ export default function MessageTemplates({
     return (
       <MessageList
         records={state.records}
-        busy={busy}
-        writable={writable}
+        busy={isBusy}
+        writable={canWrite}
         create={create}
         error={error}
       />
@@ -201,17 +332,18 @@ export default function MessageTemplates({
   if (!selected)
     return (
       <div className="op-page" role="status">
-        {error || "Message not found."}{" "}
+        {error || 'Message not found.'}{' '}
         <a href="/message/search">Back to messages</a>
       </div>
     );
-  if (isDetail) return <MessageDetail record={selected} writable={writable} />;
+  if (isDetail) return (<MessageDetail record={selected} writable={canWrite} />);
   return (
     <div className="op-page templates-page">
+      {/* START: Page heading and actions */}
       <div className="op-page-head">
         <div className="op-page-head__text">
           <nav className="op-crumbs">
-            <a href="/message/search">Messages</a>{" "}
+            <a href="/message/search">Messages</a>{' '}
             <span aria-hidden="true">›</span> {draft.name}
           </nav>
           <h2 className="op-heading">{draft.name}</h2>
@@ -222,36 +354,37 @@ export default function MessageTemplates({
         </div>
         <button
           className="op-btn op-btn--secondary"
-          onClick={() => run("save")}
-          disabled={!writable || busy}
+          onClick={() => run('save')}
+          disabled={!canWrite || isBusy}
         >
           <Icon name="save" />
           Save draft
         </button>
         <button
           className="op-btn op-btn--primary"
-          onClick={() => run("publish")}
-          disabled={!writable || busy}
+          onClick={() => run('publish')}
+          disabled={!canWrite || isBusy}
         >
           <Icon name="check" />
           Publish
         </button>
       </div>
+      {/* END: Page heading and actions */}
       {(error || notice) && (
         <div
-          role={error ? "alert" : "status"}
+          role={error ? 'alert' : 'status'}
           className={
-            "template-feedback " + (error ? "template-feedback--error" : "")
+            'template-feedback ' + (error ? 'template-feedback--error' : '')
           }
         >
           {error || notice}
-          {error.includes("changed") && (
+          {error.includes('changed') && (
             <button
               className="op-btn op-btn--link"
               onClick={() =>
                 load(selected?.id)
-                  .then(() => setError(""))
-                  .catch((e) => setError(e.message))
+                  .then(() => setError(''))
+                  .catch((caughtError) => setError(caughtError.message))
               }
             >
               Reload saved message
@@ -272,15 +405,15 @@ export default function MessageTemplates({
                   className="op-input"
                   id="message-name"
                   value={draft.name}
-                  onChange={(e) => update({ name: e.target.value })}
-                  disabled={!writable}
+                  onChange={(event) => update({ name: event.target.value })}
+                  disabled={!canWrite}
                 />
               </div>
             </div>
           </section>
           <section className="op-section">
             <div className="op-section__body">
-              {draft.channel === "email" && (
+              {draft.channel === 'email' && (
                 <div className="op-field">
                   <label className="op-field__label" htmlFor="message-subject">
                     Subject
@@ -289,34 +422,36 @@ export default function MessageTemplates({
                     className="op-input"
                     id="message-subject"
                     value={draft.subject}
-                    onChange={(e) => update({ subject: e.target.value })}
-                    disabled={!writable}
+                    onChange={(event) =>
+                      update({ subject: event.target.value })
+                    }
+                    disabled={!canWrite}
                   />
                 </div>
               )}
-              {draft.channel === "email" && (
+              {draft.channel === 'email' && (
                 <ContentTabs mode={mode} onChange={setMode} />
               )}
               <div
                 id="message-content-panel"
-                role={draft.channel === "email" ? "tabpanel" : undefined}
+                role={draft.channel === 'email' ? 'tabpanel' : undefined}
                 aria-labelledby={
-                  draft.channel === "email" ? `message-${mode}-tab` : undefined
+                  draft.channel === 'email' ? `message-${mode}-tab` : undefined
                 }
                 className="template-content-panel"
               >
                 <MessageBodyEditor
-                  key={isHTML ? "html" : "text"}
+                  key={isHTML ? 'html' : 'text'}
                   ref={editor}
                   html={isHTML}
                   value={activeBody}
-                  writable={writable}
+                  writable={canWrite}
                   variables={[
                     ...automatic.filter(
                       (name) =>
-                        draft.channel === "email" || name !== "recipient.email",
+                        draft.channel === 'email' || name !== 'recipient.email'
                     ),
-                    ...draft.custom,
+                    ...draft.custom
                   ]}
                   onChange={updateBody}
                 />
@@ -339,13 +474,13 @@ export default function MessageTemplates({
                   aria-label="New variable"
                   placeholder="custom_variable"
                   value={newVariable}
-                  onChange={(e) => setNewVariable(e.target.value)}
-                  disabled={!writable}
+                  onChange={(event) => setNewVariable(event.target.value)}
+                  disabled={!canWrite}
                 />
                 <button
                   className="op-btn op-btn--secondary"
                   onClick={addVariable}
-                  disabled={!writable}
+                  disabled={!canWrite}
                 >
                   <Icon name="plus" />
                   Add variable
@@ -355,21 +490,21 @@ export default function MessageTemplates({
                 <div className="op-var-row" key={name}>
                   <div className="op-grow">
                     <div className="op-mono op-small op-strong">
-                      {"{{" + name + "}}"}
+                      {'{{' + name + '}}'}
                     </div>
                     <div className="op-caption op-muted">
                       {automatic.includes(name)
-                        ? "From the current record"
-                        : "Asked for at send time"}
+                        ? 'From the current record'
+                        : 'Asked for at send time'}
                     </div>
                   </div>
                   <span
                     className={
-                      "op-pill " +
-                      (automatic.includes(name) ? "op-pill--tint" : "")
+                      'op-pill ' +
+                      (automatic.includes(name) ? 'op-pill--tint' : '')
                     }
                   >
-                    {automatic.includes(name) ? "Automatic" : "Custom"}
+                    {automatic.includes(name) ? 'Automatic' : 'Custom'}
                   </span>
                 </div>
               ))}
@@ -388,16 +523,19 @@ export default function MessageTemplates({
             <div className="op-field" key={name}>
               <label
                 className="op-field__label op-mono"
-                htmlFor={"sample-" + name}
+                htmlFor={'sample-' + name}
               >
                 {name}
               </label>
               <input
                 className="op-input"
-                id={"sample-" + name}
-                value={values[name] || ""}
-                onChange={(e) =>
-                  setValues((v) => ({ ...v, [name]: e.target.value }))
+                id={'sample-' + name}
+                value={values[name] || ''}
+                onChange={(event) =>
+                  setValues((previousValues) => ({
+                    ...previousValues,
+                    [name]: event.target.value
+                  }))
                 }
               />
             </div>
@@ -413,7 +551,7 @@ export default function MessageTemplates({
             <p className="template-preview-error" role="status">
               {preview.error}
             </p>
-          ) : draft.channel === "email" ? (
+          ) : draft.channel === 'email' ? (
             <div className="template-email">
               <div className="template-email-subject">
                 {preview.result?.subject}
@@ -422,7 +560,7 @@ export default function MessageTemplates({
                 <div
                   className="template-email-body"
                   dangerouslySetInnerHTML={{
-                    __html: preview.result?.html || "",
+                    __html: preview.result?.html || ''
                   }}
                 />
               ) : (
@@ -448,13 +586,13 @@ export default function MessageTemplates({
           )}
           <button
             className="op-btn op-btn--secondary"
-            onClick={() => run("send")}
+            onClick={() => run('send')}
             disabled={
-              busy ||
-              !writable ||
+              isBusy ||
+              !canWrite ||
               !state.mailReady ||
               !selected?.publishedId ||
-              draft.channel !== "email"
+              draft.channel !== 'email'
             }
           >
             <Icon name="send" />
@@ -462,27 +600,30 @@ export default function MessageTemplates({
           </button>
           <p className="op-caption op-muted">
             {!state.mailReady
-              ? "Email sending is unavailable. Editing and preview are available."
-              : draft.channel !== "email"
-                ? "Example sends are available for email."
+              ? 'Email sending is unavailable. Editing and preview are available.'
+              : draft.channel !== 'email'
+                ? 'Example sends are available for email.'
                 : selected?.publishedId
-                  ? "Sends published version " +
+                  ? 'Sends published version ' +
                     selected.publishedNumber +
-                    " to the configured example account."
-                  : "Publish this email to send an example."}
+                    ' to the configured example account.'
+                  : 'Publish this email to send an example.'}
           </p>
           {state.dispatches
-            .filter((d) => d.templateId === selected?.id)
+            .filter(
+              (candidateDispatch) =>
+                candidateDispatch.templateId === selected?.id
+            )
             .slice(0, 3)
-            .map((d) => (
-              <div className="template-dispatch op-small" key={d.id}>
+            .map((dispatch) => (
+              <div className="template-dispatch op-small" key={dispatch.id}>
                 <strong>
-                  {d.result.accepted
-                    ? "Accepted for sending"
-                    : "Send call returned an error"}
+                  {dispatch.result.accepted
+                    ? 'Accepted for sending'
+                    : 'Send call returned an error'}
                 </strong>
                 <span className="op-caption op-muted">
-                  {new Date(d.at).toLocaleString()}
+                  {new Date(dispatch.at).toLocaleString()}
                 </span>
               </div>
             ))}
@@ -490,4 +631,4 @@ export default function MessageTemplates({
       </div>
     </div>
   );
-}
+};

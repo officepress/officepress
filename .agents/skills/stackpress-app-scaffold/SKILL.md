@@ -10,6 +10,24 @@ Create a new Stackpress app from this skill's embedded scaffold snapshot.
 This skill is app-level bootstrap only. It does not install dependencies, run
 generation, verify builds, or author project-specific business logic.
 
+
+## OfficePress local contract reinforcement
+
+Local augmentation, 2026-10-09 (condensed 2026-10-10): before implementation,
+load root `AGENTS.md`, the project
+[logic-pattern catalog](../../context/stackpress-logic-patterns.md) and the
+[lazy-registration contract](../../references/00374-stackpress-lazy-registration-and-pattern-maintenance.md).
+Those owners carry the OfficePress deltas — `plugin.ts` as wiring/guards only,
+lazy `ctx.get("/api/about", () => import("./pages/read.js"))` page/event
+registration with separate `ctx.view` bindings, Yarn/CLI dispatch, the pattern
+guard plus affected Yarn/runtime checks, and KB pattern maintenance without MCP
+indexing — and supersede any conflicting generic guidance in this skill.
+
+For OfficePress apps, scaffold by copying `proofs/app-shell/` per root
+`AGENTS.md` (2026-10-10 decision), with `proofs/common-components/` as the
+workflow/automation, form-builder and message-template feature reference. This
+skill's embedded template serves portable non-OfficePress use.
+
 ## Use This Skill For
 
 - starting a new Stackpress app from an empty folder

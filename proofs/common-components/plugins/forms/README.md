@@ -154,3 +154,7 @@ creates its record then opens its update URL. The old `/forms` and query-based
 editor URLs redirect to these paths. Unsaved navigation protection remains.
 Respondent `/forms/fill` links and guarded APIs are unchanged.
 See [round 14](../../tests/evidence/reviews/r014-clean-paths/notes.md).
+
+## Reusable action boundary
+
+`officepress-forms-read`, `officepress-forms-update`, `officepress-forms-load-fill` and `officepress-forms-respond` register lazy default actions during guarded `listen`. Events refresh the verified framework session and own business authorization, validation, service calls and outcomes. Pages own CSRF and web input/output adaptation. Update pages translate the path suffix into `operation` before dispatch. A direct event caller must supply an actual request with a framework session, rather than a caller object in data. Public form filling/responding retain their token and anonymous-access policies. Optional service helpers remain available for domain contract tests.

@@ -1,620 +1,690 @@
-import assert from "node:assert/strict";
-import { randomUUID } from "node:crypto";
-import type Engine from "@stackpress/inquire/Engine";
-import type { HttpServer } from "@stackpress/ingest";
-import { SignJWT } from "jose";
-import { Session } from "stackpress-session";
-import { identityContracts } from "./identity.js";
-import type { ChallengeLedger } from "../challenges.js";
-import { fixturePassword, seedIdentity } from "../fixtures.js";
-import { frameworkHandler, frameworkHelpers } from "../framework.js";
+//node
+import { randomUUID } from 'node:crypto';
+import assert from 'node:assert/strict';
 
-export class BrowserSession {
-  readonly cookies = new Map<string, string>();
-  constructor(
-    readonly base: string,
-    readonly authBase = "/auth",
-  ) {}
-  async request(route: string, body?: Record<string, string>) {
-    // Existing test routes stay readable while exercising configured prefixes.
-    if (route.startsWith("/auth/")) route = this.authBase + route.slice(5);
-    const response = await fetch(this.base + route, {
-      method: body ? "POST" : "GET",
-      redirect: "manual",
-      headers: {
-        cookie: [...this.cookies].map(([k, v]) => `${k}=${v}`).join("; "),
-        ...(body
-          ? { "content-type": "application/x-www-form-urlencoded" }
-          : {}),
-      },
-      body: body ? new URLSearchParams(body) : undefined,
-    });
-    for (const cookie of response.headers.getSetCookie()) {
-      const first = cookie.split(";")[0];
-      const index = first.indexOf("=");
-      if (index >= 0)
-        this.cookies.set(first.slice(0, index), first.slice(index + 1));
-    }
-    const text = await response.text();
-    return { response, text };
-  }
-  csrf() {
-    return decodeURIComponent(this.cookies.get("csrf") || "");
-  }
-  async login(username = "admin", password = fixturePassword) {
-    await this.request("/auth/signin/email");
-    return this.request("/auth/signin/email", {
-      email: username + "@officepress.test",
-      secret: password,
-      csrf: this.csrf(),
-      auth: "pass",
-    });
-  }
-}
+//modules
+import type { HttpServer } from '@stackpress/ingest';
+import type Engine from '@stackpress/inquire/Engine';
+import { SignJWT } from 'jose';
+import { Session } from 'stackpress-session';
+
+//client
+import type { ChallengeLedger } from '../challenges.js';
+import { fixturePassword, seedIdentity } from '../fixtures.js';
+import { frameworkHandler, frameworkHelpers } from '../framework.js';
+import { identityContracts } from './identity.js';
+
+//--------------------------------------------------------------------//
+// Constants
+
+/**
+ * Extract one form field from the returned identity HTML.
+ */
 const field = (html: string, name: string) => {
-  const input = [...html.matchAll(/<input\b[^>]*>/g)]
-    .map((m) => m[0])
+  const input = [ ...html.matchAll(/<input\b[^>]*>/g) ]
+    .map((match) => match[0])
     .find((tag) => tag.includes(`name="${name}"`));
-  return input?.match(/value="([^"]*)"/)?.[1] || "";
+  return input?.match(/value="([^"]*)"/)?.[1] || '';
 };
+
+//--------------------------------------------------------------------//
+// Functions
+
+/**
+ * Exercise session and account contracts through the proof’s HTTP runtime.
+ */
 export async function proveIdentity(
   base: string,
-  ctx: HttpServer<any>,
-  onCheck?: (check: { name: string; passed: boolean }) => void,
+  ctx: HttpServer<import('../../app/types.js').Config>,
+  onCheck?: (check: { name: string, passed: boolean }) => void
 ) {
+  //seed only this proof runtime and retain its configured authentication
+  // base
   const profiles = await seedIdentity(ctx);
-  const authBase = ctx.config.path("auth.base", "/auth");
-  const checks: Array<{ name: string; passed: boolean }> = [];
+  const authBase = ctx.config.path('auth.base', '/auth');
+  const checks: Array<{ name: string, passed: boolean }> = [];
+  //record one observable proof assertion and its diagnostic detail
   const check = (name: string) => {
     const check = { name, passed: true };
     checks.push(check);
     onCheck?.(check);
   };
-  const observe = (name: string, passed: boolean) => {
-    const entry = { name, passed };
+  //capture the response fields used by the identity contract receipt
+  const observe = (name: string, hasPassed: boolean) => {
+    const entry = { name, passed: hasPassed };
     checks.push(entry);
     onCheck?.(entry);
   };
+  //run identity-provider contracts before exercising the web adapters
   const { id, name: profileName, roles } = profiles.member;
   await identityContracts(ctx, { id, name: profileName, roles }, check);
-  assert.ok(!ctx.listeners["auth-signup"]?.size);
+  assert.ok(!ctx.listeners['auth-signup']?.size);
   check(
-    "Unused signup event is absent; fixtures still use framework AuthActions",
+    'Unused signup event is absent; fixtures still use framework AuthActions'
   );
+  //anonymous access, missing CSRF and wrong credentials all fail before a
+  // session exists
   const guest = new BrowserSession(base, authBase);
-  let result = await guest.request("/auth/account?json=1");
+  let result = await guest.request('/auth/account?json=1');
   assert.equal(result.response.status, 401);
-  check("Anonymous account access fails closed");
-  result = await guest.request("/auth/signin/email", {
-    email: "admin@officepress.test",
-    secret: fixturePassword,
+  check('Anonymous account access fails closed');
+  result = await guest.request('/auth/signin/email', {
+    email: 'admin@officepress.test',
+    secret: fixturePassword
   });
   assert.equal(result.response.status, 419);
-  check("Login rejects missing CSRF token");
-  result = await guest.login("admin", "wrong-password");
+  check('Login rejects missing CSRF token');
+  result = await guest.login('admin', 'wrong-password');
   assert.equal(result.response.status, 401);
-  check("Built-in email signin rejects invalid credentials");
+  check('Built-in email signin rejects invalid credentials');
+  //a successful signin must retain every framework cookie revision
   result = await guest.login();
   assert.equal(
     result.response.status,
     302,
     result.text.match(/role="alert"[^>]*>(.*?)<\/div>/s)?.[1] ||
-      "Expected successful signin redirect",
+      'Expected successful signin redirect'
   );
   assert.ok(
     result.response.headers.getSetCookie().length >= 2,
-    "All session/csrf cookie revisions retained",
+    'All session/csrf cookie revisions retained'
   );
   check(
-    "Built-in email signin succeeds and preserves multiple Set-Cookie revisions",
+    'Built-in email signin succeeds and preserves multiple Set-Cookie revisions'
   );
-  result = await guest.request("/auth/account");
+  //account markup projects the actual profile and configured route base
+  result = await guest.request('/auth/account');
   assert.equal(result.response.status, 200);
-  assert.ok(result.text.includes("Alex Morgan"));
-  check("Authenticated account view uses actual Profile/Auth records");
+  assert.ok(result.text.includes('Alex Morgan'));
+  check('Authenticated account view uses actual Profile/Auth records');
   assert.ok(result.text.includes(`action="${authBase}/account/update"`));
   assert.ok(
-    result.text.includes(`href="${authBase}/account/security/password"`),
+    result.text.includes(`href="${authBase}/account/security/password"`)
   );
-  result = await new BrowserSession(base, authBase).request("/auth/signin");
+  result = await new BrowserSession(base, authBase).request('/auth/signin');
   assert.ok(result.text.includes(`href="${authBase}/signin/email"`));
-  check("Auth forms and navigation use the configured auth base");
-  result = await guest.request("/auth/account/update", {
-    name: "Attacker",
-    csrf: "bad",
+  check('Auth forms and navigation use the configured auth base');
+  //an authenticated session still needs CSRF and a role that permits
+  // account edits
+  result = await guest.request('/auth/account/update', {
+    name: 'Attacker',
+    csrf: 'bad'
   });
   assert.equal(result.response.status, 419);
-  check("Account update adds missing framework CSRF protection");
+  check('Account update adds missing framework CSRF protection');
   const readonly = new BrowserSession(base, authBase);
-  await readonly.login("readonly");
-  await readonly.request("/auth/account/update");
-  result = await readonly.request("/auth/account/update", {
-    name: "Forbidden edit",
-    csrf: readonly.csrf(),
+  await readonly.login('readonly');
+  await readonly.request('/auth/account/update');
+  result = await readonly.request('/auth/account/update', {
+    name: 'Forbidden edit',
+    csrf: readonly.csrf()
   });
   assert.equal(result.response.status, 403);
-  check("Read-only role cannot write account fields");
-  await guest.request("/auth/account/update");
-  result = await guest.request("/auth/account/update", {
-    name: "Alex Morgan Updated",
-    image: "",
-    email: "admin@officepress.test",
-    username: "admin",
-    csrf: guest.csrf(),
+  check('Read-only role cannot write account fields');
+  //persist a profile edit through the built-in handler
+  await guest.request('/auth/account/update');
+  result = await guest.request('/auth/account/update', {
+    name: 'Alex Morgan Updated',
+    image: '',
+    email: 'admin@officepress.test',
+    username: 'admin',
+    csrf: guest.csrf()
   });
   assert.equal(result.response.status, 302, result.text.slice(0, 200));
-  const updated = await ctx.resolve<{ name: string }>("profile-detail", {
-    id: profiles.admin.id,
+  const updated = await ctx.resolve<{ name: string }>('profile-detail', {
+    id: profiles.admin.id
   });
-  assert.equal(updated.results?.name, "Alex Morgan Updated");
+  assert.equal(updated.results?.name, 'Alex Morgan Updated');
+  //emit against owned req/res references to inspect refreshed identity
+  // render data
   const projection = ctx.request({
-    method: "POST",
+    url: base + authBase + '/account/update',
+    method: 'POST',
     session: {
       [Session.key]: guest.cookies.get(Session.key)!,
-      csrf: guest.csrf(),
+      csrf: guest.csrf()
     },
     data: {
       csrf: guest.csrf(),
-      name: "Alex Morgan Fresh Response",
-      image: "",
-      email: "admin@officepress.test",
-      username: "admin",
-    },
+      name: 'Alex Morgan Fresh Response',
+      image: '',
+      email: 'admin@officepress.test',
+      username: 'admin'
+    }
   });
   const projectionResponse = ctx.response();
   await ctx.emit(
-    "POST " + authBase + "/account/update",
+    'POST ' + authBase + '/account/update',
     projection,
-    projectionResponse,
+    projectionResponse
   );
   const safe = projectionResponse.data.path<{ user: { name: string } }>(
-    "identity",
+    'identity'
   );
   assert.equal(projectionResponse.code, 302);
-  assert.equal(safe.user.name, "Alex Morgan Fresh Response");
-  // Restore the existing export scenario after checking post-write response props.
+  assert.equal(safe.user.name, 'Alex Morgan Fresh Response');
+  //restore the existing export scenario after checking post-write response
+  // props
   assert.equal(
     (
-      await ctx.resolve("profile-update", {
+      await ctx.resolve('profile-update', {
         id: profiles.admin.id,
-        name: "Alex Morgan Updated",
+        name: 'Alex Morgan Updated'
       })
     ).code,
-    200,
+    200
   );
   check(
-    "Built-in profile update persists and its response uses refreshed identity props",
+    'Built-in profile update persists and its response uses refreshed identity props'
   );
-  await guest.request("/auth/account/security/password");
-  result = await guest.request("/auth/account/security/password", {
-    current: "incorrect",
-    secret: "Changed-proof-123!",
-    csrf: guest.csrf(),
+  //password changes require the current secret and the configured length
+  // policy
+  await guest.request('/auth/account/security/password');
+  result = await guest.request('/auth/account/security/password', {
+    current: 'incorrect',
+    secret: 'Changed-proof-123!',
+    csrf: guest.csrf()
   });
   assert.equal(result.response.status, 400);
-  check("Built-in password update rejects wrong current password");
-  await guest.request("/auth/account/security/password");
-  result = await guest.request("/auth/account/security/password", {
+  check('Built-in password update rejects wrong current password');
+  await guest.request('/auth/account/security/password');
+  result = await guest.request('/auth/account/security/password', {
     current: fixturePassword,
-    secret: "short",
-    csrf: guest.csrf(),
+    secret: 'short',
+    csrf: guest.csrf()
   });
   assert.equal(result.response.status, 400);
-  check("Configured 12-character password policy rejects short passwords");
-  await guest.request("/auth/account/security/password");
-  result = await guest.request("/auth/account/security/password", {
+  check('Configured 12-character password policy rejects short passwords');
+  await guest.request('/auth/account/security/password');
+  result = await guest.request('/auth/account/security/password', {
     current: fixturePassword,
-    secret: "Changed-proof-123!",
-    csrf: guest.csrf(),
+    secret: 'Changed-proof-123!',
+    csrf: guest.csrf()
   });
   assert.equal(result.response.status, 302);
-  check("Built-in password update persists");
+  check('Built-in password update persists');
+  //authenticate with the changed password before restoring the repeatable
+  // fixture
   const passwordLogin = new BrowserSession(base, authBase);
   assert.equal(
-    (await passwordLogin.login("admin", "Changed-proof-123!")).response.status,
-    302,
+    (await passwordLogin.login('admin', 'Changed-proof-123!')).response.status,
+    302
   );
-  check("Changed password authenticates through built-in signin");
-  await guest.request("/auth/account/security/password");
-  await guest.request("/auth/account/security/password", {
-    current: "Changed-proof-123!",
+  check('Changed password authenticates through built-in signin');
+  await guest.request('/auth/account/security/password');
+  await guest.request('/auth/account/security/password', {
+    current: 'Changed-proof-123!',
     secret: fixturePassword,
-    csrf: guest.csrf(),
+    csrf: guest.csrf()
   });
-  result = await guest.request("/auth/account/security/2fa");
+  //enroll an authenticator using the framework helper and an accepted drift
+  // window
+  result = await guest.request('/auth/account/security/2fa');
   assert.equal(result.response.status, 200, result.text.slice(0, 200));
-  const secret = field(result.text, "secret");
+  const secret = field(result.text, 'secret');
   assert.ok(
     secret.length >= 16,
-    "Setup page returns a dedicated authenticator secret",
+    'Setup page returns a dedicated authenticator secret'
   );
   const { generateTOTP } = await frameworkHelpers();
-  result = await guest.request("/auth/account/security/2fa", {
+  result = await guest.request('/auth/account/security/2fa', {
     secret,
     code: generateTOTP(secret, -1),
-    csrf: guest.csrf(),
+    csrf: guest.csrf()
   });
   assert.equal(result.response.status, 302, result.text.slice(0, 200));
-  check("Built-in authenticator setup verifies TOTP with one-step clock drift");
+  check('Built-in authenticator setup verifies TOTP with one-step clock drift');
+  //a password-only signin must now issue a separate TOTP challenge
   const twoFactorLogin = new BrowserSession(base, authBase);
   result = await twoFactorLogin.login();
-  const challenge = result.response.headers.get("location") || "";
-  assert.ok(challenge.startsWith(authBase + "/signin/2fa/"), challenge);
+  const challenge = result.response.headers.get('location') || '';
+  assert.ok(challenge.startsWith(authBase + '/signin/2fa/'), challenge);
   await twoFactorLogin.request(challenge);
   result = await twoFactorLogin.request(challenge, {
-    code: "000000",
-    csrf: twoFactorLogin.csrf(),
+    code: '000000',
+    csrf: twoFactorLogin.csrf()
   });
   assert.equal(result.response.status, 400);
-  check("Built-in TOTP rejects invalid code");
+  check('Built-in TOTP rejects invalid code');
   await twoFactorLogin.request(challenge);
   result = await twoFactorLogin.request(challenge, {
     code: generateTOTP(secret),
-    csrf: twoFactorLogin.csrf(),
+    csrf: twoFactorLogin.csrf()
   });
   assert.equal(result.response.status, 302, result.text.slice(0, 200));
   assert.equal(
-    (await twoFactorLogin.request("/auth/account?json=1")).response.status,
-    200,
+    (await twoFactorLogin.request('/auth/account?json=1')).response.status,
+    200
   );
-  check("Built-in TOTP challenge completes a real session");
+  check('Built-in TOTP challenge completes a real session');
+  //consuming a challenge prevents another session from redeeming it
   const replay = new BrowserSession(base, authBase);
   result = await replay.request(challenge);
   assert.equal(result.response.status, 410);
   observe(
-    "Consumed TOTP challenge cannot be replayed in the same second",
-    (await replay.request("/auth/account?json=1")).response.status === 401,
+    'Consumed TOTP challenge cannot be replayed in the same second',
+    (await replay.request('/auth/account?json=1')).response.status === 401
   );
+  //advance only the challenge ledger clock and restore it after the expiry
+  // check
   const challengeIssuer = new BrowserSession(base, authBase);
   const oldChallenge = (await challengeIssuer.login()).response.headers.get(
-    "location",
+    'location'
   )!;
-  const ledger = ctx.plugin<ChallengeLedger>("identity-challenges");
+  const ledger = ctx.plugin<ChallengeLedger>('identity-challenges');
   const clock = ledger.now;
   ledger.now = () => clock() + 20 * 60 * 1000;
   const oldChallengeSession = new BrowserSession(base, authBase);
   try {
     assert.equal(
       (await oldChallengeSession.request(oldChallenge)).response.status,
-      410,
+      410
     );
     observe(
-      "A twenty-minute-old TOTP challenge is expired",
-      (await oldChallengeSession.request("/auth/account?json=1")).response
-        .status === 401,
+      'A twenty-minute-old TOTP challenge is expired',
+      (await oldChallengeSession.request('/auth/account?json=1')).response
+        .status === 401
     );
   } finally {
     ledger.now = clock;
   }
+  //race redemption from independent browser sessions; only one may succeed
   const racingChallenge = (
     await new BrowserSession(base, authBase).login()
-  ).response.headers.get("location")!;
+  ).response.headers.get('location')!;
   const racers = [
     new BrowserSession(base, authBase),
-    new BrowserSession(base, authBase),
+    new BrowserSession(base, authBase)
   ];
   await Promise.all(racers.map((browser) => browser.request(racingChallenge)));
   const raced = await Promise.all(
     racers.map((browser) =>
       browser.request(racingChallenge, {
         code: generateTOTP(secret),
-        csrf: browser.csrf(),
-      }),
-    ),
+        csrf: browser.csrf()
+      })
+    )
   );
   assert.deepEqual(
     raced.map((result) => result.response.status).sort(),
-    [302, 410],
+    [ 302, 410 ]
   );
   check(
-    "Concurrent redemption permits one successful session and rejects the replay",
+    'Concurrent redemption permits one successful session and rejects the replay'
   );
-  result = await guest.request("/auth/account");
+  //account projections must never expose the enrolled authenticator secret
+  result = await guest.request('/auth/account');
   assert.ok(!result.text.includes(secret));
-  check("Account summary does not leak the authenticator secret");
-  const auth = await ctx.resolve<Array<{ id: string }>>("auth-search", {
-    eq: { type: "2fa", profileId: profiles.admin.id },
+  check('Account summary does not leak the authenticator secret');
+  //gET and a foreign account cannot remove the enrolled authenticator
+  const auth = await ctx.resolve<Array<{ id: string }>>('auth-search', {
+    eq: { type: '2fa', profileId: profiles.admin.id }
   });
   const authId = auth.results![0].id;
   result = await guest.request(
-    "/auth/account/security/2fa/remove?confirmed=yes&authId=" + authId,
+    '/auth/account/security/2fa/remove?confirmed=yes&authId=' + authId
   );
   assert.equal(result.response.status, 200);
   assert.equal(
     (
-      await ctx.resolve<Array<{ id: string }>>("auth-search", {
-        eq: { id: authId },
+      await ctx.resolve<Array<{ id: string }>>('auth-search', {
+        eq: { id: authId }
       })
     ).results?.length,
-    1,
+    1
   );
-  check("GET cannot remove an authenticator");
+  check('GET cannot remove an authenticator');
   const other = new BrowserSession(base, authBase);
-  await other.login("other");
-  await other.request("/auth/account/security/2fa/remove");
-  result = await other.request("/auth/account/security/2fa/remove", {
+  await other.login('other');
+  await other.request('/auth/account/security/2fa/remove');
+  result = await other.request('/auth/account/security/2fa/remove', {
     authId,
-    confirmed: "yes",
-    csrf: other.csrf(),
+    confirmed: 'yes',
+    csrf: other.csrf()
   });
   assert.equal(result.response.status, 403);
-  check("Foreign authenticator id cannot be removed");
-  result = await guest.request("/auth/account/security/2fa/remove", {
+  check('Foreign authenticator id cannot be removed');
+  result = await guest.request('/auth/account/security/2fa/remove', {
     authId,
-    confirmed: "yes",
-    csrf: guest.csrf(),
+    confirmed: 'yes',
+    csrf: guest.csrf()
   });
   assert.equal(result.response.status, 302);
   assert.equal(
     (
-      await ctx.resolve<Array<{ id: string }>>("auth-search", {
-        eq: { id: authId },
+      await ctx.resolve<Array<{ id: string }>>('auth-search', {
+        eq: { id: authId }
       })
     ).results?.length,
-    0,
+    0
   );
   check(
-    "Built-in authenticator removal works only for the owner with POST and CSRF",
+    'Built-in authenticator removal works only for the owner with POST and CSRF'
   );
-  result = await guest.request("/auth/account/security/export?download=1");
+  //export only the profile scope, excluding credential material
+  result = await guest.request('/auth/account/security/export?download=1');
   assert.equal(result.response.status, 200);
-  assert.match(result.response.headers.get("content-type") || "", /text\/csv/);
-  assert.ok(result.text.includes("Alex Morgan Updated"));
-  assert.ok(!result.text.includes("secret"));
-  check("Built-in export downloads the Profile scope without credentials");
+  assert.match(result.response.headers.get('content-type') || '', /text\/csv/);
+  assert.ok(result.text.includes('Alex Morgan Updated'));
+  assert.ok(!result.text.includes('secret'));
+  check('Built-in export downloads the Profile scope without credentials');
+  //an expired signed session and an unissued email challenge fail closed
   const expired = new BrowserSession(base, authBase);
   const expiredToken = await new SignJWT({
     id: profiles.admin.id,
-    name: "Old session",
-    roles: ["ADMIN"],
+    name: 'Old session',
+    roles: [ 'ADMIN' ]
   })
-    .setProtectedHeader({ alg: "HS256" })
+    .setProtectedHeader({ alg: 'HS256' })
     .setIssuedAt(Math.floor(Date.now() / 1000) - 9 * 3600)
     .sign(new TextEncoder().encode(Session.seed));
   expired.cookies.set(Session.key, expiredToken);
   assert.equal(
-    (await expired.request("/auth/account?json=1")).response.status,
-    401,
+    (await expired.request('/auth/account?json=1')).response.status,
+    401
   );
-  check("Expired session rejected by live identity boundary");
+  check('Expired session rejected by live identity boundary');
   result = await new BrowserSession(base, authBase).request(
-    "/auth/signin/link/nonexistent/expired",
+    '/auth/signin/link/nonexistent/expired'
   );
   assert.equal(result.response.status, 410);
-  check("Challenge boundary rejects unissued email links");
-  // Invoke removal only for this run's explicitly seeded throwaway account. It is
-  // deliberately not routed as the product-wide delete action.
+  check('Challenge boundary rejects unissued email links');
+  //Invoke removal only for this run's explicitly seeded throwaway account.
+  // It is deliberately not routed as the product-wide delete action.
   const req = ctx.request({
-    method: "POST",
+    method: 'POST',
     session: {
       [Session.key]: await Session.create({
         id: profiles.removal.id,
         name: profiles.removal.name,
-        roles: ["MEMBER"],
-      }),
+        roles: [ 'MEMBER' ]
+      })
     },
-    data: { confirmed: "yes", secret: fixturePassword },
+    data: { confirmed: 'yes', secret: fixturePassword }
   });
   const res = ctx.response();
   await (
-    await frameworkHandler("session/pages/remove")
+    await frameworkHandler('session/pages/remove')
   )(ctx.props(req, res));
   assert.equal(res.code, 302);
-  const remaining = await ctx.resolve<{ active: boolean }>("profile-detail", {
-    id: profiles.removal.id,
+  const remaining = await ctx.resolve<{ active: boolean }>('profile-detail', {
+    id: profiles.removal.id
   });
   assert.equal(remaining.code, 200);
   assert.equal(remaining.results?.active, true);
   assert.equal(
     (
-      await ctx.resolve<Array<{ id: string }>>("auth-search", {
-        eq: { profileId: profiles.removal.id },
+      await ctx.resolve<Array<{ id: string }>>('auth-search', {
+        eq: { profileId: profiles.removal.id }
       })
     ).results?.length,
-    0,
+    0
   );
   assert.equal(
-    (await ctx.resolve("profile-detail", { id: profiles.other.id })).code,
-    200,
+    (await ctx.resolve('profile-detail', { id: profiles.other.id })).code,
+    200
   );
   check(
-    "Characterized built-in remove: credentials deactivate but Profile remains; other account survives",
+    'Characterized built-in remove: credentials deactivate but Profile remains; other account survives'
   );
+  //removed credentials invalidate an otherwise valid prior session
   const removedSession = new BrowserSession(base, authBase);
   removedSession.cookies.set(Session.key, Session.token(req)!);
   assert.equal(
-    (await removedSession.request("/auth/account?json=1")).response.status,
-    401,
+    (await removedSession.request('/auth/account?json=1')).response.status,
+    401
   );
-  check("Account with no active credentials cannot keep using a prior session");
-  await ctx.resolve("profile-update", {
+  check('Account with no active credentials cannot keep using a prior session');
+  //restore the administrator profile before app-owned purge scenarios
+  // continue
+  await ctx.resolve('profile-update', {
     id: profiles.admin.id,
-    name: "Alex Morgan",
+    name: 'Alex Morgan'
   });
-  const database = ctx.plugin<Engine>("database");
-  const appId = ctx.config.path<string>("officepress.appId", "shell-proof");
-  const marker = "purge-" + randomUUID();
+  const database = ctx.plugin<Engine>('database');
+  const appId = ctx.config.path<string>('officepress.appId', 'shell-proof');
+  const marker = 'purge-' + randomUUID();
   const owned = profiles.member.id;
   const ownership = [
-    { suffix: "mine", appId, ownerId: owned },
-    { suffix: "another-app", appId: appId + "-another-app", ownerId: owned },
-    { suffix: "another-person", appId, ownerId: profiles.other.id },
+    { suffix: 'mine', appId, ownerId: owned },
+    { suffix: 'another-app', appId: appId + '-another-app', ownerId: owned },
+    { suffix: 'another-person', appId, ownerId: profiles.other.id }
   ];
   const definitions = [
-    { event: "shell-item", fields: { title: "Purge fixture", revision: 0 } },
+    { event: 'shell-item', fields: { title: 'Purge fixture', revision: 0 } },
     {
-      event: "shell-operation",
-      fields: { payload: { purpose: "scope fixture" } },
+      event: 'shell-operation',
+      fields: { payload: { purpose: 'scope fixture' } }
     },
     {
-      event: "shell-notice",
+      event: 'shell-notice',
       fields: {
-        category: "all",
-        title: "Purge fixture",
-        href: "/",
-        read: false,
-      },
+        category: 'all',
+        title: 'Purge fixture',
+        href: '/',
+        read: false
+      }
     },
     {
-      event: "shell-agent-run",
-      fields: { payload: { state: "completed", purpose: "scope fixture" } },
-    },
+      event: 'shell-agent-run',
+      fields: { payload: { state: 'completed', purpose: 'scope fixture' } }
+    }
   ];
   for (const definition of definitions)
     for (const scope of ownership) {
-      const result = await ctx.resolve(definition.event + "-create", {
+      const result = await ctx.resolve(definition.event + '-create', {
         id: `${marker}-${definition.event}-${scope.suffix}`,
         appId: scope.appId,
         ownerId: scope.ownerId,
-        ...definition.fields,
+        ...definition.fields
       });
       assert.equal(
         result.code,
         200,
-        `${definition.event} scope fixture creation`,
+        `${definition.event} scope fixture creation`
       );
     }
-  const themeFixtureId = marker + "-company-theme";
+  const themeFixtureId = marker + '-company-theme';
   assert.equal(
     (
-      await ctx.resolve("shell-theme-create", {
+      await ctx.resolve('shell-theme-create', {
         id: themeFixtureId,
         appId,
-        payload: { purpose: "company-owned fixture" },
-        revision: 0,
+        payload: { purpose: 'company-owned fixture' },
+        revision: 0
       })
     ).code,
-    200,
+    200
   );
   const challengeCountBefore = await database.query<{ total: string }>(
-    'SELECT COUNT(*) AS "total" FROM "identity_challenge"',
+    'SELECT COUNT(*) AS "total" FROM "identity_challenge"'
   );
   const member = new BrowserSession(base, authBase);
-  await member.login("member");
+  await member.login('member');
   result = await member.request(
-    "/auth/account/security/purge?confirmation=Purge",
+    '/auth/account/security/purge?confirmation=Purge'
   );
   assert.equal(result.response.status, 200);
-  assert.ok(result.text.includes("Type Purge to confirm"));
+  assert.ok(result.text.includes('Type Purge to confirm'));
   assert.equal(
     (
-      await ctx.resolve("shell-item-detail", {
-        id: marker + "-shell-item-mine",
+      await ctx.resolve('shell-item-detail', {
+        id: marker + '-shell-item-mine'
       })
     ).code,
-    200,
+    200
   );
   check(
-    "Purge confirmation GET is read-only and explains the exact app-owned scope",
+    'Purge confirmation GET is read-only and explains the exact app-owned scope'
   );
   assert.equal(
     (
       await new BrowserSession(base, authBase).request(
-        "/auth/account/security/purge",
+        '/auth/account/security/purge',
         {
-          confirmation: "Purge",
-        },
+          confirmation: 'Purge'
+        }
       )
     ).response.status,
-    401,
+    401
   );
   assert.equal(
     (
-      await member.request("/auth/account/security/purge", {
-        confirmation: "Purge",
-        csrf: "invalid",
+      await member.request('/auth/account/security/purge', {
+        confirmation: 'Purge',
+        csrf: 'invalid'
       })
     ).response.status,
-    419,
+    419
   );
-  await readonly.request("/auth/account/security/purge");
+  await readonly.request('/auth/account/security/purge');
   assert.equal(
     (
-      await readonly.request("/auth/account/security/purge", {
-        confirmation: "Purge",
-        csrf: readonly.csrf(),
+      await readonly.request('/auth/account/security/purge', {
+        confirmation: 'Purge',
+        csrf: readonly.csrf()
       })
     ).response.status,
-    403,
+    403
   );
-  result = await member.request("/auth/account/security/purge", {
-    confirmation: "Delete",
-    csrf: member.csrf(),
+  result = await member.request('/auth/account/security/purge', {
+    confirmation: 'Delete',
+    csrf: member.csrf()
   });
   assert.equal(result.response.status, 400);
   assert.equal(
     (
-      await ctx.resolve("shell-item-detail", {
-        id: marker + "-shell-item-mine",
+      await ctx.resolve('shell-item-detail', {
+        id: marker + '-shell-item-mine'
       })
     ).code,
-    200,
+    200
   );
   check(
-    "Purge requires an authenticated writer, valid CSRF and exact typed confirmation",
+    'Purge requires an authenticated writer, valid CSRF and exact typed confirmation'
   );
-  result = await member.request("/auth/account/security/purge", {
-    confirmation: "Purge",
+  result = await member.request('/auth/account/security/purge', {
+    confirmation: 'Purge',
     csrf: member.csrf(),
     appId: ownership[1].appId,
-    ownerId: profiles.other.id,
+    ownerId: profiles.other.id
   });
   assert.equal(result.response.status, 200);
-  assert.ok(result.text.includes("Your app data has been purged."));
+  assert.ok(result.text.includes('Your app data has been purged.'));
   for (const definition of definitions)
     for (const scope of ownership) {
-      const result = await ctx.resolve(definition.event + "-detail", {
-        id: `${marker}-${definition.event}-${scope.suffix}`,
+      const result = await ctx.resolve(definition.event + '-detail', {
+        id: `${marker}-${definition.event}-${scope.suffix}`
       });
       assert.equal(
         result.code,
-        scope.suffix === "mine" ? 404 : 200,
-        `${definition.event} ${scope.suffix} ownership result`,
+        scope.suffix === 'mine' ? 404 : 200,
+        `${definition.event} ${scope.suffix} ownership result`
       );
     }
   check(
-    "Purge removes four owned record categories in the configured app and ignores forged scope",
+    'Purge removes four owned record categories in the configured app and ignores forged scope'
   );
   check(
-    "Other app records and another user’s records survive current-app purge",
+    'Other app records and another user’s records survive current-app purge'
   );
   assert.equal(
-    (await ctx.resolve("shell-theme-detail", { id: themeFixtureId })).code,
-    200,
+    (await ctx.resolve('shell-theme-detail', { id: themeFixtureId })).code,
+    200
   );
-  assert.equal((await ctx.resolve("profile-detail", { id: owned })).code, 200);
+  assert.equal((await ctx.resolve('profile-detail', { id: owned })).code, 200);
   assert.ok(
     (
-      await ctx.resolve<Array<{ id: string }>>("auth-search", {
-        eq: { profileId: owned, active: true },
+      await ctx.resolve<Array<{ id: string }>>('auth-search', {
+        eq: { profileId: owned, active: true }
       })
-    ).results?.length,
+    ).results?.length
   );
   assert.deepEqual(
     await database.query(
-      'SELECT COUNT(*) AS "total" FROM "identity_challenge"',
+      'SELECT COUNT(*) AS "total" FROM "identity_challenge"'
     ),
-    challengeCountBefore,
+    challengeCountBefore
   );
   assert.equal(
-    (await member.request("/auth/account?json=1")).response.status,
-    200,
+    (await member.request('/auth/account?json=1')).response.status,
+    200
   );
   assert.equal(
-    (await new BrowserSession(base, authBase).login("member")).response.status,
-    302,
+    (await new BrowserSession(base, authBase).login('member')).response.status,
+    302
   );
   check(
-    "Purge preserves Profile/Auth, challenge history, company theme and usable sign-in",
+    'Purge preserves Profile/Auth, challenge history, company theme and usable sign-in'
   );
   return {
     checks,
     limitations: [
-      "Forgot-password and cross-app deletion are unavailable in stackpress-session 0.10.8; warning screens do not pretend otherwise.",
-      "P-01 validates email-code and magic-link rendering/invalid challenges only; real SMTP example sends belong to the later message-template proof.",
-      "An app-owned persistent challenge ledger adds a five-minute TTL and atomic one-use redemption around the unchanged built-in verification handlers.",
-      "Ingest cookie serialization and several identity guards require the documented app-owned 0.10.8 adapters.",
-      "Built-in remove deactivates Auth rows but leaves Profile active because its reused response skips generated profile-remove; it is not exposed as product deletion.",
-    ],
+      'Forgot-password and cross-app deletion are unavailable in stackpress-session 0.10.8; warning screens do not pretend otherwise.',
+      'P-01 validates email-code and magic-link rendering/invalid challenges only; real SMTP example sends belong to the later message-template proof.',
+      'An app-owned persistent challenge ledger adds a five-minute TTL and atomic one-use redemption around the unchanged built-in verification handlers.',
+      'Ingest cookie serialization and several identity guards require the documented app-owned 0.10.8 adapters.',
+      'Built-in remove deactivates Auth rows but leaves Profile active because its reused response skips generated profile-remove; it is not exposed as product deletion.'
+    ]
   };
-}
+};
+
+//--------------------------------------------------------------------//
+// Classes
+
+/**
+ * Keep one proof caller’s cookies and CSRF state isolated across HTTP
+ * identity checks.
+ */
+export class BrowserSession {
+  //cookies collected by this caller and reused only by its subsequent
+  // requests
+  public readonly cookies = new Map<string, string>();
+  //bind this isolated caller’s cookie jar to the managed proof origin
+  public constructor(
+    //managed listener origin used by this caller’s HTTP requests
+    public readonly base: string,
+    //configured auth prefix substituted into fixture routes
+    public readonly authBase = '/auth'
+  ) {}
+  //read the current CSRF token from the proof response or session fixture
+  public csrf() {
+    return decodeURIComponent(this.cookies.get('csrf') || '');
+  }
+  //establish the selected proof account session through the real sign-in
+  // flow
+  public async login(username = 'admin', password = fixturePassword) {
+    await this.request('/auth/signin/email');
+    return this.request('/auth/signin/email', {
+      email: username + '@officepress.test',
+      secret: password,
+      csrf: this.csrf(),
+      auth: 'pass'
+    });
+  }
+  //send a request using this helper’s isolated proof session
+  public async request(route: string, body?: Record<string, string>) {
+    //existing test routes stay readable while exercising configured
+    // prefixes
+    if (route.startsWith('/auth/')) route = this.authBase + route.slice(5);
+    const response = await fetch(this.base + route, {
+      method: body ? 'POST' : 'GET',
+      redirect: 'manual',
+      headers: {
+        cookie: [ ...this.cookies ]
+          .map(([ cookieName, cookieValue ]) => `${cookieName}=${cookieValue}`)
+          .join('; '),
+        ...(body ? { 'content-type': 'application/x-www-form-urlencoded' } : {})
+      },
+      body: body ? new URLSearchParams(body) : undefined
+    });
+    for (const cookie of response.headers.getSetCookie()) {
+      const first = cookie.split(';')[0];
+      const index = first.indexOf('=');
+      if (index >= 0)
+        this.cookies.set(first.slice(0, index), first.slice(index + 1));
+    }
+    const text = await response.text();
+    return { response, text };
+  }
+};

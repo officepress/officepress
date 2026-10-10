@@ -14,3 +14,5 @@ Start here. These topic files hold the accepted reusable context; their linked r
 - [Stackpress implementation handbook](stackpress.md) — load for all app scaffolding, plugins, Yarn/CLI scripts, bootstrap configuration, plugin tests, data generation, views and the required post-verification coding audit/refactor cycle.
 
 - [Reusable proof guidance](reusable-proofs.md) — load for the adopted goal, common constraints, mutable Draft/Published workflows, form/template publication, elapsed SLA and stale-write rules; follow its spec link for current planning.
+
+- [Stackpress agent guidelines](stackpress-logic-patterns.md) — load before implementing or refactoring plugins; choose detailed guidance for ownership, lazy handlers, reusable business events, priority extensions, generation, data, interface exposure and verification.

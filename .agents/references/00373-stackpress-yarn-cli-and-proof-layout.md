@@ -48,6 +48,11 @@ Use Yarn and `yarn.lock`; remove `package-lock.json`. These two proofs declare
 and inspect resolved versions. Preserve existing dependency pins during migration.
 Keep `typecheck: tsc --noEmit` as a useful additional local gate.
 
+The 2026-10-10 user decision makes `proofs/app-shell/` the scaffold baseline for
+new OfficePress apps and `proofs/common-components/` the reference for
+workflow/automation, form-builder and message-template features, so these
+conventions describe the baseline itself, not only a migration target.
+
 Both web proofs use every non-desktop script above. Desktop scripts apply only
 when an adopter actually includes the desktop plugin and `config/desktop`;
 do not add commands that resolve to absent capabilities.

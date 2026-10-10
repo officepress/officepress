@@ -1,50 +1,84 @@
-import type { HttpServer } from "@stackpress/ingest";
-import type Engine from "@stackpress/inquire/Engine";
-import type { Config } from "../../plugins/app/types.js";
-import type { Identity } from "../../plugins/auth/types.js";
-import { Actions, type Input } from "./domain.js";
-export default function plugin(server: HttpServer<Config>) {
-  server.on("route", ({ ctx }) => {
-    const identity = ctx.plugin<Identity>("identity"),
-      db = ctx.plugin<Engine>("database");
-    if (!identity?.ready() || !db || !ctx.listeners["shell-item-detail"]?.size)
+//modules
+import type { HttpServer } from '@stackpress/ingest';
+import type Engine from '@stackpress/inquire/Engine';
+
+//client
+import type { Config } from '../../plugins/app/types.js';
+import type { Identity } from '../../plugins/auth/types.js';
+import { Actions } from './domain.js';
+
+/**
+ * Register the fixture actions plugin services, guarded listeners and lazy
+ * handlers.
+ */
+export default function registerFixtureActionsPlugin(
+  server: HttpServer<Config>
+) {
+  //check whether the dependencies or provider required by this owner are
+  // available
+  function canRegisterFixtureActions(
+    ctx: HttpServer<Config>,
+    shouldCheckRuntimeReadiness = false
+  ) {
+    const identity = ctx.plugin<Identity>('identity');
+    return Boolean(
+      identity &&
+      ctx.plugin<Engine>('database') &&
+      (!shouldCheckRuntimeReadiness ||
+        (identity.ready() && ctx.listeners['shell-item-detail']?.size))
+    );
+  }
+  //--------------------------------------------------------------------//
+  // Provider configuration
+
+  //run at -400 after schema/store and identity; omit incomplete providers
+  server.on(
+    'config',
+    ({ ctx }) => {
+      if (!canRegisterFixtureActions(ctx)) return;
+      ctx.register(
+        'actions',
+        new Actions(
+          ctx.plugin<Engine>('database'),
+          ctx.config('officepress').appId
+        )
+      );
+    },
+    -400
+  );
+  //--------------------------------------------------------------------//
+  // Reusable event registration
+
+  //runtime checks prevent partially configured features from exposing
+  // events
+  server.on(
+    'listen',
+    ({ ctx }) => {
+      if (!canRegisterFixtureActions(ctx, true) || !ctx.plugin('actions'))
+        return;
+      ctx.on(
+        'officepress-actions-authorize',
+        () => import('./events/authorize.js')
+      );
+      ctx.on('officepress-actions-read', () => import('./events/read.js'));
+      ctx.on('officepress-actions-rename', () => import('./events/rename.js'));
+      ctx.on('officepress-actions-undo', () => import('./events/undo.js'));
+    },
+    -400
+  );
+  //--------------------------------------------------------------------//
+  // HTTP routes and views
+
+  //expose lazy web adapters only while their providers are ready
+  server.on('route', ({ ctx }) => {
+    if (
+      !canRegisterFixtureActions(ctx, true) ||
+      !ctx.plugin('actions') ||
+      !ctx.listeners['officepress-actions-read']?.size
+    )
       return;
-    const actions = new Actions(db, ctx.config("officepress").appId);
-    ctx.register("actions", actions);
-    ctx.get("/api/item", async ({ req, res }) => {
-      const user = await identity.requireUser(req, res);
-      if (!user) return;
-      try {
-        res.results(
-          await actions.read(user, String(req.data("id") || "welcome")),
-        );
-      } catch (e) {
-        res.setError((e as Error).message).statusCode(403);
-      }
-    });
-    ctx.post("/api/item", async ({ req, res }) => {
-      const user = await identity.requireUser(req, res);
-      if (!user || !(await identity.csrf(req, res))) return;
-      try {
-        res.results(await actions.rename(user, req.data<Input>()));
-      } catch (e) {
-        res.setError((e as Error).message).statusCode(409);
-      }
-    });
-    ctx.post("/api/item/undo", async ({ req, res }) => {
-      const user = await identity.requireUser(req, res);
-      if (!user || !(await identity.csrf(req, res))) return;
-      try {
-        res.results(
-          await actions.undo(
-            user,
-            String(req.data("operationId")),
-            String(req.data("undoId")),
-          ),
-        );
-      } catch (e) {
-        res.setError((e as Error).message).statusCode(409);
-      }
-    });
+    ctx.get('/api/item', () => import('./pages/read.js'));
+    ctx.post('/api/item', () => import('./pages/rename.js'));
+    ctx.post('/api/item/undo', () => import('./pages/undo.js'));
   });
-}
+};

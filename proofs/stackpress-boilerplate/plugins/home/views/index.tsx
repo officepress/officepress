@@ -1,17 +1,17 @@
-import type { PageProps } from '../../app/types.js';
-import Provider from '../../app/components/Provider.js';
+//modules
 import { useLanguage } from 'r22n';
 
-export function Body() {
-  const { _ } = useLanguage();
-  return (
-    <div>
-      <h1 className="text-2xl theme-info">{_('Home Page')}</h1>
-      <p>{_('Home Page Description')}</p>
-    </div>
-  );
-};
+//client
+import type { PageProps } from '../../app/types.js';
+import Provider from '../../app/components/Provider.js';
+import Body from '../components/Body.js';
 
+//--------------------------------------------------------------------//
+// Components
+
+/**
+ * Render page metadata and the assets required by the registered view.
+ */
 export function Head(props: PageProps) {
   const { styles = [] } = props;
   const { _ } = useLanguage();
@@ -30,6 +30,9 @@ export function Head(props: PageProps) {
   );
 };
 
+/**
+ * Compose the registered view from server props and its feature component.
+ */
 export function Page(props: PageProps) {
   return (
     <Provider {...props}>
@@ -37,5 +40,8 @@ export function Page(props: PageProps) {
     </Provider>
   );
 };
+
+//--------------------------------------------------------------------//
+// Entry point
 
 export default Page;

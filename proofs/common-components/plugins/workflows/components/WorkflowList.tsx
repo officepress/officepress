@@ -1,18 +1,30 @@
-import Icon from "../../app/components/Icon.js";
-import type { Workflow } from "../types.js";
+//client
+import type { Workflow } from '../types.js';
+import Icon from '../../app/components/Icon.js';
 
-/** Open a workflow deliberately from the component's landing list. */
+//--------------------------------------------------------------------//
+// Types
+
+//workflow summaries and allowed creation/deletion controls for the list
+type WorkflowListProps = {
+  workflows: Workflow[],
+  admin: boolean,
+  open: (id: string) => void,
+  create: () => void
+};
+
+//--------------------------------------------------------------------//
+// Entry point
+
+/**
+ * Open a workflow deliberately from the component's landing list.
+ */
 export default function WorkflowList({
   workflows,
-  admin,
+  admin: isAdmin,
   open,
-  create,
-}: {
-  workflows: Workflow[];
-  admin: boolean;
-  open: (id: string) => void;
-  create: () => void;
-}) {
+  create
+}: WorkflowListProps) {
   return (
     <div className="op-page wf-list">
       <div className="op-page-head">
@@ -20,7 +32,7 @@ export default function WorkflowList({
           <h2 className="op-heading">Workflows</h2>
           <p className="op-muted">Choose a workflow to view its board.</p>
         </div>
-        {admin && (
+        {isAdmin && (
           <button className="op-btn op-btn--primary" onClick={create}>
             <Icon name="plus" /> New workflow
           </button>
@@ -53,7 +65,7 @@ export default function WorkflowList({
                 <td>{workflow.stages.length}</td>
                 <td>
                   <span className="op-pill op-pill--neutral">
-                    {workflow.status === "published" ? "Published" : "Draft"}
+                    {workflow.status === 'published' ? 'Published' : 'Draft'}
                   </span>
                 </td>
                 <td>
@@ -75,4 +87,4 @@ export default function WorkflowList({
       </div>
     </div>
   );
-}
+};

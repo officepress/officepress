@@ -20,3 +20,7 @@ Inspect destructive commands before use. Generated revisions/SQL are not an appl
 - [Stackpress handbook](stackpress.md) — load to find complete local API and specialist workflow references.
 
 - [Tested generation examples](../references/00357-stackpress-tested-plugin-pattern.md) — load for exact Idea enum/model syntax, root composition and safe proof initialization.
+
+- [Idea modeling and metadata](../references/00382-stackpress-idea-modeling-and-metadata.md) — load for built-in schema composition, relations, assertions and UI roles.
+- [Generation and runtime reconnection](../references/00383-stackpress-generation-and-runtime-reconnection.md) — load for transform ownership, exports, repeat generation and runtime listeners.
+- [Database queries and transactions](../references/00385-stackpress-database-queries-and-transactions.md) — load for bound values, transaction Connection callbacks and the driver boundary.

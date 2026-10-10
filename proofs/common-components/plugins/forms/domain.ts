@@ -1,79 +1,102 @@
-import { randomUUID, randomBytes, createHash } from "node:crypto";
-import { isDeepStrictEqual } from "node:util";
-import type Engine from "@stackpress/inquire/Engine";
-import type { Caller } from "../auth/types.js";
-import type { FormsService, FormRecord, FormPayload } from "./types.js";
-import { validateDefinition, validateAnswers } from "./client.js";
-export class FormError extends Error {
-  constructor(
-    message: string,
-    public status = 400,
-    public fields?: Record<string, string>,
-  ) {
-    super(message);
-  }
-}
-const hash = (token: string) =>
-  createHash("sha256").update(token).digest("hex");
-export function createForms(db: Engine, appId: string): FormsService {
-  const raw = async (id: string) => {
-    const rows = await db.query<{
-      id: string;
-      owner_id: string;
-      revision: number;
-      payload: FormPayload;
+//node
+import { randomUUID, randomBytes, createHash } from 'node:crypto';
+import { isDeepStrictEqual } from 'node:util';
+
+//modules
+import type Engine from '@stackpress/inquire/Engine';
+
+//client
+import type { Caller } from '../auth/types.js';
+import type { FormsService, FormRecord, FormPayload } from './types.js';
+import { validateDefinition, validateAnswers } from './client.js';
+
+//--------------------------------------------------------------------//
+// Constants
+
+/**
+ * Hash the opaque public share token so its raw value is not persisted.
+ */
+const hashShareToken = (token: string) =>
+  createHash('sha256').update(token).digest('hex');
+
+//--------------------------------------------------------------------//
+// Functions
+
+/**
+ * Create the app-scoped form publication, sharing and response service.
+ */
+export function createForms(database: Engine, appId: string): FormsService {
+  //read the app-scoped form record without applying a management or
+  // publication access policy
+  const readRawForm = async (id: string) => {
+    const rows = await database.query<{
+      id: string,
+      owner_id: string,
+      revision: number,
+      payload: FormPayload
     }>('SELECT * FROM "component_form" WHERE "id" = ? AND "app_id" = ?', [
       id,
-      appId,
+      appId
     ]);
-    if (!rows[0]) throw new FormError("Form not found.", 404);
+    if (!rows[0]) throw new FormError('Form not found.', 404);
     return {
       id: rows[0].id,
       ownerId: rows[0].owner_id,
       revision: rows[0].revision,
-      payload: rows[0].payload,
+      payload: rows[0].payload
     };
   };
-  const allowed = (caller: Caller) => {
-    if (!caller.roles.includes("ADMIN"))
+  //require form-administrator permission before accessing management data
+  const requireFormAdmin = (caller: Caller) => {
+    if (!caller.roles.includes('ADMIN'))
       throw new FormError(
-        "Only form administrators can manage forms and responses.",
-        403,
+        'Only form administrators can manage forms and responses.',
+        403
       );
   };
-  const write = async (record: FormRecord, revision: number) => {
+  //persist the full form payload only if its stored revision still matches
+  const persistForm = async (record: FormRecord, revision: number) => {
     if (!Number.isInteger(revision) || revision !== record.revision)
-      throw new FormError("This form changed. Reload before saving.", 409);
-    const rows = await db.query(
+      throw new FormError('This form changed. Reload before saving.', 409);
+    const rows = await database.query(
       'UPDATE "component_form" SET "payload" = ?, "revision" = "revision" + 1 WHERE "id" = ? AND "app_id" = ? AND "revision" = ? RETURNING "revision"',
-      [record.payload, record.id, appId, revision],
+      [ record.payload, record.id, appId, revision ]
     );
     if (!rows.length)
-      throw new FormError("This form changed. Reload before saving.", 409);
+      throw new FormError('This form changed. Reload before saving.', 409);
     return { ...record, revision: revision + 1 };
   };
-  const access = (
+  //enforce the resource’s availability and caller access before returning
+  // its data
+  const authorizePublication = (
     record: FormRecord,
     caller: Caller | null,
     token?: string,
-    attached = false,
+    isAttached = false
   ) => {
-    const p = record.payload,
-      latest = p.publications.at(-1);
-    if (!p.active || !latest)
-      throw new FormError("This form is not accepting responses.", 410);
+    const payload = record.payload;
+    //availability follows the latest publication, even when answering an
+    // older frozen version; closing or expiry blocks every new response
+    const latest = payload.publications.at(-1);
+    if (!payload.active || !latest)
+      throw new FormError('This form is not accepting responses.', 410);
     if (latest.expires && Date.parse(latest.expires) <= Date.now())
-      throw new FormError("This form has expired.", 410);
-    if (latest.mode === "signedin" && !caller)
-      throw new FormError("Sign in to complete this form.", 401);
+      throw new FormError('This form has expired.', 410);
+    if (latest.mode === 'signedin' && !caller)
+      throw new FormError('Sign in to complete this form.', 401);
+    //workflow attachments use their own authorized access; public links
+    // must match the stored token hash and are invalidated by
+    // rotation/revocation
     if (
-      !attached &&
-      latest.mode === "public" &&
-      (!token || !p.share || hash(token) !== p.share.hash)
+      !isAttached &&
+      latest.mode === 'public' &&
+      (!token || !payload.share || hashShareToken(token) !== payload.share.hash)
     )
-      throw new FormError("This share link is unavailable or revoked.", 403);
+      throw new FormError('This share link is unavailable or revoked.', 403);
     return latest;
   };
+  //validate publication access, deduplicate the submission and save its
+  // frozen answer snapshot
   async function respond(
     caller: Caller | null,
     id: string,
@@ -81,26 +104,38 @@ export function createForms(db: Engine, appId: string): FormsService {
     version: number,
     values: unknown,
     requestId: string,
-    attached = false,
+    isAttached = false
   ) {
     if (
-      typeof requestId !== "string" ||
+      typeof requestId !== 'string' ||
       !/^[a-zA-Z0-9-]{8,80}$/.test(requestId)
     )
-      throw new FormError("Invalid submission identifier.");
-    const r = await raw(id);
-    access(r, caller, token, attached);
-    const scope = caller?.id || hash(token || "");
-    const previous = r.payload.responses.find(
-      (v) => v.requestId === `${scope}:${requestId}`,
+      throw new FormError('Invalid submission identifier.');
+    const record = await readRawForm(id);
+    authorizePublication(record, caller, token, isAttached);
+    //include caller or share scope so submission IDs cannot cross
+    // identities
+    const scope = caller?.id || hashShareToken(token || '');
+    //deduplicate by caller/share scope and submission ID before appending
+    // another response
+    const previous = record.payload.responses.find(
+      (candidateResponse) =>
+        candidateResponse.requestId === `${scope}:${requestId}`
     );
     if (previous)
       return { id: previous.id, version: previous.version, duplicate: true };
-    const def = r.payload.publications.find((v) => v.version === version);
-    if (!def) throw new FormError("This form version is unavailable.", 409);
-    const { errors, answers } = validateAnswers(def, values);
+    //validate against the submitted immutable publication, not the current
+    // editable draft
+    const definition = record.payload.publications.find(
+      (candidatePublication) => candidatePublication.version === version
+    );
+    if (!definition)
+      throw new FormError('This form version is unavailable.', 409);
+    const { errors, answers } = validateAnswers(definition, values);
     if (Object.keys(errors).length)
-      throw new FormError("Review the highlighted answers.", 422, errors);
+      throw new FormError('Review the highlighted answers.', 422, errors);
+    //retain the publication beside its answers for later manual
+    // interpretation
     const response = {
       id: randomUUID(),
       requestId: `${scope}:${requestId}`,
@@ -108,143 +143,204 @@ export function createForms(db: Engine, appId: string): FormsService {
       submittedAt: new Date().toISOString(),
       callerId: caller?.id || null,
       answers,
-      definition: structuredClone(def),
+      definition: structuredClone(definition)
     };
-    r.payload.responses.push(response);
-    await write(r, r.revision);
+    //persist the answers with their frozen definition so later edits cannot
+    // rewrite history
+    record.payload.responses.push(response);
+    await persistForm(record, record.revision);
     return { id: response.id, version, duplicate: false };
   }
   const service: FormsService = {
+    //read the app-scoped forms collection for the caller
     async list(caller) {
-      allowed(caller);
-      const rows = await db.query<{
-        id: string;
-        revision: number;
-        payload: FormPayload;
+      requireFormAdmin(caller);
+      const rows = await database.query<{
+        id: string,
+        revision: number,
+        payload: FormPayload
       }>(
         'SELECT "id","revision","payload" FROM "component_form" WHERE "app_id" = ? ORDER BY "id"',
-        [appId],
+        [ appId ]
       );
-      return rows.map((r) => ({
-        id: r.id,
-        title: r.payload.draft.title,
-        revision: r.revision,
-        publishedVersion: r.payload.publications.at(-1)?.version || 0,
-        responses: r.payload.responses.length,
-        mode: r.payload.draft.mode,
-        status: r.payload.active ? "active" : "draft",
+      return rows.map((row) => ({
+        id: row.id,
+        title: row.payload.draft.title,
+        revision: row.revision,
+        publishedVersion: row.payload.publications.at(-1)?.version || 0,
+        responses: row.payload.responses.length,
+        mode: row.payload.draft.mode,
+        status: row.payload.active ? 'active' : 'draft'
       }));
     },
+    //read the accessible forms snapshot for the caller
     async read(caller, id) {
-      allowed(caller);
-      const r = await raw(id);
-      return r;
+      requireFormAdmin(caller);
+      const record = await readRawForm(id);
+      return record;
     },
+    //create the authorized forms record with its initial state
     async create(caller, draft, id = randomUUID()) {
-      allowed(caller);
+      requireFormAdmin(caller);
       const payload: FormPayload = {
         draft: validateDefinition(draft),
         publications: [],
         responses: [],
         active: false,
-        share: null,
+        share: null
       };
-      await db.query(
+      await database.query(
         'INSERT INTO "component_form" ("id","app_id","owner_id","payload","revision") VALUES (?,?,?,?,1)',
-        [id, appId, caller.id, payload],
+        [ id, appId, caller.id, payload ]
       );
-      return raw(id);
+      return readRawForm(id);
     },
+    //validate and persist the forms change using its expected revision
     async save(caller, id, revision, draft, status) {
-      const r = await service.read(caller, id);
-      if (status !== undefined && status !== "draft" && status !== "active")
-        throw new FormError("Choose Draft or Active.", 422);
+      const record = await service.read(caller, id);
+      if (status !== undefined && status !== 'draft' && status !== 'active')
+        throw new FormError('Choose Draft or Active.', 422);
       const next = validateDefinition(draft);
+      //published question names remain stable identifiers even when the
+      // draft is edited
       const original = new Map(
-        r.payload.publications.flatMap((p) =>
-          p.fields.map((f) => [f.id, f.name] as const),
-        ),
+        record.payload.publications.flatMap((publication) =>
+          publication.fields.map(
+            (candidateField) =>
+              [ candidateField.id, candidateField.name ] as const
+          )
+        )
       );
-      for (const f of next.fields)
-        if (original.has(f.id) && original.get(f.id) !== f.name)
+      for (const candidateField of next.fields)
+        if (
+          original.has(candidateField.id) &&
+          original.get(candidateField.id) !== candidateField.name
+        )
           throw new FormError(
-            "Published field names are stable. Duplicate the question to use a new name.",
+            'Published field names are stable. Duplicate the question to use a new name.'
           );
-      r.payload.draft = next;
-      // A status-aware save commits the draft and its availability atomically.
-      // Existing service callers may still save a draft without publishing it.
+      record.payload.draft = next;
+      //A status-aware save commits the draft and its availability
+      // atomically. Existing service callers may still save a draft without
+      // publishing it.
       if (status !== undefined) {
-        if (status === "active") {
-          const latest = r.payload.publications.at(-1);
+        if (status === 'active') {
+          //availability follows the latest publication and its
+          // active/expiry/share settings
+          const latest = record.payload.publications.at(-1);
           const { version, publishedAt, ...definition } = latest || {};
           if (!latest || !isDeepStrictEqual(definition, next))
-            r.payload.publications.push({
+            record.payload.publications.push({
               ...structuredClone(next),
               version: (version || 0) + 1,
-              publishedAt: new Date().toISOString(),
+              publishedAt: new Date().toISOString()
             });
         }
-        r.payload.active = status === "active";
+        record.payload.active = status === 'active';
       }
-      return write(r, revision);
+      return persistForm(record, revision);
     },
+    //publish the validated definition as a new immutable version using the
+    // expected revision
     async publish(caller, id, revision) {
-      const r = await service.read(caller, id),
-        draft = validateDefinition(r.payload.draft);
-      r.payload.publications.push({
+      const record = await service.read(caller, id);
+      const draft = validateDefinition(record.payload.draft);
+      record.payload.publications.push({
         ...draft,
-        version: (r.payload.publications.at(-1)?.version || 0) + 1,
-        publishedAt: new Date().toISOString(),
+        version: (record.payload.publications.at(-1)?.version || 0) + 1,
+        publishedAt: new Date().toISOString()
       });
-      r.payload.active = true;
-      return write(r, revision);
+      record.payload.active = true;
+      return persistForm(record, revision);
     },
+    //issue a new opaque share token for an active public-link form
     async share(caller, id, revision) {
-      const r = await service.read(caller, id);
-      if (r.payload.publications.at(-1)?.mode !== "public" || !r.payload.active)
+      const record = await service.read(caller, id);
+      if (
+        record.payload.publications.at(-1)?.mode !== 'public' ||
+        !record.payload.active
+      )
         throw new FormError(
-          "Save a public-link form as Active before creating a link.",
+          'Save a public-link form as Active before creating a link.'
         );
-      const token = randomBytes(32).toString("base64url");
-      r.payload.share = {
-        hash: hash(token),
-        createdAt: new Date().toISOString(),
+      //return the new opaque token once while persisting only its hash
+      const token = randomBytes(32).toString('base64url');
+      record.payload.share = {
+        hash: hashShareToken(token),
+        createdAt: new Date().toISOString()
       };
-      return { record: await write(r, revision), token };
+      return { record: await persistForm(record, revision), token };
     },
+    //remove the saved share-token hash so the existing link stops
+    // authorizing responses
     async revoke(caller, id, revision) {
-      const r = await service.read(caller, id);
-      r.payload.share = null;
-      return write(r, revision);
+      const record = await service.read(caller, id);
+      //revocation preserves existing response history but rejects old links
+      record.payload.share = null;
+      return persistForm(record, revision);
     },
+    //mark the form inactive while preserving publications and response
+    // history
     async close(caller, id, revision) {
-      const r = await service.read(caller, id);
-      r.payload.active = false;
-      return write(r, revision);
+      const record = await service.read(caller, id);
+      record.payload.active = false;
+      return persistForm(record, revision);
     },
+    //load the accessible publication for the requested form and share token
     async loadFill(caller, id, token) {
-      const r = await raw(id);
-      return { id, definition: access(r, caller, token) };
+      const record = await readRawForm(id);
+      return { id, definition: authorizePublication(record, caller, token) };
     },
     respond,
+    //load an active form publication for a recognized workflow reader
     async loadAttached(caller, id) {
       if (
         !caller?.id ||
         !caller.roles.some((role) =>
-          ["ADMIN", "MEMBER", "READONLY"].includes(role),
+          [ 'ADMIN', 'MEMBER', 'READONLY' ].includes(role)
         )
       )
-        throw new FormError("Access denied.", 403);
-      return { id, definition: access(await raw(id), caller, undefined, true) };
+        throw new FormError('Access denied.', 403);
+      return {
+        id,
+        definition: authorizePublication(
+          await readRawForm(id),
+          caller,
+          undefined,
+          true
+        )
+      };
     },
+    //require workflow write access before submitting answers to an attached
+    // form
     async respondAttached(caller, id, version, answers, requestId) {
       if (
         !caller?.id ||
-        !caller.roles.some((role) => ["ADMIN", "MEMBER"].includes(role))
+        !caller.roles.some((role) => [ 'ADMIN', 'MEMBER' ].includes(role))
       )
-        throw new FormError("Write access required.", 403);
+        throw new FormError('Write access required.', 403);
       return respond(caller, id, undefined, version, answers, requestId, true);
-    },
+    }
   };
   return service;
-}
+};
+
+//--------------------------------------------------------------------//
+// Classes
+
+/**
+ * Carry a form failure, response status and optional field errors.
+ */
+export class FormError extends Error {
+  //retain status and optional field errors for event/HTTP response
+  // formatting
+  public constructor(
+    message: string,
+    //response status forwarded by the feature’s error adapter
+    public status = 400,
+    //optional field errors shown beside the rejected form answers
+    public fields?: Record<string, string>
+  ) {
+    super(message);
+  }
+};

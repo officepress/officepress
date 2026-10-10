@@ -6,20 +6,29 @@ import type {
   CallableNest,
   StatusResponse
 } from '@stackpress/lib/types';
-import Status from '@stackpress/lib/Status';
-import Exception from '@stackpress/lib/Exception';
 import { nest, isObject } from '@stackpress/lib/Nest';
-//stackpress-view
+import Exception from '@stackpress/lib/Exception';
+import Status from '@stackpress/lib/Status';
+
+//client
 import type { ServerResponseProps } from './types.js';
 
+//--------------------------------------------------------------------//
+// Types
+
+//stackpress-view
+
 export type { ServerResponseProps };
+
+//--------------------------------------------------------------------//
+// Classes
 
 /**
  * Client version of response. Readonly.
  */
 export default class Response<O = UnknownNest> {
   //error controller
-  public readonly errors: CallableNest<NestedObject<string|string[]>>;
+  public readonly errors: CallableNest<NestedObject<string | string[]>>;
   //response status code
   protected _code = 0;
   //body error message
@@ -33,66 +42,44 @@ export default class Response<O = UnknownNest> {
   //total count of possible results
   protected _total = 0;
 
-  /**
-   * Returns the status code
-   */
+  //returns the status code
   public get code() {
     return this._code;
   }
 
-  /**
-   * Returns the error message
-   */
-  public get error(): string|undefined {
+  //returns the error message
+  public get error(): string | undefined {
     return this._error;
   }
 
-  /**
-   * Returns results
-   */
-  public get results(): O|undefined {
+  //returns results
+  public get results(): O | undefined {
     if (isObject(this._results)) {
       return Object.freeze(this._results) as O;
     } else if (Array.isArray(this._results)) {
       return Array.from(this._results) as O;
     }
-    return this._results as O|undefined;
+    return this._results as O | undefined;
   }
 
-  /**
-   * Returns a stack trace if error
-   */
-  public get stack(): Trace[]|undefined {
+  //returns a stack trace if error
+  public get stack(): Trace[] | undefined {
     return this._stack;
   }
 
-  /**
-   * Returns the status message
-   */
+  //returns the status message
   public get status(): string {
     return this._status;
   }
 
-  /**
-   * Returns the total count of possible results
-   */
+  //returns the total count of possible results
   public get total() {
     return this._total;
   }
 
-  /**
-   * Sets the initial values of the payload
-   */
-  constructor(response: ServerResponseProps<O>) {
-    const {
-      code,
-      status,
-      error,
-      errors,
-      stack,
-      results,
-      total
-    } = response;
+  //sets the initial values of the payload
+  public constructor(response: ServerResponseProps<O>) {
+    const { code, status, error, errors, stack, results, total } = response;
     if (code) {
       this._code = code;
     }
@@ -119,9 +106,7 @@ export default class Response<O = UnknownNest> {
     }
   }
 
-  /**
-   * Converts the response to an exception
-   */
+  //converts the response to an exception
   public toException(message?: string) {
     const error = message || this._error || 'Unknown Error';
     const exception = Exception.for(error)
@@ -129,20 +114,21 @@ export default class Response<O = UnknownNest> {
       .withErrors(this.errors());
     if (this._stack) {
       let stack = `Response: ${error}\n`;
-      stack += this._stack.map(
-        trace => `  at ${trace.method} (`
-          +`${trace.file}:${trace.line}:${trace.char}`
-        + `)`
-      ).join('\n');
+      stack += this._stack
+        .map(
+          (trace) =>
+            `  at ${trace.method} (` +
+            `${trace.file}:${trace.line}:${trace.char}` +
+            `)`
+        )
+        .join('\n');
       exception.stack = stack;
     }
 
     return exception;
   }
 
-  /**
-   * Converts the response to a status response
-   */
+  //converts the response to a status response
   public toStatusResponse(): Partial<StatusResponse<O>> {
     return {
       code: this._code,
@@ -150,7 +136,7 @@ export default class Response<O = UnknownNest> {
       error: this._error,
       errors: this.errors(),
       stack: this._stack,
-      results: this.results as O|undefined,
+      results: this.results as O | undefined,
       total: this._total
     };
   }

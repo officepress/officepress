@@ -4,9 +4,9 @@ Owner: [Stackpress handbook](../context/stackpress.md). Load before implementing
 
 ## Scope and authority
 
-Every OfficePress app uses Stackpress. The maintained runnable baseline is `proofs/stackpress-boilerplate/` in this repository. Use the 0.10.8 Stackpress ecosystem; React, Frui, Vite and other independent packages have their own versions. Preserve the lockfile and verify actual resolved versions.
+Every OfficePress app uses Stackpress. Per the 2026-10-10 user decision, the maintained scaffold baseline is `proofs/app-shell/` in this repository (Yarn, Stackpress CLI dispatch, the 00373 layout). Apps needing workflows/automations (kanban), form builder or message templates use `proofs/common-components/` as the feature reference and copy source. This supersedes `proofs/stackpress-boilerplate/` as the baseline; that earlier proof remains historical npm-era evidence with its original receipts. Use the 0.10.8 Stackpress ecosystem; React, Frui, Vite and other independent packages have their own versions. Preserve `yarn.lock` and verify actual resolved versions.
 
-The baseline is shared by all OfficePress apps. Commerce Orders-specific P13/P14 task labels and missing-feature lists are historical provenance, not requirements for every app. The proof demonstrates framework mechanics; it does not implement all OfficePress business features or production identity/tenant security.
+The baseline is shared by all OfficePress apps. Commerce Orders-specific P13/P14 task labels and missing-feature lists are historical provenance, not requirements for every app. The proofs demonstrate framework mechanics; they do not implement all OfficePress business features or production identity/tenant security.
 
 Imported source instructions remain available in full. Their generic scaffold, dependency versions, sample credentials, phone authentication, deployment assumptions and broad cleanup suggestions do not override this contract. In particular, existing OfficePress exclusions of SMS two-factor authentication and recovery codes still apply. Existing purge/delete UI is production material; that product decision does not authorize destructive framework database commands on real data.
 
@@ -46,7 +46,11 @@ Boot: choose config → create server → bootstrap selected plugin modules → 
 
 Use `ctx.register(name, service)` and `ctx.plugin(name)` for services. Use `ctx.on(event, handler)`, `ctx.resolve(event, input)` and normal response/status handling for events. `ctx.get/post/...` owns routes; view registration is a separate mapping. Do not assume resolving a business event automatically applies HTTP authentication middleware.
 
+The accepted 2026-10-10 [agent guidelines](../context/stackpress-logic-patterns.md) place all app business logic in events, including when there is one caller. Pages process web requests, invoke events and format web responses. Helpers called by events are optional. Priorities supply before/after extension seams for independent integration and compatibility plugins.
+
 Use `pages/` for HTTP-oriented handlers, `events/` for reusable business actions, `views/` for Reactus pages, and generator folders only where used. Do not generate empty folders to satisfy a template. Keep business validation/authorization in the appropriate execution boundary for HTTP, internal events and background work.
+
+Keep `plugin.ts` focused on wiring and feature-owned dependency guards. Put reusable React bodies/layouts in `components/` and browser-safe public exports in `client.ts`; reserve `index.ts` for intentional server exports and `types.ts` for shared contracts. In the app-shell/common-components proofs, providers check generated model metadata during late `config`; generated listeners become available during SQL `listen`, so recheck listener and identity readiness before subscriptions, workers, navigation and routes. Register the app request renderer during `listen`. Start the automation scheduler only after its listener-phase guards pass. [Concrete proof organization](00357-stackpress-tested-plugin-pattern.md#proof-plugin-organization) records handler/view owners and the early auth transform exception; load it before reorganizing these proofs.
 
 ## Scaffolding and configuration
 
@@ -99,3 +103,11 @@ Record actual commands, environment, package versions, checks, failures and limi
 ## Yarn, CLI scripts and proof layout
 
 The user decision on 2026-10-08 supersedes older npm/dev/live/custom-wrapper examples. [CLI and test conventions](00373-stackpress-yarn-cli-and-proof-layout.md) records the upstream script inventory, scoped adaptations, plugin test aggregation and evidence paths; load it before changing app manifests or runners.
+
+## Lazy handler registration and recurring corrections
+
+The 2026-10-09 user decision requires literal lazy page/event imports in authored
+plugin registration and continuing KB updates for verified recurring patterns.
+Load [the complete lazy-registration and maintenance contract](00374-stackpress-lazy-registration-and-pattern-maintenance.md)
+before copying/refactoring handlers; it supersedes eager page-action examples,
+retains lifecycle/security exceptions, and requires source/runtime regression checks.

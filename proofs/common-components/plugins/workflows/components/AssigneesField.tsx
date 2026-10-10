@@ -1,18 +1,31 @@
-import Icon from "../../app/components/Icon.js";
+//client
+import Icon from '../../app/components/Icon.js';
 
+//--------------------------------------------------------------------//
+// Types
+
+//the ordered assignee list and change callback used by stage/card editors
+type AssigneesFieldProps = {
+  value: string[],
+  onChange: (value: string[]) => void,
+  disabled?: boolean,
+  retain?: boolean
+};
+
+//--------------------------------------------------------------------//
+// Entry point
+
+/**
+ * Render the controlled assignee selector for a workflow or card.
+ */
 export default function AssigneesField({
   value,
   onChange,
-  disabled = false,
-  retain = false,
-}: {
-  value: string[];
-  onChange: (value: string[]) => void;
-  disabled?: boolean;
-  retain?: boolean;
-}) {
+  disabled: isDisabled = false,
+  retain: shouldRetain = false
+}: AssigneesFieldProps) {
   return (
-    <fieldset className="op-field wf-assignees-field" disabled={disabled}>
+    <fieldset className="op-field wf-assignees-field" disabled={isDisabled}>
       <legend className="op-field__label">Assignees</legend>
       {value.map((name, index) => (
         <div className="op-row" key={index}>
@@ -24,9 +37,9 @@ export default function AssigneesField({
             value={name}
             onChange={(event) =>
               onChange(
-                value.map((item, i) =>
-                  i === index ? event.target.value : item,
-                ),
+                value.map((item, itemIndex) =>
+                  itemIndex === index ? event.target.value : item
+                )
               )
             }
           />
@@ -34,23 +47,25 @@ export default function AssigneesField({
             type="button"
             className="op-icon-btn op-icon-btn--small"
             aria-label={`Remove assignee ${index + 1}`}
-            onClick={() => onChange(value.filter((_, i) => i !== index))}
+            onClick={() =>
+              onChange(value.filter((_, itemIndex) => itemIndex !== index))
+            }
           >
             <Icon name="x" />
           </button>
         </div>
       ))}
-      {value.length === 0 && !retain && (
+      {value.length === 0 && !shouldRetain && (
         <span className="op-caption op-muted">No assignees.</span>
       )}
       <button
         type="button"
         className="op-btn op-btn--secondary op-btn--compact wf-add-assignee"
-        disabled={disabled || value.length >= 50}
-        onClick={() => onChange([...value, ""])}
+        disabled={isDisabled || value.length >= 50}
+        onClick={() => onChange([ ...value, '' ])}
       >
         <Icon name="plus" /> Add assignee
       </button>
     </fieldset>
   );
-}
+};

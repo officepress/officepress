@@ -1,42 +1,78 @@
-import { useEffect, useState } from "react";
-import { useNotifier } from "frui/Notifier";
-import CardForms from "./CardForms.js";
-import SlaProgress from "./SlaProgress.js";
-import AssigneesField from "./AssigneesField.js";
-import type { Card } from "../types.js";
+//modules
+import { useNotifier } from 'frui/Notifier';
+import { useEffect, useState } from 'react';
+
+//client
+import type { Card } from '../types.js';
+import AssigneesField from './AssigneesField.js';
+import CardForms from './CardForms.js';
+import SlaProgress from './SlaProgress.js';
+
+//--------------------------------------------------------------------//
+// Types
+
+//the selected card, current workflow and authorized card mutation callbacks
+type CardDetailsProps = {
+  card: Card,
+  csrf: string,
+  submitForm: (
+    formId: string,
+    version: number,
+    answers: unknown,
+    requestId: string
+  ) => Promise<void>,
+  change: (change: object) => void,
+  move: (stage: string) => void,
+  busy: boolean,
+  canEdit: boolean
+};
+
+//--------------------------------------------------------------------//
+// Entry point
+
+/**
+ * Render revision-aware card controls and its activity and attachments.
+ */
 export default function CardDetails({
   card,
   csrf,
   submitForm,
   change,
   move,
-  busy,
-  canEdit,
-}: {
-  card: Card;
-  csrf: string;
-  submitForm: (
-    formId: string,
-    version: number,
-    answers: unknown,
-    requestId: string,
-  ) => Promise<void>;
-  change: (change: object) => void;
-  move: (stage: string) => void;
-  busy: boolean;
-  canEdit: boolean;
-}) {
+  busy: isBusy,
+  canEdit
+}: CardDetailsProps) {
+  //--------------------------------------------------------------------//
+  // State and lifecycle references
+
   const { notify } = useNotifier();
-  const [comment, setComment] = useState(""),
-    [title, setTitle] = useState(card.title),
-    [assignees, setAssignees] = useState(card.assignees),
-    [editingComment, setEditingComment] = useState(""),
-    [commentText, setCommentText] = useState("");
+  const [ comment, setComment ] = useState('');
+  const [ title, setTitle ] = useState(card.title);
+  const [ assignees, setAssignees ] = useState(card.assignees);
+  const [ editingComment, setEditingComment ] = useState('');
+  const [ commentText, setCommentText ] = useState('');
+
+  //--------------------------------------------------------------------//
+  // Derived presentation
+
+  const stage = card.workflow.stages.find(
+    (candidateStage) => candidateStage.id === card.stageId
+  )!;
+
+  //--------------------------------------------------------------------//
+  // Browser effects
+
+  //synchronize browser resources after state, derived values and handlers
+  // are ready
+
   useEffect(() => {
     setTitle(card.title);
     setAssignees(card.assignees);
-  }, [card.title, card.assignees]);
-  const stage = card.workflow.stages.find((s) => s.id === card.stageId)!;
+  }, [ card.title, card.assignees ]);
+
+  //--------------------------------------------------------------------//
+  // Render or public hook result
+
   return (
     <div className="wf-card-details">
       <label className="op-field">
@@ -45,19 +81,19 @@ export default function CardDetails({
           disabled={!canEdit}
           className="op-input"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(event) => setTitle(event.target.value)}
         />
       </label>
       <AssigneesField
         value={assignees}
         onChange={setAssignees}
-        disabled={!canEdit || busy}
+        disabled={!canEdit || isBusy}
       />
       <button
         className="op-btn op-btn--secondary"
         disabled={
           !canEdit ||
-          busy ||
+          isBusy ||
           (title === card.title &&
             JSON.stringify(assignees) === JSON.stringify(card.assignees))
         }
@@ -67,21 +103,22 @@ export default function CardDetails({
       </button>
       <hr />
       <h3 className="op-strong">
-        Todo{" "}
+        Todo{' '}
         {card.tasks.length > 0 && (
           <span className="op-badge">
-            {card.tasks.filter((t) => t.done).length}/{card.tasks.length}
+            {card.tasks.filter((candidateTask) => candidateTask.done).length}/
+            {card.tasks.length}
           </span>
         )}
       </h3>
       {card.tasks.map((task) => (
         <label className="op-row" key={task.id}>
           <input
-            disabled={!canEdit || busy}
+            disabled={!canEdit || isBusy}
             type="checkbox"
             checked={task.done}
-            onChange={(e) =>
-              change({ taskId: task.id, done: e.target.checked })
+            onChange={(event) =>
+              change({ taskId: task.id, done: event.target.checked })
             }
           />
           <span>{task.title}</span>
@@ -93,7 +130,7 @@ export default function CardDetails({
       <CardForms
         card={card}
         csrf={csrf}
-        canEdit={canEdit && !busy}
+        canEdit={canEdit && !isBusy}
         submit={submitForm}
       />
       <label className="op-field">
@@ -101,12 +138,12 @@ export default function CardDetails({
         <select
           className="op-select"
           value={card.stageId}
-          disabled={!canEdit || busy}
-          onChange={(e) => move(e.target.value)}
+          disabled={!canEdit || isBusy}
+          onChange={(event) => move(event.target.value)}
         >
-          {card.workflow.stages.map((s) => (
-            <option key={s.id} value={s.id}>
-              {s.name}
+          {card.workflow.stages.map((candidateStage) => (
+            <option key={candidateStage.id} value={candidateStage.id}>
+              {candidateStage.name}
             </option>
           ))}
         </select>
@@ -130,7 +167,7 @@ export default function CardDetails({
             {canEdit && (
               <button
                 className="op-btn op-btn--secondary op-btn--compact"
-                disabled={busy}
+                disabled={isBusy}
                 onClick={() => change({ removeAttachment: index })}
               >
                 Remove file
@@ -147,26 +184,26 @@ export default function CardDetails({
           <input
             type="file"
             accept=".txt,text/plain"
-            disabled={busy || card.attachments.length >= 5}
-            onChange={(e) => {
-              const file = e.target.files?.[0];
+            disabled={isBusy || card.attachments.length >= 5}
+            onChange={(event) => {
+              const file = event.target.files?.[0];
               if (!file) return;
               if (file.size > 250 * 1024) {
-                notify("error", "Choose a text file smaller than 250 KB.");
+                notify('error', 'Choose a text file smaller than 250 KB.');
                 return;
               }
               const reader = new FileReader();
               reader.onload = () => {
-                const content = String(reader.result || "").split(",")[1];
+                const content = String(reader.result || '').split(',')[1];
                 change({
                   attachment: {
                     name: file.name,
-                    url: "data:text/plain;base64," + content,
-                  },
+                    url: 'data:text/plain;base64,' + content
+                  }
                 });
               };
               reader.onerror = () =>
-                notify("error", "This file could not be read.");
+                notify('error', 'This file could not be read.');
               reader.readAsDataURL(file);
             }}
           />
@@ -177,10 +214,10 @@ export default function CardDetails({
       )}
       <hr />
       <h3 className="op-strong">Comments</h3>
-      {card.comments.map((c) => (
-        <div key={c.id} className="wf-comment">
-          <strong className="op-small">{c.author}</strong>
-          {editingComment === c.id ? (
+      {card.comments.map((commentEntry) => (
+        <div key={commentEntry.id} className="wf-comment">
+          <strong className="op-small">{commentEntry.author}</strong>
+          {editingComment === commentEntry.id ? (
             <>
               <textarea
                 className="op-textarea"
@@ -191,48 +228,51 @@ export default function CardDetails({
               <div className="op-row">
                 <button
                   className="op-btn op-btn--secondary op-btn--compact"
-                  disabled={busy || !commentText.trim()}
+                  disabled={isBusy || !commentText.trim()}
                   onClick={() => {
-                    change({ commentId: c.id, comment: commentText });
-                    setEditingComment("");
+                    change({
+                      commentId: commentEntry.id,
+                      comment: commentText
+                    });
+                    setEditingComment('');
                   }}
                 >
                   Save comment
                 </button>
                 <button
                   className="op-btn op-btn--secondary op-btn--compact"
-                  onClick={() => setEditingComment("")}
+                  onClick={() => setEditingComment('')}
                 >
                   Cancel
                 </button>
               </div>
             </>
           ) : (
-            <p>{c.text}</p>
+            <p>{commentEntry.text}</p>
           )}
-          {canEdit && editingComment !== c.id && (
+          {canEdit && editingComment !== commentEntry.id && (
             <div className="op-row">
               <button
                 className="op-btn op-btn--secondary op-btn--compact"
-                disabled={busy}
+                disabled={isBusy}
                 onClick={() => {
-                  setEditingComment(c.id);
-                  setCommentText(c.text);
+                  setEditingComment(commentEntry.id);
+                  setCommentText(commentEntry.text);
                 }}
               >
                 Edit comment
               </button>
               <button
                 className="op-btn op-btn--secondary op-btn--compact"
-                disabled={busy}
-                onClick={() => change({ removeCommentId: c.id })}
+                disabled={isBusy}
+                onClick={() => change({ removeCommentId: commentEntry.id })}
               >
                 Remove comment
               </button>
             </div>
           )}
           <time className="op-caption op-muted">
-            {new Date(c.at).toLocaleString()}
+            {new Date(commentEntry.at).toLocaleString()}
           </time>
         </div>
       ))}
@@ -242,29 +282,29 @@ export default function CardDetails({
           className="op-textarea"
           disabled={!canEdit}
           value={comment}
-          onChange={(e) => setComment(e.target.value)}
+          onChange={(event) => setComment(event.target.value)}
         />
       </label>
       <button
         className="op-btn op-btn--primary"
-        disabled={!canEdit || busy || !comment.trim()}
+        disabled={!canEdit || isBusy || !comment.trim()}
         onClick={() => {
           change({ comment });
-          setComment("");
+          setComment('');
         }}
       >
         Add comment
       </button>
       <hr />
       <h3 className="op-strong">Activity</h3>
-      {[...card.activity].reverse().map((a) => (
-        <div className="op-small" key={a.id}>
-          <strong>{a.text}</strong>
+      {[ ...card.activity ].reverse().map((auditEntry) => (
+        <div className="op-small" key={auditEntry.id}>
+          <strong>{auditEntry.text}</strong>
           <p className="op-caption op-muted">
-            {a.author} · {new Date(a.at).toLocaleString()}
+            {auditEntry.author} · {new Date(auditEntry.at).toLocaleString()}
           </p>
         </div>
       ))}
     </div>
   );
-}
+};

@@ -1,13 +1,14 @@
+/* Components: workflows composition. Shared kit tokens remain authoritative. */
 .wf-root {
-  height: 100%;
   display: flex;
   flex-direction: column;
+  height: 100%;
   min-width: 0;
 }
 .wf-root > .op-toolbar {
+  flex-shrink: 0;
   flex-wrap: wrap;
   gap: 12px;
-  flex-shrink: 0;
 }
 .wf-toolbar > button {
   flex-shrink: 0;
@@ -21,9 +22,9 @@
 }
 .wf-board-search {
   box-sizing: border-box;
-  width: 100%;
-  min-width: 0;
   max-width: 250px;
+  min-width: 0;
+  width: 100%;
 }
 .wf-board-search input {
   width: 0;
@@ -38,44 +39,46 @@
   overflow-wrap: anywhere;
 }
 .wf-board-layout {
-  min-height: 0;
   display: flex;
   flex: 1;
+  min-height: 0;
   overflow: hidden;
 }
+/* Partials: Workflow board */
 .wf-board {
-  padding: 24px;
-  overflow: auto;
-  min-width: 0;
-  flex: 1;
   align-items: stretch;
+  flex: 1;
+  min-width: 0;
+  overflow: auto;
+  padding: 24px;
 }
 .wf-board .op-column {
-  min-width: 260px;
-  max-width: 340px;
   flex: 1 0 260px;
+  max-width: 340px;
+  min-width: 260px;
 }
 .wf-board .op-column__header {
-  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  flex-direction: row;
   gap: 12px;
+  justify-content: space-between;
 }
 .wf-board .op-column__cards {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
+/* Partials: Workflow cards */
 .wf-card {
   border: 0;
-  font: inherit;
   color: inherit;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
-  text-align: left;
+  font: inherit;
   gap: 12px;
+  text-align: left;
   width: 100%;
-  cursor: pointer;
 }
 .wf-card--selected {
   outline: 2px solid var(--op-accent);
@@ -84,20 +87,20 @@
   line-height: 1.5;
 }
 .wf-card-meta {
-  display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 12px;
   color: var(--op-text-2);
+  display: flex;
+  font-size: 12px;
+  gap: 12px;
 }
 .wf-card-meta > span {
-  display: inline-flex;
   align-items: center;
+  display: inline-flex;
   gap: 4px;
 }
 .wf-card-meta .op-icon {
-  width: 14px;
   height: 14px;
+  width: 14px;
 }
 .wf-empty-stage {
   padding: 20px 8px;
@@ -113,26 +116,26 @@
   margin: 0;
 }
 .wf-comment {
-  padding: 12px;
   background: var(--op-sunken);
   border-radius: 8px;
+  padding: 12px;
 }
 .wf-comment p {
   margin: 8px 0;
-  white-space: pre-wrap;
   overflow-wrap: anywhere;
+  white-space: pre-wrap;
 }
 .wf-add-card {
-  display: flex;
   align-items: end;
-  padding: 16px 24px;
-  gap: 12px;
   background: var(--op-surface);
+  display: flex;
+  gap: 12px;
+  padding: 16px 24px;
 }
 .wf-status {
+  color: var(--op-text-2);
   margin: 0;
   padding: 8px 24px;
-  color: var(--op-text-2);
 }
 .wf-root > .op-notice {
   margin: 12px 24px;
@@ -141,31 +144,31 @@
   max-width: 1400px;
 }
 .wf-designer-grid {
-  display: grid;
-  grid-template-columns: 280px minmax(0, 1fr);
   align-items: start;
+  display: grid;
   gap: 24px;
+  grid-template-columns: 280px minmax(0, 1fr);
 }
 .wf-stage-list {
-  padding: 16px;
   gap: 8px;
+  padding: 16px;
 }
 .wf-stage-select {
-  border: 0;
   background: none;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font: inherit;
+  border: 0;
   color: inherit;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  font: inherit;
+  gap: 4px;
   padding: 0;
+  text-align: left;
 }
 .wf-stage-list .op-stage-item {
   gap: 8px;
 }
-.wf-stage-list .op-stage-item[aria-selected="true"] {
+.wf-stage-list .op-stage-item[aria-selected='true'] {
   border-color: var(--op-accent);
 }
 .wf-designer .op-section__body {
@@ -175,8 +178,8 @@
 .wf-card-details hr {
   border: 0;
   border-top: 1px solid var(--op-border);
-  width: 100%;
   margin: 4px 0;
+  width: 100%;
 }
 .wf-designer h3 {
   margin: 0;
@@ -190,11 +193,13 @@
 .wf-designer .op-option input {
   accent-color: var(--op-accent);
 }
+/* Responsive: preserve the owning component’s overrides below its base rules. */
 @media (max-width: 1000px) {
   .wf-designer-grid {
     grid-template-columns: 220px minmax(0, 1fr);
   }
 }
+/* Responsive: preserve the owning component’s overrides below its base rules. */
 @media (max-width: 767px) {
   .wf-designer-grid {
     grid-template-columns: 1fr;
@@ -216,18 +221,20 @@
   }
 }
 
+/* Responsive: preserve the owning component’s overrides below its base rules. */
+
 @media (max-width: 767px) {
   .wf-board .op-column {
+    flex: none;
     max-width: none;
     min-width: 0;
-    flex: none;
     width: 100%;
   }
 }
 
 .wf-board .op-column {
-  min-height: 100%;
   border-radius: 12px;
+  min-height: 100%;
 }
 .wf-board .op-column__cards {
   flex: 1;
@@ -237,27 +244,28 @@
   flex: 1;
 }
 .wf-column--drop {
+  background: var(--op-accent-soft, var(--op-sunken));
   outline: 2px dashed var(--op-accent);
   outline-offset: -2px;
-  background: var(--op-accent-soft, var(--op-sunken));
 }
+/* Partials: Workflow cards */
 .wf-card {
   position: relative;
-  user-select: none;
   touch-action: pan-y;
+  user-select: none;
 }
 .wf-card[tabindex]:focus-visible {
   outline: 2px solid var(--op-accent);
   outline-offset: 2px;
 }
 .wf-card--dragging {
-  opacity: 0.55;
   cursor: grabbing;
+  opacity: 0.55;
   outline: 2px solid var(--op-accent);
 }
 .wf-card-heading {
-  display: flex;
   align-items: flex-start;
+  display: flex;
   gap: 8px;
   min-width: 0;
 }
@@ -266,17 +274,18 @@
   overflow-wrap: anywhere;
 }
 .wf-card-grip {
+  color: var(--op-text-2);
+  cursor: grab;
   display: inline-flex;
   flex: 0 0 auto;
   padding-block: 2px;
-  color: var(--op-text-2);
-  cursor: grab;
   touch-action: none;
 }
 .wf-card-grip .op-icon {
-  width: 16px;
   height: 16px;
+  width: 16px;
 }
+/* Responsive: preserve the owning component’s overrides below its base rules. */
 @media (max-width: 767px) {
   .wf-board .op-column {
     min-height: 200px;
@@ -284,8 +293,8 @@
 }
 
 .wf-board-heading {
-  display: flex;
   align-items: center;
+  display: flex;
   gap: 12px;
   padding: 20px 24px 0;
 }
@@ -293,13 +302,13 @@
   margin: 0;
 }
 .wf-list-link {
-  padding: 0;
-  border: 0;
   background: none;
+  border: 0;
   color: var(--op-text);
+  cursor: pointer;
   font: inherit;
   font-weight: 600;
-  cursor: pointer;
+  padding: 0;
   text-align: left;
 }
 .wf-list-link:hover {
@@ -321,13 +330,13 @@
 }
 .wf-assignees-field {
   border: 0;
-  padding: 0;
   margin: 0;
   min-width: 0;
+  padding: 0;
 }
 .wf-assignees-field legend {
-  padding: 0;
   margin-bottom: 8px;
+  padding: 0;
 }
 .wf-assignees-field .op-row {
   gap: 8px;
@@ -348,16 +357,16 @@
   display: none;
 }
 .wf-sla {
-  width: 100%;
   flex-shrink: 0;
+  width: 100%;
 }
 .wf-board .op-column__header {
   gap: 8px;
 }
 .wf-stage-forms {
   border: 0;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 .wf-card-forms {
   display: grid;

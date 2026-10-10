@@ -1,16 +1,39 @@
-import { eventLabels, type Stage } from "../workflows/types.js";
-import { WorkflowError, text } from "./validation.js";
-import {
-  actionLabels,
-  conditionLabels,
-  operators,
-  type Automation,
-  type AutomationDraft,
-  type Condition,
-} from "./types.js";
+//client
+import type { Stage } from '../workflows/types.js';
+import type { Automation, AutomationDraft, Condition } from './types.js';
+import { eventLabels } from '../workflows/types.js';
+import { getConditionOperators } from './conditions.js';
+import { actionLabels, conditionLabels } from './types.js';
+import { WorkflowError, validateText } from './validation.js';
 
-/** Adapt persisted legacy definitions; archived publications remain untouched. */
-export function readDefinition(value: any, revision: number): Automation {
+//--------------------------------------------------------------------//
+// Types
+
+type StoredAutomation = Omit<Automation, 'conditions' | 'status'> & {
+  conditions?: StoredCondition[],
+  status?: Automation['status'],
+  enabled?: boolean,
+  published?: number
+};
+
+//legacy rows can predate status and carry retired predicates; retain their
+// semantics the editor validates replacement definitions against the current
+// contract
+type StoredCondition = Omit<Condition, 'field' | 'operator'> & {
+  field: Condition['field'] | 'owner' | 'assignees' | 'stageId',
+  operator: Condition['operator'] | 'equals' | 'not-empty'
+};
+
+//--------------------------------------------------------------------//
+// Functions
+
+/**
+ * Adapt persisted legacy definitions; archived publications remain untouched.
+ */
+export function readDefinition(
+  value: StoredAutomation,
+  revision: number
+): Automation {
   return {
     id: value.id,
     name: value.name,
@@ -18,148 +41,153 @@ export function readDefinition(value: any, revision: number): Automation {
     stageId: value.stageId,
     status:
       value.status ||
-      (value.enabled ? "active" : value.published ? "paused" : "draft"),
-    trigger: value.trigger || "stage-enter",
+      (value.enabled ? 'active' : value.published ? 'paused' : 'draft'),
+    trigger: value.trigger || 'stage-enter',
     oncePerVisit: value.oncePerVisit ?? true,
     stopOnFailure: value.stopOnFailure ?? true,
     match: value.match,
     timing: value.timing,
     actions: value.actions,
     revision,
-    conditions: (value.conditions || []).map((condition: any) => ({
+    conditions: (value.conditions || []).map((condition) => ({
       ...condition,
       operator:
-        condition.field === "title" && condition.operator === "equals"
-          ? "eq"
-          : condition.operator,
-    })),
+        condition.field === 'title' && condition.operator === 'equals'
+          ? 'eq'
+          : condition.operator
+    })) as Condition[]
   };
-}
-/** Enforce the same field-specific contracts shown by the editor. */
+};
+
+/**
+ * Enforce the same field-specific contracts shown by the editor.
+ */
 export function validate(
   value: AutomationDraft,
-  stage: Stage,
+  stage: Stage
 ): AutomationDraft {
-  if (!value || !["draft", "active", "paused"].includes(value.status))
-    throw new WorkflowError("Choose Draft, Active or Paused.");
+  if (!value || ![ 'draft', 'active', 'paused' ].includes(value.status))
+    throw new WorkflowError('Choose Draft, Active or Paused.');
   if (!Object.hasOwn(eventLabels, value.trigger))
-    throw new WorkflowError("Choose a card event.");
+    throw new WorkflowError('Choose a card event.');
   if (
-    typeof value.oncePerVisit !== "boolean" ||
-    typeof value.stopOnFailure !== "boolean"
+    typeof value.oncePerVisit !== 'boolean' ||
+    typeof value.stopOnFailure !== 'boolean'
   )
-    throw new WorkflowError("Run settings must be checked or unchecked.");
+    throw new WorkflowError('Run settings must be checked or unchecked.');
   if (!Array.isArray(value.conditions) || value.conditions.length > 12)
-    throw new WorkflowError("Use at most twelve conditions.");
+    throw new WorkflowError('Use at most twelve conditions.');
   if (
     !Array.isArray(value.actions) ||
     !value.actions.length ||
     value.actions.length > 12
   )
-    throw new WorkflowError("Add between one and twelve actions.");
+    throw new WorkflowError('Add between one and twelve actions.');
   if (
     !stage.formIds.length &&
-    (value.trigger === "form-submitted" ||
+    (value.trigger === 'form-submitted' ||
       value.conditions.some((condition) =>
-        condition?.field?.startsWith("forms-"),
+        condition?.field?.startsWith('forms-')
       ))
   )
     throw new WorkflowError(
-      "Attach a form to this stage before using form events or conditions.",
+      'Attach a form to this stage before using form events or conditions.'
     );
   const conditions: Condition[] = value.conditions.map((condition) => {
     if (
       !condition ||
       !Object.hasOwn(conditionLabels, condition.field) ||
-      !operators(condition.field).includes(condition.operator)
+      !getConditionOperators(condition.field).includes(condition.operator)
     )
-      throw new WorkflowError("Condition field and operator do not match.");
+      throw new WorkflowError('Condition field and operator do not match.');
     let input = condition.value;
-    if (condition.field === "assigned-to") {
+    if (condition.field === 'assigned-to') {
       if (!Array.isArray(input) || !input.length || input.length > 50)
-        throw new WorkflowError("Assigned To needs a list of names.");
-      input = [...new Set(input.map((name) => text(name, "Assignee", 100)))];
-    } else if (condition.field === "title") {
-      if (typeof input !== "string" || input.length > 200)
-        throw new WorkflowError("Title conditions require text.");
+        throw new WorkflowError('Assigned To needs a list of names.');
+      input = [
+        ...new Set(input.map((name) => validateText(name, 'Assignee', 100)))
+      ];
+    } else if (condition.field === 'title') {
+      if (typeof input !== 'string' || input.length > 200)
+        throw new WorkflowError('Title conditions require text.');
     } else if (
-      typeof input !== "number" ||
+      typeof input !== 'number' ||
       !Number.isInteger(input) ||
       input < 0
     )
       throw new WorkflowError(
-        "Count conditions require a nonnegative whole number.",
+        'Count conditions require a nonnegative whole number.'
       );
     return {
       field: condition.field,
       operator: condition.operator,
-      value: input,
+      value: input
     };
   });
   const timing = value.timing;
   if (
     !timing ||
-    !["now", "delay", "date", "sla"].includes(timing.kind) ||
+    ![ 'now', 'delay', 'date', 'sla' ].includes(timing.kind) ||
     !Number.isFinite(timing.minutes) ||
     timing.minutes < 0 ||
     timing.minutes > 525600 ||
-    (timing.kind === "date" && !Number.isFinite(Date.parse(timing.date)))
+    (timing.kind === 'date' && !Number.isFinite(Date.parse(timing.date)))
   )
-    throw new WorkflowError("Choose valid timing.");
+    throw new WorkflowError('Choose valid timing.');
   const actions = value.actions.map((action) => {
     if (!action || !Object.hasOwn(actionLabels, action.type))
       throw new WorkflowError(
-        "This action provider is unavailable. Choose a supported action.",
-        422,
+        'This action provider is unavailable. Choose a supported action.',
+        422
       );
     if (
-      ["check-task", "uncheck-task"].includes(action.type) &&
+      [ 'check-task', 'uncheck-task' ].includes(action.type) &&
       !stage.tasks.some((task) => task.id === action.value)
     )
-      throw new WorkflowError("Choose a task attached to this stage.");
+      throw new WorkflowError('Choose a task attached to this stage.');
     if (
-      action.type === "attach-file" &&
+      action.type === 'attach-file' &&
       (!action.file ||
         !/^data:text\/plain;base64,[A-Za-z0-9+/]*={0,2}$/.test(
-          action.file.url,
+          action.file.url
         ) ||
-        Buffer.from(action.file.url.split(",")[1], "base64").length >
+        Buffer.from(action.file.url.split(',')[1], 'base64').length >
           250 * 1024)
     )
-      throw new WorkflowError("Attach a text file of at most 250 KB.");
-    if (action.type === "send-message") {
-      text(action.templateId, "Message template", 100);
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(action.recipient || ""))
-        throw new WorkflowError("Enter a recipient email address.");
+      throw new WorkflowError('Attach a text file of at most 250 KB.');
+    if (action.type === 'send-message') {
+      validateText(action.templateId, 'Message template', 100);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(action.recipient || ''))
+        throw new WorkflowError('Enter a recipient email address.');
       if (
         !action.variables ||
         Object.values(action.variables).some(
-          (value) => typeof value !== "string" || value.length > 4000,
+          (value) => typeof value !== 'string' || value.length > 4000
         )
       )
-        throw new WorkflowError("Message variables require text values.");
+        throw new WorkflowError('Message variables require text values.');
     }
     return {
       ...action,
-      value: text(
+      value: validateText(
         action.value || action.file?.name || action.templateId,
-        "Action value",
-        2000,
-      ),
+        'Action value',
+        2000
+      )
     };
   });
   return {
-    id: text(value.id, "Automation ID", 100),
-    name: text(value.name, "Rule name"),
-    workflowId: text(value.workflowId, "Workflow", 100),
+    id: validateText(value.id, 'Automation ID', 100),
+    name: validateText(value.name, 'Rule name'),
+    workflowId: validateText(value.workflowId, 'Workflow', 100),
     stageId: stage.id,
     status: value.status,
     trigger: value.trigger,
     oncePerVisit: value.oncePerVisit,
     stopOnFailure: value.stopOnFailure,
-    match: value.match === "any" ? "any" : "all",
+    match: value.match === 'any' ? 'any' : 'all',
     conditions,
     timing: { ...timing },
-    actions,
+    actions
   };
-}
+};

@@ -125,3 +125,7 @@ plugin. See [round 15](../../tests/evidence/reviews/r015-message-editor/notes.md
 [Round 16](../../tests/evidence/reviews/r016-message-wysiwyg/notes.md) adds the visual HTML editor
 and Source code toggle, and removes View message from the update-page header.
 The read-only detail route remains available from the Messages list.
+
+## Reusable action boundary
+
+`officepress-templates-read` and `officepress-templates-update` register lazy default actions during guarded `listen`. Events refresh the verified framework session and own business authorization, validation, service calls and outcomes. Pages own CSRF and web input/output adaptation. Update pages translate the path suffix into `operation` before dispatch. A direct event caller must supply an actual request with a framework session, rather than a caller object in data. Optional service helpers remain available for domain contract tests.

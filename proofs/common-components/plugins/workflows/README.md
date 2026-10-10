@@ -214,3 +214,9 @@ Opening Create does not write a database record. An optional stage fragment on
 update links preserves stage-settings selection. Existing automation subviews
 remain within their workflow page. `/workflows` redirects to the list.
 See [round 14](../../tests/evidence/reviews/r014-clean-paths/notes.md).
+
+## Reusable action boundary
+
+`officepress-workflows-read`, `officepress-workflows-update` and `officepress-workflows-forms` register lazy default actions during guarded `listen`. Events refresh the verified framework session and own business authorization, validation, service calls and outcomes. Pages own CSRF and web input/output adaptation. The existing body `action` selects the business update operation. A direct event caller must supply an actual request with a framework session, rather than a caller object in data. Optional service helpers remain available for domain contract tests.
+
+Committed card changes dispatch `officepress-workflow-transition` through Stackpress. It is an internal integration contract carrying a service-issued transition and its authorized caller; it is not a public transport endpoint. Listener execution is awaited after commit. Subscriber exceptions still propagate; this is not an outbox. `subscribe` is retained for isolated service observers, while runtime integrations use ordered Stackpress hooks.

@@ -1,12 +1,12 @@
 # OfficePress Stackpress handbook
 
-Every OfficePress app uses Stackpress. The accepted ecosystem baseline is **0.10.8**. Start from the maintained local `proofs/stackpress-boilerplate/`, adapting its shared mechanics to each app's product scope.
+Every OfficePress app uses Stackpress. The accepted ecosystem baseline is **0.10.8**. Per the 2026-10-10 user decision, scaffold new apps from the maintained local `proofs/app-shell/` (Yarn + Stackpress CLI), adapting its shared mechanics to each app's product scope. Apps needing workflows/automations (kanban), form builder or message templates use `proofs/common-components/` as the feature reference. The earlier `proofs/stackpress-boilerplate/` remains historical framework proof evidence, superseded as the scaffold source.
 
 Plugins separate responsibilities. They may be disabled after a restart. Each dependent plugin checks its own services in `plugin.ts`, then falls back or returns before registering its feature listeners/routes. There is no automatic dependency validation or live unloading.
 
 After a custom-app implementation first passes functional verification, automatically run the [post-verification audit and refactor cycle](../references/00392-stackpress-post-verification-audit-cycle.md). Apply ChrisAI Coding's applicable logic, responsibility and language-style passes, including the accepted comment/JSDoc/naming conventions, then verify the final source. Repeat scoped fixes when findings remain before claiming completion.
 
-PostgreSQL is the production default; PGlite is the preferred disposable development substitute for PostgreSQL and CockroachDB. Use `.build/database/` and config `database.populate` fixtures; a separate cross-engine compatibility proof is not required. Keep Idea files small and compose them from a root schema. Smaller files are the user's authoring/performance recommendation, not a proven incremental compiler feature.
+PostgreSQL is the production default; PGlite in `.build/database/` is the disposable development substitute — [Data and generation](stackpress-data-and-generation.md) owns the full database, fixture and compatibility policy. Keep Idea files small and compose them from a root schema. Smaller files are the user's authoring/performance recommendation, not a proven incremental compiler feature.
 
 ## Route creation defaults
 
@@ -47,4 +47,6 @@ The browser page pattern applies only to browser page paths; API paths use the s
 
 The references contain the complete imported text locally. Imported generic examples are subordinate to the OfficePress contract. External paths and URLs inside source blocks establish provenance; they are not required dependencies for KB retrieval.
 
-- [Yarn, CLI scripts and proof layout](../references/00373-stackpress-yarn-cli-and-proof-layout.md) — load when changing package scripts, migrating config/bootstrap paths, aggregating plugin tests or storing proof evidence; records the accepted 2026-10-08 conventions and upstream provenance.
+- [Yarn, CLI scripts and proof layout](../references/00373-stackpress-yarn-cli-and-proof-layout.md) — load when changing package scripts, config/bootstrap paths, plugin test aggregation or proof evidence; the accepted 2026-10-08 conventions.
+
+- [Agent guidelines](stackpress-logic-patterns.md) — load before implementation/refactoring; routes the 69 accepted guidelines into detailed task references, covering ownership, events/pages, priorities, generation, data, interfaces and verification.

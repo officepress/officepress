@@ -1,20 +1,25 @@
-import { useState } from "react";
-import ContentTabs from "./ContentTabs.js";
-import type { ContentMode } from "./ContentTabs.js";
-import { editableDraft, emailHTML } from "../content.js";
-import { channelLabels } from "../client.js";
-import type { TemplateRecord } from "../types.js";
+//modules
+import { useState } from 'react';
 
-/** Read the saved message content without entering its editor. */
+//client
+import type { TemplateRecord } from '../types.js';
+import type { ContentMode } from './ContentTabs.js';
+import { channelLabels } from '../client.js';
+import { editableDraft, emailHTML } from '../content.js';
+import ContentTabs from './ContentTabs.js';
+
+/**
+ * Read the saved message content without entering its editor.
+ */
 export default function MessageDetail({
   record,
-  writable,
+  writable: canWrite
 }: {
-  record: TemplateRecord;
-  writable: boolean;
+  record: TemplateRecord,
+  writable: boolean
 }) {
   const draft = editableDraft(record.draft);
-  const [mode, setMode] = useState<ContentMode>("html");
+  const [ mode, setMode ] = useState<ContentMode>('html');
   return (
     <div className="op-page templates-page">
       <div className="op-page-head">
@@ -27,10 +32,10 @@ export default function MessageDetail({
         <a className="op-btn op-btn--secondary" href="/message/search">
           Back to messages
         </a>
-        {writable && (
+        {canWrite && (
           <a
             className="op-btn op-btn--primary"
-            href={"/message/update/" + encodeURIComponent(record.id)}
+            href={'/message/update/' + encodeURIComponent(record.id)}
           >
             Edit message
           </a>
@@ -39,7 +44,7 @@ export default function MessageDetail({
       <section className="op-section">
         <div className="op-section__body">
           {draft.subject && <h3 className="op-heading">{draft.subject}</h3>}
-          {draft.channel === "email" ? (
+          {draft.channel === 'email' ? (
             <>
               <ContentTabs mode={mode} onChange={setMode} />
               <div
@@ -47,7 +52,7 @@ export default function MessageDetail({
                 role="tabpanel"
                 aria-labelledby={`message-${mode}-tab`}
               >
-                {mode === "html" ? (
+                {mode === 'html' ? (
                   <div
                     className="template-email-body"
                     dangerouslySetInnerHTML={{ __html: emailHTML(draft.body) }}
@@ -66,4 +71,4 @@ export default function MessageDetail({
       </section>
     </div>
   );
-}
+};

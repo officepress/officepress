@@ -1,12 +1,22 @@
 //modules
 import { createContext } from 'react';
-//stackpress/view
+
+//client
 import type { ServerContextProps } from './types.js';
 import { withUnknownHost } from './helpers.js';
 
+//--------------------------------------------------------------------//
+// Types
+
 export type { ServerContextProps };
 
+//--------------------------------------------------------------------//
+// Constants
+
+//fallback URL for initial client context before a real request is supplied
 export const unknownHost = new URL(withUnknownHost('/'));
+
+//configuration consumed by this module’s bootstrap/provider
 export const config: ServerContextProps = {
   data: {},
   session: {
@@ -41,5 +51,8 @@ export const config: ServerContextProps = {
 };
 
 const ServerContext = createContext<ServerContextProps>(config);
+
+//--------------------------------------------------------------------//
+// Entry point
 
 export default ServerContext;

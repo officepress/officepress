@@ -1,9 +1,13 @@
+/**
+ * Render one icon from the shared sprite with the caller supplied
+ * accessibility props.
+ */
 export default function Icon({
   name,
-  className = "",
+  className = ''
 }: {
-  name: string;
-  className?: string;
+  name: string,
+  className?: string
 }) {
   return (
     <svg
@@ -14,4 +18,4 @@ export default function Icon({
       <use href={`/icons.svg#i-${name}`} />
     </svg>
   );
-}
+};

@@ -98,3 +98,9 @@ a transactional outbox, so crash recovery between commit and dispatch is not
 established. The worker checks up to 25 batches per tick and continues via its
 scheduler. Runs retain the authorized event caller; adopting apps with changing
 employment policy need current-principal resolution before execution.
+
+## Reusable action boundary
+
+`officepress-automations-read` and `officepress-automations-update` register lazy default actions during guarded `listen`. Events refresh the verified framework session and own business authorization, validation, service calls and outcomes. Pages own CSRF and web input/output adaptation. The existing body `action` selects the business update operation. A direct event caller must supply an actual request with a framework session, rather than a caller object in data. Optional service helpers remain available for domain contract tests.
+
+The lazy `officepress-workflow-transition` listener runs at priority -100. It observes the Workflow service’s internal committed transition; no custom runtime workflow subscription or factory callback is required. Earlier cancellation skips this integration, and integration failure propagates to the original operation after its committed write.

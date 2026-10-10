@@ -1,0 +1,249 @@
+{
+  "proof": "agent-mode-compatibility",
+  "auditedAt": "2026-10-10T09:16:52.553923+00:00",
+  "scope": "Maintained authored modules; generated/dependency/copied vendor assets excluded from normalization.",
+  "documentation": {
+    "maintainedModules": 31,
+    "namedCallables": 33,
+    "undocumentedNamedCallables": 0,
+    "explicitAnyTokens": 0
+  },
+  "nodeTestCasesPerCampaign": 7,
+  "receiptChecksAcrossCampaigns": 73,
+  "sourceHashComparisons": 68,
+  "receipts": [
+    {
+      "path": "tests/evidence/receipts/2026-10-10T09-10-30-338Z.json",
+      "started": "2026-10-10T09:10:30.338Z",
+      "finished": "2026-10-10T09:10:33.605Z",
+      "status": true,
+      "checks": 32
+    },
+    {
+      "path": "tests/evidence/receipts/2026-10-10T09-09-43-180Z.json",
+      "started": "2026-10-10T09:09:43.180Z",
+      "finished": "2026-10-10T09:09:58.783Z",
+      "status": true,
+      "checks": 41
+    }
+  ],
+  "finalReview": "Full style-compliance claim withdrawn: naming requirements and explanatory comments were not fully checked, and nested JSDoc conflicts with the user\u2019s declaration convention. Behavioral verification receipts are unchanged.",
+  "files": [
+    {
+      "path": "README.md",
+      "beforeSha256": "ae857bc5d3e684996df025f5222a1b647d82e5a49d1f0a262b67b5252472fab5",
+      "afterSha256": "ae857bc5d3e684996df025f5222a1b647d82e5a49d1f0a262b67b5252472fab5",
+      "changed": false
+    },
+    {
+      "path": "config/build.ts",
+      "beforeSha256": "ea372940fdc54746f82458eafb277a3511a1d7bcdb808bbbb658c5c5d6f0910e",
+      "afterSha256": "23edc545044b05a73f204db8dd5bc501ee5851189599657065ccc6c5954b7151",
+      "changed": true
+    },
+    {
+      "path": "config/common.ts",
+      "beforeSha256": "1e0858e0b8ed500ebe1524c96b79855d1a20b676e97146c12de96ae7f26999d0",
+      "afterSha256": "d27245da4c07860d010ed3af2c55bab7068a73d052bc4a5d8de50ef9fd0aab7e",
+      "changed": true
+    },
+    {
+      "path": "config/develop.ts",
+      "beforeSha256": "ea372940fdc54746f82458eafb277a3511a1d7bcdb808bbbb658c5c5d6f0910e",
+      "afterSha256": "23edc545044b05a73f204db8dd5bc501ee5851189599657065ccc6c5954b7151",
+      "changed": true
+    },
+    {
+      "path": "config/preview.ts",
+      "beforeSha256": "ea372940fdc54746f82458eafb277a3511a1d7bcdb808bbbb658c5c5d6f0910e",
+      "afterSha256": "23edc545044b05a73f204db8dd5bc501ee5851189599657065ccc6c5954b7151",
+      "changed": true
+    },
+    {
+      "path": "config/production.ts",
+      "beforeSha256": "ea372940fdc54746f82458eafb277a3511a1d7bcdb808bbbb658c5c5d6f0910e",
+      "afterSha256": "23edc545044b05a73f204db8dd5bc501ee5851189599657065ccc6c5954b7151",
+      "changed": true
+    },
+    {
+      "path": "package.json",
+      "beforeSha256": "960655e262308b5ebdd60f4a4c91abc78caf603cbc855bc8f6f6d02d97756541",
+      "afterSha256": "960655e262308b5ebdd60f4a4c91abc78caf603cbc855bc8f6f6d02d97756541",
+      "changed": false
+    },
+    {
+      "path": "plugins/agent-domain/events/config.ts",
+      "beforeSha256": "6a1924adb3681ff64748841c232e15bf023cd469382500ff5cfa12c0068d66ae",
+      "afterSha256": "2b499a1058755b6e888aed3d65247f6cac4e7f07fd6267ccf09f3f1ec7b78a22",
+      "changed": true
+    },
+    {
+      "path": "plugins/agent-domain/events/execute.ts",
+      "beforeSha256": "737996d4f5d1315cd912aba62adce920d1aa06d90e3f0cea5dc807626d1a82ee",
+      "afterSha256": "7f29088788eb7621c810a372ae2c278cb62f8de297b331143f5df206d5d0df77",
+      "changed": true
+    },
+    {
+      "path": "plugins/agent-domain/index.ts",
+      "beforeSha256": "121c2f0e07061e0e651c9c1932e839536a9c57eac80b716180d4150b96d04e37",
+      "afterSha256": "511834aef087e22809d5c04f670381f474395c883bc762c4f2a6144f5e82a476",
+      "changed": true
+    },
+    {
+      "path": "plugins/agent-domain/plugin.ts",
+      "beforeSha256": "823a9f73323c8e8f621a41ead91d1ad1a869a61261e0846ac5bd6c1fe50ebf70",
+      "afterSha256": "c820410e08902b1159df81b6a3b6f464ac1028b6baede5830ef6a40bd6631cea",
+      "changed": true
+    },
+    {
+      "path": "plugins/agent-domain/store.ts",
+      "beforeSha256": "30c598f28cc045eef64c522be1fa9cf8121e759d65011056816e111b5df48331",
+      "afterSha256": "7dfd20719b1b318e8df309662b3b8613987ad397d8a9373f1406b574c535abac",
+      "changed": true
+    },
+    {
+      "path": "plugins/agent-domain/tests/contracts.test.ts",
+      "beforeSha256": "50c1c8fa0ca0839e69d5855aeffe459f3454cbde183f8196af30cd3a68626317",
+      "afterSha256": "2cae3f75542e4fb7df53901803a2e58cb4fb422f03d2c24ec4cebf1e7e6cb195",
+      "changed": true
+    },
+    {
+      "path": "plugins/agent-domain/tests/contracts.ts",
+      "beforeSha256": "835b577e80eb34bff07289957dadfb39290ef8cb5dc75f8f8c7117e4936a5861",
+      "afterSha256": "4e8ff4797fd5be24d554259b6b0a37d41c97dcacd22c8fc118f84f7dd3815ddc",
+      "changed": true
+    },
+    {
+      "path": "plugins/agent-runtime/events/config.ts",
+      "beforeSha256": "0d0142b9b01088d1bdc984d00642e2cbf3bc2f0faec5d5f9285b991f094ea0b1",
+      "afterSha256": "88290c3ae71367dcb5dbaf9abd54ea966405054561686c04d4a763e60507a9c8",
+      "changed": true
+    },
+    {
+      "path": "plugins/agent-runtime/events/run.ts",
+      "beforeSha256": "0074f95588046c6e3be95bd5a02c8d5606dfd74950e34b2974a0ef96986f0faf",
+      "afterSha256": "fa5e1bdaa5cbbf1c368c2c50771af8b3d94d2edc5d44e01fb00f4e5c219ba9a4",
+      "changed": true
+    },
+    {
+      "path": "plugins/agent-runtime/index.ts",
+      "beforeSha256": "4dfec5de359acf07b45adf027ba130a000a01a9467d338691ee28397e24b3fd2",
+      "afterSha256": "4da5e56bae926925bef29ff9b0d2b79dde8f197a9c92b6c6ab9addff989a202e",
+      "changed": true
+    },
+    {
+      "path": "plugins/agent-runtime/openrouter.ts",
+      "beforeSha256": "0cf51132081d67896e4c10aeaf5f5aee1c9ba056709b174ab3fc68d25a72617d",
+      "afterSha256": "301e35ecc0e5acc840eb9d8ed60e90f0cbd49cbaa8fe2b7ac08b6dfedd801fd9",
+      "changed": true
+    },
+    {
+      "path": "plugins/agent-runtime/plugin.ts",
+      "beforeSha256": "5ab65db8ed59032fa187df262f791020720fe5c0aac92d60e17548233e24cea3",
+      "afterSha256": "baada3b6cfd1c52a05cc9813e9e2d5c74f0539a3f6b9d99a758fa8fd0a89087e",
+      "changed": true
+    },
+    {
+      "path": "plugins/agent-runtime/tests/contracts.test.ts",
+      "beforeSha256": "4a7386b26a58406be674293128892dc31a98f51985691e32c67e57bd81571f08",
+      "afterSha256": "51805bc4278797f42456f9700d8e11d38186b3a52e8055efd3fa7513c7f4f1fa",
+      "changed": true
+    },
+    {
+      "path": "plugins/bridge-host/events/build.ts",
+      "beforeSha256": "9d8bb7744410184063555a10a166c95a3efd26f0c1838f4b6bf4338a82b19a1d",
+      "afterSha256": "693c010fb49eaa1a8cf129e4aff663374dede6d8318e50f7f3d6164d415288a9",
+      "changed": true
+    },
+    {
+      "path": "plugins/bridge-host/pages/action.ts",
+      "beforeSha256": "a8655d2e72477a9738073f37af1d00da72cd52480939507ef252b64c1f5feb41",
+      "afterSha256": "fb03e4a0b3ff2346d31d33101d4893ac988321114e72c1946247fb50546b0eed",
+      "changed": true
+    },
+    {
+      "path": "plugins/bridge-host/pages/frame.ts",
+      "beforeSha256": "805e1bd06d8fd87af76a01d5ef0574c7e85b9794f862ecf655d53f23527e3058",
+      "afterSha256": "212a81d842b679d22636da7fc76f4a3c67fefa1c7a7db79f1370b9e8e5797081",
+      "changed": true
+    },
+    {
+      "path": "plugins/bridge-host/pages/health.ts",
+      "beforeSha256": "0a8d956ae9c78e31781187bbfe94793d1f4a513a4e7df9cb5bc818435d7425a5",
+      "afterSha256": "93bb02e1bb5d0f05cae3189b7c75be127991e19729eb4932af720dace8d30f75",
+      "changed": true
+    },
+    {
+      "path": "plugins/bridge-host/pages/host.ts",
+      "beforeSha256": "f709f5a81ffd38884f83f19d344ac104869d8f17aecd7ba2e1259c8d92e4addc",
+      "afterSha256": "e16ba552b983777421fc1e79552ecb8e235d36b184cef39b8858a53a1b01d7bc",
+      "changed": true
+    },
+    {
+      "path": "plugins/bridge-host/pages/sdk.ts",
+      "beforeSha256": "6e5daf537b26f99009d54dd7d4d2891ce891700555e680d8f45e144acb52976c",
+      "afterSha256": "d7d0f7b79656aa0cb77c591e822c2917f521c446c2aa169bab63a5319644b017",
+      "changed": true
+    },
+    {
+      "path": "plugins/bridge-host/plugin.ts",
+      "beforeSha256": "7e0926156067063e10725afcb30b5d708ae6353bcf459e563734dd5af0aaa120",
+      "afterSha256": "cc93e3a6d3d3231133cac91b304058773a3a37ac60308ae0c8a7de3178d815b0",
+      "changed": true
+    },
+    {
+      "path": "plugins/bridge-host/views/templates.ts",
+      "beforeSha256": "3a17a75e73f4dee1019d14fd32d8b1e06f99af00b9b2bd871d605b5a84051aff",
+      "afterSha256": "dc26ee5e1893271391de0cc55d1b39d07d26c78dd0a0f68fa3232f9ce2cb1885",
+      "changed": true
+    },
+    {
+      "path": "scripts/prepare-sdk.mjs",
+      "beforeSha256": "f3ef6dcd965fa8550d5a0686ab09feb2b1ed0003300cf1cb2ed227f9d78b1853",
+      "afterSha256": "6031d26c930c41d761bcdb050ed9ea6f0fb70c456aa04b84bfafc0f071fd4121",
+      "changed": true
+    },
+    {
+      "path": "sdk/package-lock-info.json",
+      "beforeSha256": "55bd765de1e1bd851ba13a7ae0525b9bfb4689bcf93b24d94bf371388a1deecb",
+      "afterSha256": "55bd765de1e1bd851ba13a7ae0525b9bfb4689bcf93b24d94bf371388a1deecb",
+      "changed": false
+    },
+    {
+      "path": "tests/all.test.ts",
+      "beforeSha256": "76453a652d78492b9d166f940dc7a1008da889f8194e09a68f23b3628fb0aaf9",
+      "afterSha256": "a5886f58d3539e13d3060b0b604cf42b011e90853062f05f24c60b5703946929",
+      "changed": true
+    },
+    {
+      "path": "tests/bootstrap.ts",
+      "beforeSha256": "82ae2ce2046cf6c136e771fa6b03227a6d441a7091efc435221f0207e79168a4",
+      "afterSha256": "7bb2da2bb090d6f9bb1219af58dfd9d874cf782e65142b63fb71fbdc1bb5a132",
+      "changed": true
+    },
+    {
+      "path": "tests/receipt.ts",
+      "beforeSha256": null,
+      "afterSha256": "2faa23b4b7bb3bb6bf246e46dd7e452c34c70617355ab1d60fbf528d99c70a2a",
+      "changed": true
+    },
+    {
+      "path": "tests/runners/matrix.ts",
+      "beforeSha256": "3746b2b717b514498274c28a00d01e8c9aa48264921ac5f472f78c7a32dbb70e",
+      "afterSha256": "316ac243e63595410ea6f6cc868420a6656c1c6f40dbdf45ac6c74d10f49f444",
+      "changed": true
+    },
+    {
+      "path": "tsconfig.json",
+      "beforeSha256": "7a4abd0db442a997b6ad014d184f7277fbc777ae025d58a8975fac90c5b9144f",
+      "afterSha256": "7a4abd0db442a997b6ad014d184f7277fbc777ae025d58a8975fac90c5b9144f",
+      "changed": false
+    },
+    {
+      "path": "yarn.lock",
+      "beforeSha256": "72506a885001c92d3c542642f91af53aa462e325d59622052a8654677bd552b5",
+      "afterSha256": "72506a885001c92d3c542642f91af53aa462e325d59622052a8654677bd552b5",
+      "changed": false
+    }
+  ]
+}

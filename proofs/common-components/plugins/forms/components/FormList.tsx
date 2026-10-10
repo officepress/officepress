@@ -1,16 +1,28 @@
-import Icon from "../../app/components/Icon.js";
-import type { FormSummary } from "../types.js";
+//client
+import type { FormSummary } from '../types.js';
+import Icon from '../../app/components/Icon.js';
 
-/** The builder entry page lists forms without selecting one implicitly. */
+//--------------------------------------------------------------------//
+// Types
+
+//form summaries and authorized creation/deletion callbacks for the list
+type FormListProps = {
+  forms: FormSummary[],
+  busy: boolean,
+  create: () => void
+};
+
+//--------------------------------------------------------------------//
+// Entry point
+
+/**
+ * The builder entry page lists forms without selecting one implicitly.
+ */
 export default function FormList({
   forms,
-  busy,
-  create,
-}: {
-  forms: FormSummary[];
-  busy: boolean;
-  create: () => void;
-}) {
+  busy: isBusy,
+  create
+}: FormListProps) {
   return (
     <div className="op-page forms-list">
       <div className="op-page-head">
@@ -20,7 +32,7 @@ export default function FormList({
         </div>
         <button
           className="op-btn op-btn--primary"
-          disabled={busy}
+          disabled={isBusy}
           onClick={create}
         >
           <Icon name="plus" /> New form
@@ -43,7 +55,7 @@ export default function FormList({
                   <tr
                     key={form.id}
                     onClick={(event) => {
-                      if (!(event.target as HTMLElement).closest("a"))
+                      if (!(event.target as HTMLElement).closest('a'))
                         location.assign(href);
                     }}
                   >
@@ -53,7 +65,7 @@ export default function FormList({
                       </a>
                     </td>
                     <td>
-                      {form.mode === "public" ? "Public link" : "Signed in"}
+                      {form.mode === 'public' ? 'Public link' : 'Signed in'}
                     </td>
                     <td>{form.responses}</td>
                   </tr>
@@ -69,4 +81,4 @@ export default function FormList({
       )}
     </div>
   );
-}
+};

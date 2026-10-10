@@ -1,68 +1,123 @@
-import { useEffect, useState } from "react";
-import Icon from "./Icon.js";
-import { api } from "../client.js";
-export function safeHref(href: string) {
-  return /^\/(?!\/)/.test(href) && !/[\\\x00-\x20]/.test(href) ? href : "/";
-}
+//modules
+import { useEffect, useState } from 'react';
+
+//client
+import { requestJson } from '../client.js';
+import Icon from './Icon.js';
+
+//--------------------------------------------------------------------//
+// Types
+
+//public app-owned notification row rendered in the shell feed
 export type Notice = {
-  id: string;
-  category: string;
-  title: string;
-  href: string;
-  read: boolean;
-  created: string;
+  id: string,
+  category: string,
+  title: string,
+  href: string,
+  read: boolean,
+  created: string
 };
+
+//the page CSRF token used for authenticated feed read-state changes
+type NotificationsProps = {
+  csrf: string,
+  appName: string,
+  onClose: () => void
+};
+
+//--------------------------------------------------------------------//
+// Helpers
+
+/**
+ * Allow only local absolute paths, preventing notification links from
+ * escaping the app origin.
+ */
+export function safeHref(href: string) {
+  return /^\/(?!\/)/.test(href) && !/[\\\x00-\x20]/.test(href) ? href : '/';
+};
+
+//--------------------------------------------------------------------//
+// Entry point
+
+/**
+ * Render the app notification feed with category filters and read controls.
+ */
 export default function Notifications({
   csrf,
   appName,
-  onClose,
-}: {
-  csrf: string;
-  appName: string;
-  onClose: () => void;
-}) {
-  const [rows, setRows] = useState<Notice[]>([]),
-    [category, setCategory] = useState("all"),
-    [busy, setBusy] = useState(true),
-    [error, setError] = useState("");
-  async function load() {
-    setBusy(true);
-    setError("");
-    try {
-      setRows((await api("/api/notifications")).notices);
-    } catch (e) {
-      setError((e as Error).message);
-    } finally {
-      setBusy(false);
-    }
-  }
-  useEffect(() => {
-    void load();
-  }, []);
-  async function read(id?: string) {
-    try {
-      await api("/api/notifications/read", { id }, csrf);
-      await load();
-    } catch (e) {
-      setError((e as Error).message);
-    }
-  }
+  onClose
+}: NotificationsProps) {
+  //--------------------------------------------------------------------//
+  // State and lifecycle references
+
+  const [ rows, setRows ] = useState<Notice[]>([]);
+  const [ category, setCategory ] = useState('all');
+  const [ isBusy, setIsBusy ] = useState(true);
+  const [ error, setError ] = useState('');
+
+  //--------------------------------------------------------------------//
+  // Derived presentation
+
   const filtered = rows.filter(
-    (n) => category === "all" || n.category === category,
+    (notice) => category === 'all' || notice.category === category
   );
-  const days = filtered.reduce<Record<string, Notice[]>>((groups, n) => {
-    (groups[new Date(n.created).toLocaleDateString()] ||= []).push(n);
+  const days = filtered.reduce<Record<string, Notice[]>>((groups, notice) => {
+    (groups[new Date(notice.created).toLocaleDateString()] ||= []).push(notice);
     return groups;
   }, {});
+
+  //--------------------------------------------------------------------//
+  // Interaction handlers
+
+  //refetch the caller-scoped notification feed without adopting an aborted
+  // response
+  async function handleLoad() {
+    setIsBusy(true);
+    setError('');
+    try {
+      setRows(
+        (await requestJson<{ notices: Notice[] }>('/api/notifications')).notices
+      );
+    } catch (caughtError) {
+      setError((caughtError as Error).message);
+    } finally {
+      setIsBusy(false);
+    }
+  }
+  //read the accessible app snapshot for the caller
+  async function handleRead(id?: string) {
+    try {
+      await requestJson('/api/notifications/read', { id }, csrf);
+      await handleLoad();
+    } catch (caughtError) {
+      setError((caughtError as Error).message);
+    }
+  }
+
+  //--------------------------------------------------------------------//
+  // Browser effects
+
+  //fetch the app feed when the notification panel mounts
+
+  useEffect(() => {
+    void handleLoad();
+  }, []);
+
+  //--------------------------------------------------------------------//
+  // Render or public hook result
+
   return (
     <div
       className="notifications op-notifs app-popover"
       role="dialog"
       aria-label="Notifications"
     >
+      {/* START: Notification heading */}
       <div className="op-notifs__head">
         <h2 className="op-title">Notifications</h2>
-        <span className="op-badge">{rows.filter((n) => !n.read).length}</span>
+        <span className="op-badge">
+          {rows.filter((notice) => !notice.read).length}
+        </span>
         <span className="op-spacer" />
         <button
           className="op-icon-btn op-icon-btn--compact op-icon-btn--muted"
@@ -72,101 +127,108 @@ export default function Notifications({
           <Icon name="x" />
         </button>
       </div>
+      {/* END: Notification heading */}
       <div
         className="op-tabs"
         role="tablist"
         aria-label="Notification categories"
       >
-        {["all", "mentions", "agent"].map((c) => (
+        {[ 'all', 'mentions', 'agent' ].map((categoryOption) => (
           <button
             className="op-tab"
             role="tab"
-            aria-selected={category === c}
-            key={c}
-            onClick={() => setCategory(c)}
+            aria-selected={category === categoryOption}
+            key={categoryOption}
+            onClick={() => setCategory(categoryOption)}
           >
-            {c[0].toUpperCase() + c.slice(1)}
+            {categoryOption[0].toUpperCase() + categoryOption.slice(1)}
           </button>
         ))}
       </div>
+      {/* START: Notification feed */}
       <div className="op-notifs__list">
-        {busy ? (
+        {isBusy ? (
           <p className="app-empty" role="status">
             Loading…
           </p>
         ) : error ? (
           <div className="app-empty">
             <p role="alert">{error}</p>
-            <button className="op-btn op-btn--link" onClick={load}>
+            <button className="op-btn op-btn--link" onClick={handleLoad}>
               Try again
             </button>
           </div>
         ) : !filtered.length ? (
           <p className="app-empty">You're all caught up.</p>
         ) : (
-          Object.entries(days).map(([day, notices]) => (
+          Object.entries(days).map(([ day, notices ]) => (
             <section key={day}>
               <h3 className="op-notifs__group op-overline">
-                {day === new Date().toLocaleDateString() ? "Today" : day}
+                {day === new Date().toLocaleDateString() ? 'Today' : day}
               </h3>
-              {notices.map((n) => (
+              {notices.map((notice) => (
                 <article
-                  key={n.id}
-                  className={"notice op-notif " + (!n.read ? "unread" : "")}
-                  data-unread={!n.read || undefined}
+                  key={notice.id}
+                  className={
+                    'notice op-notif ' + (!notice.read ? 'unread' : '')
+                  }
+                  data-unread={!notice.read || undefined}
                 >
                   <span className="op-icon-tile op-icon-tile--32">
                     <Icon
                       name={
-                        n.category === "agent"
-                          ? "bot"
-                          : n.category === "mentions"
-                            ? "at-sign"
-                            : "bell"
+                        notice.category === 'agent'
+                          ? 'bot'
+                          : notice.category === 'mentions'
+                            ? 'at-sign'
+                            : 'bell'
                       }
                     />
                   </span>
                   <div className="op-notif__body">
                     <a
-                      href={safeHref(n.href)}
-                      onClick={async (e) => {
-                        e.preventDefault();
+                      href={safeHref(notice.href)}
+                      onClick={async (event) => {
+                        event.preventDefault();
                         try {
-                          await api(
-                            "/api/notifications/read",
-                            { id: n.id },
-                            csrf,
+                          await requestJson(
+                            '/api/notifications/read',
+                            { id: notice.id },
+                            csrf
                           );
-                          window.location.assign(safeHref(n.href));
-                        } catch (err) {
-                          setError((err as Error).message);
+                          window.location.assign(safeHref(notice.href));
+                        } catch (caughtError) {
+                          setError((caughtError as Error).message);
                         }
                       }}
                     >
-                      {n.title}
+                      {notice.title}
                     </a>
                     <div className="op-notif__meta">
                       <span className="op-app-tag">{appName}</span>
                     </div>
                     <button
                       className="op-btn op-btn--link op-btn--small app-notice-action"
-                      disabled={n.read}
-                      onClick={() => read(n.id)}
+                      disabled={notice.read}
+                      onClick={() => handleRead(notice.id)}
                     >
-                      {n.read ? "Read" : "Mark read"}
+                      {notice.read ? 'Read' : 'Mark read'}
                     </button>
                   </div>
-                  {!n.read && <span className="op-dot" aria-label="Unread" />}
+                  {!notice.read && (
+                    <span className="op-dot" aria-label="Unread" />
+                  )}
                 </article>
               ))}
             </section>
           ))
         )}
       </div>
+      {/* END: Notification feed */}
       <div className="op-notifs__foot">
         <button
           className="op-btn op-btn--link op-btn--small"
-          onClick={() => read()}
+          onClick={() => handleRead()}
         >
           <Icon name="check-check" />
           Mark all as read
@@ -174,4 +236,4 @@ export default function Notifications({
       </div>
     </div>
   );
-}
+};

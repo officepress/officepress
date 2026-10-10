@@ -60,3 +60,11 @@ Owner: [Stackpress handbook](../context/stackpress.md). Choose the named contrac
 - [Workflow Catalog; 1. Linear App Build; 2. Schema-First Change; 3. Contract-First Parallel Plugin Build](00354-stackpress-source-skills-stackpress-workflow-router-references-workflow-catalog-md-part-1.md) — load for `skills/stackpress-workflow-router/references/workflow-catalog.md`, part 1/2.
 - [7. Route · View Workflow; 8. Architecture Sample Workflow; 9. Existing App Change Workflow; 10. Verification  ·  Repair Workflow](00355-stackpress-source-skills-stackpress-workflow-router-references-workflow-catalog-md-part-2.md) — load for `skills/stackpress-workflow-router/references/workflow-catalog.md`, part 2/2.
 - [Workflow Selection; Preflight Considerations; Fast Selector; Ambiguity Rules](00356-stackpress-source-skills-stackpress-workflow-router-references-workflow-selection-md.md) — load for `skills/stackpress-workflow-router/references/workflow-selection.md`, part 1/1.
+
+## Current local contract reinforcement
+
+The 2026-10-09 installed skill overlays require literal lazy page imports and
+prescribed plugin ownership, with source/runtime guards and recurring KB updates.
+Load [the lazy-registration and maintenance contract](00374-stackpress-lazy-registration-and-pattern-maintenance.md)
+before using scaffold/handler/view examples. Captured upstream skill source blocks
+retain their original contents; they do not override the current local overlay.

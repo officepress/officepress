@@ -1,24 +1,38 @@
-import Icon from "../../app/components/Icon.js";
-import type { FormDefinition, FormRecord } from "../types.js";
+//client
+import type { FormDefinition, FormRecord } from '../types.js';
+import Icon from '../../app/components/Icon.js';
+
+//--------------------------------------------------------------------//
+// Types
+
+//current share state and callbacks for creating or revoking a public link
+type ShareFormProps = {
+  draft: FormDefinition,
+  record: FormRecord,
+  dirty: boolean,
+  busy: boolean,
+  link: string,
+  update: (patch: Partial<FormDefinition>) => void,
+  setLink: (value: string) => void,
+  action: (kind: string) => Promise<void>
+};
+
+//--------------------------------------------------------------------//
+// Entry point
+
+/**
+ * Render publication availability and public share-link controls.
+ */
 export default function ShareForm({
   draft,
   record,
-  dirty,
-  busy,
+  dirty: isDirty,
+  busy: isBusy,
   link,
   update,
   setLink,
-  action,
-}: {
-  draft: FormDefinition;
-  record: FormRecord;
-  dirty: boolean;
-  busy: boolean;
-  link: string;
-  update: (patch: Partial<FormDefinition>) => void;
-  setLink: (value: string) => void;
-  action: (kind: string) => Promise<void>;
-}) {
+  action
+}: ShareFormProps) {
   const latest = record.payload.publications.at(-1);
   return (
     <div className="forms-tab-content forms-share">
@@ -28,9 +42,9 @@ export default function ShareForm({
         <select
           className="op-select"
           value={draft.mode}
-          onChange={(e) => {
-            update({ mode: e.target.value as "signedin" | "public" });
-            setLink("");
+          onChange={(event) => {
+            update({ mode: event.target.value as 'signedin' | 'public' });
+            setLink('');
           }}
         >
           <option value="signedin">Signed-in people</option>
@@ -45,12 +59,12 @@ export default function ShareForm({
         <input
           type="datetime-local"
           className="op-input"
-          value={draft.expires ? draft.expires.slice(0, 16) : ""}
-          onChange={(e) =>
+          value={draft.expires ? draft.expires.slice(0, 16) : ''}
+          onChange={(event) =>
             update({
-              expires: e.target.value
-                ? new Date(e.target.value + "Z").toISOString()
-                : "",
+              expires: event.target.value
+                ? new Date(event.target.value + 'Z').toISOString()
+                : ''
             })
           }
         />
@@ -58,7 +72,7 @@ export default function ShareForm({
           Leave empty for no expiration. Time shown in UTC.
         </span>
       </label>
-      {latest?.mode === "signedin" && record.payload.active && (
+      {latest?.mode === 'signedin' && record.payload.active && (
         <a
           className="op-btn op-btn--secondary"
           href={`/forms/fill?form=${encodeURIComponent(record.id)}`}
@@ -69,7 +83,7 @@ export default function ShareForm({
           <Icon name="external-link" />
         </a>
       )}
-      {latest?.mode === "public" && record.payload.active && (
+      {latest?.mode === 'public' && record.payload.active && (
         <>
           <p className="op-small">
             Creating a new link replaces the previous link. Revoking stops new
@@ -78,15 +92,15 @@ export default function ShareForm({
           <div className="op-row">
             <button
               className="op-btn op-btn--secondary"
-              disabled={dirty || busy}
-              onClick={() => action("share")}
+              disabled={isDirty || isBusy}
+              onClick={() => action('share')}
             >
               Create new public link
             </button>
             <button
               className="op-btn op-btn--danger"
-              disabled={!record.payload.share || busy}
-              onClick={() => action("revoke")}
+              disabled={!record.payload.share || isBusy}
+              onClick={() => action('revoke')}
             >
               Revoke public link
             </button>
@@ -98,7 +112,7 @@ export default function ShareForm({
                 className="op-input"
                 value={link}
                 readOnly
-                onFocus={(e) => e.target.select()}
+                onFocus={(event) => event.target.select()}
               />
               <a href={link} target="_blank" rel="noreferrer">
                 Open public form
@@ -107,16 +121,16 @@ export default function ShareForm({
           )}
           <p className="op-small op-muted">
             {record.payload.share
-              ? "A public link is active."
-              : "No public link is active."}
+              ? 'A public link is active.'
+              : 'No public link is active.'}
           </p>
         </>
       )}
       <hr />
       <button
         className="op-btn op-btn--danger"
-        disabled={!record.payload.active || dirty || busy}
-        onClick={() => action("close")}
+        disabled={!record.payload.active || isDirty || isBusy}
+        onClick={() => action('close')}
       >
         Stop accepting responses
       </button>
@@ -125,4 +139,4 @@ export default function ShareForm({
       </p>
     </div>
   );
-}
+};

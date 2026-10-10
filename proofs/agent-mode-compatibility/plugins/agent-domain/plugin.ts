@@ -1,8 +1,22 @@
+//modules
 import type { HttpServer } from '@stackpress/ingest';
-import { ActionStore } from './store.js';
-export default function plugin(server: HttpServer) {
-  server.on('config', ({ ctx }) => {
-    if (!ctx.config<string>('proof', 'stateFile')) return;
-    ctx.register('agent-domain', new ActionStore(ctx.config<string>('proof', 'stateFile')));
-  }, -100);
-}
+
+/**
+ * Register the durable action store first, then expose the reusable action
+ * event only when that store exists.
+ */
+export default function registerAgentDomainPlugin(server: HttpServer) {
+  //--------------------------------------------------------------------//
+  // Provider configuration
+
+  //configure the durable action store before the model runtime uses it
+  server.on('config', () => import('./events/config.js'), -100);
+  //--------------------------------------------------------------------//
+  // Reusable event registration
+
+  //expose the operation only after its providers have been registered
+  server.on('listen', ({ ctx }) => {
+    if (!ctx.plugin('agent-domain')) return;
+    ctx.on('agent-action', () => import('./events/execute.js'));
+  });
+};

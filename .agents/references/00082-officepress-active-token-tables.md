@@ -1,6 +1,6 @@
 # OfficePress active colour tokens
 
-Owner: [UI foundations](../context/ui-foundations.md). Load when choosing semantic colours or comparing family/mode values. This table is extracted without rounding from the source token JSON. Complete representations, descriptions, sRGB components and extension metadata remain in the source references.
+Owner: [UI foundations](../context/ui-foundations.md). Load when choosing semantic colours or comparing family/mode values. This table is extracted without rounding from the source token JSON. Complete representations, descriptions, sRGB components and extension metadata remain in the source references. This file is the active token owner; the matching table inside the guideline source capture (00071) is immutable evidence and is not updated when tokens change.
 
 | CSS token | Meaning | Communicate light / dark | Create light / dark | Operate light / dark | Commerce light / dark |
 |---|---|---|---|---|---|

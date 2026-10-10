@@ -1,163 +1,208 @@
-import { createHash } from "node:crypto";
-import { readDefinition, validate } from "./definition.js";
-import type { Card, WorkflowAction } from "../workflows/types.js";
-import type { Caller } from "../auth/types.js";
-import type { RenderedTemplate } from "../templates/types.js";
-import type Engine from "@stackpress/inquire/Engine";
-import type { WorkflowService } from "../workflows/types.js";
-import { WorkflowError, writable, readable } from "./validation.js";
+//node
+import { createHash } from 'node:crypto';
+
+//modules
+import type Engine from '@stackpress/inquire/Engine';
+
+//client
+import type { Caller } from '../auth/types.js';
+import type { RenderedTemplate } from '../templates/types.js';
+import type {
+  Card,
+  WorkflowAction,
+  WorkflowService
+} from '../workflows/types.js';
+import type {
+  Automation,
+  AutomationDraft,
+  AutomationRun,
+  AutomationService
+} from './types.js';
+import { calculateDeadline, matches, summarize } from './conditions.js';
+import { readDefinition, validate } from './definition.js';
 import {
-  matches,
-  deadline,
-  summarize,
-  type Automation,
-  type AutomationDraft,
-  type AutomationRun,
-  type AutomationService,
-} from "./types.js";
+  requireReadAccess,
+  WorkflowError,
+  requireWriteAccess
+} from './validation.js';
+
+/**
+ * Create the app-scoped automation service with injected workflow and handoff
+ * dependencies.
+ */
 export function createAutomations(
-  db: Engine,
+  database: Engine,
   appId: string,
   workflows: WorkflowService,
   options: {
-    clock?: () => number;
-    scheduler?: boolean;
+    clock?: () => number,
+    scheduler?: boolean,
     prepareMessage?: (
       caller: Caller,
       action: WorkflowAction,
-      card: Card,
-    ) => Promise<RenderedTemplate>;
+      card: Card
+    ) => Promise<RenderedTemplate>,
     sendMessage?: (
       caller: Caller,
       message: RenderedTemplate,
-      recipient: string,
-    ) => Promise<void>;
-  } = {},
+      recipient: string
+    ) => Promise<void>
+  } = {}
 ): AutomationService {
+  //--------------------------------------------------------------------//
+  // Definition and execution persistence
+
+  //injected time keeps due-date contracts deterministic
   const clock = options.clock || (() => Date.now());
+  //serialize scheduler passes so overlapping ticks cannot claim the same
+  // next action
   let pending: Promise<void> | undefined;
-  async function definitions() {
-    const rows = await db.query<{
-      payload: Automation & { published?: number; enabled?: boolean };
-      revision: number;
+  //read app-scoped automation definitions while preserving archived active
+  // behavior
+  async function readDefinitions() {
+    const rows = await database.query<{
+      payload: Automation & { published?: number, enabled?: boolean },
+      revision: number
     }>(
       'SELECT "payload","revision" FROM "component_automation" WHERE "app_id" = ?',
-      [appId],
+      [ appId ]
     );
     return Promise.all(
       rows.map(async (row) => {
         let value = row.payload;
+        //legacy definitions retain their previously published behavior
+        // instead of activating draft edits
         if (!value.status && value.published) {
-          const archived = await db.query<{ payload: Automation }>(
+          const archived = await database.query<{ payload: Automation }>(
             'SELECT "payload" FROM "component_automation_publication" WHERE "id" = ? AND "app_id" = ?',
-            [`${appId}:${value.id}:${value.published}`, appId],
+            [ `${appId}:${value.id}:${value.published}`, appId ]
           );
-          // Preserve the behavior previously running, rather than activate unpublished edits.
+          //preserve the behavior previously running, rather than activate
+          // unpublished edits
           if (archived[0])
             value = {
               ...archived[0].payload,
               enabled: value.enabled,
-              published: value.published,
+              published: value.published
             };
         }
         return readDefinition(value, row.revision);
-      }),
+      })
     );
   }
-  async function runs() {
+  //read app-scoped execution receipts with their persisted progress and
+  // revision
+  async function readRuns() {
     return (
-      await db.query<{ payload: AutomationRun; revision: number }>(
+      await database.query<{ payload: AutomationRun, revision: number }>(
         'SELECT "payload","revision" FROM "component_automation_run" WHERE "app_id" = ?',
-        [appId],
+        [ appId ]
       )
     )
-      .map((r) => ({
-        ...r.payload,
+      .map((row) => ({
+        ...row.payload,
         definition: readDefinition(
-          r.payload.definition,
-          r.payload.definition.revision || 1,
+          row.payload.definition,
+          row.payload.definition.revision || 1
         ),
-        revision: r.revision,
+        revision: row.revision
       }))
-      .sort((a, b) => b.createdAt - a.createdAt);
+      .sort((leftRun, rightRun) => rightRun.createdAt - leftRun.createdAt);
   }
-  async function store(value: Automation, expected: number) {
-    const results = await db.query(
+  //persist an automation definition only when its expected revision still
+  // matches
+  async function persistDefinition(value: Automation, expected: number) {
+    const results = await database.query(
       'UPDATE "component_automation" SET "payload" = ?,"revision" = "revision" + 1 WHERE "id" = ? AND "app_id" = ? AND "revision" = ? RETURNING "id"',
-      [value, value.id, appId, expected],
+      [ value, value.id, appId, expected ]
     );
     if (!results.length)
       throw new WorkflowError(
-        "This automation changed. Reload before saving.",
-        409,
+        'This automation changed. Reload before saving.',
+        409
       );
     return { ...value, revision: expected + 1 };
   }
-  async function storeRun(run: AutomationRun) {
-    const result = await db.query(
+  //persist an execution checkpoint using its expected revision
+  async function persistRun(run: AutomationRun) {
+    const result = await database.query(
       'UPDATE "component_automation_run" SET "payload" = ?,"revision" = "revision" + 1 WHERE "id" = ? AND "app_id" = ? AND "revision" = ? RETURNING "id"',
-      [run, run.id, appId, run.revision],
+      [ run, run.id, appId, run.revision ]
     );
     if (!result.length)
-      throw new WorkflowError("The run changed while processing.", 409);
+      throw new WorkflowError('The run changed while processing.', 409);
     run.revision++;
   }
+  //validate a definition against its feature-owned field and channel
+  // contracts
   async function validateDraft(caller: Caller, draft: AutomationDraft) {
     const flow = (await workflows.read(caller)).workflows.find(
-      (item) => item.id === draft?.workflowId,
+      (item) => item.id === draft?.workflowId
     );
     const stage = flow?.stages.find((item) => item.id === draft?.stageId);
-    if (!stage) throw new WorkflowError("Choose an existing workflow stage.");
+    if (!stage) throw new WorkflowError('Choose an existing workflow stage.');
     return validate(draft, stage);
   }
+  //--------------------------------------------------------------------//
+  // Public commands and scheduler lifecycle
+
+  let timer: ReturnType<typeof setInterval> | undefined;
   const service: AutomationService = {
+    //read the accessible automations snapshot for the caller
     async read(caller) {
-      readable(caller);
-      return { automations: await definitions(), runs: await runs() };
+      requireReadAccess(caller);
+      return { automations: await readDefinitions(), runs: await readRuns() };
     },
+    //validate and persist the automations change using its expected
+    // revision
     async save(caller, draft, revision) {
-      writable(caller, true);
+      requireWriteAccess(caller, true);
       const value = await validateDraft(caller, draft);
       if (!Number.isInteger(revision) || revision < 0)
-        throw new WorkflowError("Invalid revision.");
+        throw new WorkflowError('Invalid revision.');
       if (revision === 0) {
         const created = { ...value, revision: 1 };
-        const result = await db.query(
+        const result = await database.query(
           'INSERT INTO "component_automation" ("id","app_id","payload","revision") VALUES (?, ?, ?, 1) ON CONFLICT ("id") DO NOTHING RETURNING "id"',
-          [created.id, appId, created],
+          [ created.id, appId, created ]
         );
         if (!result.length)
-          throw new WorkflowError("Automation already exists.", 409);
+          throw new WorkflowError('Automation already exists.', 409);
         return created;
       }
-      return store({ ...value, revision }, revision);
+      return persistDefinition({ ...value, revision }, revision);
     },
+    //evaluate the rule and its timing without mutating a card or sending a
+    // message
     async dryRun(caller, draft, cardId) {
-      readable(caller);
-      const value = await validateDraft(caller, draft),
-        card = await workflows.card(caller, cardId);
+      requireReadAccess(caller);
+      const value = await validateDraft(caller, draft);
+      const card = await workflows.card(caller, cardId);
       return {
         matches: matches(value, card),
-        dueAt: deadline(value, card, clock()),
+        dueAt: calculateDeadline(value, card, clock()),
         actions: value.actions,
-        summary: summarize(value),
+        summary: summarize(value)
       };
     },
+    //queue eligible definitions for the committed workflow transition
     async trigger(event, caller) {
-      for (const active of await definitions()) {
+      for (const active of await readDefinitions()) {
         if (
-          active.status !== "active" ||
-          active.trigger !== (event.kind || "stage-enter") ||
+          active.status !== 'active' ||
+          active.trigger !== (event.kind || 'stage-enter') ||
           event.chain?.includes(active.id) ||
           !matches(active, event.card)
         )
           continue;
+        //a stage-visit key deduplicates repeated triggers; event-based
+        // rules instead permit one execution for each distinct transition
         const identity = active.oncePerVisit
           ? `${event.card.id}:${event.card.visitId || event.card.enteredAt}`
           : event.id;
-        const id = createHash("sha256")
+        const id = createHash('sha256')
           .update(`${appId}:${active.id}:${identity}`)
-          .digest("hex");
+          .digest('hex');
         const run: AutomationRun = {
           id,
           definitionId: active.id,
@@ -166,62 +211,72 @@ export function createAutomations(
           cardTitle: event.card.title,
           caller,
           createdAt: event.at,
-          dueAt: deadline(active, event.card, event.at),
-          state: "waiting",
+          dueAt: calculateDeadline(active, event.card, event.at),
+          state: 'waiting',
           next: 0,
           checkpoints: [],
           failures: [],
           chain: event.chain || [],
           eventCard: event.card,
-          revision: 1,
+          revision: 1
         };
-        // Resolve message variables and template version at trigger time, before any wait.
+        //resolve message variables and template version at trigger time,
+        // before any wait
         for (let index = 0; index < active.actions.length; index++) {
           const action = active.actions[index];
-          if (action.type !== "send-message") continue;
+          if (action.type !== 'send-message') continue;
           try {
             if (!options.prepareMessage)
-              throw new Error("Message Templates is unavailable.");
+              throw new Error('Message Templates is unavailable.');
             (run.messages ||= {})[index] = await options.prepareMessage(
               caller,
               action,
-              event.card,
+              event.card
             );
           } catch (error) {
             (run.messageErrors ||= {})[index] =
               error instanceof Error
                 ? error.message
-                : "Unable to prepare message.";
+                : 'Unable to prepare message.';
           }
         }
-        await db.query(
+        await database.query(
           'INSERT INTO "component_automation_run" ("id","app_id","payload","revision") VALUES (?, ?, ?, 1) ON CONFLICT ("id") DO NOTHING',
-          [id, appId, run],
+          [ id, appId, run ]
         );
       }
-      // Actions emit events too. Enqueue during a run; never await the running promise recursively.
+      //Actions emit events too. Enqueue during a run; never await the
+      // running promise recursively.
       if (!pending) await service.tick();
     },
+    //process due runs through the serialized scheduler, respecting
+    // persisted checkpoints
     async tick(now = clock()) {
+      //share the in-flight scheduler pass instead of starting competing
+      // work
       if (pending) return pending;
       pending = (async () => {
+        //bound each pass so recursively generated transitions cannot
+        // monopolize the scheduler; later ticks can continue remaining due
+        // work
         for (let batch = 0; batch < 25; batch++) {
           const active = new Set(
-            (await definitions())
-              .filter((rule) => rule.status === "active")
-              .map((rule) => rule.id),
+            (await readDefinitions())
+              .filter((rule) => rule.status === 'active')
+              .map((rule) => rule.id)
           );
-          const ready = (await runs()).filter(
+          const ready = (await readRuns()).filter(
             (run) =>
               active.has(run.definitionId) &&
-              ["waiting", "running"].includes(run.state) &&
-              run.dueAt <= Math.max(now, clock()),
+              [ 'waiting', 'running' ].includes(run.state) &&
+              run.dueAt <= Math.max(now, clock())
           );
           if (!ready.length) break;
           for (const run of ready) {
             try {
-              run.state = "running";
-              await storeRun(run);
+              //claim with a revision check before executing any action
+              run.state = 'running';
+              await persistRun(run);
               run.failures ||= [];
               for (
                 let index = run.next;
@@ -230,27 +285,34 @@ export function createAutomations(
               ) {
                 if (
                   run.checkpoints.some(
-                    (checkpoint) => checkpoint.index === index,
+                    (checkpoint) => checkpoint.index === index
                   )
                 )
                   continue;
+                //completed checkpoints survive restart; attempt only
+                // pending actions
                 const action = run.definition.actions[index];
                 try {
-                  if (action.type === "send-message") {
+                  if (action.type === 'send-message') {
                     if (run.messageErrors?.[index])
                       throw new Error(run.messageErrors[index]);
+                    //an interrupted send is uncertain; require a human
+                    // decision instead of an automatic second handoff
                     if (run.sending === index)
                       throw new Error(
-                        "Message delivery is uncertain; automatic resend is blocked.",
+                        'Message delivery is uncertain; automatic resend is blocked.'
                       );
                     if (!options.sendMessage || !run.messages?.[index])
-                      throw new Error("Message provider is unavailable.");
+                      throw new Error('Message provider is unavailable.');
+                    //persist intent before external I/O; a crash here
+                    // leaves an uncertain send that resume must not repeat
+                    // automatically
                     run.sending = index;
-                    await storeRun(run);
+                    await persistRun(run);
                     await options.sendMessage(
                       run.caller,
                       run.messages[index],
-                      action.recipient!,
+                      action.recipient!
                     );
                     run.sending = undefined;
                   } else
@@ -259,49 +321,54 @@ export function createAutomations(
                       run.cardId,
                       `${run.id}:${index}`,
                       action,
-                      [...(run.chain || []), run.definitionId],
+                      [ ...(run.chain || []), run.definitionId ]
                     );
+                  //record completion only after the action/provider
+                  // accepted it
                   run.checkpoints.push({
                     index,
                     at: now,
-                    label: `${action.type}: ${action.value}`,
+                    label: `${action.type}: ${action.value}`
                   });
                   run.failures = run.failures.filter(
-                    (failure) => failure.index !== index,
+                    (failure) => failure.index !== index
                   );
                 } catch (error) {
                   const message =
-                    error instanceof Error ? error.message : "Action failed.";
+                    error instanceof Error ? error.message : 'Action failed.';
                   run.failures = [
                     ...run.failures.filter(
-                      (failure) => failure.index !== index,
+                      (failure) => failure.index !== index
                     ),
                     {
                       index,
                       message,
-                      retryable: action.type !== "send-message",
-                    },
+                      retryable: action.type !== 'send-message'
+                    }
                   ];
                   run.error = message;
+                  //stop rules retry at the failed index; continue rules
+                  // retain the failure while allowing later actions to run
                   if (run.definition.stopOnFailure) {
                     run.next = index;
                     break;
                   }
                 }
                 run.next = index + 1;
-                await storeRun(run);
+                await persistRun(run);
               }
-              run.state = run.failures.length ? "failed" : "completed";
+              run.state = run.failures.length ? 'failed' : 'completed';
               if (!run.failures.length) run.error = undefined;
-              await storeRun(run);
+              await persistRun(run);
             } catch (error) {
-              // A failed claim belongs to another worker; never overwrite its progress.
+              //a failed claim belongs to another worker; never overwrite
+              // its progress
               if (error instanceof WorkflowError && error.status === 409)
                 continue;
-              run.state = "failed";
+              run.state = 'failed';
               run.error =
-                error instanceof Error ? error.message : "Run failed.";
-              await storeRun(run);
+                error instanceof Error ? error.message : 'Run failed.';
+              await persistRun(run);
             }
           }
         }
@@ -310,35 +377,48 @@ export function createAutomations(
       });
       return pending;
     },
+    //resume a recoverable run without automatically repeating an uncertain
+    // external send
     async resume(caller, id) {
-      writable(caller, true);
-      const run = (await runs()).find((r) => r.id === id);
-      if (!run) throw new WorkflowError("Run not found.", 404);
-      if (run.state !== "failed")
-        throw new WorkflowError("Only failed runs can be resumed.");
+      requireWriteAccess(caller, true);
+      const run = (await readRuns()).find(
+        (candidateRun) => candidateRun.id === id
+      );
+      if (!run) throw new WorkflowError('Run not found.', 404);
+      if (run.state !== 'failed')
+        throw new WorkflowError('Only failed runs can be resumed.');
       if (
         run.failures?.some((failure) => !failure.retryable) ||
         run.sending !== undefined
       )
         throw new WorkflowError(
-          "This run includes a message that cannot be safely retried.",
-          409,
+          'This run includes a message that cannot be safely retried.',
+          409
         );
       run.next = run.failures?.length
         ? Math.min(...run.failures.map((failure) => failure.index))
         : run.next;
-      run.state = "waiting";
+      run.state = 'waiting';
       run.error = undefined;
-      await storeRun(run);
+      await persistRun(run);
       await service.tick();
     },
+    //start the owned runtime or scheduler for the surrounding proof
+    // lifecycle
+    start() {
+      if (timer) return;
+      //the scheduler retries on the next tick after a pass-level failure;
+      // individual action failures remain in persisted run receipts
+      timer = setInterval(() => void service.tick().catch(() => {}), 1000);
+      timer.unref();
+    },
+    //stop the owned runtime or scheduler and release its lifecycle
+    // resources
     stop() {
       if (timer) clearInterval(timer);
-    },
+      timer = undefined;
+    }
   };
-  const timer = options.scheduler
-    ? setInterval(() => void service.tick().catch(() => {}), 1000)
-    : undefined;
-  timer?.unref();
+  if (options.scheduler) service.start();
   return service;
-}
+};

@@ -73,3 +73,7 @@ shared contacts directory, cross-conversation sender blocking or provider-level
 spam filtering. Adopters supply authenticated ingestion and sender recognition.
 Three request examples use reserved `.example` addresses; their idempotent fixture
 helper only adds missing records and never resets prior dispositions.
+
+## Reusable action boundary
+
+`officepress-chat-search`, `officepress-chat-detail`, `officepress-chat-update`, `officepress-chat-templates`, `officepress-chat-attachment` and `officepress-chat-authorize` register lazy default actions during guarded `listen`. Events refresh the verified framework session and own business authorization, validation, service calls and outcomes. Pages own CSRF and web input/output adaptation. Update pages translate the path suffix into `operation` before dispatch. A direct event caller must supply an actual request with a framework session, rather than a caller object in data. Optional service helpers remain available for domain contract tests.

@@ -8,6 +8,19 @@ description: Scaffold or extend a Stackpress plugin inside a Stackpress project.
 Scaffold Stackpress plugins using the project's normal plugin shape instead of
 inventing a new structure.
 
+
+## OfficePress local contract reinforcement
+
+Local augmentation, 2026-10-09 (condensed 2026-10-10): before implementation,
+load root `AGENTS.md`, the project
+[logic-pattern catalog](../../context/stackpress-logic-patterns.md) and the
+[lazy-registration contract](../../references/00374-stackpress-lazy-registration-and-pattern-maintenance.md).
+Those owners carry the OfficePress deltas — `plugin.ts` as wiring/guards only,
+lazy `ctx.get("/api/about", () => import("./pages/read.js"))` page/event
+registration with separate `ctx.view` bindings, Yarn/CLI dispatch, the pattern
+guard plus affected Yarn/runtime checks, and KB pattern maintenance without MCP
+indexing — and supersede any conflicting generic guidance in this skill.
+
 ## Core Workflow
 
 1. Confirm the project root and check for a `plugins/` folder.
@@ -65,8 +78,10 @@ The short version is:
 Only create the folders the plugin really needs.
 
 When adding tests for plugin behavior, put them inside the owning plugin under
-`plugins/<plugin-name>/tests/` instead of creating or extending a separate
-root-level `tests/` folder.
+`plugins/<plugin-name>/tests/`. The root `tests/` folder holds only the shared
+aggregator and runtime inputs (`tests/plugins/all.test.ts`, `tests/runners/`,
+`tests/helpers/`, `tests/bootstrap.ts`) per the accepted CLI/test conventions;
+do not place plugin-specific suites there.
 
 When architecture is still being composed, a thin shell plugin is often the
 right first step. Start with `plugin.ts`, then add only the folders needed to

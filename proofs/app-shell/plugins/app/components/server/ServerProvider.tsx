@@ -1,27 +1,38 @@
 //modules
-import type { UnknownNest } from "@stackpress/lib/types";
+import type { UnknownNest } from '@stackpress/lib/types';
+
+//client
+import type { ServerProviderProps } from './types.js';
+import { withUnknownHost } from './helpers.js';
+import ServerContext from './ServerContext.js';
+
+//--------------------------------------------------------------------//
+// Types
+
 //stackpress-view
-import type { ServerProviderProps } from "./types.js";
-import ServerContext from "./ServerContext.js";
-import { withUnknownHost } from "./helpers.js";
 
 export type { ServerProviderProps };
 
-// (this is what to put in app.tsx)
+//--------------------------------------------------------------------//
+// Entry point
+
+/**
+ * Create the client-safe server context from serialized page props.
+ */
 export default function ServerProvider<
   C extends UnknownNest = UnknownNest,
   I extends UnknownNest = UnknownNest,
-  O extends UnknownNest = UnknownNest,
+  O extends UnknownNest = UnknownNest
 >(props: Partial<ServerProviderProps<C, I, O>>) {
-  const unknownHost = new URL(withUnknownHost("/"));
+  const unknownHost = new URL(withUnknownHost('/'));
   const {
     data = {},
     session = {
-      id: "",
-      name: "Guest",
-      roles: ["GUEST"],
-      token: "",
-      permits: [],
+      id: '',
+      name: 'Guest',
+      roles: [ 'GUEST' ],
+      token: '',
+      permits: []
     },
     request = {
       url: {
@@ -33,23 +44,23 @@ export default function ServerProvider<
         pathname: unknownHost.pathname,
         port: unknownHost.port,
         protocol: unknownHost.protocol,
-        search: unknownHost.search,
+        search: unknownHost.search
       },
       headers: {},
       session: {},
-      method: "GET",
-      mime: "",
-      data: {},
+      method: 'GET',
+      mime: '',
+      data: {}
     },
     response = {
       code: 0,
-      status: "",
+      status: ''
     },
-    children,
+    children
   } = props;
   return (
     <ServerContext.Provider value={{ data, session, request, response }}>
       {children}
     </ServerContext.Provider>
   );
-}
+};

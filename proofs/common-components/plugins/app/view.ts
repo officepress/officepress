@@ -1,36 +1,49 @@
-import { createHash } from "node:crypto";
+//node
+import { createHash } from 'node:crypto';
+
 //modules
 import type {
   HttpServer,
   HttpRequest,
   HttpResponse,
-  ResponseStatus,
-} from "@stackpress/ingest";
-import Status from "@stackpress/lib/Status";
-import reactus, { Server } from "reactus";
+  ResponseStatus
+} from '@stackpress/ingest';
+import { Server } from 'reactus';
+import Status from '@stackpress/lib/Status';
+import reactus from 'reactus';
+
+//client
+import type { Config, ViewPlugin } from './types.js';
+
+//--------------------------------------------------------------------//
+// Functions
 
 //web
-import type { Config, ViewPlugin } from "./types.js";
 
-export function config(server: HttpServer<Config>) {
+/**
+ * Install the Reactus engine and HTML response adapter, projecting only safe
+ * session/request data while respecting redirects and JSON responses.
+ */
+export function configureViews(server: HttpServer<Config>) {
   const config = server.config();
   //create reactus engine
   const engine = reactus(
     Server.configure({
       cwd: config.cwd,
-      production: config.env === "production",
-      ...config.view,
-    }),
+      production: config.env === 'production',
+      ...config.view
+    })
   );
   //register the reactus engine
-  server.register("reactus", engine);
+  server.register('reactus', engine);
   //set the render function
   server.view.render = async (action, props) => {
     let html = await engine.render(action, props);
     const json = JSON.stringify(props ?? {});
     const escaped = json.replace(
       /[<>&]/g,
-      (c) => ({ "<": "\\u003c", ">": "\\u003e", "&": "\\u0026" })[c]!,
+      (character) =>
+        ({ '<': '\\u003c', '>': '\\u003e', '&': '\\u0026' })[character]!
     );
     const element = html.indexOf('<script id="props"');
     const start = html.indexOf(json, Math.max(0, element));
@@ -44,25 +57,25 @@ export function config(server: HttpServer<Config>) {
     const status = Status.get(res.code || 200) as ResponseStatus;
     res.statusCode(status.code, status.status);
     //get the noteplate flag
-    const noview = ctx.config.path("view.noview", "json");
-    //const render, if redirecting
+    const noview = ctx.config.path('view.noview', 'json');
+    //skip HTML rendering when the response has already redirected
     if (
       res.redirected ||
       //or if json
       req.data.has(noview) ||
       //or body is a string already
-      typeof res.body === "string"
+      typeof res.body === 'string'
     )
       return;
     //get props from config
-    const props = ctx.config.path("view.props", {});
+    const props = ctx.config.path('view.props', {});
     //get the session
     const session = await ctx.resolve<{
-      id?: string;
-      name?: string;
-      roles?: string[];
-      permits?: unknown[];
-    }>("me", req);
+      id?: string,
+      name?: string,
+      roles?: string[],
+      permits?: unknown[]
+    }>('me', req);
     //render the html
     const html = await ctx.view.render(action, {
       data: { ...props, ...(res.data() as Record<string, unknown>) },
@@ -71,7 +84,7 @@ export function config(server: HttpServer<Config>) {
             id: session.results.id,
             name: session.results.name,
             roles: session.results.roles,
-            permits: session.results.permits,
+            permits: session.results.permits
           }
         : undefined,
       request: {
@@ -84,51 +97,54 @@ export function config(server: HttpServer<Config>) {
           pathname: req.url.pathname,
           port: req.url.port,
           protocol: req.url.protocol,
-          search: req.url.search,
+          search: req.url.search
         },
         headers: {},
         session: {},
         method: req.method,
         mime: req.mimetype,
-        data: {},
+        data: {}
       },
-      response: res.toStatusResponse(),
+      response: res.toStatusResponse()
     });
     //if there is html
     if (html) {
       //add the html to the response
       const hashes = [
-        ...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi),
+        ...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)
       ].map(
         (match) =>
           "'sha256-" +
-          createHash("sha256").update(match[1]).digest("base64") +
-          "'",
+          createHash('sha256').update(match[1]).digest('base64') +
+          "'"
       );
       res.headers.set(
-        "Content-Security-Policy",
+        'Content-Security-Policy',
         "default-src 'self'; script-src 'self' " +
-          hashes.join(" ") +
-          (config.env === "development" ? " 'unsafe-eval'" : "") +
-          "; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' ws://127.0.0.1:*; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+          hashes.join(' ') +
+          (config.env === 'development' ? " 'unsafe-eval'" : '') +
+          "; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' ws://127.0.0.1:*; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
       );
       res.html(html, status.code, status.status);
     }
   };
-}
+};
 
+/**
+ * Register the view-route mapping using the framework’s configured base path.
+ */
 export async function route(
   req: HttpRequest,
   res: HttpResponse,
-  ctx: HttpServer<Config>,
+  ctx: HttpServer<Config>
 ) {
-  // Built assets are served by the app's static handler. Upstream http() starts
-  // a Vite middleware server even when its render engine is in production mode.
-  if (ctx.config("env") === "production") return;
-  const reactus = ctx.plugin<ViewPlugin>("reactus");
+  //Built assets are served by the app's static handler. Upstream http()
+  // starts a Vite middleware server even when its render engine is in
+  // production mode.
+  if (ctx.config('env') === 'production') return;
+  const reactus = ctx.plugin<ViewPlugin>('reactus');
   //handles public, assets and hmr
   await reactus.http(req.resource, res.resource);
-  //if middleware was triggered
-  //stop the response
+  //if middleware was triggered stop the response
   if (res.resource.headersSent) res.stop();
-}
+};

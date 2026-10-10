@@ -9,11 +9,17 @@
     "./plugins/bridge-host/plugin"
   ],
   "scripts": {
-    "build": "node --import tsx scripts/build.ts",
-    "dev": "node --import tsx scripts/server.ts",
-    "prove": "node --import tsx scripts/prove.ts",
+    "build": "stackpress build --b config/build -v",
+    "dev": "yarn dev:clean && yarn dev:start",
+    "dev:clean": "node --input-type=module -e \"import fs from 'node:fs'; fs.rmSync('node_modules/.vite', { recursive: true, force: true });\"",
+    "dev:start": "stackpress develop --b config/develop -v",
+    "preview": "stackpress serve --b config/preview -v",
+    "serve": "stackpress serve --b config/production -v",
+    "emit": "BOOTSTRAP=config/develop stackpress emit",
     "typecheck": "tsc --noEmit",
-    "serve": "node --import tsx scripts/server.ts",
+    "test": "yarn test:unit && node --import tsx tests/runners/matrix.ts",
+    "test:unit": "node --import tsx --test tests/all.test.ts",
+    "test:live": "yarn test:unit && RUN_LIVE_MODELS=1 node --import tsx tests/runners/matrix.ts",
     "prepare:sdk": "node scripts/prepare-sdk.mjs"
   },
   "dependencies": {
@@ -49,5 +55,6 @@
     "prettier": "3.8.1",
     "playwright": "1.56.1"
   },
-  "description": "Bounded OfficePress agent-mode-compatibility proof"
+  "description": "Bounded OfficePress agent-mode-compatibility proof",
+  "packageManager": "yarn@1.22.22"
 }

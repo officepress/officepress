@@ -43,6 +43,22 @@ The second script reconstructs source content from local reference blocks, check
 
 Use the [Stackpress handbook](stackpress.md) for accepted implementation rules and full local source retrieval. Run `python3 .agents/scripts/verify-stackpress-ingestion.py` alongside the existing checks after changing these references. The source manifest records exact recovery hashes and explicit scope dispositions.
 
+## Recurring Stackpress patterns
+
+User direction, 2026-10-09: maintain the KB whenever a reusable Stackpress pattern
+or recurring mistake is identified during related work. Verify it against the
+installed version, classify its authority, document the correct form and failure
+consequence, link its owner, and add a practical regression/guard when possible.
+Reinforce recurring mistakes in root AGENTS and relevant local skill entrypoints.
+Keep unsupported proposals and sample shortcuts explicitly separate from accepted
+rules. Cite the precise passage for source prescriptions; distinguish observed
+framework behavior, OfficePress policy and agent-added proof adaptations. Start
+with source-backed guidance usable by other apps with different custom modules.
+Proof code and passing tests do not establish prescribed architecture. The [accepted agent guidelines](stackpress-logic-patterns.md) organize the 2026-10-10 findings by task; use their coverage reference to preserve reviewed exclusions. Optional API discoveries remain research unless accepted as useful agent instructions.
+[Complete maintenance procedure](../references/00374-stackpress-lazy-registration-and-pattern-maintenance.md)
+records the required fields, exceptions and checks; load it during these updates.
+This standing local KB authorization leaves the indexing rule below unchanged.
+
 ## MCP index updates require an explicit request
 
 User direction on 2026-10-02: do not update the MCP index unless the user says to do so. Editing knowledge, researching, validating, committing or pushing does not authorize indexing. Leave the published snapshot stale when source documents change; local Markdown remains authoritative.

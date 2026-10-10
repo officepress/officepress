@@ -1,61 +1,79 @@
-import type { ClipboardEvent, Ref } from "react";
-import { useEffect, useImperativeHandle, useRef, useState } from "react";
-import { useTextEditor } from "frui/form/TextEditor";
-import { emailHTML, escapeHTML } from "../content.js";
-import Icon from "../../settings/shell/components/Icon.js";
+//modules
+import type { ClipboardEvent, Ref } from 'react';
+import { useTextEditor } from 'frui/form/TextEditor';
+import { useEffect, useImperativeHandle, useRef, useState } from 'react';
 
+//client
+import { emailHTML, escapeHTML } from '../content.js';
+import Icon from '../../settings/shell/components/Icon.js';
+
+//--------------------------------------------------------------------//
+// Types
+
+//imperative editor operations used by the parent template composer
 export type MessageBodyEditorHandle = { insert: (text: string) => void };
 
-/** Own the visual editor's DOM and expose one insertion point for declared variables. */
+//editable HTML/text bodies and variable controls for the email composer
+type MessageBodyEditorProps = {
+  html: boolean,
+  value: string,
+  writable: boolean,
+  variables: string[],
+  onChange: (value: string) => void,
+  ref: Ref<MessageBodyEditorHandle>
+};
+
+//--------------------------------------------------------------------//
+// Entry point
+
+/**
+ * Own the visual editor's DOM and expose one insertion point for declared
+ * variables.
+ */
 export default function MessageBodyEditor({
-  html,
+  html: isHtml,
   value,
-  writable,
+  writable: canWrite,
   variables,
   onChange,
-  ref,
-}: {
-  html: boolean;
-  value: string;
-  writable: boolean;
-  variables: string[];
-  onChange: (value: string) => void;
-  ref: Ref<MessageBodyEditorHandle>;
-}) {
-  const [source, setSource] = useState(false);
-  const [linkOpen, setLinkOpen] = useState(false);
-  const [linkURL, setLinkURL] = useState("");
-  const [linkError, setLinkError] = useState("");
+  ref
+}: MessageBodyEditorProps) {
+  //--------------------------------------------------------------------//
+  // State and lifecycle references
+
+  const [ isSourceMode, setIsSourceMode ] = useState(false);
+  const [ isLinkOpen, setIsLinkOpen ] = useState(false);
+  const [ linkURL, setLinkURL ] = useState('');
+  const [ linkError, setLinkError ] = useState('');
   const textarea = useRef<HTMLTextAreaElement>(null);
   const selection = useRef<Range | null>(null);
   const linkSelection = useRef<Range | null>(null);
   const emitted = useRef(value);
-  const visual = html && !source;
   const editor = useTextEditor({
-    value: html ? emailHTML(value) : "",
-    onChange: changeVisual,
+    value: isHtml ? emailHTML(value) : '',
+    onChange: handleChangeVisual
   });
 
-  /** Sanitize native edits before they enter draft state or the resolved preview. */
-  function changeVisual(markup: string) {
+  //--------------------------------------------------------------------//
+  // Derived presentation
+
+  const isVisual = isHtml && !isSourceMode;
+  useImperativeHandle(ref, () => ({ insert: handleInsert }));
+
+  //--------------------------------------------------------------------//
+  // Interaction handlers
+
+  //sanitize native edits before they enter draft state or the resolved
+  // preview
+  function handleChangeVisual(markup: string) {
     const clean = emailHTML(markup);
     emitted.current = clean;
     onChange(clean);
   }
-
-  // Frui owns typing and native undo. Only external/source updates replace its DOM;
-  // rerendering on every keystroke would reset the caret and undo history.
-  useEffect(() => {
-    if (editor.refs.editor.current && value !== emitted.current) {
-      editor.refs.editor.current.innerHTML = emailHTML(value);
-      emitted.current = value;
-      selection.current = null;
-    }
-  }, [value, editor.refs.editor]);
-
-  /** Retain a selection while a toolbar, variable selector or link field has focus. */
-  function rememberSelection() {
-    if (linkOpen) return;
+  //retain a selection while a toolbar, variable selector or link field has
+  // focus
+  function handleRememberSelection() {
+    if (isLinkOpen) return;
     const current = window.getSelection();
     const root = editor.refs.editor.current;
     if (
@@ -65,9 +83,9 @@ export default function MessageBodyEditor({
       selection.current = current.getRangeAt(0).cloneRange();
     }
   }
-
-  /** Restore a valid editor selection, or insert at the end when none was chosen. */
-  function restoreSelection(saved = selection.current) {
+  //restore a valid editor selection, or insert at the end when none was
+  // chosen
+  function handleRestoreSelection(saved = selection.current) {
     const root = editor.refs.editor.current;
     const current = window.getSelection();
     if (!root || !current) return;
@@ -82,20 +100,19 @@ export default function MessageBodyEditor({
     current.addRange(range);
     selection.current = range.cloneRange();
   }
-
-  /** Run Frui's editing command inside this editor without losing native undo. */
-  function command(name: string, input?: string) {
-    if (!writable || !visual) return;
-    restoreSelection();
+  //run Frui's editing command inside this editor without losing native undo
+  function handleCommand(name: string, input?: string) {
+    if (!canWrite || !isVisual) return;
+    handleRestoreSelection();
     editor.handlers.execCommand(name, input);
-    rememberSelection();
+    handleRememberSelection();
   }
-
-  /** Insert variables into the active visual, source or plain-text representation. */
-  function insert(text: string) {
-    if (!writable) return;
-    if (visual) {
-      command("insertText", text);
+  //insert variables into the active visual, source or plain-text
+  // representation
+  function handleInsert(text: string) {
+    if (!canWrite) return;
+    if (isVisual) {
+      handleCommand('insertText', text);
       return;
     }
     const input = textarea.current;
@@ -107,41 +124,59 @@ export default function MessageBodyEditor({
       input?.setSelectionRange(start + text.length, start + text.length);
     });
   }
-  useImperativeHandle(ref, () => ({ insert }));
-
-  /** Keep pasted markup within the same policy as source, preview and delivery. */
-  function paste(event: ClipboardEvent<HTMLDivElement>) {
+  //keep pasted markup within the same policy as source, preview and
+  // delivery
+  function handlePaste(event: ClipboardEvent<HTMLDivElement>) {
     event.preventDefault();
-    rememberSelection();
-    const markup = event.clipboardData.getData("text/html");
-    const plain = event.clipboardData.getData("text/plain");
-    command(
-      "insertHTML",
-      markup ? emailHTML(markup) : escapeHTML(plain).replace(/\r?\n/g, "<br>"),
+    handleRememberSelection();
+    const markup = event.clipboardData.getData('text/html');
+    const plain = event.clipboardData.getData('text/plain');
+    handleCommand(
+      'insertHTML',
+      markup ? emailHTML(markup) : escapeHTML(plain).replace(/\r?\n/g, '<br>')
     );
   }
-
-  /** Link the selected text, or insert the URL itself at an empty caret. */
-  function applyLink() {
+  //link the selected text, or insert the URL itself at an empty caret
+  function handleApplyLink() {
     const url = linkURL.trim();
     if (!/^(https?:\/\/|mailto:)[^\s]+$/i.test(url)) {
-      setLinkError("Enter an https://, http:// or mailto: address.");
+      setLinkError('Enter an https://, http:// or mailto: address.');
       return;
     }
-    restoreSelection(linkSelection.current);
+    handleRestoreSelection(linkSelection.current);
     const current = window.getSelection();
     if (current?.isCollapsed) {
-      command(
-        "insertHTML",
-        `<a href="${escapeHTML(url)}">${escapeHTML(url)}</a>`,
+      handleCommand(
+        'insertHTML',
+        `<a href="${escapeHTML(url)}">${escapeHTML(url)}</a>`
       );
     } else {
-      command("createLink", url);
+      handleCommand('createLink', url);
     }
-    setLinkOpen(false);
-    setLinkURL("");
-    setLinkError("");
+    setIsLinkOpen(false);
+    setLinkURL('');
+    setLinkError('');
   }
+
+  //--------------------------------------------------------------------//
+  // Browser effects
+
+  //synchronize browser resources after state, derived values and handlers
+  // are ready
+
+  //Frui owns typing and native undo. Only external/source updates replace
+  // its DOM; rerendering on every keystroke would reset the caret and undo
+  // history.
+  useEffect(() => {
+    if (editor.refs.editor.current && value !== emitted.current) {
+      editor.refs.editor.current.innerHTML = emailHTML(value);
+      emitted.current = value;
+      selection.current = null;
+    }
+  }, [ value, editor.refs.editor ]);
+
+  //--------------------------------------------------------------------//
+  // Render or public hook result
 
   return (
     <>
@@ -149,15 +184,15 @@ export default function MessageBodyEditor({
         className="op-row template-editor-toolbar"
         aria-label="Message formatting"
       >
-        {html && (
+        {isHtml && (
           <>
             <button
               className="op-icon-btn op-icon-btn--compact"
               type="button"
               aria-label="Bold"
               onMouseDown={(event) => event.preventDefault()}
-              onClick={() => command("bold")}
-              disabled={!writable || source}
+              onClick={() => handleCommand('bold')}
+              disabled={!canWrite || isSourceMode}
             >
               <Icon name="bold" />
             </button>
@@ -166,8 +201,8 @@ export default function MessageBodyEditor({
               type="button"
               aria-label="Italic"
               onMouseDown={(event) => event.preventDefault()}
-              onClick={() => command("italic")}
-              disabled={!writable || source}
+              onClick={() => handleCommand('italic')}
+              disabled={!canWrite || isSourceMode}
             >
               <Icon name="italic" />
             </button>
@@ -175,24 +210,24 @@ export default function MessageBodyEditor({
               className="op-icon-btn op-icon-btn--compact"
               type="button"
               aria-label="Add link"
-              aria-expanded={linkOpen}
+              aria-expanded={isLinkOpen}
               onMouseDown={(event) => event.preventDefault()}
               onClick={() => {
-                rememberSelection();
+                handleRememberSelection();
                 linkSelection.current = selection.current?.cloneRange() || null;
-                setLinkOpen(!linkOpen);
+                setIsLinkOpen(!isLinkOpen);
               }}
-              disabled={!writable || source}
+              disabled={!canWrite || isSourceMode}
             >
               <Icon name="link" />
             </button>
             <button
               className="op-btn op-btn--ghost template-source-toggle"
               type="button"
-              aria-pressed={source}
+              aria-pressed={isSourceMode}
               onClick={() => {
-                setSource(!source);
-                setLinkOpen(false);
+                setIsSourceMode(!isSourceMode);
+                setIsLinkOpen(false);
               }}
             >
               <span aria-hidden="true">&lt;/&gt;</span> Source code
@@ -207,9 +242,9 @@ export default function MessageBodyEditor({
           className="op-select template-insert"
           id="insert-variable"
           value=""
-          onMouseDown={rememberSelection}
-          onChange={(event) => insert("{{" + event.target.value + "}}")}
-          disabled={!writable}
+          onMouseDown={handleRememberSelection}
+          onChange={(event) => handleInsert('{{' + event.target.value + '}}')}
+          disabled={!canWrite}
         >
           <option value="" disabled>
             Insert variable
@@ -221,7 +256,7 @@ export default function MessageBodyEditor({
           ))}
         </select>
       </div>
-      {linkOpen && (
+      {isLinkOpen && (
         <div
           className="template-link-editor"
           role="group"
@@ -235,9 +270,9 @@ export default function MessageBodyEditor({
               onChange={(event) => setLinkURL(event.target.value)}
               placeholder="https://example.com"
               onKeyDown={(event) => {
-                if (event.key === "Enter") {
+                if (event.key === 'Enter') {
                   event.preventDefault();
-                  applyLink();
+                  handleApplyLink();
                 }
               }}
             />
@@ -245,7 +280,7 @@ export default function MessageBodyEditor({
           <button
             className="op-btn op-btn--secondary"
             type="button"
-            onClick={applyLink}
+            onClick={handleApplyLink}
           >
             Apply link
           </button>
@@ -253,8 +288,8 @@ export default function MessageBodyEditor({
             className="op-btn op-btn--ghost"
             type="button"
             onClick={() => {
-              setLinkOpen(false);
-              restoreSelection();
+              setIsLinkOpen(false);
+              handleRestoreSelection();
             }}
           >
             Cancel
@@ -266,7 +301,7 @@ export default function MessageBodyEditor({
           )}
         </div>
       )}
-      {html && (
+      {isHtml && (
         <>
           <input type="hidden" ref={editor.refs.hidden} />
           <div
@@ -275,51 +310,51 @@ export default function MessageBodyEditor({
             role="textbox"
             aria-label="HTML message body"
             aria-multiline="true"
-            aria-readonly={!writable}
-            contentEditable={writable && !source}
+            aria-readonly={!canWrite}
+            contentEditable={canWrite && !isSourceMode}
             suppressContentEditableWarning
-            hidden={source}
-            tabIndex={source ? -1 : 0}
+            hidden={isSourceMode}
+            tabIndex={isSourceMode ? -1 : 0}
             className="op-editor template-editor template-wysiwyg"
             onInput={() => {
               editor.handlers.input();
-              rememberSelection();
+              handleRememberSelection();
             }}
-            onBlur={rememberSelection}
-            onKeyUp={rememberSelection}
-            onMouseUp={rememberSelection}
-            onPaste={paste}
+            onBlur={handleRememberSelection}
+            onKeyUp={handleRememberSelection}
+            onMouseUp={handleRememberSelection}
+            onPaste={handlePaste}
             onDrop={(event) => event.preventDefault()}
             onClick={(event) => {
-              if ((event.target as Element).closest("a"))
+              if ((event.target as Element).closest('a'))
                 event.preventDefault();
             }}
           />
         </>
       )}
-      {!visual && (
+      {!isVisual && (
         <>
           <label className="op-sr-only" htmlFor="message-body">
-            {html ? "HTML source" : "Plain text message body"}
+            {isHtml ? 'HTML source' : 'Plain text message body'}
           </label>
           <textarea
             id="message-body"
             ref={textarea}
             className={
-              "op-editor template-editor" + (html ? " template-source" : "")
+              'op-editor template-editor' + (isHtml ? ' template-source' : '')
             }
             value={value}
             onChange={(event) => onChange(event.target.value)}
-            disabled={!writable}
+            disabled={!canWrite}
           />
         </>
       )}
       <div className="op-row op-caption op-muted">
         <span className="op-grow">
-          {html ? (source ? "HTML source" : "Rich text") : "Plain text"}
+          {isHtml ? (isSourceMode ? 'HTML source' : 'Rich text') : 'Plain text'}
         </span>
         <span>{value.length} characters</span>
       </div>
     </>
   );
-}
+};

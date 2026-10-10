@@ -1,0 +1,2502 @@
+{
+  "retrieved": "2026-10-09",
+  "scope": "Source inventory for logic-pattern review; no full source import or archive",
+  "sources": [
+    {
+      "repo": "stackpress",
+      "commit": "a71d683051ba8350fdd12d6b5a33f268fdcc285f",
+      "tree_truncated": false,
+      "files": [
+        {
+          "path": ".agents/AGENTS.md",
+          "git_blob_sha": "5c1015d58881e064067c11dc0d5a336b9b465053",
+          "bytes": 4978,
+          "sha256": "cb40de6b3e5450da69b7e4dfb22dfbffef776279a7fd5682b76f73bc8beecb1b",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/TERMS.md",
+          "git_blob_sha": "d551eb30516dadb994178b02dc94fa4646594536",
+          "bytes": 3068,
+          "sha256": "223bf41ab50e28ed77ced3449050ab5d6552e13985cb601d5f082697f047a40a",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/context/architecture-and-composition.md",
+          "git_blob_sha": "9b23be8de9331922c32435e3881ddd9bfdefaaed",
+          "bytes": 5293,
+          "sha256": "2aed92a7ee9278114dfef53322baa30233a7ad60f55634725748f64e69021466",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/context/compatibility-and-maintenance.md",
+          "git_blob_sha": "c8782d1d27591b81bf940a1e2dcfd0c6c418bb9d",
+          "bytes": 7014,
+          "sha256": "3a2c2abae28100b18bdb0f15f0d867babbdfb5e5b0187cdf6f372399f88251d8",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/context/ecosystem-and-portability.md",
+          "git_blob_sha": "50e051dd88d4b12e8a30e0b418455dc570259e92",
+          "bytes": 5412,
+          "sha256": "2eacda652d5bdad1bc94734af6788e2c844a82f0717ea358dae75e4a20f46513",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/context/extension-and-contribution.md",
+          "git_blob_sha": "c9eaf5570d8aca1ef30f585d8c995b6f8ac3975e",
+          "bytes": 8302,
+          "sha256": "efdc13cc8d528fdffbe09821b4a121a52d705cf59459ac7f562dd1eb0002c6fe",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/context/identity-and-principles.md",
+          "git_blob_sha": "d4e1868fba6fe8b6b0a4760df8f0269a4d8e7348",
+          "bytes": 3925,
+          "sha256": "789361b78581f1c8c137cf5f083fb9ed864b43b94aed0ef90822677523598b52",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/context/index.md",
+          "git_blob_sha": "617df86e6ad4e514a482e9b76d5ac92a7f682656",
+          "bytes": 1880,
+          "sha256": "6b2b55bbb3ba93576741739d09e30f3e0fcba2d0d69d9afc419c1b7918616039",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/context/interfaces-and-experience.md",
+          "git_blob_sha": "514a9035c0f39c62722c2be133d5a14567ae7c10",
+          "bytes": 5645,
+          "sha256": "f0fbe7c2888615218ca8af0d0308c04b40acc74f6db811ab0764d06060beb803",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/context/modeling-and-generation.md",
+          "git_blob_sha": "223a3205c27373a836929fa665f80a5a85f2e0ce",
+          "bytes": 6008,
+          "sha256": "11ffc3a0707e07704c28f20a48a72f1d615a9934e10728a44e1660e820b6789d",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/context/runtime-and-operations.md",
+          "git_blob_sha": "f267932c443235b438329b20179183fb1aa299b8",
+          "bytes": 6414,
+          "sha256": "72ebeda36157933605e4d5602d22701a3378164af5490a0c7c6ebc639198dac5",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/references/00001-agent-workspace-rules.md",
+          "git_blob_sha": "a041c3ccfea8e42383605076f7446491d91e7ba4",
+          "bytes": 4448,
+          "sha256": "e3b379112ba97c444c1b01d8d55cb8ec7cc56c103e29fa8572d12d7a1bdfc572",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/references/00002-intersection-points.md",
+          "git_blob_sha": "a348f9e9fdaf99aa9a5b83fce56cca1cd1aa497c",
+          "bytes": 1405,
+          "sha256": "b206d2d34acdcaeacb90b971454b0f0f4a63922b5a94c83d39cc95276aa020bd",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/references/00003-reference-recovery-points.md",
+          "git_blob_sha": "01b9e1056420c5093d9e668875f4ed4d03cf7b8c",
+          "bytes": 447,
+          "sha256": "ef8a892349ed960f42e314994e19143fc90c48e466d412a07317969017d33ece",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/references/00004-runtime-api-contracts.md",
+          "git_blob_sha": "6c29cccd8dadece34361d39f2733da2062b189de",
+          "bytes": 6151,
+          "sha256": "379b61bbcb8b47ba5320547af8bf8e2ce3bbc7360f262ddfff9675a0d7dac69a",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/references/00005-server-and-transport-contracts.md",
+          "git_blob_sha": "ac45f7d9536c9618d194ac624b4d2b331c495608",
+          "bytes": 8257,
+          "sha256": "3381ca0930dd12d555e1e22673b2d05a4df104c6736f81bceb021c9f9338ce73",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/references/00006-schema-api-contracts.md",
+          "git_blob_sha": "fea76f943a28aee82aa95d16b387bf8c77d80993",
+          "bytes": 8562,
+          "sha256": "87b6fd9a8e43ebd54c9375d4d6e1fb7d867955411e38cb68ab09a3b1a60064ea",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/references/00007-idea-language-catalog.md",
+          "git_blob_sha": "366ed88560063bc5de5b20efcb050121f5f2dcf2",
+          "bytes": 8479,
+          "sha256": "0fc7cd1b1dbdd1fff1c14dcd480b7de5ded413c1c179aa58a59821b151cb9f6d",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/references/00008-configuration-catalog.md",
+          "git_blob_sha": "318da5550be776665cd046773f4581b402505cca",
+          "bytes": 9071,
+          "sha256": "1981de44bf8e2a3938e04e501c3fbd23a54b75e256b4c8f625dc99bb0166f82c",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/references/00009-cli-and-plugin-contracts.md",
+          "git_blob_sha": "4bfcbcb46e54935d6f16eb02152043fe85191186",
+          "bytes": 7939,
+          "sha256": "86e2d156d4ceb0c367c5b4875f881b6a12d6d3af0c4b37439d4a52b4890b1ada",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/references/00010-sql-api-contracts.md",
+          "git_blob_sha": "4e4c3541c778e570d6b949d7c25254d5640547c4",
+          "bytes": 8850,
+          "sha256": "cd24ca54863b3e714590c0554e67196e1d13eee119f3fc2516c8dff505210331",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/references/00011-database-adapter-contracts.md",
+          "git_blob_sha": "46875cb4d1212b8f86f6faffb25bf477704da5fd",
+          "bytes": 6492,
+          "sha256": "1c395e2213fa63ebca388e8edb5a5a79d114898705e8ecb131a8c39d92daa06f",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/references/00012-view-api-contracts.md",
+          "git_blob_sha": "b57f086e316315a639ed0cf45730e1d3b369ca5f",
+          "bytes": 8263,
+          "sha256": "648a237a6c7f697cb4d68c1bdd933522bc4a78c07f371674f34f4f1fb02c475d",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/references/00013-session-language-contracts.md",
+          "git_blob_sha": "c56c282cd954308f043e60712f77187e1944f8fb",
+          "bytes": 8071,
+          "sha256": "eb40b98b29282ecb1f9bf11c4556f3871557adc9ad2be2099376c0235edb770d",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/references/00014-exports-types-generated-contracts.md",
+          "git_blob_sha": "ff9cc631a0e26679d33f07500babca6aff31d901",
+          "bytes": 8859,
+          "sha256": "f293d7046332e60f1509d4c2f00b2c044996f3c5cf1fee71f9608f6ca6d8bad6",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/references/00015-operational-examples.md",
+          "git_blob_sha": "21b178564b0de913242038218e7d5872673e537d",
+          "bytes": 5833,
+          "sha256": "8e115a20caa64718697b488f9fe76d28dec36138accd12e870c3e5f43bf01b9e",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/references/00016-idea-component-catalog.md",
+          "git_blob_sha": "56a4b50a59befbcc58040fe5df3a5ffea14bbfd2",
+          "bytes": 4692,
+          "sha256": "690869e011c0a237ab1055bec28e258e5a38197bf97fd0e4c9a82bc84ee98ae5",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/references/00017-interface-exposure-examples.md",
+          "git_blob_sha": "e4f900988819394e527ca60445d4c0523270f138",
+          "bytes": 4983,
+          "sha256": "98ecad045838761abccde37458b32e3cf51f0ef20595b17dc2fe11279d7a4fe4",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/references/00018-contributor-source-patterns.md",
+          "git_blob_sha": "d022d531ffed5043fec18853fb43ef7586b556ca",
+          "bytes": 8922,
+          "sha256": "ceca478556dbb5162daa9df5a19a811f2961f6795952f15f3db1638396863c8d",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/resources/2026-07-14-coordinated-github-release-policy.md",
+          "git_blob_sha": "9f58da1608160c577a0b8074385fb7d0a08b7f9a",
+          "bytes": 526,
+          "sha256": "9426639a2875fa17cc0becf534b511bc6a529b0e64a904f2ec4c729cbf91867e",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/scripts/validate-agent-workspace.py",
+          "git_blob_sha": "32e485e5c80410ec1b522aa17353084f04f9e1e1",
+          "bytes": 10764,
+          "sha256": null,
+          "disposition": "binary asset; no logic review"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/brief.md",
+          "git_blob_sha": "e4b9fd2ec55733e815c74a8fdd1319d7ace1ed55",
+          "bytes": 2566,
+          "sha256": "a06371dfdb5eaea00ed6c80222bfe20d1fe8317524dfd1044d39aa3e781bfc82",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/composition-map.md",
+          "git_blob_sha": "ac5303a6feaf188af780d7ae1430c6ecaa111a20",
+          "bytes": 4974,
+          "sha256": "2f4e6d7a665af71f91bc457bed4f102315d1927aaf4bccc7c0eb20a39d756078",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/concept-dispositions.md",
+          "git_blob_sha": "52c2beca1bea9e2f8f1c5b86d5dbc9f71093957a",
+          "bytes": 4138,
+          "sha256": "efa907953fb06014d730f7fda2e5387b5d76234a6906ccc538be26b99ff08fc9",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/concepts.md",
+          "git_blob_sha": "f1ee3489885d521a81a95e86a9526d355f0b01f9",
+          "bytes": 9317,
+          "sha256": "f3cd6633af9c2626e71f4de2b79942701d9fce98555676a5f06decc30293a636",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/context-taxonomy.md",
+          "git_blob_sha": "df5768d72f42bdfc7eb7174ac2444a1eca8b7182",
+          "bytes": 2497,
+          "sha256": "541cc91c4b2687aed55abe8fb0c56985c92efbc3d50e23bc1f206a4bfaafa032",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/core-architecture.md",
+          "git_blob_sha": "8973f2b8bf81cd247502e3339f8562fad1683656",
+          "bytes": 6495,
+          "sha256": "74e06485baa7082d3cc73e3951206d285c04054d77d8896b882eb52ed9f06810",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/decisions.md",
+          "git_blob_sha": "406d338ad55cc0c858ee5871fb1a0a13f4928909",
+          "bytes": 7914,
+          "sha256": "ac472d2ae1cecb3fe6d9fdee28f93f1e391c50c929c7cadc1403e47bb4f7f578",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/extension-maintenance-system.md",
+          "git_blob_sha": "5cf117da76cef72e1f0cd39f4e2a307c822e6040",
+          "bytes": 4972,
+          "sha256": "f5207251ab35c57f459774020837b1e66799e33ff50d50400b993e8927172dcd",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/index.md",
+          "git_blob_sha": "812195a9af6c940eb0c232f5d9777e0003ab70cd",
+          "bytes": 8136,
+          "sha256": "0d4606191310585a46e621c27ce467a7d1ece4048144d9a437bbdc6d428c7fbe",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/library-research-strategy.md",
+          "git_blob_sha": "81ad55df9d9ea89a390d354785a0e840d5dd06a0",
+          "bytes": 9583,
+          "sha256": "8e3063f10f1b043acd257ca5827d8e843298fa1bc1b0797bd896169b912af964",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/operational-workflows.md",
+          "git_blob_sha": "bd363fd86a205ba4bbec6eec2c6512c827b1760b",
+          "bytes": 5460,
+          "sha256": "83f911c14e358c40796476acc2a5129665b9ad9d2a5dd6af66787318f8f4d4b0",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/pattern-matrix.md",
+          "git_blob_sha": "af7d731a389d1883cd6364e8917d7e1fd85871fc",
+          "bytes": 4377,
+          "sha256": "0fd677d8ea08248d703fc62fabd55276be3a51c04f68586dbceca450671df508",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/phase5-decisions.md",
+          "git_blob_sha": "9721a5496b25389d1f15492e03c187a9bd38cf8b",
+          "bytes": 5558,
+          "sha256": "f03442975a5ee2385ba9e97619b169da50c77f6b8089f3b57596a42362c24d3b",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/phase6-artifact-validation.md",
+          "git_blob_sha": "5c94cb14225c813eedae35eea54d0a6e2ceaff57",
+          "bytes": 5498,
+          "sha256": "4ead6bbd40f47306628fe8808424bd801d092eedc82ef30006a4ac83d9f18589",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/phase6-context-validation.md",
+          "git_blob_sha": "e3ab97fdb8d7f34aba74f1edca3f9f17cda93c81",
+          "bytes": 4719,
+          "sha256": "a152c6c1e6e07fb66f12a064ffe4c3307760b6226e32ccc4577b45fc3a2e67b7",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/phase6-decisions.md",
+          "git_blob_sha": "1fd2661ae416f600d52707423efdf07fae124980",
+          "bytes": 2774,
+          "sha256": "9b9e578c99cde9916d5bc76833cc3d386fe30bad113ae715c06074022edaaced",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/phase6-language-review.md",
+          "git_blob_sha": "f5cbba9cc5e11186d97aa634ee4bc1ad2b674eb1",
+          "bytes": 3743,
+          "sha256": "92ec14998ff2dd4e6f41353362d082867af38a25b65160031f0c7570137f0a12",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/phase6-promotion-matrix.md",
+          "git_blob_sha": "82541f3bb1e5e206eef42e9dbc22da139060bbac",
+          "bytes": 5177,
+          "sha256": "ee08593ccd4595d872e2e39a14ffd5da83467f80947b0136aafd1f84fd25345f",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/phase6-taxonomy.md",
+          "git_blob_sha": "f3f7569f856e419b331053322edfccc1bee8ac32",
+          "bytes": 6486,
+          "sha256": "b8ebf990177b1c4685a771dbec1b36060fe0d5a44f61feba72b6408ef679780f",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/phase7-decisions.md",
+          "git_blob_sha": "bce13509a4d9a7cb8d0485f7bf0828ad235288d4",
+          "bytes": 2645,
+          "sha256": "76ce525c122997c63e8015a3769d8a634375268f0f386487c73ebc8164373d95",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/phase7-maintenance.md",
+          "git_blob_sha": "9b0df0ea724644c07b36d2fc3d59f9c4571dc70a",
+          "bytes": 3984,
+          "sha256": "90bd13bbf6aef67a2b50d6a3e922abb0b61f814b97a1fee9ba57ac563e2471f9",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/phase8-coverage-matrix.md",
+          "git_blob_sha": "aa071d8fcdbd5fba03bb67b6eb3a5eca4f085d99",
+          "bytes": 6710,
+          "sha256": "314bfe231b6f862e928841ef064a53a31ee5d7c1eb7c39cfaebe0fbf0ec78449",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/phase8-decisions.md",
+          "git_blob_sha": "02566cb71d011d66e862510e4fd71d87fc581745",
+          "bytes": 4107,
+          "sha256": "a4fe4088f15ae27727d1d890962d7ed7a39c3d78945710cbb9ebb4dc5fb2c314",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/phase8-document-parity-results.md",
+          "git_blob_sha": "427ca7ef35e48ecf2b7606c02dfce04600116465",
+          "bytes": 6610,
+          "sha256": "fa3ddcced29faa31bd87cc55f35c44a7140215e456abaa2f9b3f8b8a98e4890b",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/phase8-kb-only-generation.md",
+          "git_blob_sha": "5f7fa41906d44792de13842d1c24496d61e58c21",
+          "bytes": 15262,
+          "sha256": "401b9469dbdb3cc70ad0a595eb691d9021c96ec608344aa7040feeb4b910b3a5",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/phase8-parity-drafts/config-reference.md",
+          "git_blob_sha": "566d4169b4f51bb615a068ff802c568337d32452",
+          "bytes": 2116,
+          "sha256": "3f1dbe4e2add31a80a0ccc801bd6720cf65cbe23b7f8925669dfc5040e15e246",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/phase8-parity-drafts/http.md",
+          "git_blob_sha": "9ace59d05c3c259d05c652413e8b411f4337247d",
+          "bytes": 1766,
+          "sha256": "6b1358bf29ff060b987af77e4cab5a9c439c3232587d6ccb2b5ab2578b4cc417",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/phase8-parity-drafts/idea-reference.md",
+          "git_blob_sha": "97616f673e71d288138c12daff0a1c22182920a7",
+          "bytes": 2333,
+          "sha256": "3d85dc9b7941c84b282673df8afb6585afc62bd3533508e06b947ed6c2842ac4",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/phase8-parity-drafts/pgsql.md",
+          "git_blob_sha": "d1fad339be6db3051478edf27e07bd0adc74c076",
+          "bytes": 1647,
+          "sha256": "d208436b697809598e68293b8ebeb79958bcaa90a2e845a8f72d5c04504d757c",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/phase8-parity-drafts/runtime-server.md",
+          "git_blob_sha": "7c273cb629576a0d8549c420583958dcc62ff055",
+          "bytes": 1989,
+          "sha256": "ebd2803a4e0c957439c54b3291f038a69722aa6d9d4ca745c40624954921a2f4",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/phase8-parity-drafts/session-language.md",
+          "git_blob_sha": "9a5965403e4e0d28b4f6ae09621b6bd44d137050",
+          "bytes": 2144,
+          "sha256": "b35ef52cb4603e07080a55d6fa7c8b654145a1c240ef6e77307633d70a9ffc53",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/phase8-parity-drafts/sql-engine.md",
+          "git_blob_sha": "2b81b51ec5ffe14a66bd3f01a75b83d35979d696",
+          "bytes": 1930,
+          "sha256": "5220149abfa135984c95c6b18a6df4379f1965e033cfef0d5d92638527963abb",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/phase8-parity-drafts/view.md",
+          "git_blob_sha": "0bc370b2b73e5687237fe59c9ed05c0a0c461964",
+          "bytes": 2050,
+          "sha256": "be51071548bb0a50df1aea573b45c98566776021ca74ef409fcc5a24f63ca458",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/phase8-reference-plan.md",
+          "git_blob_sha": "4e6640be645faf926a27454dfd236bad31301a4c",
+          "bytes": 4542,
+          "sha256": "b75825e42b1e01c9effc6bba87764e0116310a2abe3c1b55282994b56a902a88",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/research-frui.md",
+          "git_blob_sha": "f5c3a382a213da333715729f73a1c7b704744ae7",
+          "bytes": 5591,
+          "sha256": "19121e1b52ef3b7642ed14f69258844d7a279089866aa63dcc7de8292ddd4943",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/research-idea-evidence.md",
+          "git_blob_sha": "6a92183917487fe1338371dce33562c8c59d039e",
+          "bytes": 5596,
+          "sha256": "420955cff8cc850cfe0865abe43fd4958b6e69345ee2fb66a1d9b1c35913f882",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/research-idea.md",
+          "git_blob_sha": "4156e160d69f3e6b854adc4d0e690c11919296b9",
+          "bytes": 9735,
+          "sha256": "b285b96a52f9209c2b20ebf873372cf62d87c284f2227512848e67d2310cf404",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/research-ingest.md",
+          "git_blob_sha": "ae3b479193cf0966a98e35a051c5a3fca7511785",
+          "bytes": 8106,
+          "sha256": "b2cd08ad0d21eb546d5a4f86479b1b01f166ce5eac2e6776348bc52bc035dc09",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/research-inquire.md",
+          "git_blob_sha": "e74ba8001840e6d6c0b515d580dc273b2fddb6c5",
+          "bytes": 7107,
+          "sha256": "e8c10e571e2ef5580c63633f6c0ee2f3732d509d227f5b50714a58b69bd953e1",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/research-lib-evidence.md",
+          "git_blob_sha": "79f1847314d2a188f833cb993c0fa6aa48dc62c4",
+          "bytes": 5723,
+          "sha256": "32add995f870949f670affb424e03b68aa77e8a36fcf5cc750b619dbc2592a0c",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/research-lib.md",
+          "git_blob_sha": "0e2f5a00384eddaf8498a84fbe547aebe5405b27",
+          "bytes": 8115,
+          "sha256": "a0588e71c73ed0bcef32f9d9b5dc777ec37242135099099bf77938f6c9000f3c",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/research-r22n.md",
+          "git_blob_sha": "5d9f6f5e22c1c544bb89a597c22c75305080a221",
+          "bytes": 5331,
+          "sha256": "df4870ad911d1ef93515b19b24e0eceb8234ed9d11c9d5049f76762b7e034c18",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/research-reactus.md",
+          "git_blob_sha": "8b0b948c8f60277f4d8539ad31fe90ab7bc25f4c",
+          "bytes": 7062,
+          "sha256": "18d971edfe2a3fbb103cccc9d49d48da3dcad7a191119533927af0698d716e17",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/research-stackpress-evidence.md",
+          "git_blob_sha": "c07803a346dc7eb7a5a60aa2ea7bf339f90ea55d",
+          "bytes": 6985,
+          "sha256": "3e3222c9aefe08c909fe8b18b11dcf65097aad8ecdd379c2c82b3c70947f8822",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/research-stackpress.md",
+          "git_blob_sha": "b69b44fdc2be351043a102423793d5c185665be7",
+          "bytes": 9401,
+          "sha256": "f0669b73b89fee29fa376ec94c159a897da1dbccf939e15a0f662ca5f607cef7",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/research.md",
+          "git_blob_sha": "15bf1138fa0202797222f2ae0eca2f724d9acf25",
+          "bytes": 5751,
+          "sha256": "17e5cb456d4c02bd01906bac307ec6a1cbf0fd7f53f7377236046753f9e51936",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/source-inventory.md",
+          "git_blob_sha": "ad2d8894eb1d0e8173fa038e7c99b5c7bf92f70b",
+          "bytes": 7306,
+          "sha256": "96002d0652f3c16262ea7ed8c1ab33b152b08f83d8d4c0422057f9353d7b4d02",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/status.md",
+          "git_blob_sha": "b97c3cd3ac6e55e9ad81d83e8101b5b88be5ff1f",
+          "bytes": 4236,
+          "sha256": "3e0e94ab63c191df183d14bdbc19f3bf17237157458123c714d0d73f11d40a6e",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/topic-001-capability-operating-model.md",
+          "git_blob_sha": "f21024eede7fe2dca02a58cdd745c50f053d4343",
+          "bytes": 3450,
+          "sha256": "a24dc0a1fcd224da5d77af4594ce31eda034d4ce308fe761c0f9643183149723",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/topic-002-idea-semantic-ownership.md",
+          "git_blob_sha": "b41f6626748f3c88fe88e817e8dae879c1202046",
+          "bytes": 3472,
+          "sha256": "640005dd95e92e3966768127bffdd536418399427026fa21313f924bc157796e",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/topic-003-generated-client-contract.md",
+          "git_blob_sha": "e06b424f93155c96430f2e4ac9595718d0275139",
+          "bytes": 3744,
+          "sha256": "ebe72127a5548066e06db335e83b13e319ea8af75d03273f8a3c4524640a4393",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/topic-004-lifecycle-ownership.md",
+          "git_blob_sha": "4009aa0bf2bd820b2d90124c387090bd427031b3",
+          "bytes": 3721,
+          "sha256": "8a29122f245e968c1e0ea7e741279c481b76551553e8b8358e43f53a5b1f43cd",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/topic-005-event-capability-bus.md",
+          "git_blob_sha": "b099c72a0539fd13f10148e06cd31bdc5a59d143",
+          "bytes": 4021,
+          "sha256": "90369776a18e3a71d904dd84580172143cc4d4d9952698099023f680fb786047",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/topic-006-data-reconciliation.md",
+          "git_blob_sha": "046851d19af744fd27ddc9d9bafc0ad446d708d3",
+          "bytes": 4169,
+          "sha256": "932bd76c56471f606d957874de84b7b08d1158e2d0b76fb3512da64fa9943a3b",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/topic-007-host-routed-react.md",
+          "git_blob_sha": "e547b27be69ba2fdf650ab30ad2a6ecfb32f4df1",
+          "bytes": 3790,
+          "sha256": "d6053f9e01cf07fc1a8d354cb1fe69abc1bd488de2b212643bddf7ae1c952a78",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/topic-008-configuration-policy.md",
+          "git_blob_sha": "cb570341d12ce059a779a69e735e186dee6c1d33",
+          "bytes": 3698,
+          "sha256": "c5fa1b9d8376697e282ad1efa01d4480d31eb87f8d4e96aa5f2853d079f0215f",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/topic-009-access-surface-adapters.md",
+          "git_blob_sha": "7ad33f3a3b6b54763fd1bf986daeb95a3114f73c",
+          "bytes": 4216,
+          "sha256": "c2a6d1c98099bf69cc0a4bf81fa3e814dae6c0442fc9ef498637639bd5e2df7f",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/topic-010-package-reuse-distribution.md",
+          "git_blob_sha": "fa4e895b01e17e09e07544777af8c087ea4d6371",
+          "bytes": 4561,
+          "sha256": "9f920efecd26dd75418cb5f4e0369fb71573bfe8abe8f736232c254f9f1ff704",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/topic-011-generated-ui-metadata.md",
+          "git_blob_sha": "d76536980092b03b6a96af37417e587dab110654",
+          "bytes": 4313,
+          "sha256": "5d02a877bb8f421514ad14ce7b787d333cd40a927b007332324d932f8fb423d2",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/topic-012-portability-adapters.md",
+          "git_blob_sha": "e24733ca19cea92f8232b2531a6369bef9eca43a",
+          "bytes": 4195,
+          "sha256": "bb0e679afadfc1f6a37483a359639c6223afc5cbf70b2a31aca8e3e851e5d3a1",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/topic-013-compatibility-drift.md",
+          "git_blob_sha": "e0358166331faf780888804e8913c4f1e036c006",
+          "bytes": 4742,
+          "sha256": "2b7407fc7ab0296a2484d440737a3a6eabe295b7eb94dbd70989584aa4ad10f2",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/topic-014-contributor-decision-system.md",
+          "git_blob_sha": "4fbfee52a07a567d1951b52d92f05cd3839b1a0c",
+          "bytes": 5132,
+          "sha256": "9d79016c2459eb733fdd962c749aba9ec0d6901dd7970c00debdeb00b615c90f",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00001-stackpress-kb-population/topic-backlog.md",
+          "git_blob_sha": "bdf268342928bd47ce67bcf4ab0ea3a0cc37207b",
+          "bytes": 9723,
+          "sha256": "a8e8d2f21107e2683bfa611dac6807ce36dbb60edfc955686a172764155679f1",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00002-stackpress-contributor-guide/brief.md",
+          "git_blob_sha": "b557bb76b7f88fdc3377a56f29bfd27dea59fe9d",
+          "bytes": 4658,
+          "sha256": "56f7b987400c9fb4bd8b695b271131b7b5c69eb57bc3b81fc0d89e03f09e4d99",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00002-stackpress-contributor-guide/decisions.md",
+          "git_blob_sha": "66e6a8040045ca0c0c7a0c1d6c2d22e3f8876661",
+          "bytes": 6848,
+          "sha256": "6a60c20c6c576fb8fec47d8588686768f9e2ac0bce705d3f76f5ad5cde75eca8",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00002-stackpress-contributor-guide/index.md",
+          "git_blob_sha": "6ddb90d5bd47f9699702dd915d2e708061c8f3db",
+          "bytes": 3518,
+          "sha256": "71647cfe0d5b2250c22f122dcf7172cc43ae0924652f5fd237efb99d6de6be4c",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00002-stackpress-contributor-guide/phase1-package-inventory.md",
+          "git_blob_sha": "81f5b5c2bf2a4d4be45589e97dd554ff15d5539d",
+          "bytes": 6646,
+          "sha256": "df1cc9c3b45a88fe7b80954dbd91295bee9c76602f8a457d5eb439b99910e130",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00002-stackpress-contributor-guide/phase2-pattern-matrix.md",
+          "git_blob_sha": "dad6904105ff09ecf7e2b37fc0488a15e054b3b4",
+          "bytes": 7632,
+          "sha256": "88b9dfc81b300b18571aacde742d58f22f42b1bcfc316bb20b99f74f0f8e4374",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00002-stackpress-contributor-guide/phase3-contract-traces.md",
+          "git_blob_sha": "46768a444575bb41febdfaa108a940b08cffd6a8",
+          "bytes": 7113,
+          "sha256": "ebfa7839729526d2c1cc39fb8ae2473e164447a29b9f4a3f37d98fdd98effc17",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00002-stackpress-contributor-guide/phase4-clarifications.md",
+          "git_blob_sha": "c00071a0ff6343603f30933b67de5552595baa37",
+          "bytes": 5033,
+          "sha256": "d83be072702bee2cd0ddbcee129c10f941b092d9ed9a33a6e61ad2a346f774fc",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00002-stackpress-contributor-guide/phase5-contributor-model.md",
+          "git_blob_sha": "05989ee1647913f1fa600f1d83d481bf21f099e7",
+          "bytes": 4917,
+          "sha256": "e63ddf011be8a1602a56f86c250d0b28433f371395d8575a450338c9e9e0e261",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00002-stackpress-contributor-guide/phase5-placement-guide.md",
+          "git_blob_sha": "aa4f098365cfe37b1d24711f569ac7bcf6813d31",
+          "bytes": 5632,
+          "sha256": "b3843510a1612e5b5bf2a35022254d2956a5caf480057ca6a330192ee2105046",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00002-stackpress-contributor-guide/phase5-verification-guide.md",
+          "git_blob_sha": "e0b26870e2aa8aecee87b8fb308238a0c6d5cfa4",
+          "bytes": 3956,
+          "sha256": "fc1ece7a3dda1db6c77ee3f9e0fa90417376cd2528a724f93ff3797840564aa0",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00002-stackpress-contributor-guide/phase6-baseline-answers-a.md",
+          "git_blob_sha": "866dfac4d7e339ced4e1694f58f55ba9cd33b9d1",
+          "bytes": 5339,
+          "sha256": "88281b7c36b6dac241e40940b68c642a5ef2fb863cba012da5008a9ca21ae924",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00002-stackpress-contributor-guide/phase6-baseline-answers-b.md",
+          "git_blob_sha": "8734997677feb1acc9fd137389a2ecd471028c0a",
+          "bytes": 3699,
+          "sha256": "f346fce1864c33ca36f7f1f3f461b60ee7fb229051f6cbac4f82752c0449a579",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00002-stackpress-contributor-guide/phase6-baseline-answers-c.md",
+          "git_blob_sha": "a8e023b156c09a0e9886b8016343aa2d644a3808",
+          "bytes": 1701,
+          "sha256": "e4c4193036a39d5c45232e03b0e8ec27ee5c4e5d722b1eacafa2dd814beb1133",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00002-stackpress-contributor-guide/phase6-baseline-results.md",
+          "git_blob_sha": "05b73048088f113be3236af2570a12c87f80e01c",
+          "bytes": 3595,
+          "sha256": "3b2bbd40a75601c58f969650bdf384a9bd683f2853fec38cf715753bd1e24b67",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00002-stackpress-contributor-guide/phase6-retrieval-plan.md",
+          "git_blob_sha": "186ed27c54bb32a52a8b45be3210c78679291829",
+          "bytes": 3935,
+          "sha256": "9d2cfcf08d4fb071f89b2ac15b865eab62ad81568319fbeaa508f5a1427ca37c",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00002-stackpress-contributor-guide/phase7-promotion-proposal.md",
+          "git_blob_sha": "ff9907af86c187d62524171a2194862eda403e31",
+          "bytes": 5146,
+          "sha256": "2f418ab166c01e6986cfa62e44132d099f31f89d02ecb8ef56f587de6a48dadc",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00002-stackpress-contributor-guide/phase8-final-answers.md",
+          "git_blob_sha": "dfc6d3da202b8ada7ef0f40816429934f96b56e5",
+          "bytes": 3868,
+          "sha256": "2924c0a3aa17a7beb9fc07ee1b448a157d3c375c47a1151e9ccc66144a25f236",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00002-stackpress-contributor-guide/phase8-final-results.md",
+          "git_blob_sha": "dfb61b3139de5932624ee927602ffe8c1766089d",
+          "bytes": 2177,
+          "sha256": "77dc184b87a903846ad7a65ac9694de7e4e480fd31c811b9ef3687ba88a65f60",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00002-stackpress-contributor-guide/proofs.md",
+          "git_blob_sha": "0bf92a2f0cf22f09e82a944294eaf142da38dfe8",
+          "bytes": 3381,
+          "sha256": "8008ddff282facb067c6ba4936b87c8c826714c9ec8fdc221fbdc9a7a4610d88",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00002-stackpress-contributor-guide/research.md",
+          "git_blob_sha": "1ea47e010925c9da701cf7cba2072fd592eca6d0",
+          "bytes": 6724,
+          "sha256": "0242b9c507f9349a89869c324c10b3ab3fe69c88654601223694a799f261d062",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00002-stackpress-contributor-guide/setup-decisions.md",
+          "git_blob_sha": "55ed6e96d3f46d6155eb1d95fcd464f9cd303ff1",
+          "bytes": 1302,
+          "sha256": "1b0edcdde0d12877ff7859937d7c64386a73c44444d3769c29cf22f624ffc4a1",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00002-stackpress-contributor-guide/status.md",
+          "git_blob_sha": "afecaf20af0b0635812e7b0850c00b9dfcc4761f",
+          "bytes": 1833,
+          "sha256": "b9510e46b1f834f909787b6f582221d6bbff0eda1c36a202a0ab1544af36bd4c",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00003-repository-metadata-cleanup/brief.md",
+          "git_blob_sha": "58df7bc388ef796f704733d943c5331143c998c0",
+          "bytes": 2245,
+          "sha256": "ac9476cd2b61c634c7de73b17c59b9e72b034026afd0ccc5c32b86c0e49489ce",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00003-repository-metadata-cleanup/decisions.md",
+          "git_blob_sha": "266bb607afba70761ba68a6f964ac7982e7b9fdc",
+          "bytes": 2624,
+          "sha256": "fe514378a622c7a25f1d8e7fed43bf7c182a7d0d1d62570b54e3fb9005d5f006",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00003-repository-metadata-cleanup/index.md",
+          "git_blob_sha": "7613ed43dc905da96ca4d7b3fe4a081bbab90326",
+          "bytes": 905,
+          "sha256": "cf9608006a61ef28dcd8a245a946489ba6eb28ef6ea69934f5ca2a11cac3eff8",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00003-repository-metadata-cleanup/proofs.md",
+          "git_blob_sha": "d51fd1e6050f24d335dec09e6c44a33f48b05b63",
+          "bytes": 532,
+          "sha256": "6e1617ddcf254920fef2efa3a9be3c12569530d8a565d782b5f3f4b6f86f2a13",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00003-repository-metadata-cleanup/research.md",
+          "git_blob_sha": "fe47e370ba79877a5ec10898d4b629a19a9ae24e",
+          "bytes": 2579,
+          "sha256": "0aebec3f20000ea39876952c10702dd14042c14eae7d62694479ec43c804407b",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00003-repository-metadata-cleanup/status.md",
+          "git_blob_sha": "aa5a3258a9b09fc0ece241ad41ed813e84fd06ae",
+          "bytes": 1636,
+          "sha256": "ad3d93c06fbbc95da8c320bd56c7208e67cfb292ed3e2f6acaccb87ab9e97704",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00003-repository-metadata-cleanup/tasks/00001-correct-root-package-roles.md",
+          "git_blob_sha": "99d5b653205c604b1d0470b5904348ee8389bb69",
+          "bytes": 1359,
+          "sha256": "865348863d854685f02a530cf79e7375d65f330d05caf61fa9f91b18fbb682fd",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00003-repository-metadata-cleanup/tasks/00002-remove-manifest-drift.md",
+          "git_blob_sha": "5a37132d023b0ff961fbf24bb03f95c1d21bd892",
+          "bytes": 1677,
+          "sha256": "b5ffb44d00d44db5e86f3e1b5878201a13c82395b6ec1d948af63bef63b6a76f",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00003-repository-metadata-cleanup/tasks/sprint.md",
+          "git_blob_sha": "94f732500788231ea402e04e49e9821216ba239b",
+          "bytes": 3572,
+          "sha256": "c344a658ee6ed7a478a73af3f0324de56f80baa47b5e25f28b35db8a2b492740",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/00003-repository-metadata-cleanup/tasks/status.md",
+          "git_blob_sha": "1f7fa83c67f2188d5fac2f765e07ace89a1236ae",
+          "bytes": 352,
+          "sha256": "ce330f93ae0bd303ff02982726bf9a685cde2e16a70ee952ba31e7a25b5b1a2d",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/specs/manifest.md",
+          "git_blob_sha": "9fd5c7b603938d1ede6d699fe0b1057c189525cc",
+          "bytes": 744,
+          "sha256": "00e98aa30e9ca801f1cea88be6dfb35c4bd0658b713891daf7e73d78c411f98a",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/workflows/agent-file-creation.md",
+          "git_blob_sha": "11d1024b6b8e99b7a87e40ecbba492a7d51b4a2b",
+          "bytes": 2234,
+          "sha256": "9f940deb0da389fb8ba0af2fc9fea215e46b6a8d21a22c0095fa774a01485542",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/workflows/agent-file-ingestion.md",
+          "git_blob_sha": "310b26247f43e40f43e8df2129d08c7c35caa922",
+          "bytes": 4243,
+          "sha256": "c586670097002d2419fecd7c5cdc187da59987b70890a99a5c59341f46fbe760",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/workflows/context-initialization.md",
+          "git_blob_sha": "e8ddcd45f145fc660196849b99a8a180ab0e1700",
+          "bytes": 5746,
+          "sha256": "f4996a56683368ff3f6e57ab623b51b8a129d539d007f22c90d4bbba7fb714f9",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/workflows/repair-zombie-reference-files.md",
+          "git_blob_sha": "690084a592128657c62b8d95794eca555d30ba5a",
+          "bytes": 1655,
+          "sha256": "8d9054cc382ab6b4f8bde6509aefd6898b34dfb15697d9d9e75dfb4c73afa217",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/workflows/spec-driven-development.md",
+          "git_blob_sha": "93f34f2a8fc8c425158e4eccf353b6fee55a2f9f",
+          "bytes": 9685,
+          "sha256": "7b8a1ebc4d998fb307abb849635cb4380b79668804ae98919fefe421ac5dbe94",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/workflows/spec-grill-session.md",
+          "git_blob_sha": "20b32bbf5453bf18b21ef7d4dc998d6ba66e245d",
+          "bytes": 5851,
+          "sha256": "761c5f9cb28747db1d2af37539d61a16e9120ead831ae3e4d8159d4982344a9e",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/workflows/spec-task-implementation.md",
+          "git_blob_sha": "4c081241b13bb15e2604323d00315f400af3d469",
+          "bytes": 10704,
+          "sha256": "825c7b91605129d43c65572691e52885340080b23eece4126a96396a40c030e1",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/workflows/spec-user-journeys.md",
+          "git_blob_sha": "481ea5512e8b652d93ca6e4bc6c4ba6915d0a2bd",
+          "bytes": 4383,
+          "sha256": "71976d4d28c1038eeb8fa04737c570c946aa08ebb1b1725b3bddfe7fe23a547c",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/workflows/stackpress-github-release.md",
+          "git_blob_sha": "81ec015576671034505922610a0c84d6dd00fddb",
+          "bytes": 5263,
+          "sha256": "50997c3a7faa0acd544aab8cd4920ae7cecf059456c5331299cf95b2591dac1f",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/workflows/stackpress-kb-maintenance.md",
+          "git_blob_sha": "09ed591bcd6cc5f0b748597e5ac9ace5ba774aad",
+          "bytes": 7403,
+          "sha256": "c205a3928452ee5d1c1acb6373ef172d38181ead765ecda7e0a89aa628b15f0b",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": ".agents/workflows/stackpress-package-public-surface.md",
+          "git_blob_sha": "39dd9867d1f5d8b333cc0a37e15e236d45ea49d5",
+          "bytes": 4308,
+          "sha256": "7b178886f195b336b749b376d41f3e6277dd15afdb88191243f9e248814aba84",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/.env.sample",
+          "git_blob_sha": "037dabd6f1915746888bc05b93425f4049618ba6",
+          "bytes": 44,
+          "sha256": "91f85313d23715e3099ab71cfa73c494b4514f2bc2d911c2e6864d5a8347fb9b",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/config/build.ts",
+          "git_blob_sha": "fcb428047b842092438c0ac2479568ac00a1e794",
+          "bytes": 2023,
+          "sha256": "d4d0bcc6bed263d7f10f50a1f172a065d201db6fde5a371fd273e78da0cc6e0a",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/config/client.ts",
+          "git_blob_sha": "7b8534011ca15a5607b9848a4502a44e81af109d",
+          "bytes": 4718,
+          "sha256": "9297647e3c63772f879349eb8a6c29937941f642a0b8055a18dbba3d9d5d76a3",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/config/common.ts",
+          "git_blob_sha": "ddffa774918b45ab6ec3b39b16283d1b239a079e",
+          "bytes": 10503,
+          "sha256": "6d791e771ee7e2603d92a97ad28868b507fda1787d5481a841cc75fcd7111c9f",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/config/develop.ts",
+          "git_blob_sha": "670683495cfabce3ac8eeef2015a65a6d3e5e192",
+          "bytes": 5695,
+          "sha256": "517510f22b6ce93b848d4a55eee01fc5c0fa3003b0f1093cfec878a7dd173c4d",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/package.json",
+          "git_blob_sha": "55a5c46b25d1bd495452e667f3363b65086820c6",
+          "bytes": 1700,
+          "sha256": "01412d19da5c5db28cf0bae465d879816624983ccc68af07fc074f825ed2f944",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/plugins/app/pages/home.ts",
+          "git_blob_sha": "94d776f1d0790501b59454b1bf93b7691011922b",
+          "bytes": 372,
+          "sha256": "3b1952eb598914a93584c3e12d863da376a71ace1688ff6c3a19ef591de3a1c1",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/plugins/app/plugin.ts",
+          "git_blob_sha": "25840d38e0fe94203f8b2f37a64a41847a4666c2",
+          "bytes": 627,
+          "sha256": "9d8c25141f3652c3618315c4975a255e5cc02a5c2c07f44ef58632bf3e83e11a",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/plugins/app/views/home.tsx",
+          "git_blob_sha": "98144a1695c320f70f47020c37d72b9d52832aea",
+          "bytes": 5162,
+          "sha256": "7c7f43bb3de570daba356467341487507f39224dab912abf5f147839964f03d2",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/plugins/cart/pages/index.ts",
+          "git_blob_sha": "255e292814ea7e9ebda05ae0027716636601d334",
+          "bytes": 2254,
+          "sha256": "0888faee024c6dd1124f16c03ebea9b738bd2f94eb5e93748917c2ab0806b154",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/plugins/cart/plugin.ts",
+          "git_blob_sha": "9811aac9a744f226801cbef1fd077dcee7f8224b",
+          "bytes": 563,
+          "sha256": "fe0759039dadd1a159d868b73edbd9fd0d4197924ab2235c7c37fff01b8fd55f",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/plugins/cart/views/index.tsx",
+          "git_blob_sha": "f53ea637d2430aaebae5e20ef2785b6e1929c35b",
+          "bytes": 4165,
+          "sha256": "e6a67b84d82b8b88c179768f6e831786adeb57333a8a847bbadea6f3726cfe8e",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/plugins/checkout/pages/index.ts",
+          "git_blob_sha": "b3599cfdbe74523dcaef20d7b61502ffee9159e8",
+          "bytes": 2300,
+          "sha256": "02adc221ccab0e3e0467a486131710a62bfe32f35ca38fc614ea9d364b589172",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/plugins/checkout/plugin.ts",
+          "git_blob_sha": "bc296157400e1623fd67bae43f4dde33efe1a4f5",
+          "bytes": 488,
+          "sha256": "d8225439c047f7f512154bd6861d626baf61e84148ae03f01e2f419f65ea9784",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/plugins/checkout/views/index.tsx",
+          "git_blob_sha": "8ec2954f7b06f585692cec799792281d06884145",
+          "bytes": 3945,
+          "sha256": "15770e0b47c61c9b4cbac7e1dc55147fed1527fd04d544dfbed641c6316182b4",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/plugins/order/pages/account.ts",
+          "git_blob_sha": "c2a2f224053ef1a753a964b9157ec3334142f39b",
+          "bytes": 660,
+          "sha256": "93f40efc4deb301c3ee1204953a2747f847f9db55de2aac53b77189bcff9ab38",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/plugins/order/pages/confirmation.ts",
+          "git_blob_sha": "f62e9651efbcada0704cdf8cacce7f57d1ff0716",
+          "bytes": 612,
+          "sha256": "4bc0d0dc91dc1570099804df07c682250709ee1b1350088174622f76c9fce2aa",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/plugins/order/plugin.ts",
+          "git_blob_sha": "63fc72d50af5b4745d406dbbcf33dd3d865ee3de",
+          "bytes": 742,
+          "sha256": "6067e5d81902e60feb7f1cce7802ff6985a448a494d195f0a048603608bcc764",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/plugins/order/views/account.tsx",
+          "git_blob_sha": "52fab323539bbbbcd47d6327e850dc7f6d204dab",
+          "bytes": 2959,
+          "sha256": "1680d3f1578a69dccdbb50c2d4caa29489262dd851b2c8c0b397a5b7b7de3a55",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/plugins/order/views/confirmation.tsx",
+          "git_blob_sha": "37e3458098122723272f156b8839c7a2a4d954aa",
+          "bytes": 3498,
+          "sha256": "4ac64381e1cd72cdbaf66c7dfefe4bd55356726b9853264366feb8cc3495141b",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/plugins/product/pages/detail.ts",
+          "git_blob_sha": "e62af0be11520e86e408450bf97cff71a0789c25",
+          "bytes": 805,
+          "sha256": "81f7d81841b37284b35f9944d83e439436e7c9f0e721b3f17f30dbf5f8e2410d",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/plugins/product/pages/index.ts",
+          "git_blob_sha": "b15eb8d9cdeda697caf0995749a8f1700f0f0783",
+          "bytes": 576,
+          "sha256": "93392fc1e0af78334e56f35742b093f160cfa506c66d92fd919823fba7a1017f",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/plugins/product/plugin.ts",
+          "git_blob_sha": "2153252bb5e60e2b8fcd33e57114cefb4fada07b",
+          "bytes": 653,
+          "sha256": "0d48a650e47611884f929692cb686f28355d6e77e621f51b8039ec0974b777c3",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/plugins/product/views/detail.tsx",
+          "git_blob_sha": "e390f9053b585ee2e46dd2ef5185ceab4f9e2df2",
+          "bytes": 4315,
+          "sha256": "33681b809722587f91b6690515d24e78bcce21d5d2fa704e1c1779d44e66050e",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/plugins/product/views/index.tsx",
+          "git_blob_sha": "778bb5761777d9bd3bf83ca4a9369618ed9441ea",
+          "bytes": 4160,
+          "sha256": "7ec91622e50f481da74dd8daea528b9aee3f3aa74dfe6de3e473dca347721467",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/plugins/store/connect.ts",
+          "git_blob_sha": "8a27c1dcd0769b67571903f4a44ca68d5050ed3e",
+          "bytes": 674,
+          "sha256": "3b06e3d78887de151160c27be32ce06e71dae6b9aaff14e6252ec53ef79c5cbd",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/plugins/store/plugin.ts",
+          "git_blob_sha": "9f2e9a74972a91ed606fda5e1280e9cf87db4104",
+          "bytes": 415,
+          "sha256": "99ce6eec2c4947e227529cdd3b65006d10a60d22f64f646f118686ec185f0a91",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/public/favicon.ico",
+          "git_blob_sha": "a51c4cc7bdbd2d631787596d72f96d2b3f4c3b45",
+          "bytes": 15086,
+          "sha256": null,
+          "disposition": "binary asset; no logic review"
+        },
+        {
+          "path": "templates/store/public/favicon.png",
+          "git_blob_sha": "a94874653eca13a0f1285ec9542895bc3aa3da99",
+          "bytes": 1927,
+          "sha256": null,
+          "disposition": "binary asset; no logic review"
+        },
+        {
+          "path": "templates/store/public/icon.png",
+          "git_blob_sha": "c950368000cdc13ef6027aad0c0aa0b775d5f37e",
+          "bytes": 42291,
+          "sha256": null,
+          "disposition": "binary asset; no logic review"
+        },
+        {
+          "path": "templates/store/public/logo.png",
+          "git_blob_sha": "be3ebc6462100c274be5030951a996fea325b83c",
+          "bytes": 21123,
+          "sha256": null,
+          "disposition": "binary asset; no logic review"
+        },
+        {
+          "path": "templates/store/public/styles/global.css",
+          "git_blob_sha": "17a34596ea8ef9f4698a4599e3f38e6999ddecd8",
+          "bytes": 9260,
+          "sha256": "f23e0fec4fe9af17c3c36ae8f8c4a59323259c72c57f38b9cafbb4f2d958a7ac",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/schema.idea",
+          "git_blob_sha": "43c573c455196655359cdef5dcd2c3859da95dcb",
+          "bytes": 9933,
+          "sha256": "63202f1a624f400fb4c50acb1ebb0876789882e97a57cd99f023fa0c698ee86f",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/tests/plugin-structure.test.ts",
+          "git_blob_sha": "b09ccdcc4f0a54ba6c9248bfe24d7edaaae6bf2a",
+          "bytes": 2349,
+          "sha256": "999f62711ac5cc66a17a01918661201f217bf52e151db79d5ff172eb21fdfd74",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/tests/schema-generate.test.ts",
+          "git_blob_sha": "ed131cea94821396a410ff095ca44b354993fb5b",
+          "bytes": 523,
+          "sha256": "615dce6602baf51bbfa9cf273bd80d03af8b27260b43ab14c18f05d568d4db39",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/tsconfig.json",
+          "git_blob_sha": "ceddb693ff6e8180a262faae687606ef846ccdb1",
+          "bytes": 297,
+          "sha256": "dede0b96d2478f1570a4aa0899a6799eb987b144c7e4f2b329e46439bd2a210f",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "templates/store/uno.config.ts",
+          "git_blob_sha": "84edf95d6e677c8b6a76c58f16c0ecb533302be0",
+          "bytes": 371,
+          "sha256": "e456fcf782b6476dfaf748601c587353e5f25d9fdd192982ae43b3cfedfcbb37",
+          "disposition": "text inventoried; review narrowed by contract family"
+        }
+      ]
+    },
+    {
+      "repo": "stackpress.github.io",
+      "commit": "1f55c3dc97e555922b7e978fd43e485476926e84",
+      "tree_truncated": false,
+      "files": [
+        {
+          "path": "content/guides/000/000-orientation.md",
+          "git_blob_sha": "4c58460d5f921e8329aec282e45f0e3e67534024",
+          "bytes": 2851,
+          "sha256": "31753c2c9bcae1a172571abc5c98f69393eb5582588988e2be3677d1c7c74f77",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/000/001-what-stackpress-is.md",
+          "git_blob_sha": "e5453af446eb53f2a0297511b9cf2528ec2e3bae",
+          "bytes": 5337,
+          "sha256": "a8554e5a991795e9cfbfe07d49d092f5399227672e9ebd9951da6edcf01d61da",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/000/002-getting-started.md",
+          "git_blob_sha": "b537bbd127144ff936036b7e99dc2bf8c9eabb56",
+          "bytes": 9140,
+          "sha256": "f29c72b11d469688e2c2765c7c2f5ac1f2bdb6205b08e06eb28580f00c7ca466",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/100/100-develop.md",
+          "git_blob_sha": "f18ac75adf99e5070fa0e75fa0da2e843a2eb3e3",
+          "bytes": 2801,
+          "sha256": "875d6f71d1b4979be3f4aded351088df404c28ecaf6bb4fc483f228e083bdb25",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/100/110-plugins.md",
+          "git_blob_sha": "d602bb5538dd528d7319a274f61757b8e1399cb6",
+          "bytes": 3571,
+          "sha256": "f19920817b233e01d897e98e0f5c7603c64fc415c11b58f913b8b660e5c1ec99",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/100/111-composition.md",
+          "git_blob_sha": "4de323d1fc358240f4b2c7a671b0e2b2747cae56",
+          "bytes": 3390,
+          "sha256": "80ebb8cb8031b36809a0f704d2a44d867a615335e08075e2e52a2a405717af02",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/100/112-local-plugins.md",
+          "git_blob_sha": "da9e4ab9d196cae0bf0e804d440bc007fdbf8690",
+          "bytes": 3853,
+          "sha256": "ddf60d56c9b517f7269c3028b4cbd4439ec83e6c7c7059911456ad1c3bcdd549",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/100/120-pages.md",
+          "git_blob_sha": "9d2a25b89fa869eb32087e374487285d76aa0b2a",
+          "bytes": 3314,
+          "sha256": "91086f1134133246f798dfb65232569facafd82a619532065834dff5b3baec95",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/100/121-request.md",
+          "git_blob_sha": "fffe8402a9e97af5b749d3ecd5f3d4e33e7f7702",
+          "bytes": 9206,
+          "sha256": "985a897112666a6f298d44addc2ab76fce55c0c82cc5e3c8750042e8e04278b5",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/100/122-response.md",
+          "git_blob_sha": "42310b8e23f77f02ffcff2f5209d107b1eef46e4",
+          "bytes": 10057,
+          "sha256": "cbd242b93e107e86f00049016a227388499119116d12bff94db468693700d2b8",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/100/123-data-surfaces.md",
+          "git_blob_sha": "ef970dc37d8fc8303be9ddac415ef4c51768488f",
+          "bytes": 8010,
+          "sha256": "d7bcc33391c03a4477c90f535ae04de015535b65abed9ee6d10820255e2c807d",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/100/124-session.md",
+          "git_blob_sha": "aa8d7721a8a6bcb45c04e86476c6e47b82744792",
+          "bytes": 5161,
+          "sha256": "be332c65a8f31a2ee446e028e44dd41156e865f45100aff30f55982064d02618",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/100/125-nest.md",
+          "git_blob_sha": "b10e45fa39efa3ccc0305c3916092ba2605dbaf7",
+          "bytes": 6456,
+          "sha256": "dedb19bf553dae839c57e200775c6bf8567efe8515b12bf3b4277edde071c820",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/100/130-events.md",
+          "git_blob_sha": "f9dd1fe9a61c9eaa27a7b96473c93945ed324f59",
+          "bytes": 6591,
+          "sha256": "cdf4fb52ab180af67497369361c8812cc158fde61197bcbd12f99f849a93430f",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/100/131-terminal-events.md",
+          "git_blob_sha": "64bbe1bba8e0b834d7ff1ccae7a30c48442aaf2a",
+          "bytes": 6744,
+          "sha256": "26f096c4a095b8028272d5be057c11fbb89bc209251358e0e44fd448c76d4507",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/100/140-views.md",
+          "git_blob_sha": "f6161943286a52086e057e76b39f8288404a538d",
+          "bytes": 4207,
+          "sha256": "0708a5f06983e97cded29801d8b31391a1c0a5ecef57ece84642f58363a8e5af",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/100/141-first-react-page.md",
+          "git_blob_sha": "2967b441acfedc0f17966ab706b5aec4660a7623",
+          "bytes": 6272,
+          "sha256": "8a76241ef6f659748eb4ac28723d2f51ee66123a1bca45d179fddcc27b0d68c1",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/100/142-server-props.md",
+          "git_blob_sha": "72ff3d39a3daf53701d2de480bbf17a169af5803",
+          "bytes": 5797,
+          "sha256": "a7ec74cfb81f52a7611833fbe4e563dc939cde8f879623651f6a6cb701af780f",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/100/143-layouts.md",
+          "git_blob_sha": "dc7860bb04018854a187b2fc52958435a9498cf7",
+          "bytes": 5073,
+          "sha256": "25bde7a9ff932fff561616081a585d87b3660501b5d6ae68f151e0a75127edcd",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/100/144-language.md",
+          "git_blob_sha": "7190f1e0d9d4ebe91ef640b5ba71f312d0d2af69",
+          "bytes": 5567,
+          "sha256": "455af3ee88d792a560380b2475e06e4267bcfbb713d9acd862d4173c6c735d26",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/100/145-theme.md",
+          "git_blob_sha": "481b26f52d43414c978c423bba139df61da2a0d6",
+          "bytes": 4311,
+          "sha256": "4450bb43311059d73f1ac0e381294a8750673a7ff1680f918a3c63d7a031b67e",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/100/146-notifier.md",
+          "git_blob_sha": "97aa57418fd99393c2b29473c6176a046a591171",
+          "bytes": 5043,
+          "sha256": "7e28476f96335caddf7630da21185c778e2f26bb0b60d2c072c8a4da8d9fb175",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/100/150-hooks.md",
+          "git_blob_sha": "7b559d2d27afef8b48df5f4f00da9301c6d15638",
+          "bytes": 7756,
+          "sha256": "08ad83d723ee685abefb0a336baed3872b54177040682f09179cb0956bb1445e",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/100/160-debugging-and-inspection.md",
+          "git_blob_sha": "511f958577ea42baf27e37443556d9b0248e8e3c",
+          "bytes": 8086,
+          "sha256": "d35993ed9c623bae7ad76c4089272e4a10d308c995da2af1a74eb28490ff5e88",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/200/200-data.md",
+          "git_blob_sha": "6ab2685f4437c49da96fdb7a759f3c6a138b095f",
+          "bytes": 3072,
+          "sha256": "8ef964b9d35c08045de818cfc1431491f667b19f7316b8c67d403cefa78ca79f",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/200/210-connections.md",
+          "git_blob_sha": "30f37993c8fef3b72627976a0832ec693ce03373",
+          "bytes": 4151,
+          "sha256": "501c1725f8e43f9224d74843b76b3b679f39a34a3c419b4ac7c2b141bcda9261",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/200/211-dialects.md",
+          "git_blob_sha": "c42b7e316c53228ed7125ef7c2f86a3d4761266c",
+          "bytes": 5912,
+          "sha256": "1ed4298a61ec0f4cab5d3bb5693b4a0568511a3bdac63bfe6fcf0ad70ded1d14",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/200/212-sqlite-pglite.md",
+          "git_blob_sha": "df5d3b2d7dc73760c0ccd8a7008cdebba7206ec5",
+          "bytes": 5476,
+          "sha256": "72ef7dd72fde03a158d13c27af314927209e1241bcba8da895ab3f1959eee11a",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/200/213-postgresql.md",
+          "git_blob_sha": "975f41ce52f4ffd2d7e4ae81745a568a16c7cf7a",
+          "bytes": 4736,
+          "sha256": "ac1d910e7325bd1bd716c4fbac06651a76461b6beaf1ec547f25adb35160fd2a",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/200/214-mysql.md",
+          "git_blob_sha": "a9e2638b8678adb63cea34f4a48581979442f288",
+          "bytes": 4701,
+          "sha256": "7773d9dc9362f5fba9f3bbd87bde61195bab77517bb58337a2e551b5ff419d4a",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/200/220-engine.md",
+          "git_blob_sha": "228ae96b6957b806d665b3d22453a38e94fff5b1",
+          "bytes": 3801,
+          "sha256": "6bdf39be40323f4e2099afa3196e5cbc3fd98e9db36fbc2a5e9b61f4cd851f55",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/200/221-select.md",
+          "git_blob_sha": "49effac5202d91d1af22d85cc09128a61490b937",
+          "bytes": 6652,
+          "sha256": "ce81751e6566ab4e75f3ded655aa9cc0b8f78577e63ba8565e1aac74194b0323",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/200/222-insert.md",
+          "git_blob_sha": "658b404c119605ea1b850883c7884ca97eb41d5f",
+          "bytes": 7838,
+          "sha256": "a7636c1fef33587ce82508f91a56359993d2c9804304c5844f9316c15c2db54e",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/200/223-update.md",
+          "git_blob_sha": "57b9de109d3e248cc53145ad4d3ee52c1d12b791",
+          "bytes": 6119,
+          "sha256": "647c8f928cf1b7a38ee1b193e1cf51524266c88291bda31dca01efb171fcbfd0",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/200/224-delete.md",
+          "git_blob_sha": "9d30970be0ee6f5158ca851bcc746aa55ea41e01",
+          "bytes": 6783,
+          "sha256": "1f4ff95053e7a385ab287cd1135046d48273d0a3bfc72d10f5120035b72ce009",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/200/230-querying.md",
+          "git_blob_sha": "45c5d88c18ab0c1b38ba325d15d249d4f3fa63ff",
+          "bytes": 4003,
+          "sha256": "7786d4753b4ed1e24a9116748bafcc0fdc2f033cc961b952a16adc53a97619a2",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/200/231-raw-sql.md",
+          "git_blob_sha": "0eb6e1870b9e6808c72eb85c5ae84fb06a6a00d0",
+          "bytes": 4960,
+          "sha256": "5925bc0d38e7e91a5b21660ace89edb6bbf9bef5608f67ee607cdfa819309a6a",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/200/232-transactions.md",
+          "git_blob_sha": "04459de22442ba125b7fbd1f2d82373bddddaf14",
+          "bytes": 6781,
+          "sha256": "81da9a9529b170ea7e73bc68fc432144a21638a6355bb530a28d4e45165560ea",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/200/233-json-fields.md",
+          "git_blob_sha": "1925826538c5806b0861de79cbba2f6f8928cd35",
+          "bytes": 6535,
+          "sha256": "9dddcc2197979a1491631761a3f7865de3aa1562a39cb6285e579ac3af3a2247",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/300/300-idea.md",
+          "git_blob_sha": "8cbee6bb2ff92a19de4715d4a19cb9e4fb59d499",
+          "bytes": 3183,
+          "sha256": "fd0f770d8ef0de49df0211bd5aa4a52888d914d1bb48b7286e61fe3a6796dffc",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/300/310-idea-files.md",
+          "git_blob_sha": "d93f42b3d7301a36a25a47d6d3daaaba94fa7fa2",
+          "bytes": 3390,
+          "sha256": "c3a6c13f6608f19dadb1b9e94d9853f8c92d617d0d17f896f2248257166b6612",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/300/311-syntax.md",
+          "git_blob_sha": "d43108f5afe6ee25b6c933b75b500a92edf1d16a",
+          "bytes": 3991,
+          "sha256": "397e024355af5458aca4d8b614c722974d3fcf85ba07e3b8b1f567a36d0700c6",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/300/312-use.md",
+          "git_blob_sha": "cd66415f7ab044cfd95ffd280900066a6b797f52",
+          "bytes": 3764,
+          "sha256": "d33e9142204b50e5ee6cdf7320dc2eba4b26d164907f8ee575ecba6578d8fdc2",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/300/313-plugins.md",
+          "git_blob_sha": "12c42fff2b946748de6de8aae347a97a52210461",
+          "bytes": 4285,
+          "sha256": "4cc1f37b5bcb9c076cd289e4a24854087c127ca5037a8e7b087fe11d23c5e0b1",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/300/320-modeling.md",
+          "git_blob_sha": "8f0368a0a783f466b53ff941822bfc09eb6587a7",
+          "bytes": 4234,
+          "sha256": "e672f543fa01f6750a3bd176e7672dea752e7f7dc75045a827e5fea2e9d06b14",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/300/321-models.md",
+          "git_blob_sha": "3af82966328dd3e1d946c53277b551e4f90657d1",
+          "bytes": 4263,
+          "sha256": "b3e3d953fb22a2868fda0e672ca27bc9cfb9763ec3d2a34e5dd40e20b207bf79",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/300/322-fields.md",
+          "git_blob_sha": "fbd73797328a0aece003c5976c3dc501274b40bb",
+          "bytes": 4591,
+          "sha256": "af81bdda81a8946206698d67aece8b2d9113a856b127b893a3e36e36aaf330be",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/300/323-enums.md",
+          "git_blob_sha": "eb32300a5080bcdffd496858799040f7e6b503ab",
+          "bytes": 3831,
+          "sha256": "25317bdd6f38489fc68d087d29be2df46ec48d4e3c3a6625ced5c6ae495bccbb",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/300/324-types.md",
+          "git_blob_sha": "c6a293360cd3a3099330f6c4845e54b793e4c344",
+          "bytes": 5221,
+          "sha256": "676f06c5f5dee8a362e0c4e1dae6e19b2f0173fbbca8e2fa24cd41eedf3266fd",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/300/325-props.md",
+          "git_blob_sha": "d000fb586cfe4b2a0821efae5d39d9adff48e2f0",
+          "bytes": 5846,
+          "sha256": "def7130db15f49eeaef45cfbc07695e56bf377765a1b22541eb1fc79cc97daa0",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/300/326-attributes.md",
+          "git_blob_sha": "c3d3c2b861c40c4369c3c145c86e8c2ed9a557fa",
+          "bytes": 4752,
+          "sha256": "d1ed6d7f53b9f77eb54d67e55ca4c63d601a764781dd6a97f98c222d36429136",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/300/327-relations.md",
+          "git_blob_sha": "d708f58f2de1fa91d7f282ca5374c6d4881a2107",
+          "bytes": 5109,
+          "sha256": "c85719641b420f1098bf8cd481382cbd9c6161d990b7740b082ab7cedee3d8ac",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/300/330-generation.md",
+          "git_blob_sha": "6b88080ba22cd3f4a831718862f22fd0fd38c262",
+          "bytes": 3972,
+          "sha256": "31afbd31640878e2799f5b100b04e25029d760c50f65c358c85871dc6b1fef08",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/300/331-schema-output.md",
+          "git_blob_sha": "03171c82719555877eba77e1191cb2364a2f69eb",
+          "bytes": 4705,
+          "sha256": "beda28a3c97a07a216d0613cfb0223325d4b987de56dbb6dcc895ab2d828d408",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/300/332-sql-output.md",
+          "git_blob_sha": "542fce34c405345a20ee4c8abc7ae0886c0317d6",
+          "bytes": 4799,
+          "sha256": "fab8d0703902e38161d1fe33223b561b5c38abae9ee68ba1911e2f176bfb98ab",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/300/333-view-output.md",
+          "git_blob_sha": "86b3ad8e95dbdfa5d267187cd9ceb6199fa3f430",
+          "bytes": 4603,
+          "sha256": "46630631d82389848c038dba44890b63868f643ac5c8dd35504f48f72608d1df",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/300/334-client-output.md",
+          "git_blob_sha": "a9cb2f9bb0ab9e34ff1fd264e4137443a7759906",
+          "bytes": 4491,
+          "sha256": "e6cee1fa03e3dfb1c4e4a61e9e51d0fc86d1ec8194abb99956b0bb04798b3491",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/300/340-idea-plugin-authoring.md",
+          "git_blob_sha": "1f56fd36c4477d4b932a08e26a2f97701c91781e",
+          "bytes": 8834,
+          "sha256": "6e5a41ce049f5fc1765df2a56b7670afc4232dbbd3a6fbe64ca1bef2e68a8fb3",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/300/341-ts-morph-plugins.md",
+          "git_blob_sha": "85063f1e556aa10c0d80345ac7bfd1c3a8d32df4",
+          "bytes": 11134,
+          "sha256": "f2c8ddf0f2df532626fe5cb6bde18bd46a28bba56f64742b94a41837e0f290eb",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/300/342-custom-generators.md",
+          "git_blob_sha": "abc132a78ac2183eefa0d5f64600fbca3e4a4a3f",
+          "bytes": 6942,
+          "sha256": "11838077665df180db1b0da2aee4561606978c4b33ae8e753616e4293e3b45e0",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/400/400-build-and-deploy.md",
+          "git_blob_sha": "77e6afc582e0f9d39e21929a06366ac7601d9dcd",
+          "bytes": 3721,
+          "sha256": "d9b7dd4bbb9ddabc848a8e3d835376bd4118734c04f0fd4f002001c0ee36c7cd",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/400/410-generate-and-build.md",
+          "git_blob_sha": "597d93054cca983f08bfb6ad8349834434c330aa",
+          "bytes": 6260,
+          "sha256": "8a0ea93431eb48c224b7d8538e40db9397eeda539e8af11add77efd6b3cbad08",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/400/411-generated-artifacts.md",
+          "git_blob_sha": "bf01eddb9eb941db0bb19448568c3e228a1d9d56",
+          "bytes": 4762,
+          "sha256": "3c8f0af57292a6efb901a1906da46e49334ba6d012238d162d967723efc033d8",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/400/412-client-source.md",
+          "git_blob_sha": "b76a53f28250427b9dee7cb504706005814c1b3e",
+          "bytes": 4887,
+          "sha256": "19276b0f6b34b40b2394a7dfb3d1d5bbf5aae39a36a5a92d484c0e41d85ecfee",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/400/420-local-production.md",
+          "git_blob_sha": "fbe26eab92ec2b4078f1b624346d273157c96fa0",
+          "bytes": 4796,
+          "sha256": "306c25964f6f81795830230d7214825fd87eebcb807af8acbd621adcb6a255a5",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/400/430-schema-changes.md",
+          "git_blob_sha": "b23a3c10371a7d4fac8449e01c473a47973b0565",
+          "bytes": 5555,
+          "sha256": "89edefbcae13ff1516b1877426e4a630af4145bd12a5863bfeafaf5b7c110eaa",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/400/440-vercel.md",
+          "git_blob_sha": "654881582d6ee7b9aee308e0a4ffd0282bddf34b",
+          "bytes": 4725,
+          "sha256": "fef18af5bfe04021c74fbf84589b57b136d6c5f03a03991ad44f9a2aea75b2c1",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/400/450-netlify.md",
+          "git_blob_sha": "a683930a26d131a3fd18ae1e22b947f2f13854dc",
+          "bytes": 4262,
+          "sha256": "3617cbeaf7ff0883a0351a849dafb6620fa5a89e037ecd5ced37795b48137a58",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/400/460-lambda-serverless.md",
+          "git_blob_sha": "2d62cffae7d6de4a440b527a81ebbb12b7b58aab",
+          "bytes": 7695,
+          "sha256": "0a300c287a5d2f745eeab2647aca31eafabf50d0ff2706a93b00d205dbab6e98",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/500/500-project-structure.md",
+          "git_blob_sha": "c6d7e0d3584b27b77e2937cdd8c14777c594388e",
+          "bytes": 3334,
+          "sha256": "edf3f7f3519e114e9637d4444b8edbf85b0e8bd984c403f2d8b21e251297101d",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/500/510-project-anatomy.md",
+          "git_blob_sha": "1a1dd05baed44d2666725a98e93c4eed0c339b2b",
+          "bytes": 6744,
+          "sha256": "9997d6141fd0b9e78721834d1bf9dd05818f26587d5b04b807ba594e4214650e",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/500/511-source-of-truth.md",
+          "git_blob_sha": "9d143255e078cee7c4621d6c05245024d57fb850",
+          "bytes": 8396,
+          "sha256": "462ce5df1a5f5df5ac8d3f901ccd14c0349108fac65301432a69f502e6512f52",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/500/512-generated-output.md",
+          "git_blob_sha": "8e46078d356793fef954af6f7bda377e0e93c48b",
+          "bytes": 7903,
+          "sha256": "386c6765f16f7bde12808fe96a709dd10c16e29e0bbaa3bb0c33646e90b777ec",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/500/520-config.md",
+          "git_blob_sha": "625e3e4623b14b0d3e72954748ab290a22813c15",
+          "bytes": 7338,
+          "sha256": "8623d5bfed735cd3d9302f77372d376f8423dcd506cf32cc2d9dabf408530609",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/500/521-config-splitting.md",
+          "git_blob_sha": "25be2ae8695b529685975b167c23b968e4575b6b",
+          "bytes": 8617,
+          "sha256": "dfc6f53b1cfda10b12ecf0d85d12e62e06fe51657dea12407fb66d51f4dd4827",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/500/530-plugin-layout.md",
+          "git_blob_sha": "83240b303fca1847cb2082e5c0002a7a4ed5de9a",
+          "bytes": 8541,
+          "sha256": "e4d59215ea77795b30c591a664573e33965e7aa1134925a3c72cbb6e716d295c",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/500/540-public-assets.md",
+          "git_blob_sha": "76f469ce81fcd333992db51f7457c673865c3480",
+          "bytes": 6455,
+          "sha256": "3c6fbe5716b961378349a3dcf04f25d215e39349135ca7892b8e835fa558c8ff",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/600/600-built-ins.md",
+          "git_blob_sha": "6778dbe42e11d1a7b041bd65016015a2a63970b9",
+          "bytes": 3459,
+          "sha256": "bc02f6180fc782905613b8b5def485c107d7501a7582c61aae2cc5961eca45d8",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/600/610-authentication.md",
+          "git_blob_sha": "972f185372cf5b10914209ee7ff791a38cbf579e",
+          "bytes": 4907,
+          "sha256": "97280477f3486bae951d784a46680ca39278f596c2d47f146dd632326efa613e",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/600/611-sign-in.md",
+          "git_blob_sha": "6853759c80def557d57af9089a1896341b12a2fd",
+          "bytes": 8939,
+          "sha256": "f38cb031e6a92e7fc1bc9fb95f5017ed97b8ea143fb196b09333f161db732efb",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/600/612-sign-up.md",
+          "git_blob_sha": "119dbbccdd0198456a86832693e4a793360b6cb2",
+          "bytes": 10656,
+          "sha256": "934132940b06c256eeb86450f4bc3c274bd7a6caee6f7fda3a6e2742e1af13e2",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/600/613-otp-2fa.md",
+          "git_blob_sha": "fb0d5d9ddbc72925c47df8389d76d5baa242844f",
+          "bytes": 8554,
+          "sha256": "51b8bf5e2a7a56048fff04a5aba9e066c0b1dfc6a9a234f19bff8ffb6650b86d",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/600/620-roles-and-permissions.md",
+          "git_blob_sha": "e54dc40577403c1e6575959f45a29cf0b84f87a6",
+          "bytes": 4662,
+          "sha256": "8803a2ee287ade4c87c1b5cd0912b4cb115a6dcfe8617990f31a3d1dc62b3d4b",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/600/621-session-rules.md",
+          "git_blob_sha": "e07520a088b2a9fba65d47dd474fa373446e6500",
+          "bytes": 8844,
+          "sha256": "30e3d84f6db19e1bb3b8ddbc0366059d2e4a1d1a26360034f6ab6c8b6cf8866e",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/600/630-sessions-and-account.md",
+          "git_blob_sha": "c75db050ae43362dbb1d11a439c7e6f9cc058721",
+          "bytes": 4843,
+          "sha256": "ff817c7c4ad2241a44ca4ca9f3715a8c1209ca47c49ad2da9bb4a15b11232ce0",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/600/631-profile.md",
+          "git_blob_sha": "2e33ef640182ced6b934ca82a14b5579b7298481",
+          "bytes": 7365,
+          "sha256": "957d65a3716faa781072fb7ca36eb5eea8a6c569f96ce8551760f25111e623db",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/600/632-account-pages.md",
+          "git_blob_sha": "b2df9fdbd6c3856765831f4c6a22ff78f19476d3",
+          "bytes": 7978,
+          "sha256": "94fcdb42e1f239474690e46c6720fa1c59bf40a559702f5dfee534579e517834",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/600/633-flash-messages.md",
+          "git_blob_sha": "8fd122f9eab93ca05b275fb368934e4f2fdc6c90",
+          "bytes": 7040,
+          "sha256": "08b4959c641a63ea3915d3e470c35e47cc450a52a3fcbb8d05989bc9adc94aed",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/600/640-csrf.md",
+          "git_blob_sha": "5592cc142d4a4a73e1575bc6c8a22c726b27c6c5",
+          "bytes": 5676,
+          "sha256": "b10f9dacadc9833e10635817c0cf75a1f6a32cf27adfaac11d9dada5fd4ea248",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/600/650-email.md",
+          "git_blob_sha": "256a07a2c5403f1edce1a6588e943f109c03072a",
+          "bytes": 7128,
+          "sha256": "071ff38151b514a2016a87204404b9d41f135830c3032406b2ad8899f58e8160",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/600/660-i18n.md",
+          "git_blob_sha": "b45d3745641fdc197d5777f345dde5a4a05e255e",
+          "bytes": 2722,
+          "sha256": "fc672da20123f26194c949a24f83c235750895a08c9eb7002ba844bcefc3c1e1",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/600/661-language-config.md",
+          "git_blob_sha": "f7009fef0c4169e21e77456ae1c4b84f7aa4e684",
+          "bytes": 7367,
+          "sha256": "2821212ab8b054289b495c38c88f552440ba75a33f47a675e6b9ddc84007a322",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/600/662-uselanguage.md",
+          "git_blob_sha": "edfcfe29551a9356a25530f6e76e275eaa79ecd8",
+          "bytes": 7092,
+          "sha256": "04d408c40d0afefa1f5e1a8e7bfcbde3d26f1a0d753b7a0711d89996eef8c039",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/600/670-components.md",
+          "git_blob_sha": "92e7a1f0e9e09ab9acf2aa46da73a98ca61e6968",
+          "bytes": 4933,
+          "sha256": "80a1f3f1a2087ddad5a8837a9f0bf1398f4a130a52dcb5ab20b54dfd30b8b864",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/600/671-frui-base-components.md",
+          "git_blob_sha": "1465b55c9a6aa043a465cbb0a5f28ceb93b9b41e",
+          "bytes": 6680,
+          "sha256": "1f67c9bcd029587c64558249645b0076c9ce68ae53dbafde8c0d66918a46f2d0",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/600/672-frui-form-components.md",
+          "git_blob_sha": "e1f0085d619d3b82a54349fc2ae48b9c11c26a9e",
+          "bytes": 7017,
+          "sha256": "fe5a711af531533fd3e4092b147afee06293123bed962657605f802e15c387a8",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/600/673-frui-view-components.md",
+          "git_blob_sha": "d156ee7e7c2b7ed632cb3a53d47a5ae1f5ff1096",
+          "bytes": 6354,
+          "sha256": "00dfed8f89cd759260d6400ddd9b2469335288ab250069b21fa4ffc9a565736f",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/600/680-api-oauth.md",
+          "git_blob_sha": "9fe14250cd0af649d120c7d6718cfc91ca6e1d3f",
+          "bytes": 8976,
+          "sha256": "321d2f53f46e689f40b191022b380a8e98f310c73e4e960a9623f17c87168a2f",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/700/700-studio.md",
+          "git_blob_sha": "c7ced906fe6ac99fda85823297ec0d78e56ebc86",
+          "bytes": 3503,
+          "sha256": "c0cf47732fff98111cb0bf8bc2ba437d5d9176b0252a6bc4edaaaa5e8b61e81d",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/700/710-schema-explorer.md",
+          "git_blob_sha": "6e91e42529d7f459a71c76f1c24b182a0d44e79f",
+          "bytes": 3419,
+          "sha256": "a8ed0cf12167ee5890473a217f4d01dcf80802e9817a7706e28c4b0a994b24da",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/700/720-fields.md",
+          "git_blob_sha": "5b2ec0e6362df6b23178c328bbff12b393e5f37d",
+          "bytes": 3190,
+          "sha256": "a5a88e8b07df429bf36268853e71bf2f0665128de13d0c4661ab3bda40101ed6",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/700/721-field-validation.md",
+          "git_blob_sha": "415ee33c1067c736e099b017a3df7bf9b3409485",
+          "bytes": 3601,
+          "sha256": "cb3022717c4774ee8c8f4a35d3caba738dd567404e2000b8baaf3c5a3c065759",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/700/730-relations.md",
+          "git_blob_sha": "bd4073b7b3f7ed2e4520a5b1b9706120d622d61b",
+          "bytes": 3433,
+          "sha256": "f55558a12cb3df80f96506c8b59d962c4f6a55d211f0fe274c62a7d6b20c386f",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/700/740-generated-admin.md",
+          "git_blob_sha": "512ba7ac8c2d85afeb318a3e54874758749f8fee",
+          "bytes": 3891,
+          "sha256": "7c0bcac1fc8ae7cf21f4540a342c74970b0c3b32e6451b485d36d50a4fda9acc",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/700/741-admin-pages.md",
+          "git_blob_sha": "3293549047f163e0f7c90215f0b59f7084f38763",
+          "bytes": 6817,
+          "sha256": "fc441a730bb1bfc242d55efd6de8cf94e7adc348f275cade82e7ecdd44bf020d",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/700/742-admin-views.md",
+          "git_blob_sha": "b49ac6f0314356fa48529033ccff0e36df491b3c",
+          "bytes": 6575,
+          "sha256": "5a6ad0e42b9e1d60bf606f6e85ee20e0809e3a952ca03de4cfd0d20a6c9cf850",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/700/743-admin-client.md",
+          "git_blob_sha": "ce4585d479a65f76b92e9cf1436ea4930d193726",
+          "bytes": 6032,
+          "sha256": "9ae567d6609c69055291528e4f6b17e176f032338489e2490d959575fd6e99bc",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/700/750-import-export.md",
+          "git_blob_sha": "0bf82115f409da462b661a82a5442323d371933c",
+          "bytes": 4242,
+          "sha256": "6aa0e7fb8cb53e45af500c86f45ae3878fffb08817323542771f6a8b5859c16f",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/800/800-ai.md",
+          "git_blob_sha": "3088a746c3bf189d26c058d8a91f8c777bde70b7",
+          "bytes": 3356,
+          "sha256": "86f855817ba8840527bef1be59b6c640a39134e4d52d4abb717bbf9b74725567",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/800/810-mcp.md",
+          "git_blob_sha": "5c44a02e4e5861f3cf58be5025b0f6de665ce659",
+          "bytes": 4966,
+          "sha256": "bc072a7d79be4b37443f9a184bfa0bcf420e4c59a65602b28627933b98659314",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/800/811-stdio-transport.md",
+          "git_blob_sha": "7fc48a47c55cc42e20c27f55d616a64773aaa80f",
+          "bytes": 5603,
+          "sha256": "37bb235db8d8e48b79bc456deb490478aed17bc28c15a091f13f9b3c81b112ce",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/800/820-artifacts.md",
+          "git_blob_sha": "1bcc25238f97dfdd05e4201f92f271955595a991",
+          "bytes": 5350,
+          "sha256": "9754d098de731e3028ebfb344d22cc951bb8a28bdb97289d9411d18279252062",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/800/830-hooks.md",
+          "git_blob_sha": "0b31322f88c7d9378d22f9198fe86f9b85656ab6",
+          "bytes": 5340,
+          "sha256": "15ae6a25bf48830dd3f0cb542ca522e0b8fcbb8e922e09b7e9757c9dcfb75f54",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/800/831-ai-events.md",
+          "git_blob_sha": "4c896028026735483cd9059d5e1f5181e6cdda15",
+          "bytes": 5995,
+          "sha256": "6a6abdc8fed3d5951e60d8a15a746ceb05bfa31da1ef9dfeeba00a7ccfb2e3dc",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/800/832-transform-hooks.md",
+          "git_blob_sha": "5a7e02deb19b79bb216e7810b84f4b988166449e",
+          "bytes": 6441,
+          "sha256": "f17cf85146522acdc5bf2684f32c99c5f703a3f46dacc0cbfd6abdbcc0bec9b5",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/800/840-skills.md",
+          "git_blob_sha": "c846b905f5c296aa688256cd373233f65638e8e7",
+          "bytes": 2936,
+          "sha256": "7d0d6e82d51fe0f5821288547cd22ceb58d15d1fd9414b844fad7e05d4f23156",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/800/841-skill-workflow.md",
+          "git_blob_sha": "4e650f444865943b083d8d122b36953d8b846998",
+          "bytes": 4753,
+          "sha256": "64e7ec0b1a1a03b7b79113e08e228535da34940fca06b300ed4209e9bd568b14",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/800/842-app-discovery-skill.md",
+          "git_blob_sha": "406abcbce2a5628245256b34080b8da2a97fea03",
+          "bytes": 4418,
+          "sha256": "9d91e8a03dce382b88cff0e2d5128f80f080deca875871b37fd751dca04d7e1f",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/800/843-app-coordinator-skill.md",
+          "git_blob_sha": "6063ad267a7e330d8064a3fdac41abfc51430a9f",
+          "bytes": 4222,
+          "sha256": "8cae0092b6deb56c7040ad90625ffe70f043f66dab9febf768ac8250ab5c2ac0",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/800/844-scaffold-skill.md",
+          "git_blob_sha": "fdb391ba414485bf2d33d1f9ac9297dc4d6b71c4",
+          "bytes": 3838,
+          "sha256": "b31da5db643d315dfb0a0add5488f4969fc7b052831ae653d9992eefc477ce30",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/800/845-idea-authoring-skill.md",
+          "git_blob_sha": "9b7675dd619659a50af4b2fff1406278785552fc",
+          "bytes": 4518,
+          "sha256": "8c9a3f39e301aafc9c3ccb61ab418be2907a62bb279f3fada3762647ddd741d2",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/800/846-plugin-skills.md",
+          "git_blob_sha": "7c1b8ec004c4a458dbd520041017c7c321e00855",
+          "bytes": 6889,
+          "sha256": "efc4e39f34804176079cc4d393b0f167a482c552312c3ff2925cb717096c13b0",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/guides/800/847-verification-skill.md",
+          "git_blob_sha": "70e3a8095ca302c05144fd126effc288a638cea2",
+          "bytes": 7413,
+          "sha256": "b08008cb74adb2a4363aa99a83a652b2739944ad9797c3760f1b3514a8995c97",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/README.md",
+          "git_blob_sha": "f787469246a9efd81641fe192be66424e8624ead",
+          "bytes": 2011,
+          "sha256": "40afd56a27d9530f818dd1332ef435625b511904b565619e1a716f803a73df59",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/cli-reference.md",
+          "git_blob_sha": "39eea1ce3ae40c13cfc95f13b78d7d6e030643f2",
+          "bytes": 2458,
+          "sha256": "6ddad1f465df0a82349bceac9865482d6e79ce9a2bce1dd682b73cc952179e93",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/config-reference.md",
+          "git_blob_sha": "c968b8d4282ffac2174b3e2102fe3157e83bf3b4",
+          "bytes": 12809,
+          "sha256": "6d8351631daed857cb3636af5155d26ae85080a59e07759811a26dcee3914539",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/http.md",
+          "git_blob_sha": "a160c7dd41095f042651e63aceb4debb3014e546",
+          "bytes": 6250,
+          "sha256": "46e13a7649db0a274fe4e2ba30e4831f9c1fc45ca89247b6f902fdc4753adffc",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/idea-reference.md",
+          "git_blob_sha": "61f948d7a43e8a0ff917ac820adb4a70cc37b9b7",
+          "bytes": 11710,
+          "sha256": "4b34ae877f7bc0066fcb80e40a9803ffb7dcd84b8b2e296b867fcf7a7f87aefb",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/language.md",
+          "git_blob_sha": "6cad91715a421383d29b9f4df5294e7cb3bff949",
+          "bytes": 1033,
+          "sha256": "f97796096c0de0304697efcfade1bfa2e9842ae07899f5f7c8d48335ce676c77",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/language/Language.md",
+          "git_blob_sha": "deda11db157a23800b6d2415425a6790c5f06932",
+          "bytes": 1979,
+          "sha256": "c8ebaece2467851b5cb4c419982f90ec49237b2b11a296294295d017788b084a",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/language/README.md",
+          "git_blob_sha": "417dca119a408578b4ae74491d2caac511e9146f",
+          "bytes": 224,
+          "sha256": "ed82a6f9ebbf33f236a9396ee62a7decad5a933cde5360fa78561b8eb8e62bba",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/lib.md",
+          "git_blob_sha": "88353bd16d12a46f5df2849d2b10c5a7ccbe8ffc",
+          "bytes": 2515,
+          "sha256": "8ff5c882eab57865cfd8f855167fecb234060defe7d0f86b09f209784936558e",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/mysql.md",
+          "git_blob_sha": "9c9205888375a364d86ebbd5f7ef4f4425ad0205",
+          "bytes": 1391,
+          "sha256": "0ff2cf2ab0795a4c0428cd4d6a25cbcbea698dfc0b821e7b446949f979683758",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/pglite.md",
+          "git_blob_sha": "f15ceb705f33a5af58e3016cb0e0bae508d65b7d",
+          "bytes": 1376,
+          "sha256": "51e8ca044a6f3d5964bce892dc99e2a716b4a9180aa23947c27b139427c57418",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/pgsql.md",
+          "git_blob_sha": "f2a14b691cf9a019a6792ba762cbd0cb53fb6d4d",
+          "bytes": 1425,
+          "sha256": "197ab41f77525adb08cb37afe7e488a165a96a10fb7314a1d2966e938cc1bec1",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/plugin.md",
+          "git_blob_sha": "910e6fa6d0cfc6cc021d3b181d64d8f80883b060",
+          "bytes": 1763,
+          "sha256": "eab54143ae0583e1341b388e6c73e8d181905144e40c91d01c438ce24dea7bf1",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/runtime/README.md",
+          "git_blob_sha": "0fe32c13c41db5c5c7a9587c64812686c756b3c8",
+          "bytes": 366,
+          "sha256": "9beb2ccc6562d359c9c482077288f80cad5e00aa128a5a69bc483776fdfd2673",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/runtime/Request.md",
+          "git_blob_sha": "1e617d5bcc25f750c9cea180128fa62d6605d7ed",
+          "bytes": 1999,
+          "sha256": "0eb59e267f8bfc0ec43dbf1d067afbf7fc954539cd1ab0470f22b58541a42903",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/runtime/Response.md",
+          "git_blob_sha": "a601c6f0419769aab412110e2da022767675e7b7",
+          "bytes": 2475,
+          "sha256": "8131e5b5b5ac334d56e082e590eb143bb8679c3a70e6c5d2873e6bd2e7960486",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/runtime/Router.md",
+          "git_blob_sha": "8dc589ee639ce6d3ecf590476aee5bb04a7dea26",
+          "bytes": 2072,
+          "sha256": "5b3878da5151fa5ed9bfaa299abd1c8ac365ec67be79d174ef1c5ba18654aa46",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/runtime/Server.md",
+          "git_blob_sha": "1236638815687486ed7e9b98ef997c4d53834c61",
+          "bytes": 1713,
+          "sha256": "7266ff9050934e6ffef84bca2cb342c7d8589f87ac98fbb22d0d278ed4e1f1d5",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/schema.md",
+          "git_blob_sha": "f259a615a7fc1a32a5df10f37e3ecca8cc66d2f1",
+          "bytes": 5023,
+          "sha256": "48a44e3155a6da035f375f83f79a99bbac54d92ff0133e2a1d5f3bdda157ba38",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/schema/Attribute.md",
+          "git_blob_sha": "baf00ec8320aad3d3d0efdcb3915c3379de732f0",
+          "bytes": 1480,
+          "sha256": "1bad80d0dd4714ec69b17073207bc38f20dbd117bcc1a0a5f5ed2a7439aebfc5",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/schema/Column.md",
+          "git_blob_sha": "e74774978169861ca3e4c4180bd19f1a4bbf6d98",
+          "bytes": 2313,
+          "sha256": "125ec8d4e2ee5f4cf0c9d06902df687b7715bcdb9d3c243ea7f950ffb8a164fe",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/schema/Fieldset.md",
+          "git_blob_sha": "ee4c5ce791edacd6d8c39d3bc7c9fef3b0167415",
+          "bytes": 2791,
+          "sha256": "df3e370bf23c5304f72fae1d7bff351a92a450b6848d02960ab272e7d16ba92e",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/schema/Model.md",
+          "git_blob_sha": "ba0c07e17c90d3eb92c8f1cfff6bfd380371ad9b",
+          "bytes": 1522,
+          "sha256": "43e5e57d327c8e5248ef7d5eaf1d3f36a8d53266c876773f657ff9b412abd60e",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/schema/README.md",
+          "git_blob_sha": "1ec841f95ed11a20a3e99164ce2dd4872d9082cb",
+          "bytes": 539,
+          "sha256": "ad69c700534ca08f2002f293ede6686ebf3dc062ed72c7f65df640ad9304e3cc",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/schema/Schema.md",
+          "git_blob_sha": "3eb3356e08db9674f2ef277bcabdd47b0a8f4f94",
+          "bytes": 3397,
+          "sha256": "e859e08140238c8735c0070ac6b8c33a725cd603e66bc0726c05dff07bd7ad6c",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/server.md",
+          "git_blob_sha": "700c055abc27228ebc56d54facfa387270a26dee",
+          "bytes": 4888,
+          "sha256": "446fc66dcab84873916c4f8099b65db70ccd5b6cb72982b47dc75b2ce725438b",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/server/README.md",
+          "git_blob_sha": "70e7bfa93384237c895ba611b103aac36505d518",
+          "bytes": 249,
+          "sha256": "1aececb23b3a55f67deed8b86c16f0e620cb6975f8481bcd6a8317cc60aa2f0c",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/server/Terminal.md",
+          "git_blob_sha": "7301cf4df987f7b7e16d926079859e1895bcbb5a",
+          "bytes": 1599,
+          "sha256": "3726acebe0c07d3b7d4ac620709e89b52b97fc256083e32a2498c93f4201163b",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/session.md",
+          "git_blob_sha": "bac6f3da290821aaac45a7ea429a67b1d8a4b8fd",
+          "bytes": 2159,
+          "sha256": "e49887b3883e7a446c64f4d4062e8879a2b8b19f2f6f5cf8489682c6211aaa06",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/session/README.md",
+          "git_blob_sha": "dc33903d51a178e9bccbd8649dce4fd0c3beaab6",
+          "bytes": 228,
+          "sha256": "46405633fedce30fa0a4451dea27c0151bcbe8173e5e8746b390c7c604bfc7da",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/session/Session.md",
+          "git_blob_sha": "723909cbdaf5224e6d4034d5c5bc20ed2c69b472",
+          "bytes": 2564,
+          "sha256": "01a2823378f09bd579668cb189329cdb24116dfaef22520c3fb8d9394370c578",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/sql.md",
+          "git_blob_sha": "5ce55d3027664b18abe3bf3c90eca44f4087624d",
+          "bytes": 4135,
+          "sha256": "3aabb77e88de40c95fe6ff795460fde9503109eff86f0485a6df90218e92fbf2",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/sql/Engine.md",
+          "git_blob_sha": "8e5a8e0e2d0dfbea83977afc8e7d8b4772b8aac6",
+          "bytes": 2062,
+          "sha256": "01af953e223515e7e12a79187e12d043678705393df73ae640a1894ecaaccaa9",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/sql/README.md",
+          "git_blob_sha": "3355ffca7cd7695e8bcb2547393c36cc00bc1c15",
+          "bytes": 541,
+          "sha256": "5b01824f41eb3552572043c6c223d0b80c4e7a10648725ca68a37bb07098d898",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/sql/builders.md",
+          "git_blob_sha": "43eab3c652ef952b9ac3923d5f78924d8931f7dd",
+          "bytes": 1601,
+          "sha256": "8f265019f66150cbfe6688114d011310f2c6ccd0db949929905ec27155d65c95",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/sql/connections.md",
+          "git_blob_sha": "7215d6576e7d9d0976edf317aed84105614b7a43",
+          "bytes": 1866,
+          "sha256": "0a71cf764fa788603f5cc3cc33ffa56b528ba65c300664faf41e509f993410bd",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/sql/dialects.md",
+          "git_blob_sha": "a238903f4068ef86865e6c71eb7e450ed9a25c21",
+          "bytes": 1121,
+          "sha256": "720991c4bfbdc141b05e6b5fb89fdb2e45ff1f810e5283efd389f3c4f8ecfacb",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/sqlite.md",
+          "git_blob_sha": "78b99b5cd5b893b138f43cdab52fe4d2bc3c5413",
+          "bytes": 1439,
+          "sha256": "924796c454bda07637421a7cc536e382a3b86d4215e05502b37b7e988452ccba",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/stackpress.md",
+          "git_blob_sha": "40fea263374dabdeb8642d0c07451f7eb0241665",
+          "bytes": 2687,
+          "sha256": "72e18a160fa5ff646d81e5d9b43bde5a45c24aec9b01717ea7663ae477281bec",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/types.md",
+          "git_blob_sha": "fa5405780f1e082a90fc00471f69ed1081da002b",
+          "bytes": 3019,
+          "sha256": "cc50016f48b9c153f3e97b189d8d5c4b595ac1bf730e9dcb0543a0b3d6090064",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/unocss.md",
+          "git_blob_sha": "d2e701e1d10c786e5787ba0a51cd71be60129fae",
+          "bytes": 996,
+          "sha256": "6e901fa9d4fae5d6e82ca266164f4ff9a2d8d8939281509231a4126fa32b43bb",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/view-client.md",
+          "git_blob_sha": "4009dfee3bbd124549384e8476be906b8aebe74f",
+          "bytes": 2990,
+          "sha256": "770c1f481efbaa5aaeba8462e400b83847bcefe23e003cd6857495e9f7b0b0ed",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/view.md",
+          "git_blob_sha": "a4b854d351df496fdee5cd249cc8786f5282b600",
+          "bytes": 6670,
+          "sha256": "1d543026695fc5de5b82516955ffaaae03ae29f8f7bc311fe8def20fc1e3a251",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/view/README.md",
+          "git_blob_sha": "d0004cf1dfa3e6e0c0bfd3fab04155854dceb9e5",
+          "bytes": 268,
+          "sha256": "be5c1f7c06b812fed0de7a0810a8d8a7fa2bf6cb140f8d9b9b73f93dc16f4826",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/view/hooks.md",
+          "git_blob_sha": "a08588390dcc06a84e9a9c57957925684787de50",
+          "bytes": 1340,
+          "sha256": "ff18e4224bf2aea36e4c4c733cd9d84d16812d14ab0e9c63efd7fc72aebe9a85",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/view/setViewProps.md",
+          "git_blob_sha": "63dd06916320f5c12145b33933d1b75b0c748340",
+          "bytes": 1222,
+          "sha256": "fecd6a25059ee62b2ae0df195b9c6a0ec5a21a56fe8cf5c56770dc9e35933315",
+          "disposition": "text inventoried; review narrowed by contract family"
+        },
+        {
+          "path": "content/references/whatwg.md",
+          "git_blob_sha": "918850b6b34e1d08b1c9be205156918ee75b22ac",
+          "bytes": 2426,
+          "sha256": "87eba6dcf1ff09588fbfb933e8296a0a6bd007990ae482f64b33cb983d879657",
+          "disposition": "text inventoried; review narrowed by contract family"
+        }
+      ]
+    }
+  ],
+  "installed_skills": [
+    {
+      "path": ".agents/skills/stackpress-ai/SKILL.md",
+      "sha256": "fa3878858c57bf5d844cbfe042e543a8bc0cb752a26049f9dfdd9604c3d92de3",
+      "disposition": "Reviewed local entrypoint; specialist references read by relevance. Six entrypoints have an explicit local reinforcement overlay."
+    },
+    {
+      "path": ".agents/skills/stackpress-app-coordinator/SKILL.md",
+      "sha256": "80419392e2bb2317ad31956fc2e2af3f36afaba63753122c365f6cdd52f85e6d",
+      "disposition": "Reviewed local entrypoint; specialist references read by relevance. Six entrypoints have an explicit local reinforcement overlay."
+    },
+    {
+      "path": ".agents/skills/stackpress-app-discovery/SKILL.md",
+      "sha256": "b2c95be57347bbce8c5ec6133c0fbd794240116038cd4b27594df22339d37efa",
+      "disposition": "Reviewed local entrypoint; specialist references read by relevance. Six entrypoints have an explicit local reinforcement overlay."
+    },
+    {
+      "path": ".agents/skills/stackpress-app-scaffold/SKILL.md",
+      "sha256": "45804d3825eaff1f1d498d456ac6f0870bed4f7f76b0589f443eb03f81b5f77e",
+      "disposition": "Reviewed local entrypoint; specialist references read by relevance. Six entrypoints have an explicit local reinforcement overlay."
+    },
+    {
+      "path": ".agents/skills/stackpress-app-verification/SKILL.md",
+      "sha256": "a247137b1705a92d305635cc47d4478adca190ac58e5bcd1b2ec488d4ae5ff07",
+      "disposition": "Reviewed local entrypoint; specialist references read by relevance. Six entrypoints have an explicit local reinforcement overlay."
+    },
+    {
+      "path": ".agents/skills/stackpress-idea-authoring/SKILL.md",
+      "sha256": "3e1b732e099f99a7482c77307380583b0fd91b7b421971828c8ae8fcd7993b27",
+      "disposition": "Reviewed local entrypoint; specialist references read by relevance. Six entrypoints have an explicit local reinforcement overlay."
+    },
+    {
+      "path": ".agents/skills/stackpress-plugin-idea-generator/SKILL.md",
+      "sha256": "6cbe754fd795ec7633532236537a63e1390e0731467cc7e4b9c2bef1df9462f6",
+      "disposition": "Reviewed local entrypoint; specialist references read by relevance. Six entrypoints have an explicit local reinforcement overlay."
+    },
+    {
+      "path": ".agents/skills/stackpress-plugin-pages-events/SKILL.md",
+      "sha256": "7c34f9645ef26901f979020252a6b2c2a284984e70d7c8f36907ca94b3234d21",
+      "disposition": "Reviewed local entrypoint; specialist references read by relevance. Six entrypoints have an explicit local reinforcement overlay."
+    },
+    {
+      "path": ".agents/skills/stackpress-plugin-router/SKILL.md",
+      "sha256": "214c82bcd62fec95e2ff4d40828b812210511f3c180742788a10ec815b9e3dc9",
+      "disposition": "Reviewed local entrypoint; specialist references read by relevance. Six entrypoints have an explicit local reinforcement overlay."
+    },
+    {
+      "path": ".agents/skills/stackpress-plugin-scaffold/SKILL.md",
+      "sha256": "15cbeec85e3d95c2b08643618ef3493658d417f2b6150504d009716762620ca0",
+      "disposition": "Reviewed local entrypoint; specialist references read by relevance. Six entrypoints have an explicit local reinforcement overlay."
+    },
+    {
+      "path": ".agents/skills/stackpress-plugin-views/SKILL.md",
+      "sha256": "3ab7fc3a3bb2833e4901704278f269dca9f75f7dc3813d01a376ae971f274404",
+      "disposition": "Reviewed local entrypoint; specialist references read by relevance. Six entrypoints have an explicit local reinforcement overlay."
+    },
+    {
+      "path": ".agents/skills/stackpress-router/SKILL.md",
+      "sha256": "6aad6ef0c631d4be0bb7335aa8885cc8248c4ffa666dd504a44098988aad7b6c",
+      "disposition": "Reviewed local entrypoint; specialist references read by relevance. Six entrypoints have an explicit local reinforcement overlay."
+    },
+    {
+      "path": ".agents/skills/stackpress-workflow-router/SKILL.md",
+      "sha256": "14782e5f0906dde7ac394716c289dc5215e6f884fa22ed394fcfb969879d720d",
+      "disposition": "Reviewed local entrypoint; specialist references read by relevance. Six entrypoints have an explicit local reinforcement overlay."
+    }
+  ]
+}

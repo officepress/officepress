@@ -1,6 +1,14 @@
-import type { PageProps } from "../../../app/types.js";
-import type { ShellData } from "../types.js";
-import Frame from "../components/Frame.js";
+//client
+import type { PageProps } from '../../../app/types.js';
+import type { ShellData } from '../types.js';
+import Frame from '../components/Frame.js';
+
+//--------------------------------------------------------------------//
+// Components
+
+/**
+ * Render page metadata and the assets required by the registered view.
+ */
 export function Head(props: PageProps) {
   const data = props.data?.shell as unknown as ShellData;
   return (
@@ -21,7 +29,14 @@ export function Head(props: PageProps) {
       ))}
     </>
   );
-}
+};
+
+//--------------------------------------------------------------------//
+// Entry point
+
+/**
+ * Compose the registered view from server props and its feature component.
+ */
 export default function Page(props: PageProps) {
   return (
     <Frame
@@ -29,4 +44,4 @@ export default function Page(props: PageProps) {
       path={props.request.url.pathname}
     />
   );
-}
+};

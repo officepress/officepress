@@ -1,13 +1,24 @@
 //modules
 import type { UnknownNest } from '@stackpress/lib/types';
-//stackpress-view
+
+//client
 import type { ServerProviderProps } from './types.js';
-import ServerContext from './ServerContext.js';
 import { withUnknownHost } from './helpers.js';
+import ServerContext from './ServerContext.js';
+
+//--------------------------------------------------------------------//
+// Types
+
+//stackpress-view
 
 export type { ServerProviderProps };
 
-// (this is what to put in app.tsx)
+//--------------------------------------------------------------------//
+// Entry point
+
+/**
+ * Create the client-safe server context from serialized page props.
+ */
 export default function ServerProvider<
   C extends UnknownNest = UnknownNest,
   I extends UnknownNest = UnknownNest,

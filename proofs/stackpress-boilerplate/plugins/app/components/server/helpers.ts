@@ -1,11 +1,17 @@
-//stackpress/view
+//client
 import type { ServerSessionRoute } from './types.js';
 
+//--------------------------------------------------------------------//
+// Constants
+
+//cross-realm regular-expression detection used by the URL helper
 export const isRegExp = /^\/.+\/[igmsuy]*$/;
 
+//--------------------------------------------------------------------//
+// Functions
+
 /**
- * Returns true if the permit matches
- * any of the permission patterns
+ * Returns true if the permit matches any of the permission patterns
  */
 export function matchAnyEvent(permit: string, permissions: string[]) {
   //do the obvious match
@@ -14,8 +20,7 @@ export function matchAnyEvent(permit: string, permissions: string[]) {
   }
   //loop through permissions
   for (const permission of permissions) {
-    //we just need one to match to
-    //say that this permit is valid
+    //we just need one to match to say that this permit is valid
     if (matchEvent(permit, permission)) {
       return true;
     }
@@ -25,8 +30,7 @@ export function matchAnyEvent(permit: string, permissions: string[]) {
 };
 
 /**
- * Returns true if the permit matches
- * any of the permission patterns
+ * Returns true if the permit matches any of the permission patterns
  */
 export function matchAnyRoute(
   permit: ServerSessionRoute,
@@ -34,8 +38,7 @@ export function matchAnyRoute(
 ) {
   //loop through permissions
   for (const permission of permissions) {
-    //we just need one to match to
-    //say that this permit is valid
+    //we just need one to match to say that this permit is valid
     if (matchRoute(permit, permission)) {
       return true;
     }
@@ -45,8 +48,7 @@ export function matchAnyRoute(
 };
 
 /**
- * Returns true if the permit
- * matches the permission pattern
+ * Returns true if the permit matches the permission pattern
  */
 export function matchEvent(permit: string, permission: string) {
   //do the obvious match
@@ -56,75 +58,56 @@ export function matchEvent(permit: string, permission: string) {
   //make sure the permit is a regexp string
   const pattern = !isRegExp.test(permission)
     ? `/^${permission
-      //* -> ([^-]+)
-      .replaceAll('*', '([^-]+)')
-      //** -> ([^-]+)([^-]+) -> (.*)
-      .replaceAll('([^-]+)([^-]+)', '(.*)')
-    }$/ig`
+        // * -> ([^-]+)
+        .replaceAll('*', '([^-]+)')
+        // ** -> ([^-]+)([^-]+) -> (.*)
+        .replaceAll('([^-]+)([^-]+)', '(.*)')}$/ig`
     : permission;
-  //make permission into a real regexp,
-  //so we can compare against the permit
+  //make permission into a real regexp, so we can compare against the permit
   const regexp = new RegExp(
-    // pattern,
-    pattern.substring(
-      pattern.indexOf('/') + 1,
-      pattern.lastIndexOf('/')
-    ),
-    // flag
-    pattern.substring(
-      pattern.lastIndexOf('/') + 1
-    )
+    //pattern,
+    pattern.substring(pattern.indexOf('/') + 1, pattern.lastIndexOf('/')),
+    //flag
+    pattern.substring(pattern.lastIndexOf('/') + 1)
   );
   //test the permit
   return regexp.test(permit);
 };
 
 /**
- * Returns true if the permit
- * matches the permission pattern
+ * Returns true if the permit matches the permission pattern
  */
 export function matchRoute(
   permit: ServerSessionRoute,
   permission: ServerSessionRoute
 ) {
-  //if permission is ALL, we dont care what the permit method is
-  //permission is not ALL, so if the methods don't match
-  if (permission.method !== 'ALL'
-    && permission.method !== permit.method
-  ) {
+  //if permission is ALL, we dont care what the permit method is permission
+  // is not ALL, so if the methods don't match
+  if (permission.method !== 'ALL' && permission.method !== permit.method) {
     return false;
   }
 
-  //method checking is now done...
-
-  //do the obvious match
+  //method checking is now done... do the obvious match
   if (permission.route === permit.route) {
     return true;
   }
   //make sure the permit is a regexp string
   const pattern = !isRegExp.test(permission.route)
     ? `/^${permission.route
-      //replace the :variable-_name01
-      .replace(/(\:[a-zA-Z0-9\-_]+)/g, '*')
-      //replace the stars
-      //* -> ([^/]+)
-      .replaceAll('*', '([^/]+)')
-      //** -> ([^/]+)([^/]+) -> (.*)
-      .replaceAll('([^/]+)([^/]+)', '(.*)')
-    }$/ig`
+        // replace the :variable-_name01
+        .replace(/(\:[a-zA-Z0-9\-_]+)/g, '*')
+        // replace the stars
+        // * -> ([^/]+)
+        .replaceAll('*', '([^/]+)')
+        // ** -> ([^/]+)([^/]+) -> (.*)
+        .replaceAll('([^/]+)([^/]+)', '(.*)')}$/ig`
     : permission.route;
-  //make permission into a real regexp,
-  //so we can compare against the permit
+  //make permission into a real regexp, so we can compare against the permit
   const regexp = new RegExp(
-    // pattern,
-    pattern.substring(
-      pattern.indexOf('/') + 1,
-      pattern.lastIndexOf('/')
-    ),
-    // flag
-    pattern.substring(
-      pattern.lastIndexOf('/') + 1
-    )
+    //pattern,
+    pattern.substring(pattern.indexOf('/') + 1, pattern.lastIndexOf('/')),
+    //flag
+    pattern.substring(pattern.lastIndexOf('/') + 1)
   );
   //test the permit
   return regexp.test(permit.route);

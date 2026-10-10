@@ -1,24 +1,63 @@
-import path from 'node:path';
+//node
 import { fileURLToPath } from 'node:url';
+import path from 'node:path';
 
-export const cwd = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-export const build = path.resolve(process.env.OFFICEPRESS_BUILD_DIR || path.join(cwd, '.build'));
+//--------------------------------------------------------------------//
+// Constants
+
+//app root derived from this module rather than the caller’s working
+// directory
+export const cwd = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  '..'
+);
+
+//build root resolved from the app directory or an explicit proof override
+export const build = path.resolve(
+  process.env.OFFICEPRESS_BUILD_DIR || path.join(cwd, '.build')
+);
+
+//generated client output paths shared by CLI and runtime configuration
 export const client = {
   lang: 'js',
   package: 'officepress-client',
   module: path.join(build, 'client', 'index.js'),
   build: path.join(build, 'client'),
-  tsconfig: path.join(cwd, 'tsconfig.json')
+  tsconfig: path.join(cwd, 'tsconfig.json'),
+  revisions: path.join(build, 'client', 'revisions')
 };
+
+//--------------------------------------------------------------------//
+// Functions
+
+/**
+ * Resolve the configured database engine and its environment-specific
+ * connection settings.
+ */
 export function database(mode: 'development' | 'production') {
-  const adapter = process.env.DATABASE_ADAPTER || (mode === 'production' ? 'postgres' : 'pglite');
-  if (adapter !== 'pglite' && adapter !== 'postgres') throw new Error('Unsupported DATABASE_ADAPTER');
+  const adapter =
+    process.env.DATABASE_ADAPTER ||
+    (mode === 'production' ? 'postgres' : 'pglite');
+  if (adapter !== 'pglite' && adapter !== 'postgres')
+    throw new Error('Unsupported DATABASE_ADAPTER');
   return {
+    migrations: path.resolve(
+      process.env.OFFICEPRESS_MIGRATIONS_DIR || path.join(cwd, 'migrations')
+    ),
     adapter,
     url: process.env.DATABASE_URL,
-    directory: path.resolve(process.env.PGLITE_DIR || path.join(build, 'database', 'pglite')),
+    directory: path.resolve(
+      process.env.PGLITE_DIR || path.join(build, 'database', 'pglite')
+    ),
     populate: [
-      { event: 'note-create', data: { id: 'proof-note', title: 'Persisted OfficePress proof', state: 'DRAFT' } }
+      {
+        event: 'note-create',
+        data: {
+          id: 'proof-note',
+          title: 'Persisted OfficePress proof',
+          state: 'DRAFT'
+        }
+      }
     ]
   };
-}
+};

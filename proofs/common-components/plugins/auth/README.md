@@ -21,7 +21,7 @@ One page-preparation helper supplies the auth base, page, kit family and optiona
 
 These adapters live in app code and do not modify installed packages:
 
-1. `schema-adapter.ts`, called by the auth plugin’s `idea` listener, removes only the unresolved Profile `applications`/`sessions` relations when their external API models are absent. The package’s Idea file references them without defining the models, causing generated selectors to query columns the installer does not create. The exact imported schema remains in `node_modules`; the app does not invent replacement identity models.
+1. [`transform/normalize.ts`](transform/normalize.ts), called by the auth plugin’s `idea` listener, removes only the unresolved Profile `applications`/`sessions` relations when their external API models are absent. The package’s Idea file references them without defining the models, causing generated selectors to query columns the installer does not create. The exact imported schema remains in `node_modules`; the app does not invent replacement identity models.
 2. `cookies.ts` preserves all cookie revisions. Ingest 0.10.8 otherwise overwrites `Set-Cookie` while iterating, losing the session when CSRF deletion follows it. A final response header array uses the normal dispatcher’s final-header pass.
 3. The route wrapper supplies CSRF checks missing from profile/password/TOTP-removal handlers, forbids account POST writes by the proof’s READONLY role, makes TOTP removal read-only on GET, and validates an authenticator’s ownership before removal. The package search can return an empty success; that must not authorize deletion by id.
 4. HTTP input cannot supply internal `2fa`/`password` event overrides. Redirects must remain local. Account summaries remove the TOTP token; only the authenticated setup page renders its provisioning secret.
@@ -62,3 +62,15 @@ after connections close; receipts persist in `tests/evidence/receipts/`, includi
 common-components proof). Never initialize an existing application database.
 
 The fixture password in `fixtures.ts` is public test data, not a deployment credential. The real root `.env` values are never copied into fixture rows, browser props or receipts. A top-level runner can import `proveIdentity(baseURL, ctx)` to test through its own live bootstrap connection.
+
+## File ownership
+
+`plugin.ts` wires identity config, guarded events and routes. `pages/framework.ts`
+adapts web requests and calls `officepress-auth-framework`; `events/framework.ts` wraps installed Stackpress handlers with the retained version-specific credential policy; `pages/props.ts`
+prepares shared auth props, and the other `pages/` modules own signout, purge and
+unavailable-capability responses. `events/` owns sign-in delegation, caller
+projection and cookie preservation. `views/page.tsx` supplies Head and delegates
+the body to `components/IdentityPage.tsx`, with shared Input/ProfileFields.
+The early schema normalization stays generation-only in `transform/normalize.ts`.
+
+The purge event owns caller, writable-role and typed-confirmation checks; its page owns CSRF and completion props. Auth mechanism delegation remains an HTTP-specific installed-version adapter because the built-in handlers consume method/URL, redirect and session references. It does not replace Stackpress password, TOTP or JWT mechanisms. General custom business events should accept medium-independent payloads.

@@ -1,0 +1,84 @@
+{
+  "id": "p00-kb-refactor-2026-10-10",
+  "verifiedAt": "2026-10-10T07:54:32.705Z",
+  "scope": "Stackpress guideline refactor of the original portable SDK comparison fixture; no full embedded runtime or production database/session acceptance",
+  "node": "v26.3.0",
+  "browser": "154.0.8037.98",
+  "passed": true,
+  "pluginOwnedTests": 7,
+  "offlineMatrix": {
+    "checks": 32,
+    "passed": true,
+    "receipt": "tests/evidence/receipts/2026-10-10T07-54-12-339Z.json",
+    "modelVerification": "not run: offline browser/SDK matrix; controlled provider contracts tested separately"
+  },
+  "liveMatrix": {
+    "checks": 41,
+    "passed": true,
+    "receipt": "tests/evidence/receipts/2026-10-10T07-54-17-875Z.json",
+    "models": [
+      {
+        "candidate": "stackpress-native",
+        "model": "google/gemini-3.5-flash-lite",
+        "passed": true,
+        "providerModels": [
+          "google/gemini-3.5-flash-lite",
+          "google/gemini-3.5-flash-lite"
+        ]
+      },
+      {
+        "candidate": "stackpress-native",
+        "model": "openai/gpt-4o-mini",
+        "passed": true,
+        "providerModels": [
+          "openai/gpt-4o-mini",
+          "openai/gpt-4o-mini",
+          "openai/gpt-4o-mini"
+        ]
+      },
+      {
+        "candidate": "agent-native-portable-sdk",
+        "model": "google/gemini-3.5-flash-lite",
+        "passed": true,
+        "providerModels": [
+          "google/gemini-3.5-flash-lite",
+          "google/gemini-3.5-flash-lite",
+          "google/gemini-3.5-flash-lite"
+        ]
+      },
+      {
+        "candidate": "agent-native-portable-sdk",
+        "model": "openai/gpt-4o-mini",
+        "passed": true,
+        "providerModels": [
+          "openai/gpt-4o-mini",
+          "openai/gpt-4o-mini",
+          "openai/gpt-4o-mini"
+        ]
+      }
+    ]
+  },
+  "commands": {
+    "yarn install --frozen-lockfile --ignore-scripts": "pass",
+    "yarn prepare:sdk": "pass: pinned SHA-512 and 34090-byte original portable export",
+    "yarn typecheck": "pass",
+    "yarn build": "pass: comparison HTML artifacts",
+    "yarn emit build": "pass: reusable event CLI dispatch",
+    "yarn dev:clean": "pass",
+    "yarn preview": "pass: four HTTP routes via devmetrics",
+    "yarn serve": "pass: four HTTP routes via devmetrics",
+    "yarn dev": "pass: four HTTP routes and watcher restart via devmetrics",
+    "yarn test": "pass via devmetrics",
+    "yarn test:live": "pass via devmetrics"
+  },
+  "preservedHistoricalArtifactsByteForByte": true,
+  "sourceFingerprintsVerified": true,
+  "runOwnedScratchRemoved": true,
+  "ownedListenersClosed": true,
+  "exclusions": [
+    "No Idea schema; no invented schema/database commands",
+    "JSON fixture storage is not production PostgreSQL or multi-process transaction proof",
+    "Original HTML/portable SDK comparison uses no additional Reactus renderer",
+    "SDK package-lock-info.json is retained artifact integrity metadata, not an npm dependency lock"
+  ]
+}

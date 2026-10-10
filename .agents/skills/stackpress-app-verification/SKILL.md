@@ -11,6 +11,19 @@ This skill is a gatekeeper. It decides whether the current phase is real enough
 to advance. It does not replace the scaffold, schema, routing, or plugin
 implementation skills.
 
+
+## OfficePress local contract reinforcement
+
+Local augmentation, 2026-10-09 (condensed 2026-10-10): before implementation,
+load root `AGENTS.md`, the project
+[logic-pattern catalog](../../context/stackpress-logic-patterns.md) and the
+[lazy-registration contract](../../references/00374-stackpress-lazy-registration-and-pattern-maintenance.md).
+Those owners carry the OfficePress deltas — `plugin.ts` as wiring/guards only,
+lazy `ctx.get("/api/about", () => import("./pages/read.js"))` page/event
+registration with separate `ctx.view` bindings, Yarn/CLI dispatch, the pattern
+guard plus affected Yarn/runtime checks, and KB pattern maintenance without MCP
+indexing — and supersede any conflicting generic guidance in this skill.
+
 ## Overview
 
 Evidence before advancement.
@@ -187,7 +200,6 @@ Minimum evidence:
 Fail plugin verification when:
 
 - the plugin exists on disk but is not registered
-- plugin-specific tests were placed in a separate root-level `tests/` folder
 - the plugin uses the wrong hook for the behavior
 - generation logic was incorrectly placed in runtime hooks
 - runtime logic was incorrectly pushed into transform code

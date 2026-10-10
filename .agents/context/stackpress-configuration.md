@@ -15,4 +15,7 @@ Project only safe values into browser props. Do not serialize request cookies, a
 
 - [Tested runtime contracts](../references/00357-stackpress-tested-plugin-pattern.md) — load for SQL integration timing, internal event statuses and per-entry build result handling.
 
-- [Yarn, CLI scripts and proof layout](../references/00373-stackpress-yarn-cli-and-proof-layout.md) — load when changing package scripts, migrating config/bootstrap paths, aggregating plugin tests or storing proof evidence; records the accepted 2026-10-08 conventions and upstream provenance.
+- [Yarn, CLI scripts and proof layout](../references/00373-stackpress-yarn-cli-and-proof-layout.md) — load when changing CLI configs, bootstrap paths or the `emit` dispatch convention.
+
+- [Configuration, CLI and population](../references/00384-stackpress-configuration-cli-and-population.md) — load for command-specific config, CLI dispatch and fixture ownership.
+- [Lifecycle and service registration](../references/00379-stackpress-lifecycle-and-service-registration.md) — load for phase sequencing, readiness and rare registration-order dependencies.

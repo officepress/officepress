@@ -5,20 +5,32 @@ import type {
   HttpResponse,
   ResponseStatus
 } from '@stackpress/ingest';
+import { Server } from 'reactus';
 import Status from '@stackpress/lib/Status';
-import reactus, { Server } from 'reactus';
+import reactus from 'reactus';
 
-//web
+//client
 import type { Config, ViewPlugin } from './types.js';
 
-export function config(server: HttpServer<Config>) {
+//--------------------------------------------------------------------//
+// Functions
+
+//web
+
+/**
+ * Install the Reactus engine and HTML response adapter, projecting only safe
+ * session/request data while respecting redirects and JSON responses.
+ */
+export function configureViews(server: HttpServer<Config>) {
   const config = server.config();
   //create reactus engine
-  const engine = reactus(Server.configure({
-    cwd: config.cwd,
-    production: config.env === 'production',
-    ...config.view
-  }));
+  const engine = reactus(
+    Server.configure({
+      cwd: config.cwd,
+      production: config.env === 'production',
+      ...config.view
+    })
+  );
   //register the reactus engine
   server.register('reactus', engine);
   //set the render function
@@ -30,24 +42,35 @@ export function config(server: HttpServer<Config>) {
     res.statusCode(status.code, status.status);
     //get the noteplate flag
     const noview = ctx.config.path('view.noview', 'json');
-    //const render, if redirecting
-    if (res.redirected
+    //skip HTML rendering when the response has already redirected
+    if (
+      res.redirected ||
       //or if json
-      || req.data.has(noview)
+      req.data.has(noview) ||
       //or body is a string already
-      || typeof res.body === 'string'
-    ) return;
+      typeof res.body === 'string'
+    )
+      return;
     //get props from config
     const props = ctx.config.path('view.props', {});
     //get the session
-    const session = await ctx.resolve<{ id?: string, name?: string, roles?: string[], permits?: unknown[] }>('me', req);
+    const session = await ctx.resolve<{
+      id?: string,
+      name?: string,
+      roles?: string[],
+      permits?: unknown[]
+    }>('me', req);
     //render the html
     const html = await ctx.view.render(action, {
-      data: {...props, ...(res.data() as Record<string, unknown>) },
-      session: session.results ? {
-        id: session.results.id, name: session.results.name,
-        roles: session.results.roles, permits: session.results.permits
-      } : undefined,
+      data: { ...props, ...(res.data() as Record<string, unknown>) },
+      session: session.results
+        ? {
+            id: session.results.id,
+            name: session.results.name,
+            roles: session.results.roles,
+            permits: session.results.permits
+          }
+        : undefined,
       request: {
         url: {
           hash: req.url.hash,
@@ -76,15 +99,20 @@ export function config(server: HttpServer<Config>) {
   };
 };
 
+/**
+ * Register the view-route mapping using the framework’s configured base path.
+ */
 export async function route(
   req: HttpRequest,
   res: HttpResponse,
   ctx: HttpServer<Config>
 ) {
+  //built assets use the confined static handler without starting Vite
+  // middleware
+  if (ctx.config('env') === 'production') return;
   const reactus = ctx.plugin<ViewPlugin>('reactus');
   //handles public, assets and hmr
   await reactus.http(req.resource, res.resource);
-  //if middleware was triggered
-  //stop the response
+  //if middleware was triggered stop the response
   if (res.resource.headersSent) res.stop();
 };

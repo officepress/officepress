@@ -1,25 +1,41 @@
-import { useRef, useState, type ReactNode } from "react";
-/** Shell-owned full-height detail region, following the wireframe panel layout. */
+//modules
+import type { ReactNode } from 'react';
+import { useRef, useState } from 'react';
+
+//--------------------------------------------------------------------//
+// Types
+
+//active panel payload and shell-owned controls for the detail dock
+type DetailDockProps = {
+  title: string,
+  expanded: boolean,
+  children: ReactNode
+};
+
+//--------------------------------------------------------------------//
+// Entry point
+
+/**
+ * Shell-owned full-height detail region, following the wireframe panel
+ * layout.
+ */
 export default function DetailDock({
   title,
-  expanded,
-  children,
-}: {
-  title: string;
-  expanded: boolean;
-  children: ReactNode;
-}) {
-  const [width, setWidth] = useState(360);
-  const start = useRef<{ x: number; width: number } | null>(null);
+  expanded: isExpanded,
+  children
+}: DetailDockProps) {
+  const [ width, setWidth ] = useState(360);
+  const start = useRef<{ x: number, width: number } | null>(null);
+  //keep the detail-panel dimension within its permitted bounds
   const clamp = (value: number) =>
     Math.max(280, Math.min(value, Math.min(640, window.innerWidth - 180)));
   return (
     <aside
-      className={`component-details ${expanded ? "component-details--expanded" : ""}`}
+      className={`component-details ${isExpanded ? 'component-details--expanded' : ''}`}
       aria-label={title}
-      style={expanded ? undefined : { width }}
+      style={isExpanded ? undefined : { width }}
     >
-      {!expanded && (
+      {!isExpanded && (
         <div
           className="component-details-resize"
           role="separator"
@@ -29,36 +45,38 @@ export default function DetailDock({
           aria-valuemax={640}
           aria-valuenow={width}
           tabIndex={0}
-          onPointerDown={(e) => {
-            if (e.button !== 0) return;
-            start.current = { x: e.clientX, width };
-            e.currentTarget.setPointerCapture(e.pointerId);
-            e.preventDefault();
+          onPointerDown={(event) => {
+            if (event.button !== 0) return;
+            start.current = { x: event.clientX, width };
+            event.currentTarget.setPointerCapture(event.pointerId);
+            event.preventDefault();
           }}
-          onPointerMove={(e) => {
+          onPointerMove={(event) => {
             if (start.current)
               setWidth(
-                clamp(start.current.width + start.current.x - e.clientX),
+                clamp(start.current.width + start.current.x - event.clientX)
               );
           }}
-          onPointerUp={(e) => {
+          onPointerUp={(event) => {
             start.current = null;
-            e.currentTarget.releasePointerCapture(e.pointerId);
+            event.currentTarget.releasePointerCapture(event.pointerId);
           }}
           onPointerCancel={() => {
             start.current = null;
           }}
-          onKeyDown={(e) => {
-            if (["ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) {
-              e.preventDefault();
+          onKeyDown={(event) => {
+            if (
+              [ 'ArrowLeft', 'ArrowRight', 'Home', 'End' ].includes(event.key)
+            ) {
+              event.preventDefault();
               setWidth(
                 clamp(
-                  e.key === "Home"
+                  event.key === 'Home'
                     ? 280
-                    : e.key === "End"
+                    : event.key === 'End'
                       ? 640
-                      : width + (e.key === "ArrowLeft" ? 20 : -20),
-                ),
+                      : width + (event.key === 'ArrowLeft' ? 20 : -20)
+                )
               );
             }
           }}
@@ -67,4 +85,4 @@ export default function DetailDock({
       {children}
     </aside>
   );
-}
+};

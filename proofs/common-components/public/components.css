@@ -1,8 +1,9 @@
+/* Components: components composition. Shared kit tokens remain authoritative. */
 /* Extend hover and selected fills to the shell edge without shifting icon/text alignment. */
 .op-aside .component-nav-link {
+  border-radius: 0;
   margin-inline: -16px;
   padding-inline: 16px;
-  border-radius: 0;
 }
 .rail .app-aside .op-nav {
   width: 64px;
@@ -12,53 +13,54 @@
   width: 64px;
 }
 .app-main {
-  min-width: 0;
   display: flex;
   flex-direction: column;
-  padding: 0;
+  min-width: 0;
   overflow: auto;
+  padding: 0;
 }
 .component-empty {
   padding: 24px;
 }
 .component-details {
-  width: 280px;
-  flex: none;
-  display: flex;
-  flex-direction: column;
   background: var(--op-surface);
   border-left: 1px solid var(--op-border);
+  display: flex;
+  flex: none;
+  flex-direction: column;
   min-height: 0;
+  width: 280px;
 }
 .component-details-body {
-  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  overflow: auto;
   min-height: 0;
+  overflow: auto;
+  padding: 20px;
 }
 .component-details-body dl {
   overflow-wrap: anywhere;
 }
 .mobile-panel.details {
+  background: var(--op-surface);
   display: flex;
   flex-direction: column;
-  width: min(400px, 100vw);
-  right: 0;
   left: auto;
-  background: var(--op-surface);
+  right: 0;
+  width: min(400px, 100vw);
 }
 .component-alert {
-  margin: 12px 16px;
-  padding: 12px;
+  background: var(--op-surface);
   border: 1px solid var(--op-border);
   border-radius: 8px;
-  background: var(--op-surface);
+  margin: 12px 16px;
+  padding: 12px;
 }
-.component-alert[role="alert"] {
+.component-alert[role='alert'] {
   color: var(--op-danger);
 }
+/* Responsive: preserve the owning component’s overrides below its base rules. */
 @media (max-width: 767px) {
   .app-main {
     width: 100%;
@@ -70,24 +72,24 @@
 
 /* The shell, not a feature's scroll area, owns the right dock. */
 .component-details {
-  position: relative;
   max-width: min(640px, calc(100vw - 180px));
+  position: relative;
 }
 .component-details--expanded {
   flex: 1;
-  width: auto;
   max-width: none;
+  width: auto;
 }
 .component-details-head {
   flex: none;
+  gap: 8px;
   min-height: 64px;
   padding: 12px 20px;
-  gap: 8px;
 }
 .component-details-head h2 {
-  min-width: 0;
-  margin: 0;
   font-size: 14px;
+  margin: 0;
+  min-width: 0;
   overflow-wrap: anywhere;
 }
 .component-details-body {
@@ -95,14 +97,14 @@
   overscroll-behavior: contain;
 }
 .component-details-resize {
-  position: absolute;
-  z-index: 5;
-  top: 0;
   bottom: 0;
-  left: -4px;
-  width: 8px;
   cursor: col-resize;
+  left: -4px;
+  position: absolute;
+  top: 0;
   touch-action: none;
+  width: 8px;
+  z-index: 5;
 }
 .component-details-resize:hover,
 .component-details-resize:focus-visible {
@@ -116,6 +118,7 @@
 .Toastify__toast-container {
   z-index: 10000;
 }
+/* Responsive: preserve the owning component’s overrides below its base rules. */
 @media (max-width: 767px) {
   .mobile-panel.details {
     width: 100%;

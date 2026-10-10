@@ -13,11 +13,15 @@ For custom-app implementation, feature changes and repairs, the first functional
 
 Cover generation and runtime reconnection, all maintained TypeScript, built JS/CSS/static assets, development HTTP and built production HTTP. Exercise feature enablement, disablement, missing required providers and restart restoration. Confirm absent routes/listeners and continued independent behavior.
 
-Use the normal `.build/database/` PGlite database for development and a uniquely named scratch database only when a proof requires isolation. Test persistence across restart, then remove run-owned scratch data after its connections close while preserving unrelated files. The current adoption policy treats PGlite as the development substitute for PostgreSQL and CockroachDB; do not add or require a separate cross-engine compatibility proof. A receipt must still name the adapter it actually exercised, without claiming direct production-engine execution.
+Use the normal `.build/database/` PGlite database for development and a uniquely named scratch database only when a proof requires isolation. Test persistence across restart, then remove run-owned scratch data after its connections close while preserving unrelated files. [Data and generation](stackpress-data-and-generation.md) owns the PGlite compatibility policy; a receipt must still name the adapter it actually exercised, without claiming direct production-engine execution.
 
 - [Proof evidence and coverage](../references/00206-stackpress-proof-evidence.md) — load for actual findings, source completeness and outstanding proof boundaries.
 
 - [Complete implementation contract](../references/00205-stackpress-officepress-contract.md) — load for full rules, lifecycle details, exceptions and accepted decisions.
 - [Stackpress handbook](stackpress.md) — load to find complete local API and specialist workflow references.
 
-- [Yarn, CLI scripts and proof layout](../references/00373-stackpress-yarn-cli-and-proof-layout.md) — load when changing package scripts, migrating config/bootstrap paths, aggregating plugin tests or storing proof evidence; records the accepted 2026-10-08 conventions and upstream provenance.
+- [Yarn, CLI scripts and proof layout](../references/00373-stackpress-yarn-cli-and-proof-layout.md) — load when aggregating plugin tests, running proof suites or storing evidence/receipts.
+
+- [Lazy registration guard and regression](../references/00374-stackpress-lazy-registration-and-pattern-maintenance.md) — load for the required authored-plugin AST checks, native ImportRouter behavior and fresh HTTP/browser evidence.
+
+- [Accepted agent guidance](../references/00389-stackpress-workflow-verification-and-maintenance.md) — load for scaffold scope, phase evidence, relevant test gates and maintained guidelines.

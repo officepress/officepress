@@ -1,41 +1,41 @@
-//stackpress/view
-import type { ServerSessionProps, ServerSessionPermission } from "./types.js";
-//stackpress/view/server
-import { matchAnyEvent, matchAnyRoute } from "./helpers.js";
+//client
+import type { ServerSessionProps, ServerSessionPermission } from './types.js';
+import { matchAnyEvent, matchAnyRoute } from './helpers.js';
+
+//--------------------------------------------------------------------//
+// Types
 
 export type { ServerSessionProps };
 
+//--------------------------------------------------------------------//
+// Classes
+
 /**
- * Client side session interface
+ * Read the serialized session presentation and its permissions in React. This
+ * facade does not verify credentials; the server remains authoritative.
  */
 export default class Session {
-  /**
-   * Get session from token
-   */
+  //wrap the serialized session fields supplied by the server provider
   public static load(data: ServerSessionProps) {
     return new Session(data);
   }
 
-  //session token
+  //server-supplied session fields used by guest and permission presentation
+  // checks
   public readonly data: ServerSessionProps;
 
-  /**
-   * Returns true if the session is a guest
-   */
+  //returns true if the session is a guest
   public get guest() {
     return !this.data.id;
   }
 
-  /**
-   * Need seed to verify tokens and access for roles
-   */
+  //store the serialized session fields without performing credential
+  // verification
   public constructor(data: ServerSessionProps) {
     this.data = data;
   }
 
-  /**
-   * Returns true if a token has the required permissions
-   */
+  //return whether every requested permission matches the serialized permits
   public can(...permits: ServerSessionPermission[]) {
     //if there are no permits, then we are good
     if (permits.length === 0) {
@@ -45,20 +45,20 @@ export default class Session {
     const permissions = this.data.permits || [];
     //string permissions are events
     const events = permissions.filter(
-      (permission) => typeof permission === "string",
+      (permission) => typeof permission === 'string'
     );
     //object permissions are routes
     const routes = permissions.filter(
-      (permission) => typeof permission !== "string",
+      (permission) => typeof permission !== 'string'
     );
     //every permit must match a permission
     return (
       Array.isArray(permits) &&
       permits.every((permit) =>
-        typeof permit === "string"
+        typeof permit === 'string'
           ? matchAnyEvent(permit, events)
-          : matchAnyRoute(permit, routes),
+          : matchAnyRoute(permit, routes)
       )
     );
   }
-}
+};

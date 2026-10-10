@@ -4,15 +4,24 @@ import type {
   UnknownNest,
   NestedObject,
   CallableNest,
-  StatusResponse,
-} from "@stackpress/lib/types";
-import Status from "@stackpress/lib/Status";
-import Exception from "@stackpress/lib/Exception";
-import { nest, isObject } from "@stackpress/lib/Nest";
+  StatusResponse
+} from '@stackpress/lib/types';
+import { nest, isObject } from '@stackpress/lib/Nest';
+import Exception from '@stackpress/lib/Exception';
+import Status from '@stackpress/lib/Status';
+
+//client
+import type { ServerResponseProps } from './types.js';
+
+//--------------------------------------------------------------------//
+// Types
+
 //stackpress-view
-import type { ServerResponseProps } from "./types.js";
 
 export type { ServerResponseProps };
+
+//--------------------------------------------------------------------//
+// Classes
 
 /**
  * Client version of response. Readonly.
@@ -29,27 +38,21 @@ export default class Response<O = UnknownNest> {
   //stack trace
   protected _stack?: Trace[];
   //response status message
-  protected _status = "";
+  protected _status = '';
   //total count of possible results
   protected _total = 0;
 
-  /**
-   * Returns the status code
-   */
+  //returns the status code
   public get code() {
     return this._code;
   }
 
-  /**
-   * Returns the error message
-   */
+  //returns the error message
   public get error(): string | undefined {
     return this._error;
   }
 
-  /**
-   * Returns results
-   */
+  //returns results
   public get results(): O | undefined {
     if (isObject(this._results)) {
       return Object.freeze(this._results) as O;
@@ -59,31 +62,23 @@ export default class Response<O = UnknownNest> {
     return this._results as O | undefined;
   }
 
-  /**
-   * Returns a stack trace if error
-   */
+  //returns a stack trace if error
   public get stack(): Trace[] | undefined {
     return this._stack;
   }
 
-  /**
-   * Returns the status message
-   */
+  //returns the status message
   public get status(): string {
     return this._status;
   }
 
-  /**
-   * Returns the total count of possible results
-   */
+  //returns the total count of possible results
   public get total() {
     return this._total;
   }
 
-  /**
-   * Sets the initial values of the payload
-   */
-  constructor(response: ServerResponseProps<O>) {
+  //sets the initial values of the payload
+  public constructor(response: ServerResponseProps<O>) {
     const { code, status, error, errors, stack, results, total } = response;
     if (code) {
       this._code = code;
@@ -91,7 +86,7 @@ export default class Response<O = UnknownNest> {
     if (status) {
       this._status = status;
     } else if (this._code) {
-      this._status = Status.get(this._code)?.status || "Unknown Status";
+      this._status = Status.get(this._code)?.status || 'Unknown Status';
     }
     if (error) {
       this._error = error;
@@ -111,11 +106,9 @@ export default class Response<O = UnknownNest> {
     }
   }
 
-  /**
-   * Converts the response to an exception
-   */
+  //converts the response to an exception
   public toException(message?: string) {
-    const error = message || this._error || "Unknown Error";
+    const error = message || this._error || 'Unknown Error';
     const exception = Exception.for(error)
       .withCode(this._code)
       .withErrors(this.errors());
@@ -126,18 +119,16 @@ export default class Response<O = UnknownNest> {
           (trace) =>
             `  at ${trace.method} (` +
             `${trace.file}:${trace.line}:${trace.char}` +
-            `)`,
+            `)`
         )
-        .join("\n");
+        .join('\n');
       exception.stack = stack;
     }
 
     return exception;
   }
 
-  /**
-   * Converts the response to a status response
-   */
+  //converts the response to a status response
   public toStatusResponse(): Partial<StatusResponse<O>> {
     return {
       code: this._code,
@@ -146,7 +137,7 @@ export default class Response<O = UnknownNest> {
       errors: this.errors(),
       stack: this._stack,
       results: this.results as O | undefined,
-      total: this._total,
+      total: this._total
     };
   }
-}
+};

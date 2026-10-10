@@ -1,95 +1,69 @@
-import Icon from "../../../app/components/Icon.js";
-import { useState } from "react";
-import { marked } from "marked";
-import type { Token, Tokens } from "marked";
-import { api } from "../../../app/client.js";
-import type { ReleaseResult } from "../releases.js";
-// React escapes raw text/HTML. Only safe links are interactive; authored code remains text.
-export function Markdown({ text }: { text: string }) {
-  function render(tokens: Token[]): any {
-    return tokens.map((t: any, i: number) => {
-      switch (t.type) {
-        case "heading":
-          return <h3 key={i}>{render(t.tokens || [])}</h3>;
-        case "paragraph":
-          return <p key={i}>{render(t.tokens || [])}</p>;
-        case "text":
-          return <span key={i}>{t.tokens ? render(t.tokens) : t.text}</span>;
-        case "strong":
-          return <strong key={i}>{render(t.tokens || [])}</strong>;
-        case "em":
-          return <em key={i}>{render(t.tokens || [])}</em>;
-        case "code":
-          return (
-            <pre key={i}>
-              <code>{t.text}</code>
-            </pre>
-          );
-        case "codespan":
-          return <code key={i}>{t.text}</code>;
-        case "link":
-          return /^https?:\/\//.test(t.href) ? (
-            <a key={i} href={t.href} target="_blank" rel="noopener noreferrer">
-              {render(t.tokens)}
-            </a>
-          ) : (
-            <span key={i}>{render(t.tokens)}</span>
-          );
-        case "list":
-          return t.ordered ? (
-            <ol key={i} start={t.start}>
-              {t.items.map((v: Tokens.ListItem, j: number) => (
-                <li key={j}>{render(v.tokens)}</li>
-              ))}
-            </ol>
-          ) : (
-            <ul key={i}>
-              {t.items.map((v: Tokens.ListItem, j: number) => (
-                <li key={j}>{render(v.tokens)}</li>
-              ))}
-            </ul>
-          );
-        case "blockquote":
-          return <blockquote key={i}>{render(t.tokens)}</blockquote>;
-        case "space":
-          return null;
-        default:
-          return <span key={i}>{t.raw}</span>;
-      }
-    });
-  }
-  return <div className="markdown">{render(marked.lexer(text))}</div>;
-}
+//modules
+import { useState } from 'react';
+
+//client
+import type { ReleaseResult } from '../releases.js';
+import { requestJson } from '../../../app/client.js';
+import { Markdown } from './Markdown.js';
+import Icon from '../../../app/components/Icon.js';
+
+//--------------------------------------------------------------------//
+// Types
+
+//release metadata, CSRF and publisher configuration supplied by the About
+// page
+type AboutProps = {
+  brand: string,
+  logo: string,
+  version: string,
+  build: string,
+  csrf: string,
+  admin: boolean
+};
+
+//--------------------------------------------------------------------//
+// Entry point
+
+/**
+ * Show installed version, authorized release checks and publisher upgrade
+ * notes.
+ */
 export default function About({
   brand,
   logo,
   version,
   build,
   csrf,
-  admin,
-}: {
-  brand: string;
-  logo: string;
-  version: string;
-  build: string;
-  csrf: string;
-  admin: boolean;
-}) {
-  const [result, setResult] = useState<ReleaseResult>(),
-    [busy, setBusy] = useState(false),
-    [error, setError] = useState(""),
-    [copied, setCopied] = useState(false);
-  async function check() {
-    setBusy(true);
-    setError("");
+  admin: isAdmin
+}: AboutProps) {
+  //--------------------------------------------------------------------//
+  // State and lifecycle references
+
+  const [ result, setResult ] = useState<ReleaseResult>();
+  const [ isBusy, setIsBusy ] = useState(false);
+  const [ error, setError ] = useState('');
+  const [ isCopied, setIsCopied ] = useState(false);
+
+  //--------------------------------------------------------------------//
+  // Interaction handlers
+
+  //request an authorized release refresh and expose provider failures
+  // locally
+  async function handleCheck() {
+    setIsBusy(true);
+    setError('');
     try {
-      setResult(await api("/api/about/check", {}, csrf));
-    } catch (e) {
-      setError((e as Error).message);
+      setResult(await requestJson('/api/about/check', {}, csrf));
+    } catch (caughtError) {
+      setError((caughtError as Error).message);
     } finally {
-      setBusy(false);
+      setIsBusy(false);
     }
   }
+
+  //--------------------------------------------------------------------//
+  // Render or public hook result
+
   return (
     <>
       <section className="op-section">
@@ -120,41 +94,41 @@ export default function About({
             </span>
           </div>
           <div
-            className={`op-update ${result?.state === "available" ? "" : "op-update--current"}`}
+            className={`op-update ${result?.state === 'available' ? '' : 'op-update--current'}`}
             role="status"
           >
             <div className="op-update__main">
               <span className="op-update__icon">
                 <Icon
                   name={
-                    result?.state === "available"
-                      ? "circle-arrow-up"
-                      : result?.state === "current"
-                        ? "circle-check"
-                        : "info"
+                    result?.state === 'available'
+                      ? 'circle-arrow-up'
+                      : result?.state === 'current'
+                        ? 'circle-check'
+                        : 'info'
                   }
                 />
               </span>
               <div className="op-update__text">
                 <strong>
                   {error
-                    ? "Unable to check for updates"
+                    ? 'Unable to check for updates'
                     : !result
-                      ? "Check for the latest release"
-                      : result.state === "current"
-                        ? "You are up to date."
-                        : result.state === "available"
+                      ? 'Check for the latest release'
+                      : result.state === 'current'
+                        ? 'You are up to date.'
+                        : result.state === 'available'
                           ? `Version ${result.tag} is available.`
-                          : "Release information unavailable"}
+                          : 'Release information unavailable'}
                 </strong>
                 <span className="op-small op-muted">
                   {error ||
                     (!result
-                      ? "Check for updates to see published changes and upgrade instructions."
-                      : result.state === "available"
-                        ? "Review the release notes and instructions below before upgrading."
-                        : result.state === "current"
-                          ? "You are running the latest published version."
+                      ? 'Check for updates to see published changes and upgrade instructions.'
+                      : result.state === 'available'
+                        ? 'Review the release notes and instructions below before upgrading.'
+                        : result.state === 'current'
+                          ? 'You are running the latest published version.'
                           : result.message)}
                 </span>
               </div>
@@ -171,28 +145,28 @@ export default function About({
         <div className="op-section__foot app-settings-footer">
           <span className="op-small">
             {result
-              ? `${result.cached ? "Cached check" : "Last checked"} · ${new Date(result.checkedAt).toLocaleString()}`
-              : admin
-                ? "No update check yet"
-                : "An administrator can check for updates."}
+              ? `${result.cached ? 'Cached check' : 'Last checked'} · ${new Date(result.checkedAt).toLocaleString()}`
+              : isAdmin
+                ? 'No update check yet'
+                : 'An administrator can check for updates.'}
           </span>
           <button
-            disabled={!admin || busy}
+            disabled={!isAdmin || isBusy}
             className="op-btn op-btn--secondary"
-            onClick={check}
+            onClick={handleCheck}
           >
             <Icon name="refresh-cw" />
-            {busy ? "Checking…" : "Check for updates"}
+            {isBusy ? 'Checking…' : 'Check for updates'}
           </button>
         </div>
       </section>
-      {result?.state === "available" && admin && (
+      {result?.state === 'available' && isAdmin && (
         <section className="op-section">
           <div className="op-section__head">
             <div>
               <h2 className="op-section__title">Upgrade Instructions</h2>
               <p className="op-section__desc">
-                Installed {version} → {result.tag} ·{" "}
+                Installed {version} → {result.tag} ·{' '}
                 <a href={result.url} target="_blank" rel="noopener noreferrer">
                   Release source
                 </a>
@@ -214,16 +188,16 @@ export default function About({
                 onClick={async () => {
                   try {
                     await navigator.clipboard.writeText(result.instructions!);
-                    setCopied(true);
+                    setIsCopied(true);
                   } catch {
                     setError(
-                      "Clipboard unavailable. Select and copy the instructions.",
+                      'Clipboard unavailable. Select and copy the instructions.'
                     );
                   }
                 }}
               >
                 <Icon name="copy" />
-                {copied ? "Copied" : "Copy instructions"}
+                {isCopied ? 'Copied' : 'Copy instructions'}
               </button>
             </div>
           )}
@@ -244,9 +218,9 @@ export default function About({
               <div className="app-release-meta">
                 <h3>{result.tag}</h3>
                 <span className="op-pill op-pill--neutral">
-                  {result.state === "available"
-                    ? "Available"
-                    : "Latest release"}
+                  {result.state === 'available'
+                    ? 'Available'
+                    : 'Latest release'}
                 </span>
               </div>
               <Markdown text={result.body} />
@@ -260,4 +234,4 @@ export default function About({
       </section>
     </>
   );
-}
+};

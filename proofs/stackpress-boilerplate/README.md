@@ -1,86 +1,108 @@
-# OfficePress Stackpress baseline
+# Historical Stackpress framework proof
 
-A shared starting point and executable framework proof for every OfficePress app. It demonstrates Stackpress 0.10.8, an Ingest/Reactus shell, composed Idea generation, generated SQL operations, environment-specific databases, built serving and responsibility-based plugins.
+This app-neutral Stackpress 0.10.8 proof preserves composed Idea generation,
+generated Note SQL operations, the Ingest/Reactus shell, safe serialized props,
+dependency absence and restart persistence. It remains historical evidence.
+Scaffold new OfficePress apps from [app-shell](../app-shell/README.md); use
+[common-components](../common-components/README.md) for feature examples.
 
-This baseline is app-neutral. Replace the Home Page and small Note example with the target app's accepted product behavior. The earlier Commerce Orders-specific P13/P14 wording described where this proof originated; it is not a requirement for other apps.
+## Install and build
 
-## Start
+Use Node 24+ and Yarn 1.22.22. Runtime dependencies remain pinned to 0.10.8.
 
-Use Node.js 22.14+ within the Node 22 line (the verified runtime is recorded in the receipt), and npm with the supplied lockfile.
-
-```bash
-npm ci
-npm run generate
-npm run typecheck
-npm run build
-npm run dev
+```sh
+yarn install --frozen-lockfile
+yarn generate
+yarn typecheck
+yarn build
+devmetrics start --summary "Historical framework proof" -- 'PORT={port} yarn dev'
 ```
 
-The shell listens on `http://127.0.0.1:3020` by default. Set `HOST` and `PORT` as needed. Scripts resolve paths from the app root. Generation emits `.build/client`; rendering build emits `.build/server` and `.build/public`.
+Stop the assigned devmetrics port after review. Generation writes `.build/client`;
+rendering writes `.build/server` and `.build/public`. Ordinary startup never seeds
+or resets data. `dev:clean` removes only the Vite cache.
 
-The Note route demonstrates generated reads and expects its table to exist. Generation does not apply database changes. Use the disposable proof below to exercise the sample end to end. There is intentionally no automatic schema reset or production seed user on normal startup.
+Production `yarn serve` uses PostgreSQL and requires `DATABASE_URL`; it never falls
+back to PGlite. Supply credentials through your environment manager. Development
+and `yarn preview` use one local PGlite database at `.build/database/pglite`.
+Use devmetrics for every listener, including the test suite below.
 
-## Production serving
+## Ownership and lifecycle
 
-Production defaults to PostgreSQL. Provide an existing database with the reviewed schema applied, build the app, then serve:
-
-```bash
-DATABASE_URL=postgresql://user:password@host:5432/officepress npm run serve
-```
-
-The example URL is a placeholder, not a credential. Supply the real value through your environment manager; scripts do not automatically load `.env`. PostgreSQL failure never falls back to PGlite.
-
-Local development uses one disposable PGlite database at `.build/database/pglite`. `PGLITE_DIR` overrides that path. `DATABASE_ADAPTER=postgres` can select PostgreSQL for development. An explicit `DATABASE_ADAPTER=pglite` may be used to test production rendering locally; that is a proof override, not the production default. The sample Note fixture is declared in config `database.populate` and applied explicitly after fresh schema installation.
-
-## Responsibility map
-
-| Area | Responsibility |
+| Location | Responsibility |
 | --- | --- |
-| `config/common.ts`, `dev.ts`, `build.ts`, `live.ts` | Paths, generated client and environment-specific settings |
-| `bootstrap/server.ts` | Select modules, run lifecycle phases, start/stop HTTP |
-| `plugins/app` | Shared Reactus rendering and confined public-file serving |
-| `plugins/store` | Select/register PostgreSQL or PGlite, connect guarded Stackpress SQL behavior, and close the connection |
-| `stackpress-schema` | Framework Idea generation and generated-client loader |
-| `plugins/home` | Independent home view requiring the rendering service |
-| `plugins/notes` | Small example feature requiring database and generated Note events |
-| `schema.idea` | Compose shared definitions and feature-owned Idea files |
+| `config/develop.ts`, `build.ts`, `production.ts`, `preview.ts`, `client.ts` | Command-specific configuration and awaited CLI bootstraps. |
+| `tests/bootstrap.ts` | Manifest selection, config → bootstrap → config/listen/route; CLI registration precedes listen. |
+| `plugins/app` | Single Reactus renderer, public-file confinement, request and CLI build actions. |
+| `plugins/store` | Connection registration/closure, guarded SQL integration and disposable command guard. |
+| `plugins/home/pages`, `views` | Web response preparation and separately bound browser rendering. |
+| `plugins/notes/events`, `pages` | Reusable Note search/status contracts and thin web adaptation. |
+| Root `schema.idea` | Compose shared definitions and the feature-owned Note schema. |
+| `tests/plugins/all.test.ts` | Import existing plugin suite and run the isolated integration campaign. |
+| `tests/runners` | Run-owned schema/runtime verification and sequential managed HTTP campaign. |
 
-Each dependent plugin checks its own required services in `plugin.ts`. If they are absent, it does not register its feature routes/listeners. The bootstrap selector does not validate a dependency graph. Selection changes require restart; there is no live unloading.
+`plugin.ts` contains lifecycle wiring and service checks. External page/event
+handlers use visible literal lazy imports and default actions. Events own business
+operations; pages call events and prepare web responses. The intentionally public
+Note demo does not establish authentication, tenant or permission policy.
 
-For example, start the shell with `OFFICEPRESS_DISABLED_PLUGINS=store npm run dev`: the shell remains available and the Note feature does not register. Disabling `notes` or `stackpress-schema` similarly removes the dependent feature. Restore the selection and restart to restore it. Runtime disablement does not drop tables or remove schema imports.
+Each dependent plugin checks its services before registering its routes/listeners.
+Disabling `notes`, `store` or `stackpress-schema` preserves the independent home
+renderer and removes the dependent feature. Change `OFFICEPRESS_DISABLED_PLUGINS`
+and restart to restore it; disabling runtime code preserves database records and
+schema imports. There is no live unloading or automatic dependency graph checker.
 
-The custom app plugin is the only rendering owner. Do not also enable the aggregate Stackpress view plugin without deliberately replacing this bridge. The SQL integration adapter delays registration until the configuration phase has supplied its required services.
+Built serving bypasses Vite middleware and uses the confined static handler.
+Browser entries import only browser-safe components/types; there is one renderer.
 
-## Smaller Idea files
+## Commands and database care
 
-`schema.idea` uses `schema/shared.idea` for shared definitions and `plugins/notes/schema.idea` for the model. Keep models near their responsibility and compose through one root entry. This supports targeted authoring and the user's reported faster generation workflow. The proof verifies composition and generated behavior; it does not claim incremental compilation or a measured speedup.
+The manifest uses Stackpress CLI dispatch for build, develop, generate,
+generate:client, migrate, populate, preview, purge, push, query, serve and emit.
+Desktop commands are omitted because this proof has no desktop capability.
+Use `yarn emit notes-status` to resolve the sample event.
 
-## Run the proof
+Code generation, rendering build, migration SQL creation, schema application and
+population are separate. Migrations normally belong in `migrations/`;
+`OFFICEPRESS_MIGRATIONS_DIR` redirects a run-owned verification target.
+`push`, `populate` and `purge` require `OFFICEPRESS_DISPOSABLE_PROOF=1`, PGlite and
+an explicit matching `PGLITE_DIR`. Framework push can replace tables; inspect the
+target first. These guards do not implement production migration policy.
 
-```bash
-npm run prove
-npm run prove -- --postgres
+The Note fixture lives in config `database.populate`. The integration campaign
+installs it only in a checked-empty scratch database, verifies required-field
+validation, closes each connection and removes only its own scratch directory.
+It never deletes `.build` or an existing `.build/database/pglite` directory.
+
+## Reproduce verification
+
+```sh
+yarn generate
+yarn typecheck
+yarn build
+devmetrics start --wait 1 --summary "Historical framework contracts" -- 'PORT={port} yarn test'
 ```
 
-The second command also uses Docker and the `postgres:17-alpine` image. It creates a uniquely named disposable container with a random loopback port, no host data mount and fixed test-only credentials, then removes that container at completion. It never targets an existing database URL.
+The managed test process reserves one assigned 3000–3020 port; its HTTP children
+bind it sequentially. Read devmetrics logs and the fresh receipt after completion.
+The test process exits and unregisters itself; explicitly stop its assigned port
+if interrupted. No optional PostgreSQL container campaign is part of this gate.
 
-Both commands create an isolated `.build/proof-*` directory for generated output and a PGlite database. Each run removes only its closed scratch directory after recording the receipt; it never deletes the shared `.build` tree or the current `.build/database/pglite` database. The runner creates and removes its own preservation marker and stops its temporary servers.
+Checks retain package pins, composed generation, generated CRUD/validation,
+persistence after process restart, built client/server/CSS assets, development and
+built HTTP, safe serialized props, missing feature providers and restoration.
+They establish PGlite/local framework scope, not interactive-browser, production,
+authentication, tenant or deployment acceptance. Split Idea composition is checked;
+no incremental-generation performance improvement is claimed.
 
-Checks cover:
+Fresh timestamped and latest receipts live in `tests/evidence/receipts/` and exclude
+evidence from source fingerprints. Reviewed reports live in
+[verification](tests/evidence/verification/guideline-refactor.md), captures in
+`tests/evidence/playwright/`, reviews in `tests/evidence/reviews/`. Existing moved
+receipts retain their original commands/paths as historical provenance.
 
-- Exact runtime package pins and TypeScript across config, bootstrap, scripts and plugins.
-- Composed generation, generated model exports, CRUD, required-field validation and persistence after process restart.
-- Client/server/CSS build, development HTTP, built production HTTP and static resources.
-- Private request headers excluded from serialized page props.
-- Absent feature routes/listeners with `notes`, `store` and `stackpress-schema` disabled; independent shell survival and restoration after restart.
-- PostgreSQL CRUD/persistence and production adapter selection when `--postgres` is used.
-
-`receipts/latest.json` records results, runtime, exact dependency versions and source fingerprints. A failed run records the failure. Read the receipt rather than assuming a command succeeded.
-
-## Adopt for an app
-
-Copy maintained inputs to a new empty project. Exclude `node_modules`, `.build`, `receipts` and real environment files. Keep `.env.example`, the lockfile and root Idea composition. Rename the package and product copy, choose feature boundaries and replace the sample schema and config populate fixtures deliberately. Align generated-client identity in `config/common.ts` when naming the app.
-
-Follow the local KB for OfficePress brand, UI, authentication and product requirements. This proof does not implement production authentication, tenant isolation, permissions, background jobs or an app's business features. It does not establish interactive browser or deployment acceptance. Add those checks for the target app. The Note route is an intentionally public local example, not an authorization pattern.
-
-Treat database application separately from code generation and bundle build. Review migrations and back up real data. The proof initializes only a checked-empty disposable database through generated install scripts; it does not expose a general-purpose reset command.
+Read [the KB agent guidelines](../../.agents/context/stackpress-logic-patterns.md)
+and [CLI/layout conventions](../../.agents/references/00373-stackpress-yarn-cli-and-proof-layout.md)
+when adapting historical evidence. Copy maintained scaffold inputs from app-shell,
+not this directory. Keep dependency directories, build output, receipts, private
+environment files and local databases out of Git.

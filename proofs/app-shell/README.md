@@ -41,6 +41,33 @@ The [copy map](#copy-and-adapt) gives the detailed adoption contract.
 | [`shell`](plugins/settings/shell/plugin.ts) | Owns the shared app/settings routes and responsive frame after the other services have had a chance to register. |
 | [`.fixtures`](.fixtures/plugin.ts) | Registers config `database.populate` sample events only for an explicitly disposable development database. |
 
+## Plugin files and lifecycle
+
+The plugins follow the installed Stackpress AI shape. Create only folders used
+by the owning capability:
+
+| Location | Responsibility |
+| --- | --- |
+| `plugin.ts` | Lifecycle wiring and dependency guards; route/view registration. |
+| `pages/` | Default-exported HTTP actions: CSRF, web request adaptation, event calls and response/view formatting. |
+| `events/` | Named business actions with caller/role validation, plus lifecycle, rendering/build and identity policy actions. |
+| `views/` | Browser entrypoints composed from `components/`. |
+| `components/` and `client.ts` | Reusable browser-safe bodies/layouts and explicit public exports. |
+| `types.ts` and existing service/helper files | Public contracts and capability-owned domain logic. |
+| `transform/` | Used generation logic: auth's early Profile schema normalization. |
+| Plugin-local `tests/` | Behavior contracts; root tests aggregate and orchestrate them. |
+
+Providers register in `config` after checking services and generated model
+metadata. Generated SQL listeners exist during `listen`, so dependent callbacks
+check them again before registering navigation, subscriptions or workers.
+`route` independently checks readiness before binding page handlers and views.
+The app owns the request renderer and the CLI build event. The auth adapter keeps
+its existing early `idea` priority rather than becoming a later code emitter.
+Existing schemas, HTTP paths and authorization contracts remain the same.
+
+See the [refactor verification](tests/evidence/verification/plugin-structure-refactor.md)
+for the completed checks and fresh receipts.
+
 ## Run locally
 
 Use Node 24 and Yarn 1.22.22. Stackpress ecosystem packages remain pinned to
@@ -196,3 +223,20 @@ card composition. It records current checks, screenshots and remaining bounded
 adaptations for manual review.
 
 Current script migration checks: [Yarn and CLI verification](tests/evidence/verification/yarn-verification.md), including command outputs, managed HTTP checks and final test results.
+
+### Lazy registration guard
+
+Authored page handlers are registered with literal `() => import("./pages/read.js")`
+callbacks; rendered views bind separately. Plugin entrypoints contain lifecycle
+wiring/guards, while pages/events/views keep their own responsibilities.
+From the repository root, run `node .agents/scripts/verify-stackpress-patterns.mjs`
+and `node --test .agents/scripts/tests/stackpress-patterns.test.mjs` before the
+affected proof's Yarn checks. Read the [KB lazy-registration contract](../../.agents/references/00374-stackpress-lazy-registration-and-pattern-maintenance.md)
+for direct default actions, proof-only adaptations and recurring-pattern maintenance.
+
+This proof is a reference for apps with their own custom modules. Source-prescribed
+Stackpress patterns and OfficePress policy have different authority: config/listen/
+route placement is prescribed; repeated ready helpers implement local dependency
+policy. The 2026-10-10 refactor removes the earlier page-factory adapters. Routes load default actions directly; reusable business operations use authenticated named Stackpress events.
+
+Current all-proof guideline alignment and fresh checks: [2026-10-10 refactor verification](tests/evidence/verification/all-proofs-guideline-refactor.md).

@@ -1,26 +1,37 @@
-import Icon from "../../app/components/Icon.js";
-import type { Conversation, RequestAction } from "../types.js";
+//client
+import type { Conversation, RequestAction } from '../types.js';
+import { getInitials } from './presentation.js';
+import Icon from '../../app/components/Icon.js';
+
+//--------------------------------------------------------------------//
+// Types
 
 type RequestActionsProps = {
-  conversation: Conversation;
-  disabled: boolean;
-  onAction: (conversation: Conversation, action: RequestAction) => void;
+  conversation: Conversation,
+  disabled: boolean,
+  onAction: (conversation: Conversation, action: RequestAction) => void
 };
 
-/** Shared actions keep list and preview controls tied to the same saved request. */
+//--------------------------------------------------------------------//
+// Components
+
+/**
+ * Shared actions keep list and preview controls tied to the same saved
+ * request.
+ */
 export function RequestActions({
   conversation,
-  disabled,
-  onAction,
+  disabled: isDisabled,
+  onAction
 }: RequestActionsProps) {
   return (
     <div className="chat-request-actions">
       <button
         type="button"
         className="op-btn op-btn--primary op-btn--compact"
-        disabled={disabled}
+        disabled={isDisabled}
         aria-label={`Accept request from ${conversation.contact}`}
-        onClick={() => onAction(conversation, "accept")}
+        onClick={() => onAction(conversation, 'accept')}
       >
         <Icon name="check" />
         Accept
@@ -28,9 +39,9 @@ export function RequestActions({
       <button
         type="button"
         className="op-btn op-btn--secondary op-btn--compact"
-        disabled={disabled}
+        disabled={isDisabled}
         aria-label={`Block request from ${conversation.contact}`}
-        onClick={() => onAction(conversation, "block")}
+        onClick={() => onAction(conversation, 'block')}
       >
         <Icon name="user-x" />
         Block
@@ -38,25 +49,30 @@ export function RequestActions({
       <button
         type="button"
         className="op-btn op-btn--secondary op-btn--compact"
-        disabled={disabled}
+        disabled={isDisabled}
         aria-label={`Delete request from ${conversation.contact}`}
-        onClick={() => onAction(conversation, "delete")}
+        onClick={() => onAction(conversation, 'delete')}
       >
         <Icon name="trash-2" />
         Delete
       </button>
     </div>
   );
-}
+};
 
-/** Unaccepted requests show the incoming message without a reply composer. */
+/**
+ * Unaccepted requests show the incoming message without a reply composer.
+ */
 export function RequestPreview(
-  props: RequestActionsProps & { onBack: () => void },
+  props: RequestActionsProps & { onBack: () => void }
 ) {
-  const { conversation: v } = props;
-  const incoming = v.messages.filter((message) => message.kind === "incoming");
+  const { conversation: conversation } = props;
+  const incoming = conversation.messages.filter(
+    (message) => message.kind === 'incoming'
+  );
   return (
     <>
+      {/* START: Conversation header */}
       <header className="op-chat__head">
         <button
           className="op-icon-btn chat-back"
@@ -69,29 +85,29 @@ export function RequestPreview(
           className="op-avatar op-avatar--40 op-avatar--soft"
           aria-hidden="true"
         >
-          {v.contact
-            .split(" ")
-            .map((name) => name[0])
-            .slice(0, 2)
-            .join("")}
+          {getInitials(conversation.contact)}
         </span>
         <div className="op-grow">
-          <h2 className="op-strong">{v.contact}</h2>
+          <h2 className="op-strong">{conversation.contact}</h2>
           <p className="op-small op-muted">
-            {[v.senderAddress, v.company].filter(Boolean).join(" · ")}
+            {[ conversation.senderAddress, conversation.company ]
+              .filter(Boolean)
+              .join(' · ')}
           </p>
         </div>
       </header>
+      {/* END: Conversation header */}
+      {/* START: Incoming request preview */}
       <div className="chat-request-preview">
-        <h3 className="op-overline">{v.subject}</h3>
+        <h3 className="op-overline">{conversation.subject}</h3>
         {incoming.map((message) => (
           <article key={message.id}>
             <time className="op-caption op-muted" dateTime={message.at}>
               {new Date(message.at).toLocaleString(undefined, {
-                month: "short",
-                day: "numeric",
-                hour: "numeric",
-                minute: "2-digit",
+                month: 'short',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: '2-digit'
               })}
             </time>
             <p className="chat-message-text">{message.body}</p>
@@ -99,7 +115,7 @@ export function RequestPreview(
               <a
                 className="chat-file"
                 key={file.id}
-                href={`/api/chat/attachment?id=${encodeURIComponent(v.id)}&file=${encodeURIComponent(file.id)}`}
+                href={`/api/chat/attachment?id=${encodeURIComponent(conversation.id)}&file=${encodeURIComponent(file.id)}`}
               >
                 <Icon name="file-text" />
                 <span>{file.name}</span>
@@ -110,6 +126,7 @@ export function RequestPreview(
         ))}
         <RequestActions {...props} />
       </div>
+      {/* END: Incoming request preview */}
     </>
   );
-}
+};

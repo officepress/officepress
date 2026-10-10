@@ -1,9 +1,35 @@
-import { useEffect, useState } from "react";
-import { api } from "../../app/client.js";
-import type { FormSummary } from "../../forms/types.js";
-import AssigneesField from "./AssigneesField.js";
-import Icon from "../../app/components/Icon.js";
-import type { Stage, Workflow } from "../types.js";
+//modules
+import { useEffect, useState } from 'react';
+
+//client
+import type { FormSummary } from '../../forms/types.js';
+import type { Stage, Workflow } from '../types.js';
+import { requestJson } from '../../app/client.js';
+import Icon from '../../app/components/Icon.js';
+import AssigneesField from './AssigneesField.js';
+
+//--------------------------------------------------------------------//
+// Types
+
+//the workflow draft and callbacks for editing stages, tasks and assignments
+type DesignerProps = {
+  workflow: Workflow,
+  draft: Workflow,
+  setDraft: (draft: Workflow) => void,
+  selected: string,
+  setSelected: (stageId: string) => void,
+  save: (value: Workflow) => void,
+  cancel: () => void,
+  busy: boolean,
+  automations?: (stageId: string) => void
+};
+
+//--------------------------------------------------------------------//
+// Entry point
+
+/**
+ * Render the editable workflow definition and its ordered stages.
+ */
 export default function Designer({
   workflow,
   draft,
@@ -12,59 +38,79 @@ export default function Designer({
   setSelected,
   save,
   cancel,
-  busy,
-  automations,
-}: {
-  workflow: Workflow;
-  draft: Workflow;
-  setDraft: (draft: Workflow) => void;
-  selected: string;
-  setSelected: (stageId: string) => void;
-  save: (value: Workflow) => void;
-  cancel: () => void;
-  busy: boolean;
-  automations?: (stageId: string) => void;
-}) {
-  const [forms, setForms] = useState<FormSummary[]>([]);
+  busy: isBusy,
+  automations
+}: DesignerProps) {
+  //--------------------------------------------------------------------//
+  // State and lifecycle references
+
+  const [ forms, setForms ] = useState<FormSummary[]>([]);
+
+  //--------------------------------------------------------------------//
+  // Derived presentation
+
+  const stage = draft.stages.find(
+    (candidateStage) => candidateStage.id === selected
+  )!;
+  const isDirty = JSON.stringify(draft) !== JSON.stringify(workflow);
+
+  //--------------------------------------------------------------------//
+  // Interaction handlers
+
+  //merge only the selected stage edit into the local workflow draft
+  function handleUpdate(value: Partial<Stage>) {
+    setDraft({
+      ...draft,
+      stages: draft.stages.map((candidateStage) =>
+        candidateStage.id === selected
+          ? { ...candidateStage, ...value }
+          : candidateStage
+      )
+    });
+  }
+  //reorder one item without mutating the previous editor snapshot
+  function handleReorder(sourceIndex: number, targetIndex: number) {
+    if (targetIndex < 0 || targetIndex >= draft.stages.length) return;
+    const stages = [ ...draft.stages ];
+    stages.splice(targetIndex, 0, stages.splice(sourceIndex, 1)[0]);
+    setDraft({ ...draft, stages });
+  }
+
+  //--------------------------------------------------------------------//
+  // Browser effects
+
+  //synchronize browser resources after state, derived values and handlers
+  // are ready
+
   useEffect(() => {
-    void api<{ forms: FormSummary[] }>("/api/workflows/forms")
+    void requestJson<{ forms: FormSummary[] }>('/api/workflows/forms')
       .then((value) => setForms(value.forms))
       .catch(() => {});
   }, []);
-  const stage = draft.stages.find((s) => s.id === selected)!;
-  const dirty = JSON.stringify(draft) !== JSON.stringify(workflow);
-  function update(value: Partial<Stage>) {
-    setDraft({
-      ...draft,
-      stages: draft.stages.map((s) =>
-        s.id === selected ? { ...s, ...value } : s,
-      ),
-    });
-  }
-  function reorder(from: number, to: number) {
-    if (to < 0 || to >= draft.stages.length) return;
-    const stages = [...draft.stages];
-    stages.splice(to, 0, stages.splice(from, 1)[0]);
-    setDraft({ ...draft, stages });
-  }
+
+  //--------------------------------------------------------------------//
+  // Render or public hook result
+
   return (
     <div className="op-page wf-designer">
+      {/* START: Page heading and actions */}
       <div className="op-page-head">
         <div className="op-page-head__text">
           <h2 className="op-heading">{draft.name}</h2>
         </div>
         <button className="op-btn op-btn--secondary" onClick={cancel}>
-          {workflow.revision ? "Back to board" : "Back to workflows"}
+          {workflow.revision ? 'Back to board' : 'Back to workflows'}
         </button>
         <button
           className="op-btn op-btn--primary"
-          disabled={busy || (!dirty && workflow.revision > 0)}
+          disabled={isBusy || (!isDirty && workflow.revision > 0)}
           onClick={() => save(draft)}
         >
           <Icon name="save" />
           Save workflow
         </button>
       </div>
+      {/* END: Page heading and actions */}
       <section className="op-section">
         <div className="op-section__head">
           <div>
@@ -79,7 +125,9 @@ export default function Designer({
               <input
                 className="op-input"
                 value={draft.name}
-                onChange={(e) => setDraft({ ...draft, name: e.target.value })}
+                onChange={(event) =>
+                  setDraft({ ...draft, name: event.target.value })
+                }
               />
             </label>
             <label className="op-field">
@@ -87,10 +135,10 @@ export default function Designer({
               <select
                 className="op-select"
                 value={draft.status}
-                onChange={(e) =>
+                onChange={(event) =>
                   setDraft({
                     ...draft,
-                    status: e.target.value as Workflow["status"],
+                    status: event.target.value as Workflow['status']
                   })
                 }
               >
@@ -104,8 +152,8 @@ export default function Designer({
             <textarea
               className="op-textarea"
               value={draft.description}
-              onChange={(e) =>
-                setDraft({ ...draft, description: e.target.value })
+              onChange={(event) =>
+                setDraft({ ...draft, description: event.target.value })
               }
             />
           </label>
@@ -125,15 +173,15 @@ export default function Designer({
                     ...draft.stages,
                     {
                       id,
-                      name: "New stage",
-                      description: "",
+                      name: 'New stage',
+                      description: '',
                       assignees: [],
-                      outcome: "continue",
+                      outcome: 'continue',
                       hours: 24,
                       tasks: [],
-                      formIds: [],
-                    },
-                  ],
+                      formIds: []
+                    }
+                  ]
                 });
                 setSelected(id);
               }}
@@ -143,48 +191,53 @@ export default function Designer({
             </button>
           </div>
           <div className="op-section__body wf-stage-list">
-            {draft.stages.map((s, i) => (
+            {draft.stages.map((stageItem, stageIndex) => (
               <div
-                key={s.id}
+                key={stageItem.id}
                 className="op-stage-item"
-                aria-selected={s.id === selected}
+                aria-selected={stageItem.id === selected}
                 draggable
-                onDragStart={(e) => e.dataTransfer.setData("stage", String(i))}
-                onDragOver={(e) => e.preventDefault()}
-                onDrop={(e) => {
-                  e.preventDefault();
-                  const from = Number(e.dataTransfer.getData("stage"));
-                  if (Number.isInteger(from)) reorder(from, i);
+                onDragStart={(event) =>
+                  event.dataTransfer.setData('stage', String(stageIndex))
+                }
+                onDragOver={(event) => event.preventDefault()}
+                onDrop={(event) => {
+                  event.preventDefault();
+                  const sourceIndex = Number(
+                    event.dataTransfer.getData('stage')
+                  );
+                  if (Number.isInteger(sourceIndex))
+                    handleReorder(sourceIndex, stageIndex);
                 }}
               >
                 <Icon name="grip-vertical" />
                 <button
                   className="wf-stage-select op-grow"
-                  onClick={() => setSelected(s.id)}
+                  onClick={() => setSelected(stageItem.id)}
                 >
-                  <strong>{s.name}</strong>
+                  <strong>{stageItem.name}</strong>
                   <span className="op-caption op-muted">
-                    Stage {i + 1}
-                    {i === 0
-                      ? " · source"
-                      : s.outcome === "complete"
-                        ? " · final"
-                        : ""}
+                    Stage {stageIndex + 1}
+                    {stageIndex === 0
+                      ? ' · source'
+                      : stageItem.outcome === 'complete'
+                        ? ' · final'
+                        : ''}
                   </span>
                 </button>
                 <button
                   className="op-icon-btn op-icon-btn--small"
-                  aria-label={`Move ${s.name} up`}
-                  disabled={i === 0}
-                  onClick={() => reorder(i, i - 1)}
+                  aria-label={`Move ${stageItem.name} up`}
+                  disabled={stageIndex === 0}
+                  onClick={() => handleReorder(stageIndex, stageIndex - 1)}
                 >
                   <Icon name="chevron-up" />
                 </button>
                 <button
                   className="op-icon-btn op-icon-btn--small"
-                  aria-label={`Move ${s.name} down`}
-                  disabled={i === draft.stages.length - 1}
-                  onClick={() => reorder(i, i + 1)}
+                  aria-label={`Move ${stageItem.name} down`}
+                  disabled={stageIndex === draft.stages.length - 1}
+                  onClick={() => handleReorder(stageIndex, stageIndex + 1)}
                 >
                   <Icon name="chevron-down" />
                 </button>
@@ -211,7 +264,9 @@ export default function Designer({
                 <input
                   className="op-input"
                   value={stage.name}
-                  onChange={(e) => update({ name: e.target.value })}
+                  onChange={(event) =>
+                    handleUpdate({ name: event.target.value })
+                  }
                 />
               </label>
               <label className="op-field">
@@ -219,7 +274,9 @@ export default function Designer({
                 <input
                   className="op-input"
                   value={stage.description}
-                  onChange={(e) => update({ description: e.target.value })}
+                  onChange={(event) =>
+                    handleUpdate({ description: event.target.value })
+                  }
                 />
               </label>
             </div>
@@ -233,7 +290,9 @@ export default function Designer({
                   min="0"
                   max="8760"
                   value={stage.hours}
-                  onChange={(e) => update({ hours: Number(e.target.value) })}
+                  onChange={(event) =>
+                    handleUpdate({ hours: Number(event.target.value) })
+                  }
                 />
               </label>
               <label className="op-field">
@@ -241,8 +300,10 @@ export default function Designer({
                 <select
                   className="op-select"
                   value={stage.outcome}
-                  onChange={(e) =>
-                    update({ outcome: e.target.value as Stage["outcome"] })
+                  onChange={(event) =>
+                    handleUpdate({
+                      outcome: event.target.value as Stage['outcome']
+                    })
                   }
                 >
                   <option value="continue">Continue workflow</option>
@@ -253,7 +314,7 @@ export default function Designer({
             <hr />
             <AssigneesField
               value={stage.assignees}
-              onChange={(assignees) => update({ assignees })}
+              onChange={(assignees) => handleUpdate({ assignees })}
               retain
             />
             <hr />
@@ -262,11 +323,11 @@ export default function Designer({
               <button
                 className="op-btn op-btn--secondary op-btn--compact"
                 onClick={() =>
-                  update({
+                  handleUpdate({
                     tasks: [
                       ...stage.tasks,
-                      { id: crypto.randomUUID(), title: "New task" },
-                    ],
+                      { id: crypto.randomUUID(), title: 'New task' }
+                    ]
                   })
                 }
               >
@@ -274,26 +335,32 @@ export default function Designer({
                 Add task
               </button>
             </div>
-            {stage.tasks.map((task, i) => (
+            {stage.tasks.map((task, taskIndex) => (
               <div className="op-row" key={task.id}>
                 <Icon name="grip-vertical" />
                 <input
-                  aria-label={`Task ${i + 1}`}
+                  aria-label={`Task ${taskIndex + 1}`}
                   className="op-input"
                   value={task.title}
-                  onChange={(e) =>
-                    update({
-                      tasks: stage.tasks.map((t, j) =>
-                        i === j ? { ...t, title: e.target.value } : t,
-                      ),
+                  onChange={(event) =>
+                    handleUpdate({
+                      tasks: stage.tasks.map((candidateTask, candidateIndex) =>
+                        taskIndex === candidateIndex
+                          ? { ...candidateTask, title: event.target.value }
+                          : candidateTask
+                      )
                     })
                   }
                 />
                 <button
                   className="op-icon-btn"
-                  aria-label={`Remove task ${i + 1}`}
+                  aria-label={`Remove task ${taskIndex + 1}`}
                   onClick={() =>
-                    update({ tasks: stage.tasks.filter((_, j) => i !== j) })
+                    handleUpdate({
+                      tasks: stage.tasks.filter(
+                        (_, candidateIndex) => taskIndex !== candidateIndex
+                      )
+                    })
                   }
                 >
                   <Icon name="trash-2" />
@@ -314,10 +381,10 @@ export default function Designer({
                         type="checkbox"
                         checked={stage.formIds.includes(form.id)}
                         onChange={(event) =>
-                          update({
+                          handleUpdate({
                             formIds: event.target.checked
-                              ? [...stage.formIds, form.id]
-                              : stage.formIds.filter((id) => id !== form.id),
+                              ? [ ...stage.formIds, form.id ]
+                              : stage.formIds.filter((id) => id !== form.id)
                           })
                         }
                       />
@@ -332,4 +399,4 @@ export default function Designer({
       </div>
     </div>
   );
-}
+};

@@ -1,8 +1,10 @@
 .build/
 node_modules/
-receipts/
+tests/evidence/receipts/
 .env
 .env.*
 !.env.example
 
 .data/
+
+tests/evidence/playwright/

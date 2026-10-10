@@ -1,24 +1,41 @@
-import { useState } from "react";
-import type { Stage, WorkflowAction } from "../../workflows/types.js";
-import type { TemplateVersion } from "../../templates/types.js";
-import { variables } from "../../templates/client.js";
-import { actionLabels } from "../types.js";
+//modules
+import { useState } from 'react';
+
+//client
+import type { TemplateVersion } from '../../templates/types.js';
+import type { Stage, WorkflowAction } from '../../workflows/types.js';
+import { getVariables } from '../../templates/client.js';
+import { actionLabels } from '../types.js';
+
+//--------------------------------------------------------------------//
+// Types
+
+//one ordered action and available stage, form and template targets
+type ActionEditorProps = {
+  action: WorkflowAction,
+  index: number,
+  stage: Stage,
+  templates: TemplateVersion[],
+  change: (action: WorkflowAction) => void
+};
+
+//--------------------------------------------------------------------//
+// Entry point
+
+/**
+ * Render the controls for one automation action and its provider-specific
+ * inputs.
+ */
 export default function ActionEditor({
   action,
   index,
   stage,
   templates,
-  change,
-}: {
-  action: WorkflowAction;
-  index: number;
-  stage: Stage;
-  templates: TemplateVersion[];
-  change: (action: WorkflowAction) => void;
-}) {
-  const [error, setError] = useState("");
+  change
+}: ActionEditorProps) {
+  const [ error, setError ] = useState('');
   const template = templates.find(
-    (item) => item.templateId === action.templateId,
+    (item) => item.templateId === action.templateId
   );
   return (
     <div className="auto-action-fields">
@@ -28,21 +45,21 @@ export default function ActionEditor({
         value={action.type}
         onChange={(event) =>
           change({
-            type: event.target.value as WorkflowAction["type"],
-            value: "",
+            type: event.target.value as WorkflowAction['type'],
+            value: ''
           })
         }
       >
         {!(action.type in actionLabels) && (
           <option value={action.type}>Choose a supported action</option>
         )}
-        {Object.entries(actionLabels).map(([key, label]) => (
+        {Object.entries(actionLabels).map(([ key, label ]) => (
           <option key={key} value={key}>
             {label}
           </option>
         ))}
       </select>
-      {action.type === "check-task" || action.type === "uncheck-task" ? (
+      {action.type === 'check-task' || action.type === 'uncheck-task' ? (
         <label className="op-field">
           <span className="op-field__label">Task</span>
           <select
@@ -65,7 +82,7 @@ export default function ActionEditor({
             </span>
           )}
         </label>
-      ) : action.type === "attach-file" ? (
+      ) : action.type === 'attach-file' ? (
         <label className="op-field">
           <span className="op-field__label">Text file</span>
           <input
@@ -75,7 +92,7 @@ export default function ActionEditor({
               const file = event.target.files?.[0];
               if (!file) return;
               if (file.size > 250 * 1024) {
-                setError("Choose a text file of at most 250 KB.");
+                setError('Choose a text file of at most 250 KB.');
                 return;
               }
               const reader = new FileReader();
@@ -86,13 +103,13 @@ export default function ActionEditor({
                   file: {
                     name: file.name,
                     url:
-                      "data:text/plain;base64," +
-                      String(reader.result).split(",")[1],
-                  },
+                      'data:text/plain;base64,' +
+                      String(reader.result).split(',')[1]
+                  }
                 });
-                setError("");
+                setError('');
               };
-              reader.onerror = () => setError("Unable to read file.");
+              reader.onerror = () => setError('Unable to read file.');
               reader.readAsDataURL(file);
             }}
           />
@@ -102,25 +119,25 @@ export default function ActionEditor({
           <span className="op-caption op-muted">Text files up to 250 KB.</span>
           {error && <span role="alert">{error}</span>}
         </label>
-      ) : action.type === "send-message" ? (
+      ) : action.type === 'send-message' ? (
         <>
           <label className="op-field">
             <span className="op-field__label">Message template</span>
             <select
               className="op-select"
-              value={action.templateId || ""}
+              value={action.templateId || ''}
               onChange={(event) =>
                 change({
                   ...action,
                   templateId: event.target.value,
                   value: event.target.value,
-                  variables: {},
+                  variables: {}
                 })
               }
             >
               <option value="">Choose a published email template</option>
               {templates
-                .filter((item) => item.draft.channel === "email")
+                .filter((item) => item.draft.channel === 'email')
                 .map((item) => (
                   <option key={item.id} value={item.templateId}>
                     {item.draft.name}
@@ -133,32 +150,32 @@ export default function ActionEditor({
             <input
               className="op-input"
               type="email"
-              value={action.recipient || ""}
+              value={action.recipient || ''}
               onChange={(event) =>
                 change({ ...action, recipient: event.target.value })
               }
             />
           </label>
           {template &&
-            variables(template.draft).map((name) => (
+            getVariables(template.draft).map((name) => (
               <label className="op-field" key={name}>
                 <span className="op-field__label">{name}</span>
                 <input
                   className="op-input"
                   placeholder={
                     [
-                      "user.name",
-                      "company.name",
-                      "recipient.email",
-                      "card.title",
-                      "card.assignees",
-                      "stage.name",
-                      "workflow.name",
+                      'user.name',
+                      'company.name',
+                      'recipient.email',
+                      'card.title',
+                      'card.assignees',
+                      'stage.name',
+                      'workflow.name'
                     ].includes(name)
-                      ? "Filled automatically"
-                      : "Enter a value"
+                      ? 'Filled automatically'
+                      : 'Enter a value'
                   }
-                  value={action.variables?.[name] || ""}
+                  value={action.variables?.[name] || ''}
                   onChange={(event) => {
                     const values = { ...action.variables };
                     if (event.target.value) values[name] = event.target.value;
@@ -169,9 +186,9 @@ export default function ActionEditor({
               </label>
             ))}
           <p className="op-caption op-muted">
-            Values can include{" "}
+            Values can include{' '}
             {
-              "{{card.title}}, {{card.assignees}}, {{stage.name}}, {{workflow.name}}"
+              '{{card.title}}, {{card.assignees}}, {{stage.name}}, {{workflow.name}}'
             }
             . Email uses the configured sender.
           </p>
@@ -179,7 +196,7 @@ export default function ActionEditor({
       ) : (
         <label className="op-field">
           <span className="op-field__label">
-            {action.type === "comment" ? "Comment" : "Assignee"}
+            {action.type === 'comment' ? 'Comment' : 'Assignee'}
           </span>
           <input
             className="op-input"
@@ -193,4 +210,4 @@ export default function ActionEditor({
       )}
     </div>
   );
-}
+};

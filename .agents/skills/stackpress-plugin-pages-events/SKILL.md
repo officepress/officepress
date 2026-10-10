@@ -8,6 +8,19 @@ description: Use when an agent needs to implement or revise Stackpress handler m
 Implement Stackpress page and event handlers using the normal handler contract
 instead of improvising request-time logic.
 
+
+## OfficePress local contract reinforcement
+
+Local augmentation, 2026-10-09 (condensed 2026-10-10): before implementation,
+load root `AGENTS.md`, the project
+[logic-pattern catalog](../../context/stackpress-logic-patterns.md) and the
+[lazy-registration contract](../../references/00374-stackpress-lazy-registration-and-pattern-maintenance.md).
+Those owners carry the OfficePress deltas — `plugin.ts` as wiring/guards only,
+lazy `ctx.get("/api/about", () => import("./pages/read.js"))` page/event
+registration with separate `ctx.view` bindings, Yarn/CLI dispatch, the pattern
+guard plus affected Yarn/runtime checks, and KB pattern maintenance without MCP
+indexing — and supersede any conflicting generic guidance in this skill.
+
 ## Overview
 
 Treat `pages/` and `events/` handlers as the same family of server actions with

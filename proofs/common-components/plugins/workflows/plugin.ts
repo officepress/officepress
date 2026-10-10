@@ -1,147 +1,118 @@
-import type { HttpServer } from "@stackpress/ingest";
-import type Engine from "@stackpress/inquire/Engine";
-import type { Config } from "../app/types.js";
-import type { FormsService } from "../forms/types.js";
-import type { Identity } from "../auth/types.js";
-import type { ComponentNavigation } from "../settings/shell/registry.js";
-import { createWorkflows } from "./server.js";
-import { WorkflowError } from "./validation.js";
-import type { WorkflowDraft } from "./types.js";
-export default function plugin(server: HttpServer<Config>) {
-  server.on("route", ({ ctx }) => {
-    const identity = ctx.plugin<Identity>("identity"),
-      db = ctx.plugin<Engine>("database");
-    const config = ctx.config("officepress") as Config["officepress"] & {
-      features?: { workflows?: boolean };
+//modules
+import type { HttpServer } from '@stackpress/ingest';
+import type { ClientPlugin } from 'stackpress-sql/types';
+import type Engine from '@stackpress/inquire/Engine';
+
+//client
+import type { Config } from '../app/types.js';
+import type { Identity } from '../auth/types.js';
+import type { FormsService } from '../forms/types.js';
+import type { ComponentNavigation } from '../settings/shell/registry.js';
+import { createWorkflows } from './server.js';
+
+/**
+ * Register workflow operations, navigation and views after identity, storage
+ * and generated workflow models are available.
+ */
+export default function registerWorkflowsPlugin(server: HttpServer<Config>) {
+  //check workflow activation, identity and storage runtime phases also
+  // require component-workflow-detail listeners
+  function canRegisterWorkflows(
+    ctx: HttpServer<Config>,
+    shouldCheckRuntimeReadiness = false
+  ) {
+    const identity = ctx.plugin<Identity>('identity');
+    const database = ctx.plugin<Engine>('database');
+    const config = ctx.config('officepress') as Config['officepress'] & {
+      features?: { workflows?: boolean }
     };
-    if (
+    return !(
       config.features?.workflows === false ||
-      !identity?.ready() ||
-      !db ||
-      !ctx.listeners["component-workflow-detail"]?.size
-    )
-      return;
-    const service = createWorkflows(db, config.appId, undefined, {
-      forms: () => ctx.plugin<FormsService>("forms"),
-    });
-    ctx.register("workflows", service);
-    ctx.plugin<ComponentNavigation>("component-navigation")?.add({
-      id: "workflows",
-      label: "Workflows",
-      href: "/workflow/search",
-      pages: [
-        { path: "/workflow/search", title: "Workflows" },
-        { path: "/workflow/create", title: "Create Workflow" },
-        { path: "/workflow/detail/:id", title: "Workflow Details" },
-        { path: "/workflow/update/:id", title: "Update Workflow" },
-      ],
-      icon: "columns-3",
-    });
-    ctx.get("/workflows", ({ res }) => {
-      res.redirect("/workflow/search");
-    });
-    ctx.get("/api/workflows/forms", async ({ req, res }) => {
-      const caller = await identity.requireUser(req, res);
-      if (!caller) return;
-      try {
-        const forms = ctx.plugin<FormsService>("forms");
-        if (req.data("cardId"))
-          res.results(
-            await service.loadForm(
-              caller,
-              String(req.data("cardId")),
-              String(req.data("formId")),
-            ),
-          );
-        else
-          res.results({
-            forms: forms
-              ? (await forms.list(caller)).filter(
-                  (form) => form.publishedVersion > 0,
-                )
-              : [],
-          });
-      } catch (e) {
-        res
-          .setError(e instanceof Error ? e.message : "Unable to load forms.")
-          .statusCode((e as { status?: number }).status || 400);
-      }
-    });
-    ctx.get("/api/workflows", async ({ req, res }) => {
-      const caller = await identity.requireUser(req, res);
-      if (!caller) return;
-      try {
-        res.results(await service.read(caller));
-      } catch (e) {
-        res
-          .setError(
-            e instanceof Error ? e.message : "Unable to load workflows.",
-          )
-          .statusCode(e instanceof WorkflowError ? e.status : 500);
-      }
-    });
-    ctx.post("/api/workflows", async ({ req, res }) => {
-      const caller = await identity.requireUser(req, res);
-      if (!caller || !identity.csrf(req, res)) return;
-      try {
-        const action = req.data("action"),
-          id = String(req.data("id") || ""),
-          revision = Number(req.data("revision"));
-        if (action === "save")
-          res.results(
-            await service.save(
-              caller,
-              req.data("draft") as WorkflowDraft,
-              revision,
-            ),
-          );
-        else if (action === "create-card")
-          res.results(
-            await service.createCard(
-              caller,
-              id,
-              String(req.data("title") || ""),
-              req.data("assignees") as string[] | undefined,
-            ),
-          );
-        else if (action === "move")
-          res.results(
-            await service.move(
-              caller,
-              id,
-              revision,
-              String(req.data("stageId") || ""),
-            ),
-          );
-        else if (action === "submit-form")
-          res.results(
-            await service.submitForm(
-              caller,
-              id,
-              revision,
-              String(req.data("formId")),
-              Number(req.data("version")),
-              req.data("answers"),
-              String(req.data("requestId")),
-            ),
-          );
-        else if (action === "update-card")
-          res.results(
-            await service.update(
-              caller,
-              id,
-              revision,
-              (req.data("change") || {}) as Parameters<
-                typeof service.update
-              >[3],
-            ),
-          );
-        else throw new WorkflowError("Unknown workflow action.");
-      } catch (e) {
-        res
-          .setError(e instanceof Error ? e.message : "Workflow action failed.")
-          .statusCode(e instanceof WorkflowError ? e.status : 500);
-      }
-    });
+      !identity ||
+      (shouldCheckRuntimeReadiness && !identity.ready()) ||
+      !database ||
+      (shouldCheckRuntimeReadiness &&
+        !ctx.listeners['component-workflow-detail']?.size)
+    );
+  }
+  //--------------------------------------------------------------------//
+  // Provider configuration
+
+  //run at -400 after schema/store and identity; omit incomplete providers
+  server.on(
+    'config',
+    async ({ ctx }) => {
+      const database = ctx.plugin<Engine>('database');
+      const config = ctx.config('officepress') as Config['officepress'] & {
+        features?: { workflows?: boolean }
+      };
+      if (!canRegisterWorkflows(ctx)) return;
+      const client = ctx.plugin<ClientPlugin>('client');
+      if (
+        !client ||
+        typeof (await client(true))?.model?.componentWorkflow?.listen !==
+          'function'
+      )
+        return;
+      const service = createWorkflows(database, config.appId, undefined, {
+        forms: () => ctx.plugin<FormsService>('forms'),
+        dispatch: async (transition) => {
+          //await integrations after commit, preserving the existing failure
+          // propagation
+          await ctx.resolve('officepress-workflow-transition', { transition });
+        }
+      });
+      ctx.register('workflows', service);
+    },
+    -400
+  );
+  //--------------------------------------------------------------------//
+  // Reusable event registration
+
+  //runtime checks prevent partially configured features from exposing
+  // events
+  server.on(
+    'listen',
+    ({ ctx }) => {
+      if (!canRegisterWorkflows(ctx, true)) return;
+      if (!ctx.plugin('workflows')) return;
+      ctx.on(
+        'officepress-workflows-authorize',
+        () => import('./events/authorize.js')
+      );
+      ctx.on('officepress-workflows-read', () => import('./events/read.js'));
+      ctx.on(
+        'officepress-workflows-update',
+        () => import('./events/update.js')
+      );
+      ctx.on('officepress-workflows-forms', () => import('./events/forms.js'));
+
+      ctx.plugin<ComponentNavigation>('component-navigation')?.add({
+        id: 'workflows',
+        view: '@/plugins/workflows/views/index',
+        label: 'Workflows',
+        href: '/workflow/search',
+        pages: [
+          { path: '/workflow/search', title: 'Workflows' },
+          { path: '/workflow/create', title: 'Create Workflow' },
+          { path: '/workflow/detail/:id', title: 'Workflow Details' },
+          { path: '/workflow/update/:id', title: 'Update Workflow' }
+        ],
+        icon: 'columns-3'
+      });
+    },
+    -400
+  );
+  //--------------------------------------------------------------------//
+  // HTTP routes and views
+
+  //expose lazy web adapters only while their providers are ready
+  server.on('route', ({ ctx }) => {
+    if (!canRegisterWorkflows(ctx, true)) return;
+    if (!ctx.plugin('workflows')) return;
+    ctx.get('/workflows', () => import('./pages/legacy.js'));
+    ctx.get('/api/workflows/forms', () => import('./pages/forms.js'));
+    ctx.get('/api/workflows', () => import('./pages/read.js'));
+    ctx.post('/api/workflows', () => import('./pages/update.js'));
   });
-}
+};

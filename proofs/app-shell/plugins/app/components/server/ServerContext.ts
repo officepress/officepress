@@ -1,20 +1,30 @@
 //modules
-import { createContext } from "react";
-//stackpress/view
-import type { ServerContextProps } from "./types.js";
-import { withUnknownHost } from "./helpers.js";
+import { createContext } from 'react';
+
+//client
+import type { ServerContextProps } from './types.js';
+import { withUnknownHost } from './helpers.js';
+
+//--------------------------------------------------------------------//
+// Types
 
 export type { ServerContextProps };
 
-export const unknownHost = new URL(withUnknownHost("/"));
+//--------------------------------------------------------------------//
+// Constants
+
+//fallback URL for initial client context before a real request is supplied
+export const unknownHost = new URL(withUnknownHost('/'));
+
+//configuration consumed by this module’s bootstrap/provider
 export const config: ServerContextProps = {
   data: {},
   session: {
-    id: "",
-    name: "Guest",
-    roles: ["GUEST"],
-    token: "",
-    permits: [],
+    id: '',
+    name: 'Guest',
+    roles: [ 'GUEST' ],
+    token: '',
+    permits: []
   },
   request: {
     url: {
@@ -26,20 +36,23 @@ export const config: ServerContextProps = {
       pathname: unknownHost.pathname,
       port: unknownHost.port,
       protocol: unknownHost.protocol,
-      search: unknownHost.search,
+      search: unknownHost.search
     },
     headers: {},
     session: {},
-    method: "GET",
-    mime: "",
-    data: {},
+    method: 'GET',
+    mime: '',
+    data: {}
   },
   response: {
     code: 0,
-    status: "",
-  },
+    status: ''
+  }
 };
 
 const ServerContext = createContext<ServerContextProps>(config);
+
+//--------------------------------------------------------------------//
+// Entry point
 
 export default ServerContext;

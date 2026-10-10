@@ -1,110 +1,132 @@
-//node
-import fs from "node:fs";
-import path from "node:path";
 //modules
-import type { HttpServer } from "@stackpress/ingest";
-import type Engine from "@stackpress/inquire/Engine";
-//web
-import type { Config } from "./types.js";
-import type { Identity } from "../auth/types.js";
-import * as view from "./view.js";
-import { createAppData } from "./purge.js";
-import { buildApp } from "./build.js";
+import type { HttpServer } from '@stackpress/ingest';
+import type { ClientPlugin } from 'stackpress-sql/types';
+import type Engine from '@stackpress/inquire/Engine';
 
-const mime: Record<string, string> = {
-  ".html": "text/html",
-  ".css": "text/css",
-  ".js": "text/javascript",
-  ".json": "application/json",
-  ".png": "image/png",
-  ".jpg": "image/jpg",
-  ".jpeg": "image/jpeg",
-  ".gif": "image/gif",
-  ".svg": "image/svg+xml",
-  ".ico": "image/x-icon",
-  ".woff2": "font/woff2",
-};
+//client
+import type { Identity } from '../auth/types.js';
+import type { Config } from './types.js';
+import { createAppData } from './purge.js';
+import * as view from './view.js';
 
-export default function plugin(server: HttpServer<Config>) {
-  // The CLI dispatches rendering builds to their app owner.
-  server.on("build", async ({ ctx, res }) => {
-    await buildApp(ctx);
-    res.statusCode(200);
+/**
+ * Register shared rendering and app-owned notifications. Stackpress invokes
+ * this entry point once; restarting applies activation changes.
+ */
+export default function registerAppPlugin(server: HttpServer<Config>) {
+  //config checks declared providers; listen/route also check live identity
+  // and generated notice listeners, which do not exist during config yet
+  function canRegisterNotifications(
+    ctx: HttpServer<Config>,
+    shouldCheckRuntimeReadiness = false
+  ) {
+    const notifications = ctx.config('officepress').notifications;
+    const identity = ctx.plugin<Identity>('identity');
+    const database = ctx.plugin<Engine>('database');
+
+    //--------------------------------------------------------------------//
+    // Supported feed configuration
+
+    //accept exactly the three supported categories before exposing a feed
+    // that the shell assumes has all, mentions and agent tabs
+    const hasSupportedCategories =
+      Array.isArray(notifications?.categories) &&
+      notifications.categories.length === 3 &&
+      new Set(notifications.categories).size === 3 &&
+      notifications.categories.every((category) =>
+        [ 'all', 'mentions', 'agent' ].includes(category)
+      );
+
+    //disabled or incomplete providers register no notification capability
+    return Boolean(
+      notifications?.enabled === true &&
+      notifications.adapter === 'local' &&
+      hasSupportedCategories &&
+      identity &&
+      database &&
+      (!shouldCheckRuntimeReadiness ||
+        (identity.ready() && ctx.listeners['shell-notice-detail']?.size))
+    );
+  }
+
+  //--------------------------------------------------------------------//
+  // Build and shared rendering
+
+  //keep the build handler lazy so tooling can discover its own chunk
+  server.on('build', () => import('./events/build.js'));
+  server.on('config', ({ ctx }) => {
+    //shared views and app-data ownership remain available without a feed
+    view.configureViews(ctx);
+    ctx.register('app-data', createAppData(ctx));
   });
-  server.on("config", ({ ctx }) => {
-    view.config(ctx);
-    ctx.register("app-data", createAppData(ctx));
-  });
 
-  server.on("route", ({ ctx }) => {
-    ctx.on("request", async ({ req, res, ctx }) => {
-      await view.route(req, res, ctx);
-      //if there is a body or a code that is not 404, skip
+  //--------------------------------------------------------------------//
+  // Notification provider
+
+  //-400 runs after store/schema setup and identity's -300 config handler
+  server.on(
+    'config',
+    async ({ ctx }) => {
+      if (!canRegisterNotifications(ctx)) return;
+
+      //a configured client is insufficient if its notice model was omitted
+      const client = ctx.plugin<ClientPlugin>('client');
       if (
-        res.resource.headersSent ||
-        res.body ||
-        (res.code && res.code !== 404)
+        !client ||
+        typeof (await client(true))?.model?.shellNotice?.listen !== 'function'
       )
         return;
-      //get the resource pathname
-      const resource = req.url.pathname.substring(1).replace(/\/\//, "/");
-      //if no pathname, skip
-      if (resource.length === 0) return;
-      const assets = server.config<string>("assets");
-      const file = path.resolve(assets, resource);
-      if (
-        file.startsWith(path.resolve(assets) + path.sep) &&
-        fs.existsSync(file) &&
-        fs.statSync(file).isFile()
-      ) {
-        const ext = path.extname(file);
-        const type = mime[ext] || "application/octet-stream";
-        res.set(type, fs.createReadStream(file));
-      }
-    });
+
+      //dependent shell code discovers availability through this provider
+      ctx.register('notifications', { available: true });
+    },
+    -400
+  );
+
+  //--------------------------------------------------------------------//
+  // Request and reusable notification events
+
+  //initialize rendering for every request, even when notifications are off
+  server.on('listen', ({ ctx }) => {
+    ctx.on('request', () => import('./events/request.js'));
   });
 
-  // the app owns the optional feed; its absence must not disable rendering
-  server.on("route", ({ ctx }) => {
-    const c = ctx.config("officepress"),
-      identity = ctx.plugin<Identity>("identity"),
-      db = ctx.plugin<Engine>("database");
-    if (
-      !c.notifications ||
-      c.notifications.enabled !== true ||
-      !Array.isArray(c.notifications.categories) ||
-      c.notifications.categories.length !== 3 ||
-      new Set(c.notifications.categories).size !== 3 ||
-      !c.notifications.categories.every((category) =>
-        ["all", "mentions", "agent"].includes(category),
-      ) ||
-      c.notifications.adapter !== "local" ||
-      !identity?.ready() ||
-      !db ||
-      !ctx.listeners["shell-notice-detail"]?.size
-    )
-      return;
-    ctx.register("notifications", { available: true });
-    ctx.get("/api/notifications", async ({ req, res }) => {
-      const user = await identity.requireUser(req, res);
-      if (!user) return;
-      res.results({
-        notices: await db.query(
-          'SELECT "id","category","title","href","read","created" FROM "shell_notice" WHERE "app_id" = ? AND "owner_id" = ? ORDER BY "created" DESC',
-          [c.appId, user.id],
-        ),
-      });
-    });
-    ctx.post("/api/notifications/read", async ({ req, res }) => {
-      const user = await identity.requireUser(req, res);
-      if (!user || !(await identity.csrf(req, res))) return;
-      const id = req.data("id");
-      await db.query(
-        'UPDATE "shell_notice" SET "read" = true WHERE "app_id" = ? AND "owner_id" = ?' +
-          (id ? ' AND "id" = ?' : ""),
-        id ? [c.appId, user.id, String(id)] : [c.appId, user.id],
+  //the generated model and identity listeners must exist before feed events
+  server.on(
+    'listen',
+    ({ ctx }) => {
+      if (!canRegisterNotifications(ctx, true)) return;
+      if (!ctx.plugin('notifications')) return;
+
+      //events own feed access and mutations for web/API/other callers
+      ctx.on(
+        'officepress-notifications-search',
+        () => import('./events/notifications/search.js')
       );
-      res.results({ ok: true });
-    });
+      ctx.on(
+        'officepress-notifications-read',
+        () => import('./events/notifications/read.js')
+      );
+    },
+    -400
+  );
+
+  //--------------------------------------------------------------------//
+  // HTTP adapters
+
+  server.on('route', ({ ctx }) => {
+    //fail closed if runtime readiness or provider registration is missing
+    if (!canRegisterNotifications(ctx, true)) return;
+    if (!ctx.plugin('notifications')) return;
+
+    //pages translate HTTP requests to the reusable events above
+    ctx.get(
+      '/api/notifications',
+      () => import('./pages/notifications/search.js')
+    );
+    ctx.post(
+      '/api/notifications/read',
+      () => import('./pages/notifications/read.js')
+    );
   });
-}
+};

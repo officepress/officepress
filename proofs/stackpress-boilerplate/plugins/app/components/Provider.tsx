@@ -1,27 +1,35 @@
 //modules
-import type { ReactNode } from 'react';
 import type { UnknownNest } from '@stackpress/lib/types';
+import type { ReactNode } from 'react';
 import { R22nProvider } from 'r22n';
-//plugins/app
+
+//client
 import type { ServerProps, ServerConfigProps } from './server/types.js';
 import ServerProvider from './server/ServerProvider.js';
 
-export type ProviderProps<
-  C extends UnknownNest = UnknownNest
-> = ServerProps<ServerConfigProps<C>> & {
+//--------------------------------------------------------------------//
+// Types
+
+//plugins/app
+
+//serialized server data and child tree supplied to the React context
+// provider
+export type ProviderProps<C extends UnknownNest = UnknownNest> = ServerProps<
+  ServerConfigProps<C>
+> & {
   children: ReactNode
 };
 
-export default function Provider<
-  C extends UnknownNest = UnknownNest
->(props: ProviderProps<C>) {
-  const {
-    data,
-    session,
-    request,
-    response,
-    children
-  } = props || {};
+//--------------------------------------------------------------------//
+// Entry point
+
+/**
+ * Compose the shared server and notification providers around page children.
+ */
+export default function Provider<C extends UnknownNest = UnknownNest>(
+  props: ProviderProps<C>
+) {
+  const { data, session, request, response, children } = props || {};
   const { languages = {}, locale = 'en_US' } = data?.language || {};
   const { label = 'EN', translations = {} } = languages[locale] || {};
   return (

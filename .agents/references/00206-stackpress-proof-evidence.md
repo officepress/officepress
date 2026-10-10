@@ -32,7 +32,7 @@ Live configuration and serving are implemented. Data storage defaults outside di
 
 - [Tested implementation patterns](00357-stackpress-tested-plugin-pattern.md) — load for complete guard, Idea and build-result examples.
 - [Full proof receipt](00358-stackpress-proof-receipt.md) — load for all checks, exact packages, timestamps, source hashes and limitations.
-- [Maintained baseline README](../../proofs/stackpress-boilerplate/README.md) — load for runnable commands and adoption instructions.
+- [Historical boilerplate README](../../proofs/stackpress-boilerplate/README.md) — load only to interpret this proof's original npm-era commands; the 2026-10-10 decision makes [proofs/app-shell](../../proofs/app-shell/README.md) the scaffold baseline.
 
 ## Limits
 

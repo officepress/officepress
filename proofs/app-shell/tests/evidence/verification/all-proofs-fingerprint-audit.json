@@ -1,0 +1,106 @@
+{
+  "verifiedAt": "2026-10-10T08:16:54.344543+00:00",
+  "receipts": [
+    {
+      "proof": "app-shell",
+      "receipt": "2026-10-10T08-14-43-646Z.json",
+      "status": "passed-with-limitations",
+      "checks": 72,
+      "fingerprintsChecked": 138,
+      "mismatches": [],
+      "ownedScratchRemaining": []
+    },
+    {
+      "proof": "app-shell",
+      "receipt": "config-2026-10-10T08-15-04-155Z.json",
+      "status": "passed",
+      "checks": 38,
+      "fingerprintsChecked": 162,
+      "mismatches": [],
+      "ownedScratchRemaining": []
+    },
+    {
+      "proof": "app-shell",
+      "receipt": "agent-context-qwU1Dp.json",
+      "status": "passed",
+      "checks": 5,
+      "fingerprintsChecked": 0,
+      "mismatches": [],
+      "ownedScratchRemaining": [],
+      "sourceCoverage": "app-shell main campaign source map includes this runner and all invoked plugins; final files match"
+    },
+    {
+      "proof": "app-shell",
+      "receipt": "identity-90c1632f-d4dc-44c5-8697-d4c70995d3d8.json",
+      "status": "passed-with-limitations",
+      "checks": 39,
+      "fingerprintsChecked": 69,
+      "mismatches": [],
+      "ownedScratchRemaining": []
+    },
+    {
+      "proof": "common-components",
+      "receipt": "2026-10-10T08-14-50-747Z.json",
+      "status": "passed-with-limitations",
+      "checks": 98,
+      "fingerprintsChecked": 276,
+      "mismatches": [],
+      "ownedScratchRemaining": []
+    },
+    {
+      "proof": "common-components",
+      "receipt": "identity-700323fe-c950-4a0c-82b9-89830f4c33ba.json",
+      "status": "passed-with-limitations",
+      "checks": 39,
+      "fingerprintsChecked": 70,
+      "mismatches": [],
+      "ownedScratchRemaining": []
+    },
+    {
+      "proof": "common-components",
+      "receipt": "identity-3d6222ef-70b5-4429-b64e-482f981ba079.json",
+      "status": "passed-with-limitations",
+      "checks": 39,
+      "fingerprintsChecked": 70,
+      "mismatches": [],
+      "ownedScratchRemaining": []
+    },
+    {
+      "proof": "common-components",
+      "receipt": "develop-2026-10-10T08-15-11-046Z-6145740a-1cf1-49b1-8b2a-4ccb0d8a13f0.json",
+      "status": "passed-with-limitations",
+      "checks": 8,
+      "fingerprintsChecked": 290,
+      "mismatches": [],
+      "ownedScratchRemaining": []
+    },
+    {
+      "proof": "stackpress-boilerplate",
+      "receipt": "2026-10-10T07-54-35-175Z.json",
+      "status": "passed",
+      "checks": 24,
+      "fingerprintsChecked": 52,
+      "mismatches": [],
+      "ownedScratchRemaining": []
+    },
+    {
+      "proof": "agent-mode-compatibility",
+      "receipt": "2026-10-10T07-54-12-339Z.json",
+      "status": true,
+      "checks": 32,
+      "fingerprintsChecked": 34,
+      "mismatches": [],
+      "ownedScratchRemaining": []
+    },
+    {
+      "proof": "agent-mode-compatibility",
+      "receipt": "2026-10-10T07-54-17-875Z.json",
+      "status": true,
+      "checks": 41,
+      "fingerprintsChecked": 34,
+      "mismatches": [],
+      "ownedScratchRemaining": []
+    }
+  ],
+  "passed": true
+}

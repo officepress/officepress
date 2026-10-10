@@ -1,1 +1,1 @@
-export { default } from "../../../app/components/Icon.js";
+export { default } from '../../../app/components/Icon.js';

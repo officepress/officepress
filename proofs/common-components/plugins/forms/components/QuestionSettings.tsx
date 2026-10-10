@@ -1,6 +1,28 @@
-import Icon from "../../app/components/Icon.js";
-import { catalogue, typeLabels } from "../client.js";
-import type { Field, FieldType, FormDefinition } from "../types.js";
+//client
+import type { Field, FieldType, FormDefinition } from '../types.js';
+import { catalogue, typeLabels } from '../client.js';
+import Icon from '../../app/components/Icon.js';
+
+//--------------------------------------------------------------------//
+// Types
+
+//selected field and available conditions for the question settings editor
+type QuestionSettingsProps = {
+  field: Field | undefined,
+  draft: FormDefinition,
+  publishedNames: Set<string>,
+  fieldUpdate: (patch: Partial<Field>) => void,
+  update: (patch: Partial<FormDefinition>) => void,
+  setSelected: (id: string) => void,
+  duplicate: (id: string) => void
+};
+
+//--------------------------------------------------------------------//
+// Entry point
+
+/**
+ * Render the selected question’s type-specific configuration controls.
+ */
 export default function QuestionSettings({
   field,
   draft,
@@ -8,16 +30,8 @@ export default function QuestionSettings({
   fieldUpdate,
   update,
   setSelected,
-  duplicate,
-}: {
-  field: Field | undefined;
-  draft: FormDefinition;
-  publishedNames: Set<string>;
-  fieldUpdate: (patch: Partial<Field>) => void;
-  update: (patch: Partial<FormDefinition>) => void;
-  setSelected: (id: string) => void;
-  duplicate: (id: string) => void;
-}) {
+  duplicate
+}: QuestionSettingsProps) {
   return (
     <aside className="op-pane op-pane--end" aria-label="Question settings">
       {field ? (
@@ -31,7 +45,7 @@ export default function QuestionSettings({
             <input
               className="op-input"
               value={field.label}
-              onChange={(e) => fieldUpdate({ label: e.target.value })}
+              onChange={(event) => fieldUpdate({ label: event.target.value })}
             />
           </label>
           <label className="op-field">
@@ -40,7 +54,7 @@ export default function QuestionSettings({
               className="op-input"
               value={field.name}
               disabled={publishedNames.has(field.id)}
-              onChange={(e) => fieldUpdate({ name: e.target.value })}
+              onChange={(event) => fieldUpdate({ name: event.target.value })}
             />
             <span className="op-field__hint">
               Stable name stored with responses.
@@ -51,18 +65,18 @@ export default function QuestionSettings({
             <select
               className="op-select"
               value={field.type}
-              onChange={(e) =>
+              onChange={(event) =>
                 fieldUpdate({
-                  type: e.target.value as FieldType,
+                  type: event.target.value as FieldType,
                   options: field.options.length
                     ? field.options
-                    : ["Option 1", "Option 2"],
+                    : [ 'Option 1', 'Option 2' ]
                 })
               }
             >
-              {catalogue.map((c) => (
-                <option key={c.type} value={c.type}>
-                  {typeLabels[c.type]}
+              {catalogue.map((fieldKind) => (
+                <option key={fieldKind.type} value={fieldKind.type}>
+                  {typeLabels[fieldKind.type]}
                 </option>
               ))}
             </select>
@@ -72,7 +86,7 @@ export default function QuestionSettings({
             <input
               className="op-input"
               value={field.help}
-              onChange={(e) => fieldUpdate({ help: e.target.value })}
+              onChange={(event) => fieldUpdate({ help: event.target.value })}
               placeholder="Optional guidance under the question"
             />
           </label>
@@ -81,18 +95,20 @@ export default function QuestionSettings({
             <input
               className="op-input"
               value={field.placeholder}
-              onChange={(e) => fieldUpdate({ placeholder: e.target.value })}
+              onChange={(event) =>
+                fieldUpdate({ placeholder: event.target.value })
+              }
             />
           </label>
-          {["choice", "checkboxes", "dropdown"].includes(field.type) && (
+          {[ 'choice', 'checkboxes', 'dropdown' ].includes(field.type) && (
             <label className="op-field">
               <span className="op-field__label">Options · one per line</span>
               <textarea
                 className="op-textarea"
                 rows={5}
-                value={field.options.join("\n")}
-                onChange={(e) =>
-                  fieldUpdate({ options: e.target.value.split("\n") })
+                value={field.options.join('\n')}
+                onChange={(event) =>
+                  fieldUpdate({ options: event.target.value.split('\n') })
                 }
               />
             </label>
@@ -126,10 +142,14 @@ export default function QuestionSettings({
               disabled={draft.fields.length === 1}
               onClick={() => {
                 update({
-                  fields: draft.fields.filter((f) => f.id !== field.id),
+                  fields: draft.fields.filter(
+                    (candidateField) => candidateField.id !== field.id
+                  )
                 });
                 setSelected(
-                  draft.fields.find((f) => f.id !== field.id)?.id || "",
+                  draft.fields.find(
+                    (candidateField) => candidateField.id !== field.id
+                  )?.id || ''
                 );
               }}
             >
@@ -143,4 +163,4 @@ export default function QuestionSettings({
       )}
     </aside>
   );
-}
+};

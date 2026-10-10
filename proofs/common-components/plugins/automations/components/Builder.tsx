@@ -1,17 +1,41 @@
-import { actionText } from "./actionText.js";
-import { useState } from "react";
-import ConditionEditor from "./ConditionEditor.js";
-import ActionEditor from "./ActionEditor.js";
-import type { TemplateVersion } from "../../templates/types.js";
-import { eventLabels, type CardEvent } from "../../workflows/types.js";
-import Icon from "../../app/components/Icon.js";
-import type { Workflow, Card } from "../../workflows/types.js";
-import {
-  summarize,
-  type Automation,
-  type AutomationDraft,
-  type DryRun,
-} from "../types.js";
+//modules
+import { useState } from 'react';
+
+//client
+import type { TemplateVersion } from '../../templates/types.js';
+import type { CardEvent } from '../../workflows/types.js';
+import type { Workflow, Card } from '../../workflows/types.js';
+import type { Automation, AutomationDraft, DryRun } from '../types.js';
+import { eventLabels } from '../../workflows/types.js';
+import { summarize } from '../conditions.js';
+import { actionText } from './actionText.js';
+import Icon from '../../app/components/Icon.js';
+import ActionEditor from './ActionEditor.js';
+import ConditionEditor from './ConditionEditor.js';
+
+//--------------------------------------------------------------------//
+// Types
+
+//the automation draft, workflow choices and callbacks for rule editing
+type BuilderProps = {
+  automation: Automation,
+  workflows: Workflow[],
+  cards: Card[],
+  save: (draft: AutomationDraft) => void,
+  test: (draft: AutomationDraft, cardId: string) => void,
+  cancel: () => void,
+  busy: boolean,
+  result: DryRun | null,
+  templates: TemplateVersion[]
+};
+
+//--------------------------------------------------------------------//
+// Entry point
+
+/**
+ * Render the automation definition editor and its side-effect-free test
+ * controls.
+ */
 export default function Builder({
   automation,
   workflows,
@@ -19,47 +43,61 @@ export default function Builder({
   save,
   test,
   cancel,
-  busy,
+  busy: isBusy,
   result,
-  templates,
-}: {
-  automation: Automation;
-  workflows: Workflow[];
-  cards: Card[];
-  save: (draft: AutomationDraft) => void;
-  test: (draft: AutomationDraft, cardId: string) => void;
-  cancel: () => void;
-  busy: boolean;
-  result: DryRun | null;
-  templates: TemplateVersion[];
-}) {
-  const [draft, setDraft] = useState(automation),
-    [cardId, setCardId] = useState(
-      cards.find(
-        (c) =>
-          c.workflowId === automation.workflowId &&
-          c.stageId === automation.stageId,
-      )?.id ||
-        cards[0]?.id ||
-        "",
-    );
-  const workflow = workflows.find((w) => w.id === draft.workflowId);
+  templates
+}: BuilderProps) {
+  //--------------------------------------------------------------------//
+  // State and lifecycle references
+
+  const [ draft, setDraft ] = useState(automation);
+  const [ cardId, setCardId ] = useState(
+    cards.find(
+      (candidateCard) =>
+        candidateCard.workflowId === automation.workflowId &&
+        candidateCard.stageId === automation.stageId
+    )?.id ||
+      cards[0]?.id ||
+      ''
+  );
+
+  //--------------------------------------------------------------------//
+  // Derived presentation
+
+  const workflow = workflows.find(
+    (candidateWorkflow) => candidateWorkflow.id === draft.workflowId
+  );
   const stage = workflow!.stages.find((item) => item.id === draft.stageId)!;
-  const dirty = JSON.stringify(draft) !== JSON.stringify(automation);
-  function actionOrder(from: number, to: number) {
-    if (to < 0 || to >= draft.actions.length) return;
-    const actions = [...draft.actions];
-    actions.splice(to, 0, actions.splice(from, 1)[0]);
+  const isDirty = JSON.stringify(draft) !== JSON.stringify(automation);
+
+  //--------------------------------------------------------------------//
+  // Interaction handlers
+
+  //move one automation action while preserving the order of the remaining
+  // actions
+  function handleActionOrder(sourceIndex: number, targetIndex: number) {
+    if (targetIndex < 0 || targetIndex >= draft.actions.length) return;
+    const actions = [ ...draft.actions ];
+    actions.splice(targetIndex, 0, actions.splice(sourceIndex, 1)[0]);
     setDraft({ ...draft, actions });
   }
+
+  //--------------------------------------------------------------------//
+  // Render or public hook result
+
   return (
     <div className="op-page auto-builder">
+      {/* START: Page heading and actions */}
       <div className="op-page-head">
         <div className="op-page-head__text">
           <div className="op-crumbs">
-            {workflow?.name} ›{" "}
-            {workflow?.stages.find((s) => s.id === automation.stageId)?.name} ›
-            Automations › {automation.revision ? "Edit rule" : "New rule"}
+            {workflow?.name} ›{' '}
+            {
+              workflow?.stages.find(
+                (candidateStage) => candidateStage.id === automation.stageId
+              )?.name
+            }{' '}
+            › Automations › {automation.revision ? 'Edit rule' : 'New rule'}
           </div>
           <h2 className="op-heading">{draft.name}</h2>
         </div>
@@ -68,13 +106,14 @@ export default function Builder({
         </button>
         <button
           className="op-btn op-btn--primary"
-          disabled={busy || (!dirty && automation.revision > 0)}
+          disabled={isBusy || (!isDirty && automation.revision > 0)}
           onClick={() => save(draft)}
         >
           <Icon name="save" />
           Save automation
         </button>
       </div>
+      {/* END: Page heading and actions */}
       <section className="op-section">
         <div className="op-section__body">
           <div className="op-fields auto-name">
@@ -83,7 +122,9 @@ export default function Builder({
               <input
                 className="op-input"
                 value={draft.name}
-                onChange={(e) => setDraft({ ...draft, name: e.target.value })}
+                onChange={(event) =>
+                  setDraft({ ...draft, name: event.target.value })
+                }
               />
             </label>
             <label className="op-field">
@@ -94,7 +135,7 @@ export default function Builder({
                 onChange={(event) =>
                   setDraft({
                     ...draft,
-                    status: event.target.value as AutomationDraft["status"],
+                    status: event.target.value as AutomationDraft['status']
                   })
                 }
               >
@@ -127,16 +168,16 @@ export default function Builder({
                   onChange={(event) =>
                     setDraft({
                       ...draft,
-                      trigger: event.target.value as CardEvent,
+                      trigger: event.target.value as CardEvent
                     })
                   }
                 >
                   {Object.entries(eventLabels)
                     .filter(
-                      ([key]) =>
-                        key !== "form-submitted" || stage.formIds.length > 0,
+                      ([ key ]) =>
+                        key !== 'form-submitted' || stage.formIds.length > 0
                     )
-                    .map(([key, label]) => (
+                    .map(([ key, label ]) => (
                       <option key={key} value={key}>
                         {label}
                       </option>
@@ -163,14 +204,14 @@ export default function Builder({
                   role="group"
                   aria-label="Condition matching"
                 >
-                  {(["all", "any"] as const).map((mode) => (
+                  {([ 'all', 'any' ] as const).map((mode) => (
                     <button
                       key={mode}
-                      className={draft.match === mode ? "is-active" : ""}
+                      className={draft.match === mode ? 'is-active' : ''}
                       aria-pressed={draft.match === mode}
                       onClick={() => setDraft({ ...draft, match: mode })}
                     >
-                      {mode === "all" ? "All match" : "Any match"}
+                      {mode === 'all' ? 'All match' : 'Any match'}
                     </button>
                   ))}
                 </div>
@@ -184,17 +225,17 @@ export default function Builder({
                   change={(value) =>
                     setDraft({
                       ...draft,
-                      conditions: draft.conditions.map((item, i) =>
-                        i === index ? value : item,
-                      ),
+                      conditions: draft.conditions.map((item, itemIndex) =>
+                        itemIndex === index ? value : item
+                      )
                     })
                   }
                   remove={() =>
                     setDraft({
                       ...draft,
                       conditions: draft.conditions.filter(
-                        (_, i) => i !== index,
-                      ),
+                        (_, itemIndex) => itemIndex !== index
+                      )
                     })
                   }
                 />
@@ -211,8 +252,8 @@ export default function Builder({
                     ...draft,
                     conditions: [
                       ...draft.conditions,
-                      { field: "title", operator: "contains", value: "" },
-                    ],
+                      { field: 'title', operator: 'contains', value: '' }
+                    ]
                   })
                 }
               >
@@ -239,14 +280,14 @@ export default function Builder({
                   <select
                     className="op-select"
                     value={draft.timing.kind}
-                    onChange={(e) =>
+                    onChange={(event) =>
                       setDraft({
                         ...draft,
                         timing: {
                           ...draft.timing,
-                          kind: e.target
-                            .value as AutomationDraft["timing"]["kind"],
-                        },
+                          kind: event.target
+                            .value as AutomationDraft['timing']['kind']
+                        }
                       })
                     }
                   >
@@ -256,41 +297,41 @@ export default function Builder({
                     <option value="sla">Before the time target is due</option>
                   </select>
                 </label>
-                {draft.timing.kind === "date" ? (
+                {draft.timing.kind === 'date' ? (
                   <label className="op-field">
                     <span className="op-field__label">Date and time</span>
                     <input
                       className="op-input"
                       type="datetime-local"
                       value={draft.timing.date}
-                      onChange={(e) =>
+                      onChange={(event) =>
                         setDraft({
                           ...draft,
-                          timing: { ...draft.timing, date: e.target.value },
+                          timing: { ...draft.timing, date: event.target.value }
                         })
                       }
                     />
                   </label>
                 ) : (
-                  draft.timing.kind !== "now" && (
+                  draft.timing.kind !== 'now' && (
                     <label className="op-field">
                       <span className="op-field__label">
-                        {draft.timing.kind === "sla"
-                          ? "Minutes before target"
-                          : "Delay in minutes"}
+                        {draft.timing.kind === 'sla'
+                          ? 'Minutes before target'
+                          : 'Delay in minutes'}
                       </span>
                       <input
                         className="op-input"
                         type="number"
                         min="0"
                         value={draft.timing.minutes}
-                        onChange={(e) =>
+                        onChange={(event) =>
                           setDraft({
                             ...draft,
                             timing: {
                               ...draft.timing,
-                              minutes: Number(e.target.value),
-                            },
+                              minutes: Number(event.target.value)
+                            }
                           })
                         }
                       />
@@ -298,13 +339,14 @@ export default function Builder({
                   )
                 )}
               </div>
-              {draft.timing.kind === "sla" && (
+              {draft.timing.kind === 'sla' && (
                 <div className="op-notice op-notice--info">
                   <Icon name="info" />
                   <span className="op-small">
-                    The selected stage has a{" "}
-                    {workflow?.stages.find((s) => s.id === draft.stageId)
-                      ?.hours || 0}{" "}
+                    The selected stage has a{' '}
+                    {workflow?.stages.find(
+                      (candidateStage) => candidateStage.id === draft.stageId
+                    )?.hours || 0}{' '}
                     hour elapsed time target.
                   </span>
                 </div>
@@ -323,60 +365,69 @@ export default function Builder({
               </div>
             </div>
             <div className="op-step__body">
-              {draft.actions.map((a, i) => (
+              {draft.actions.map((automationAction, actionIndex) => (
                 <div
-                  key={i}
+                  key={actionIndex}
                   className="op-ordered auto-action"
                   draggable
-                  onDragStart={(e) =>
-                    e.dataTransfer.setData("action", String(i))
+                  onDragStart={(event) =>
+                    event.dataTransfer.setData('action', String(actionIndex))
                   }
-                  onDragOver={(e) => e.preventDefault()}
-                  onDrop={(e) => {
-                    e.preventDefault();
-                    const from = Number(e.dataTransfer.getData("action"));
-                    if (Number.isInteger(from)) actionOrder(from, i);
+                  onDragOver={(event) => event.preventDefault()}
+                  onDrop={(event) => {
+                    event.preventDefault();
+                    const sourceIndex = Number(
+                      event.dataTransfer.getData('action')
+                    );
+                    if (Number.isInteger(sourceIndex))
+                      handleActionOrder(sourceIndex, actionIndex);
                   }}
                 >
                   <Icon name="grip-vertical" />
-                  <span className="op-ordered__no">{i + 1}</span>
+                  <span className="op-ordered__no">{actionIndex + 1}</span>
                   <ActionEditor
-                    action={a}
-                    index={i}
+                    action={automationAction}
+                    index={actionIndex}
                     stage={stage}
                     templates={templates}
                     change={(action) =>
                       setDraft({
                         ...draft,
                         actions: draft.actions.map((item, index) =>
-                          i === index ? action : item,
-                        ),
+                          actionIndex === index ? action : item
+                        )
                       })
                     }
                   />
                   <button
                     className="op-icon-btn op-icon-btn--small"
-                    aria-label={`Move action ${i + 1} up`}
-                    disabled={i === 0}
-                    onClick={() => actionOrder(i, i - 1)}
+                    aria-label={`Move action ${actionIndex + 1} up`}
+                    disabled={actionIndex === 0}
+                    onClick={() =>
+                      handleActionOrder(actionIndex, actionIndex - 1)
+                    }
                   >
                     <Icon name="chevron-up" />
                   </button>
                   <button
                     className="op-icon-btn op-icon-btn--small"
-                    aria-label={`Move action ${i + 1} down`}
-                    disabled={i === draft.actions.length - 1}
-                    onClick={() => actionOrder(i, i + 1)}
+                    aria-label={`Move action ${actionIndex + 1} down`}
+                    disabled={actionIndex === draft.actions.length - 1}
+                    onClick={() =>
+                      handleActionOrder(actionIndex, actionIndex + 1)
+                    }
                   >
                     <Icon name="chevron-down" />
                   </button>
                   <button
                     className="op-icon-btn op-icon-btn--small"
-                    aria-label={`Delete action ${i + 1}`}
+                    aria-label={`Delete action ${actionIndex + 1}`}
                     onClick={() =>
                       setDraft({
                         ...draft,
-                        actions: draft.actions.filter((_, j) => i !== j),
+                        actions: draft.actions.filter(
+                          (_, candidateIndex) => actionIndex !== candidateIndex
+                        )
                       })
                     }
                   >
@@ -391,8 +442,8 @@ export default function Builder({
                     ...draft,
                     actions: [
                       ...draft.actions,
-                      { type: "comment", value: "Add a comment" },
-                    ],
+                      { type: 'comment', value: 'Add a comment' }
+                    ]
                   })
                 }
               >
@@ -453,7 +504,7 @@ export default function Builder({
           <div className="op-row">
             <span className="op-overline op-grow">Live preview</span>
             <span className="op-pill op-pill--neutral">
-              {dirty ? "Unsaved" : "Saved"}
+              {isDirty ? 'Unsaved' : 'Saved'}
             </span>
           </div>
           <h2 className="op-strong">What this rule will do</h2>
@@ -464,25 +515,30 @@ export default function Builder({
             <select
               className="op-select"
               value={cardId}
-              onChange={(e) => setCardId(e.target.value)}
+              onChange={(event) => setCardId(event.target.value)}
             >
-              {cards.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.title}
+              {cards.map((candidateCard) => (
+                <option key={candidateCard.id} value={candidateCard.id}>
+                  {candidateCard.title}
                 </option>
               ))}
             </select>
           </label>
-          {cards.find((c) => c.id === cardId) && (
+          {cards.find((candidateCard) => candidateCard.id === cardId) && (
             <div className="op-card">
               <span className="op-strong">
-                {cards.find((c) => c.id === cardId)?.title}
+                {
+                  cards.find((candidateCard) => candidateCard.id === cardId)
+                    ?.title
+                }
               </span>
               <span className="op-caption op-muted">
                 {
                   workflow?.stages.find(
                     (stage) =>
-                      stage.id === cards.find((c) => c.id === cardId)?.stageId,
+                      stage.id ===
+                      cards.find((candidateCard) => candidateCard.id === cardId)
+                        ?.stageId
                   )?.name
                 }
               </span>
@@ -490,21 +546,22 @@ export default function Builder({
           )}
           <span className="op-overline">Planned actions</span>
           <ol className="auto-plan">
-            {draft.actions.map((a, i) => (
-              <li key={i}>
+            {draft.actions.map((automationAction, actionIndex) => (
+              <li key={actionIndex}>
                 {actionText(
-                  a,
+                  automationAction,
                   stage,
                   templates.find(
-                    (template) => template.templateId === a.templateId,
-                  )?.draft.name,
+                    (template) =>
+                      template.templateId === automationAction.templateId
+                  )?.draft.name
                 )}
               </li>
             ))}
           </ol>
           <button
             className="op-btn op-btn--primary op-btn--block"
-            disabled={busy || !cardId}
+            disabled={isBusy || !cardId}
             onClick={() => test(draft, cardId)}
           >
             <Icon name="flask-conical" />
@@ -516,15 +573,15 @@ export default function Builder({
           {result && (
             <div
               role="status"
-              className={`op-notice ${result.matches ? "op-notice--info" : ""}`}
+              className={`op-notice ${result.matches ? 'op-notice--info' : ''}`}
             >
               {result.matches
                 ? `Matches. Actions would run ${new Date(result.dueAt).toLocaleString()}.`
-                : "This card does not match the trigger and conditions."}
+                : 'This card does not match the trigger and conditions.'}
             </div>
           )}
         </aside>
       </div>
     </div>
   );
-}
+};

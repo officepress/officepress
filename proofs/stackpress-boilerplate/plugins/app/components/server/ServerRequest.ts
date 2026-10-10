@@ -7,10 +7,19 @@ import type {
 } from '@stackpress/lib/types';
 import { map } from '@stackpress/lib/Map';
 import { nest } from '@stackpress/lib/Nest';
-//stackpress-view
+
+//client
 import type { ServerRequestProps } from './types.js';
 
+//--------------------------------------------------------------------//
+// Types
+
+//stackpress-view
+
 export type { ServerRequestProps };
+
+//--------------------------------------------------------------------//
+// Classes
 
 /**
  * Client version of request. Readonly.
@@ -19,17 +28,15 @@ export default class Request<I extends UnknownNest = UnknownNest> {
   //data controller
   public readonly data: CallableNest;
   //head controller
-  public readonly headers: CallableMap<string, string|string[]>;
+  public readonly headers: CallableMap<string, string | string[]>;
   //session controller
-  public readonly session: CallableMap<string, string|string[]>;
+  public readonly session: CallableMap<string, string | string[]>;
   //url controller
   public readonly url = new URL('http://unknownhost/');
   //request method
   public readonly method: Method;
 
-  /**
-   * Sets request defaults
-   */
+  //sets request defaults
   public constructor(config: ServerRequestProps<I>) {
     this.data = nest(config.data);
     this.url = new URL(config.url.href);

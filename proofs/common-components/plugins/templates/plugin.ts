@@ -1,125 +1,109 @@
-import type { HttpServer } from "@stackpress/ingest";
-import type Engine from "@stackpress/inquire/Engine";
-import type { Config } from "../app/types.js";
-import type { Identity } from "../auth/types.js";
-import type { ComponentNavigation } from "../settings/shell/registry.js";
-import type { MailService } from "../mail/types.js";
-import type { Channel } from "./types.js";
-import { createTemplates, requireWrite } from "./domain.js";
-import { renderDraft } from "./client.js";
-export default function plugin(server: HttpServer<Config>) {
-  server.on("route", ({ ctx }) => {
-    const config = ctx.config("officepress"),
-      identity = ctx.plugin<Identity>("identity"),
-      db = ctx.plugin<Engine>("database"),
-      nav = ctx.plugin<ComponentNavigation>("component-navigation");
-    if (
+//modules
+import type { HttpServer } from '@stackpress/ingest';
+import type { ClientPlugin } from 'stackpress-sql/types';
+import type Engine from '@stackpress/inquire/Engine';
+
+//client
+import type { Config } from '../app/types.js';
+import type { Identity } from '../auth/types.js';
+import type { ComponentNavigation } from '../settings/shell/registry.js';
+import { createTemplates } from './domain.js';
+
+/**
+ * Register versioned message-template operations, navigation and views after
+ * identity, storage and schema checks.
+ */
+export default function registerTemplatesPlugin(server: HttpServer<Config>) {
+  //check template activation, identity, storage and shell navigation
+  // runtime phases also require component-template-detail listeners
+  function canRegisterTemplates(
+    ctx: HttpServer<Config>,
+    shouldCheckRuntimeReadiness = false
+  ) {
+    const config = ctx.config('officepress');
+    const identity = ctx.plugin<Identity>('identity');
+    const database = ctx.plugin<Engine>('database');
+    const navigation = ctx.plugin<ComponentNavigation>('component-navigation');
+    return !(
       config.features?.templates === false ||
-      !identity?.ready() ||
-      !db ||
-      !nav ||
-      !ctx.listeners["component-template-detail"]?.size
-    )
-      return;
-    const templates = createTemplates(db, config.appId);
-    ctx.register("templates", templates);
-    nav.add({
-      id: "templates",
-      label: "Messages",
-      href: "/message/search",
-      pages: [
-        { path: "/message/search", title: "Messages" },
-        { path: "/message/detail/:id", title: "Message Details" },
-        { path: "/message/update/:id", title: "Update Message" },
-      ],
-      icon: "mail",
-    });
-    ctx.get("/message-templates", ({ res }) => {
-      res.redirect("/message/search");
-    });
-    ctx.get("/api/templates", async ({ req, res }) => {
-      const caller = await identity.requireUser(req, res);
-      if (!caller) return;
-      try {
-        res.results({
-          records: await templates.list(caller),
-          published: await templates.published(caller),
-          dispatches: await templates.dispatches(caller),
-          mailReady: ctx.plugin<MailService>("mail")?.ready() || false,
-        });
-      } catch (e) {
-        res.setError((e as Error).message).statusCode(403);
-      }
-    });
-    for (const action of ["save", "publish", "preview", "send"] as const)
-      ctx.post("/api/templates/" + action, async ({ req, res }) => {
-        const caller = await identity.requireUser(req, res);
-        if (!caller || !identity.csrf(req, res)) return;
-        try {
-          if (action === "preview") {
-            res.results(
-              renderDraft(
-                req.data("draft"),
-                req.data("context") || {},
-                req.data("values") || {},
-              ),
-            );
-            return;
-          }
-          requireWrite(caller);
-          if (action === "save") {
-            res.results(
-              await templates.save(
-                caller,
-                req.data("id") || undefined,
-                Number(req.data("revision")),
-                req.data("draft"),
-              ),
-            );
-            return;
-          }
-          if (action === "publish") {
-            res.results(
-              await templates.publish(
-                caller,
-                req.data("id"),
-                Number(req.data("revision")),
-              ),
-            );
-            return;
-          }
-          const mail = ctx.plugin<MailService>("mail");
-          if (!mail?.ready())
-            throw new Error(
-              "Email sending is unavailable. You can still edit and preview.",
-            );
-          const rendered = await templates.renderPublished(caller, {
-            id: req.data("id"),
-            channel: "email" as Channel,
-            context: req.data("context") || {},
-            values: req.data("values") || {},
-          });
-          // Persist this immutable render and the single SMTP call result; no automatic retry.
-          const result = await mail.send({
-            subject: rendered.subject,
-            text: rendered.text,
-            html: rendered.html,
-          });
-          res.results(
-            await templates.recordDispatch(caller, { rendered, result }),
-          );
-        } catch (e) {
-          const message = (e as Error).message;
-          res
-            .setError(message)
-            .statusCode(
-              message.includes("access") || message.includes("denied")
-                ? 403
-                : message.includes("changed")
-                  ? 409
-                  : 400,
-            );
-        }
+      !identity ||
+      (shouldCheckRuntimeReadiness && !identity.ready()) ||
+      !database ||
+      !navigation ||
+      (shouldCheckRuntimeReadiness &&
+        !ctx.listeners['component-template-detail']?.size)
+    );
+  }
+  //--------------------------------------------------------------------//
+  // Provider configuration
+
+  //run at -400 after schema/store and identity; omit incomplete providers
+  server.on(
+    'config',
+    async ({ ctx }) => {
+      const config = ctx.config('officepress');
+      const database = ctx.plugin<Engine>('database');
+      if (!canRegisterTemplates(ctx)) return;
+      const client = ctx.plugin<ClientPlugin>('client');
+      if (
+        !client ||
+        typeof (await client(true))?.model?.componentTemplate?.listen !==
+          'function'
+      )
+        return;
+      const templates = createTemplates(database, config.appId);
+      ctx.register('templates', templates);
+    },
+    -400
+  );
+  //--------------------------------------------------------------------//
+  // Reusable event registration
+
+  //runtime checks prevent partially configured features from exposing
+  // events
+  server.on(
+    'listen',
+    ({ ctx }) => {
+      const navigation = ctx.plugin<ComponentNavigation>(
+        'component-navigation'
+      );
+      if (!canRegisterTemplates(ctx, true)) return;
+      if (!ctx.plugin('templates')) return;
+      ctx.on(
+        'officepress-templates-authorize',
+        () => import('./events/authorize.js')
+      );
+      ctx.on('officepress-templates-read', () => import('./events/read.js'));
+      ctx.on(
+        'officepress-templates-update',
+        () => import('./events/update.js')
+      );
+
+      navigation.add({
+        id: 'templates',
+        view: '@/plugins/templates/views/index',
+        label: 'Messages',
+        href: '/message/search',
+        pages: [
+          { path: '/message/search', title: 'Messages' },
+          { path: '/message/detail/:id', title: 'Message Details' },
+          { path: '/message/update/:id', title: 'Update Message' }
+        ],
+        icon: 'mail'
       });
+    },
+    -400
+  );
+  //--------------------------------------------------------------------//
+  // HTTP routes and views
+
+  //expose lazy web adapters only while their providers are ready
+  server.on('route', ({ ctx }) => {
+    if (!canRegisterTemplates(ctx, true)) return;
+    if (!ctx.plugin('templates')) return;
+    ctx.get('/message-templates', () => import('./pages/legacy.js'));
+    ctx.get('/api/templates', () => import('./pages/read.js'));
+    for (const action of [ 'save', 'publish', 'preview', 'send' ] as const)
+      ctx.post('/api/templates/' + action, () => import('./pages/update.js'));
   });
-}
+};

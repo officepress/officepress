@@ -11,44 +11,57 @@
     "./plugins/notes/plugin"
   ],
   "scripts": {
-    "build": "node --import tsx scripts/build.ts",
-    "dev": "node --import tsx scripts/develop.ts",
-    "prove": "node scripts/prove.mjs",
-    "typecheck": "tsc --noEmit",
-    "generate": "node --import tsx scripts/generate.ts",
-    "serve": "node --import tsx scripts/serve.ts"
+    "build": "stackpress build --b config/build -v",
+    "dev": "yarn dev:clean && yarn dev:start",
+    "dev:clean": "rm -rf node_modules/.vite",
+    "dev:start": "dotenv -e .env -- stackpress develop --b config/develop -v",
+    "emit": "BOOTSTRAP=config/develop dotenv -e .env -- stackpress emit",
+    "generate": "stackpress generate --b config/develop -v",
+    "generate:client": "stackpress generate --b config/client -v",
+    "migrate": "dotenv -e .env -- stackpress migrate --b config/develop -v",
+    "populate": "dotenv -e .env -- stackpress populate --b config/develop -v",
+    "preview": "dotenv -e .env -- stackpress serve --b config/preview -v",
+    "purge": "dotenv -e .env -- stackpress purge --b config/develop -v",
+    "push": "dotenv -e .env -- stackpress push --b config/develop -v",
+    "query": "dotenv -e .env -- stackpress query --b config/develop -v",
+    "serve": "stackpress serve --b config/production -v",
+    "test": "node --import tsx --test tests/**/*.test.ts",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@electric-sql/pglite": "0.3.15",
     "@stackpress/ingest": "0.10.8",
     "@stackpress/inquire": "0.10.8",
+    "@stackpress/inquire-pg": "0.10.8",
     "@stackpress/inquire-pglite": "0.10.8",
     "@stackpress/lib": "0.10.8",
     "frui": "0.2.9",
+    "pg": "8.16.3",
     "r22n": "1.0.10",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "stackpress-language": "0.10.8",
     "stackpress-schema": "0.10.8",
-    "stackpress-sql": "0.10.8",
     "stackpress-server": "0.10.8",
-    "pg": "8.16.3",
-    "@stackpress/inquire-pg": "0.10.8"
+    "stackpress-sql": "0.10.8"
   },
   "devDependencies": {
     "@types/node": "^25.9.5",
+    "@types/pg": "8.15.6",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "5.1.4",
+    "dotenv-cli": "11.0.0",
+    "fast-glob": "3.3.3",
+    "prettier": "3.8.1",
     "reactus": "0.10.8",
+    "ts-morph": "27.0.2",
     "tsx": "4.21.0",
     "typescript": "5.9.3",
     "unocss": "66.6.6",
     "vite": "7.3.6",
-    "vite-tsconfig-paths": "6.0.3",
-    "@types/pg": "8.15.6",
-    "ts-morph": "27.0.2",
-    "prettier": "3.8.1"
+    "vite-tsconfig-paths": "6.0.3"
   },
-  "description": "Shared Stackpress baseline and executable framework proof for OfficePress apps"
+  "description": "Historical app-neutral Stackpress proof; maintained scaffold is proofs/app-shell",
+  "packageManager": "yarn@1.22.22"
 }

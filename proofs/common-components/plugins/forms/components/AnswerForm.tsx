@@ -1,163 +1,212 @@
-import { useState } from "react";
-import type { FormDefinition, FillData } from "../types.js";
-import { validateAnswers } from "../client.js";
+//modules
+import { useState } from 'react';
+
+//client
+import type { FormDefinition, FillData } from '../types.js';
+import { validateAnswers } from '../client.js';
+
+//--------------------------------------------------------------------//
+// Types
+
+//published fields, answer values and submit callbacks for respondent input
+type AnswerFormProps = {
+  definition: FormDefinition,
+  fill?: FillData,
+  csrf: string,
+  token?: string,
+  preview?: boolean,
+  onSubmit?: (
+    answers: Record<string, string | string[]>,
+    requestId: string
+  ) => Promise<void>
+};
+
+//--------------------------------------------------------------------//
+// Entry point
+
+/**
+ * Render and submit answers for a frozen form publication.
+ */
 export default function AnswerForm({
   definition,
   fill,
   csrf,
-  token = "",
-  preview = false,
-  onSubmit,
-}: {
-  definition: FormDefinition;
-  fill?: FillData;
-  csrf: string;
-  token?: string;
-  preview?: boolean;
-  onSubmit?: (
-    answers: Record<string, string | string[]>,
-    requestId: string,
-  ) => Promise<void>;
-}) {
-  const [answers, setAnswers] = useState<Record<string, string | string[]>>({}),
-    [errors, setErrors] = useState<Record<string, string>>({}),
-    [message, setMessage] = useState(""),
-    [busy, setBusy] = useState(false),
-    [done, setDone] = useState(false),
-    [requestId] = useState(() =>
-      typeof crypto !== "undefined" ? crypto.randomUUID() : "",
-    );
+  token = '',
+  preview: isPreview = false,
+  onSubmit
+}: AnswerFormProps) {
+  //--------------------------------------------------------------------//
+  // State and lifecycle references
+
+  const [ answers, setAnswers ] = useState<Record<string, string | string[]>>({});
+  const [ errors, setErrors ] = useState<Record<string, string>>({});
+  const [ message, setMessage ] = useState('');
+  const [ isBusy, setIsBusy ] = useState(false);
+  const [ isDone, setIsDone ] = useState(false);
+  const [ requestId ] = useState(() =>
+    typeof crypto !== 'undefined' ? crypto.randomUUID() : ''
+  );
+
+  //--------------------------------------------------------------------//
+  // Interaction handlers
+
+  //update the local answer value while keeping display validation in sync
   const change = (name: string, value: string | string[]) =>
     setAnswers((old) => ({ ...old, [name]: value }));
-  async function submit(e: React.FormEvent) {
-    e.preventDefault();
-    setMessage("");
+  //send the current form answers and stable submission identifier to the
+  // response endpoint
+  async function handleSubmit(caughtError: React.FormEvent) {
+    caughtError.preventDefault();
+    setMessage('');
     const validation = validateAnswers(definition, answers);
     setErrors(validation.errors);
     if (Object.keys(validation.errors).length) return;
-    if (preview) {
-      setMessage("Your answers are valid. Preview responses are not saved.");
+    if (isPreview) {
+      setMessage('Your answers are valid. Preview responses are not saved.');
       return;
     }
-    setBusy(true);
+    setIsBusy(true);
     try {
       if (onSubmit) await onSubmit(answers, requestId);
       else {
-        const response = await fetch("/api/forms/respond", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
+        const response = await fetch('/api/forms/respond', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             id: fill?.id,
             version: fill?.definition.version,
             token,
             csrf,
             answers,
-            requestId,
-          }),
+            requestId
+          })
         });
         const data = await response.json();
         if (!response.ok || data.error) {
           if (data.results?.fields) setErrors(data.results.fields);
           throw Error(
-            typeof data.error === "string"
+            typeof data.error === 'string'
               ? data.error
-              : data.error?.message || "Submission failed.",
+              : data.error?.message || 'Submission failed.'
           );
         }
       }
-      setDone(true);
-      setMessage("Thank you. Your response has been received.");
-    } catch (e) {
-      setMessage((e as Error).message);
+      setIsDone(true);
+      setMessage('Thank you. Your response has been received.');
+    } catch (caughtError) {
+      setMessage((caughtError as Error).message);
     } finally {
-      setBusy(false);
+      setIsBusy(false);
     }
   }
+
+  //--------------------------------------------------------------------//
+  // Render or public hook result
+
   return (
-    <form className="forms-answer" onSubmit={submit} noValidate>
+    <form className="forms-answer" onSubmit={handleSubmit} noValidate>
       <header className="op-form-head">
         <h1 className="op-heading">{definition.title}</h1>
         <p className="op-muted">{definition.description}</p>
-        {preview && <span className="op-status">Preview</span>}
+        {isPreview && <span className="op-status">Preview</span>}
       </header>
-      {!done &&
-        definition.fields.map((f, index) => {
-          const id = `answer-${f.id}`,
-            error = errors[f.name],
-            common = {
-              id,
-              "aria-invalid": Boolean(error),
-              "aria-describedby": `${id}-help ${id}-error`,
-            };
+      {!isDone &&
+        definition.fields.map((candidateField, index) => {
+          const id = `answer-${candidateField.id}`;
+          const error = errors[candidateField.name];
+          const common = {
+            id,
+            'aria-invalid': Boolean(error),
+            'aria-describedby': `${id}-help ${id}-error`
+          };
           return (
-            <div key={f.id} className="forms-answer-field">
+            <div key={candidateField.id} className="forms-answer-field">
               <label htmlFor={id} className="op-field__label">
-                {index + 1}. {f.label}
-                {f.required && <span className="op-danger-text"> *</span>}
+                {index + 1}. {candidateField.label}
+                {candidateField.required && (
+                  <span className="op-danger-text"> *</span>
+                )}
               </label>
-              {f.help && (
+              {candidateField.help && (
                 <p id={`${id}-help`} className="op-small op-muted">
-                  {f.help}
+                  {candidateField.help}
                 </p>
               )}
-              {f.type === "long" ? (
+              {candidateField.type === 'long' ? (
                 <textarea
                   {...common}
                   className="op-textarea"
                   rows={4}
-                  value={String(answers[f.name] || "")}
-                  onChange={(e) => change(f.name, e.target.value)}
-                  placeholder={f.placeholder}
+                  value={String(answers[candidateField.name] || '')}
+                  onChange={(event) =>
+                    change(candidateField.name, event.target.value)
+                  }
+                  placeholder={candidateField.placeholder}
                 />
-              ) : f.type === "dropdown" ? (
+              ) : candidateField.type === 'dropdown' ? (
                 <select
                   {...common}
                   className="op-select"
-                  value={String(answers[f.name] || "")}
-                  onChange={(e) => change(f.name, e.target.value)}
+                  value={String(answers[candidateField.name] || '')}
+                  onChange={(event) =>
+                    change(candidateField.name, event.target.value)
+                  }
                 >
                   <option value="">Select an option</option>
-                  {f.options.map((o) => (
-                    <option key={o}>{o}</option>
+                  {candidateField.options.map((option) => (
+                    <option key={option}>{option}</option>
                   ))}
                 </select>
-              ) : ["choice", "checkboxes"].includes(f.type) ? (
+              ) : [ 'choice', 'checkboxes' ].includes(candidateField.type) ? (
                 <div
                   role="group"
-                  aria-label={f.label}
+                  aria-label={candidateField.label}
                   aria-describedby={`${id}-error`}
                 >
-                  {f.options.map((o) => (
-                    <label key={o} className="op-check">
+                  {candidateField.options.map((option) => (
+                    <label key={option} className="op-check">
                       <input
-                        type={f.type === "choice" ? "radio" : "checkbox"}
-                        name={f.name}
-                        value={o}
-                        checked={
-                          f.type === "choice"
-                            ? answers[f.name] === o
-                            : Array.isArray(answers[f.name]) &&
-                              (answers[f.name] as string[]).includes(o)
+                        type={
+                          candidateField.type === 'choice'
+                            ? 'radio'
+                            : 'checkbox'
                         }
-                        onChange={(e) =>
+                        name={candidateField.name}
+                        value={option}
+                        checked={
+                          candidateField.type === 'choice'
+                            ? answers[candidateField.name] === option
+                            : Array.isArray(answers[candidateField.name]) &&
+                              (
+                                answers[candidateField.name] as string[]
+                              ).includes(option)
+                        }
+                        onChange={(event) =>
                           change(
-                            f.name,
-                            f.type === "choice"
-                              ? o
-                              : e.target.checked
+                            candidateField.name,
+                            candidateField.type === 'choice'
+                              ? option
+                              : event.target.checked
                                 ? [
-                                    ...(Array.isArray(answers[f.name])
-                                      ? (answers[f.name] as string[])
+                                    ...(Array.isArray(
+                                      answers[candidateField.name]
+                                    )
+                                      ? (answers[
+                                          candidateField.name
+                                        ] as string[])
                                       : []),
-                                    o,
+                                    option
                                   ]
-                                : (answers[f.name] as string[]).filter(
-                                    (v) => v !== o,
-                                  ),
+                                : (
+                                    answers[candidateField.name] as string[]
+                                  ).filter(
+                                    (selectedOption) =>
+                                      selectedOption !== option
+                                  )
                           )
                         }
                       />
-                      <span>{o}</span>
+                      <span>{option}</span>
                     </label>
                   ))}
                 </div>
@@ -166,15 +215,17 @@ export default function AnswerForm({
                   {...common}
                   className="op-input"
                   type={
-                    f.type === "date"
-                      ? "date"
-                      : f.type === "number"
-                        ? "number"
-                        : "text"
+                    candidateField.type === 'date'
+                      ? 'date'
+                      : candidateField.type === 'number'
+                        ? 'number'
+                        : 'text'
                   }
-                  value={String(answers[f.name] || "")}
-                  onChange={(e) => change(f.name, e.target.value)}
-                  placeholder={f.placeholder}
+                  value={String(answers[candidateField.name] || '')}
+                  onChange={(event) =>
+                    change(candidateField.name, event.target.value)
+                  }
+                  placeholder={candidateField.placeholder}
                 />
               )}
               <span className="op-small op-danger-text" id={`${id}-error`}>
@@ -189,11 +240,15 @@ export default function AnswerForm({
           {message}
         </p>
       )}
-      {!done && (
-        <button className="op-btn op-btn--primary" disabled={busy}>
-          {busy ? "Submitting…" : preview ? "Check answers" : "Submit response"}
+      {!isDone && (
+        <button className="op-btn op-btn--primary" disabled={isBusy}>
+          {isBusy
+            ? 'Submitting…'
+            : isPreview
+              ? 'Check answers'
+              : 'Submit response'}
         </button>
       )}
     </form>
   );
-}
+};
