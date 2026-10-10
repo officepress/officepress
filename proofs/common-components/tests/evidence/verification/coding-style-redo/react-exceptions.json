@@ -1,8 +1,0 @@
-[
-  {
-    "file": "proofs/common-components/plugins/workflows/components/index.tsx",
-    "owner": "Workflows",
-    "rule": "React story order",
-    "reason": "Route and presentation permission values are prepared with props before memo/gesture hooks; state, derived values, handlers, effects and rendering then remain grouped"
-  }
-]

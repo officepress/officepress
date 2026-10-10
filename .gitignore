@@ -44,6 +44,9 @@ build/
 coverage/
 .nyc_output/
 
+# Local proof verification artifacts
+/proofs/**/tests/evidence/
+
 # Local configuration and app data
 .env
 .env.*

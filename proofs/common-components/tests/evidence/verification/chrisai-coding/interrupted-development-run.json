@@ -1,8 +1,0 @@
-{
-  "status": "interrupted",
-  "reason": "Final campaign stopped making progress during the development-browser phase; no final development receipt was produced. Built component, HTTP and both identity campaigns had already passed. The failure cause is not established by the partial log.",
-  "scratch": [
-    ".build/database/develop-2026-10-10T09-09-41-413Z-760073d8-8330-4b86-9eb1-78d5d9965b6e-VeofIs"
-  ],
-  "cleanup": "Managed process tree stopped; listener closed; only the recorded interrupted run-owned scratch database removed after its processes exited."
-}
