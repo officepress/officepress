@@ -88,6 +88,8 @@ The vanilla kit scaffold and imperative scripts remain complete reference exampl
 
 ## Verification contract
 
+For custom-app work, functional verification is followed by the required [post-verification audit and refactor cycle](00392-stackpress-post-verification-audit-cycle.md): inspect logic/cyclomatic complexity and responsibility boundaries, apply authorized scoped fixes and all applicable ChrisAI Coding style passes, then verify the final source again. Repeat when actionable findings remain. Load [the documentation and naming conventions](00393-stackpress-human-maintainable-code-style.md) for sectional/local comments, module-level-only JSDoc, framework-name exceptions and specific language rules. This 2026-10-10 user decision supplies automatic behavior-preserving refactor authorization within the task scope; it does not authorize unrelated behavior, data or deployment changes.
+
 Verify locked versions, root Idea imports, generated client exports and runtime reconnection; type-check all maintained TypeScript; build client/server/CSS assets; serve both development and built production output; verify static files and HTTP behavior.
 
 Exercise a feature enabled, explicitly disabled, and missing each required dependency. Confirm no feature routes/listeners remain while the shell and independent features work; restore the dependency after restart. Check optional fallbacks separately. Test persistence across a restart and ensure proof cleanup leaves unrelated data intact.

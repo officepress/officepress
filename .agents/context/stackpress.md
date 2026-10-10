@@ -4,6 +4,8 @@ Every OfficePress app uses Stackpress. The accepted ecosystem baseline is **0.10
 
 Plugins separate responsibilities. They may be disabled after a restart. Each dependent plugin checks its own services in `plugin.ts`, then falls back or returns before registering its feature listeners/routes. There is no automatic dependency validation or live unloading.
 
+After a custom-app implementation first passes functional verification, automatically run the [post-verification audit and refactor cycle](../references/00392-stackpress-post-verification-audit-cycle.md). Apply ChrisAI Coding's applicable logic, responsibility and language-style passes, including the accepted comment/JSDoc/naming conventions, then verify the final source. Repeat scoped fixes when findings remain before claiming completion.
+
 PostgreSQL is the production default; PGlite is the preferred disposable development substitute for PostgreSQL and CockroachDB. Use `.build/database/` and config `database.populate` fixtures; a separate cross-engine compatibility proof is not required. Keep Idea files small and compose them from a root schema. Smaller files are the user's authoring/performance recommendation, not a proven incremental compiler feature.
 
 ## Route creation defaults
@@ -34,7 +36,7 @@ The browser page pattern applies only to browser page paths; API paths use the s
 - [Configuration](stackpress-configuration.md) — load for lifecycle, environment, service and rendering configuration.
 - [Data and generation](stackpress-data-and-generation.md) — load for Idea composition, adapters, migrations and generated behavior.
 - [Views](stackpress-views.md) — load to implement OfficePress UI using Reactus/React.
-- [Verification](stackpress-verification.md) — load before claiming scaffold or feature completion.
+- [Verification](stackpress-verification.md) — load when planning checks and before claiming scaffold or feature completion; includes the required post-verification audit/refactor/style cycle and final-source evidence.
 
 ## Complete deferred knowledge
 
