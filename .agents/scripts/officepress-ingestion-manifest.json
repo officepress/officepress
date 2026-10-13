@@ -2387,9 +2387,10 @@
     },
     {
       "source": "kit/logos/products/create/content.svg",
-      "path": "resources/officepress-kit/logos/products/create/content.svg",
+      "path": "resources/officepress-history/2026-10-13-product-marks/logos/products/create/content.svg",
       "sha256": "a241e9e5acf1952200169458e4ef3270f053fe39151fce5901462cb2e2ecc599",
-      "bytes": 785
+      "bytes": 785,
+      "status": "historical; superseded on 2026-10-13 by a revised_resources entry"
     },
     {
       "source": "kit/logos/products/create/diagrams.svg",
@@ -2435,9 +2436,10 @@
     },
     {
       "source": "kit/logos/products/operate/clients.svg",
-      "path": "resources/officepress-kit/logos/products/operate/clients.svg",
+      "path": "resources/officepress-history/2026-10-13-product-marks/logos/products/operate/clients.svg",
       "sha256": "665cf1476d5f59f0eccff3ded7f6e2ba8cff9e6553acc6239bb3bdafda36bcd5",
-      "bytes": 765
+      "bytes": 765,
+      "status": "historical; superseded on 2026-10-13 by a revised_resources entry"
     },
     {
       "source": "kit/logos/products/operate/procurement.svg",
@@ -2537,9 +2539,10 @@
     },
     {
       "source": "kit/reference/brand/product-marks.png",
-      "path": "resources/officepress-kit/reference/brand/product-marks.png",
+      "path": "resources/officepress-history/2026-10-13-product-marks/reference/brand/product-marks.png",
       "sha256": "52c45fc806b211b02975d75a86bf6c552bd64982a9c9939d93021911203e2449",
-      "bytes": 353430
+      "bytes": 353430,
+      "status": "historical; superseded on 2026-10-13 by a revised_resources entry"
     },
     {
       "source": "kit/reference/modules/automation-builder-inbox-follow-up.png",
@@ -2664,10 +2667,10 @@
     {
       "source": "officepress.pen",
       "path": "resources/officepress-design/officepress.pen",
-      "sha256": "df7df88246e6698148e099a56e60f50c046af2ec0dbefb317a2c9cb968a7f7b9",
-      "bytes": 3902117,
+      "sha256": "f40195a11ac4b8a0166e8dd9c703a07d844a4a3c39d7a9b69673389072ff044e",
+      "bytes": 3945388,
       "provenance": ".agents/resources/officepress-design/officepress.pen",
-      "provenance_kind": "repository source updated by user on 2026-10-02"
+      "provenance_kind": "repository source revised on 2026-10-13 (Product Marks board, user-requested)"
     }
   ],
   "generated_favicons": [
@@ -2744,8 +2747,8 @@
       "bytes": 732
     },
     {
-      "source": "resources/officepress-kit/logos/products/create/content.svg",
-      "path": "resources/officepress-kit/favicons/products/create/content.ico",
+      "source": "resources/officepress-history/2026-10-13-product-marks/logos/products/create/content.svg",
+      "path": "resources/officepress-history/2026-10-13-product-marks/favicons/products/create/content.ico",
       "sha256": "990d93a7cc47dbf4ba2380dd19b713cdeb04929dfef46444ab154d6bc6d4cae6",
       "bytes": 717
     },
@@ -2792,8 +2795,8 @@
       "bytes": 764
     },
     {
-      "source": "resources/officepress-kit/logos/products/operate/clients.svg",
-      "path": "resources/officepress-kit/favicons/products/operate/clients.ico",
+      "source": "resources/officepress-history/2026-10-13-product-marks/logos/products/operate/clients.svg",
+      "path": "resources/officepress-history/2026-10-13-product-marks/favicons/products/operate/clients.ico",
       "sha256": "f17c158f48f025e11d95f0a413a90f73d9b80adf2c12965251dbd9ed6292f282",
       "bytes": 696
     },
@@ -2814,6 +2817,55 @@
       "path": "resources/officepress-kit/favicons/products/operate/sign.ico",
       "sha256": "9d072073f1a30bba4db8d039e20b798eaad4b8bfd111dab2213636eef7268778",
       "bytes": 671
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/communicate/clients.svg",
+      "path": "resources/officepress-kit/favicons/products/communicate/clients.ico",
+      "sha256": "b595c724dc56d0c68419a398278c368b25e788281fcd35f705bbafa261069790",
+      "bytes": 495,
+      "exported_at": "2026-10-13"
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/operate/content.svg",
+      "path": "resources/officepress-kit/favicons/products/operate/content.ico",
+      "sha256": "4d12378e06405a2e09f2f2873cc22f8a83419d6dfcb4f271614c16d533069fb6",
+      "bytes": 499,
+      "exported_at": "2026-10-13"
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/create/context.svg",
+      "path": "resources/officepress-kit/favicons/products/create/context.ico",
+      "sha256": "dd8c761d2784bb861d370142cb012875e7ede8b0ac6469d926b01d5a59090d28",
+      "bytes": 478,
+      "exported_at": "2026-10-13"
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/create/uiux.svg",
+      "path": "resources/officepress-kit/favicons/products/create/uiux.ico",
+      "sha256": "393d6151e99f824ea40f3421def6570d8d84cea20727483408560bde4ef4fba1",
+      "bytes": 518,
+      "exported_at": "2026-10-13"
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/create/designs.svg",
+      "path": "resources/officepress-kit/favicons/products/create/designs.ico",
+      "sha256": "cf0525310151a9ca106f08ae8439a5ce85383cb9d93a26171d107b6ffafa687d",
+      "bytes": 581,
+      "exported_at": "2026-10-13"
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/create/graphics.svg",
+      "path": "resources/officepress-kit/favicons/products/create/graphics.ico",
+      "sha256": "1c81ba7e44ac4613c45633de7d03c1a86928d2a51f1fc9c625efb7deffab3c26",
+      "bytes": 516,
+      "exported_at": "2026-10-13"
+    },
+    {
+      "source": "resources/officepress-kit/logos/products/operate/pipelines.svg",
+      "path": "resources/officepress-kit/favicons/products/operate/pipelines.ico",
+      "sha256": "13bee043434d035cf5f3290e2a344a46baaeaa12874f10f77f87dc8eb1817b0a",
+      "bytes": 560,
+      "exported_at": "2026-10-13"
     }
   ],
   "excluded": [
@@ -2863,8 +2915,8 @@
   "design": {
     "source": "officepress.pen",
     "method": "pen.dev Get visitor, resolveInstances=true; GetVariables",
-    "node_count": 8761,
-    "text_node_count": 2809,
+    "node_count": 8827,
+    "text_node_count": 2819,
     "root_count": 18,
     "reusable_count": 11,
     "variable_count": 205,
@@ -2919,6 +2971,7 @@
           "JYbRL",
           "gdDmk",
           "q7sMtN",
+          "sw4V9",
           "kslhC",
           "GdlvS",
           "p5lQc",
@@ -2975,9 +3028,20 @@
           "DxJU6",
           "dPeRs",
           "lYQsY",
-          "kIiCs"
+          "kIiCs",
+          "dz7ER",
+          "sjlpU",
+          "iNwLt",
+          "htp9Z",
+          "N8dez",
+          "YSePd",
+          "VpFTN",
+          "p6Jn9S",
+          "N3iAQ",
+          "LSmnq",
+          "i2cna"
         ],
-        "sha256": "a61b56a44d46321d56cc961e9425ab4e49f1818405682ba42e0b43f785e3856d"
+        "sha256": "b28b9b8a7e58bed99c0a015ccca21b4a9c902c685315e8999c974f44a749d5e3"
       },
       {
         "path": "references/00085-pencil-officepress-product-marks-section-create.md",
@@ -2990,6 +3054,7 @@
           "g3QK3",
           "KvM0r",
           "VSYxC",
+          "qY4Xx",
           "mkjj8",
           "SyFcd",
           "UX0QV",
@@ -3041,18 +3106,58 @@
           "uudb4",
           "xgXtW",
           "MX7lY",
-          "S3R6In",
-          "z7mJKX",
-          "V2Z3qZ",
-          "c5Z3w",
-          "ocTjB",
-          "zlEOF",
-          "IYHYe",
-          "w72wd",
-          "EwM0U",
-          "pJCjV",
-          "Qkczm",
-          "yof0z",
+          "JXiuC",
+          "D3DFs",
+          "J47nX",
+          "P5yRP",
+          "H1YU9h",
+          "nHZ6t",
+          "T85ruu",
+          "c9nhPb",
+          "XR5ac",
+          "ZYhEI",
+          "CKkTB",
+          "Z0hUt",
+          "EDa4V",
+          "DCzP3",
+          "b6tzCX",
+          "INbLK",
+          "PWdhS",
+          "q3kEY",
+          "j3keEA",
+          "sUpyD",
+          "SKNAq",
+          "U0DNp",
+          "xOtUA",
+          "c6x09o",
+          "qH6kQ",
+          "i8qY15",
+          "K1wwn8",
+          "X8Fah5",
+          "iaCwz",
+          "IzH3h",
+          "XgfZo",
+          "F1YJD",
+          "Gx4ke",
+          "safQb",
+          "NPHB4",
+          "arpul",
+          "RtsfG",
+          "byMyg",
+          "b2WdGJ",
+          "HkHvs",
+          "JIvCL",
+          "CbO76",
+          "hr2XQ",
+          "zLvAD",
+          "XyKwy",
+          "f5hUYF"
+        ],
+        "sha256": "b050f1058e3ca7f2a32e7d3eceb2609e561296815e99b3ebe31fbd4680904968"
+      },
+      {
+        "path": "references/00398-pencil-officepress-product-marks-section-operate.md",
+        "ids": [
           "ldijF",
           "VrjIo",
           "DrFkk",
@@ -3061,6 +3166,7 @@
           "x2SSQ",
           "GYRiO",
           "YBTS8",
+          "j1KfoM",
           "vnT4L",
           "tuQp2",
           "kCAUq",
@@ -3099,17 +3205,6 @@
           "K8Kox",
           "J2fkte",
           "esE2M",
-          "dz7ER",
-          "sjlpU",
-          "iNwLt",
-          "htp9Z",
-          "N8dez",
-          "YSePd",
-          "VpFTN",
-          "p6Jn9S",
-          "N3iAQ",
-          "LSmnq",
-          "i2cna",
           "MklGe",
           "Y36Sm",
           "sJNsY",
@@ -3118,9 +3213,36 @@
           "J3XTI",
           "kgw7N",
           "A0AJct",
-          "U7uZV"
+          "U7uZV",
+          "S3R6In",
+          "z7mJKX",
+          "V2Z3qZ",
+          "c5Z3w",
+          "ocTjB",
+          "zlEOF",
+          "IYHYe",
+          "w72wd",
+          "EwM0U",
+          "pJCjV",
+          "Qkczm",
+          "yof0z",
+          "MdCn2",
+          "fD1Av",
+          "v09mYm",
+          "f5ebZ",
+          "mMrFz",
+          "LFl6S",
+          "l1wLTH",
+          "TnGGt",
+          "z6nHI",
+          "OHed7",
+          "Re4Ju",
+          "S1AWjr",
+          "v6wVT1",
+          "e9tLNo",
+          "d928Ek"
         ],
-        "sha256": "72e046829fe733749d7d42579c983c39e6b1a4d46488c498cc49ce616497d69d"
+        "sha256": "7b88231af0050c69cae11aa982c7ce8788844fdc716cfa6744ebecd03c8a4059"
       },
       {
         "path": "references/00086-pencil-officepress-product-marks-section-commerce.md",
@@ -3133,6 +3255,7 @@
           "aRleD",
           "huuO8",
           "ow5Vo",
+          "ejq7N",
           "FkqMX",
           "N4OBG",
           "rekfQ",
@@ -3184,9 +3307,10 @@
           "VwyiO",
           "YN5rn",
           "R8kHH",
-          "eG2ET"
+          "IQ4XQ",
+          "ySudm"
         ],
-        "sha256": "94771e6f39f0cfc8cd994da31ab780cc5a7c042c7c605ceb40ca9d913a4548cc"
+        "sha256": "db7c6a409312494d02b933ac775a47e6a57ae5f45c1a2a1423f09f0c0561d036"
       },
       {
         "path": "references/00087-pencil-officepress-logo-officepress-logo-frame.md",
@@ -12264,7 +12388,7 @@
       }
     ],
     "variables_sha256": "4d05a19b3166468b6227c966dfa8875fd230a12c4772c6ae550957a4ca65b15e",
-    "source_revision": "2026-10-02-about-menu"
+    "source_revision": "2026-10-13-product-marks"
   },
   "source_archives": [
     {
@@ -12449,6 +12573,153 @@
       "before_node_count": 8837,
       "before_nodes_sha256": "7b97bb83e01589aa8b1fd883571aefd8e22be435ef15033f9e1082700be37de4",
       "after_native_sha256": "df7df88246e6698148e099a56e60f50c046af2ec0dbefb317a2c9cb968a7f7b9"
+    },
+    {
+      "date": "2026-10-13",
+      "path": "references/00397-officepress-product-marks-prior-design-records.md",
+      "sha256": "176b8926c1bcbad4ddfb037956b47408856b4f2f029f00ac4524d737771c44cb",
+      "changed": 42,
+      "removed": 1,
+      "added_ids": [
+        "sw4V9",
+        "qY4Xx",
+        "JXiuC",
+        "D3DFs",
+        "J47nX",
+        "P5yRP",
+        "H1YU9h",
+        "nHZ6t",
+        "T85ruu",
+        "c9nhPb",
+        "XR5ac",
+        "ZYhEI",
+        "CKkTB",
+        "Z0hUt",
+        "EDa4V",
+        "DCzP3",
+        "b6tzCX",
+        "INbLK",
+        "PWdhS",
+        "q3kEY",
+        "j3keEA",
+        "sUpyD",
+        "SKNAq",
+        "U0DNp",
+        "xOtUA",
+        "c6x09o",
+        "qH6kQ",
+        "i8qY15",
+        "K1wwn8",
+        "X8Fah5",
+        "iaCwz",
+        "IzH3h",
+        "XgfZo",
+        "F1YJD",
+        "Gx4ke",
+        "safQb",
+        "NPHB4",
+        "arpul",
+        "RtsfG",
+        "byMyg",
+        "b2WdGJ",
+        "HkHvs",
+        "JIvCL",
+        "CbO76",
+        "hr2XQ",
+        "zLvAD",
+        "XyKwy",
+        "f5hUYF",
+        "j1KfoM",
+        "MdCn2",
+        "fD1Av",
+        "v09mYm",
+        "f5ebZ",
+        "mMrFz",
+        "LFl6S",
+        "l1wLTH",
+        "TnGGt",
+        "z6nHI",
+        "OHed7",
+        "Re4Ju",
+        "S1AWjr",
+        "v6wVT1",
+        "e9tLNo",
+        "d928Ek",
+        "ejq7N",
+        "IQ4XQ",
+        "ySudm"
+      ],
+      "before_native_sha256": "df7df88246e6698148e099a56e60f50c046af2ec0dbefb317a2c9cb968a7f7b9",
+      "before_native_bytes": 3902117,
+      "before_node_count": 8761,
+      "before_nodes_sha256": "580fb23e83de26b20a5681b5b3a4e16752e31ba46fe3e3242351693bf4da14d1",
+      "after_native_sha256": "f40195a11ac4b8a0166e8dd9c703a07d844a4a3c39d7a9b69673389072ff044e"
+    }
+  ],
+  "revised_resources": [
+    {
+      "path": "resources/officepress-kit/logos/products/communicate/clients.svg",
+      "sha256": "e8b3d023a1e6d8294ab03e0c8caa9b7b2405c1b1b74cb23add0fd496b469731b",
+      "bytes": 765,
+      "date": "2026-10-13",
+      "supersedes": "kit/logos/products/operate/clients.svg",
+      "origin": "Clients mark recoloured to Communicate (geometry unchanged)"
+    },
+    {
+      "path": "resources/officepress-kit/logos/products/operate/content.svg",
+      "sha256": "f676ab07d66b69e525ec95f4b7b57321d738f1300470d4e70a7bd250738d83f7",
+      "bytes": 785,
+      "date": "2026-10-13",
+      "supersedes": "kit/logos/products/create/content.svg",
+      "origin": "Content mark recoloured to Operate (geometry unchanged)"
+    },
+    {
+      "path": "resources/officepress-kit/logos/products/create/context.svg",
+      "sha256": "ef1daedd5f872a3a6a382128fff8dd4a96cc45847362cca9e4bc916a4772b249",
+      "bytes": 693,
+      "date": "2026-10-13",
+      "supersedes": null,
+      "origin": "New Context mark from Product Marks tile D3DFs"
+    },
+    {
+      "path": "resources/officepress-kit/logos/products/create/uiux.svg",
+      "sha256": "896b30071a90557fd8741fae2b8358174afddfa5000b33b77cf6a1c5a0848e55",
+      "bytes": 758,
+      "date": "2026-10-13",
+      "supersedes": null,
+      "origin": "New UIUX mark from Product Marks tile CKkTB"
+    },
+    {
+      "path": "resources/officepress-kit/logos/products/create/designs.svg",
+      "sha256": "1f54ba38520d25e405fbe55f8984c0bb9c0f61251bbc5a127208da9313301f7a",
+      "bytes": 588,
+      "date": "2026-10-13",
+      "supersedes": null,
+      "origin": "New Designs mark from Product Marks tile xOtUA"
+    },
+    {
+      "path": "resources/officepress-kit/logos/products/create/graphics.svg",
+      "sha256": "8c063887d7f8aa650261eaaedb1abea50efc238a7184fe6bd05fda148b554f90",
+      "bytes": 642,
+      "date": "2026-10-13",
+      "supersedes": null,
+      "origin": "New Graphics mark from Product Marks tile Gx4ke"
+    },
+    {
+      "path": "resources/officepress-kit/logos/products/operate/pipelines.svg",
+      "sha256": "ec6bb5c59e2bf0b81b455d9838b852cc63690b03623cef613bd989e7a8498acd",
+      "bytes": 1107,
+      "date": "2026-10-13",
+      "supersedes": null,
+      "origin": "New Pipelines mark from Product Marks tile fD1Av"
+    },
+    {
+      "path": "resources/officepress-kit/reference/brand/product-marks.png",
+      "sha256": "5d5783a35c7f428894187aaaf5eab93e230521cac999ca8cea3b61e398a93f0a",
+      "bytes": 419872,
+      "date": "2026-10-13",
+      "supersedes": "kit/reference/brand/product-marks.png",
+      "origin": "1x export of the revised Product Marks board o8qxhR"
     }
   ]
 }

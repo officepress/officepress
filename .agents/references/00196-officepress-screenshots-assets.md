@@ -17,7 +17,7 @@ Load when choosing an existing visual asset or locating a local source screen. T
 | `kit/reference/board/inbox-board-light.png` | [Inbox Board Light — screenshots asset](../resources/officepress-kit/reference/board/inbox-board-light.png) |
 | `kit/reference/brand/app-ui-guidelines.png` | [App Ui Guidelines — screenshots asset](../resources/officepress-kit/reference/brand/app-ui-guidelines.png) |
 | `kit/reference/brand/officepress-logo.png` | [Officepress Logo — screenshots asset](../resources/officepress-kit/reference/brand/officepress-logo.png) |
-| `kit/reference/brand/product-marks.png` | [Product Marks — screenshots asset](../resources/officepress-kit/reference/brand/product-marks.png) |
+| 2026-10-13 revision of `kit/reference/brand/product-marks.png` | [Product Marks — 28-mark board screenshot](../resources/officepress-kit/reference/brand/product-marks.png); the supplied 23-mark original is listed under history in the [logo asset map](00195-officepress-logos-assets.md#superseded-originals--history-only) |
 | `kit/reference/modules/automation-builder-inbox-follow-up.png` | [Automation Builder Inbox Follow Up — screenshots asset](../resources/officepress-kit/reference/modules/automation-builder-inbox-follow-up.png) |
 | `kit/reference/modules/automations-list-hris-hiring.png` | [Automations List Hris Hiring — screenshots asset](../resources/officepress-kit/reference/modules/automations-list-hris-hiring.png) |
 | `kit/reference/modules/board-hris-hiring.png` | [Board Hris Hiring — screenshots asset](../resources/officepress-kit/reference/modules/board-hris-hiring.png) |

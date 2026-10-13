@@ -17,8 +17,9 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | LgNYK / e9WPLU | text / Family Name | {"name":"Family Name","content":"Commerce"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":32,"fontWeight":"700","letterSpacing":-0.8} |
 | aRleD / e9WPLU | text / Family No | {"name":"Family No","content":"04"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":12,"fontWeight":"normal"} |
 | huuO8 / aOcYn | text / Family Desc | {"name":"Family Desc","content":"Catalogue, orders and delivery."} | {"fill":"$muted","fontFamily":"$font-display","fontSize":15,"fontWeight":"normal"} |
-| ow5Vo / q8MhDM | frame / Marks | {"name":"Marks"} | {"width":"fill_container","gap":20} |
-| FkqMX / ow5Vo | frame / Mark · Products | {"name":"Mark · Products"} | {"width":"fill_container","fill":"$card","cornerRadius":20,"layout":"vertical","gap":28,"padding":28} |
+| ow5Vo / q8MhDM | frame / Marks | {"name":"Marks"} | {"width":"fill_container","layout":"vertical","gap":16} |
+| ejq7N / ow5Vo | frame / Row 1 | {"name":"Row 1"} | {"width":"fill_container","gap":16} |
+| FkqMX / ejq7N | frame / Mark · Products | {"name":"Mark · Products"} | {"width":"fill_container","fill":"$card","cornerRadius":20,"layout":"vertical","gap":28,"padding":24} |
 | N4OBG / FkqMX | frame / Tile | {"name":"Tile"} | {"clip":true,"width":96,"height":96,"fill":"$fam-commerce","cornerRadius":24,"layout":"none"} |
 | rekfQ / N4OBG | path / Variant Tag | {"name":"Variant Tag"} | {"x":0,"y":0,"viewBox":[0,0,96,96],"fill":"$mark-secondary","width":96,"height":96} |
 | cFQ1d / N4OBG | path / Tag | {"name":"Tag"} | {"x":0,"y":0,"viewBox":[0,0,96,96],"fill":"$mark-primary","width":96,"height":96} |
@@ -26,7 +27,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | x128M / FkqMX | frame / Copy | {"name":"Copy"} | {"width":"fill_container","layout":"vertical","gap":8} |
 | CCk5E / x128M | text / Product Name | {"name":"Product Name","content":"Products"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":22,"fontWeight":"700","letterSpacing":-0.4} |
 | El7Gm / x128M | text / Idea | {"name":"Idea","content":"The price tag, with a variant behind it — one catalogue item, many offers from many sellers."} | {"fill":"$muted","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.45,"fontFamily":"$font-display","fontSize":13,"fontWeight":"normal"} |
-| zvdAg / ow5Vo | frame / Mark · Orders | {"name":"Mark · Orders"} | {"width":"fill_container","fill":"$card","cornerRadius":20,"layout":"vertical","gap":28,"padding":28} |
+| zvdAg / ejq7N | frame / Mark · Orders | {"name":"Mark · Orders"} | {"width":"fill_container","fill":"$card","cornerRadius":20,"layout":"vertical","gap":28,"padding":24} |
 | DOOGX / zvdAg | frame / Tile | {"name":"Tile"} | {"clip":true,"width":96,"height":96,"fill":"$fam-commerce","cornerRadius":24,"layout":"none"} |
 | NxiwS / DOOGX | path / Receipt | {"name":"Receipt"} | {"x":0,"y":0,"viewBox":[0,0,96,96],"fill":"$mark-primary","width":96,"height":96} |
 | IVMF6 / DOOGX | rectangle / Line 1 | {"name":"Line 1"} | {"cornerRadius":3,"x":30,"y":26,"fill":"$fam-commerce","width":36,"height":6} |
@@ -36,7 +37,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | Uqwrx / zvdAg | frame / Copy | {"name":"Copy"} | {"width":"fill_container","layout":"vertical","gap":8} |
 | dfhDC / Uqwrx | text / Product Name | {"name":"Product Name","content":"Orders"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":22,"fontWeight":"700","letterSpacing":-0.4} |
 | d9D7g / Uqwrx | text / Idea | {"name":"Idea","content":"The receipt, torn off the roll — an order and its line items, tracked from intake to fulfilment."} | {"fill":"$muted","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.45,"fontFamily":"$font-display","fontSize":13,"fontWeight":"normal"} |
-| fC9fU / ow5Vo | frame / Mark · Inventory | {"name":"Mark · Inventory"} | {"width":"fill_container","fill":"$card","cornerRadius":20,"layout":"vertical","gap":28,"padding":28} |
+| fC9fU / ejq7N | frame / Mark · Inventory | {"name":"Mark · Inventory"} | {"width":"fill_container","fill":"$card","cornerRadius":20,"layout":"vertical","gap":28,"padding":24} |
 | I7CPv8 / fC9fU | frame / Tile | {"name":"Tile"} | {"clip":true,"width":96,"height":96,"fill":"$fam-commerce","cornerRadius":24,"layout":"none"} |
 | MSpWt / I7CPv8 | rectangle / Box L | {"name":"Box L"} | {"cornerRadius":5,"x":16,"y":48,"fill":"$mark-primary","width":30,"height":32} |
 | lrGoL / I7CPv8 | rectangle / Box R | {"name":"Box R"} | {"cornerRadius":5,"x":50,"y":48,"fill":"$mark-primary","width":30,"height":32} |
@@ -47,7 +48,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | JoJtV / fC9fU | frame / Copy | {"name":"Copy"} | {"width":"fill_container","layout":"vertical","gap":8} |
 | p5c22 / JoJtV | text / Product Name | {"name":"Product Name","content":"Inventory"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":22,"fontWeight":"700","letterSpacing":-0.4} |
 | wiiG5 / JoJtV | text / Idea | {"name":"Idea","content":"Taped boxes, stacked — stock on hand, counted and ready to move."} | {"fill":"$muted","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.45,"fontFamily":"$font-display","fontSize":13,"fontWeight":"normal"} |
-| F7oWzB / ow5Vo | frame / Mark · Payments | {"name":"Mark · Payments"} | {"width":"fill_container","fill":"$card","cornerRadius":20,"layout":"vertical","gap":28,"padding":28} |
+| F7oWzB / ejq7N | frame / Mark · Payments | {"name":"Mark · Payments"} | {"width":"fill_container","fill":"$card","cornerRadius":20,"layout":"vertical","gap":28,"padding":24} |
 | i6QD5t / F7oWzB | frame / Tile | {"name":"Tile"} | {"clip":true,"width":96,"height":96,"fill":"$fam-commerce","cornerRadius":24,"layout":"none"} |
 | ZCjbf / i6QD5t | rectangle / Card Behind | {"name":"Card Behind"} | {"cornerRadius":8,"x":26,"y":18,"fill":"$mark-secondary","width":54,"height":38} |
 | Ngk2I / i6QD5t | rectangle / Card | {"name":"Card"} | {"cornerRadius":8,"x":16,"y":32,"fill":"$mark-primary","width":58,"height":42} |
@@ -57,7 +58,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | Q6SJn / F7oWzB | frame / Copy | {"name":"Copy"} | {"width":"fill_container","layout":"vertical","gap":8} |
 | h8R2fR / Q6SJn | text / Product Name | {"name":"Product Name","content":"Payments"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":22,"fontWeight":"700","letterSpacing":-0.4} |
 | X7cxI1 / Q6SJn | text / Idea | {"name":"Idea","content":"The payment card — invoices and payment links your clients settle with the method they prefer."} | {"fill":"$muted","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.45,"fontFamily":"$font-display","fontSize":13,"fontWeight":"normal"} |
-| nM5eH / ow5Vo | frame / Mark · Fulfillments | {"name":"Mark · Fulfillments"} | {"width":"fill_container","fill":"$card","cornerRadius":20,"layout":"vertical","gap":28,"padding":28} |
+| nM5eH / ejq7N | frame / Mark · Fulfillments | {"name":"Mark · Fulfillments"} | {"width":"fill_container","fill":"$card","cornerRadius":20,"layout":"vertical","gap":28,"padding":24} |
 | k4DBCs / nM5eH | frame / Tile | {"name":"Tile"} | {"clip":true,"width":96,"height":96,"fill":"$fam-commerce","cornerRadius":24,"layout":"none"} |
 | pN3nY / k4DBCs | rectangle / Cargo | {"name":"Cargo"} | {"cornerRadius":5,"x":14,"y":26,"fill":"$mark-primary","width":44,"height":36} |
 | ixDX8 / k4DBCs | path / Cab | {"name":"Cab"} | {"x":0,"y":0,"viewBox":[0,0,96,96],"fill":"$mark-primary","width":96,"height":96} |
@@ -69,4 +70,5 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | VwyiO / nM5eH | frame / Copy | {"name":"Copy"} | {"width":"fill_container","layout":"vertical","gap":8} |
 | YN5rn / VwyiO | text / Product Name | {"name":"Product Name","content":"Fulfillments"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":22,"fontWeight":"700","letterSpacing":-0.4} |
 | R8kHH / VwyiO | text / Idea | {"name":"Idea","content":"The delivery truck — waybills printed, parcels picked up and delivered by approved carriers."} | {"fill":"$muted","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.45,"fontFamily":"$font-display","fontSize":13,"fontWeight":"normal"} |
-| eG2ET / ow5Vo | frame / Spacer | {"name":"Spacer"} | {"width":"fill_container","height":1} |
+| IQ4XQ / ejq7N | frame / Spacer | {"name":"Spacer"} | {"width":"fill_container","height":1} |
+| ySudm / ejq7N | frame / Spacer | {"name":"Spacer"} | {"width":"fill_container","height":1} |

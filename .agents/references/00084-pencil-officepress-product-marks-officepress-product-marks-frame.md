@@ -14,7 +14,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | pP9A6 / o8qxhR | frame / Header | {"name":"Header"} | {"width":"fill_container","gap":80,"justifyContent":"space_between"} |
 | eWkN3 / pP9A6 | frame / Intro | {"name":"Intro"} | {"width":720,"layout":"vertical","gap":20} |
 | u4K3U / eWkN3 | text / Eyebrow | {"name":"Eyebrow","content":"OFFICEPRESS  /  BACK OFFICE SUITE  /  MARK SYSTEM v2 — MEANING FIRST"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":12,"fontWeight":"normal","letterSpacing":1.5} |
-| q0KKgp / eWkN3 | text / Title | {"name":"Title","content":"One grid.\nTwenty-three familiar symbols."} | {"fill":"$ink","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.02,"fontFamily":"$font-display","fontSize":64,"fontWeight":"700","letterSpacing":-2} |
+| q0KKgp / eWkN3 | text / Title | {"name":"Title","content":"One grid.\nTwenty-eight familiar symbols."} | {"fill":"$ink","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.02,"fontFamily":"$font-display","fontSize":64,"fontWeight":"700","letterSpacing":-2} |
 | SD2N4 / eWkN3 | text / Lede | {"name":"Lede","content":"Every mark starts from the symbol people already know for the job — a calendar, a headset, a pen nib — then gets reduced to the same simple geometry. Colour tells you the family; the symbol tells you the product."} | {"fill":"$muted","textGrowth":"fixed-width","width":560,"lineHeight":1.5,"fontFamily":"$font-display","fontSize":18,"fontWeight":"normal"} |
 | V682JW / pP9A6 | frame / Rules | {"name":"Rules"} | {"width":560,"layout":"vertical"} |
 | dldKS / V682JW | frame / Rule 01 | {"name":"Rule 01"} | {"width":"fill_container","stroke":"$line","strokeWidth":{"top":1},"gap":20,"padding":[16,0]} |
@@ -43,16 +43,17 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | i2ktzA / B2gob6 | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":6,"fill":"$fam-communicate","width":20,"height":20} |
 | OJO9E / B2gob6 | text / Family Name | {"name":"Family Name","content":"Communicate"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":32,"fontWeight":"700","letterSpacing":-0.8} |
 | JYbRL / B2gob6 | text / Family No | {"name":"Family No","content":"01"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":12,"fontWeight":"normal"} |
-| gdDmk / o5REto | text / Family Desc | {"name":"Family Desc","content":"Conversations, time and presence."} | {"fill":"$muted","fontFamily":"$font-display","fontSize":15,"fontWeight":"normal"} |
-| q7sMtN / DkNl5 | frame / Marks | {"name":"Marks"} | {"width":"fill_container","gap":20} |
-| kslhC / q7sMtN | frame / Mark · Inbox | {"name":"Mark · Inbox"} | {"width":"fill_container","fill":"$card","cornerRadius":20,"layout":"vertical","gap":28,"padding":28} |
+| gdDmk / o5REto | text / Family Desc | {"name":"Family Desc","content":"Conversations, clients, time and presence."} | {"fill":"$muted","fontFamily":"$font-display","fontSize":15,"fontWeight":"normal"} |
+| q7sMtN / DkNl5 | frame / Marks | {"name":"Marks"} | {"width":"fill_container","layout":"vertical","gap":16} |
+| sw4V9 / q7sMtN | frame / Row 1 | {"name":"Row 1"} | {"width":"fill_container","gap":16} |
+| kslhC / sw4V9 | frame / Mark · Inbox | {"name":"Mark · Inbox"} | {"width":"fill_container","fill":"$card","cornerRadius":20,"layout":"vertical","gap":28,"padding":24} |
 | GdlvS / kslhC | frame / Tile | {"name":"Tile"} | {"clip":true,"width":96,"height":96,"fill":"$fam-communicate","cornerRadius":24,"layout":"none"} |
 | p5lQc / GdlvS | path / Walls | {"name":"Walls"} | {"x":0,"y":0,"viewBox":[0,0,96,96],"fill":"$mark-secondary","width":96,"height":96} |
 | jHAnY / GdlvS | path / Front | {"name":"Front"} | {"x":0,"y":0,"viewBox":[0,0,96,96],"fill":"$mark-primary","width":96,"height":96} |
 | N1H3WZ / kslhC | frame / Copy | {"name":"Copy"} | {"width":"fill_container","layout":"vertical","gap":8} |
 | cgSav / N1H3WZ | text / Product Name | {"name":"Product Name","content":"Inbox"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":22,"fontWeight":"700","letterSpacing":-0.4} |
 | mH6Zs / N1H3WZ | text / Idea | {"name":"Idea","content":"The classic in-tray, seen from the front: sloped walls and the finger notch — mail waiting to be handled."} | {"fill":"$muted","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.45,"fontFamily":"$font-display","fontSize":13,"fontWeight":"normal"} |
-| BYIRQ / q7sMtN | frame / Mark · Chat | {"name":"Mark · Chat"} | {"width":"fill_container","fill":"$card","cornerRadius":20,"layout":"vertical","gap":28,"padding":28} |
+| BYIRQ / sw4V9 | frame / Mark · Chat | {"name":"Mark · Chat"} | {"width":"fill_container","fill":"$card","cornerRadius":20,"layout":"vertical","gap":28,"padding":24} |
 | BfIun / BYIRQ | frame / Tile | {"name":"Tile"} | {"clip":true,"width":96,"height":96,"fill":"$fam-communicate","cornerRadius":24,"layout":"none"} |
 | X2r7I / BfIun | rectangle / Back Bubble | {"name":"Back Bubble"} | {"cornerRadius":12,"x":32,"y":16,"fill":"$mark-secondary","width":48,"height":34} |
 | zFJmc / BfIun | rectangle / Bubble | {"name":"Bubble"} | {"cornerRadius":14,"x":16,"y":30,"fill":"$mark-primary","width":56,"height":38} |
@@ -63,7 +64,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | mctj8 / BYIRQ | frame / Copy | {"name":"Copy"} | {"width":"fill_container","layout":"vertical","gap":8} |
 | ZApYx / mctj8 | text / Product Name | {"name":"Product Name","content":"Chat"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":22,"fontWeight":"700","letterSpacing":-0.4} |
 | G4Sba / mctj8 | text / Idea | {"name":"Idea","content":"The speech bubble, mid-reply — three dots for a conversation that's still going."} | {"fill":"$muted","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.45,"fontFamily":"$font-display","fontSize":13,"fontWeight":"normal"} |
-| Ve0Ze / q7sMtN | frame / Mark · Meet | {"name":"Mark · Meet"} | {"width":"fill_container","fill":"$card","cornerRadius":20,"layout":"vertical","gap":28,"padding":28} |
+| Ve0Ze / sw4V9 | frame / Mark · Meet | {"name":"Mark · Meet"} | {"width":"fill_container","fill":"$card","cornerRadius":20,"layout":"vertical","gap":28,"padding":24} |
 | jqbLg / Ve0Ze | frame / Tile | {"name":"Tile"} | {"clip":true,"width":96,"height":96,"fill":"$fam-communicate","cornerRadius":24,"layout":"none"} |
 | VT5jI / jqbLg | ellipse / Circle A | {"name":"Circle A"} | {"x":16,"y":26,"fill":"$mark-secondary","width":44,"height":44} |
 | Kyuio / jqbLg | ellipse / Circle B | {"name":"Circle B"} | {"x":36,"y":26,"fill":"$mark-secondary","width":44,"height":44} |
@@ -71,7 +72,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | E6aFRk / Ve0Ze | frame / Copy | {"name":"Copy"} | {"width":"fill_container","layout":"vertical","gap":8} |
 | l2Hgc / E6aFRk | text / Product Name | {"name":"Product Name","content":"Meet"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":22,"fontWeight":"700","letterSpacing":-0.4} |
 | zInVc / E6aFRk | text / Idea | {"name":"Idea","content":"Two circles converging — the shared lens in the middle is where people meet and sync."} | {"fill":"$muted","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.45,"fontFamily":"$font-display","fontSize":13,"fontWeight":"normal"} |
-| EdvQV / q7sMtN | frame / Mark · Calendar | {"name":"Mark · Calendar"} | {"width":"fill_container","fill":"$card","cornerRadius":20,"layout":"vertical","gap":28,"padding":28} |
+| EdvQV / sw4V9 | frame / Mark · Calendar | {"name":"Mark · Calendar"} | {"width":"fill_container","fill":"$card","cornerRadius":20,"layout":"vertical","gap":28,"padding":24} |
 | Wu6Yu / EdvQV | frame / Tile | {"name":"Tile"} | {"clip":true,"width":96,"height":96,"fill":"$fam-communicate","cornerRadius":24,"layout":"none"} |
 | l3YSw / Wu6Yu | rectangle / Page | {"name":"Page"} | {"cornerRadius":10,"x":16,"y":22,"fill":"$mark-primary","width":64,"height":58} |
 | pazwR / Wu6Yu | rectangle / Header Cut | {"name":"Header Cut"} | {"x":16,"y":38,"fill":"$fam-communicate","width":64,"height":4} |
@@ -81,7 +82,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | nB0nQ / EdvQV | frame / Copy | {"name":"Copy"} | {"width":"fill_container","layout":"vertical","gap":8} |
 | HwzCY / nB0nQ | text / Product Name | {"name":"Product Name","content":"Calendar"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":22,"fontWeight":"700","letterSpacing":-0.4} |
 | ZxMBB / nB0nQ | text / Idea | {"name":"Idea","content":"The calendar page with one day marked — the universal sign for a scheduled moment."} | {"fill":"$muted","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.45,"fontFamily":"$font-display","fontSize":13,"fontWeight":"normal"} |
-| Mx9Xf / q7sMtN | frame / Mark · Support | {"name":"Mark · Support"} | {"width":"fill_container","fill":"$card","cornerRadius":20,"layout":"vertical","gap":28,"padding":28} |
+| Mx9Xf / sw4V9 | frame / Mark · Support | {"name":"Mark · Support"} | {"width":"fill_container","fill":"$card","cornerRadius":20,"layout":"vertical","gap":28,"padding":24} |
 | hXkoA / Mx9Xf | frame / Tile | {"name":"Tile"} | {"clip":true,"width":96,"height":96,"fill":"$fam-communicate","cornerRadius":24,"layout":"none"} |
 | mAeCS / hXkoA | ellipse / Headband | {"name":"Headband"} | {"x":20,"y":18,"innerRadius":0.84,"sweepAngle":180,"fill":"$mark-primary","width":56,"height":56} |
 | Hw3Zy / hXkoA | rectangle / Cup L | {"name":"Cup L"} | {"cornerRadius":7,"x":16,"y":42,"fill":"$mark-primary","width":14,"height":26} |
@@ -91,7 +92,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | V5mnB / Mx9Xf | frame / Copy | {"name":"Copy"} | {"width":"fill_container","layout":"vertical","gap":8} |
 | PKR3T / V5mnB | text / Product Name | {"name":"Product Name","content":"Support"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":22,"fontWeight":"700","letterSpacing":-0.4} |
 | sfuSZ / V5mnB | text / Idea | {"name":"Idea","content":"The headset — someone is on the line, ready to take the ticket through to resolution."} | {"fill":"$muted","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.45,"fontFamily":"$font-display","fontSize":13,"fontWeight":"normal"} |
-| o3wxij / q7sMtN | frame / Mark · Agent | {"name":"Mark · Agent"} | {"width":"fill_container","fill":"$card","cornerRadius":20,"layout":"vertical","gap":28,"padding":28} |
+| o3wxij / sw4V9 | frame / Mark · Agent | {"name":"Mark · Agent"} | {"width":"fill_container","fill":"$card","cornerRadius":20,"layout":"vertical","gap":28,"padding":24} |
 | xg50P / o3wxij | frame / Tile | {"name":"Tile"} | {"clip":true,"width":96,"height":96,"fill":"$fam-communicate","cornerRadius":24,"layout":"none"} |
 | K50iN / xg50P | ellipse / Antenna Tip | {"name":"Antenna Tip"} | {"x":42,"y":12,"fill":"$mark-secondary","width":12,"height":12} |
 | PTjlK / xg50P | rectangle / Antenna | {"name":"Antenna"} | {"cornerRadius":2,"x":46,"y":20,"fill":"$mark-secondary","width":4,"height":12} |
@@ -102,3 +103,14 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | dPeRs / o3wxij | frame / Copy | {"name":"Copy"} | {"width":"fill_container","layout":"vertical","gap":8} |
 | lYQsY / dPeRs | text / Product Name | {"name":"Product Name","content":"Agent"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":22,"fontWeight":"700","letterSpacing":-0.4} |
 | kIiCs / dPeRs | text / Idea | {"name":"Idea","content":"A friendly robot head — your own AI helper, listening on its antenna and ready to work."} | {"fill":"$muted","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.45,"fontFamily":"$font-display","fontSize":13,"fontWeight":"normal"} |
+| dz7ER / sw4V9 | frame / Mark · Clients | {"name":"Mark · Clients"} | {"width":"fill_container","fill":"$card","cornerRadius":20,"layout":"vertical","gap":28,"padding":24} |
+| sjlpU / dz7ER | frame / Tile | {"name":"Tile"} | {"clip":true,"width":96,"height":96,"fill":"$fam-communicate","cornerRadius":24,"layout":"none"} |
+| iNwLt / sjlpU | rectangle / Card Behind | {"name":"Card Behind"} | {"cornerRadius":7,"x":22,"y":16,"fill":"$mark-secondary","width":58,"height":40} |
+| htp9Z / sjlpU | rectangle / Card | {"name":"Card"} | {"cornerRadius":8,"x":16,"y":30,"fill":"$mark-primary","width":64,"height":48} |
+| N8dez / sjlpU | ellipse / Avatar Head | {"name":"Avatar Head"} | {"x":25,"y":40,"fill":"$fam-communicate","width":14,"height":14} |
+| YSePd / sjlpU | rectangle / Avatar Body | {"name":"Avatar Body"} | {"cornerRadius":[10,10,2,2],"x":22,"y":56,"fill":"$fam-communicate","width":20,"height":12} |
+| VpFTN / sjlpU | rectangle / Line 1 | {"name":"Line 1"} | {"cornerRadius":2.5,"x":48,"y":44,"fill":"$fam-communicate","width":24,"height":5} |
+| p6Jn9S / sjlpU | rectangle / Line 2 | {"name":"Line 2"} | {"cornerRadius":2.5,"x":48,"y":56,"fill":"$fam-communicate","width":18,"height":5} |
+| N3iAQ / dz7ER | frame / Copy | {"name":"Copy"} | {"width":"fill_container","layout":"vertical","gap":8} |
+| LSmnq / N3iAQ | text / Product Name | {"name":"Product Name","content":"Clients"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":22,"fontWeight":"700","letterSpacing":-0.4} |
+| i2cna / N3iAQ | text / Idea | {"name":"Idea","content":"The contact card — a client's profile, the person and their details, always one tap away."} | {"fill":"$muted","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.45,"fontFamily":"$font-display","fontSize":13,"fontWeight":"normal"} |

@@ -22,9 +22,12 @@ Complete an affected Agent Document before splitting it. Preserve full sections,
 ```bash
 python3 .agents/scripts/validate-agent-workspace.py
 python3 .agents/scripts/verify-officepress-ingestion.py
+python3 .agents/scripts/verify-kit-mirror.py
 ```
 
 The second script reconstructs source content from local reference blocks, checks hashes and visual resources, compares the requested source-code archives with the recovered content, and verifies the extracted Pencil record/variable coverage. Its manifest is local deterministic-check data in `.agents/scripts/`, not a separate source-of-truth store.
+
+The third script is separate because it reads outside `.agents/`. It checks that the repository `kit/` folder mirrors the KB: `kit/logos` SVGs and `kit/icons` ICOs must be byte-identical to `resources/officepress-kit/logos` and `resources/officepress-kit/favicons`, every SVG needs a PNG export at its declared size, and the product marks must match the family table in [brand identity](brand.md). Update the KB copy first, then the `kit/` copy, then run it.
 
 ## Evidence and decisions
 

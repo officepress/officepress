@@ -2,11 +2,11 @@
 
 The native Pencil file is preserved locally along with the written knowledge extracted from it. Consult the extracted references for text, variables and component metadata; use the native asset when editing graphical geometry.
 
-The design extraction covers 18 root frames, 11 reusable components, 8,761 resolved nodes, 2,809 nodes with content, and 205 variable definitions. The theme axes are mode and family. Resolved instances use full instance paths so inherited content remains traceable.
+The design extraction covers 18 root frames, 11 reusable components, 8,827 resolved nodes, 2,819 nodes with content, and 205 variable definitions. The theme axes are mode and family. Resolved instances use full instance paths so inherited content remains traceable.
 
 ## Design areas
 
-- OfficePress Product Marks and OfficePress Logo: construction, family identity, symbol explanations and lockups.
+- OfficePress Product Marks and OfficePress Logo: construction, family identity, symbol explanations and lockups. The board shows the current 28 family product marks.
 - Inbox Board — Light / Dark: the reference app layout and board examples.
 - OfficePress App UI Guidelines: theming, family shells, colour tokens, typography, spacing, shape, components, rules, app frame and motion.
 - OfficePress App Layout: aside states, header globals, account/app settings and authentication.
@@ -15,6 +15,7 @@ The design extraction covers 18 root frames, 11 reusable components, 8,761 resol
 
 ## Retrieval
 
+- [Product Marks revision and lossless history](../references/00396-officepress-product-marks-revision.md) — load for the 28-mark board, the Clients/Content family moves, the meaning of the five new marks, the revised kit files and recovery of the earlier board and assets.
 - [About menu revision and lossless history](../references/00360-officepress-about-menu-revision.md) — load for the current two-tab settings menu, config-owned Agent/Notification settings, and preservation of changed or removed design records.
 
 - [Complete screen and component map](../references/00075-officepress-pencil-design-map.md) — load when finding all text and structural/style properties by design section.

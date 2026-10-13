@@ -2,6 +2,8 @@
 
 Read the relevant context first. This map routes complete text and node-property extraction from the native design. Node IDs, parent relationships, theme assignments and inherited instance paths are retained. Geometry and authored native structure remain in the [local editable Pencil file](../resources/officepress-design/officepress.pen).
 
+[Product Marks revision and prior-record recovery](00396-officepress-product-marks-revision.md) — load when comparing the 28-mark board with the earlier 23-mark board.
+
 [Current About menu revision and prior-record recovery](00360-officepress-about-menu-revision.md) — load when comparing the updated design with earlier menus.
 
 [All source variables and theme axes](00076-officepress-pencil-variable-map.md) — load when working with tokens or interpreting a $variable property.
@@ -10,8 +12,9 @@ Read the relevant context first. This map routes complete text and node-property
 
 ## OfficePress Product Marks (`o8qxhR`)
 
-- [OfficePress Product Marks — frame](00084-pencil-officepress-product-marks-officepress-product-marks-frame.md) — load when inspecting this component or screen section in detail.
-- [OfficePress Product Marks  ›  Section · Create](00085-pencil-officepress-product-marks-section-create.md) — load when inspecting this component or screen section in detail.
+- [OfficePress Product Marks — frame](00084-pencil-officepress-product-marks-officepress-product-marks-frame.md) — load when inspecting the board frame, header rules or the Communicate section (including Clients) in detail.
+- [OfficePress Product Marks  ›  Section · Create](00085-pencil-officepress-product-marks-section-create.md) — load when inspecting the Create section, including the Context, UIUX, Designs and Graphics marks.
+- [OfficePress Product Marks  ›  Section · Operate](00398-pencil-officepress-product-marks-section-operate.md) — load when inspecting the Operate section, including the Content and Pipelines marks.
 - [OfficePress Product Marks  ›  Section · Commerce](00086-pencil-officepress-product-marks-section-commerce.md) — load when inspecting this component or screen section in detail.
 
 ## OfficePress Logo (`dJApv`)

@@ -6,16 +6,16 @@ Use the exact promise and catch phrases in [OfficePress](officepress.md). The br
 
 | Family | Brand colour | Products |
 |---|---|---|
-| Communicate | `#2F5BEA` | Inbox, Chat, Meet, Calendar, Support, Agent |
-| Create | `#6A3BE4` | Drive, Tables, Forms, Whiteboards, Diagrams, Content |
-| Operate | `#E2551B` | Resourcing, Procurement, Accounting, Approvals, Clients, Sign |
+| Communicate | `#2F5BEA` | Inbox, Chat, Meet, Calendar, Support, Agent, Clients |
+| Create | `#6A3BE4` | Drive, Tables, Forms, Whiteboards, Diagrams, Context, UIUX, Designs, Graphics |
+| Operate | `#E2551B` | Resourcing, Procurement, Accounting, Approvals, Sign, Content, Pipelines |
 | Commerce | `#0F8F6A` | Products, Orders, Inventory, Payments, Fulfillments |
 
-Family colours identify products. UI surfaces use the family-and-mode tokens; brand hex values are not permission to hard-code app colours.
+The 2026-10-13 user correction places Clients in Communicate and Content in Operate, superseding the preserved source lists. All 28 family products have product marks. The `app-*` platform apps have no assigned branded family colour or product mark. Family colours identify products with a defined family; UI surfaces use family-and-mode tokens rather than hard-coded brand hex values.
 
 ## Mark construction
 
-Product marks start from a familiar symbol for the job, reduced to consistent simple geometry. The family colour identifies the family; the symbol identifies the product. Use the supplied marks instead of redrawing them.
+Product marks start from a familiar symbol for the job, reduced to consistent simple geometry. The family colour identifies the family; the symbol identifies the product. Use the current kit marks under `logos/products/<family>/<app>.svg`. On 2026-10-13 the Clients and Content marks were recoloured and moved into their new families. New marks were added for Context (lightbulb with a tick), UIUX (wireframe screen), Designs (palette), Graphics (layer stack) and Pipelines (kanban stages with a card in transit). The user accepted the set after one Pipelines redraw. The superseded orange Clients and purple Content files are kept only as history; never use them for current identity.
 
 The construction uses a 96-unit tile with radius 24, an 8-unit grid and a 16-unit safe margin. Main shapes are solid white; supporting shapes use 55% white. Cutouts reveal the tile colour. Keep the geometry simple and avoid gradients.
 
@@ -38,5 +38,6 @@ Use the local Lucide icon set for interface actions. Product marks are product i
 - [Logo usage and exact asset conventions](../references/00029-docs-logos-md.md) — load when placing a product mark, suite lockup or favicon.
 - [Complete iconography rules](../references/00028-docs-iconography-md.md) — load when choosing, sizing or adding an interface icon.
 - [Local marks, icons and brand screenshots](../references/00077-officepress-visual-asset-map.md) — load when needing actual visual files.
+- [Product Marks revision](../references/00396-officepress-product-marks-revision.md) — load for the meaning and tile IDs of the five new marks, the family moves, the revised kit files and where the superseded originals are kept.
 - [Native mark construction and symbol explanations](../references/00075-officepress-pencil-design-map.md) — load when reviewing product-mark geometry, suite logo construction or design annotations.
 - [Lucide and Feather license notices](../references/00035-icons-license.md) — load when redistributing supplied icons or reconstructing the kit.

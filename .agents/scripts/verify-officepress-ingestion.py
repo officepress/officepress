@@ -157,9 +157,10 @@ def verify_source_archives(root: Path, manifest: dict, recovered: dict[str, byte
 
 def verify_generated_favicons(root: Path, manifest: dict) -> set[str]:
     """Account for 16px ICO derivatives without adding them to source inventory."""
-    sources = {entry['path'] for entry in manifest['resources']
+    marks = re.compile(r'^resources/(officepress-kit|officepress-history/[^/]+)/logos/products/[^/]+/[^/]+\.svg$')
+    sources = {entry['path'] for entry in manifest['resources'] + manifest.get('revised_resources', [])
                if entry['path'] == 'resources/officepress-kit/logos/officepress/favicon.svg'
-               or entry['path'].startswith('resources/officepress-kit/logos/products/')}
+               or marks.match(entry['path'])}
     mapped = set()
     paths = set()
     for entry in manifest['generated_favicons']:
@@ -177,6 +178,23 @@ def verify_generated_favicons(root: Path, manifest: dict) -> set[str]:
         mapped.add(source)
         paths.add(path)
     assert mapped == sources, 'Missing generated favicon for a source mark'
+    return paths
+
+
+def verify_revised_resources(root: Path, manifest: dict) -> set[str]:
+    """Current kit files revised after ingestion; superseded originals stay recoverable as resources."""
+    originals = {entry['source']: entry for entry in manifest['resources']}
+    paths = set()
+    for entry in manifest.get('revised_resources', []):
+        path = entry['path']
+        assert path.startswith('resources/officepress-kit/') and path not in paths, 'Invalid revised resource: ' + path
+        data = (root / path).read_bytes()
+        assert sha(data) == entry['sha256'] and len(data) == entry['bytes'], 'Revised resource mismatch: ' + path
+        superseded = entry['supersedes']
+        if superseded is not None:
+            original = originals[superseded]
+            assert original['path'] != path and original['path'].startswith('resources/officepress-history/'), 'Superseded original not preserved: ' + superseded
+        paths.add(path)
     return paths
 
 
@@ -212,6 +230,7 @@ def main() -> None:
                 assert hashlib.file_digest(stream, 'sha256').hexdigest() == entry['sha256'], 'Original asset drift: ' + entry['source']
     archive_paths = verify_source_archives(root, manifest, recovered)
     favicon_paths = verify_generated_favicons(root, manifest)
+    revised_paths = verify_revised_resources(root, manifest)
     for entry in manifest['drafts']:
         assert sha((root / entry['path']).read_bytes()) == entry['sha256'], 'Accepted input record changed: ' + entry['path']
     current_nodes = design_nodes(root, manifest)
@@ -222,7 +241,7 @@ def main() -> None:
     assert len(ids) == len(set(ids)), 'Duplicate source disposition'
     assert sum(i.startswith('kit/') for i in ids) == 263, 'Kit inventory count'
     actual_resources = {str(p.relative_to(root)) for p in (root / 'resources').rglob('*') if p.is_file()}
-    assert actual_resources == {r['path'] for r in manifest['resources']} | archive_paths | favicon_paths, 'Unaccounted resource files'
+    assert actual_resources == {r['path'] for r in manifest['resources']} | archive_paths | favicon_paths | revised_paths, 'Unaccounted resource files'
     assert len(re.findall(r'^## (?!Project and brand)', (root / manifest['drafts'][1]['path']).read_text(), re.M)) == 23, 'User product descriptions'
     if args.reconstruct:
         out = args.reconstruct.expanduser().resolve()
@@ -241,6 +260,7 @@ def main() -> None:
     print(f'PASS: {len(recovered)} exact text/code sources; {len(manifest["resources"])} exact native/visual resources; {len(manifest["excluded"])} explicit metadata exclusions.')
     print(f'PASS: {len(archive_paths)} requested CSS/JS/template archives match their complete reference content.')
     print(f'PASS: {len(favicon_paths)} derived 16x16 ICO favicons match their recorded sources and hashes.')
+    print(f'PASS: {len(revised_paths)} revised kit resources match their hashes; superseded originals remain recoverable.')
     print(f'PASS: {history_count} prior design extraction revisions recover exactly from local history.')
     d = manifest['design']
     print(f'PASS: {d["node_count"]} design nodes, {d["text_node_count"]} content nodes, {d["variable_count"]} variables; 23 complete user product descriptions.')

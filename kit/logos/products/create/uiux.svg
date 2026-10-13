@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="uiux">
+<defs>
+<clipPath id="op-uiux-c">
+<rect width="96" height="96" rx="24"/>
+</clipPath>
+</defs>
+<g clip-path="url(#op-uiux-c)">
+<rect width="96" height="96" fill="#6A3BE4"/>
+<rect x="40" y="24" width="40" height="48" rx="7" fill="#FFFFFF" fill-opacity="0.55"/>
+<rect x="16" y="16" width="52" height="64" rx="8" fill="#FFFFFF"/>
+<rect x="23" y="23" width="38" height="26" rx="3" fill="#6A3BE4"/>
+<path d="M26 26L58 46M58 26L26 46" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+<rect x="23" y="56" width="30" height="5" rx="2.5" fill="#6A3BE4"/>
+<rect x="23" y="66" width="18" height="7" rx="3.5" fill="#6A3BE4"/>
+</g>
+</svg>

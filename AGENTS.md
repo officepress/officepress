@@ -42,6 +42,8 @@ python3 .agents/scripts/verify-officepress-ingestion.py
 python3 .agents/scripts/verify-stackpress-ingestion.py
 ```
 
+After changing product marks, logos or favicons in `.agents/resources/officepress-kit/` or the repository `kit/` folder, also run `python3 .agents/scripts/verify-kit-mirror.py`. It requires `kit/logos` and `kit/icons` to mirror the KB copies byte for byte, each SVG to have a PNG export at its declared size, and the product marks to match the `brand.md` family table.
+
 After authored app-shell/common-components plugin changes, also run:
 
 ```bash

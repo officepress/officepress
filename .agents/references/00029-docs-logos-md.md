@@ -8,6 +8,8 @@ Read [source authority and corrections](00078-officepress-source-decisions.md) �
 
 [Complete local kit map](00074-officepress-kit-source-map.md) — load when following a source-relative path or locating a related implementation.
 
+This source predates the 2026-10-13 [Product Marks revision](00396-officepress-product-marks-revision.md). Its "23 apps" family table is historical. Current membership and marks: Clients is in communicate, Content in operate, create adds context · uiux · designs · graphics, and operate adds pipelines (28 apps). [Brand identity](../context/brand.md) owns the current list.
+
 <!-- officepress-source:start -->
 # Logos
 

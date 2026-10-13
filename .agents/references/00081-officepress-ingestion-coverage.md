@@ -33,17 +33,21 @@ The requested source comparison passes. A broader `--compare-originals` check on
 
 The user replaced the repository Pencil file and requested KB reconciliation. The [About menu revision receipt](00360-officepress-about-menu-revision.md) records the current file hash, source deltas and lossless prior-record recovery. This supersedes the earlier external-file drift note above: the repository native file is now the authoritative input, and the Documents copy is no longer the comparison target for Pencil. Historical kit source files and visual assets are unchanged.
 
+## Product Marks and kit revision on 2026-10-13
+
+The user asked for the Product Marks board, the kit, the repository `kit/` copy and the `docs/` site to follow the product catalogue correction. The [Product Marks revision receipt](00396-officepress-product-marks-revision.md) records the native hash, the 42 changed, 1 removed and 67 added design nodes, and lossless prior-record recovery. In the kit, eight current files are recorded as `revised_resources` (seven product SVGs and the board screenshot), plus seven matching ICOs. The five supplied originals they replace (two SVGs, two ICOs and one screenshot) are preserved byte for byte under `resources/officepress-history/2026-10-13-product-marks/`, keeping their `kit/` source identities. The 263-file kit inventory, 24 source archives and all text sources are unchanged.
+
 ## Native design extraction
 
 | Item | Count / disposition |
 |---|---|
 | Root frames | 18 |
 | Reusable components | 11 |
-| Resolved nodes | 8,761 |
-| Nodes with content | 2,809 |
+| Resolved nodes | 8,827 |
+| Nodes with content | 2,819 |
 | Variables | 205, including all themed values and legacy namespaces |
 | Theme axes | mode: light/dark; family: communicate/create/operate/commerce |
-| Extracted node references | 89 cohesive screen/component sections |
+| Extracted node references | 90 cohesive screen/component sections |
 | Variable references | 21 namespaces |
 
 The design API supplied node IDs, parent/root identity, type/name, text, context, reusable flags, themes, references and non-geometry properties. Instances were resolved to preserve inherited content. Each extracted record and variable definition can be reconstructed and hash-checked from the reference tables. The native file retains vector path geometry, authored component overrides and original file serialization; those are not claimed to round-trip through the extracted table format.
@@ -59,7 +63,7 @@ python3 .agents/scripts/validate-agent-workspace.py
 python3 .agents/scripts/verify-officepress-ingestion.py
 ```
 
-The default fidelity verifier reads no external source. It reconstructs every text file, compares its original hash/byte count, checks all local visual/native hashes and source-archive equality with the recovered reference content, verifies unique source dispositions and exact design-node/variable coverage, and checks all 23 complete product descriptions.
+The default fidelity verifier reads no external source. It reconstructs every text file, compares its original hash/byte count, checks all local visual/native hashes, source-archive equality with the recovered reference content, revised kit resources and the preservation of the originals they supersede, verifies unique source dispositions and exact design-node/variable coverage, and checks all 23 complete product descriptions.
 
 Optional source comparison, when the original supplied files still exist:
 
