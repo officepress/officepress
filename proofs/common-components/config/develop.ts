@@ -7,7 +7,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 //client
 import { bootstrap as createServer } from '../tests/bootstrap.js';
-import { cwd, client, database } from './common.js';
+import { cwd, client, database, server, view } from './common.js';
 import { settings } from './officepress.js';
 
 //--------------------------------------------------------------------//
@@ -24,19 +24,18 @@ export const config = {
   ...settings,
   cwd,
   cli: { idea: path.join(cwd, 'schema.idea') },
-  server: {
-    host: process.env.HOST || '127.0.0.1',
-    port: Number(process.env.PORT || 3000),
-    develop: { ignore: [ 'tests/evidence/**', 'migrations/**' ] }
-  },
+  server: { ...server, mode: 'development' },
   env: 'development' as const,
   client,
   database: database('development'),
   assets: path.join(cwd, 'public'),
   view: {
+    ...view,
+    production: false,
     basePath: '/',
     clientRoute: '/client',
     cssFiles: [ 'virtual:uno.css' ],
+    //prebundle virtual hydration imports before serving the first page
     optimizeDeps: {
       include: [
         'react',
@@ -51,6 +50,7 @@ export const config = {
       resolve: { dedupe: [ 'react', 'react-dom' ] },
       server: {
         middlewareMode: true,
+        //the CLI restarts backend code; disable an extra unmanaged HMR port
         hmr: false,
         watch: { ignored: [ '**/.build/database/**', '**/tests/evidence/**' ] }
       }

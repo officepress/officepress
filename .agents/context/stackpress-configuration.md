@@ -10,6 +10,34 @@ Supply client output/module/package/tsconfig and root Idea input. The researched
 
 Project only safe values into browser props. Do not serialize request cookies, authorization headers, database config or full private sessions. Authorization must protect each exposed HTTP/event/job boundary; `ctx.resolve()` is not proof of access control.
 
+## Explicit defaults in reusable baselines
+
+User decision, 2026-10-14: both maintained proofs spell out configuration
+defaults even when the framework can imply them, using the supplied local
+Stackpress `templates/blog/config` as the coverage reference. Paths, client,
+server and flat Reactus defaults belong in each proof's `config/common.ts`;
+identity/application and optional integration settings belong in
+`config/officepress.ts`. Command configs compose these owners and override
+development, build or production behavior explicitly.
+
+Correct: preserve the installed 0.10.8 defaults and existing OfficePress policy,
+with comments explaining unset SMTP/sender, MCP, desktop, captcha, domain/API
+scopes, endpoints, webhooks and permissions. Incorrect: copy blog data,
+credentials, public auth APIs, broad role grants, `view.engine` or toastify
+settings into this custom Ingest/Reactus shell. Empty/unset optional settings do
+not install plugins or establish working integrations. Development fixtures
+remain an explicit proof-only exception; adopters replace them with their own
+population plan. Generation, typecheck, build and the existing managed proof
+suites are the regression checks; this policy does not authorize MCP indexing.
+
+Observed 0.10.8 exception: `database.schema` documents the blog's CASCADE/RESTRICT
+options, but the installed `stackpress-sql/esm/transform/store/create.js` and
+`Migrations.js` use fixed defaults from `transform/helpers.js`. Changing that
+config block alone does not change generated foreign keys. `client.prettier`
+is consumed by `stackpress-schema/esm/scripts/generate.js` for the TypeScript
+branch; the JavaScript target uses compiler output. Keep these limitations
+visible in config comments rather than implying unsupported override behavior.
+
 - [Complete implementation contract](../references/00205-stackpress-officepress-contract.md) — load for full rules, lifecycle details, exceptions and accepted decisions.
 - [Stackpress handbook](stackpress.md) — load to find complete local API and specialist workflow references.
 

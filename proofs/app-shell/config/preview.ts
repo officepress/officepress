@@ -6,7 +6,8 @@ import { config as production } from './production.js';
 //--------------------------------------------------------------------//
 // Constants
 
-//configuration consumed by this module’s bootstrap/provider
+//inherit the complete built-serving defaults, including production rendering
+// only the local database changes; preview does not use production PostgreSQL
 export const config = { ...production, database: database('development') };
 
 //--------------------------------------------------------------------//

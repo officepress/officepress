@@ -92,6 +92,15 @@ when finished. The proofs have independent databases and assigned ports.
 Development disables the extra HMR listener; restart/reload after changes.
 `dev:clean` removes only `node_modules/.vite`. No command deletes `.build`.
 
+The config files spell out shared server, generator, foreign-key, session,
+authentication, cookie and Reactus defaults for copying into another app.
+`config/common.ts` owns paths/tooling/rendering; `config/officepress.ts` owns
+identity and application settings. The blog template's admin/API menus, scopes,
+webhooks, SMTP, MCP and desktop integrations are empty or unset with adoption
+comments. Configuration alone does not register those optional plugins.
+Replace proof identity, secrets, marks and fixtures when adopting; choose each
+app's authorization and integration policy explicitly.
+
 `config/develop.ts` configures source rendering, `config/build.ts` rendering
 builds, `config/preview.ts` built local PGlite serving, and
 `config/production.ts` production PostgreSQL serving. `config/client.ts` shares
@@ -120,10 +129,17 @@ proof tests use fresh scratch directories and remove them after closing.
 yarn generate
 yarn typecheck
 yarn build
-devmetrics start --summary "Shell contract tests" -- 'PORT={port} OFFICEPRESS_FINAL_BUILD=1 yarn test'
+devmetrics start --summary "Shell contract tests" -- \
+  'PORT={port} OPENROUTER_TEST_KEY=unused-offline-proof-key OFFICEPRESS_FINAL_BUILD=1 yarn test'
 # Explicit optional live browser and model campaign (requires Chrome/provider key):
 devmetrics start --summary "Shell live model tests" -- 'PORT={port} OFFICEPRESS_FINAL_BUILD=1 OFFICEPRESS_LIVE_TESTS=1 yarn test'
 ```
+
+The normal suite uses a test-only placeholder key to register the agent while
+checking authentication and invalid input before any model call. A missing key
+correctly disables that capability in the application. Use a real provider key
+for the separately enabled live-model campaign; never copy the placeholder
+into an adopting app's credentials.
 
 `tests/plugins/all.test.ts` imports all existing plugin test modules plus the
 fixture action contract, and runs the shared proof runners sequentially. The
