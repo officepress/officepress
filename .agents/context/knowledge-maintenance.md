@@ -25,11 +25,13 @@ python3 .agents/scripts/verify-officepress-ingestion.py
 python3 .agents/scripts/verify-kit-mirror.py
 ```
 
-The second script reconstructs source content from local reference blocks, checks hashes and visual resources, compares the requested source-code archives with the recovered content, and verifies the extracted Pencil record/variable coverage. Its manifest is local deterministic-check data in `.agents/scripts/`, not a separate source-of-truth store.
+The second script reconstructs source content from local reference blocks, checks hashes and visual resources, compares the requested source-code archives with the recovered content, and verifies OPCD ZIP/member integrity, equality of native/extracted records and variable coverage. Its manifest is local deterministic-check data in `.agents/scripts/`, not a separate source-of-truth store.
 
 The third script is separate because it reads outside `.agents/`. It checks that the repository `kit/` folder mirrors the KB: `kit/logos` SVGs and `kit/icons` ICOs must be byte-identical to `resources/officepress-kit/logos` and `resources/officepress-kit/favicons`, every SVG needs a PNG export at its declared size, and the product marks must match the family table in [brand identity](brand.md). Update the KB copy first, then the `kit/` copy, then run it.
 
 ## Evidence and decisions
+
+- [OPCD migration, verification and User Preferences direction](../references/00399-officepress-opcd-user-preferences-direction.md) — load for the current native archive, preference scope, member inventory, extraction-method changes and recovery of prior snapshots.
 
 - [Current native design revision and recovery](../references/00360-officepress-about-menu-revision.md) — load when comparing About with historical Updates examples or checking prior design-record preservation.
 

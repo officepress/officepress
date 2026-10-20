@@ -2,9 +2,11 @@
 
 Owner: [Design source](../context/design-source.md). Load when you need the current product-mark set, the family moves, the new mark meanings, the revised kit files, or recovery of the earlier 23-mark board and assets.
 
+Current editable source: [OfficePress Designs OPCD](../resources/officepress-design/officepress.opcd). This is a dated revision receipt; its counts/hashes describe that revision. Load the [2026-10-20 migration and preferences direction](00399-officepress-opcd-user-preferences-direction.md) for current extraction details.
+
 ## Accepted current marks
 
-The user asked for the Product Marks board (`o8qxhR`) in the [repository Pencil source](../resources/officepress-design/officepress.pen) to match the 2026-10-13 [product catalogue](../context/products.md) correction. After reviewing the result, the user rejected the first Pipelines mark ("Expecting something like a kanban board or an actual pipeline"), accepted the redrawn kanban version, and asked for the kit and site to follow. The board now shows 28 marks: Communicate 7, Create 9, Operate 7, Commerce 5. The two `app-*` platform apps still have no family colour or mark.
+The user asked for the Product Marks board (`o8qxhR`) in the [repository OfficePress Designs source](../resources/officepress-design/officepress.opcd) to match the 2026-10-13 [product catalogue](../context/products.md) correction. After reviewing the result, the user rejected the first Pipelines mark ("Expecting something like a kanban board or an actual pipeline"), accepted the redrawn kanban version, and asked for the kit and site to follow. The board now shows 28 marks: Communicate 7, Create 9, Operate 7, Commerce 5. The two `app-*` platform apps still have no family colour or mark.
 
 | Mark | Family | Tile | Symbol and meaning (the card's "Idea" text) |
 |---|---|---|---|

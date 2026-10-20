@@ -2,7 +2,7 @@
 
 Owner: [Pencil design map](00075-officepress-pencil-design-map.md) — load when locating the screen, component or adjacent section.
 
-Source: native `officepress.pen`, extracted through the design API with resolved instances. Each row retains one node ID/path, parent, name/type, text or context, and all returned non-geometry properties. Text values preserve original spelling and line breaks; object values are JSON. Sample people, messages, versions and records are examples. Graphic path geometry remains in the native resource.
+Source: native `officepress.opcd`, extracted offline from its JSON frames with instances resolved and variables symbolic. Each row retains one node ID/path, parent, name/type, exact text/context and non-geometry properties. Samples remain examples; vector paths stay in the archive. See the [OPCD migration receipt](00399-officepress-opcd-user-preferences-direction.md) for extraction differences and lossless history.
 
 Apply [accepted corrections](00078-officepress-source-decisions.md) — load when using these design records as guidance.
 
@@ -39,7 +39,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | XZy30/yNYoj / XZy30/mHDmq | text / L | {"name":"L","content":"Office"} | {"fill":"$op-text","lineHeight":1,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700"} |
 | XZy30/BtB9h / XZy30 | frame / Tasks | {"name":"Tasks"} | {"width":"fill_container","layout":"vertical","gap":4} |
 | XZy30/SXbNY / XZy30/BtB9h | text / Label | {"name":"Label","content":"2 of 3 tasks"} | {"fill":"$op-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":11,"fontWeight":"normal"} |
-| XZy30/VwmkB / XZy30/BtB9h | frame / Track | {"name":"Track"} | {"width":"fill_container","height":4,"fill":"$op-tint-2","cornerRadius":999,"layout":"none"} |
+| XZy30/VwmkB / XZy30/BtB9h | frame / Track | {"name":"Track"} | {"width":"fill_container","height":4,"fill":"$op-tint-2","cornerRadius":999,"layout":"none","clip":true} |
 | XZy30/e1o9d4 / XZy30/VwmkB | rectangle / Fill | {"name":"Fill"} | {"cornerRadius":999,"x":0,"y":0,"fill":"$op-accent","width":140,"height":4} |
 | XZy30/O40Pl / XZy30 | frame / Footer | {"name":"Footer"} | {"width":"fill_container","stroke":"$op-border","strokeWidth":{"top":1},"gap":8,"padding":[8,0,0,0],"alignItems":"center"} |
 | XZy30/l0lBXw / XZy30/O40Pl | frame / Owner | {"name":"Owner"} | {"width":"fill_container","gap":4,"alignItems":"center"} |
@@ -66,11 +66,11 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | a5mFwF/w9AtP / a5mFwF | frame / Tags | {"name":"Tags"} | {"gap":4} |
 | a5mFwF/yIVLp / a5mFwF/w9AtP | frame / Tag 1 | {"name":"Tag 1"} | {"height":20,"cornerRadius":999,"stroke":"$op-border-strong","strokeWidth":1,"padding":[0,8],"alignItems":"center"} |
 | a5mFwF/JKAqm / a5mFwF/yIVLp | text / L | {"name":"L","content":"Remote"} | {"fill":"$op-text","lineHeight":1,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700"} |
-| a5mFwF/mHDmq / a5mFwF/w9AtP | frame / Tag 2 | {"name":"Tag 2"} | {"x":63,"y":0,"enabled":false,"height":20,"cornerRadius":999,"stroke":"$op-border-strong","strokeWidth":1,"padding":[0,8],"alignItems":"center"} |
+| a5mFwF/mHDmq / a5mFwF/w9AtP | frame / Tag 2 | {"name":"Tag 2"} | {"height":20,"cornerRadius":999,"stroke":"$op-border-strong","strokeWidth":1,"padding":[0,8],"alignItems":"center","enabled":false} |
 | a5mFwF/yNYoj / a5mFwF/mHDmq | text / L | {"name":"L","content":"Remote"} | {"fill":"$op-text","lineHeight":1,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700"} |
 | a5mFwF/BtB9h / a5mFwF | frame / Tasks | {"name":"Tasks"} | {"width":"fill_container","layout":"vertical","gap":4} |
 | a5mFwF/SXbNY / a5mFwF/BtB9h | text / Label | {"name":"Label","content":"1 of 3 tasks"} | {"fill":"$op-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":11,"fontWeight":"normal"} |
-| a5mFwF/VwmkB / a5mFwF/BtB9h | frame / Track | {"name":"Track"} | {"width":"fill_container","height":4,"fill":"$op-tint-2","cornerRadius":999,"layout":"none"} |
+| a5mFwF/VwmkB / a5mFwF/BtB9h | frame / Track | {"name":"Track"} | {"width":"fill_container","height":4,"fill":"$op-tint-2","cornerRadius":999,"layout":"none","clip":true} |
 | a5mFwF/e1o9d4 / a5mFwF/VwmkB | rectangle / Fill | {"name":"Fill"} | {"cornerRadius":999,"x":0,"y":0,"fill":"$op-accent","width":70,"height":4} |
 | a5mFwF/O40Pl / a5mFwF | frame / Footer | {"name":"Footer"} | {"width":"fill_container","stroke":"$op-border","strokeWidth":{"top":1},"gap":8,"padding":[8,0,0,0],"alignItems":"center"} |
 | a5mFwF/l0lBXw / a5mFwF/O40Pl | frame / Owner | {"name":"Owner"} | {"width":"fill_container","gap":4,"alignItems":"center"} |

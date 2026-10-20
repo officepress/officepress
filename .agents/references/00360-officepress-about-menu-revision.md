@@ -2,9 +2,11 @@
 
 Owner: [Design source](../context/design-source.md). Load when reconciling current app settings with earlier Updates screens, or auditing preservation of the user's native design edit.
 
+Current editable source: [OfficePress Designs OPCD](../resources/officepress-design/officepress.opcd). This is a dated revision receipt; its counts/hashes describe that revision. Load the [2026-10-20 migration and preferences direction](00399-officepress-opcd-user-preferences-direction.md) for current extraction details.
+
 ## Accepted current behavior
 
-The user updated the [repository Pencil source](../resources/officepress-design/officepress.pen) and said: “I mainly cleaned up the menu. Updates are now About.” App Settings now has two tabs: **About** and **Theme**. About contains the installed version, updates and change log; its status section is labelled **Version and updates**. Removed navigation examples include General, Members, Agent, Integrations and Notifications. This menu cleanup does not remove the agent or notifications from the app header.
+The user updated the [repository OfficePress Designs source](../resources/officepress-design/officepress.opcd) and said: “I mainly cleaned up the menu. Updates are now About.” App Settings now has two tabs: **About** and **Theme**. About contains the installed version, updates and change log; its status section is labelled **Version and updates**. Removed navigation examples include General, Members, Agent, Integrations and Notifications. This menu cleanup does not remove the agent or notifications from the app header.
 
 The user separately requires Agent and Notification settings in Stackpress config. Do not recreate configuration tabs for those settings. Keys, types, provider adapters and public projections are to be defined and verified in the proof spec; they are not claimed to be existing Stackpress built-ins.
 
@@ -21,7 +23,7 @@ Upgrade scope was clarified as “Version checks and upgrade instructions for th
 
 ## Lossless extraction receipt
 
-Read through the Pencil API with instances resolved, variables retained symbolically and path geometry excluded. Removed API elision placeholders for geometry; they are not source data. Native geometry stays in the .pen file, which this KB update does not edit.
+Read through the Pencil API with instances resolved, variables retained symbolically and path geometry excluded. Removed API elision placeholders for geometry; they are not source data. Native geometry stays in the editable archive; this dated update did not edit its predecessor.
 
 | Measure | Before | Current |
 |---|---:|---:|

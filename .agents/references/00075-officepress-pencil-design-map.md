@@ -1,6 +1,6 @@
-# Pencil design map
+# OfficePress design map
 
-Read the relevant context first. This map routes complete text and node-property extraction from the native design. Node IDs, parent relationships, theme assignments and inherited instance paths are retained. Geometry and authored native structure remain in the [local editable Pencil file](../resources/officepress-design/officepress.pen).
+Read the relevant context first. This map routes complete text and node-property extraction from the native design. Node IDs, parent relationships, theme assignments and inherited instance paths are retained. Geometry and authored native structure remain in the [local editable OfficePress Designs archive](../resources/officepress-design/officepress.opcd).
 
 [Product Marks revision and prior-record recovery](00396-officepress-product-marks-revision.md) — load when comparing the 28-mark board with the earlier 23-mark board.
 
@@ -90,6 +90,8 @@ Read the relevant context first. This map routes complete text and node-property
 - [C · Agent Panel · Empty](00122-pencil-c-agent-panel-empty-c-agent-panel-empty.md) — load when inspecting this component or screen section in detail.
 
 ## OfficePress App Layout (`WASH2`)
+
+- [User preferences — Language and Time zone](00401-officepress-user-preferences-design-records.md) — load for all 113 new resolved records, including header, separate navigation items, per-card previews/actions and caption; interpret through the [creative direction](00399-officepress-opcd-user-preferences-direction.md).
 
 - [OfficePress App Layout — frame](00123-pencil-officepress-app-layout-officepress-app-layout-frame.md) — load when inspecting this component or screen section in detail.
 - [OfficePress App Layout  ›  Section · Left aside  ›  Screens  ›  Shot · Desktop · Aside expanded  ›  Desktop · Aside expanded  ›  Main](00124-pencil-officepress-app-layout-main.md) — load when inspecting this component or screen section in detail.

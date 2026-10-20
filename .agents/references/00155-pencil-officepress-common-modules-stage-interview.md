@@ -2,7 +2,7 @@
 
 Owner: [Pencil design map](00075-officepress-pencil-design-map.md) — load when locating the screen, component or adjacent section.
 
-Source: native `officepress.pen`, extracted through the design API with resolved instances. Each row retains one node ID/path, parent, name/type, text or context, and all returned non-geometry properties. Text values preserve original spelling and line breaks; object values are JSON. Sample people, messages, versions and records are examples. Graphic path geometry remains in the native resource.
+Source: native `officepress.opcd`, extracted offline from its JSON frames with instances resolved and variables symbolic. Each row retains one node ID/path, parent, name/type, exact text/context and non-geometry properties. Samples remain examples; vector paths stay in the archive. See the [OPCD migration receipt](00399-officepress-opcd-user-preferences-direction.md) for extraction differences and lossless history.
 
 Apply [accepted corrections](00078-officepress-source-decisions.md) — load when using these design records as guidance.
 
@@ -39,7 +39,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | zGaen/yNYoj / zGaen/mHDmq | text / L | {"name":"L","content":"Remote"} | {"fill":"$op-text","lineHeight":1,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700"} |
 | zGaen/BtB9h / zGaen | frame / Tasks | {"name":"Tasks"} | {"width":"fill_container","layout":"vertical","gap":4} |
 | zGaen/SXbNY / zGaen/BtB9h | text / Label | {"name":"Label","content":"2 of 3 tasks"} | {"fill":"$op-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":11,"fontWeight":"normal"} |
-| zGaen/VwmkB / zGaen/BtB9h | frame / Track | {"name":"Track"} | {"width":"fill_container","height":4,"fill":"$op-tint-2","cornerRadius":999,"layout":"none"} |
+| zGaen/VwmkB / zGaen/BtB9h | frame / Track | {"name":"Track"} | {"width":"fill_container","height":4,"fill":"$op-tint-2","cornerRadius":999,"layout":"none","clip":true} |
 | zGaen/e1o9d4 / zGaen/VwmkB | rectangle / Fill | {"name":"Fill"} | {"cornerRadius":999,"x":0,"y":0,"fill":"$op-accent","width":140,"height":4} |
 | zGaen/O40Pl / zGaen | frame / Footer | {"name":"Footer"} | {"width":"fill_container","stroke":"$op-border","strokeWidth":{"top":1},"gap":8,"padding":[8,0,0,0],"alignItems":"center"} |
 | zGaen/l0lBXw / zGaen/O40Pl | frame / Owner | {"name":"Owner"} | {"width":"fill_container","gap":4,"alignItems":"center"} |
@@ -66,12 +66,12 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | p88DTu/w9AtP / p88DTu | frame / Tags | {"name":"Tags"} | {"gap":4} |
 | p88DTu/yIVLp / p88DTu/w9AtP | frame / Tag 1 | {"name":"Tag 1"} | {"height":20,"cornerRadius":999,"stroke":"$op-border-strong","strokeWidth":1,"padding":[0,8],"alignItems":"center"} |
 | p88DTu/JKAqm / p88DTu/yIVLp | text / L | {"name":"L","content":"Referral"} | {"fill":"$op-text","lineHeight":1,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700"} |
-| p88DTu/mHDmq / p88DTu/w9AtP | frame / Tag 2 | {"name":"Tag 2"} | {"x":63,"y":0,"enabled":false,"height":20,"cornerRadius":999,"stroke":"$op-border-strong","strokeWidth":1,"padding":[0,8],"alignItems":"center"} |
+| p88DTu/mHDmq / p88DTu/w9AtP | frame / Tag 2 | {"name":"Tag 2"} | {"height":20,"cornerRadius":999,"stroke":"$op-border-strong","strokeWidth":1,"padding":[0,8],"alignItems":"center","enabled":false} |
 | p88DTu/yNYoj / p88DTu/mHDmq | text / L | {"name":"L","content":"Remote"} | {"fill":"$op-text","lineHeight":1,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700"} |
 | p88DTu/BtB9h / p88DTu | frame / Tasks | {"name":"Tasks"} | {"width":"fill_container","layout":"vertical","gap":4} |
 | p88DTu/SXbNY / p88DTu/BtB9h | text / Label | {"name":"Label","content":"3 of 3 tasks"} | {"fill":"$op-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":11,"fontWeight":"normal"} |
-| p88DTu/VwmkB / p88DTu/BtB9h | frame / Track | {"name":"Track"} | {"width":"fill_container","height":4,"fill":"$op-tint-2","cornerRadius":999,"layout":"none"} |
-| p88DTu/e1o9d4 / p88DTu/VwmkB | rectangle / Fill | {"name":"Fill"} | {"cornerRadius":999,"x":0,"y":0,"fill":"$op-accent","width":196,"height":4} |
+| p88DTu/VwmkB / p88DTu/BtB9h | frame / Track | {"name":"Track"} | {"width":"fill_container","height":4,"fill":"$op-tint-2","cornerRadius":999,"layout":"none","clip":true} |
+| p88DTu/e1o9d4 / p88DTu/VwmkB | rectangle / Fill | {"name":"Fill"} | {"cornerRadius":999,"x":0,"y":0,"fill":"$op-accent","width":163,"height":4} |
 | p88DTu/O40Pl / p88DTu | frame / Footer | {"name":"Footer"} | {"width":"fill_container","stroke":"$op-border","strokeWidth":{"top":1},"gap":8,"padding":[8,0,0,0],"alignItems":"center"} |
 | p88DTu/l0lBXw / p88DTu/O40Pl | frame / Owner | {"name":"Owner"} | {"width":"fill_container","gap":4,"alignItems":"center"} |
 | p88DTu/Kim3Z / p88DTu/l0lBXw | frame / Owner Avatar | {"name":"Owner Avatar"} | {"width":20,"height":20,"fill":"$op-sunken","cornerRadius":999,"stroke":"$op-border","strokeWidth":1,"justifyContent":"center","alignItems":"center"} |
@@ -111,11 +111,11 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | T0iPI/w9AtP / T0iPI | frame / Tags | {"name":"Tags"} | {"gap":4} |
 | T0iPI/yIVLp / T0iPI/w9AtP | frame / Tag 1 | {"name":"Tag 1"} | {"height":20,"cornerRadius":999,"stroke":"$op-border-strong","strokeWidth":1,"padding":[0,8],"alignItems":"center"} |
 | T0iPI/JKAqm / T0iPI/yIVLp | text / L | {"name":"L","content":"Leadership"} | {"fill":"$op-text","lineHeight":1,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700"} |
-| T0iPI/mHDmq / T0iPI/w9AtP | frame / Tag 2 | {"name":"Tag 2"} | {"x":63,"y":0,"enabled":false,"height":20,"cornerRadius":999,"stroke":"$op-border-strong","strokeWidth":1,"padding":[0,8],"alignItems":"center"} |
+| T0iPI/mHDmq / T0iPI/w9AtP | frame / Tag 2 | {"name":"Tag 2"} | {"height":20,"cornerRadius":999,"stroke":"$op-border-strong","strokeWidth":1,"padding":[0,8],"alignItems":"center","enabled":false} |
 | T0iPI/yNYoj / T0iPI/mHDmq | text / L | {"name":"L","content":"Remote"} | {"fill":"$op-text","lineHeight":1,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700"} |
 | T0iPI/BtB9h / T0iPI | frame / Tasks | {"name":"Tasks"} | {"width":"fill_container","layout":"vertical","gap":4} |
 | T0iPI/SXbNY / T0iPI/BtB9h | text / Label | {"name":"Label","content":"3 of 4 tasks"} | {"fill":"$op-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":11,"fontWeight":"normal"} |
-| T0iPI/VwmkB / T0iPI/BtB9h | frame / Track | {"name":"Track"} | {"width":"fill_container","height":4,"fill":"$op-tint-2","cornerRadius":999,"layout":"none"} |
+| T0iPI/VwmkB / T0iPI/BtB9h | frame / Track | {"name":"Track"} | {"width":"fill_container","height":4,"fill":"$op-tint-2","cornerRadius":999,"layout":"none","clip":true} |
 | T0iPI/e1o9d4 / T0iPI/VwmkB | rectangle / Fill | {"name":"Fill"} | {"cornerRadius":999,"x":0,"y":0,"fill":"$op-accent","width":150,"height":4} |
 | T0iPI/O40Pl / T0iPI | frame / Footer | {"name":"Footer"} | {"width":"fill_container","stroke":"$op-border","strokeWidth":{"top":1},"gap":8,"padding":[8,0,0,0],"alignItems":"center"} |
 | T0iPI/l0lBXw / T0iPI/O40Pl | frame / Owner | {"name":"Owner"} | {"width":"fill_container","gap":4,"alignItems":"center"} |

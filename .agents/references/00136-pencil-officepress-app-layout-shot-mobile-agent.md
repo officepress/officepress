@@ -2,7 +2,7 @@
 
 Owner: [Pencil design map](00075-officepress-pencil-design-map.md) — load when locating the screen, component or adjacent section.
 
-Source: native `officepress.pen`, extracted through the design API with resolved instances. Each row retains one node ID/path, parent, name/type, text or context, and all returned non-geometry properties. Text values preserve original spelling and line breaks; object values are JSON. Sample people, messages, versions and records are examples. Graphic path geometry remains in the native resource.
+Source: native `officepress.opcd`, extracted offline from its JSON frames with instances resolved and variables symbolic. Each row retains one node ID/path, parent, name/type, exact text/context and non-geometry properties. Samples remain examples; vector paths stay in the archive. See the [OPCD migration receipt](00399-officepress-opcd-user-preferences-direction.md) for extraction differences and lossless history.
 
 Apply [accepted corrections](00078-officepress-source-decisions.md) — load when using these design records as guidance.
 
@@ -90,7 +90,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | igTNR/U0MoE / igTNR/IO0xC | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"square-pen","library":"lucide","fill":"$op-text-2"} |
 | igTNR/dODrf / igTNR/M23iCx | frame / History | {"name":"History"} | {"width":32,"height":32,"cornerRadius":4,"justifyContent":"center","alignItems":"center"} |
 | igTNR/g5Nu8M / igTNR/dODrf | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"history","library":"lucide","fill":"$op-text-2"} |
-| igTNR/inHNO / igTNR/M23iCx | frame / Expand | {"name":"Expand"} | {"x":316,"y":12,"enabled":false,"width":32,"height":32,"cornerRadius":4,"justifyContent":"center","alignItems":"center"} |
+| igTNR/inHNO / igTNR/M23iCx | frame / Expand | {"name":"Expand"} | {"width":32,"height":32,"cornerRadius":4,"justifyContent":"center","alignItems":"center","enabled":false} |
 | igTNR/HU04B / igTNR/inHNO | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"maximize-2","library":"lucide","fill":"$op-text-2"} |
 | igTNR/s0xYZ / igTNR/M23iCx | frame / Close | {"name":"Close"} | {"width":32,"height":32,"cornerRadius":4,"justifyContent":"center","alignItems":"center"} |
 | igTNR/x3Qdpj / igTNR/s0xYZ | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"x","library":"lucide","fill":"$op-text-2"} |

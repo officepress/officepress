@@ -2,7 +2,7 @@
 
 Owner: [Pencil design map](00075-officepress-pencil-design-map.md) — load when locating the screen, component or adjacent section.
 
-Source: native `officepress.pen`, extracted through the design API with resolved instances. Each row retains one node ID/path, parent, name/type, text or context, and all returned non-geometry properties. Text values preserve original spelling and line breaks; object values are JSON. Sample people, messages, versions and records are examples. Graphic path geometry remains in the native resource.
+Source: native `officepress.opcd`, extracted offline from its JSON frames with instances resolved and variables symbolic. Each row retains one node ID/path, parent, name/type, exact text/context and non-geometry properties. Samples remain examples; vector paths stay in the archive. See the [OPCD migration receipt](00399-officepress-opcd-user-preferences-direction.md) for extraction differences and lossless history.
 
 Apply [accepted corrections](00078-officepress-source-decisions.md) — load when using these design records as guidance.
 
@@ -32,25 +32,25 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | tJlIc/wr1HS / tJlIc/Bi3Oq | frame / Nav Inbox | {"name":"Nav Inbox"} | {"width":"fill_container","height":36,"fill":"#00000000","cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center"} |
 | tJlIc/oUd2W / tJlIc/wr1HS | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"network","library":"lucide","fill":"$op-nav-text-2"} |
 | tJlIc/Gy4RX / tJlIc/wr1HS | text / Label | {"name":"Label","content":"Organization"} | {"fill":"$op-nav-text-2","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
-| tJlIc/A98xQ / tJlIc/wr1HS | ellipse / Dot | {"name":"Dot"} | {"x":208,"y":14,"enabled":false,"fill":"$op-nav-dot","width":8,"height":8} |
+| tJlIc/A98xQ / tJlIc/wr1HS | ellipse / Dot | {"name":"Dot"} | {"fill":"$op-nav-dot","width":8,"height":8,"enabled":false} |
 | tJlIc/r98DX / tJlIc/Bi3Oq | frame / Nav Starred | {"name":"Nav Starred"} | {"width":"fill_container","height":36,"fill":"#00000000","cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center"} |
 | tJlIc/o2KTfe / tJlIc/r98DX | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"users","library":"lucide","fill":"$op-nav-text-2"} |
 | tJlIc/DHPdR / tJlIc/r98DX | text / Label | {"name":"Label","content":"Personnel"} | {"fill":"$op-nav-text-2","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
-| tJlIc/kvxW2 / tJlIc/r98DX | ellipse / Dot | {"name":"Dot"} | {"x":208,"y":14,"enabled":false,"fill":"$op-nav-dot","width":8,"height":8} |
+| tJlIc/kvxW2 / tJlIc/r98DX | ellipse / Dot | {"name":"Dot"} | {"fill":"$op-nav-dot","width":8,"height":8,"enabled":false} |
 | tJlIc/Z9t8jA / tJlIc/Bi3Oq | frame / Nav Sent | {"name":"Nav Sent"} | {"width":"fill_container","height":36,"fill":"#00000000","cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center"} |
 | tJlIc/O3OPw6 / tJlIc/Z9t8jA | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"clipboard-check","library":"lucide","fill":"$op-nav-text-2"} |
 | tJlIc/EcutZ / tJlIc/Z9t8jA | text / Label | {"name":"Label","content":"Assignments"} | {"fill":"$op-nav-text-2","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
 | tJlIc/aFxaX / tJlIc/Bi3Oq | frame / Nav Drafts | {"name":"Nav Drafts"} | {"width":"fill_container","height":36,"fill":"$op-nav-active","cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center"} |
 | tJlIc/xQdsD / tJlIc/aFxaX | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"kanban","library":"lucide","fill":"$op-nav-text"} |
 | tJlIc/z1e6sO / tJlIc/aFxaX | text / Label | {"name":"Label","content":"Workflows"} | {"fill":"$op-nav-text","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"700"} |
-| tJlIc/rszAx / tJlIc/aFxaX | text / Count | {"name":"Count","content":"2"} | {"x":208,"y":9,"enabled":false,"fill":"$op-nav-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
+| tJlIc/rszAx / tJlIc/aFxaX | text / Count | {"name":"Count","content":"2"} | {"fill":"$op-nav-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700","enabled":false} |
 | tJlIc/ePSXn / tJlIc/Bi3Oq | frame / Nav Archive | {"name":"Nav Archive"} | {"width":"fill_container","height":36,"fill":"#00000000","cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center"} |
 | tJlIc/BSLwH / tJlIc/ePSXn | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"briefcase","library":"lucide","fill":"$op-nav-text-2"} |
 | tJlIc/FrOSh / tJlIc/ePSXn | text / Label | {"name":"Label","content":"Careers"} | {"fill":"$op-nav-text-2","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
-| tJlIc/e76XGD / tJlIc/Bi3Oq | frame / Nav Spam | {"name":"Nav Spam"} | {"x":0,"y":221,"enabled":false,"width":"fill_container(228)","height":36,"cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center"} |
+| tJlIc/e76XGD / tJlIc/Bi3Oq | frame / Nav Spam | {"name":"Nav Spam"} | {"width":"fill_container","height":36,"cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center","enabled":false} |
 | tJlIc/jBNNf / tJlIc/e76XGD | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"octagon-alert","library":"lucide","fill":"$op-nav-text-2"} |
 | tJlIc/l5SsD / tJlIc/e76XGD | text / Label | {"name":"Label","content":"Spam"} | {"fill":"$op-nav-text-2","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
-| tJlIc/X3qjt / tJlIc/Bi3Oq | frame / Nav All Mail | {"name":"Nav All Mail"} | {"x":0,"y":261,"enabled":false,"width":"fill_container(228)","height":36,"cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center"} |
+| tJlIc/X3qjt / tJlIc/Bi3Oq | frame / Nav All Mail | {"name":"Nav All Mail"} | {"width":"fill_container","height":36,"cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center","enabled":false} |
 | tJlIc/f1c2yw / tJlIc/X3qjt | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"mails","library":"lucide","fill":"$op-nav-text-2"} |
 | tJlIc/D6ei92 / tJlIc/X3qjt | text / Label | {"name":"Label","content":"All Mail"} | {"fill":"$op-nav-text-2","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
 | tJlIc/XcWKh / tJlIc | frame / Section FILTERS | {"name":"Section FILTERS"} | {"width":"fill_container","layout":"vertical","gap":4} |
@@ -58,15 +58,15 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | tJlIc/UlEfD / tJlIc/XcWKh | frame / Nav Suppliers | {"name":"Nav Suppliers"} | {"width":"fill_container","height":36,"fill":"#00000000","cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center"} |
 | tJlIc/Foaq0 / tJlIc/UlEfD | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"file-text","library":"lucide","fill":"$op-nav-text-2"} |
 | tJlIc/XpOhP / tJlIc/UlEfD | text / Label | {"name":"Label","content":"Forms"} | {"fill":"$op-nav-text-2","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
-| tJlIc/lLJfZ / tJlIc/UlEfD | ellipse / Dot | {"name":"Dot"} | {"x":208,"y":14,"enabled":false,"fill":"$op-nav-dot","width":8,"height":8} |
+| tJlIc/lLJfZ / tJlIc/UlEfD | ellipse / Dot | {"name":"Dot"} | {"fill":"$op-nav-dot","width":8,"height":8,"enabled":false} |
 | tJlIc/E7ULBO / tJlIc/XcWKh | frame / Nav Invoices | {"name":"Nav Invoices"} | {"width":"fill_container","height":36,"fill":"#00000000","cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center"} |
 | tJlIc/ucDWU / tJlIc/E7ULBO | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"message-square","library":"lucide","fill":"$op-nav-text-2"} |
 | tJlIc/k6qoaw / tJlIc/E7ULBO | text / Label | {"name":"Label","content":"Messages"} | {"fill":"$op-nav-text-2","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
-| tJlIc/lCE61 / tJlIc/E7ULBO | ellipse / Dot | {"name":"Dot"} | {"x":208,"y":14,"enabled":false,"fill":"$op-nav-dot","width":8,"height":8} |
+| tJlIc/lCE61 / tJlIc/E7ULBO | ellipse / Dot | {"name":"Dot"} | {"fill":"$op-nav-dot","width":8,"height":8,"enabled":false} |
 | tJlIc/VSXP9 / tJlIc/XcWKh | frame / Nav Warehouse move | {"name":"Nav Warehouse move"} | {"width":"fill_container","height":36,"fill":"#00000000","cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center"} |
 | tJlIc/ESrDf / tJlIc/VSXP9 | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"files","library":"lucide","fill":"$op-nav-text-2"} |
 | tJlIc/G5QrjH / tJlIc/VSXP9 | text / Label | {"name":"Label","content":"Documents"} | {"fill":"$op-nav-text-2","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
-| tJlIc/eSee9 / tJlIc/XcWKh | frame / Nav Press schedule | {"name":"Nav Press schedule"} | {"x":0,"y":141,"enabled":false,"width":"fill_container(228)","height":36,"cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center"} |
+| tJlIc/eSee9 / tJlIc/XcWKh | frame / Nav Press schedule | {"name":"Nav Press schedule"} | {"width":"fill_container","height":36,"cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center","enabled":false} |
 | tJlIc/DMNjp / tJlIc/eSee9 | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"tag","library":"lucide","fill":"$op-nav-text-2"} |
 | tJlIc/Mjfq1 / tJlIc/eSee9 | text / Label | {"name":"Label","content":"Press schedule"} | {"fill":"$op-nav-text-2","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
 | tJlIc/sWYLg / tJlIc | frame / Spacer | {"name":"Spacer"} | {"width":"fill_container","height":"fill_container"} |
@@ -79,12 +79,12 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | qnIY5/v0pIr4 / qnIY5/NL2v5 | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"panel-left","library":"lucide","fill":"$op-text"} |
 | qnIY5/E8PtZC / qnIY5 | text / Page Title | {"name":"Page Title","content":"Automations"} | {"fill":"$op-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":16,"fontWeight":"700"} |
 | qnIY5/G3t23s / qnIY5 | frame / Spacer | {"name":"Spacer"} | {"width":"fill_container","height":1} |
-| qnIY5/dtuXO / qnIY5 | frame / Page Actions | {"name":"Page Actions"} | {"x":863,"y":14,"enabled":false,"gap":12,"alignItems":"center"} |
+| qnIY5/dtuXO / qnIY5 | frame / Page Actions | {"name":"Page Actions"} | {"gap":12,"alignItems":"center","enabled":false} |
 | qnIY5/H5cU4B / qnIY5/dtuXO | frame / View Switch | {"name":"View Switch"} | {"height":36,"fill":"$op-surface","cornerRadius":4,"stroke":"$op-border-strong","strokeWidth":1,"gap":8,"padding":[0,12],"alignItems":"center"} |
 | qnIY5/I7kF1e / qnIY5/H5cU4B | icon / Icon | {"name":"Icon"} | {"width":15,"height":15,"icon":"columns-3","library":"lucide","fill":"$op-text"} |
 | qnIY5/vQMp0 / qnIY5/H5cU4B | text / Label | {"name":"Label","content":"Board"} | {"fill":"$op-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"700"} |
 | qnIY5/qS8da / qnIY5/H5cU4B | icon / Chevron | {"name":"Chevron"} | {"width":15,"height":15,"icon":"chevron-down","library":"lucide","fill":"$op-text"} |
-| qnIY5/f6Nm4U / qnIY5 | rectangle / Divider | {"name":"Divider"} | {"x":983,"y":20,"enabled":false,"fill":"$op-border","width":1,"height":24} |
+| qnIY5/f6Nm4U / qnIY5 | rectangle / Divider | {"name":"Divider"} | {"fill":"$op-border","width":1,"height":24,"enabled":false} |
 | qnIY5/BTxZN / qnIY5 | frame / Global Actions | {"name":"Global Actions"} | {"gap":8,"alignItems":"center"} |
 | qnIY5/fawPG / qnIY5/BTxZN | frame / Notifications Button | {"name":"Notifications Button"} | {"width":36,"height":36,"fill":"$op-surface","cornerRadius":999,"stroke":"$op-border-strong","strokeWidth":1,"layout":"none"} |
 | qnIY5/MT9A7 / qnIY5/fawPG | icon / Icon | {"name":"Icon"} | {"x":10,"y":10,"width":16,"height":16,"icon":"bell","library":"lucide","fill":"$op-text"} |

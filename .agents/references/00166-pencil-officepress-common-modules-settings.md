@@ -2,7 +2,7 @@
 
 Owner: [Pencil design map](00075-officepress-pencil-design-map.md) — load when locating the screen, component or adjacent section.
 
-Source: native `officepress.pen`, extracted through the design API with resolved instances. Each row retains one node ID/path, parent, name/type, text or context, and all returned non-geometry properties. Text values preserve original spelling and line breaks; object values are JSON. Sample people, messages, versions and records are examples. Graphic path geometry remains in the native resource.
+Source: native `officepress.opcd`, extracted offline from its JSON frames with instances resolved and variables symbolic. Each row retains one node ID/path, parent, name/type, exact text/context and non-geometry properties. Samples remain examples; vector paths stay in the archive. See the [OPCD migration receipt](00399-officepress-opcd-user-preferences-direction.md) for extraction differences and lossless history.
 
 Apply [accepted corrections](00078-officepress-source-decisions.md) — load when using these design records as guidance.
 
@@ -84,25 +84,25 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | CEl6y/wr1HS / CEl6y/Bi3Oq | frame / Nav Inbox | {"name":"Nav Inbox"} | {"width":"fill_container","height":36,"fill":"#00000000","cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center"} |
 | CEl6y/oUd2W / CEl6y/wr1HS | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"package","library":"lucide","fill":"$op-nav-text-2"} |
 | CEl6y/Gy4RX / CEl6y/wr1HS | text / Label | {"name":"Label","content":"Orders"} | {"fill":"$op-nav-text-2","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
-| CEl6y/A98xQ / CEl6y/wr1HS | ellipse / Dot | {"name":"Dot"} | {"x":208,"y":14,"enabled":false,"fill":"$op-nav-dot","width":8,"height":8} |
+| CEl6y/A98xQ / CEl6y/wr1HS | ellipse / Dot | {"name":"Dot"} | {"fill":"$op-nav-dot","width":8,"height":8,"enabled":false} |
 | CEl6y/r98DX / CEl6y/Bi3Oq | frame / Nav Starred | {"name":"Nav Starred"} | {"width":"fill_container","height":36,"fill":"#00000000","cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center"} |
 | CEl6y/o2KTfe / CEl6y/r98DX | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"kanban","library":"lucide","fill":"$op-nav-text-2"} |
 | CEl6y/DHPdR / CEl6y/r98DX | text / Label | {"name":"Label","content":"Workflows"} | {"fill":"$op-nav-text-2","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
-| CEl6y/kvxW2 / CEl6y/r98DX | ellipse / Dot | {"name":"Dot"} | {"x":208,"y":14,"enabled":false,"fill":"$op-nav-dot","width":8,"height":8} |
+| CEl6y/kvxW2 / CEl6y/r98DX | ellipse / Dot | {"name":"Dot"} | {"fill":"$op-nav-dot","width":8,"height":8,"enabled":false} |
 | CEl6y/Z9t8jA / CEl6y/Bi3Oq | frame / Nav Sent | {"name":"Nav Sent"} | {"width":"fill_container","height":36,"fill":"#00000000","cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center"} |
 | CEl6y/O3OPw6 / CEl6y/Z9t8jA | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"contact","library":"lucide","fill":"$op-nav-text-2"} |
 | CEl6y/EcutZ / CEl6y/Z9t8jA | text / Label | {"name":"Label","content":"Customers"} | {"fill":"$op-nav-text-2","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
 | CEl6y/aFxaX / CEl6y/Bi3Oq | frame / Nav Drafts | {"name":"Nav Drafts"} | {"width":"fill_container","height":36,"fill":"#00000000","cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center"} |
 | CEl6y/xQdsD / CEl6y/aFxaX | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"users","library":"lucide","fill":"$op-nav-text-2"} |
 | CEl6y/z1e6sO / CEl6y/aFxaX | text / Label | {"name":"Label","content":"Users"} | {"fill":"$op-nav-text-2","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
-| CEl6y/rszAx / CEl6y/aFxaX | text / Count | {"name":"Count","content":"2"} | {"x":208,"y":9,"enabled":false,"fill":"$op-nav-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
-| CEl6y/ePSXn / CEl6y/Bi3Oq | frame / Nav Archive | {"name":"Nav Archive"} | {"x":0,"y":181,"enabled":false,"width":"fill_container(228)","height":36,"cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center"} |
+| CEl6y/rszAx / CEl6y/aFxaX | text / Count | {"name":"Count","content":"2"} | {"fill":"$op-nav-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700","enabled":false} |
+| CEl6y/ePSXn / CEl6y/Bi3Oq | frame / Nav Archive | {"name":"Nav Archive"} | {"width":"fill_container","height":36,"cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center","enabled":false} |
 | CEl6y/BSLwH / CEl6y/ePSXn | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"archive","library":"lucide","fill":"$op-nav-text-2"} |
 | CEl6y/FrOSh / CEl6y/ePSXn | text / Label | {"name":"Label","content":"Archive"} | {"fill":"$op-nav-text-2","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
-| CEl6y/e76XGD / CEl6y/Bi3Oq | frame / Nav Spam | {"name":"Nav Spam"} | {"x":0,"y":221,"enabled":false,"width":"fill_container(228)","height":36,"cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center"} |
+| CEl6y/e76XGD / CEl6y/Bi3Oq | frame / Nav Spam | {"name":"Nav Spam"} | {"width":"fill_container","height":36,"cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center","enabled":false} |
 | CEl6y/jBNNf / CEl6y/e76XGD | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"octagon-alert","library":"lucide","fill":"$op-nav-text-2"} |
 | CEl6y/l5SsD / CEl6y/e76XGD | text / Label | {"name":"Label","content":"Spam"} | {"fill":"$op-nav-text-2","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
-| CEl6y/X3qjt / CEl6y/Bi3Oq | frame / Nav All Mail | {"name":"Nav All Mail"} | {"x":0,"y":261,"enabled":false,"width":"fill_container(228)","height":36,"cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center"} |
+| CEl6y/X3qjt / CEl6y/Bi3Oq | frame / Nav All Mail | {"name":"Nav All Mail"} | {"width":"fill_container","height":36,"cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center","enabled":false} |
 | CEl6y/f1c2yw / CEl6y/X3qjt | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"mails","library":"lucide","fill":"$op-nav-text-2"} |
 | CEl6y/D6ei92 / CEl6y/X3qjt | text / Label | {"name":"Label","content":"All Mail"} | {"fill":"$op-nav-text-2","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
 | CEl6y/XcWKh / CEl6y | frame / Section FILTERS | {"name":"Section FILTERS"} | {"width":"fill_container","layout":"vertical","gap":4} |
@@ -110,11 +110,11 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | CEl6y/UlEfD / CEl6y/XcWKh | frame / Nav Suppliers | {"name":"Nav Suppliers"} | {"width":"fill_container","height":36,"fill":"#00000000","cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center"} |
 | CEl6y/Foaq0 / CEl6y/UlEfD | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"list-checks","library":"lucide","fill":"$op-nav-text-2"} |
 | CEl6y/XpOhP / CEl6y/UlEfD | text / Label | {"name":"Label","content":"Dispositions"} | {"fill":"$op-nav-text-2","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
-| CEl6y/lLJfZ / CEl6y/UlEfD | ellipse / Dot | {"name":"Dot"} | {"x":208,"y":14,"enabled":false,"fill":"$op-nav-dot","width":8,"height":8} |
+| CEl6y/lLJfZ / CEl6y/UlEfD | ellipse / Dot | {"name":"Dot"} | {"fill":"$op-nav-dot","width":8,"height":8,"enabled":false} |
 | CEl6y/E7ULBO / CEl6y/XcWKh | frame / Nav Invoices | {"name":"Nav Invoices"} | {"width":"fill_container","height":36,"fill":"$op-nav-active","cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center"} |
 | CEl6y/ucDWU / CEl6y/E7ULBO | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"message-square","library":"lucide","fill":"$op-nav-text"} |
 | CEl6y/k6qoaw / CEl6y/E7ULBO | text / Label | {"name":"Label","content":"Messages"} | {"fill":"$op-nav-text","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"700"} |
-| CEl6y/lCE61 / CEl6y/E7ULBO | ellipse / Dot | {"name":"Dot"} | {"x":208,"y":14,"enabled":false,"fill":"$op-nav-dot","width":8,"height":8} |
+| CEl6y/lCE61 / CEl6y/E7ULBO | ellipse / Dot | {"name":"Dot"} | {"fill":"$op-nav-dot","width":8,"height":8,"enabled":false} |
 | CEl6y/VSXP9 / CEl6y/XcWKh | frame / Nav Warehouse move | {"name":"Nav Warehouse move"} | {"width":"fill_container","height":36,"fill":"#00000000","cornerRadius":4,"gap":12,"padding":[0,12],"alignItems":"center"} |
 | CEl6y/ESrDf / CEl6y/VSXP9 | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"plug","library":"lucide","fill":"$op-nav-text-2"} |
 | CEl6y/G5QrjH / CEl6y/VSXP9 | text / Label | {"name":"Label","content":"Channels"} | {"fill":"$op-nav-text-2","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
@@ -131,12 +131,12 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | nbOn4/v0pIr4 / nbOn4/NL2v5 | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"panel-left","library":"lucide","fill":"$op-text"} |
 | nbOn4/E8PtZC / nbOn4 | text / Page Title | {"name":"Page Title","content":"Dispatch update"} | {"fill":"$op-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":16,"fontWeight":"700"} |
 | nbOn4/G3t23s / nbOn4 | frame / Spacer | {"name":"Spacer"} | {"width":"fill_container","height":1} |
-| nbOn4/dtuXO / nbOn4 | frame / Page Actions | {"name":"Page Actions"} | {"x":863,"y":14,"enabled":false,"gap":12,"alignItems":"center"} |
+| nbOn4/dtuXO / nbOn4 | frame / Page Actions | {"name":"Page Actions"} | {"gap":12,"alignItems":"center","enabled":false} |
 | nbOn4/H5cU4B / nbOn4/dtuXO | frame / View Switch | {"name":"View Switch"} | {"height":36,"fill":"$op-surface","cornerRadius":4,"stroke":"$op-border-strong","strokeWidth":1,"gap":8,"padding":[0,12],"alignItems":"center"} |
 | nbOn4/I7kF1e / nbOn4/H5cU4B | icon / Icon | {"name":"Icon"} | {"width":15,"height":15,"icon":"columns-3","library":"lucide","fill":"$op-text"} |
 | nbOn4/vQMp0 / nbOn4/H5cU4B | text / Label | {"name":"Label","content":"Board"} | {"fill":"$op-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"700"} |
 | nbOn4/qS8da / nbOn4/H5cU4B | icon / Chevron | {"name":"Chevron"} | {"width":15,"height":15,"icon":"chevron-down","library":"lucide","fill":"$op-text"} |
-| nbOn4/f6Nm4U / nbOn4 | rectangle / Divider | {"name":"Divider"} | {"x":983,"y":20,"enabled":false,"fill":"$op-border","width":1,"height":24} |
+| nbOn4/f6Nm4U / nbOn4 | rectangle / Divider | {"name":"Divider"} | {"fill":"$op-border","width":1,"height":24,"enabled":false} |
 | nbOn4/BTxZN / nbOn4 | frame / Global Actions | {"name":"Global Actions"} | {"gap":8,"alignItems":"center"} |
 | nbOn4/fawPG / nbOn4/BTxZN | frame / Notifications Button | {"name":"Notifications Button"} | {"width":36,"height":36,"fill":"$op-surface","cornerRadius":999,"stroke":"$op-border-strong","strokeWidth":1,"layout":"none"} |
 | nbOn4/MT9A7 / nbOn4/fawPG | icon / Icon | {"name":"Icon"} | {"x":10,"y":10,"width":16,"height":16,"icon":"bell","library":"lucide","fill":"$op-text"} |

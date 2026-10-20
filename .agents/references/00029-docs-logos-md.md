@@ -10,6 +10,8 @@ Read [source authority and corrections](00078-officepress-source-decisions.md) �
 
 This source predates the 2026-10-13 [Product Marks revision](00396-officepress-product-marks-revision.md). Its "23 apps" family table is historical. Current membership and marks: Clients is in communicate, Content in operate, create adds context · uiux · designs · graphics, and operate adds pipelines (28 apps). [Brand identity](../context/brand.md) owns the current list.
 
+Current editable design: [OfficePress Designs OPCD](../resources/officepress-design/officepress.opcd). The original Pencil filename inside the source block below is historical provenance, retained for exact recovery; apply the [current creative direction](00399-officepress-opcd-user-preferences-direction.md).
+
 <!-- officepress-source:start -->
 # Logos
 

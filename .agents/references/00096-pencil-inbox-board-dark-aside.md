@@ -2,7 +2,7 @@
 
 Owner: [Pencil design map](00075-officepress-pencil-design-map.md) — load when locating the screen, component or adjacent section.
 
-Source: native `officepress.pen`, extracted through the design API with resolved instances. Each row retains one node ID/path, parent, name/type, text or context, and all returned non-geometry properties. Text values preserve original spelling and line breaks; object values are JSON. Sample people, messages, versions and records are examples. Graphic path geometry remains in the native resource.
+Source: native `officepress.opcd`, extracted offline from its JSON frames with instances resolved and variables symbolic. Each row retains one node ID/path, parent, name/type, exact text/context and non-geometry properties. Samples remain examples; vector paths stay in the archive. See the [OPCD migration receipt](00399-officepress-opcd-user-preferences-direction.md) for extraction differences and lossless history.
 
 Apply [accepted corrections](00078-officepress-source-decisions.md) — load when using these design records as guidance.
 
@@ -106,17 +106,17 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | OPcsY / K68wn | path /  | {} | {"x":1.333561579386393,"y":2,"width":13.331544876098633,"height":12.666978200276692,"stroke":"$op-nav-text","strokeWidth":1.3333333333333333,"strokeLinejoin":"round","strokeLinecap":"round"} |
 | QXpMg / rkONB | text / Press schedule | {"name":"Press schedule","content":"Press schedule","context":"span"} | {"fill":"$op-nav-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"normal"} |
 | gKyIE / HkH3s | frame / div | {"name":"div","context":"div"} | {"width":"fill_container","fill":"#FFFFFF00","stroke":"$op-nav-border","strokeWidth":{"top":1},"strokeAlignment":"inner","layout":"vertical","padding":12} |
-| p4gCNS / gKyIE | frame / button | {"name":"button","context":"button"} | {"width":"fill_container","fill":"$op-nav-field","cornerRadius":8,"stroke":"$op-nav-border","strokeWidth":1,"strokeAlignment":"inner","gap":12,"padding":[8,12],"alignItems":"center"} |
+| p4gCNS / gKyIE | frame / button | {"name":"button","context":"button"} | {"width":"fill_container","fill":"$op-nav-field","cornerRadius":8,"stroke":"$op-nav-border","strokeWidth":1,"strokeAlignment":"inner","gap":8,"padding":[8,10],"alignItems":"center"} |
 | tyJyp / p4gCNS | frame / MR | {"name":"MR","context":"span"} | {"width":20,"height":20,"fill":"$op-accent","cornerRadius":999,"stroke":"$op-accent","strokeWidth":1,"strokeAlignment":"inner","justifyContent":"center","alignItems":"center"} |
 | GOByG / tyJyp | text /  | {"content":"MR"} | {"fill":"#FFFFFF","lineHeight":1,"textAlign":"center","fontFamily":"$op-font","fontSize":12,"fontWeight":"700","letterSpacing":0.24} |
 | wl6OO / p4gCNS | frame / span | {"name":"span","context":"span"} | {"width":"fill_container","layout":"vertical"} |
 | ijgdB / wl6OO | frame / mila.reyes@officepress.ph | {"name":"mila.reyes@officepress.ph","context":"span"} | {"clip":true,"width":"fill_container","layout":"vertical","justifyContent":"center"} |
-| fBZYI / ijgdB | text /  | {"content":"mila.reyes@officepress.ph"} | {"fill":"$op-nav-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"700"} |
+| fBZYI / ijgdB | text /  | {"content":"mila.reyes@officepress.ph"} | {"fill":"$op-nav-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
 | V8kZG / wl6OO | text / Checked 2 minutes ago | {"name":"Checked 2 minutes ago","content":"Checked 2 minutes ago","context":"span"} | {"fill":"$op-nav-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"normal"} |
 | vWman / p4gCNS | frame / span | {"name":"span","context":"span"} | {"layout":"vertical","justifyContent":"center","alignItems":"center"} |
 | DbLaO / vWman | frame / svg | {"name":"svg","context":"svg"} | {"clip":true,"width":15,"height":15,"layout":"none"} |
 | ipbt9 / DbLaO | path /  | {} | {"x":3.75,"y":5.625,"width":7.5,"height":3.75,"stroke":"$op-nav-text","strokeWidth":1.25,"strokeLinejoin":"round","strokeLinecap":"round"} |
-| cmCen / tQmpX | frame / aside | {"name":"aside","context":"aside"} | {"x":1440,"y":0,"clip":true,"width":320,"height":1000,"fill":"$op-surface","stroke":"$op-border","strokeWidth":{"left":1},"strokeAlignment":"inner","layout":"vertical","gap":16,"padding":20} |
+| cmCen / tQmpX | frame / aside | {"name":"aside","context":"aside"} | {"x":1440,"y":0,"clip":true,"width":320,"height":1000,"fill":"$op-surface","stroke":"$op-border","strokeWidth":{"left":1},"strokeAlignment":"inner","layout":"vertical","gap":16,"padding":20,"enabled":false} |
 | a9kSdV / cmCen | frame / div | {"name":"div","context":"div"} | {"width":"fill_container","gap":12,"justifyContent":"space_between","alignItems":"center"} |
 | yufHg / a9kSdV | text / Select a card | {"name":"Select a card","content":"Select a card","context":"h2"} | {"fill":"$op-text","lineHeight":1.2,"fontFamily":"$op-font","fontSize":20,"fontWeight":"700"} |
 | qVtcH / a9kSdV | frame / div | {"name":"div","context":"div"} | {"gap":4,"alignItems":"center"} |

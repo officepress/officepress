@@ -8,6 +8,8 @@ Read [source authority and corrections](00078-officepress-source-decisions.md) â
 
 [Complete local kit map](00074-officepress-kit-source-map.md) â€” load when following a source-relative path or locating a related implementation.
 
+Current editable design: [OfficePress Designs OPCD](../resources/officepress-design/officepress.opcd). The original Pencil filename inside the source block below is historical provenance, retained for exact recovery; apply the [current creative direction](00399-officepress-opcd-user-preferences-direction.md).
+
 <!-- officepress-source:start -->
 # OfficePress UI Kit
 

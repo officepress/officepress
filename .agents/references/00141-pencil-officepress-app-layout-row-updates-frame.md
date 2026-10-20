@@ -2,7 +2,7 @@
 
 Owner: [Pencil design map](00075-officepress-pencil-design-map.md) — load when locating the screen, component or adjacent section.
 
-Source: native `officepress.pen`, extracted through the design API with resolved instances. Each row retains one node ID/path, parent, name/type, text or context, and all returned non-geometry properties. Text values preserve original spelling and line breaks; object values are JSON. Sample people, messages, versions and records are examples. Graphic path geometry remains in the native resource.
+Source: native `officepress.opcd`, extracted offline from its JSON frames with instances resolved and variables symbolic. Each row retains one node ID/path, parent, name/type, exact text/context and non-geometry properties. Samples remain examples; vector paths stay in the archive. See the [OPCD migration receipt](00399-officepress-opcd-user-preferences-direction.md) for extraction differences and lossless history.
 
 Apply [accepted corrections](00078-officepress-source-decisions.md) — load when using these design records as guidance.
 
@@ -19,12 +19,12 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | SbTuc/v0pIr4 / SbTuc/NL2v5 | icon / Icon | {"name":"Icon"} | {"width":16,"height":16,"icon":"arrow-left","library":"lucide","fill":"$op-text"} |
 | SbTuc/E8PtZC / SbTuc | text / Page Title | {"name":"Page Title","content":"App settings"} | {"fill":"$op-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":16,"fontWeight":"700"} |
 | SbTuc/G3t23s / SbTuc | frame / Spacer | {"name":"Spacer"} | {"width":"fill_container","height":1} |
-| SbTuc/dtuXO / SbTuc | frame / Page Actions | {"name":"Page Actions"} | {"x":863,"y":14,"enabled":false,"gap":12,"alignItems":"center"} |
+| SbTuc/dtuXO / SbTuc | frame / Page Actions | {"name":"Page Actions"} | {"gap":12,"alignItems":"center","enabled":false} |
 | SbTuc/H5cU4B / SbTuc/dtuXO | frame / View Switch | {"name":"View Switch"} | {"height":36,"fill":"$op-surface","cornerRadius":4,"stroke":"$op-border-strong","strokeWidth":1,"gap":8,"padding":[0,12],"alignItems":"center"} |
 | SbTuc/I7kF1e / SbTuc/H5cU4B | icon / Icon | {"name":"Icon"} | {"width":15,"height":15,"icon":"columns-3","library":"lucide","fill":"$op-text"} |
 | SbTuc/vQMp0 / SbTuc/H5cU4B | text / Label | {"name":"Label","content":"Board"} | {"fill":"$op-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":13,"fontWeight":"700"} |
 | SbTuc/qS8da / SbTuc/H5cU4B | icon / Chevron | {"name":"Chevron"} | {"width":15,"height":15,"icon":"chevron-down","library":"lucide","fill":"$op-text"} |
-| SbTuc/f6Nm4U / SbTuc | rectangle / Divider | {"name":"Divider"} | {"x":983,"y":20,"enabled":false,"fill":"$op-border","width":1,"height":24} |
+| SbTuc/f6Nm4U / SbTuc | rectangle / Divider | {"name":"Divider"} | {"fill":"$op-border","width":1,"height":24,"enabled":false} |
 | SbTuc/BTxZN / SbTuc | frame / Global Actions | {"name":"Global Actions"} | {"gap":8,"alignItems":"center"} |
 | SbTuc/fawPG / SbTuc/BTxZN | frame / Notifications Button | {"name":"Notifications Button"} | {"width":36,"height":36,"fill":"$op-surface","cornerRadius":999,"stroke":"$op-border-strong","strokeWidth":1,"layout":"none"} |
 | SbTuc/MT9A7 / SbTuc/fawPG | icon / Icon | {"name":"Icon"} | {"x":10,"y":10,"width":16,"height":16,"icon":"bell","library":"lucide","fill":"$op-text"} |

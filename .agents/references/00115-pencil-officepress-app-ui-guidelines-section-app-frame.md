@@ -2,7 +2,7 @@
 
 Owner: [Pencil design map](00075-officepress-pencil-design-map.md) — load when locating the screen, component or adjacent section.
 
-Source: native `officepress.pen`, extracted through the design API with resolved instances. Each row retains one node ID/path, parent, name/type, text or context, and all returned non-geometry properties. Text values preserve original spelling and line breaks; object values are JSON. Sample people, messages, versions and records are examples. Graphic path geometry remains in the native resource.
+Source: native `officepress.opcd`, extracted offline from its JSON frames with instances resolved and variables symbolic. Each row retains one node ID/path, parent, name/type, exact text/context and non-geometry properties. Samples remain examples; vector paths stay in the archive. See the [OPCD migration receipt](00399-officepress-opcd-user-preferences-direction.md) for extraction differences and lossless history.
 
 Apply [accepted corrections](00078-officepress-source-decisions.md) — load when using these design records as guidance.
 
@@ -106,6 +106,6 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | pokTR / Dv2DL | icon / I | {"name":"I"} | {"width":18,"height":18,"icon":"timer-off","library":"lucide","fill":"$fam-communicate"} |
 | ZqxfX / Dv2DL | text / T | {"name":"T","content":"Motion restraint"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":16,"fontWeight":"700"} |
 | qJzHC / jjPAm | text / D | {"name":"D","content":"No custom animation on high-frequency actions (typing, hovering rows, toggling filters). Motion is never the only signal: every animated change also changes colour, icon or label."} | {"fill":"$muted","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.55,"fontFamily":"$font-display","fontSize":13,"fontWeight":"normal"} |
-| ocPpT / zTKmr | frame / Footer | {"name":"Footer"} | {"width":"fill_container","stroke":"$line","strokeWidth":{"top":1},"padding":[20,0,0,0],"justifyContent":"space_between"} |
-| A4ZwV8 / ocPpT | text / L | {"name":"L","content":"Source of truth: variables op-* (mode × family) · components: App Shell, Header, Sidebar, Popovers, Agent Panel, Workflow Card · screens: “OfficePress App Layout”, “OfficePress Common Modules”"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":11,"fontWeight":"normal"} |
+| ocPpT / zTKmr | frame / Footer | {"name":"Footer"} | {"width":"fill_container","stroke":"$line","strokeWidth":{"top":1},"padding":[20,0,0,0],"justifyContent":"space_between","gap":48} |
+| A4ZwV8 / ocPpT | text / L | {"name":"L","content":"Source of truth: variables op-* (mode × family) · components: App Shell, Header, Sidebar, Popovers, Agent Panel, Workflow Card · screens: “OfficePress App Layout”, “OfficePress Common Modules”"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":11,"fontWeight":"normal","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5} |
 | MbRoF / ocPpT | text / R | {"name":"R","content":"Reference build: Inbox Board — Light / Dark"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":11,"fontWeight":"normal"} |

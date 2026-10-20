@@ -14,7 +14,7 @@ Status: Planning / Not Frozen
 
 > The end goal of this is to provide a set of proofs that serves as guidelines for other apps to adopt.
 
-The source design is the [repository Pencil document](../../resources/officepress-design/officepress.pen); the user supplied [BuilderIO agent-native](https://github.com/BuilderIO/agent-native) as the agent-mode reference.
+The source design is the [repository OfficePress Designs document](../../resources/officepress-design/officepress.opcd); the user supplied [BuilderIO agent-native](https://github.com/BuilderIO/agent-native) as the agent-mode reference.
 
 ## Clarifications received
 

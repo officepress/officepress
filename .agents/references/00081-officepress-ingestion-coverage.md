@@ -37,20 +37,26 @@ The user replaced the repository Pencil file and requested KB reconciliation. Th
 
 The user asked for the Product Marks board, the kit, the repository `kit/` copy and the `docs/` site to follow the product catalogue correction. The [Product Marks revision receipt](00396-officepress-product-marks-revision.md) records the native hash, the 42 changed, 1 removed and 67 added design nodes, and lossless prior-record recovery. In the kit, eight current files are recorded as `revised_resources` (seven product SVGs and the board screenshot), plus seven matching ICOs. The five supplied originals they replace (two SVGs, two ICOs and one screenshot) are preserved byte for byte under `resources/officepress-history/2026-10-13-product-marks/`, keeping their `kit/` source identities. The 263-file kit inventory, 24 source archives and all text sources are unchanged.
 
-## Native design extraction
+## OfficePress Designs migration on 2026-10-20
+
+The user replaced the former native resource with `officepress.opcd`. The [OPCD verification and preference-screen receipt](00399-officepress-opcd-user-preferences-direction.md) records its exact ZIP inventory, hash, format, preserved tokens and source limits. The archive adds 113 resolved preference-screen records. All 113 prior changed records (35 supplied layout edits and 78 extraction-method differences) remain recoverable from [migration history](00400-officepress-opcd-prior-design-records.md), extending the existing recovery chain to three revisions. No prior record was removed.
+
+The current verifier checks each of the 23 ZIP members, parses all JSON, validates frame/node/component identities and compares all resolved records and tokens with the KB. Current tables use authored native layout; 78 previous API-generated hidden-node positions/concrete widths are preserved in history instead of asserted as authored source. The unchanged historical kit/source blocks retain their original filenames and hashes. Current resource links resolve to the OPCD archive.
+
+## Native design extraction (current OPCD archive)
 
 | Item | Count / disposition |
 |---|---|
 | Root frames | 18 |
 | Reusable components | 11 |
-| Resolved nodes | 8,827 |
-| Nodes with content | 2,819 |
+| Resolved nodes | 8,940 |
+| Nodes with content | 2,858 |
 | Variables | 205, including all themed values and legacy namespaces |
 | Theme axes | mode: light/dark; family: communicate/create/operate/commerce |
-| Extracted node references | 90 cohesive screen/component sections |
+| Extracted node references | 91 cohesive screen/component sections |
 | Variable references | 21 namespaces |
 
-The design API supplied node IDs, parent/root identity, type/name, text, context, reusable flags, themes, references and non-geometry properties. Instances were resolved to preserve inherited content. Each extracted record and variable definition can be reconstructed and hash-checked from the reference tables. The native file retains vector path geometry, authored component overrides and original file serialization; those are not claimed to round-trip through the extracted table format.
+The current offline archive extraction supplies node IDs, parent/root identity, type/name, text, context, reusable flags, themes and authored non-geometry properties. The earlier extraction used the design API; its computed layout differences remain in recovery history. Instances were resolved to preserve inherited content. Each extracted record and variable definition can be reconstructed and hash-checked from the reference tables. The native file retains vector path geometry, authored component overrides and original file serialization; those are not claimed to round-trip through the extracted table format.
 
 ## Source recovery and verification
 

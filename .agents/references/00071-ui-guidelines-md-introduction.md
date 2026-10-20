@@ -10,6 +10,8 @@ Read [source authority and corrections](00078-officepress-source-decisions.md) �
 
 Sections of this source: [Introduction; Contents; 01 How theming works; 02 Families in the shell; 03 Colour tokens; 04 Typography](00071-ui-guidelines-md-introduction.md) · [05 Spacing & sizing; 06 Shape & elevation; 07 Components; 08 Rules; 09 App frame](00072-ui-guidelines-md-05-spacing-sizing.md) · [10 Polish & motion](00073-ui-guidelines-md-10-polish-motion.md)
 
+Current editable design: [OfficePress Designs OPCD](../resources/officepress-design/officepress.opcd). The original Pencil filename inside the source block below is historical provenance, retained for exact recovery; apply the [current creative direction](00399-officepress-opcd-user-preferences-direction.md).
+
 <!-- officepress-source:start -->
 # OfficePress App UI Guidelines
 

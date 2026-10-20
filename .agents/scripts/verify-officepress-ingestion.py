@@ -15,6 +15,8 @@ import shutil
 import struct
 from pathlib import Path
 
+from officepress_design import load_archive, resolved_nodes
+
 
 def sha(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
@@ -105,7 +107,7 @@ def verify_variables(root: Path, manifest: dict) -> None:
 def verify_design_history(root: Path, manifest: dict, current: list[dict]) -> int:
     """Recover prior extraction revisions without making them current knowledge."""
     nodes = {n['id']: n for n in current}
-    native_hash = next(r['sha256'] for r in manifest['resources'] if r['source'] == 'officepress.pen')
+    native_hash = next(r['sha256'] for r in manifest['resources'] if r['source'] == manifest['design']['source'])
     recovered_count = 0
     for revision in reversed(manifest.get('design_history', [])):
         assert revision['after_native_sha256'] == native_hash, 'Broken design revision chain'
@@ -153,6 +155,21 @@ def verify_source_archives(root: Path, manifest: dict, recovered: dict[str, byte
         paths.add(entry['path'])
     assert archived == expected, 'Missing requested source archives: ' + ', '.join(sorted(expected - archived))
     return paths
+
+
+def verify_design_archive(root: Path, manifest: dict, current: list[dict]) -> None:
+    """Tie every extracted record and token to the verified native ZIP members."""
+    receipt = manifest['design_archive']
+    document, members = load_archive(root / receipt['path'])
+    assert set(members) == {entry['path'] for entry in receipt['members']}, 'Archive member inventory drift'
+    for entry in receipt['members']:
+        data = members[entry['path']]
+        assert sha(data) == entry['sha256'] and len(data) == entry['bytes'], 'Archive member drift: ' + entry['path']
+    assert len(document['frames']) == manifest['design']['root_count'], 'Native root count'
+    actual = sorted(resolved_nodes(document), key=lambda node: node['id'])
+    assert actual == sorted(current, key=lambda node: node['id']), 'Native archive and extracted tables disagree'
+    assert document['themes'] == manifest['design']['themes'], 'Native themes disagree'
+    assert sha(canonical({'variables': document['variables'], 'themes': document['themes']})) == manifest['design']['variables_sha256'], 'Native variables disagree'
 
 
 def verify_generated_favicons(root: Path, manifest: dict) -> set[str]:
@@ -222,10 +239,10 @@ def main() -> None:
     for entry in manifest['resources']:
         data = (root / entry['path']).read_bytes()
         assert sha(data) == entry['sha256'] and len(data) == entry['bytes'], 'Resource mismatch: ' + entry['path']
-        assert Path(entry['path']).suffix in ('.svg', '.png', '.pen'), 'Unexpected textual resource'
+        assert Path(entry['path']).suffix in ('.svg', '.png', '.opcd'), 'Unexpected textual resource'
         if args.compare_originals:
-            source = (root.parent / entry['provenance']) if entry.get('provenance') else (Path('/Users/cblanquera/Documents/officepress.pen') if entry['source'] == 'officepress.pen' else Path('/Users/cblanquera/Documents/officepress-kit') / entry['source'].removeprefix('kit/'))
-            # Treat the native file as opaque bytes; semantic extraction uses the design API.
+            source = (root.parent / entry['provenance']) if entry.get('provenance') else Path('/Users/cblanquera/Documents/officepress-kit') / entry['source'].removeprefix('kit/')
+            # Compare exact bytes; native archive semantics are checked separately.
             with source.open('rb') as stream:
                 assert hashlib.file_digest(stream, 'sha256').hexdigest() == entry['sha256'], 'Original asset drift: ' + entry['source']
     archive_paths = verify_source_archives(root, manifest, recovered)
@@ -234,6 +251,7 @@ def main() -> None:
     for entry in manifest['drafts']:
         assert sha((root / entry['path']).read_bytes()) == entry['sha256'], 'Accepted input record changed: ' + entry['path']
     current_nodes = design_nodes(root, manifest)
+    verify_design_archive(root, manifest, current_nodes)
     history_count = verify_design_history(root, manifest, current_nodes)
     verify_variables(root, manifest)
     # Every meaningful kit file has one disposition; OS metadata is explicit.
@@ -262,6 +280,7 @@ def main() -> None:
     print(f'PASS: {len(favicon_paths)} derived 16x16 ICO favicons match their recorded sources and hashes.')
     print(f'PASS: {len(revised_paths)} revised kit resources match their hashes; superseded originals remain recoverable.')
     print(f'PASS: {history_count} prior design extraction revisions recover exactly from local history.')
+    print(f'PASS: {len(manifest["design_archive"]["members"])} OPCD members pass ZIP/JSON/inventory checks; native records and tokens match the KB.')
     d = manifest['design']
     print(f'PASS: {d["node_count"]} design nodes, {d["text_node_count"]} content nodes, {d["variable_count"]} variables; 23 complete user product descriptions.')
     print('Offline verification complete; no external sources or network required.')

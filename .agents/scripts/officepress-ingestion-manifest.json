@@ -2665,12 +2665,12 @@
       "bytes": 53935
     },
     {
-      "source": "officepress.pen",
-      "path": "resources/officepress-design/officepress.pen",
-      "sha256": "f40195a11ac4b8a0166e8dd9c703a07d844a4a3c39d7a9b69673389072ff044e",
-      "bytes": 3945388,
-      "provenance": ".agents/resources/officepress-design/officepress.pen",
-      "provenance_kind": "repository source revised on 2026-10-13 (Product Marks board, user-requested)"
+      "source": "officepress.opcd",
+      "path": "resources/officepress-design/officepress.opcd",
+      "sha256": "99da0d627aa04637dec54af8dc973bdf341047718facfcb20b850947742b64b5",
+      "bytes": 3752828,
+      "provenance": ".agents/resources/officepress-design/officepress.opcd",
+      "provenance_kind": "user-supplied OfficePress Designs ZIP replacing the Pencil source; verified 2026-10-20"
     }
   ],
   "generated_favicons": [
@@ -2903,7 +2903,7 @@
   "drafts": [
     {
       "path": "references/00078-officepress-source-decisions.md",
-      "sha256": "3b68173ec68bfc82e3a8fcc528c5232aa977d1c698fe2f5894f4e0e613e0125a",
+      "sha256": "1bffea85e14290e301bf7567ba01a3ada14a60d1326e400b9ac32bbdfe210575",
       "kind": "accepted user input and source reconciliation"
     },
     {
@@ -2913,10 +2913,10 @@
     }
   ],
   "design": {
-    "source": "officepress.pen",
-    "method": "pen.dev Get visitor, resolveInstances=true; GetVariables",
-    "node_count": 8827,
-    "text_node_count": 2819,
+    "source": "officepress.opcd",
+    "method": "Offline OPCD v2 JSON frames; authored component resolution; symbolic variables; vector geometry excluded; officepress_design.py",
+    "node_count": 8940,
+    "text_node_count": 2858,
     "root_count": 18,
     "reusable_count": 11,
     "variable_count": 205,
@@ -3705,7 +3705,7 @@
           "p2s65",
           "F5IHx"
         ],
-        "sha256": "b2490c47017b46e4c870cbfb730d12d778c1dfb54cea87455c845726871bd7be"
+        "sha256": "9c958e75ee30f45d333d8a87389ff81b2aa841be0ab267f3997b8c1d54628d85"
       },
       {
         "path": "references/00090-pencil-inbox-board-light-section.md",
@@ -3993,7 +3993,7 @@
           "zRGp9",
           "AJgZu"
         ],
-        "sha256": "51fd7ef595196b9143756da26a9c6c12003b4704b28dd2fb2d51ef219f9e2021"
+        "sha256": "f04f2c3fcba7b56f38d2b5c04bdab6b2593f668f64a841c49b2dd7242dce457f"
       },
       {
         "path": "references/00093-pencil-inbox-board-dark-inbox-board-dark-frame.md",
@@ -4128,7 +4128,7 @@
           "AuiTo",
           "SMhp1"
         ],
-        "sha256": "651b6a4c12be5e26b4546841bf7968619e59221194c4d2e263adccc529e1c325"
+        "sha256": "fc3f4d38898358e28006d0c5342a1077bed156382af80f0a139fbc1ebd528f88"
       },
       {
         "path": "references/00094-pencil-inbox-board-dark-section.md",
@@ -4416,7 +4416,7 @@
           "pN6aw",
           "fAIUx"
         ],
-        "sha256": "657a8f00d1a4ea0741e5b236b3dcdd4e44de5b04abefc1c049d288e7d5c36d00"
+        "sha256": "22eb5c1a9add9513b1a8eef0b008f47e8f26a545ef800071cfdb6208eea61281"
       },
       {
         "path": "references/00097-pencil-app-shell-preview-app-shell-preview.md",
@@ -6517,7 +6517,7 @@
           "A4ZwV8",
           "MbRoF"
         ],
-        "sha256": "98e287b67058032b996bba78d9971fa0251a5b197e08dc5c3388598b4afa635a"
+        "sha256": "e12dad487062f541ef4c482eebd917bca5271f0872992afff365fdfc5eb76fc8"
       },
       {
         "path": "references/00116-pencil-c-app-header-c-app-header.md",
@@ -6729,7 +6729,7 @@
           "EYl11",
           "m1ofQ"
         ],
-        "sha256": "f6d84db623b7b7144536bda7cdc6194d489909f9f8b73b97f747dc9f7a46ff3d"
+        "sha256": "72edaa688e4c9385cc77a9108e5d4b885e0a90d9091e16a9414bae4eea941953"
       },
       {
         "path": "references/00120-pencil-c-user-popover-c-user-popover.md",
@@ -7120,7 +7120,7 @@
           "GQUCa",
           "HWh9e"
         ],
-        "sha256": "18a3afc8e0e192e77dd40b82e7c39f3039e7fd51c6ce9ea051434e3f13898c75"
+        "sha256": "dcffa35395dc0539dfd0b88fef90c3da42db8c1ef91d32e9f5489f8fafd9f720"
       },
       {
         "path": "references/00125-pencil-officepress-app-layout-shot-desktop-aside-collapsed.md",
@@ -7264,7 +7264,7 @@
           "uD89a",
           "YPNy5"
         ],
-        "sha256": "9baccdbc516c7e79ccb030cd3de7d50a4acba09c12adbaaf8cc01c17ee3799b0"
+        "sha256": "01b2b9293a0ac564caa3a0988b5d3552ac252768a0f5ad9cbdefe3713a36b021"
       },
       {
         "path": "references/00126-pencil-officepress-app-layout-shot-mobile-default-collapsed.md",
@@ -7658,7 +7658,7 @@
           "kkK5P/EYl11",
           "kkK5P/m1ofQ"
         ],
-        "sha256": "ac54ce7c8d7e27c376a4750e6ad69bce963d8544e6323dc94c696bafca5f8e4e"
+        "sha256": "4afb449aa49b8ca9b73964e60b3127ab7f0f3be3af41556cc6ad5a2f1bc75a14"
       },
       {
         "path": "references/00130-pencil-officepress-app-layout-notifications-popover.md",
@@ -7945,7 +7945,7 @@
           "K16W8P/EYl11",
           "K16W8P/m1ofQ"
         ],
-        "sha256": "2d4d669561e5214ef03ce60276a9cb16a723686b48f835fdb912b79df12142af"
+        "sha256": "8cb2d5c9aa81247ee8a0c3526cf9b154d079102e83f792c07c22faa0c2b22685"
       },
       {
         "path": "references/00133-pencil-officepress-app-layout-agent-panel.md",
@@ -8251,7 +8251,7 @@
           "TIuoP",
           "rFkHQ"
         ],
-        "sha256": "1cbe66b050c9f5ea8ef0d0442a0e6cde90bc26037b71d3e766ea4c564f32c05f"
+        "sha256": "8de59bf9d8d746efab5a4b18be3b7a1b367ac616c3249e64e66e19b007fd52c9"
       },
       {
         "path": "references/00136-pencil-officepress-app-layout-shot-mobile-agent.md",
@@ -8399,7 +8399,7 @@
           "Z2y00",
           "pnSNQ"
         ],
-        "sha256": "6b29d937e40acd44f3b505face0f7ae8ed711ad2bf98a9b296a5df1bce355fde"
+        "sha256": "0451a56bfd28cee7f8b7177a8c0b2edcbe54cd192e5603081359c61a500d6007"
       },
       {
         "path": "references/00137-pencil-officepress-app-layout-section-account-app-settings-frame.md",
@@ -8463,7 +8463,7 @@
           "ub2cz",
           "A7wB0X"
         ],
-        "sha256": "ddc45e5b92ce0ae6798163fbd755b983f68b647baa96630992a60456998d8965"
+        "sha256": "88ddba2a6e8be5bea43ad4b0ffacf00a658d2dcf70aa88bd300206f04031d38d"
       },
       {
         "path": "references/00138-pencil-officepress-app-layout-content-frame.md",
@@ -8728,7 +8728,7 @@
           "WzwY5",
           "pBwkJ"
         ],
-        "sha256": "e09520389f2b7098e7fe5c5b59c89361b231e84602033d2a1db110d2b704dc63"
+        "sha256": "921c5ffc607b52b3dc3da247d79b3e91d8ada9abbb367f6d619b948b730a71f1"
       },
       {
         "path": "references/00140-pencil-officepress-app-layout-section-colours.md",
@@ -8917,7 +8917,7 @@
           "sx4di",
           "MAqs6"
         ],
-        "sha256": "a427fc7546d70583eca2e7b9f67dfdc51e1248becee387a4673ae5eeba540e4a"
+        "sha256": "61118fdcf789fd9ad315e739552bc535ac69cc6c20416e7cca71674e4f9bc5ac"
       },
       {
         "path": "references/00142-pencil-officepress-app-layout-content.md",
@@ -9104,7 +9104,7 @@
           "nvdID",
           "pHMCL"
         ],
-        "sha256": "ad7e93951e18ad6b8dbd46e94c241f163544c25f065b4092e4f6e62abfc021fe"
+        "sha256": "578a810c6e62e39a585984d6a4bff8f2e39c1fb281419cfaffd2df918266a736"
       },
       {
         "path": "references/00144-pencil-officepress-app-layout-content-yr1sz.md",
@@ -9365,7 +9365,7 @@
           "rgfr7",
           "uZeA9"
         ],
-        "sha256": "98ff6c91552e9c0f85c6d4e7d84599db10cfa3b37cd96bf75657eb55cab2e47d"
+        "sha256": "7e3927f4c64201bd2496f38033c2aeea6cfdf258eae91682b648628c75fb3655"
       },
       {
         "path": "references/00146-pencil-officepress-app-layout-content-wkydg.md",
@@ -10042,7 +10042,7 @@
           "W7lE0n/qyaB8",
           "W7lE0n/S49k6J"
         ],
-        "sha256": "5c3bfd0f6ad644c0886f2c4cda49332a44d47600e660b5d57229aa96e84f314d"
+        "sha256": "67995a64ff068ae408ea618cee2207cd057e1b5f9cf8439d85a73dca70a3e533"
       },
       {
         "path": "references/00153-pencil-officepress-common-modules-main-frame.md",
@@ -10166,7 +10166,7 @@
           "qwxr1/mFRxr",
           "qwxr1/FHWJD"
         ],
-        "sha256": "ca2d7d805c2c46d5cb66a1095c6d132e3c811ba46687e5cb250232c8387fda73"
+        "sha256": "c72d5b6101c5d5c37ca8e2319d32117c7833f9a0d2fbb348815ebf1335c39bd6"
       },
       {
         "path": "references/00154-pencil-officepress-common-modules-stage-screening.md",
@@ -10248,7 +10248,7 @@
           "a5mFwF/mFRxr",
           "a5mFwF/FHWJD"
         ],
-        "sha256": "89851115863b3683b94d7cbe2937ba581bf48d8606be15ed99d7f3bef3d23dae"
+        "sha256": "0e18aa025e566a1cec82f277021a766eaf47e92c27657205fc56a4425389668b"
       },
       {
         "path": "references/00155-pencil-officepress-common-modules-stage-interview.md",
@@ -10391,7 +10391,7 @@
           "e2j5Qh",
           "cI6PT"
         ],
-        "sha256": "3ae50725418e8c91442453abab7f1c7c1cf4a985e552a18e5d430005975b36f5"
+        "sha256": "be56d0db6f3961897ebda109cb9b396b30999887efb5413ab4e39f2f29129334"
       },
       {
         "path": "references/00156-pencil-officepress-common-modules-dragging-ramon-uy.md",
@@ -10489,7 +10489,7 @@
           "chsjC/qyaB8",
           "chsjC/S49k6J"
         ],
-        "sha256": "cd402176a69de3e8246543cf334e797d03c2676fd817450c5dc39429af071853"
+        "sha256": "ce483ed5ce0047109d5b89dad0d2829be4af7f8b4c77df1b1e9faea517939a19"
       },
       {
         "path": "references/00157-pencil-officepress-common-modules-main-frame-p3tzr3.md",
@@ -10597,7 +10597,7 @@
           "w9a0T",
           "ixTob"
         ],
-        "sha256": "88bb2795122bf9b62319b13eade5a9b691d23480d33e2b65b6d22a8b519efbe0"
+        "sha256": "7b27842b4dfbd8951482ccb5c573e57815bf19fc78e9a2e4380220782e0b8f4e"
       },
       {
         "path": "references/00158-pencil-officepress-common-modules-stage-settings.md",
@@ -10816,7 +10816,7 @@
           "qnIY5/I60pf",
           "qnIY5/h47xa8"
         ],
-        "sha256": "a9b3515c347cffe71745b1f07dc79c1802aba910cb1893be2db43faa8bfefe18"
+        "sha256": "67d6fbf29d0999661ec21130a6d57e3cdf4f93997e94b10854c0e628086b73ac"
       },
       {
         "path": "references/00160-pencil-officepress-common-modules-body.md",
@@ -11169,7 +11169,7 @@
           "ywn2Z",
           "eYmhE"
         ],
-        "sha256": "be33cc67748b9595fa5fac7cfaa0f59c7fbe6ef5df93b9d05858285c34394e8b"
+        "sha256": "2ee26d55961cd374c036729f56eaf5e5c84fca830293ddd1e5ad67ccf7036093"
       },
       {
         "path": "references/00163-pencil-officepress-common-modules-step-4-actions.md",
@@ -11433,7 +11433,7 @@
           "GdWWw",
           "StSaS"
         ],
-        "sha256": "100305ecc41aae41b832ea96b87aae0e3c5cd399cb0b9858a81dad172daf23d7"
+        "sha256": "17bd86f0af782118d038aa650f7c52b4fd5091ccc38176a29b828b4ebf96429a"
       },
       {
         "path": "references/00165-pencil-officepress-common-modules-canvas.md",
@@ -11720,7 +11720,7 @@
           "nbOn4/I60pf",
           "nbOn4/h47xa8"
         ],
-        "sha256": "003cc9f0af06db8078fb0ca7c3988e9b07f151ae4d4f62bfa8a1b585e452dcf9"
+        "sha256": "2e4e3603b06523d0fef9ff7cc58bb61eb0b73d94f407ebb36a7386503e89324f"
       },
       {
         "path": "references/00167-pencil-officepress-common-modules-body-frame.md",
@@ -11978,7 +11978,7 @@
           "m9tMbY/qyaB8",
           "m9tMbY/S49k6J"
         ],
-        "sha256": "7ebdfa076f313b82ee0a049d4fd05bdf9ca29fd94db243c6e3d3e23e6fa271cc"
+        "sha256": "2aebdcb2629d6230b2a0745052a3f2f554fbd0daefa736c1efc67d929462f0c7"
       },
       {
         "path": "references/00169-pencil-officepress-common-modules-main-frame-u22b5i.md",
@@ -12074,7 +12074,7 @@
           "RbrJq",
           "DwBRh"
         ],
-        "sha256": "71b714cf408bc528febe563629fa942b9ba57b5b70cb279a872ced6b8747f96c"
+        "sha256": "310c953c9e13c42712e7b5d872127d8c318293f217e17a5486eba85900eb84a8"
       },
       {
         "path": "references/00170-pencil-officepress-common-modules-thread.md",
@@ -12298,7 +12298,126 @@
           "mFRxr",
           "FHWJD"
         ],
-        "sha256": "527715b09a33867491cc223bd4d4cc045e8a227f9c7feff1a4c1f892d85d7aa0"
+        "sha256": "3a64756bf4ce374c7fa406ca26d1327d46b5b6fc5290ae0f5b195e05e6ba168b"
+      },
+      {
+        "path": "references/00401-officepress-user-preferences-design-records.md",
+        "ids": [
+          "7Ucmo",
+          "euQHx",
+          "7hHn2",
+          "c2pLK",
+          "c2pLK/NL2v5",
+          "c2pLK/v0pIr4",
+          "c2pLK/E8PtZC",
+          "c2pLK/G3t23s",
+          "c2pLK/dtuXO",
+          "c2pLK/H5cU4B",
+          "c2pLK/I7kF1e",
+          "c2pLK/vQMp0",
+          "c2pLK/qS8da",
+          "c2pLK/f6Nm4U",
+          "c2pLK/BTxZN",
+          "c2pLK/fawPG",
+          "c2pLK/MT9A7",
+          "c2pLK/SkOaY",
+          "c2pLK/XGyoO",
+          "c2pLK/C5tCn",
+          "c2pLK/szMHy",
+          "c2pLK/K5uDK",
+          "c2pLK/I60pf",
+          "c2pLK/h47xa8",
+          "PLe5L",
+          "tHR43",
+          "6XbvC",
+          "puDqi",
+          "YFXY8",
+          "TJ9QB",
+          "ZphMq",
+          "2trtl",
+          "qYlCJ",
+          "wDwPq",
+          "7qRz2",
+          "r1Bl3",
+          "uXNv1",
+          "WbSjV",
+          "Ldl5o",
+          "OYmBP",
+          "clc49",
+          "L1XDJ",
+          "ZSKSl",
+          "qG51x",
+          "XUFAw",
+          "MzZG5",
+          "4LCdF",
+          "GLt8N",
+          "E5AxX",
+          "kC0Hq",
+          "wcCAY",
+          "o0YFs",
+          "3umQL",
+          "YFJHB",
+          "18uea",
+          "8XjZ1",
+          "sSvuJ",
+          "oaI2Y",
+          "SkpSe",
+          "bxzWV",
+          "tGvkC",
+          "uXlo6",
+          "hreZR",
+          "8yoNZ",
+          "9kq5F",
+          "vJ8VF",
+          "7vMS6",
+          "4ZWTZ",
+          "3u9Tg",
+          "oUuKe",
+          "WALNm",
+          "qn4w6",
+          "UKDg4",
+          "J4SYV",
+          "ls1JT",
+          "ao0au",
+          "82tP5",
+          "oENWw",
+          "89GXM",
+          "cd0NE",
+          "kBGVH",
+          "Ob2Sk",
+          "Fdt7n",
+          "0nmNM",
+          "DKZsx",
+          "cEgis",
+          "kwRPh",
+          "BbGGA",
+          "W6pQq",
+          "GVLem",
+          "myoEr",
+          "T54QP",
+          "Uxq4l",
+          "4qHTX",
+          "dHBh8",
+          "VURjE",
+          "7KOjM",
+          "IMBHe",
+          "4Qgqh",
+          "Qa0QV",
+          "xsniZ",
+          "QpTeJ",
+          "QP9Ok",
+          "QjrpS",
+          "Cd7Ns",
+          "N0yIz",
+          "hFYlF",
+          "79dG2",
+          "omgsN",
+          "9aV2c",
+          "VHS26",
+          "Xu3ch",
+          "p2mEs"
+        ],
+        "sha256": "125596666a2868a2007d8e293fc45451002c653a36a7f1cb72519ca356361c0b"
       }
     ],
     "variable_chunks": [
@@ -12654,6 +12773,133 @@
       "before_node_count": 8761,
       "before_nodes_sha256": "580fb23e83de26b20a5681b5b3a4e16752e31ba46fe3e3242351693bf4da14d1",
       "after_native_sha256": "f40195a11ac4b8a0166e8dd9c703a07d844a4a3c39d7a9b69673389072ff044e"
+    },
+    {
+      "date": "2026-10-20",
+      "path": "references/00400-officepress-opcd-prior-design-records.md",
+      "sha256": "2e59cf9f75931ae50661a5e62bd4cefd55c60b7eabd769cc1e5249b01745a25b",
+      "changed": 113,
+      "removed": 0,
+      "added_ids": [
+        "7Ucmo",
+        "euQHx",
+        "7hHn2",
+        "c2pLK",
+        "c2pLK/NL2v5",
+        "c2pLK/v0pIr4",
+        "c2pLK/E8PtZC",
+        "c2pLK/G3t23s",
+        "c2pLK/dtuXO",
+        "c2pLK/H5cU4B",
+        "c2pLK/I7kF1e",
+        "c2pLK/vQMp0",
+        "c2pLK/qS8da",
+        "c2pLK/f6Nm4U",
+        "c2pLK/BTxZN",
+        "c2pLK/fawPG",
+        "c2pLK/MT9A7",
+        "c2pLK/SkOaY",
+        "c2pLK/XGyoO",
+        "c2pLK/C5tCn",
+        "c2pLK/szMHy",
+        "c2pLK/K5uDK",
+        "c2pLK/I60pf",
+        "c2pLK/h47xa8",
+        "PLe5L",
+        "tHR43",
+        "6XbvC",
+        "puDqi",
+        "YFXY8",
+        "TJ9QB",
+        "ZphMq",
+        "2trtl",
+        "qYlCJ",
+        "wDwPq",
+        "7qRz2",
+        "r1Bl3",
+        "uXNv1",
+        "WbSjV",
+        "Ldl5o",
+        "OYmBP",
+        "clc49",
+        "L1XDJ",
+        "ZSKSl",
+        "qG51x",
+        "XUFAw",
+        "MzZG5",
+        "4LCdF",
+        "GLt8N",
+        "E5AxX",
+        "kC0Hq",
+        "wcCAY",
+        "o0YFs",
+        "3umQL",
+        "YFJHB",
+        "18uea",
+        "8XjZ1",
+        "sSvuJ",
+        "oaI2Y",
+        "SkpSe",
+        "bxzWV",
+        "tGvkC",
+        "uXlo6",
+        "hreZR",
+        "8yoNZ",
+        "9kq5F",
+        "vJ8VF",
+        "7vMS6",
+        "4ZWTZ",
+        "3u9Tg",
+        "oUuKe",
+        "WALNm",
+        "qn4w6",
+        "UKDg4",
+        "J4SYV",
+        "ls1JT",
+        "ao0au",
+        "82tP5",
+        "oENWw",
+        "89GXM",
+        "cd0NE",
+        "kBGVH",
+        "Ob2Sk",
+        "Fdt7n",
+        "0nmNM",
+        "DKZsx",
+        "cEgis",
+        "kwRPh",
+        "BbGGA",
+        "W6pQq",
+        "GVLem",
+        "myoEr",
+        "T54QP",
+        "Uxq4l",
+        "4qHTX",
+        "dHBh8",
+        "VURjE",
+        "7KOjM",
+        "IMBHe",
+        "4Qgqh",
+        "Qa0QV",
+        "xsniZ",
+        "QpTeJ",
+        "QP9Ok",
+        "QjrpS",
+        "Cd7Ns",
+        "N0yIz",
+        "hFYlF",
+        "79dG2",
+        "omgsN",
+        "9aV2c",
+        "VHS26",
+        "Xu3ch",
+        "p2mEs"
+      ],
+      "before_native_sha256": "f40195a11ac4b8a0166e8dd9c703a07d844a4a3c39d7a9b69673389072ff044e",
+      "before_native_bytes": 3945388,
+      "before_node_count": 8827,
+      "before_nodes_sha256": "9d01f93c8e1cae23262d5065735937ffafc91f47cc851de6f332246b6d5e1706",
+      "after_native_sha256": "99da0d627aa04637dec54af8dc973bdf341047718facfcb20b850947742b64b5"
     }
   ],
   "revised_resources": [
@@ -12721,5 +12967,129 @@
       "supersedes": "kit/reference/brand/product-marks.png",
       "origin": "1x export of the revised Product Marks board o8qxhR"
     }
-  ]
+  ],
+  "design_archive": {
+    "path": "resources/officepress-design/officepress.opcd",
+    "format": "opcd",
+    "format_version": 2,
+    "version": "2.21",
+    "authored_node_count": 6254,
+    "members": [
+      {
+        "path": "design.json",
+        "bytes": 45532,
+        "sha256": "88307cdfb977cf2780f876612415531c1a715ba421c4c0a0a7b8bfe3ddecec87"
+      },
+      {
+        "path": "frames/o8qxhR.json",
+        "bytes": 155717,
+        "sha256": "a81b38e89079cf46ca10ad72ca7267621b9634e8cd75f9e025af189192e99e39"
+      },
+      {
+        "path": "frames/dJApv.json",
+        "bytes": 94255,
+        "sha256": "f9bc778cb4acb9725283714c74a063e83798501c879139261019eb3c65a5e7c5"
+      },
+      {
+        "path": "frames/uNSQ6.json",
+        "bytes": 248787,
+        "sha256": "194031cde3d5c3dbf4b7084911883af59d924dae7a90685f7d6d019304a6abf6"
+      },
+      {
+        "path": "frames/tQmpX.json",
+        "bytes": 248773,
+        "sha256": "8942a945e1da71ed91c7ffbe2d8a63ed54afca1a6478b05184d6ee5f2d65667c"
+      },
+      {
+        "path": "frames/elsdp.json",
+        "bytes": 37053,
+        "sha256": "de0e40ba28486de5a4b237a2a130d958b0f6d174be69b094bb1bf4481fe055fc"
+      },
+      {
+        "path": "frames/zTKmr.json",
+        "bytes": 508981,
+        "sha256": "7477845e613152866017ee3a3d32ff9ff3e597b3f01afc21276c0f63f6a6a959"
+      },
+      {
+        "path": "frames/pTJrd.json",
+        "bytes": 6073,
+        "sha256": "ae11c845c741d8b283b9e86ff627ffc0e3e491a6bdbd24d0d045696f38028a74"
+      },
+      {
+        "path": "frames/BT2V9.json",
+        "bytes": 17682,
+        "sha256": "21c8868d6723d4a4ffee7e94f2642ade6ff68bd4416efef683512e25897aed1d"
+      },
+      {
+        "path": "frames/Rs0LS.json",
+        "bytes": 5907,
+        "sha256": "4ab37ee43115ddfd95f37c628beb4c2e717225e370a3407387672f4fd7929ccc"
+      },
+      {
+        "path": "frames/U48yc1.json",
+        "bytes": 40255,
+        "sha256": "7eb0070796beda7140b4aad32547cb14b104a2948d58bdd85f8fd4fc7d63bd82"
+      },
+      {
+        "path": "frames/FSvTv.json",
+        "bytes": 8487,
+        "sha256": "c85a3574949d989ba90e91fc7f9066d7556f40762eb4de3530cd65ca057e7844"
+      },
+      {
+        "path": "frames/Y90fy0.json",
+        "bytes": 30117,
+        "sha256": "4ef0f44efb1dbe8c405568122d4c9a6f30e81fcae8a84a99637c163262ae8198"
+      },
+      {
+        "path": "frames/n2qVX.json",
+        "bytes": 25066,
+        "sha256": "884cb8f07eb6d6326279caad8790d1cac413f95e289163ed5dab0fdb5a5b74af"
+      },
+      {
+        "path": "frames/WASH2.json",
+        "bytes": 1192752,
+        "sha256": "448014b7fe56bdebba12e99714852ea7f3534443edcc799b48b7ed168416b851"
+      },
+      {
+        "path": "frames/cDR6A.json",
+        "bytes": 36346,
+        "sha256": "78f6a4f8d17471d74a59deaa255af72b72c5a1148d97949a18719a711a90a330"
+      },
+      {
+        "path": "frames/Jv72T.json",
+        "bytes": 4235,
+        "sha256": "29eab426d127e4e0a1ce1bcbda2577a60a51b42240f85ba6fad58ea1fee3f601"
+      },
+      {
+        "path": "frames/fgzpp.json",
+        "bytes": 1001280,
+        "sha256": "a490682048d6c7c1678424f41f4a8cfcc1590e5ce64b477d6716d427fa970fc6"
+      },
+      {
+        "path": "frames/DkTVM.json",
+        "bytes": 9561,
+        "sha256": "292eda5e1005834f33146c23daed8d194fd3aff6da79259a6c066b364f7d0039"
+      },
+      {
+        "path": ".opcd/project.json",
+        "bytes": 28,
+        "sha256": "f042aa57153fe3d803a0147e0ee9b0ec5246ceb585f6dbee5cb7a214cd75ac88"
+      },
+      {
+        "path": ".opcd/chat.json",
+        "bytes": 33217,
+        "sha256": "8940d8ee4e9184637ef630863be672ede138554b73f3ead055af7274494b61d3"
+      },
+      {
+        "path": ".opcd/chats.json",
+        "bytes": 91,
+        "sha256": "8b245b9e479839273cb76edffcf25459c69f94bbcb512fda4bd52ddf3a67d661"
+      },
+      {
+        "path": ".opcd/session.json",
+        "bytes": 89,
+        "sha256": "8f3531a4fd21679b6ed5763d2bde14026149f8443cb40c6dd71598666163db16"
+      }
+    ]
+  }
 }

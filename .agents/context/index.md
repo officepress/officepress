@@ -8,7 +8,7 @@ Start here. These topic files hold the accepted reusable context; their linked r
 - [UI foundations](ui-foundations.md) — load when applying typography, tokens, spacing, shape, accessibility or motion.
 - [Shared app experience](shared-app-experience.md) — load when designing the app frame, authentication, settings or common modules.
 - [UI kit and implementation guidance](ui-kit.md) — load when choosing templates, using CSS/JavaScript/markup resources for wireframes, designs or frontend code, understanding kit behavior or following a UI workflow.
-- [Design source](design-source.md) — load when looking up Pencil text, variables, components or native assets.
+- [Design source](design-source.md) — load when opening the OfficePress Designs OPCD archive or looking up design text, variables, components and User Preferences creative direction.
 - [Knowledge maintenance](knowledge-maintenance.md) — load when resolving authority, checking coverage, updating the KB without data loss or applying the explicit-request-only MCP indexing rule.
 
 - [Stackpress implementation handbook](stackpress.md) — load for all app scaffolding, plugins, Yarn/CLI scripts, bootstrap configuration, plugin tests, data generation, views and the required post-verification coding audit/refactor cycle.
