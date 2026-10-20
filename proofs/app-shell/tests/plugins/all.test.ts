@@ -3,6 +3,7 @@ import { after } from 'node:test';
 import test from 'node:test';
 
 //client
+import { preferenceContracts } from '../../plugins/settings/preferences/tests/contract.js';
 import { actionContracts } from '../../.fixtures/actions/tests/contract.js';
 import { eventContracts as sharedEvents } from '../../plugins/app/tests/events.js';
 import { proveIdentity } from '../../plugins/auth/tests/contract.js';
@@ -32,7 +33,8 @@ test('shell, identity, settings and fixture contracts', async () => {
     themeContracts,
     actionContracts,
     proveBrowser,
-    sharedEvents
+    sharedEvents,
+    preferenceContracts
   });
 });
 test('built rendering, configuration and dependency restart contracts', async () => {

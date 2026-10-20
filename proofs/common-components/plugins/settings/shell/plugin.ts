@@ -2,6 +2,7 @@
 import type { HttpServer } from '@stackpress/ingest';
 
 //client
+import type { PreferencesService } from '../preferences/types.js';
 import type { Config } from '../../app/types.js';
 import type { ComponentNavigation } from './registry.js';
 import { createNavigation, shellPages } from './registry.js';
@@ -30,6 +31,11 @@ export default function registerShellPlugin(server: HttpServer<Config>) {
     const pages = shellPages(components);
     for (const page of pages) {
       const route = page.path;
+      if (
+        route === '/user-preference/update' &&
+        !ctx.plugin<PreferencesService>('preferences')?.ready()
+      )
+        continue;
       ctx.get(route, () => import('./pages/index.js'));
       ctx.view.get(
         route,

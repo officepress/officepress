@@ -24,6 +24,7 @@ import { httpContracts } from '../helpers/verify-http.js';
  * exercise physical restart and dependency-disabled registration.
  */
 export async function runProof(contracts: {
+  preferenceContracts: typeof import('../../plugins/settings/preferences/tests/contract.js').preferenceContracts,
   actions: typeof import('../../.fixtures/actions/tests/contract.js').actionContracts,
   workflowEvents: typeof import('../../plugins/workflows/tests/events.js').eventContracts,
   sharedEvents: typeof import('../../plugins/app/tests/events.js').eventContracts,
@@ -154,6 +155,18 @@ export async function runProof(contracts: {
       process.env.OFFICEPRESS_SMTP_TESTS === '1'
     ))
       check(name);
+    for (const name of await contracts.preferenceContracts(
+      `http://127.0.0.1:${port}`,
+      server,
+      callers,
+      id
+    ))
+      check(name);
+    const persistedPreferences = await server
+      .plugin<
+        import('../../plugins/settings/preferences/types.js').PreferencesService
+      >('preferences')
+      .read(callers.member.id);
     const browser = await contracts.browser(
       `http://127.0.0.1:${port}`,
       config.cwd,
@@ -189,6 +202,15 @@ export async function runProof(contracts: {
     server = await bootstrap(proofConfig);
     assert.deepEqual(
       await server
+        .plugin<
+          import('../../plugins/settings/preferences/types.js').PreferencesService
+        >('preferences')
+        .read(callers.member.id),
+      persistedPreferences
+    );
+    check('Account preferences survive physical database close/reopen');
+    assert.deepEqual(
+      await server
         .plugin<WorkflowService>('workflows')
         .card(callers.member, persistedChecklist.id),
       persistedChecklist
@@ -221,6 +243,7 @@ export async function runProof(contracts: {
       'workflows',
       'templates,mail',
       'forms',
+      'preferences',
       'auth'
     ]) {
       process.env.OFFICEPRESS_DISABLED_PLUGINS = disabled;
@@ -235,7 +258,14 @@ export async function runProof(contracts: {
       if (disabled === 'workflows') assert.ok(!server.plugin('automations'));
       if (disabled === 'templates,mail') assert.ok(server.plugin('chat'));
       if (disabled === 'auth') assert.equal(names.length, 0);
-      const routePaths = [ ...server.routes.values() ].map((route) => route.path);
+      const routePaths = [ ...server.routes.values() ].map(
+        (route) => route.path
+      );
+      if (disabled === 'auth' || disabled === 'preferences') {
+        assert.ok(!server.plugin('preferences'));
+        assert.ok(!routePaths.includes('/api/v1/user-preference/me'));
+        assert.ok(!routePaths.includes('/user-preference/update'));
+      }
       if (disabled === 'auth') {
         assert.ok(!server.plugin('notifications'));
         assert.ok(!routePaths.includes('/api/notifications'));

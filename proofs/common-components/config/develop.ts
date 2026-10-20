@@ -43,7 +43,8 @@ export const config = {
         'react-dom/client',
         'react/jsx-runtime',
         'react/jsx-dev-runtime',
-        'marked'
+        'marked',
+        'r22n'
       ]
     },
     vite: {

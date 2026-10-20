@@ -12,6 +12,8 @@ import type { Notice } from '../../../app/components/Notifications.js';
 import type { AppData, Config } from '../../../app/types.js';
 import type { ThemeState } from '../../theme/client.js';
 import { bootstrap } from '../../../../tests/bootstrap.js';
+import { seedIdentity } from '../../../auth/fixtures.js';
+import { preferenceContracts } from '../../preferences/tests/contract.js';
 import { BrowserSession } from '../../../auth/tests/contract.js';
 import { seedShell } from '../fixtures.js';
 
@@ -29,10 +31,11 @@ type Check = (name: string, hasPassed: boolean, detail?: unknown) => void;
 async function json<T = unknown>(
   session: BrowserSession,
   route: string,
-  body?: object
+  body?: object,
+  method: 'POST' | 'PUT' = 'POST'
 ) {
   const response = await fetch(session.base + route, {
-    method: body ? 'POST' : 'GET',
+    method: body ? method : 'GET',
     redirect: 'manual',
     headers: {
       cookie: [ ...session.cookies ]
@@ -49,7 +52,7 @@ async function json<T = unknown>(
   }
   const data = await response.json();
   return { status: response.status, data: (data.results ?? data) as T };
-}
+};
 
 /**
  * Verify the built shell configuration, activation guards and browser-facing
@@ -116,6 +119,13 @@ export async function proveConfig(base: Config, check: Check) {
       revision: theme.revision
     });
     assert.equal(savedTheme.status, 200);
+    const savedPreference = await json(
+      first,
+      '/api/v1/user-preference/me',
+      { section: 'timeZone', value: 'Asia/Tokyo', revision: 0 },
+      'PUT'
+    );
+    assert.equal(savedPreference.status, 200);
     const item = (
       await json<{ id: string, revision: number }>(first, '/api/item')
     ).data;
@@ -201,12 +211,29 @@ export async function proveConfig(base: Config, check: Check) {
       'Same private session seed retains builtin identity and persisted item/theme/read-state after restart',
       true
     );
+    const preferences = await json<{ timeZone: { value: string } }>(
+      resumed,
+      '/api/v1/user-preference/me'
+    );
+    assert.equal(preferences.data.timeZone.value, 'Asia/Tokyo');
+    check(
+      'Account preferences survive a physical built-server restart',
+      true
+    );
     const fresh = new BrowserSession(runtime.origin);
     assert.equal((await fresh.login()).response.status, 302);
     check(
       'Fresh builtin password login succeeds after built-server restart',
       true
     );
+    //repeat the preference contracts against built clients after restart
+    const preferenceChecks = await preferenceContracts(
+      runtime.origin,
+      runtime.server,
+      await seedIdentity(runtime.server, false),
+      'built-preferences-' + Date.now()
+    );
+    for (const name of preferenceChecks) check('Built ' + name, true);
     //hydrate the compiled shell in Chrome using the authenticated session
     // cookies
     browser = await chromium.launch({ channel: 'chrome', headless: true });
@@ -339,7 +366,9 @@ export async function proveConfig(base: Config, check: Check) {
         change: (config) => {
           //exercise runtime rejection of a shape TypeScript would normally
           // forbid
-          Object.assign(config.officepress.notifications, { categories: null });
+          Object.assign(config.officepress.notifications, {
+            categories: null
+          });
         },
         absent: [ 'notifications' ]
       },
@@ -353,17 +382,22 @@ export async function proveConfig(base: Config, check: Check) {
       {
         name: 'store plugin absent',
         disabled: [ 'store' ],
-        absent: [ 'agent', 'notifications', 'actions', 'theme' ]
+        absent: [ 'agent', 'notifications', 'actions', 'theme', 'preferences' ]
       },
       {
         name: 'schema plugin absent',
         disabled: [ 'stackpress-schema' ],
-        absent: [ 'agent', 'notifications', 'actions', 'theme' ]
+        absent: [ 'agent', 'notifications', 'actions', 'theme', 'preferences' ]
       },
       {
         name: 'auth plugin absent',
         disabled: [ 'auth' ],
-        absent: [ 'agent', 'notifications', 'actions', 'theme' ]
+        absent: [ 'agent', 'notifications', 'actions', 'theme', 'preferences' ]
+      },
+      {
+        name: 'preferences plugin absent',
+        disabled: [ 'preferences' ],
+        absent: [ 'preferences' ]
       },
       {
         name: 'action plugin absent',
@@ -375,6 +409,7 @@ export async function proveConfig(base: Config, check: Check) {
       agent: [ 'POST', '/api/agent' ],
       notifications: [ 'GET', '/api/notifications' ],
       actions: [ 'GET', '/api/item' ],
+      preferences: [ 'GET', '/api/v1/user-preference/me' ],
       theme: [ 'GET', '/api/theme' ]
     };
     //clone each variant independently so a disabled setting cannot leak
@@ -407,7 +442,10 @@ export async function proveConfig(base: Config, check: Check) {
                 route.path === '/auth/account/security/purge'
             )
           );
-          check(`${variant.name}: app-data purge action is unavailable`, true);
+          check(
+            `${variant.name}: app-data purge action is unavailable`,
+            true
+          );
         }
         const details: Record<string, unknown> = {};
         let isAbsent = true;
@@ -488,7 +526,8 @@ async function start(config: Config, disabled: string[] = []) {
   try {
     server = await bootstrap(config);
   } finally {
-    if (previous === undefined) delete process.env.OFFICEPRESS_DISABLED_PLUGINS;
+    if (previous === undefined)
+      delete process.env.OFFICEPRESS_DISABLED_PLUGINS;
     else process.env.OFFICEPRESS_DISABLED_PLUGINS = previous;
   }
   //the helper owns its loopback listener and exposes one explicit close
@@ -512,4 +551,4 @@ async function start(config: Config, disabled: string[] = []) {
         ?.close();
     }
   };
-}
+};

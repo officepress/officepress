@@ -8,6 +8,7 @@
     "./plugins/store/plugin",
     "stackpress-schema",
     "./plugins/auth/plugin",
+    "./plugins/settings/preferences/plugin",
     "./plugins/settings/theme/plugin",
     "./plugins/settings/about/plugin",
     "./.fixtures/actions/plugin",

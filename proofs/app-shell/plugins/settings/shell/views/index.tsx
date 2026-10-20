@@ -13,7 +13,7 @@ export function Head(props: PageProps) {
   const data = props.data?.shell as unknown as ShellData;
   return (
     <>
-      <title>{`${data.theme?.theme.brand || data.app.name} · App`}</title>
+      <title>{`${data.theme?.theme.brand || data.app.name} · ${props.request.url.pathname === '/user-preference/update' ? 'User preferences' : 'App'}`}</title>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <script src="/mode.js" />
       <link rel="icon" href="/logo.svg" />

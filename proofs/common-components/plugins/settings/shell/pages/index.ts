@@ -2,6 +2,7 @@
 import { action as defineAction } from '@stackpress/ingest/Server';
 
 //client
+import type { PreferencesService } from '../../preferences/types.js';
 import type { HttpProps } from '../../../app/types.js';
 import type { Identity } from '../../../auth/types.js';
 import type { ThemeState } from '../../theme/domain.js';
@@ -60,9 +61,20 @@ export default defineAction(async function indexPage({
       automations: !!ctx.plugin('automations'),
       agent: !!ctx.plugin('agent'),
       notifications: !!ctx.plugin('notifications'),
+      preferences: !!ctx.plugin<PreferencesService>('preferences')?.ready(),
       theme: !!theme,
       about: !!ctx.plugin('about')
     },
+    preferences:
+      safe.user && ctx.plugin<PreferencesService>('preferences')?.ready()
+        ? await ctx
+            .plugin<PreferencesService>('preferences')
+            .read(safe.user.id)
+        : undefined,
+    language: ctx.config('language'),
+    preferenceLanguages: Object.keys(ctx.config('language').languages).map(
+      (locale) => ({ locale: locale.replaceAll('_', '-'), label: locale })
+    ),
     theme: theme ? await theme.read() : undefined
   };
   res.data.set('shell', data);

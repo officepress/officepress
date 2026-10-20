@@ -9,6 +9,9 @@ import Agent from '../../../agent/components/Agent.js';
 import Notifications from '../../../app/components/Notifications.js';
 import About from '../../about/components/About.js';
 import ThemeSettings from '../../theme/components/Theme.js';
+import { LocalizationProvider } from '../../preferences/client.js';
+import Preferences from '../../preferences/components/Preferences.js';
+import PreferencesNavigation from '../../preferences/components/Navigation.js';
 import Icon from './Icon.js';
 
 /**
@@ -52,7 +55,8 @@ export default function Frame({
   //--------------------------------------------------------------------//
   // Derived presentation
 
-  const isSettingsPage = path.startsWith('/settings/');
+  const isPreferencesPage = path === '/user-preference/update';
+  const isSettingsPage = path.startsWith('/settings/') || isPreferencesPage;
   const isAdmin = !!data.user?.roles.includes('ADMIN');
   //Family dark colours remain authoritative. Custom light palette is
   // derived as one unit.
@@ -277,247 +281,289 @@ export default function Frame({
   // Render or public hook result
 
   return (
-    <div
-      className={`proof-shell ${isRailCollapsed ? 'rail' : ''} ${isSettingsPage ? 'settings' : ''} ${!isMobile && isAgentOpen && isAgentExpanded ? 'agent-expanded' : ''}`}
-      data-family={data.app.family}
-      data-ready={isReady}
-      aria-busy={!isReady}
-    >
-      <style>{themeCSS}</style>
-      {!isSettingsPage && !isMobile && (
-        <aside className="app-aside op-aside">{navigation}</aside>
-      )}
-      <div className="main-frame">
-        {/* START: Shell header */}
-        <header ref={headerRef} className="shell-header op-header">
-          {isSettingsPage ? (
-            <a className="op-icon-btn" href="/" aria-label="Back to App">
-              <Icon name="arrow-left" />
-            </a>
-          ) : (
-            <button
-              className="op-icon-btn"
-              aria-label={
-                isMobile
-                  ? 'Open navigation'
-                  : isRailCollapsed
-                    ? 'Expand navigation'
-                    : 'Collapse navigation'
-              }
-              onClick={(event) => handleOpen('nav', event)}
-            >
-              <Icon name={isMobile ? 'menu' : 'panel-left'} />
-            </button>
-          )}
-          <h1 className="op-header__title">
-            {isSettingsPage ? 'App settings' : 'App'}
-          </h1>
-          <span className="op-header__divider" aria-hidden="true" />
-          <div className="header-actions op-globals">
-            {data.capabilities.notifications && (
+    <LocalizationProvider initial={data.preferences} language={data.language}>
+      <div
+        className={`proof-shell ${isRailCollapsed ? 'rail' : ''} ${isSettingsPage ? 'settings' : ''} ${!isMobile && isAgentOpen && isAgentExpanded ? 'agent-expanded' : ''}`}
+        data-family={data.app.family}
+        data-ready={isReady}
+        aria-busy={!isReady}
+      >
+        <style>{themeCSS}</style>
+        {!isSettingsPage && !isMobile && (
+          <aside className="app-aside op-aside">{navigation}</aside>
+        )}
+        <div className="main-frame">
+          {/* START: Shell header */}
+          <header ref={headerRef} className="shell-header op-header">
+            {isSettingsPage ? (
+              <a className="op-icon-btn" href="/" aria-label="Back to App">
+                <Icon name="arrow-left" />
+              </a>
+            ) : (
+              <button
+                className="op-icon-btn"
+                aria-label={
+                  isMobile
+                    ? 'Open navigation'
+                    : isRailCollapsed
+                      ? 'Expand navigation'
+                      : 'Collapse navigation'
+                }
+                onClick={(event) => handleOpen('nav', event)}
+              >
+                <Icon name={isMobile ? 'menu' : 'panel-left'} />
+              </button>
+            )}
+            <h1 className="op-header__title">
+              {isPreferencesPage
+                ? 'User preferences'
+                : isSettingsPage
+                  ? 'App settings'
+                  : 'App'}
+            </h1>
+            {!isPreferencesPage && (
+              <span className="op-header__divider" aria-hidden="true" />
+            )}
+            <div className="header-actions op-globals">
+              {data.capabilities.notifications && (
+                <button
+                  className="op-icon-btn op-icon-btn--circle"
+                  aria-label="Notifications"
+                  aria-haspopup="dialog"
+                  aria-expanded={isNoticePanelOpen}
+                  onClick={() => {
+                    setIsNoticePanelOpen(!isNoticePanelOpen);
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  <Icon name="bell" />
+                </button>
+              )}
+              {data.capabilities.agent && (
+                <button
+                  className="op-icon-btn op-icon-btn--circle"
+                  aria-label="Open agent"
+                  aria-expanded={isMobile ? overlay === 'agent' : isAgentOpen}
+                  onClick={(event) => handleOpen('agent', event)}
+                >
+                  <Icon name="bot" />
+                </button>
+              )}
+              <button
+                className="op-icon-btn op-icon-btn--circle op-theme-btn"
+                aria-label={mode === 'light' ? 'Light mode' : 'Dark mode'}
+                title={`Switch to ${mode === 'light' ? 'dark' : 'light'} mode`}
+                onClick={handleToggleMode}
+              >
+                <Icon name="sun" className="op-icon--sun" />
+                <Icon name="moon" className="op-icon--moon" />
+              </button>
               <button
                 className="op-icon-btn op-icon-btn--circle"
-                aria-label="Notifications"
-                aria-haspopup="dialog"
-                aria-expanded={isNoticePanelOpen}
+                aria-label="User menu"
+                aria-current={isPreferencesPage ? 'page' : undefined}
+                aria-haspopup="menu"
+                aria-expanded={isMenuOpen}
                 onClick={() => {
-                  setIsNoticePanelOpen(!isNoticePanelOpen);
-                  setIsMenuOpen(false);
+                  setIsMenuOpen(!isMenuOpen);
+                  setIsNoticePanelOpen(false);
                 }}
               >
-                <Icon name="bell" />
+                <Icon name="user" />
               </button>
-            )}
-            {data.capabilities.agent && (
-              <button
-                className="op-icon-btn op-icon-btn--circle"
-                aria-label="Open agent"
-                aria-expanded={isMobile ? overlay === 'agent' : isAgentOpen}
-                onClick={(event) => handleOpen('agent', event)}
-              >
-                <Icon name="bot" />
-              </button>
-            )}
-            <button
-              className="op-icon-btn op-icon-btn--circle op-theme-btn"
-              aria-label={mode === 'light' ? 'Light mode' : 'Dark mode'}
-              title={`Switch to ${mode === 'light' ? 'dark' : 'light'} mode`}
-              onClick={handleToggleMode}
-            >
-              <Icon name="sun" className="op-icon--sun" />
-              <Icon name="moon" className="op-icon--moon" />
-            </button>
-            <button
-              className="op-icon-btn op-icon-btn--circle"
-              aria-label="User menu"
-              aria-haspopup="menu"
-              aria-expanded={isMenuOpen}
-              onClick={() => {
-                setIsMenuOpen(!isMenuOpen);
-                setIsNoticePanelOpen(false);
-              }}
-            >
-              <Icon name="user" />
-            </button>
-          </div>
-        </header>
-        {/* END: Shell header */}
-        {isMenuOpen && (
-          <nav
-            className="user-menu op-menu app-popover"
-            aria-label="User menu"
-            role="menu"
-          >
-            <div className="op-menu__identity">
-              <span className="op-avatar op-avatar--40">{initials}</span>
-              <div className="op-grow">
-                <strong>{data.user?.name || 'Guest'}</strong>
-                <p className="op-small op-muted">
-                  {isAdmin ? 'Administrator' : 'Member'}
-                </p>
-              </div>
             </div>
-            <hr />
-            <a className="op-menu__item" role="menuitem" href="/auth/account">
-              <Icon name="circle-user" />
-              <span>Account Settings</span>
-            </a>
-            {isAdmin && (
-              <>
-                <hr />
+          </header>
+          {/* END: Shell header */}
+          {isMenuOpen && (
+            <nav
+              className="user-menu op-menu app-popover"
+              aria-label="User menu"
+              role="menu"
+            >
+              <div className="op-menu__identity">
+                <span className="op-avatar op-avatar--40">{initials}</span>
+                <div className="op-grow">
+                  <strong>{data.user?.name || 'Guest'}</strong>
+                  <p className="op-small op-muted">
+                    {isAdmin ? 'Administrator' : 'Member'}
+                  </p>
+                </div>
+              </div>
+              <hr />
+              {data.capabilities.preferences && (
                 <a
                   className="op-menu__item"
                   role="menuitem"
-                  href="/settings/about"
+                  href="/user-preference/update"
                 >
-                  <Icon name="settings" />
-                  <span>App Settings</span>
+                  <Icon name="sliders-horizontal" />
+                  <span>User Preferences</span>
                 </a>
-              </>
-            )}
-            <hr />
-            <form action="/auth/signout" method="post">
-              <input type="hidden" name="csrf" value={data.csrf} />
-              <button className="op-menu__item" role="menuitem">
-                <Icon name="log-out" />
-                <span>Sign out</span>
-              </button>
-            </form>
-          </nav>
-        )}
-        {isNoticePanelOpen && (
-          <Notifications
-            appName={theme.theme.brand}
-            csrf={data.csrf}
-            onClose={() => setIsNoticePanelOpen(false)}
-          />
-        )}
-        <div className="app-body">
-          <main
-            ref={contentRef}
-            aria-label={isSettingsPage ? 'App settings' : 'App content'}
-            hidden={!isMobile && isAgentOpen && isAgentExpanded}
-            className={
-              isSettingsPage
-                ? 'settings-frame op-settings'
-                : 'app-main op-content'
-            }
-          >
-            {isSettingsPage ? (
-              <>
-                {/* START: Settings navigation */}
-                <nav
-                  className="settings-nav op-settings__nav"
-                  aria-label="App Settings"
-                >
+              )}
+              <a
+                className="op-menu__item"
+                role="menuitem"
+                href="/auth/account"
+              >
+                <Icon name="circle-user" />
+                <span>Account Settings</span>
+              </a>
+              {isAdmin && (
+                <>
+                  <hr />
                   <a
-                    className="op-settings__item"
-                    aria-current={path.endsWith('about') ? 'true' : undefined}
+                    className="op-menu__item"
+                    role="menuitem"
                     href="/settings/about"
                   >
-                    <span className="op-icon-slot">
-                      <Icon name="info" />
-                    </span>
-                    About
+                    <Icon name="settings" />
+                    <span>App Settings</span>
                   </a>
-                  <a
-                    className="op-settings__item"
-                    aria-current={path.endsWith('theme') ? 'true' : undefined}
-                    href="/settings/theme"
-                  >
-                    <span className="op-icon-slot">
-                      <Icon name="palette" />
-                    </span>
-                    Theme
-                  </a>
-                  <hr className="app-nav-divider" />
-                  <a className="op-settings__item" href="/">
-                    <span className="op-icon-slot">
-                      <Icon name="arrow-left" />
-                    </span>
-                    Back to App
-                  </a>
-                </nav>
-                {/* END: Settings navigation */}
-                <div className="op-settings__main">
-                  <div className="settings-content op-settings__column">
-                    {path.endsWith('theme') ? (
-                      data.capabilities.theme ? (
-                        <ThemeSettings
-                          initial={theme}
+                </>
+              )}
+              <hr />
+              <form action="/auth/signout" method="post">
+                <input type="hidden" name="csrf" value={data.csrf} />
+                <button className="op-menu__item" role="menuitem">
+                  <Icon name="log-out" />
+                  <span>Sign out</span>
+                </button>
+              </form>
+            </nav>
+          )}
+          {isNoticePanelOpen && (
+            <Notifications
+              appName={theme.theme.brand}
+              csrf={data.csrf}
+              onClose={() => setIsNoticePanelOpen(false)}
+            />
+          )}
+          <div className="app-body">
+            <main
+              ref={contentRef}
+              aria-label={
+                isPreferencesPage
+                  ? 'User preferences'
+                  : isSettingsPage
+                    ? 'App settings'
+                    : 'App content'
+              }
+              hidden={!isMobile && isAgentOpen && isAgentExpanded}
+              className={
+                isSettingsPage
+                  ? 'settings-frame op-settings'
+                  : 'app-main op-content'
+              }
+            >
+              {isSettingsPage ? (
+                <>
+                  {/* START: Settings navigation */}
+                  {isPreferencesPage ? (
+                    <PreferencesNavigation />
+                  ) : (
+                    <nav
+                      className="settings-nav op-settings__nav"
+                      aria-label="App Settings"
+                    >
+                      <a
+                        className="op-settings__item"
+                        aria-current={
+                          path.endsWith('about') ? 'true' : undefined
+                        }
+                        href="/settings/about"
+                      >
+                        <span className="op-icon-slot">
+                          <Icon name="info" />
+                        </span>
+                        About
+                      </a>
+                      <a
+                        className="op-settings__item"
+                        aria-current={
+                          path.endsWith('theme') ? 'true' : undefined
+                        }
+                        href="/settings/theme"
+                      >
+                        <span className="op-icon-slot">
+                          <Icon name="palette" />
+                        </span>
+                        Theme
+                      </a>
+                      <hr className="app-nav-divider" />
+                      <a className="op-settings__item" href="/">
+                        <span className="op-icon-slot">
+                          <Icon name="arrow-left" />
+                        </span>
+                        Back to App
+                      </a>
+                    </nav>
+                  )}
+                  {/* END: Settings navigation */}
+                  <div className="op-settings__main">
+                    <div className="settings-content op-settings__column">
+                      {isPreferencesPage ? (
+                        <Preferences
                           csrf={data.csrf}
-                          family={data.app.family}
+                          languages={data.preferenceLanguages || []}
+                        />
+                      ) : path.endsWith('theme') ? (
+                        data.capabilities.theme ? (
+                          <ThemeSettings
+                            initial={theme}
+                            csrf={data.csrf}
+                            family={data.app.family}
+                            admin={isAdmin}
+                            onSave={setTheme}
+                          />
+                        ) : (
+                          <p>Theme settings are unavailable.</p>
+                        )
+                      ) : data.capabilities.about ? (
+                        <About
+                          brand={theme.theme.brand}
+                          logo={theme.theme.logo}
+                          version={data.app.version}
+                          build={data.app.build}
+                          csrf={data.csrf}
                           admin={isAdmin}
-                          onSave={setTheme}
                         />
                       ) : (
-                        <p>Theme settings are unavailable.</p>
-                      )
-                    ) : data.capabilities.about ? (
-                      <About
-                        brand={theme.theme.brand}
-                        logo={theme.theme.logo}
-                        version={data.app.version}
-                        build={data.app.build}
-                        csrf={data.csrf}
-                        admin={isAdmin}
-                      />
-                    ) : (
-                      <p>About is unavailable.</p>
-                    )}
+                        <p>About is unavailable.</p>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </>
-            ) : null}
-          </main>
-          {!isMobile && isAgentOpen && data.capabilities.agent && (
-            <aside className="agent-panel op-agent">{agent}</aside>
-          )}
-        </div>
-      </div>
-      {isMobile && overlay && (
-        <div className="overlay-layer">
-          <button
-            className="scrim"
-            tabIndex={-1}
-            aria-label="Close panel"
-            onClick={() => setOverlay(null)}
-          />
-          <div
-            ref={dialogRef}
-            role="dialog"
-            aria-modal="true"
-            aria-label={overlay === 'nav' ? 'Navigation' : 'Your agent'}
-            className={'mobile-panel ' + overlay}
-          >
-            {overlay === 'nav' ? (
-              <div className="op-aside app-mobile-nav">{navigation}</div>
-            ) : (
-              agent
+                </>
+              ) : null}
+            </main>
+            {!isMobile && isAgentOpen && data.capabilities.agent && (
+              <aside className="agent-panel op-agent">{agent}</aside>
             )}
           </div>
         </div>
-      )}
-    </div>
+        {isMobile && overlay && (
+          <div className="overlay-layer">
+            <button
+              className="scrim"
+              tabIndex={-1}
+              aria-label="Close panel"
+              onClick={() => setOverlay(null)}
+            />
+            <div
+              ref={dialogRef}
+              role="dialog"
+              aria-modal="true"
+              aria-label={overlay === 'nav' ? 'Navigation' : 'Your agent'}
+              className={'mobile-panel ' + overlay}
+            >
+              {overlay === 'nav' ? (
+                <div className="op-aside app-mobile-nav">{navigation}</div>
+              ) : (
+                agent
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+    </LocalizationProvider>
   );
 };

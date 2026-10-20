@@ -3,6 +3,7 @@ import type Engine from '@stackpress/inquire/Engine';
 import { action as defineAction } from '@stackpress/ingest/Server';
 
 //client
+import type { PreferencesService } from '../../settings/preferences/types.js';
 import type { HttpProps } from '../../app/types.js';
 import type { Identity } from '../../auth/types.js';
 import type { AgentResult, AgentRuntime } from '../types.js';
@@ -43,9 +44,12 @@ export default defineAction(async function runEvent({
   const signature = JSON.stringify({
     model,
     prompt,
-    route: [ '/', '/settings/about', '/settings/theme' ].includes(
-      String(req.data('route'))
-    )
+    route: [
+      '/',
+      '/settings/about',
+      '/settings/theme',
+      '/user-preference/update'
+    ].includes(String(req.data('route')))
       ? String(req.data('route'))
       : '/',
     context: 'app'
@@ -93,9 +97,14 @@ export default defineAction(async function runEvent({
         read(): Promise<{ theme: { brand: string } }>
       }>('theme');
       return {
-        name: theme ? (await theme.read()).theme.brand : officepressConfig.name,
+        name: theme
+          ? (await theme.read()).theme.brand
+          : officepressConfig.name,
         version: officepressConfig.version,
         features: {
+          preferences: !!ctx
+            .plugin<PreferencesService>('preferences')
+            ?.ready(),
           agent: true,
           notifications: !!ctx.plugin('notifications'),
           about: !!ctx.plugin('about'),
@@ -103,6 +112,9 @@ export default defineAction(async function runEvent({
         },
         settings: {
           account: ctx.config.path('auth.base', '/auth') + '/account',
+          ...(ctx.plugin<PreferencesService>('preferences')?.ready()
+            ? { preferences: '/user-preference/update' }
+            : {}),
           ...(currentCaller.roles.includes('ADMIN')
             ? { about: '/settings/about', theme: '/settings/theme' }
             : {})

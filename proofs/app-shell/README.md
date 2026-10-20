@@ -24,7 +24,7 @@ integrated with a copy of this shell.
 
 ## Stackpress plugins and why each exists
 
-These are all 10 entries in this proof's `package.json` `plugins` list, in load
+These are all 11 entries in this proof's `package.json` `plugins` list, in load
 order. A plugin is a runtime responsibility; it need not have a visible page.
 The [copy map](#copy-and-adapt) gives the detailed adoption contract.
 
@@ -34,6 +34,7 @@ The [copy map](#copy-and-adapt) gives the detailed adoption contract.
 | [`store`](plugins/store/plugin.ts) | Chooses and closes the PostgreSQL or PGlite connection and registers Stackpress SQL once the generated client is available. |
 | `stackpress-schema` | Supplies Stackpress Idea generation and the generated-client loader; schema generation remains separate from database installation and rendering builds. |
 | [`auth`](plugins/auth/plugin.ts) | Owns authentication, session/caller projection, CSRF and account routes so feature plugins can require a verified caller. Its public service key remains `identity`. |
+| [`preferences`](plugins/settings/preferences/plugin.ts) | Owns Language and Time zone for the signed-in account, native browser defaults, independent revision-checked saves and the shared localization provider. |
 | [`theme`](plugins/settings/theme/plugin.ts) | Owns app-scoped brand and colour state, which can be unavailable without removing authentication or the frame. |
 | [`about`](plugins/settings/about/plugin.ts) | Owns release lookup and Upgrade Instructions display separately from navigation and theme. |
 | [`actions`](.fixtures/actions/plugin.ts) | Isolates a revision-checked action/Undo fixture used to prove domain-action behavior; adopters may omit this example. |
@@ -256,3 +257,40 @@ route placement is prescribed; repeated ready helpers implement local dependency
 policy. The 2026-10-10 refactor removes the earlier page-factory adapters. Routes load default actions directly; reusable business operations use authenticated named Stackpress events.
 
 Current all-proof guideline alignment and fresh checks: [2026-10-10 refactor verification](tests/evidence/verification/all-proofs-guideline-refactor.md).
+
+## User Preferences
+
+The user menu opens `/user-preference/update`, with separate **Language** and
+**Time zone** navigation items, native browser/device defaults, previews and
+independent Cancel/Save actions. Returning a choice to Browser default or Device
+default saves `null`; it follows that device instead of freezing its detected
+locale/zone. Appearance and navigation remain inline shell controls.
+
+The independently removable `settings/preferences` plugin stores only
+`Profile.references.officepressPreferences`, keyed by the authenticated account,
+with a separate revision for each choice. Atomic SQL updates preserve unrelated
+metadata and the sibling card; stale updates fail with a visible reload action.
+No new schema, migration, browser preference cookie or localStorage key is needed.
+Members and read-only business roles can change their own personal preferences;
+this grants no profile/security or domain-write permission.
+
+`GET /api/v1/user-preference/me` reads the caller's state;
+`PUT /api/v1/user-preference/me` takes `section` (`language` or `timeZone`),
+`value` (a supported locale/IANA zone or `null`), `revision` and `csrf`.
+Caller/app IDs in the body never choose the owner. Events own authorization,
+validation and writes; pages add web CSRF. Disable `preferences` with the existing
+plugin selector and restart to remove its menu entry, page, API and events while
+preserving saved choices.
+
+The actual Frame mounts `LocalizationProvider` above its consumers. Saved choices
+apply to previews, document language, the available r22n catalog, About check times
+and notification day grouping. Only the configured English catalog ships here;
+this is not a new translation pack. Feature-specific dates, business scheduling,
+elapsed SLA math and reminder delivery are not rewritten by this section.
+Apps sharing the same Profile store can read the same account namespace; these
+proofs use independent databases and do not synchronize across installations.
+
+The [implementation/adoption contract](../../.agents/references/00402-officepress-user-preferences-proof-contract.md)
+records the provider boundary, storage and verification scope. The normal Yarn
+suite includes preference HTTP/browser contracts, invalid-CSRF/ownership/stale-save
+checks, per-card cancellation, native defaults, dark mobile layout and persistence.

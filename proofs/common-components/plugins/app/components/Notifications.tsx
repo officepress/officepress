@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 
 //client
+import { useLocalization } from '../../settings/preferences/client.js';
 import { requestJson } from '../client.js';
 import Icon from './Icon.js';
 
@@ -50,6 +51,7 @@ export default function Notifications({
   //--------------------------------------------------------------------//
   // State and lifecycle references
 
+  const { formatDate } = useLocalization();
   const [ rows, setRows ] = useState<Notice[]>([]);
   const [ category, setCategory ] = useState('all');
   const [ isBusy, setIsBusy ] = useState(true);
@@ -62,7 +64,7 @@ export default function Notifications({
     (notice) => category === 'all' || notice.category === category
   );
   const days = filtered.reduce<Record<string, Notice[]>>((groups, notice) => {
-    (groups[new Date(notice.created).toLocaleDateString()] ||= []).push(notice);
+    (groups[formatDate(notice.created)] ||= []).push(notice);
     return groups;
   }, {});
 
@@ -76,7 +78,8 @@ export default function Notifications({
     setError('');
     try {
       setRows(
-        (await requestJson<{ notices: Notice[] }>('/api/notifications')).notices
+        (await requestJson<{ notices: Notice[] }>('/api/notifications'))
+          .notices
       );
     } catch (caughtError) {
       setError((caughtError as Error).message);
@@ -164,7 +167,7 @@ export default function Notifications({
           Object.entries(days).map(([ day, notices ]) => (
             <section key={day}>
               <h3 className="op-notifs__group op-overline">
-                {day === new Date().toLocaleDateString() ? 'Today' : day}
+                {day === formatDate(new Date()) ? 'Today' : day}
               </h3>
               {notices.map((notice) => (
                 <article

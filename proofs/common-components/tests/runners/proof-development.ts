@@ -13,6 +13,7 @@ import type { ViewPlugin } from '../../plugins/app/types.js';
 import { seedComponents } from '../../.fixtures/seed-components.js';
 import { config } from '../../config/develop.js';
 import { seedIdentity } from '../../plugins/auth/fixtures.js';
+import { preferenceContracts } from '../../plugins/settings/preferences/tests/contract.js';
 import { bootstrap } from '../bootstrap.js';
 
 /**
@@ -104,6 +105,11 @@ export async function runProof(
     );
     receipt.screenshots = browser.screenshots;
     for (const name of browser.checks) check(name);
+    //the new personal page must hydrate in source mode as well as built mode
+    const preferenceChecks = await preferenceContracts(
+      `http://127.0.0.1:${port}`, server, profiles, id
+    );
+    for (const name of preferenceChecks) check('Development ' + name);
     receipt.status = 'passed-with-limitations';
   } catch (error) {
     failure = error;

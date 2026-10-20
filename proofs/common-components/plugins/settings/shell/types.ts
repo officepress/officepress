@@ -1,4 +1,11 @@
+//modules
+import type { LanguageConfig } from 'stackpress-language/types';
+
 //client
+import type {
+  PreferenceState,
+  PreferenceLanguage
+} from '../preferences/types.js';
 import type { Caller } from '../../auth/types.js';
 import type { ThemeState } from '../theme/domain.js';
 import type { ComponentLink } from './registry.js';
@@ -32,8 +39,12 @@ export type ShellData = {
     automations: boolean,
     agent: boolean,
     notifications: boolean,
+    preferences: boolean,
     theme: boolean,
     about: boolean
   },
+  preferences?: PreferenceState,
+  language?: LanguageConfig,
+  preferenceLanguages?: PreferenceLanguage[],
   theme?: ThemeState
 };

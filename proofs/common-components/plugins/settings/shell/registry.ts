@@ -56,12 +56,19 @@ export function shellPages(components: ComponentLink[]): ShellPage[] {
     { path: '/', componentId: '', title: 'App' },
     { path: '/settings/about', componentId: '', title: 'App settings' },
     { path: '/settings/theme', componentId: '', title: 'App settings' },
+    {
+      path: '/user-preference/update',
+      componentId: '',
+      title: 'User preferences'
+    },
     ...components.flatMap((item) =>
-      (item.pages || [ { path: item.href, title: item.label } ]).map((page) => ({
-        ...page,
-        view: item.view,
-        componentId: item.id
-      }))
+      (item.pages || [ { path: item.href, title: item.label } ]).map(
+        (page) => ({
+          ...page,
+          view: item.view,
+          componentId: item.id
+        })
+      )
     )
   ];
 };

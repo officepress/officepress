@@ -99,3 +99,11 @@ Recheck with `python3 .agents/scripts/validate-agent-workspace.py`, `python3 .ag
 | `.opcd/chat.json` | 33217 | `8940d8ee4e9184637ef630863be672ede138554b73f3ead055af7274494b61d3` |
 | `.opcd/chats.json` | 91 | `8b245b9e479839273cb76edffcf25459c69f94bbcb512fda4bd52ddf3a67d661` |
 | `.opcd/session.json` | 89 | `8f3531a4fd21679b6ed5763d2bde14026149f8443cb40c6dd71598666163db16` |
+
+## Implementation follow-up
+
+The subsequent user request to update both maintained proofs authorizes the page
+implementation documented in the [User Preferences proof contract](00402-officepress-user-preferences-proof-contract.md).
+The statements above about missing implementation describe the original design
+ingestion boundary, not the later proof state. The native archive, exact design
+records and cross-installation limits remain separate from application evidence.

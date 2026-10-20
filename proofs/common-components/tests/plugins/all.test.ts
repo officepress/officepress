@@ -2,6 +2,7 @@
 import test from 'node:test';
 
 //client
+import { preferenceContracts } from '../../plugins/settings/preferences/tests/contract.js';
 import { actionContracts as actions } from '../../.fixtures/actions/tests/contract.js';
 import { eventContracts as sharedEvents } from '../../plugins/app/tests/events.js';
 import { proveIdentity } from '../../plugins/auth/tests/contract.js';
@@ -31,7 +32,8 @@ test('all component plugin, HTTP and dependency restart contracts', async () => 
     mail,
     browser,
     sharedEvents,
-    workflowEvents
+    workflowEvents,
+    preferenceContracts
   });
 });
 

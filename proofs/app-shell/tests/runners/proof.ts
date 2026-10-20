@@ -20,6 +20,7 @@ import { bootstrap } from '../bootstrap.js';
  * database, retaining model/browser outcomes and final source fingerprints.
  */
 export async function runProof(contracts: {
+  preferenceContracts: typeof import('../../plugins/settings/preferences/tests/contract.js').preferenceContracts,
   sharedEvents: typeof import('../../plugins/app/tests/events.js').eventContracts,
   proveIdentity: typeof import('../../plugins/auth/tests/contract.js').proveIdentity,
   aboutContracts: typeof import('../../plugins/settings/about/tests/contract.js').aboutContracts,
@@ -99,11 +100,15 @@ export async function runProof(contracts: {
     const address = listener.address() as { port: number };
     const origin = `http://127.0.0.1:${address.port}`;
     if (!process.argv.includes('--ui')) {
-      const identity = await proveIdentity(origin, server, (identityCheck) => {
-        if (!identityCheck.passed)
-          throw new Error('Identity check failed: ' + identityCheck.name);
-        check(identityCheck.name);
-      });
+      const identity = await proveIdentity(
+        origin,
+        server,
+        (identityCheck) => {
+          if (!identityCheck.passed)
+            throw new Error('Identity check failed: ' + identityCheck.name);
+          check(identityCheck.name);
+        }
+      );
       receipt.limitations.push(...identity.limitations);
     } else
       receipt.limitations.push(
@@ -113,6 +118,13 @@ export async function runProof(contracts: {
     check('Single-company multiuser fixture records installed');
     const profiles = await seedIdentity(server, false);
     for (const name of await sharedEvents(server, profiles)) check(name);
+    for (const name of await contracts.preferenceContracts(
+      origin,
+      server,
+      profiles,
+      id
+    ))
+      check(name);
     if (process.env.OFFICEPRESS_LIVE_TESTS === '1') {
       const result = await proveBrowser(origin, config.cwd, id, check);
       receipt.models = result.models;
@@ -132,7 +144,9 @@ export async function runProof(contracts: {
     console.error((caughtError as Error).message);
   } finally {
     const engine =
-      server.plugin<import('../../plugins/app/types.js').ViewPlugin>('reactus');
+      server.plugin<import('../../plugins/app/types.js').ViewPlugin>(
+        'reactus'
+      );
     if (engine) await (await engine.dev())?.close();
     listener?.closeAllConnections();
 

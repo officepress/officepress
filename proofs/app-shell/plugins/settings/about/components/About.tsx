@@ -2,6 +2,7 @@
 import { useState } from 'react';
 
 //client
+import { useLocalization } from '../../preferences/client.js';
 import type { ReleaseResult } from '../releases.js';
 import { requestJson } from '../../../app/client.js';
 import { Markdown } from './Markdown.js';
@@ -39,6 +40,7 @@ export default function About({
   //--------------------------------------------------------------------//
   // State and lifecycle references
 
+  const { formatDate } = useLocalization();
   const [ result, setResult ] = useState<ReleaseResult>();
   const [ isBusy, setIsBusy ] = useState(false);
   const [ error, setError ] = useState('');
@@ -135,7 +137,11 @@ export default function About({
             </div>
             {result?.url && (
               <div className="op-update__alt">
-                <a href={result.url} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={result.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   View release on GitHub
                 </a>
               </div>
@@ -145,7 +151,7 @@ export default function About({
         <div className="op-section__foot app-settings-footer">
           <span className="op-small">
             {result
-              ? `${result.cached ? 'Cached check' : 'Last checked'} · ${new Date(result.checkedAt).toLocaleString()}`
+              ? `${result.cached ? 'Cached check' : 'Last checked'} · ${formatDate(result.checkedAt, { dateStyle: 'medium', timeStyle: 'short' })}`
               : isAdmin
                 ? 'No update check yet'
                 : 'An administrator can check for updates.'}
@@ -167,7 +173,11 @@ export default function About({
               <h2 className="op-section__title">Upgrade Instructions</h2>
               <p className="op-section__desc">
                 Installed {version} → {result.tag} ·{' '}
-                <a href={result.url} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={result.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Release source
                 </a>
               </p>

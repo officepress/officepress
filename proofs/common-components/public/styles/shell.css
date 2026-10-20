@@ -702,3 +702,73 @@
     display: none;
   }
 }
+
+/* Personal preferences: source cards keep separate drafts and actions. */
+.op-icon-btn[aria-current="page"] {
+  border-color: var(--op-accent);
+  border-width: 2px;
+}
+.preference-card {
+  scroll-margin-top: 16px;
+}
+.preference-card .op-section__body {
+  display: grid;
+  gap: 20px;
+}
+.preference-select {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  min-width: 0;
+}
+.preference-select select {
+  flex: 1;
+  min-width: 0;
+}
+.preference-default {
+  flex-shrink: 0;
+}
+.preference-preview {
+  background: var(--op-sunken);
+  border-radius: 8px;
+  padding: 16px;
+}
+.preference-preview-title {
+  align-items: center;
+  display: flex;
+  font-size: 12px;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.preference-samples {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+}
+.preference-samples dt {
+  color: var(--op-text-2);
+  font-size: 11px;
+}
+.preference-samples dd {
+  font-size: 13px;
+  margin: 4px 0 0;
+  overflow-wrap: anywhere;
+}
+.preference-card .app-settings-footer > span {
+  flex: 1;
+}
+@media (max-width: 767px) {
+  .preferences-nav {
+    flex-wrap: wrap;
+  }
+  .preferences-nav .app-nav-divider {
+    display: none;
+  }
+  .preference-default {
+    display: none;
+  }
+  .preference-samples {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
