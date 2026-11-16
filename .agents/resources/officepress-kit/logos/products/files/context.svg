@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Context">
+<title>Context</title>
+<defs><clipPath id="clip-D3DFs"><rect width="96" height="96" rx="24"/></clipPath></defs>
+<g id="node-D3DFs"><rect width="96" height="96" rx="24" fill="#6A3BE4"/><g clip-path="url(#clip-D3DFs)"><g id="node-J47nX" transform="translate(36 68)"><path d="M2 0H22A2 2 0 0 1 24 2V6A6 6 0 0 1 18 12H6A6 6 0 0 1 0 6V2A2 2 0 0 1 2 0Z" fill="#FFFFFF" fill-opacity="0.5490196078431373"/></g><g id="node-P5yRP" transform="translate(24 12)"><ellipse cx="24.0" cy="24.0" rx="24.0" ry="24.0" fill="#FFFFFF"/></g><g id="node-H1YU9h" transform="translate(36 50)"><path d="M0 0H24A0 0 0 0 1 24 0V10A4 4 0 0 1 20 14H4A4 4 0 0 1 0 10V0A0 0 0 0 1 0 0Z" fill="#FFFFFF"/></g><g id="node-nHZ6t" transform="translate(36 28)"><path d="M0 8l8 8 16-16" fill="none" stroke="#6A3BE4" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></g></g></g>
+</svg>

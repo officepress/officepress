@@ -12,7 +12,7 @@ import zipfile
 
 
 def load_archive(path: Path) -> tuple[dict, dict[str, bytes]]:
-    """Check ZIP integrity, JSON members and the declared frame inventory."""
+    """Check ZIP integrity, JSON/Markdown members and declared frame inventory."""
     with zipfile.ZipFile(path) as archive:
         names = archive.namelist()
         assert len(names) == len(set(names)), 'Duplicate archive member'
@@ -21,13 +21,25 @@ def load_archive(path: Path) -> tuple[dict, dict[str, bytes]]:
             assert not part.is_absolute() and '..' not in part.parts and '\\' not in name, 'Unsafe archive member'
         assert archive.testzip() is None, 'Archive CRC failure'
         members = {name: archive.read(name) for name in names}
-    parsed = {name: json.loads(data) for name, data in members.items()}
+    #Newer Designs saves include generated documentation and editor history.
+    #Validate their UTF-8 bytes without treating Markdown as executable JSON.
+    parsed = {}
+    for name, data in members.items():
+        assert name.endswith(('.json', '.md')), 'Unsupported archive member: ' + name
+        text = data.decode('utf-8')
+        if name.endswith('.json'):
+            parsed[name] = json.loads(text)
     design = parsed['design.json']
     assert design['format'] == 'opcd' and design['formatVersion'] == 2, 'Unsupported design archive'
-    frames = design['frames']
+    #Accept legacy filename lists and current frame routing records.
+    registry = design['frames']
+    frames = [entry['file'] if isinstance(entry, dict) else entry for entry in registry]
     assert len(frames) == len(set(frames)), 'Duplicate declared frame'
     assert set(frames) == {name for name in names if name.startswith('frames/')}, 'Frame inventory mismatch'
     assert all(name.startswith('frames/') and name.endswith('.json') for name in frames), 'Invalid frame member'
+    for entry in registry:
+        if isinstance(entry, dict):
+            assert parsed[entry['file']]['id'] == entry['id'], 'Frame routing ID mismatch'
     document = {**design, 'children': [parsed[name] for name in frames]}
     resolved_nodes(document)  # Also reject duplicate IDs, missing references and cycles.
     return document, members

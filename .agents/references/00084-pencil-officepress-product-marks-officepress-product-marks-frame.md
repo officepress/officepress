@@ -6,6 +6,8 @@ Source: native `officepress.opcd`, extracted offline from its JSON frames with i
 
 Apply [accepted corrections](00078-officepress-source-decisions.md) — load when using these design records as guidance.
 
+Current extraction: [Files/Forge revision](00403-officepress-files-forge-revision.md), including lossless prior-record recovery.
+
 ## Node records
 
 | ID / parent | Type / name | Exact text, context and flags | Layout and styling properties |
@@ -14,7 +16,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | pP9A6 / o8qxhR | frame / Header | {"name":"Header"} | {"width":"fill_container","gap":80,"justifyContent":"space_between"} |
 | eWkN3 / pP9A6 | frame / Intro | {"name":"Intro"} | {"width":720,"layout":"vertical","gap":20} |
 | u4K3U / eWkN3 | text / Eyebrow | {"name":"Eyebrow","content":"OFFICEPRESS  /  BACK OFFICE SUITE  /  MARK SYSTEM v2 — MEANING FIRST"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":12,"fontWeight":"normal","letterSpacing":1.5} |
-| q0KKgp / eWkN3 | text / Title | {"name":"Title","content":"One grid.\nTwenty-eight familiar symbols."} | {"fill":"$ink","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.02,"fontFamily":"$font-display","fontSize":64,"fontWeight":"700","letterSpacing":-2} |
+| q0KKgp / eWkN3 | text / Title | {"name":"Title","content":"One grid.\nThirty-five familiar symbols."} | {"fill":"$ink","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.02,"fontFamily":"$font-display","fontSize":64,"fontWeight":"700","letterSpacing":-2} |
 | SD2N4 / eWkN3 | text / Lede | {"name":"Lede","content":"Every mark starts from the symbol people already know for the job — a calendar, a headset, a pen nib — then gets reduced to the same simple geometry. Colour tells you the family; the symbol tells you the product."} | {"fill":"$muted","textGrowth":"fixed-width","width":560,"lineHeight":1.5,"fontFamily":"$font-display","fontSize":18,"fontWeight":"normal"} |
 | V682JW / pP9A6 | frame / Rules | {"name":"Rules"} | {"width":560,"layout":"vertical"} |
 | dldKS / V682JW | frame / Rule 01 | {"name":"Rule 01"} | {"width":"fill_container","stroke":"$line","strokeWidth":{"top":1},"gap":20,"padding":[16,0]} |

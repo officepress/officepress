@@ -6,6 +6,8 @@ Source: native `officepress.opcd`, extracted offline from its JSON frames with i
 
 Apply [accepted corrections](00078-officepress-source-decisions.md) — load when using these design records as guidance.
 
+Current extraction: [Files/Forge revision](00403-officepress-files-forge-revision.md), including lossless prior-record recovery.
+
 ## Node records
 
 | ID / parent | Type / name | Exact text, context and flags | Layout and styling properties |
@@ -22,7 +24,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | PryT0 / oBcn1 | rectangle / Annex | {"name":"Annex"} | {"cornerRadius":21,"x":56,"y":140,"fill":"$mark-secondary","width":84,"height":140} |
 | jRqBo / oBcn1 | rectangle / Tower | {"name":"Tower"} | {"cornerRadius":28,"x":112,"y":56,"fill":"$mark-primary","width":168,"height":224} |
 | l4WhVT / oBcn1 | rectangle / Window 1 | {"name":"Window 1"} | {"cornerRadius":10.5,"x":140,"y":84,"fill":"$fam-communicate","width":42,"height":42} |
-| qDQ82 / oBcn1 | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":10.5,"x":210,"y":84,"fill":"$fam-create","width":42,"height":42} |
+| qDQ82 / oBcn1 | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":10.5,"x":210,"y":84,"fill":"$fam-files","width":42,"height":42} |
 | J14Fib / oBcn1 | rectangle / Window 3 | {"name":"Window 3"} | {"cornerRadius":10.5,"x":140,"y":154,"fill":"$fam-operate","width":42,"height":42} |
 | pcgGi / oBcn1 | rectangle / Window 4 | {"name":"Window 4"} | {"cornerRadius":10.5,"x":210,"y":154,"fill":"$fam-commerce","width":42,"height":42} |
 | yfwCJ / oBcn1 | rectangle / Door | {"name":"Door"} | {"cornerRadius":[14,14,0,0],"x":168,"y":224,"fill":"$suite-tile","width":56,"height":63} |
@@ -35,7 +37,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | Mbi3S / sgVvc | rectangle / Annex | {"name":"Annex"} | {"cornerRadius":25.5,"x":68,"y":170,"fill":"$mark-secondary","width":102,"height":170} |
 | gbcuL / sgVvc | rectangle / Tower | {"name":"Tower"} | {"cornerRadius":34,"x":136,"y":68,"fill":"$mark-primary","width":204,"height":272} |
 | Mx960 / sgVvc | rectangle / Window 1 | {"name":"Window 1"} | {"cornerRadius":12.75,"x":170,"y":102,"fill":"$fam-communicate","width":51,"height":51} |
-| UEDBl / sgVvc | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":12.75,"x":255,"y":102,"fill":"$fam-create","width":51,"height":51} |
+| UEDBl / sgVvc | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":12.75,"x":255,"y":102,"fill":"$fam-files","width":51,"height":51} |
 | ixJ9J / sgVvc | rectangle / Window 3 | {"name":"Window 3"} | {"cornerRadius":12.75,"x":170,"y":187,"fill":"$fam-operate","width":51,"height":51} |
 | d7Wh4 / sgVvc | rectangle / Window 4 | {"name":"Window 4"} | {"cornerRadius":12.75,"x":255,"y":187,"fill":"$fam-commerce","width":51,"height":51} |
 | zoSQ3 / sgVvc | rectangle / Door | {"name":"Door"} | {"cornerRadius":[17,17,0,0],"x":204,"y":272,"fill":"$suite-tile","width":68,"height":76.5} |
@@ -76,7 +78,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | cTqxn / j8srEL | rectangle / Annex | {"name":"Annex"} | {"cornerRadius":6,"x":16,"y":40,"fill":"$mark-secondary","width":24,"height":40} |
 | tUJYi / j8srEL | rectangle / Tower | {"name":"Tower"} | {"cornerRadius":8,"x":32,"y":16,"fill":"$mark-primary","width":48,"height":64} |
 | uzGGg / j8srEL | rectangle / Window 1 | {"name":"Window 1"} | {"cornerRadius":3,"x":40,"y":24,"fill":"$fam-communicate","width":12,"height":12} |
-| ftuIU / j8srEL | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":3,"x":60,"y":24,"fill":"$fam-create","width":12,"height":12} |
+| ftuIU / j8srEL | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":3,"x":60,"y":24,"fill":"$fam-files","width":12,"height":12} |
 | Y2vePG / j8srEL | rectangle / Window 3 | {"name":"Window 3"} | {"cornerRadius":3,"x":40,"y":44,"fill":"$fam-operate","width":12,"height":12} |
 | AhGzU / j8srEL | rectangle / Window 4 | {"name":"Window 4"} | {"cornerRadius":3,"x":60,"y":44,"fill":"$fam-commerce","width":12,"height":12} |
 | vSte4 / j8srEL | rectangle / Door | {"name":"Door"} | {"cornerRadius":[4,4,0,0],"x":48,"y":64,"fill":"$suite-tile","width":16,"height":18} |
@@ -87,7 +89,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | ujqxE / CyS1h | rectangle / Annex | {"name":"Annex"} | {"cornerRadius":6,"x":16,"y":40,"fill":"$mark-secondary","width":24,"height":40} |
 | Cr1dV / CyS1h | rectangle / Tower | {"name":"Tower"} | {"cornerRadius":8,"x":32,"y":16,"fill":"$mark-primary","width":48,"height":64} |
 | ORBOH / CyS1h | rectangle / Window 1 | {"name":"Window 1"} | {"cornerRadius":3,"x":40,"y":24,"fill":"$fam-communicate","width":12,"height":12} |
-| t2KiAI / CyS1h | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":3,"x":60,"y":24,"fill":"$fam-create","width":12,"height":12} |
+| t2KiAI / CyS1h | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":3,"x":60,"y":24,"fill":"$fam-files","width":12,"height":12} |
 | gYllY / CyS1h | rectangle / Window 3 | {"name":"Window 3"} | {"cornerRadius":3,"x":40,"y":44,"fill":"$fam-operate","width":12,"height":12} |
 | o9lddy / CyS1h | rectangle / Window 4 | {"name":"Window 4"} | {"cornerRadius":3,"x":60,"y":44,"fill":"$fam-commerce","width":12,"height":12} |
 | mjDc9 / CyS1h | rectangle / Door | {"name":"Door"} | {"cornerRadius":[4,4,0,0],"x":48,"y":64,"fill":"$suite-tile","width":16,"height":18} |
@@ -98,7 +100,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | IjYjm / BGVES | rectangle / Annex | {"name":"Annex"} | {"cornerRadius":2,"x":5.333333333333333,"y":13.333333333333332,"fill":"$mark-secondary","width":8,"height":13.333333333333332} |
 | aznLr / BGVES | rectangle / Tower | {"name":"Tower"} | {"cornerRadius":2.6666666666666665,"x":10.666666666666666,"y":5.333333333333333,"fill":"$mark-primary","width":16,"height":21.333333333333332} |
 | DcKYq / BGVES | rectangle / Window 1 | {"name":"Window 1"} | {"cornerRadius":1,"x":13.333333333333332,"y":8,"fill":"$fam-communicate","width":4,"height":4} |
-| CV0sG / BGVES | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":1,"x":20,"y":8,"fill":"$fam-create","width":4,"height":4} |
+| CV0sG / BGVES | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":1,"x":20,"y":8,"fill":"$fam-files","width":4,"height":4} |
 | Hn1ZY / BGVES | rectangle / Window 3 | {"name":"Window 3"} | {"cornerRadius":1,"x":13.333333333333332,"y":14.666666666666666,"fill":"$fam-operate","width":4,"height":4} |
 | ZS90q / BGVES | rectangle / Window 4 | {"name":"Window 4"} | {"cornerRadius":1,"x":20,"y":14.666666666666666,"fill":"$fam-commerce","width":4,"height":4} |
 | LM1Dl / BGVES | rectangle / Door | {"name":"Door"} | {"cornerRadius":[1.3333333333333333,1.3333333333333333,0,0],"x":16,"y":21.333333333333332,"fill":"$suite-tile","width":5.333333333333333,"height":6} |
@@ -108,14 +110,14 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | VhIPw / v3xFc | frame / Title | {"name":"Title"} | {"gap":10,"alignItems":"center"} |
 | h2LSwz / VhIPw | text / Section Name | {"name":"Section Name","content":"In the system"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":28,"fontWeight":"700","letterSpacing":-0.5} |
 | C1ekXT / VhIPw | text / Section No | {"name":"Section No","content":"02"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":12,"fontWeight":"normal"} |
-| Ftx2I / v3xFc | text / Section Desc | {"name":"Section Desc","content":"Same tile, same grid — the four family colours light the windows."} | {"fill":"$muted","fontFamily":"$font-display","fontSize":15,"fontWeight":"normal"} |
+| Ftx2I / v3xFc | text / Section Desc | {"name":"Section Desc","content":"Same tile, same grid — one colour per family."} | {"fill":"$muted","fontFamily":"$font-display","fontSize":15,"fontWeight":"normal"} |
 | zV3ql / Wkg5N | frame / System Row | {"name":"System Row"} | {"width":"fill_container","gap":24} |
 | IQbYh / zV3ql | frame / OfficePress | {"name":"OfficePress"} | {"width":"fill_container","fill":"$card","cornerRadius":16,"layout":"vertical","gap":20,"padding":28} |
 | tPnnk / IQbYh | frame / Logo Mark | {"name":"Logo Mark"} | {"clip":true,"width":96,"height":96,"fill":"$suite-tile","cornerRadius":24,"layout":"none"} |
 | TtKNB / tPnnk | rectangle / Annex | {"name":"Annex"} | {"cornerRadius":6,"x":16,"y":40,"fill":"$mark-secondary","width":24,"height":40} |
 | a2WPcS / tPnnk | rectangle / Tower | {"name":"Tower"} | {"cornerRadius":8,"x":32,"y":16,"fill":"$mark-primary","width":48,"height":64} |
 | SQCbb / tPnnk | rectangle / Window 1 | {"name":"Window 1"} | {"cornerRadius":3,"x":40,"y":24,"fill":"$fam-communicate","width":12,"height":12} |
-| gLmAT / tPnnk | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":3,"x":60,"y":24,"fill":"$fam-create","width":12,"height":12} |
+| gLmAT / tPnnk | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":3,"x":60,"y":24,"fill":"$fam-files","width":12,"height":12} |
 | WtVTd / tPnnk | rectangle / Window 3 | {"name":"Window 3"} | {"cornerRadius":3,"x":40,"y":44,"fill":"$fam-operate","width":12,"height":12} |
 | G7vXu4 / tPnnk | rectangle / Window 4 | {"name":"Window 4"} | {"cornerRadius":3,"x":60,"y":44,"fill":"$fam-commerce","width":12,"height":12} |
 | q8axNJ / tPnnk | rectangle / Door | {"name":"Door"} | {"cornerRadius":[4,4,0,0],"x":48,"y":64,"fill":"$suite-tile","width":16,"height":18} |
@@ -128,12 +130,21 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | pOFsQ / q2igL3 | text / Label | {"name":"Label","content":"Inbox"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":18,"fontWeight":"700"} |
 | t3icgz / q2igL3 | text / Family | {"name":"Family","content":"COMMUNICATE"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":11,"fontWeight":"normal","letterSpacing":1.5} |
 | oOXjs / zV3ql | frame / Drive | {"name":"Drive"} | {"width":"fill_container","fill":"$card","cornerRadius":16,"layout":"vertical","gap":20,"padding":28} |
-| T9jUc / oOXjs | frame / Tile | {"name":"Tile"} | {"clip":true,"width":96,"height":96,"fill":"$fam-create","cornerRadius":24,"layout":"none"} |
+| T9jUc / oOXjs | frame / Tile | {"name":"Tile"} | {"clip":true,"width":96,"height":96,"fill":"$fam-files","cornerRadius":24,"layout":"none"} |
 | ZSNld / T9jUc | rectangle / Tab | {"name":"Tab"} | {"cornerRadius":5,"x":16,"y":20,"fill":"$mark-secondary","width":30,"height":16} |
 | Rg0yV / T9jUc | rectangle / Back | {"name":"Back"} | {"cornerRadius":8,"x":16,"y":28,"fill":"$mark-secondary","width":64,"height":48} |
 | jxrOg / T9jUc | rectangle / Front | {"name":"Front"} | {"cornerRadius":8,"x":16,"y":38,"fill":"$mark-primary","width":64,"height":42} |
 | M0dn5 / oOXjs | text / Label | {"name":"Label","content":"Drive"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":18,"fontWeight":"700"} |
-| Nfuqw / oOXjs | text / Family | {"name":"Family","content":"CREATE"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":11,"fontWeight":"normal","letterSpacing":1.5} |
+| Nfuqw / oOXjs | text / Family | {"name":"Family","content":"FILES"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":11,"fontWeight":"normal","letterSpacing":1.5} |
+| 6Onv6 / zV3ql | frame / Designs | {"name":"Designs"} | {"width":"fill_container","fill":"$card","cornerRadius":16,"layout":"vertical","gap":20,"padding":28} |
+| IkwF0 / 6Onv6 | frame / Tile | {"name":"Tile"} | {"clip":true,"width":96,"height":96,"fill":"$fam-forge","cornerRadius":24,"layout":"none"} |
+| 5YaDs / IkwF0 | ellipse / Palette | {"name":"Palette"} | {"x":16,"y":16,"fill":"$mark-primary","width":64,"height":64} |
+| bmdS8 / IkwF0 | ellipse / Thumb Notch | {"name":"Thumb Notch"} | {"x":54,"y":52,"fill":"$fam-forge","width":30,"height":30} |
+| m0Xk8 / IkwF0 | ellipse / Well 1 | {"name":"Well 1"} | {"x":26,"y":40,"fill":"$fam-forge","width":12,"height":12} |
+| Ly2Qz / IkwF0 | ellipse / Well 2 | {"name":"Well 2"} | {"x":34,"y":24,"fill":"$fam-forge","width":12,"height":12} |
+| 1vgd0 / IkwF0 | ellipse / Well 3 | {"name":"Well 3"} | {"x":52,"y":26,"fill":"$fam-forge","width":12,"height":12} |
+| gr1Dw / 6Onv6 | text / Label | {"name":"Label","content":"Designs"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":18,"fontWeight":"700"} |
+| vPLyw / 6Onv6 | text / Family | {"name":"Family","content":"FORGE"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":11,"fontWeight":"normal","letterSpacing":1.5} |
 | UkR6d / zV3ql | frame / Accounting | {"name":"Accounting"} | {"width":"fill_container","fill":"$card","cornerRadius":16,"layout":"vertical","gap":20,"padding":28} |
 | q0lp6z / UkR6d | frame / Tile | {"name":"Tile"} | {"clip":true,"width":96,"height":96,"fill":"$fam-operate","cornerRadius":24,"layout":"none"} |
 | gjyZb / q0lp6z | rectangle / Body | {"name":"Body"} | {"cornerRadius":10,"x":22,"y":14,"fill":"$mark-primary","width":52,"height":68} |

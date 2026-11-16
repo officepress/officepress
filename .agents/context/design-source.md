@@ -1,12 +1,12 @@
 # OfficePress design source
 
-The current editable source is the local **OfficePress Designs `.opcd` ZIP archive**, replacing the former Pencil resource. It contains `design.json`, 18 frame JSON files and four `.opcd/` project/session records. Consult the extracted references for text, variables and component metadata; use the archive when editing graphical geometry. The original archive stays byte-identical during KB ingestion.
+The current editable source is the local **OfficePress Designs `.opcd` ZIP archive**, replacing the former Pencil resource. It contains `design.json`, 18 frame JSON files, `DESIGN-SYSTEM.md`, `.opcd/HISTORY.md` and four `.opcd/` JSON project/session records (25 ZIP members). Consult the extracted references for text, variables and component metadata; use the archive when editing graphical geometry. The original archive stays byte-identical during KB ingestion.
 
-The design extraction covers 18 root frames, 11 reusable components, 8,940 resolved nodes, 2,858 nodes with content, and 205 variable definitions. The theme axes are mode and family. Resolved instances use full instance paths so inherited content remains traceable.
+The design extraction covers 18 root frames, 11 reusable components, 9,380 resolved nodes, 2,992 nodes with content, and 206 variable definitions. The theme axes are mode and family. Resolved instances use full instance paths so inherited content remains traceable.
 
 ## Design areas
 
-- OfficePress Product Marks and OfficePress Logo: construction, family identity, symbol explanations and lockups. The board shows the current 28 family product marks.
+- OfficePress Product Marks and OfficePress Logo: construction, family identity, symbol explanations and lockups. The board shows the current 35 family product marks across Communicate, Files, Forge, Operate and Commerce. Six Forge tool capabilities remain planned.
 - Inbox Board — Light / Dark: the reference app layout and board examples.
 - OfficePress App UI Guidelines: theming, family shells, colour tokens, typography, spacing, shape, components, rules, app frame and motion.
 - OfficePress App Layout: aside states, header globals, User Preferences (Language and Time zone), account/app settings and authentication.
@@ -14,6 +14,8 @@ The design extraction covers 18 root frames, 11 reusable components, 8,940 resol
 - Reusable components: shell preview, header, sidebar/rail, board content, user popover, agent panel/empty state, notifications/empty state and workflow card.
 
 ## Retrieval
+
+- [Current Files/Forge identity, CSS and lossless revision](../references/00403-officepress-files-forge-revision.md) — load for the latest 25-member archive, 35 marks, family moves, new tokens, full generated Markdown and exact prior-record/asset recovery.
 
 - [OPCD verification and User Preferences creative direction](../references/00399-officepress-opcd-user-preferences-direction.md) — load for the archive format/inventory/hash, exact preference scope and defaults, layout, copy, provenance and unresolved implementation details.
 

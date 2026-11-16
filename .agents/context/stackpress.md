@@ -1,6 +1,8 @@
 # OfficePress Stackpress handbook
 
-Every OfficePress app uses Stackpress. The accepted ecosystem baseline is **0.10.8**. Per the 2026-10-10 user decision, scaffold new apps from the maintained local `proofs/app-shell/` (Yarn + Stackpress CLI), adapting its shared mechanics to each app's product scope. Apps needing workflows/automations (kanban), form builder or message templates use `proofs/common-components/` as the feature reference. The earlier `proofs/stackpress-boilerplate/` remains historical framework proof evidence, superseded as the scaffold source.
+Scope: this handbook describes the **TypeScript** OfficePress baseline. App Forge and its Rust ports use Stackpress Rust; load [App Forge](app-forge.md) and its linked Rust source contracts instead of applying the TypeScript package pins, Yarn scaffold or PGlite defaults.
+
+Every OfficePress app uses Stackpress. The accepted **TypeScript** ecosystem baseline is **0.10.8**. Per the 2026-10-10 user decision, scaffold new TypeScript apps from the maintained local `proofs/app-shell/` (Yarn + Stackpress CLI), adapting its shared mechanics to each app's product scope. Apps needing workflows/automations (kanban), form builder or message templates use `proofs/common-components/` as the feature reference. The earlier `proofs/stackpress-boilerplate/` remains historical framework proof evidence, superseded as the scaffold source.
 
 Plugins separate responsibilities. They may be disabled after a restart. Each dependent plugin checks its own services in `plugin.ts`, then falls back or returns before registering its feature listeners/routes. There is no automatic dependency validation or live unloading.
 

@@ -20,7 +20,8 @@
 
 ## Implementation
 
-- Scaffold new OfficePress apps from the maintained `proofs/app-shell/` baseline (Yarn + Stackpress CLI) on the accepted Stackpress 0.10.8 ecosystem; keep `yarn.lock` aligned with dependency changes. For workflows/automations (kanban), form builder or message templates, use `proofs/common-components/` as the feature reference. `proofs/stackpress-boilerplate/` is historical framework proof evidence, not the scaffold source.
+- App Forge and its Rust ports use Stackpress Rust; load [App Forge architecture](.agents/context/app-forge.md) and its linked Rust KB snapshots. Do not apply the TypeScript package pins, Yarn scaffold or PGlite default to them.
+- Scaffold new TypeScript OfficePress apps from the maintained `proofs/app-shell/` baseline (Yarn + Stackpress CLI) on the accepted Stackpress 0.10.8 ecosystem; keep `yarn.lock` aligned with dependency changes. For workflows/automations (kanban), form builder or message templates, use `proofs/common-components/` as the feature reference. `proofs/stackpress-boilerplate/` is historical framework proof evidence, not the scaffold source.
 - Keep `plugin.ts` as lifecycle wiring and guards; put HTTP handlers in `pages/`, Ingest actions in `events/`, browser entries in `views/`, and bodies in `components/`. Register authored HTTP handlers with inline literal `() => import("./pages/read.js")` callbacks; do not eagerly import page handlers or inline request bodies. Bind rendered views separately through `ctx.view`.
 - Events own app business logic, reusable by web, API and CLI. Pages only process web requests, call events and format web responses; helper extraction from events is optional. Extend other plugins through ordered event/route hooks when appropriate; see [the accepted guidelines](.agents/context/stackpress-logic-patterns.md).
 - Separate plugins by responsibility. Shared rendering belongs in the app shell and connection registration in store; domain workflows belong in feature plugins.
@@ -42,7 +43,7 @@ python3 .agents/scripts/verify-officepress-ingestion.py
 python3 .agents/scripts/verify-stackpress-ingestion.py
 ```
 
-After changing product marks, logos or favicons in `.agents/resources/officepress-kit/` or the repository `kit/` folder, also run `python3 .agents/scripts/verify-kit-mirror.py`. It requires `kit/logos` and `kit/icons` to mirror the KB copies byte for byte, each SVG to have a PNG export at its declared size, and the product marks to match the `brand.md` family table.
+After changing product marks, logos, favicons or family CSS in `.agents/resources/officepress-kit/` or the repository `kit/` folder, also run `python3 .agents/scripts/verify-kit-mirror.py`. It requires `kit/logos` SVGs, `kit/icons` and `kit/css` to mirror the KB copies byte for byte, each SVG to have a PNG export at its declared size, and the product marks to match the `brand.md` family table.
 
 After authored app-shell/common-components plugin changes, also run:
 

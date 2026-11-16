@@ -1,0 +1,170 @@
+[
+  {
+    "id": "P1",
+    "title": "OfficePress product promise",
+    "url": "../../../.agents/context/officepress.md",
+    "type": "Accepted project direction",
+    "date": "2026-10-01",
+    "note": "Ready-made tools for back-office work; incremental adoption, interoperability and company control. Not a licensing or deployment claim."
+  },
+  {
+    "id": "P2",
+    "title": "OfficePress product catalogue",
+    "url": "../../../.agents/context/products.md",
+    "type": "Accepted project direction",
+    "date": "2026-10-13",
+    "note": "Thirty intended apps: 28 products in four branded families and two platform apps. Meaning is not evidence of deployment."
+  },
+  {
+    "id": "P3",
+    "title": "Shared app experience and maintained proof READMEs",
+    "url": "../../../.agents/context/shared-app-experience.md",
+    "type": "Project design and bounded proof evidence",
+    "date": "2026-11-13 inspected",
+    "note": "Common frame, settings, workflow modules and preferences. Also inspected proofs/app-shell/README.md and proofs/common-components/README.md at d8ade68. No product-by-product production audit performed."
+  },
+  {
+    "id": "P4",
+    "title": "OfficePress brand identity and supplied visual kit",
+    "url": "../../../.agents/context/brand.md",
+    "type": "Project visual source",
+    "date": "2026-11-13 inspected",
+    "note": "Family colours, current product marks, and archived Inbox board design reference. Design/sample records do not prove live capability."
+  },
+  {
+    "id": "P5",
+    "title": "Founder clarification on pre-seed stage and active Shoppable pilots",
+    "url": "pilot-update.json",
+    "type": "Founder reported company facts",
+    "date": "2026-11-13",
+    "note": "Six free app pilots at one organisation, Shoppable Business, reported actively used in exchange for feedback. Six URLs supplied. No independent usage audit; paid conversion, active users and company wide revenue are not established."
+  },
+  {
+    "id": "S1",
+    "title": "US Census Bureau Small Business Week 2026",
+    "url": "https://www.census.gov/library/stories/2026/05/small-business-week.html",
+    "type": "Government statistics",
+    "date": "2026 publication; 2023 reference year",
+    "note": "5.58 million firms with 1 to 499 employees, Business Dynamics Statistics. Used instead of a different SBA series to avoid mixing US counts."
+  },
+  {
+    "id": "S2",
+    "title": "UK business population estimates 2026 statistical release",
+    "url": "https://www.gov.uk/government/statistics/business-population-estimates-2026/business-population-estimates-for-the-uk-and-regions-2026-statistical-release",
+    "type": "Government statistics",
+    "date": "2026-11-05; start of 2026",
+    "note": "Table A: about 1.472 million employers. Includes large firms. Official statistics in development; rounded figure used."
+  },
+  {
+    "id": "S3",
+    "title": "Canada Key Small Business Statistics 2025",
+    "url": "https://ised-isde.canada.ca/site/sme-research-statistics/en/key-small-business-statistics/key-small-business-statistics-2025",
+    "type": "Government statistics",
+    "date": "2025 edition; December 2024 reference",
+    "note": "Approximately 1.10 million employer businesses, including about 1.08 million with 1 to 99 employees. Entire Canada is an upper-bound geography; not every business is an English-language prospect."
+  },
+  {
+    "id": "S4",
+    "title": "Australian business counts July 2022 to June 2026",
+    "url": "https://www.abs.gov.au/statistics/economy/business-indicators/counts-australian-businesses-including-entries-and-exits/latest-release",
+    "type": "Government statistics",
+    "date": "June 2026 reference; accessed 2026-11-13",
+    "note": "996203 employing businesses. Latest-release URL may later advance to another reference period."
+  },
+  {
+    "id": "S5",
+    "title": "New Zealand business demography February 2026",
+    "url": "https://www.stats.govt.nz/information-releases/new-zealand-business-demography-statistics-at-february-2026/",
+    "type": "Government statistics",
+    "date": "2026-10-30; February 2026 reference",
+    "note": "161560 enterprises with one or more paid employees. Includes large enterprises; economically significant enterprise coverage."
+  },
+  {
+    "id": "S6",
+    "title": "General Atlantic follow-on investment in Odoo",
+    "url": "https://www.generalatlantic.com/media-article/general-atlantic-announces-close-of-further-investment-into-odoo-acquiring-additional-stake-from-wallonie-entreprendre/",
+    "type": "Investor transaction announcement",
+    "date": "2026-01-16",
+    "note": "Secondary minority stake acquisition at EUR7 billion company valuation; over 170000 paying customers and presence in 180 countries stated by investor. Not fresh primary capital or OfficePress valuation."
+  },
+  {
+    "id": "S7",
+    "title": "Odoo EUR500 million secondary transaction",
+    "url": "https://www.odoo.com/blog/odoo-news-5/odoo-s-a-announces-a-500-million-transaction-increasing-the-belgian-unicorn-s-valuation-to-5-billion-1508",
+    "type": "Company transaction announcement",
+    "date": "2024-11-20",
+    "note": "EUR500 million secondary transaction at EUR5 billion company valuation. Historical observation, not current quotation."
+  },
+  {
+    "id": "S8",
+    "title": "Zoho One pricing",
+    "url": "https://www.zoho.com/one/pricing/",
+    "type": "Vendor pricing",
+    "date": "Accessed 2026-11-13",
+    "note": "Observed Standard all-employee USD37 and flexible-user USD90 per user/month on annual licensing; page flags first-year terms. Region, promotions, renewal and taxes must be checked. Standard advertises 50+ apps."
+  },
+  {
+    "id": "S9",
+    "title": "ERPNext pricing and hosting",
+    "url": "https://frappe.io/erpnext/pricing",
+    "type": "Vendor pricing and licensing",
+    "date": "Accessed 2026-11-13",
+    "note": "Free open-source software, self-hosting option, Frappe Cloud site hosting from USD5/month and separate implementation. Starting infrastructure price is not an equivalent managed suite total cost."
+  },
+  {
+    "id": "S10",
+    "title": "Microsoft 365 business plans and pricing",
+    "url": "https://www.microsoft.com/en-us/microsoft-365/business/microsoft-365-plans-and-pricing",
+    "type": "Vendor pricing",
+    "date": "Accessed 2026-11-13",
+    "note": "Observed US Business Basic with Teams USD7/user/month, paid yearly; Standard with Copilot USD23.50. Different bundles, annual commitments and usage terms apply."
+  },
+  {
+    "id": "S11",
+    "title": "monday work management pricing",
+    "url": "https://monday.com/pricing",
+    "type": "Vendor pricing",
+    "date": "Accessed 2026-11-13",
+    "note": "Observed 10-seat annual selection: Basic USD9, Standard USD12, Pro USD19 per seat/month; page displays AI credits and promotional adjustments. These are work-management products, not suite-equivalent scope."
+  },
+  {
+    "id": "S12",
+    "title": "HubSpot Customer Platform pricing",
+    "url": "https://www.hubspot.com/pricing/suite",
+    "type": "Vendor pricing",
+    "date": "Accessed 2026-11-13",
+    "note": "Observed Starter advertised USD7/seat/month promo versus USD20 reference; Professional starts USD1300/month with six seats and credit terms. Geography and limited-release offerings may differ."
+  },
+  {
+    "id": "S13",
+    "title": "Completed Zendesk acquisition",
+    "url": "https://www.zendesk.com/newsroom/press-releases/consortium-led-by-hellman-friedman-and-permira-completes-acquisition-of-zendesk/",
+    "type": "Company transaction announcement",
+    "date": "2022-11-22",
+    "note": "Completed all-cash acquisition described as approximately USD10.2 billion company transaction value. Historical control transaction; not directly comparable to minority financing."
+  },
+  {
+    "id": "S14",
+    "title": "Wix announces Base44 acquisition",
+    "url": "https://www.wix.com/press-room/home/post/wix-further-expands-into-vibe-coding-with-acquisition-of-base44-a-hyper-growth-startup-that-simplif",
+    "type": "Company transaction announcement",
+    "date": "2025-06-18",
+    "note": "Headline initial consideration approximately USD80 million plus earnouts through 2029. Public financial reporting uses different accounting measures; do not call the headline cash paid or a clean valuation multiple."
+  },
+  {
+    "id": "S15",
+    "title": "Wix 2025 Form 20 F",
+    "url": "https://www.sec.gov/Archives/edgar/data/1576789/000162828026015222/wix-20251231.htm",
+    "type": "Regulatory filing",
+    "date": "2026 filing; year ended 2025-12-31",
+    "note": "Reports approximately USD92 million total Base44 acquisition consideration including contingent consideration. Used to explain why acquisition headlines and accounting consideration are not interchangeable."
+  },
+  {
+    "id": "S16",
+    "title": "SaaS Capital Index methodology",
+    "url": "https://www.saas-capital.com/the-saas-capital-index/",
+    "type": "Valuation research methodology",
+    "date": "Data as of 2026-10-31; accessed 2026-11-13",
+    "note": "Uses annualized current run-rate revenue, excludes mixed-revenue businesses and certain very small-customer models. No private OfficePress multiple inferred from the index."
+  }
+]

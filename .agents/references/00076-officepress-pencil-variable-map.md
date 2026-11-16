@@ -2,7 +2,7 @@
 
 Load when using design tokens or preserving the distinction between active OfficePress tokens and earlier design presets.
 
-Theme axes: `mode = light | dark`; `family = communicate | create | operate | commerce`. All 205 source variable definitions are retained.
+Theme axes: `mode = light | dark`; native `family = communicate | create | operate | commerce | files | forge`. Current semantic tokens select communicate, files, forge, operate and commerce; create remains a legacy registry value. All 206 current variable definitions are retained; [prior definitions and theme axes](00404-officepress-files-forge-prior-design-records.md) recover the 205-variable predecessor exactly.
 
 - [Namespace base](00173-pencil-variables-base.md) — load when looking up base definitions and every themed value.
 - [Namespace bp](00174-pencil-variables-bp.md) — load when looking up bp definitions and every themed value.

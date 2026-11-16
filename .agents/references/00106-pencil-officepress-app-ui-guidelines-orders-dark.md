@@ -6,6 +6,8 @@ Source: native `officepress.opcd`, extracted offline from its JSON frames with i
 
 Apply [accepted corrections](00078-officepress-source-decisions.md) — load when using these design records as guidance.
 
+Current extraction: [Files/Forge revision](00403-officepress-files-forge-revision.md), including lossless prior-record recovery.
+
 ## Node records
 
 | ID / parent | Type / name | Exact text, context and flags | Layout and styling properties |
@@ -103,4 +105,4 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | uJ6qb / UOP41 | frame / Left | {"name":"Left"} | {"gap":12,"alignItems":"center"} |
 | y3tFp / uJ6qb | text / No | {"name":"No","content":"03"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":12,"fontWeight":"normal"} |
 | fi31Y / uJ6qb | text / Title | {"name":"Title","content":"Colour tokens"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":28,"fontWeight":"700","letterSpacing":-0.5} |
-| Z8eTJ1 / UOP41 | text / Desc | {"name":"Desc","content":"Generated from each family's brand colour. Contrast-checked: text ≥ 4.6:1 on its surface, accent text ≥ 4.5:1, in all eight combinations."} | {"fill":"$muted","textGrowth":"fixed-width","width":640,"lineHeight":1.5,"textAlign":"right","fontFamily":"$font-display","fontSize":15,"fontWeight":"normal"} |
+| Z8eTJ1 / UOP41 | text / Desc | {"name":"Desc","content":"Generated from each family's brand colour. Contrast-checked: text ≥ 4.6:1 on its surface, accent text ≥ 4.5:1, in all ten combinations."} | {"fill":"$muted","textGrowth":"fixed-width","width":640,"lineHeight":1.5,"textAlign":"right","fontFamily":"$font-display","fontSize":15,"fontWeight":"normal"} |

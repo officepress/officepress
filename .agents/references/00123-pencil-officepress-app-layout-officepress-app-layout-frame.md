@@ -6,11 +6,13 @@ Source: native `officepress.opcd`, extracted offline from its JSON frames with i
 
 Apply [accepted corrections](00078-officepress-source-decisions.md) — load when using these design records as guidance.
 
+Current extraction: [Files/Forge revision](00403-officepress-files-forge-revision.md), including lossless prior-record recovery.
+
 ## Node records
 
 | ID / parent | Type / name | Exact text, context and flags | Layout and styling properties |
 |---|---|---|---|
-| WASH2 / root | frame / OfficePress App Layout | {"name":"OfficePress App Layout"} | {"x":0,"y":5823,"width":4990,"fill":"$bg","layout":"vertical","gap":80,"padding":80} |
+| WASH2 / root | frame / OfficePress App Layout | {"name":"OfficePress App Layout"} | {"x":0,"y":5993,"width":4990,"fill":"$bg","layout":"vertical","gap":80,"padding":80} |
 | NjSbv / WASH2 | frame / Section · Left aside | {"name":"Section · Left aside"} | {"width":"fill_container","layout":"vertical","gap":28} |
 | q94zH / NjSbv | frame / Head | {"name":"Head"} | {"width":"fill_container","stroke":"$ink","strokeWidth":{"bottom":1},"gap":40,"padding":[0,0,14,0],"justifyContent":"space_between","alignItems":"end"} |
 | k5gF20 / q94zH | text / Title | {"name":"Title","content":"Left aside"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":32,"fontWeight":"700","letterSpacing":-0.8} |

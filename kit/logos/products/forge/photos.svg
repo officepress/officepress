@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Photos">
+<title>Photos</title>
+<defs><clipPath id="clip-k1h7Y"><rect width="96" height="96" rx="24"/></clipPath></defs>
+<g id="node-k1h7Y"><rect width="96" height="96" rx="24" fill="#D23F6F"/><g clip-path="url(#clip-k1h7Y)"><g id="node-SowVT" transform="translate(16 20)"><rect width="64" height="56" rx="8" fill="#FFFFFF"/></g><g id="node-MzHGu" transform="translate(26 30)"><ellipse cx="6.0" cy="6.0" rx="6.0" ry="6.0" fill="#D23F6F"/></g><g id="node-fIohI"><path d="M24 68L40 46L51 59L59 51L72 68Z" fill="#D23F6F" stroke="#D23F6F" stroke-width="3" stroke-linejoin="round"/></g></g></g>
+</svg>

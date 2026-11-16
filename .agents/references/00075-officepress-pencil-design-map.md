@@ -2,7 +2,9 @@
 
 Read the relevant context first. This map routes complete text and node-property extraction from the native design. Node IDs, parent relationships, theme assignments and inherited instance paths are retained. Geometry and authored native structure remain in the [local editable OfficePress Designs archive](../resources/officepress-design/officepress.opcd).
 
-[Product Marks revision and prior-record recovery](00396-officepress-product-marks-revision.md) — load when comparing the 28-mark board with the earlier 23-mark board.
+[Current Files/Forge identity and prior-record recovery](00403-officepress-files-forge-revision.md) — load for the 35-mark board, Files/Forge tokens and native extraction.
+
+[Historical Product Marks revision and prior-record recovery](00396-officepress-product-marks-revision.md) — load when comparing the 28-mark board with the earlier 23-mark board.
 
 [Current About menu revision and prior-record recovery](00360-officepress-about-menu-revision.md) — load when comparing the updated design with earlier menus.
 
@@ -13,7 +15,8 @@ Read the relevant context first. This map routes complete text and node-property
 ## OfficePress Product Marks (`o8qxhR`)
 
 - [OfficePress Product Marks — frame](00084-pencil-officepress-product-marks-officepress-product-marks-frame.md) — load when inspecting the board frame, header rules or the Communicate section (including Clients) in detail.
-- [OfficePress Product Marks  ›  Section · Create](00085-pencil-officepress-product-marks-section-create.md) — load when inspecting the Create section, including the Context, UIUX, Designs and Graphics marks.
+- [OfficePress Product Marks › Section · Files](00085-pencil-officepress-product-marks-section-create.md) — load for Drive, Tables, Forms, Context and the Forge shell; the filename is retained for existing links.
+- [OfficePress Product Marks › Section · Forge](00405-officepress-forge-product-design-records.md) — load for all eleven rose creative-tool marks, including six planned tools.
 - [OfficePress Product Marks  ›  Section · Operate](00398-pencil-officepress-product-marks-section-operate.md) — load when inspecting the Operate section, including the Content and Pipelines marks.
 - [OfficePress Product Marks  ›  Section · Commerce](00086-pencil-officepress-product-marks-section-commerce.md) — load when inspecting this component or screen section in detail.
 
@@ -45,7 +48,8 @@ Read the relevant context first. This map routes complete text and node-property
 - [OfficePress App UI Guidelines — frame](00098-pencil-officepress-app-ui-guidelines-officepress-app-ui-guidelines-frame.md) — load when inspecting this component or screen section in detail.
 - [OfficePress App UI Guidelines  ›  Section · Families in the shell — frame](00099-pencil-officepress-app-ui-guidelines-section-families-in-the-shell-frame.md) — load when inspecting this component or screen section in detail.
 - [OfficePress App UI Guidelines  ›  Section · Families in the shell  ›  Row · Communicate  ›  Inbox · dark](00100-pencil-officepress-app-ui-guidelines-inbox-dark.md) — load when inspecting this component or screen section in detail.
-- [OfficePress App UI Guidelines  ›  Section · Families in the shell  ›  Row · Create — frame](00101-pencil-officepress-app-ui-guidelines-row-create-frame.md) — load when inspecting this component or screen section in detail.
+- [OfficePress App UI Guidelines › Files shell](00101-pencil-officepress-app-ui-guidelines-row-create-frame.md) — load for the renamed purple Files example; the reference filename is historical.
+- [OfficePress App UI Guidelines › Forge light/dark shells](00406-officepress-forge-shell-design-records.md) — load for the new rose family previews and their complete source properties.
 - [OfficePress App UI Guidelines  ›  Section · Families in the shell  ›  Row · Create  ›  Drive · dark](00102-pencil-officepress-app-ui-guidelines-drive-dark.md) — load when inspecting this component or screen section in detail.
 - [OfficePress App UI Guidelines  ›  Section · Families in the shell  ›  Row · Operate — frame](00103-pencil-officepress-app-ui-guidelines-row-operate-frame.md) — load when inspecting this component or screen section in detail.
 - [OfficePress App UI Guidelines  ›  Section · Families in the shell  ›  Row · Operate  ›  Accounting · dark](00104-pencil-officepress-app-ui-guidelines-accounting-dark.md) — load when inspecting this component or screen section in detail.

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Films">
+<title>Films</title>
+<defs><clipPath id="clip-dlJuR"><rect width="64" height="12" rx="4"/></clipPath><clipPath id="clip-FPrJC"><rect width="96" height="96" rx="24"/></clipPath></defs>
+<g id="node-FPrJC"><rect width="96" height="96" rx="24" fill="#D23F6F"/><g clip-path="url(#clip-FPrJC)"><g id="node-dlJuR" transform="translate(16 34) rotate(-12)"><rect width="64" height="12" rx="4" fill="#FFFFFF" fill-opacity="0.5490196078431373"/><g clip-path="url(#clip-dlJuR)"><g id="node-Empoa"><path d="M8 0L16 0L10 12L2 12Z" fill="#D23F6F"/></g><g id="node-HaprV"><path d="M24 0L32 0L26 12L18 12Z" fill="#D23F6F"/></g><g id="node-Fijgx"><path d="M40 0L48 0L42 12L34 12Z" fill="#D23F6F"/></g><g id="node-nBjvB"><path d="M56 0L64 0L58 12L50 12Z" fill="#D23F6F"/></g></g></g><g id="node-RktCP" transform="translate(16 48)"><rect width="64" height="32" rx="6" fill="#FFFFFF"/></g><g id="node-GtM2a"><path d="M42 56L56 64L42 72Z" fill="#D23F6F" stroke="#D23F6F" stroke-width="2" stroke-linejoin="round"/></g></g></g>
+</svg>

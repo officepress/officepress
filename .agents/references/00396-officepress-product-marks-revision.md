@@ -1,5 +1,7 @@
 # OfficePress Product Marks revision — 2026-10-13
 
+Dated historical receipt. The [2026-11-16 Files/Forge revision](00403-officepress-files-forge-revision.md) owns the current archive, mark/family counts and CSS; all source evidence and recovery details below retain their original revision scope.
+
 Owner: [Design source](../context/design-source.md). Load when you need the current product-mark set, the family moves, the new mark meanings, the revised kit files, or recovery of the earlier 23-mark board and assets.
 
 Current editable source: [OfficePress Designs OPCD](../resources/officepress-design/officepress.opcd). This is a dated revision receipt; its counts/hashes describe that revision. Load the [2026-10-20 migration and preferences direction](00399-officepress-opcd-user-preferences-direction.md) for current extraction details.

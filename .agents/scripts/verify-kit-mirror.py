@@ -75,6 +75,7 @@ def main() -> int:
     errors.extend(f'kit/logos: unexpected file {n}' for n in sorted(other))
 
     mirror(errors, 'kit/icons', files(kb_kit / 'favicons'), files(kit / 'icons'))
+    mirror(errors, 'kit/css', files(kb_kit / 'css'), files(kit / 'css'))
 
     expected_products = brand_marks(repo / '.agents/context/brand.md')
     if not expected_products:
@@ -85,7 +86,7 @@ def main() -> int:
     for name in sorted(actual_products - expected_products):
         errors.append(f'kit mark not in the brand.md family table: {name}')
 
-    extra = sorted(p.name for p in kit.iterdir() if p.name not in IGNORED | {'logos', 'icons'})
+    extra = sorted(p.name for p in kit.iterdir() if p.name not in IGNORED | {'logos', 'icons', 'css'})
     errors.extend(f'kit: unexpected top-level entry {n}' for n in extra)
 
     if errors:
@@ -93,6 +94,7 @@ def main() -> int:
         return 1
     print(f'PASS: kit/logos mirrors {len(kit_svgs)} KB SVG marks with {len(pngs)} matching PNG exports.')
     print(f'PASS: kit/icons mirrors {len(files(kit / "icons"))} KB favicons byte for byte.')
+    print(f'PASS: kit/css mirrors {len(files(kit / "css"))} KB stylesheets byte for byte.')
     print(f'PASS: {len(expected_products)} product marks match the brand.md family table.')
     return 0
 

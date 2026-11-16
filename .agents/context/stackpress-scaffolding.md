@@ -1,6 +1,8 @@
 # Stackpress scaffolding
 
-Use `proofs/app-shell/` as the OfficePress scaffold baseline for all apps (2026-10-10 user decision). For workflows/automations (kanban), form builder or message templates, copy and adapt from `proofs/common-components/`. Keep bootstrap, shared app shell and persistence separate from product features. Copy only maintained inputs into a new empty app directory; exclude dependencies, output, receipts, databases and secrets. `proofs/stackpress-boilerplate/` is superseded historical framework evidence; do not scaffold from it.
+Scope: this handbook describes the **TypeScript** OfficePress baseline. App Forge and its Rust ports use Stackpress Rust; load [App Forge](app-forge.md) and its linked Rust source contracts instead of applying the TypeScript package pins, Yarn scaffold or PGlite defaults.
+
+Use `proofs/app-shell/` as the scaffold baseline for TypeScript OfficePress apps (2026-10-10 user decision). For workflows/automations (kanban), form builder or message templates, copy and adapt from `proofs/common-components/`. Keep bootstrap, shared app shell and persistence separate from product features. Copy only maintained inputs into a new empty app directory; exclude dependencies, output, receipts, databases and secrets. `proofs/stackpress-boilerplate/` is superseded historical framework evidence; do not scaffold from it.
 
 Pin the Stackpress ecosystem to 0.10.8 and use Yarn with the matching `yarn.lock`. Independent libraries retain their own compatible versions. Read the [baseline README](../../proofs/app-shell/README.md) for current commands and the proof receipts for what was actually checked.
 

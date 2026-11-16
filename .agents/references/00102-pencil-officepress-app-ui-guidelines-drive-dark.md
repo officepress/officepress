@@ -6,11 +6,13 @@ Source: native `officepress.opcd`, extracted offline from its JSON frames with i
 
 Apply [accepted corrections](00078-officepress-source-decisions.md) — load when using these design records as guidance.
 
+Current extraction: [Files/Forge revision](00403-officepress-files-forge-revision.md), including lossless prior-record recovery.
+
 ## Node records
 
 | ID / parent | Type / name | Exact text, context and flags | Layout and styling properties |
 |---|---|---|---|
-| TrP47 / uSj36 | frame / Drive · dark | {"name":"Drive · dark","theme":{"mode":"dark","family":"create"}} | {"clip":true,"width":600,"height":360,"fill":"$op-canvas","cornerRadius":12,"stroke":"$op-border","strokeWidth":1} |
+| TrP47 / uSj36 | frame / Drive · dark | {"name":"Drive · dark","theme":{"mode":"dark","family":"files"}} | {"clip":true,"width":600,"height":360,"fill":"$op-canvas","cornerRadius":12,"stroke":"$op-border","strokeWidth":1} |
 | TrP47/AoSog / TrP47 | frame / Sidebar | {"name":"Sidebar"} | {"width":156,"height":"fill_container","fill":"$op-nav","layout":"vertical","gap":12,"padding":12} |
 | TrP47/OLUWx / TrP47/AoSog | frame / Brand | {"name":"Brand"} | {"gap":8,"alignItems":"center"} |
 | TrP47/wY8Sb / TrP47/OLUWx | frame / App Tile | {"name":"App Tile"} | {"width":20,"height":20,"fill":"$op-accent","cornerRadius":4,"justifyContent":"center","alignItems":"center"} |

@@ -6,12 +6,15 @@ Source: native `officepress.opcd`, extracted offline from its JSON frames with i
 
 Apply [accepted corrections](00078-officepress-source-decisions.md) — load when using these design records as guidance.
 
+Current extraction: [Files/Forge revision](00403-officepress-files-forge-revision.md), including lossless prior-record recovery.
+
 ## Node records
 
 | ID / parent | Type / name | Exact text, context and flags | Layout and styling properties |
 |---|---|---|---|
-| L4vMmm / ilcWW | frame / Family Strip | {"name":"Family Strip"} | {"width":"fill_container","gap":16} |
-| j5a8WO / L4vMmm | frame / Communicate light | {"name":"Communicate light","theme":{"mode":"light","family":"communicate"}} | {"width":"fill_container","fill":"$op-canvas","cornerRadius":12,"stroke":"$op-border","strokeWidth":1,"layout":"vertical","gap":12,"padding":16} |
+| L4vMmm / ilcWW | frame / Family Strip | {"name":"Family Strip"} | {"width":"fill_container","gap":16,"layout":"vertical"} |
+| Gnl68 / L4vMmm | frame / Light | {"name":"Light"} | {"width":"fill_container","gap":16} |
+| j5a8WO / Gnl68 | frame / Communicate light | {"name":"Communicate light","theme":{"mode":"light","family":"communicate"}} | {"width":"fill_container","fill":"$op-canvas","cornerRadius":12,"stroke":"$op-border","strokeWidth":1,"layout":"vertical","gap":12,"padding":16} |
 | j6Votz / j5a8WO | text / Label | {"name":"Label","content":"Communicate · light"} | {"fill":"$op-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700","letterSpacing":0.5} |
 | dI0BD / j5a8WO | frame / Row | {"name":"Row"} | {"gap":8,"alignItems":"center"} |
 | aBT8D / dI0BD | frame / Primary | {"name":"Primary"} | {"height":28,"fill":"$op-accent-strong","cornerRadius":4,"padding":[0,16],"alignItems":"center"} |
@@ -21,18 +24,8 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | YC6WI / dI0BD | text / Link | {"name":"Link","content":"Open"} | {"fill":"$op-accent-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
 | aCw62 / j5a8WO | frame / Track | {"name":"Track"} | {"width":"fill_container","height":4,"fill":"$op-tint-2","cornerRadius":999,"layout":"none"} |
 | jUASw / aCw62 | rectangle / Fill | {"name":"Fill"} | {"cornerRadius":999,"x":0,"y":0,"fill":"$op-accent","width":90,"height":4} |
-| Ys21D / L4vMmm | frame / Communicate dark | {"name":"Communicate dark","theme":{"mode":"dark","family":"communicate"}} | {"width":"fill_container","fill":"$op-canvas","cornerRadius":12,"stroke":"$op-border","strokeWidth":1,"layout":"vertical","gap":12,"padding":16} |
-| O0gXI / Ys21D | text / Label | {"name":"Label","content":"Communicate · dark"} | {"fill":"$op-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700","letterSpacing":0.5} |
-| UxDn4 / Ys21D | frame / Row | {"name":"Row"} | {"gap":8,"alignItems":"center"} |
-| zD2sY / UxDn4 | frame / Primary | {"name":"Primary"} | {"height":28,"fill":"$op-accent-strong","cornerRadius":4,"padding":[0,16],"alignItems":"center"} |
-| t7GiQ / zD2sY | text / L | {"name":"L","content":"New"} | {"fill":"$op-on-accent","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
-| M4ebGn / UxDn4 | frame / Count | {"name":"Count"} | {"width":20,"height":20,"fill":"$op-tint","cornerRadius":999,"justifyContent":"center","alignItems":"center"} |
-| bkvor / M4ebGn | text / N | {"name":"N","content":"9"} | {"fill":"$op-on-tint","lineHeight":1,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700"} |
-| FsfiS / UxDn4 | text / Link | {"name":"Link","content":"Open"} | {"fill":"$op-accent-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
-| fpbDD / Ys21D | frame / Track | {"name":"Track"} | {"width":"fill_container","height":4,"fill":"$op-tint-2","cornerRadius":999,"layout":"none"} |
-| KcZFM / fpbDD | rectangle / Fill | {"name":"Fill"} | {"cornerRadius":999,"x":0,"y":0,"fill":"$op-accent","width":90,"height":4} |
-| ryLvc / L4vMmm | frame / Create light | {"name":"Create light","theme":{"mode":"light","family":"create"}} | {"width":"fill_container","fill":"$op-canvas","cornerRadius":12,"stroke":"$op-border","strokeWidth":1,"layout":"vertical","gap":12,"padding":16} |
-| cFgi8 / ryLvc | text / Label | {"name":"Label","content":"Create · light"} | {"fill":"$op-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700","letterSpacing":0.5} |
+| ryLvc / Gnl68 | frame / Files light | {"name":"Files light","theme":{"mode":"light","family":"files"}} | {"width":"fill_container","fill":"$op-canvas","cornerRadius":12,"stroke":"$op-border","strokeWidth":1,"layout":"vertical","gap":12,"padding":16} |
+| cFgi8 / ryLvc | text / Label | {"name":"Label","content":"Files · light"} | {"fill":"$op-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700","letterSpacing":0.5} |
 | ZPutO / ryLvc | frame / Row | {"name":"Row"} | {"gap":8,"alignItems":"center"} |
 | zR7Tz / ZPutO | frame / Primary | {"name":"Primary"} | {"height":28,"fill":"$op-accent-strong","cornerRadius":4,"padding":[0,16],"alignItems":"center"} |
 | lJPby / zR7Tz | text / L | {"name":"L","content":"New"} | {"fill":"$op-on-accent","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
@@ -41,17 +34,17 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | J8ErIT / ZPutO | text / Link | {"name":"Link","content":"Open"} | {"fill":"$op-accent-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
 | Ej5oU / ryLvc | frame / Track | {"name":"Track"} | {"width":"fill_container","height":4,"fill":"$op-tint-2","cornerRadius":999,"layout":"none"} |
 | zqrQN / Ej5oU | rectangle / Fill | {"name":"Fill"} | {"cornerRadius":999,"x":0,"y":0,"fill":"$op-accent","width":90,"height":4} |
-| R56oYZ / L4vMmm | frame / Create dark | {"name":"Create dark","theme":{"mode":"dark","family":"create"}} | {"width":"fill_container","fill":"$op-canvas","cornerRadius":12,"stroke":"$op-border","strokeWidth":1,"layout":"vertical","gap":12,"padding":16} |
-| mNKVl / R56oYZ | text / Label | {"name":"Label","content":"Create · dark"} | {"fill":"$op-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700","letterSpacing":0.5} |
-| hrj8m / R56oYZ | frame / Row | {"name":"Row"} | {"gap":8,"alignItems":"center"} |
-| pYzJZ / hrj8m | frame / Primary | {"name":"Primary"} | {"height":28,"fill":"$op-accent-strong","cornerRadius":4,"padding":[0,16],"alignItems":"center"} |
-| diV5M / pYzJZ | text / L | {"name":"L","content":"New"} | {"fill":"$op-on-accent","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
-| jKOLB / hrj8m | frame / Count | {"name":"Count"} | {"width":20,"height":20,"fill":"$op-tint","cornerRadius":999,"justifyContent":"center","alignItems":"center"} |
-| wT1vT / jKOLB | text / N | {"name":"N","content":"9"} | {"fill":"$op-on-tint","lineHeight":1,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700"} |
-| V64Cb / hrj8m | text / Link | {"name":"Link","content":"Open"} | {"fill":"$op-accent-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
-| Hqowt / R56oYZ | frame / Track | {"name":"Track"} | {"width":"fill_container","height":4,"fill":"$op-tint-2","cornerRadius":999,"layout":"none"} |
-| G5Ih8m / Hqowt | rectangle / Fill | {"name":"Fill"} | {"cornerRadius":999,"x":0,"y":0,"fill":"$op-accent","width":90,"height":4} |
-| vrLLz / L4vMmm | frame / Operate light | {"name":"Operate light","theme":{"mode":"light","family":"operate"}} | {"width":"fill_container","fill":"$op-canvas","cornerRadius":12,"stroke":"$op-border","strokeWidth":1,"layout":"vertical","gap":12,"padding":16} |
+| PVl55 / Gnl68 | frame / Forge light | {"name":"Forge light","theme":{"mode":"light","family":"forge"}} | {"width":"fill_container","fill":"$op-canvas","cornerRadius":12,"stroke":"$op-border","strokeWidth":1,"layout":"vertical","gap":12,"padding":16} |
+| z66kA / PVl55 | text / Label | {"name":"Label","content":"Forge · light"} | {"fill":"$op-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700","letterSpacing":0.5} |
+| 8kVqr / PVl55 | frame / Row | {"name":"Row"} | {"gap":8,"alignItems":"center"} |
+| PcPOJ / 8kVqr | frame / Primary | {"name":"Primary"} | {"height":28,"fill":"$op-accent-strong","cornerRadius":4,"padding":[0,16],"alignItems":"center"} |
+| KfVlo / PcPOJ | text / L | {"name":"L","content":"New"} | {"fill":"$op-on-accent","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
+| VZqa7 / 8kVqr | frame / Count | {"name":"Count"} | {"width":20,"height":20,"fill":"$op-tint","cornerRadius":999,"justifyContent":"center","alignItems":"center"} |
+| kPfiV / VZqa7 | text / N | {"name":"N","content":"9"} | {"fill":"$op-on-tint","lineHeight":1,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700"} |
+| 29ZWs / 8kVqr | text / Link | {"name":"Link","content":"Open"} | {"fill":"$op-accent-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
+| As3un / PVl55 | frame / Track | {"name":"Track"} | {"width":"fill_container","height":4,"fill":"$op-tint-2","cornerRadius":999,"layout":"none"} |
+| IElVi / As3un | rectangle / Fill | {"name":"Fill"} | {"cornerRadius":999,"x":0,"y":0,"fill":"$op-accent","width":90,"height":4} |
+| vrLLz / Gnl68 | frame / Operate light | {"name":"Operate light","theme":{"mode":"light","family":"operate"}} | {"width":"fill_container","fill":"$op-canvas","cornerRadius":12,"stroke":"$op-border","strokeWidth":1,"layout":"vertical","gap":12,"padding":16} |
 | RaGFg / vrLLz | text / Label | {"name":"Label","content":"Operate · light"} | {"fill":"$op-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700","letterSpacing":0.5} |
 | IljQe / vrLLz | frame / Row | {"name":"Row"} | {"gap":8,"alignItems":"center"} |
 | FQnRV / IljQe | frame / Primary | {"name":"Primary"} | {"height":28,"fill":"$op-accent-strong","cornerRadius":4,"padding":[0,16],"alignItems":"center"} |
@@ -61,17 +54,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | jrsHs / IljQe | text / Link | {"name":"Link","content":"Open"} | {"fill":"$op-accent-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
 | dtooA / vrLLz | frame / Track | {"name":"Track"} | {"width":"fill_container","height":4,"fill":"$op-tint-2","cornerRadius":999,"layout":"none"} |
 | eCUUZ / dtooA | rectangle / Fill | {"name":"Fill"} | {"cornerRadius":999,"x":0,"y":0,"fill":"$op-accent","width":90,"height":4} |
-| XSs4O / L4vMmm | frame / Operate dark | {"name":"Operate dark","theme":{"mode":"dark","family":"operate"}} | {"width":"fill_container","fill":"$op-canvas","cornerRadius":12,"stroke":"$op-border","strokeWidth":1,"layout":"vertical","gap":12,"padding":16} |
-| N3DS8 / XSs4O | text / Label | {"name":"Label","content":"Operate · dark"} | {"fill":"$op-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700","letterSpacing":0.5} |
-| ciXze / XSs4O | frame / Row | {"name":"Row"} | {"gap":8,"alignItems":"center"} |
-| Ub5A3 / ciXze | frame / Primary | {"name":"Primary"} | {"height":28,"fill":"$op-accent-strong","cornerRadius":4,"padding":[0,16],"alignItems":"center"} |
-| s5Erf / Ub5A3 | text / L | {"name":"L","content":"New"} | {"fill":"$op-on-accent","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
-| ydGbZ / ciXze | frame / Count | {"name":"Count"} | {"width":20,"height":20,"fill":"$op-tint","cornerRadius":999,"justifyContent":"center","alignItems":"center"} |
-| iPeHF / ydGbZ | text / N | {"name":"N","content":"9"} | {"fill":"$op-on-tint","lineHeight":1,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700"} |
-| xNeuN / ciXze | text / Link | {"name":"Link","content":"Open"} | {"fill":"$op-accent-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
-| Fk2dT / XSs4O | frame / Track | {"name":"Track"} | {"width":"fill_container","height":4,"fill":"$op-tint-2","cornerRadius":999,"layout":"none"} |
-| sCdNF / Fk2dT | rectangle / Fill | {"name":"Fill"} | {"cornerRadius":999,"x":0,"y":0,"fill":"$op-accent","width":90,"height":4} |
-| C6fv1 / L4vMmm | frame / Commerce light | {"name":"Commerce light","theme":{"mode":"light","family":"commerce"}} | {"width":"fill_container","fill":"$op-canvas","cornerRadius":12,"stroke":"$op-border","strokeWidth":1,"layout":"vertical","gap":12,"padding":16} |
+| C6fv1 / Gnl68 | frame / Commerce light | {"name":"Commerce light","theme":{"mode":"light","family":"commerce"}} | {"width":"fill_container","fill":"$op-canvas","cornerRadius":12,"stroke":"$op-border","strokeWidth":1,"layout":"vertical","gap":12,"padding":16} |
 | r41F8 / C6fv1 | text / Label | {"name":"Label","content":"Commerce · light"} | {"fill":"$op-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700","letterSpacing":0.5} |
 | G1yle / C6fv1 | frame / Row | {"name":"Row"} | {"gap":8,"alignItems":"center"} |
 | QCmU7 / G1yle | frame / Primary | {"name":"Primary"} | {"height":28,"fill":"$op-accent-strong","cornerRadius":4,"padding":[0,16],"alignItems":"center"} |
@@ -81,7 +64,48 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | NqcJo / G1yle | text / Link | {"name":"Link","content":"Open"} | {"fill":"$op-accent-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
 | Fos56 / C6fv1 | frame / Track | {"name":"Track"} | {"width":"fill_container","height":4,"fill":"$op-tint-2","cornerRadius":999,"layout":"none"} |
 | jwIRL / Fos56 | rectangle / Fill | {"name":"Fill"} | {"cornerRadius":999,"x":0,"y":0,"fill":"$op-accent","width":90,"height":4} |
-| s1VNx / L4vMmm | frame / Commerce dark | {"name":"Commerce dark","theme":{"mode":"dark","family":"commerce"}} | {"width":"fill_container","fill":"$op-canvas","cornerRadius":12,"stroke":"$op-border","strokeWidth":1,"layout":"vertical","gap":12,"padding":16} |
+| 6ouqn / L4vMmm | frame / Dark | {"name":"Dark"} | {"width":"fill_container","gap":16} |
+| Ys21D / 6ouqn | frame / Communicate dark | {"name":"Communicate dark","theme":{"mode":"dark","family":"communicate"}} | {"width":"fill_container","fill":"$op-canvas","cornerRadius":12,"stroke":"$op-border","strokeWidth":1,"layout":"vertical","gap":12,"padding":16} |
+| O0gXI / Ys21D | text / Label | {"name":"Label","content":"Communicate · dark"} | {"fill":"$op-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700","letterSpacing":0.5} |
+| UxDn4 / Ys21D | frame / Row | {"name":"Row"} | {"gap":8,"alignItems":"center"} |
+| zD2sY / UxDn4 | frame / Primary | {"name":"Primary"} | {"height":28,"fill":"$op-accent-strong","cornerRadius":4,"padding":[0,16],"alignItems":"center"} |
+| t7GiQ / zD2sY | text / L | {"name":"L","content":"New"} | {"fill":"$op-on-accent","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
+| M4ebGn / UxDn4 | frame / Count | {"name":"Count"} | {"width":20,"height":20,"fill":"$op-tint","cornerRadius":999,"justifyContent":"center","alignItems":"center"} |
+| bkvor / M4ebGn | text / N | {"name":"N","content":"9"} | {"fill":"$op-on-tint","lineHeight":1,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700"} |
+| FsfiS / UxDn4 | text / Link | {"name":"Link","content":"Open"} | {"fill":"$op-accent-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
+| fpbDD / Ys21D | frame / Track | {"name":"Track"} | {"width":"fill_container","height":4,"fill":"$op-tint-2","cornerRadius":999,"layout":"none"} |
+| KcZFM / fpbDD | rectangle / Fill | {"name":"Fill"} | {"cornerRadius":999,"x":0,"y":0,"fill":"$op-accent","width":90,"height":4} |
+| R56oYZ / 6ouqn | frame / Files dark | {"name":"Files dark","theme":{"mode":"dark","family":"files"}} | {"width":"fill_container","fill":"$op-canvas","cornerRadius":12,"stroke":"$op-border","strokeWidth":1,"layout":"vertical","gap":12,"padding":16} |
+| mNKVl / R56oYZ | text / Label | {"name":"Label","content":"Files · dark"} | {"fill":"$op-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700","letterSpacing":0.5} |
+| hrj8m / R56oYZ | frame / Row | {"name":"Row"} | {"gap":8,"alignItems":"center"} |
+| pYzJZ / hrj8m | frame / Primary | {"name":"Primary"} | {"height":28,"fill":"$op-accent-strong","cornerRadius":4,"padding":[0,16],"alignItems":"center"} |
+| diV5M / pYzJZ | text / L | {"name":"L","content":"New"} | {"fill":"$op-on-accent","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
+| jKOLB / hrj8m | frame / Count | {"name":"Count"} | {"width":20,"height":20,"fill":"$op-tint","cornerRadius":999,"justifyContent":"center","alignItems":"center"} |
+| wT1vT / jKOLB | text / N | {"name":"N","content":"9"} | {"fill":"$op-on-tint","lineHeight":1,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700"} |
+| V64Cb / hrj8m | text / Link | {"name":"Link","content":"Open"} | {"fill":"$op-accent-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
+| Hqowt / R56oYZ | frame / Track | {"name":"Track"} | {"width":"fill_container","height":4,"fill":"$op-tint-2","cornerRadius":999,"layout":"none"} |
+| G5Ih8m / Hqowt | rectangle / Fill | {"name":"Fill"} | {"cornerRadius":999,"x":0,"y":0,"fill":"$op-accent","width":90,"height":4} |
+| 3syVz / 6ouqn | frame / Forge dark | {"name":"Forge dark","theme":{"mode":"dark","family":"forge"}} | {"width":"fill_container","fill":"$op-canvas","cornerRadius":12,"stroke":"$op-border","strokeWidth":1,"layout":"vertical","gap":12,"padding":16} |
+| CcO6x / 3syVz | text / Label | {"name":"Label","content":"Forge · dark"} | {"fill":"$op-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700","letterSpacing":0.5} |
+| HVTaf / 3syVz | frame / Row | {"name":"Row"} | {"gap":8,"alignItems":"center"} |
+| cVtgf / HVTaf | frame / Primary | {"name":"Primary"} | {"height":28,"fill":"$op-accent-strong","cornerRadius":4,"padding":[0,16],"alignItems":"center"} |
+| dkSjz / cVtgf | text / L | {"name":"L","content":"New"} | {"fill":"$op-on-accent","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
+| v90cn / HVTaf | frame / Count | {"name":"Count"} | {"width":20,"height":20,"fill":"$op-tint","cornerRadius":999,"justifyContent":"center","alignItems":"center"} |
+| vs3vD / v90cn | text / N | {"name":"N","content":"9"} | {"fill":"$op-on-tint","lineHeight":1,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700"} |
+| Gp1Ry / HVTaf | text / Link | {"name":"Link","content":"Open"} | {"fill":"$op-accent-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
+| PfJQj / 3syVz | frame / Track | {"name":"Track"} | {"width":"fill_container","height":4,"fill":"$op-tint-2","cornerRadius":999,"layout":"none"} |
+| HWABa / PfJQj | rectangle / Fill | {"name":"Fill"} | {"cornerRadius":999,"x":0,"y":0,"fill":"$op-accent","width":90,"height":4} |
+| XSs4O / 6ouqn | frame / Operate dark | {"name":"Operate dark","theme":{"mode":"dark","family":"operate"}} | {"width":"fill_container","fill":"$op-canvas","cornerRadius":12,"stroke":"$op-border","strokeWidth":1,"layout":"vertical","gap":12,"padding":16} |
+| N3DS8 / XSs4O | text / Label | {"name":"Label","content":"Operate · dark"} | {"fill":"$op-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700","letterSpacing":0.5} |
+| ciXze / XSs4O | frame / Row | {"name":"Row"} | {"gap":8,"alignItems":"center"} |
+| Ub5A3 / ciXze | frame / Primary | {"name":"Primary"} | {"height":28,"fill":"$op-accent-strong","cornerRadius":4,"padding":[0,16],"alignItems":"center"} |
+| s5Erf / Ub5A3 | text / L | {"name":"L","content":"New"} | {"fill":"$op-on-accent","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
+| ydGbZ / ciXze | frame / Count | {"name":"Count"} | {"width":20,"height":20,"fill":"$op-tint","cornerRadius":999,"justifyContent":"center","alignItems":"center"} |
+| iPeHF / ydGbZ | text / N | {"name":"N","content":"9"} | {"fill":"$op-on-tint","lineHeight":1,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700"} |
+| xNeuN / ciXze | text / Link | {"name":"Link","content":"Open"} | {"fill":"$op-accent-text","lineHeight":1.5,"fontFamily":"$op-font","fontSize":12,"fontWeight":"700"} |
+| Fk2dT / XSs4O | frame / Track | {"name":"Track"} | {"width":"fill_container","height":4,"fill":"$op-tint-2","cornerRadius":999,"layout":"none"} |
+| sCdNF / Fk2dT | rectangle / Fill | {"name":"Fill"} | {"cornerRadius":999,"x":0,"y":0,"fill":"$op-accent","width":90,"height":4} |
+| s1VNx / 6ouqn | frame / Commerce dark | {"name":"Commerce dark","theme":{"mode":"dark","family":"commerce"}} | {"width":"fill_container","fill":"$op-canvas","cornerRadius":12,"stroke":"$op-border","strokeWidth":1,"layout":"vertical","gap":12,"padding":16} |
 | Rj8I1 / s1VNx | text / Label | {"name":"Label","content":"Commerce · dark"} | {"fill":"$op-text-2","lineHeight":1.5,"fontFamily":"$op-font","fontSize":11,"fontWeight":"700","letterSpacing":0.5} |
 | Futla / s1VNx | frame / Row | {"name":"Row"} | {"gap":8,"alignItems":"center"} |
 | SlYCY / Futla | frame / Primary | {"name":"Primary"} | {"height":28,"fill":"$op-accent-strong","cornerRadius":4,"padding":[0,16],"alignItems":"center"} |

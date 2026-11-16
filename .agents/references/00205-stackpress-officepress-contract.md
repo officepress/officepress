@@ -4,6 +4,8 @@ Owner: [Stackpress handbook](../context/stackpress.md). Load before implementing
 
 ## Scope and authority
 
+The 2026-11-16 user direction explicitly assigns App Forge and its ports to Stackpress Rust. This document's 0.10.8/Yarn/PGlite/scaffold instructions apply to the TypeScript baseline, not that Rust application. Load [App Forge and the Rust boundary](../context/app-forge.md) for its accepted stack and source KBs. Shared product/brand guidance still applies.
+
 Every OfficePress app uses Stackpress. Per the 2026-10-10 user decision, the maintained scaffold baseline is `proofs/app-shell/` in this repository (Yarn, Stackpress CLI dispatch, the 00373 layout). Apps needing workflows/automations (kanban), form builder or message templates use `proofs/common-components/` as the feature reference and copy source. This supersedes `proofs/stackpress-boilerplate/` as the baseline; that earlier proof remains historical npm-era evidence with its original receipts. Use the 0.10.8 Stackpress ecosystem; React, Frui, Vite and other independent packages have their own versions. Preserve `yarn.lock` and verify actual resolved versions.
 
 The baseline is shared by all OfficePress apps. Commerce Orders-specific P13/P14 task labels and missing-feature lists are historical provenance, not requirements for every app. The proofs demonstrate framework mechanics; they do not implement all OfficePress business features or production identity/tenant security.

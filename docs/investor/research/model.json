@@ -1,0 +1,173 @@
+{
+  "date": "2026-11-13",
+  "currency": "USD unless explicitly identified as EUR",
+  "reported_company_stage": "Pre-seed",
+  "reported_pilot_baseline": {
+    "organisations": 1,
+    "app_deployments": 6,
+    "commercial_terms": "Free in exchange for feedback",
+    "reported_free_pilot_revenue": 0,
+    "company_wide_revenue": null,
+    "company_wide_paying_customers": null,
+    "source": "P5 founder report, not independent usage audit"
+  },
+  "employer_business_proxy": {
+    "United States": 5580000,
+    "United Kingdom": 1472000,
+    "Canada": 1100000,
+    "Australia": 996203,
+    "New Zealand": 161560
+  },
+  "annual_revenue_per_account_assumption": 1800,
+  "sam_filters_assumptions": {
+    "industry_fit": 0.2,
+    "team_size_fit": 0.25,
+    "language_readiness_and_buying_fit": 0.6
+  },
+  "scenarios_year_end_paying_accounts": {
+    "Cautious": [
+      50,
+      150,
+      400
+    ],
+    "Base": [
+      100,
+      400,
+      1200
+    ],
+    "Expansion": [
+      150,
+      800,
+      3000
+    ]
+  },
+  "assumed_monthly_gross_logo_churn": null,
+  "assumed_annual_gross_logo_churn": 0.1,
+  "monthly_unit_economics": {
+    "revenue": 150,
+    "infrastructure_and_storage": 12,
+    "ai_and_provider_usage": 8,
+    "variable_support": 15,
+    "payments_and_other": 5
+  },
+  "cac_assumptions": [
+    600,
+    1200,
+    2400
+  ],
+  "valuation_sensitivity_multiples": [
+    3,
+    5,
+    8
+  ],
+  "pricing_test_monthly_account_prices": [
+    79,
+    149,
+    299
+  ],
+  "tam_annual_price_sensitivity": [
+    900,
+    3000
+  ],
+  "sam_filter_sensitivity": [
+    0.01,
+    0.05
+  ],
+  "acquisition_capacity_assumptions": {
+    "qualified_demo_conversion": 0.2,
+    "productive_partners": 15,
+    "new_accounts_per_partner_per_month": 2,
+    "direct_new_accounts_per_month": 40
+  },
+  "fixed_operating_cash_cost_cases_monthly": [
+    35000,
+    65000,
+    100000
+  ],
+  "capital_planning_months": 18,
+  "capital_contingency": 0.15,
+  "contribution_threshold_fixed_overhead": 50000,
+  "notes": [
+    "Commercial assumptions are proposals, not measured OfficePress performance.",
+    "Reference populations differ in year, coverage, firm-size definitions and rounding.",
+    "Five-country employer universe is a bounded market proxy, not a measured global English-language TAM.",
+    "Annual recognized subscription revenue uses a linear average of beginning and ending customer counts.",
+    "No implementation fees, taxes, exchange movements or pass-through usage revenue included in ARR."
+  ],
+  "calculated": {
+    "universe": 9309763,
+    "scoped_tam": 16757573400,
+    "sam_accounts": 279292.89,
+    "sam_annual_revenue": 502727202.0,
+    "base_som_accounts": 1200,
+    "base_som_arr": 2160000,
+    "base_som_sam_share": 0.0042965647997698754,
+    "fixed_operating_cash_envelopes": [
+      724500,
+      1345500,
+      2070000
+    ],
+    "tam_price_sensitivity": [
+      8378786700,
+      27929289000
+    ],
+    "sam_filter_sensitivity": [
+      167575734.0,
+      837878670.0
+    ],
+    "contribution_threshold_accounts": 455
+  },
+  "scenario_results": {
+    "Cautious": {
+      "year_end_arr": [
+        90000,
+        270000,
+        720000
+      ],
+      "recognized_revenue": [
+        45000.0,
+        180000.0,
+        495000.0
+      ],
+      "gross_additions": [
+        50,
+        105,
+        265
+      ]
+    },
+    "Base": {
+      "year_end_arr": [
+        180000,
+        720000,
+        2160000
+      ],
+      "recognized_revenue": [
+        90000.0,
+        450000.0,
+        1440000.0
+      ],
+      "gross_additions": [
+        100,
+        310,
+        840
+      ]
+    },
+    "Expansion": {
+      "year_end_arr": [
+        270000,
+        1440000,
+        5400000
+      ],
+      "recognized_revenue": [
+        135000.0,
+        855000.0,
+        3420000.0
+      ],
+      "gross_additions": [
+        150,
+        665,
+        2280
+      ]
+    }
+  }
+}

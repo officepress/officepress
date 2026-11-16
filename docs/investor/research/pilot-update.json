@@ -1,0 +1,29 @@
+{
+  "reported_on": "2026-11-13",
+  "source": "Founder statement in the document review conversation",
+  "verbatim": "ahh no this is preseed. while we did release pilots for Shoppable business the company. resourcing.shoppable.ph approvals.shoppable.ph support.shoppable.ph inbox.shoppable.ph ims.sp.shoppable.ph orders.shoppable.ph . It was given freely in exchange for feedback. But all of these are being actively used right now.",
+  "company_stage": "Pre-seed",
+  "pilot_organisation": "Shoppable Business",
+  "reported_organisations": 1,
+  "reported_pilot_deployments": 6,
+  "commercial_terms": "Provided free in exchange for feedback",
+  "active_use": "Founder reports all six are actively used at the reporting date",
+  "revenue_from_reported_free_pilots": 0,
+  "company_wide_revenue": null,
+  "company_wide_paying_customers": null,
+  "pilots": [
+    {"name":"Resourcing","url":"https://resourcing.shoppable.ph"},
+    {"name":"Approvals","url":"https://approvals.shoppable.ph"},
+    {"name":"Support","url":"https://support.shoppable.ph"},
+    {"name":"Inbox","url":"https://inbox.shoppable.ph"},
+    {"name":"IMS","url":"https://ims.sp.shoppable.ph"},
+    {"name":"Orders","url":"https://orders.shoppable.ph"}
+  ],
+  "limits": [
+    "Founder-reported operational use, not an independent deployment or usage audit",
+    "Six app deployments at one organisation, not six independent customer logos",
+    "Active user counts, usage volumes, start dates and measured outcomes were not supplied",
+    "Paid conversion and willingness to pay are not established by free use",
+    "IMS product name preserved without assuming equivalence to another catalogue app"
+  ]
+}

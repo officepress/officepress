@@ -7,19 +7,22 @@ Use the exact promise and catch phrases in [OfficePress](officepress.md). The br
 | Family | Brand colour | Products |
 |---|---|---|
 | Communicate | `#2F5BEA` | Inbox, Chat, Meet, Calendar, Support, Agent, Clients |
-| Create | `#6A3BE4` | Drive, Tables, Forms, Whiteboards, Diagrams, Context, UIUX, Designs, Graphics |
+| Files | `#6A3BE4` | Drive, Tables, Forms, Context, Forge |
+| Forge | `#D23F6F` | Designs, UIUX, Graphics, Whiteboards, Diagrams, Layers, Models, Films, Waves, Photos, Slides |
 | Operate | `#E2551B` | Resourcing, Procurement, Accounting, Approvals, Sign, Content, Pipelines |
 | Commerce | `#0F8F6A` | Products, Orders, Inventory, Payments, Fulfillments |
 
-The 2026-10-13 user correction places Clients in Communicate and Content in Operate, superseding the preserved source lists. All 28 family products have product marks. The `app-*` platform apps have no assigned branded family colour or product mark. Family colours identify products with a defined family; UI surfaces use family-and-mode tokens rather than hard-coded brand hex values.
+The 2026-10-13 user correction places Clients in Communicate and Content in Operate, superseding the preserved source lists. The 2026-11-16 supplied design splits Create into Files and Forge. All 35 marked identities are listed above; the six planned Forge tools have marks without an implementation claim. App Forge is explicitly the Files-family Forge shell despite its `app-forge` repository name. Develop and Cloud still have no assigned branded family colour or product mark. Family colours identify products with a defined family; UI surfaces use family-and-mode tokens rather than hard-coded brand hex values.
 
 ## Mark construction
 
 Product marks start from a familiar symbol for the job, reduced to consistent simple geometry. The family colour identifies the family; the symbol identifies the product. Use the current kit marks under `logos/products/<family>/<app>.svg`. On 2026-10-13 the Clients and Content marks were recoloured and moved into their new families. New marks were added for Context (lightbulb with a tick), UIUX (wireframe screen), Designs (palette), Graphics (layer stack) and Pipelines (kanban stages with a card in transit). The user accepted the set after one Pipelines redraw. The superseded orange Clients and purple Content files are kept only as history; never use them for current identity.
 
+The [Files/Forge revision](../references/00403-officepress-files-forge-revision.md) supersedes the Create paths above: use `products/files/` for Drive, Tables, Forms, Context and the Forge shell, and `products/forge/` for its creative tools. Five existing creative marks move to rose; six planned tool marks are supplied. Superseded Create assets stay in history, not the active kit.
+
 The construction uses a 96-unit tile with radius 24, an 8-unit grid and a 16-unit safe margin. Main shapes are solid white; supporting shapes use 55% white. Cutouts reveal the tile colour. Keep the geometry simple and avoid gradients.
 
-The suite mark uses a slate `#6B7385` tile, a white office building and four family-coloured windows. Its tower is 48 × 64, annex 24 × 40, windows 12 × 12 and door 16 × 16. The tower, annex and door use the 8-unit grid; windows use the 4-unit half-step. Seven parts form the symbol. The annex sits behind at 55% white; the door is a tile-colour cutout. Source contrast figures are retained as design-source claims.
+The suite mark uses a slate `#6B7385` tile, a white office building and four family-coloured windows. Its tower is 48 × 64, annex 24 × 40, windows 12 × 12 and door 16 × 16. The tower, annex and door use the 8-unit grid; windows use the 4-unit half-step. Seven parts form the symbol. The annex sits behind at 55% white; the door is a tile-colour cutout. The supplied master still has these four windows; do not invent a fifth for the new Forge family. Source contrast figures are retained as design-source claims.
 
 Wordmark lockups use Manrope Bold with tight tracking. App UI uses Inter; code-like values use JetBrains Mono under the typography rules. Use the on-light or on-dark lockup supplied for the background.
 
@@ -34,6 +37,8 @@ Copy the chosen ICO into the deployed app's public assets and point the document
 Use the local Lucide icon set for interface actions. Product marks are product identity, not substitutes for every action icon. Use one icon library per surface, 1.5 px stroke beside regular text and 2 px beside bold, outline by default and fill only for an active state. Emoji may occur in message content but are not UI icons.
 
 ## Detail and assets
+
+- [Current Files/Forge marks, CSS and source recovery](../references/00403-officepress-files-forge-revision.md) — load for the 35-mark taxonomy, exact export paths, new mark anatomy, planned-product limits and preserved predecessors.
 
 - [Logo usage and exact asset conventions](../references/00029-docs-logos-md.md) — load when placing a product mark, suite lockup or favicon.
 - [Complete iconography rules](../references/00028-docs-iconography-md.md) — load when choosing, sizing or adding an interface icon.

@@ -6,6 +6,8 @@ Source: native `officepress.opcd`, extracted offline from its JSON frames with i
 
 Apply [accepted corrections](00078-officepress-source-decisions.md) — load when using these design records as guidance.
 
+Current extraction: [Files/Forge revision](00403-officepress-files-forge-revision.md), including lossless prior-record recovery.
+
 ## Node records
 
 | ID / parent | Type / name | Exact text, context and flags | Layout and styling properties |
@@ -14,7 +16,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | Z9d3PX / zTKmr | frame / Header | {"name":"Header"} | {"width":"fill_container","gap":80,"justifyContent":"space_between","alignItems":"end"} |
 | fONll / Z9d3PX | frame / Intro | {"name":"Intro"} | {"width":760,"layout":"vertical","gap":20} |
 | CV8Aj / fONll | text / Eyebrow | {"name":"Eyebrow","content":"OFFICEPRESS  /  APP UI GUIDELINES  /  v1.0 — DERIVED FROM INBOX BOARD"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":12,"fontWeight":"normal","letterSpacing":1.5} |
-| y3raZ / fONll | text / Title | {"name":"Title","content":"One interface.\nFour families. Two modes."} | {"fill":"$ink","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.02,"fontFamily":"$font-display","fontSize":64,"fontWeight":"700","letterSpacing":-2} |
+| y3raZ / fONll | text / Title | {"name":"Title","content":"One interface.\nFive families. Two modes."} | {"fill":"$ink","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.02,"fontFamily":"$font-display","fontSize":64,"fontWeight":"700","letterSpacing":-2} |
 | vwwoH / Z9d3PX | text / Lede | {"name":"Lede","content":"Every OfficePress app shares the Inbox board's structure, spacing, type and components. Only colour changes: each app inherits its suite family's hue, and every colour is a token (op-*) that resolves from two theme axes, mode and family. Set both on the app's root frame and the whole UI follows."} | {"fill":"$muted","textGrowth":"fixed-width","width":560,"lineHeight":1.6,"fontFamily":"$font-display","fontSize":17,"fontWeight":"normal"} |
 | c9tSPg / zTKmr | frame / Section · How theming works | {"name":"Section · How theming works"} | {"width":"fill_container","layout":"vertical","gap":32} |
 | My24r / c9tSPg | frame / Section Header | {"name":"Section Header"} | {"width":"fill_container","stroke":"$ink","strokeWidth":{"bottom":1},"gap":40,"padding":[0,0,14,0],"justifyContent":"space_between","alignItems":"end"} |
@@ -32,13 +34,22 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | zJ16u / sE6iX | path / Front | {"name":"Front"} | {"x":0,"y":0,"viewBox":[0,0,96,96],"fill":"$mark-primary","width":96,"height":96} |
 | cAmjq / YWOor | text / Key | {"name":"Key","content":"family: communicate"} | {"fill":"$ink","fontFamily":"$font-mono","fontSize":12,"fontWeight":"normal"} |
 | La3ee / YWOor | text / Apps | {"name":"Apps","content":"Inbox · Chat · Meet · Calendar · Support · Agent"} | {"fill":"$muted","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$font-display","fontSize":12,"fontWeight":"normal"} |
-| pBx0T / isq2F | frame / Family · Create | {"name":"Family · Create"} | {"width":"fill_container","layout":"vertical","gap":10} |
-| QQFXF / pBx0T | frame / Tile | {"name":"Tile"} | {"clip":true,"width":96,"height":96,"fill":"$fam-create","cornerRadius":24,"layout":"none"} |
+| pBx0T / isq2F | frame / Family · Files | {"name":"Family · Files"} | {"width":"fill_container","layout":"vertical","gap":10} |
+| QQFXF / pBx0T | frame / Tile | {"name":"Tile"} | {"clip":true,"width":96,"height":96,"fill":"$fam-files","cornerRadius":24,"layout":"none"} |
 | lNfNJ / QQFXF | rectangle / Tab | {"name":"Tab"} | {"cornerRadius":5,"x":16,"y":20,"fill":"$mark-secondary","width":30,"height":16} |
 | c9jb6 / QQFXF | rectangle / Back | {"name":"Back"} | {"cornerRadius":8,"x":16,"y":28,"fill":"$mark-secondary","width":64,"height":48} |
 | X53o7 / QQFXF | rectangle / Front | {"name":"Front"} | {"cornerRadius":8,"x":16,"y":38,"fill":"$mark-primary","width":64,"height":42} |
-| bxY4L / pBx0T | text / Key | {"name":"Key","content":"family: create"} | {"fill":"$ink","fontFamily":"$font-mono","fontSize":12,"fontWeight":"normal"} |
-| B47Ep / pBx0T | text / Apps | {"name":"Apps","content":"Drive · Tables · Forms · Whiteboards · Diagrams · Content"} | {"fill":"$muted","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$font-display","fontSize":12,"fontWeight":"normal"} |
+| bxY4L / pBx0T | text / Key | {"name":"Key","content":"family: files"} | {"fill":"$ink","fontFamily":"$font-mono","fontSize":12,"fontWeight":"normal"} |
+| B47Ep / pBx0T | text / Apps | {"name":"Apps","content":"Drive · Tables · Forms · Context · Forge"} | {"fill":"$muted","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$font-display","fontSize":12,"fontWeight":"normal"} |
+| 2oZEL / isq2F | frame / Family · Forge | {"name":"Family · Forge"} | {"width":"fill_container","layout":"vertical","gap":10} |
+| ARcsX / 2oZEL | frame / Tile | {"name":"Tile"} | {"clip":true,"width":96,"height":96,"fill":"$fam-forge","cornerRadius":24,"layout":"none"} |
+| eP01h / ARcsX | ellipse / Palette | {"name":"Palette"} | {"x":16,"y":16,"fill":"$mark-primary","width":64,"height":64} |
+| MDc0Y / ARcsX | ellipse / Thumb Notch | {"name":"Thumb Notch"} | {"x":54,"y":52,"fill":"$fam-forge","width":30,"height":30} |
+| vAV30 / ARcsX | ellipse / Well 1 | {"name":"Well 1"} | {"x":26,"y":40,"fill":"$fam-forge","width":12,"height":12} |
+| eWNEw / ARcsX | ellipse / Well 2 | {"name":"Well 2"} | {"x":34,"y":24,"fill":"$fam-forge","width":12,"height":12} |
+| FZp7t / ARcsX | ellipse / Well 3 | {"name":"Well 3"} | {"x":52,"y":26,"fill":"$fam-forge","width":12,"height":12} |
+| gep5z / 2oZEL | text / Key | {"name":"Key","content":"family: forge"} | {"fill":"$ink","fontFamily":"$font-mono","fontSize":12,"fontWeight":"normal"} |
+| LutZT / 2oZEL | text / Apps | {"name":"Apps","content":"Designs · UIUX · Graphics · Whiteboards · Diagrams · Layers · Models · Films · Waves · Photos · Slides"} | {"fill":"$muted","textGrowth":"fixed-width","width":"fill_container","lineHeight":1.5,"fontFamily":"$font-display","fontSize":12,"fontWeight":"normal"} |
 | y8Z4tK / isq2F | frame / Family · Operate | {"name":"Family · Operate"} | {"width":"fill_container","layout":"vertical","gap":10} |
 | adhhI / y8Z4tK | frame / Tile | {"name":"Tile"} | {"clip":true,"width":96,"height":96,"fill":"$fam-operate","cornerRadius":24,"layout":"none"} |
 | r0Nto9 / adhhI | rectangle / Body | {"name":"Body"} | {"cornerRadius":10,"x":22,"y":14,"fill":"$mark-primary","width":52,"height":68} |

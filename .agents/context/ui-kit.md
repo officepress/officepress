@@ -4,9 +4,9 @@ The supplied kit is a vanilla HTML/CSS/JavaScript reference implementation. Its 
 
 ## Implementation structure
 
-All OfficePress applications use the [Stackpress baseline](stackpress-scaffolding.md). Translate the reference kit into [Reactus views](stackpress-views.md). Script loading below describes the preserved vanilla example; React owns interactions in the application implementation.
+TypeScript OfficePress applications use the [Stackpress baseline](stackpress-scaffolding.md). Translate the reference kit into [Reactus views](stackpress-views.md). App Forge and its ports use [Stackpress Rust](app-forge.md#framework-boundary); apply the same brand/UI guidance through that stack instead of imposing Reactus. Script loading below describes the preserved vanilla example; React owns interactions in the application implementation.
 
-Load core `officepress.css`, then exactly one family stylesheet. Load `icons.js` before `officepress.js`. Use kit `op-` classes; compose new app-owned components with `app-` classes and `var(--op-*)` tokens in app CSS loaded last. Keep the kit itself consistent across apps.
+Load core `officepress.css`, then exactly one current family stylesheet: communicate, files, forge, operate or commerce. `files.css` preserves the purple palette; `forge.css` adds the supplied rose light/dark tokens. Root `kit/css/` mirrors these files and the unchanged core CSS. The archived `create.css` remains a legacy compatibility/source file; its old app list does not override current membership. Load `icons.js` before `officepress.js`. Use kit `op-` classes; compose new app-owned components with `app-` classes and `var(--op-*)` tokens in app CSS loaded last. Keep the kit itself consistent across apps.
 
 The shared JS implements controls such as theme/aside toggles, popovers, agent-panel visibility, tabs, choice controls, dialogs and command-copy feedback. It is not a backend or a complete implementation of data fetching/saving, authentication, drag/drop or business workflows.
 
@@ -39,4 +39,4 @@ Read the appropriate workflow before scaffolding, adding a screen, theming or re
 
 Original HTML includes optional remote Google Fonts links; source license/documentation URLs remain as attribution. Reading this KB and reconstructing its sources are offline operations. Do not download fonts or add icons from the network merely to consult the knowledge base. Existing local fonts/fallback stacks can differ visually from the supplied screenshots.
 
-The icon collection is pinned to Lucide 1.49.0 with 144 standalone SVGs, an SVG sprite and local JS icon data. Preserve the local license notices when using the icons. The logo collection contains 4 suite assets and 23 product marks. Thirty-four screenshots preserve supplied visual states.
+The icon collection is pinned to Lucide 1.49.0 with 144 standalone SVGs, an SVG sprite and local JS icon data. Preserve the local license notices when using the icons. The current logo collection contains 4 suite assets and 35 product marks; root `kit/logos/` carries their matching PNGs and `kit/icons/` mirrors the KB ICOs. The [Files/Forge revision](../references/00403-officepress-files-forge-revision.md) records the new and moved marks, native export checks and preserved former assets. Thirty-four original screenshots preserve supplied visual states; the dated 28-mark board screenshot is historical evidence rather than the current 35-mark design.

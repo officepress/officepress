@@ -34,6 +34,18 @@ class ArchiveTests(unittest.TestCase):
         self.assertEqual(document['children'][0]['id'], 'root')
         self.assertEqual(len(members), 2)
 
+    def test_frame_routing_records_are_supported(self):
+        members = self.members()
+        members['design.json']['frames'] = [{'file': 'frames/root.json', 'id': 'root'}]
+        document, _ = load_archive(self.archive(members))
+        self.assertEqual(document['children'][0]['id'], 'root')
+
+    def test_incorrect_frame_routing_identity_is_rejected(self):
+        members = self.members()
+        members['design.json']['frames'] = [{'file': 'frames/root.json', 'id': 'wrong'}]
+        with self.assertRaisesRegex(AssertionError, 'routing ID'):
+            load_archive(self.archive(members))
+
     def test_missing_declared_frame_is_rejected(self):
         members = self.members()
         del members['frames/root.json']
@@ -57,6 +69,29 @@ class ArchiveTests(unittest.TestCase):
         with zipfile.ZipFile(path, 'a') as target:
             target.writestr('.opcd/chat.json', '{broken')
         with self.assertRaises(json.JSONDecodeError):
+            load_archive(path)
+
+    def test_markdown_members_are_preserved_without_execution(self):
+        path = self.archive(self.members())
+        with zipfile.ZipFile(path, 'a') as target:
+            target.writestr('DESIGN-SYSTEM.md', '# Generated design system\n')
+            target.writestr('.opcd/HISTORY.md', '# History\n')
+        document, members = load_archive(path)
+        self.assertEqual(document['children'][0]['id'], 'root')
+        self.assertEqual(members['DESIGN-SYSTEM.md'], b'# Generated design system\n')
+
+    def test_invalid_utf8_markdown_is_rejected(self):
+        path = self.archive(self.members())
+        with zipfile.ZipFile(path, 'a') as target:
+            target.writestr('DESIGN-SYSTEM.md', b'\xff')
+        with self.assertRaises(UnicodeDecodeError):
+            load_archive(path)
+
+    def test_unknown_binary_member_is_rejected(self):
+        path = self.archive(self.members())
+        with zipfile.ZipFile(path, 'a') as target:
+            target.writestr('unknown.bin', b'opaque')
+        with self.assertRaisesRegex(AssertionError, 'Unsupported archive member'):
             load_archive(path)
 
 

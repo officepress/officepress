@@ -1,5 +1,7 @@
 # OfficePress Designs migration and User Preferences creative direction — 2026-10-20
 
+Dated historical receipt. The [2026-11-16 Files/Forge revision](00403-officepress-files-forge-revision.md) owns the current archive, mark/family counts and CSS; all source evidence and recovery details below retain their original revision scope.
+
 Owner: [Design source](../context/design-source.md), also used by [shared app experience](../context/shared-app-experience.md). Load before designing User Preferences, opening the replacement archive, reconciling prior Pencil knowledge or auditing source fidelity.
 
 ## Source and authority

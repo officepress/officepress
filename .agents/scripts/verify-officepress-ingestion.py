@@ -90,7 +90,7 @@ def design_nodes(root: Path, manifest: dict) -> list[dict]:
     return all_nodes
 
 
-def verify_variables(root: Path, manifest: dict) -> None:
+def verify_variables(root: Path, manifest: dict) -> dict:
     variables = {}
     for entry in manifest['design']['variable_chunks']:
         text = (root / entry['path']).read_text()
@@ -102,6 +102,27 @@ def verify_variables(root: Path, manifest: dict) -> None:
     assert len(variables) == manifest['design']['variable_count']
     full = {'variables': variables, 'themes': manifest['design']['themes']}
     assert sha(canonical(full)) == manifest['design']['variables_sha256'], 'Variable definitions changed'
+    return full
+
+
+def verify_variable_history(root: Path, manifest: dict, current: dict) -> None:
+    """Reverse recorded token changes without treating old families as current."""
+    variables = dict(current['variables'])
+    themes = current['themes']
+    for revision in reversed(manifest.get('design_history', [])):
+        if 'variable_history_sha256' not in revision:
+            continue
+        assert sha(canonical({'variables': variables, 'themes': themes})) == revision['after_variables_sha256'], 'Variable revision chain'
+        text = (root / revision['path']).read_text()
+        body = text.split('<!-- officepress-variable-history:start -->\n~~~~jsonl\n', 1)[1].split('~~~~\n<!-- officepress-variable-history:end -->', 1)[0]
+        records = [json.loads(line) for line in body.splitlines() if line]
+        assert sha(canonical(records)) == revision['variable_history_sha256'], 'Prior variables changed'
+        for name in revision['added_variable_names']:
+            del variables[name]
+        for entry in records:
+            variables[entry['name']] = entry['definition']
+        themes = revision['before_themes']
+        assert sha(canonical({'variables': variables, 'themes': themes})) == revision['before_variables_sha256'], 'Prior variables did not recover'
 
 
 def verify_design_history(root: Path, manifest: dict, current: list[dict]) -> int:
@@ -175,7 +196,7 @@ def verify_design_archive(root: Path, manifest: dict, current: list[dict]) -> No
 def verify_generated_favicons(root: Path, manifest: dict) -> set[str]:
     """Account for 16px ICO derivatives without adding them to source inventory."""
     marks = re.compile(r'^resources/(officepress-kit|officepress-history/[^/]+)/logos/products/[^/]+/[^/]+\.svg$')
-    sources = {entry['path'] for entry in manifest['resources'] + manifest.get('revised_resources', [])
+    sources = {entry['path'] for entry in manifest['resources'] + manifest.get('revised_resources', []) + manifest.get('asset_history', [])
                if entry['path'] == 'resources/officepress-kit/logos/officepress/favicon.svg'
                or marks.match(entry['path'])}
     mapped = set()
@@ -215,6 +236,42 @@ def verify_revised_resources(root: Path, manifest: dict) -> set[str]:
     return paths
 
 
+def verify_asset_history(root: Path, manifest: dict) -> set[str]:
+    """Keep generated revisions that superseded the original supplied assets."""
+    paths = set()
+    for entry in manifest.get('asset_history', []):
+        path = entry['path']
+        assert path.startswith('resources/officepress-history/') and path not in paths, 'Invalid asset history path'
+        data = (root / path).read_bytes()
+        assert sha(data) == entry['sha256'] and len(data) == entry['bytes'], 'Asset history changed: ' + path
+        paths.add(path)
+    return paths
+
+
+def verify_generated_stylesheets(root: Path, manifest: dict) -> set[str]:
+    """Require generated family CSS to match the native semantic colour tokens."""
+    document, _ = load_archive(root / manifest['design_archive']['path'])
+    paths = set()
+    for entry in manifest.get('generated_stylesheets', []):
+        path = entry['path']
+        assert path.startswith('resources/officepress-kit/css/families/'), 'Invalid generated stylesheet'
+        data = (root / path).read_bytes()
+        assert sha(data) == entry['sha256'] and len(data) == entry['bytes'], 'Generated stylesheet changed: ' + path
+        family = Path(path).stem
+        for mode in ('light', 'dark'):
+            block = data.decode().split(f'[data-mode="{mode}"] {{', 1)[1].split('}', 1)[0]
+            actual = dict(re.findall(r'--(op-[\w-]+):\s*(#[A-Fa-f0-9]+);', block))
+            expected = {}
+            for name, token in document['variables'].items():
+                if name.startswith('op-') and isinstance(token['value'], list):
+                    for value in token['value']:
+                        if value.get('theme') == {'family': family, 'mode': mode}:
+                            expected[name] = value['value']
+            assert actual == expected and expected, 'Native/CSS token disagreement: ' + family + '/' + mode
+        paths.add(path)
+    return paths
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--reconstruct', type=Path, help='Reconstruct the source snapshot in a new directory')
@@ -222,6 +279,7 @@ def main() -> None:
     args = ap.parse_args()
     root = Path(__file__).resolve().parents[1]
     manifest = json.loads((root / 'scripts/officepress-ingestion-manifest.json').read_text())
+    _, native_members = load_archive(root / manifest['design_archive']['path'])
     recovered = {}
     for entry in manifest['sources']:
         pieces = []
@@ -233,8 +291,10 @@ def main() -> None:
         data = b''.join(pieces)
         assert sha(data) == entry['sha256'] and len(data) == entry['bytes'], 'Source file mismatch: ' + entry['id']
         assert next_line - 1 == entry['lines']
-        if args.compare_originals:
-            assert Path(entry['provenance']).read_bytes() == data, 'Original source drift: ' + entry['id']
+        if entry.get('archive_member'):
+            assert native_members[entry['archive_member']] == data, 'Embedded Markdown differs from translated source: ' + entry['id']
+        elif args.compare_originals:
+            assert Path(entry.get('provenance_local', entry['provenance'])).read_bytes() == data, 'Original source drift: ' + entry['id']
         recovered[entry['id']] = data
     for entry in manifest['resources']:
         data = (root / entry['path']).read_bytes()
@@ -248,18 +308,21 @@ def main() -> None:
     archive_paths = verify_source_archives(root, manifest, recovered)
     favicon_paths = verify_generated_favicons(root, manifest)
     revised_paths = verify_revised_resources(root, manifest)
+    history_paths = verify_asset_history(root, manifest)
+    stylesheet_paths = verify_generated_stylesheets(root, manifest)
     for entry in manifest['drafts']:
         assert sha((root / entry['path']).read_bytes()) == entry['sha256'], 'Accepted input record changed: ' + entry['path']
     current_nodes = design_nodes(root, manifest)
     verify_design_archive(root, manifest, current_nodes)
     history_count = verify_design_history(root, manifest, current_nodes)
-    verify_variables(root, manifest)
+    variables = verify_variables(root, manifest)
+    verify_variable_history(root, manifest, variables)
     # Every meaningful kit file has one disposition; OS metadata is explicit.
     ids = [s['id'] for s in manifest['sources']] + [s['source'] for s in manifest['resources']] + [s['source'] for s in manifest['excluded']]
     assert len(ids) == len(set(ids)), 'Duplicate source disposition'
     assert sum(i.startswith('kit/') for i in ids) == 263, 'Kit inventory count'
-    actual_resources = {str(p.relative_to(root)) for p in (root / 'resources').rglob('*') if p.is_file()}
-    assert actual_resources == {r['path'] for r in manifest['resources']} | archive_paths | favicon_paths | revised_paths, 'Unaccounted resource files'
+    actual_resources = {str(p.relative_to(root)) for p in (root / 'resources').rglob('*') if p.is_file() and p.name != '.DS_Store'}
+    assert actual_resources == {r['path'] for r in manifest['resources']} | archive_paths | favicon_paths | revised_paths | history_paths | stylesheet_paths, 'Unaccounted resource files'
     assert len(re.findall(r'^## (?!Project and brand)', (root / manifest['drafts'][1]['path']).read_text(), re.M)) == 23, 'User product descriptions'
     if args.reconstruct:
         out = args.reconstruct.expanduser().resolve()
@@ -279,8 +342,9 @@ def main() -> None:
     print(f'PASS: {len(archive_paths)} requested CSS/JS/template archives match their complete reference content.')
     print(f'PASS: {len(favicon_paths)} derived 16x16 ICO favicons match their recorded sources and hashes.')
     print(f'PASS: {len(revised_paths)} revised kit resources match their hashes; superseded originals remain recoverable.')
+    print(f'PASS: {len(history_paths)} superseded asset revisions; {len(stylesheet_paths)} generated family stylesheets match native tokens.')
     print(f'PASS: {history_count} prior design extraction revisions recover exactly from local history.')
-    print(f'PASS: {len(manifest["design_archive"]["members"])} OPCD members pass ZIP/JSON/inventory checks; native records and tokens match the KB.')
+    print(f'PASS: {len(manifest["design_archive"]["members"])} OPCD members pass ZIP/JSON/Markdown/inventory checks; native records and tokens match the KB.')
     d = manifest['design']
     print(f'PASS: {d["node_count"]} design nodes, {d["text_node_count"]} content nodes, {d["variable_count"]} variables; 23 complete user product descriptions.')
     print('Offline verification complete; no external sources or network required.')

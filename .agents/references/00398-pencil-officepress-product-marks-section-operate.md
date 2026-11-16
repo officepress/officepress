@@ -6,6 +6,8 @@ Source: native `officepress.opcd`, extracted offline from its JSON frames with i
 
 Apply [accepted corrections](00078-officepress-source-decisions.md) — load when using these design records as guidance.
 
+Current extraction: [Files/Forge revision](00403-officepress-files-forge-revision.md), including lossless prior-record recovery.
+
 ## Node records
 
 | ID / parent | Type / name | Exact text, context and flags | Layout and styling properties |
@@ -15,7 +17,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | DrFkk / VrjIo | frame / Family | {"name":"Family"} | {"gap":16,"alignItems":"center"} |
 | W9GqaF / DrFkk | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":6,"fill":"$fam-operate","width":20,"height":20} |
 | EYH92 / DrFkk | text / Family Name | {"name":"Family Name","content":"Operate"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":32,"fontWeight":"700","letterSpacing":-0.8} |
-| x2SSQ / DrFkk | text / Family No | {"name":"Family No","content":"03"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":12,"fontWeight":"normal"} |
+| x2SSQ / DrFkk | text / Family No | {"name":"Family No","content":"04"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":12,"fontWeight":"normal"} |
 | GYRiO / VrjIo | text / Family Desc | {"name":"Family Desc","content":"People, vendors, money, content and process."} | {"fill":"$muted","fontFamily":"$font-display","fontSize":15,"fontWeight":"normal"} |
 | YBTS8 / ldijF | frame / Marks | {"name":"Marks"} | {"width":"fill_container","layout":"vertical","gap":16} |
 | j1KfoM / YBTS8 | frame / Row 1 | {"name":"Row 1"} | {"width":"fill_container","gap":16} |

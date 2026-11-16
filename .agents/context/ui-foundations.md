@@ -4,11 +4,11 @@ Every app shares the Inbox board's structure, spacing, type and components. Fami
 
 ## Themes and tokens
 
-The axes are `family = communicate | create | operate | commerce` and `mode = light | dark`. Set both on the design root; in HTML load core CSS followed by exactly one family stylesheet and set `data-mode` on `<html>`. App CSS uses semantic `var(--op-*)` tokens. Do not invent per-app dark-mode rules or hard-code family colours.
+The axes are `family = communicate | files | forge | operate | commerce` and `mode = light | dark`. Set both on the design root; in HTML load core CSS followed by exactly one family stylesheet and set `data-mode` on `<html>`. App CSS uses semantic `var(--op-*)` tokens. Do not invent per-app dark-mode rules or hard-code family colours. Files retains the former purple Create palette; Forge adds the supplied rose light/dark palette. The native theme registry and archived `create.css` retain a legacy Create identity, not an additional current family. See the [Files/Forge revision](../references/00403-officepress-files-forge-revision.md) for exact tokens, compatibility and export scope.
 
 Use `--op-accent-strong` for primary fills, `--op-accent-text` for text/links, and `--op-dot` for unread status. Unread stays green across families; in Commerce its ring and position also distinguish it. Another app may display its own family identity in a `data-family` tag.
 
-Guidelines specify body text contrast ≥ 4.6:1 and accent text ≥ 4.5:1 across eight family/mode combinations. User theme customization must derive related tokens and contrast-check before saving. The source assertions are retained; this ingestion is not a new accessibility certification.
+Guidelines specify body text contrast ≥ 4.6:1 and accent text ≥ 4.5:1 across the original eight family/mode combinations; the current five-family token set has ten combinations. User theme customization must derive related tokens and contrast-check before saving. The source assertions are retained; this ingestion is not a new accessibility certification.
 
 ## Typography and spacing
 
@@ -34,6 +34,6 @@ Use sentence case, specific actions and realistic content. Keep body text left-a
 
 - [Standalone guidelines, all sections](../references/00071-ui-guidelines-md-introduction.md) — load when reading the original system rationale, tables, examples and motion rules; follow its local continuation links through the source map.
 - [Kit guidelines, all sections](../references/00026-docs-guidelines-md-introduction.md) — load when checking the implementation-oriented form of the rules.
-- [Exact family × mode token tables](../references/00082-officepress-active-token-tables.md) — load when choosing a semantic colour or comparing all eight combinations.
+- [Exact family × mode token tables](../references/00082-officepress-active-token-tables.md) — load when choosing a semantic colour or comparing the ten current combinations.
 - [Complete component, CSS and JS references](../references/00074-officepress-kit-source-map.md) — load when needing an exact class, dimension, selector, example or behavior.
 - [All Pencil variable definitions](../references/00076-officepress-pencil-variable-map.md) — load when resolving a source design variable, including preserved legacy values.

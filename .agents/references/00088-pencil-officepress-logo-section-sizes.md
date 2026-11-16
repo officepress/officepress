@@ -6,6 +6,8 @@ Source: native `officepress.opcd`, extracted offline from its JSON frames with i
 
 Apply [accepted corrections](00078-officepress-source-decisions.md) — load when using these design records as guidance.
 
+Current extraction: [Files/Forge revision](00403-officepress-files-forge-revision.md), including lossless prior-record recovery.
+
 ## Node records
 
 | ID / parent | Type / name | Exact text, context and flags | Layout and styling properties |
@@ -22,7 +24,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | mjioC / DxNfD | rectangle / Annex | {"name":"Annex"} | {"cornerRadius":8,"x":21.333333333333332,"y":53.33333333333333,"fill":"$mark-secondary","width":32,"height":53.33333333333333} |
 | fGIvY / DxNfD | rectangle / Tower | {"name":"Tower"} | {"cornerRadius":10.666666666666666,"x":42.666666666666664,"y":21.333333333333332,"fill":"$mark-primary","width":64,"height":85.33333333333333} |
 | ez73v / DxNfD | rectangle / Window 1 | {"name":"Window 1"} | {"cornerRadius":4,"x":53.33333333333333,"y":32,"fill":"$fam-communicate","width":16,"height":16} |
-| K9XouS / DxNfD | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":4,"x":80,"y":32,"fill":"$fam-create","width":16,"height":16} |
+| K9XouS / DxNfD | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":4,"x":80,"y":32,"fill":"$fam-files","width":16,"height":16} |
 | kdo69 / DxNfD | rectangle / Window 3 | {"name":"Window 3"} | {"cornerRadius":4,"x":53.33333333333333,"y":58.666666666666664,"fill":"$fam-operate","width":16,"height":16} |
 | fv2fJ / DxNfD | rectangle / Window 4 | {"name":"Window 4"} | {"cornerRadius":4,"x":80,"y":58.666666666666664,"fill":"$fam-commerce","width":16,"height":16} |
 | jc922 / DxNfD | rectangle / Door | {"name":"Door"} | {"cornerRadius":[5.333333333333333,5.333333333333333,0,0],"x":64,"y":85.33333333333333,"fill":"$suite-tile","width":21.333333333333332,"height":24} |
@@ -32,7 +34,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | aqtQL / Mkfzb | rectangle / Annex | {"name":"Annex"} | {"cornerRadius":6,"x":16,"y":40,"fill":"$mark-secondary","width":24,"height":40} |
 | JEch7 / Mkfzb | rectangle / Tower | {"name":"Tower"} | {"cornerRadius":8,"x":32,"y":16,"fill":"$mark-primary","width":48,"height":64} |
 | nhpWQ / Mkfzb | rectangle / Window 1 | {"name":"Window 1"} | {"cornerRadius":3,"x":40,"y":24,"fill":"$fam-communicate","width":12,"height":12} |
-| b5Rhjq / Mkfzb | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":3,"x":60,"y":24,"fill":"$fam-create","width":12,"height":12} |
+| b5Rhjq / Mkfzb | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":3,"x":60,"y":24,"fill":"$fam-files","width":12,"height":12} |
 | fo3fH / Mkfzb | rectangle / Window 3 | {"name":"Window 3"} | {"cornerRadius":3,"x":40,"y":44,"fill":"$fam-operate","width":12,"height":12} |
 | ZQTKt / Mkfzb | rectangle / Window 4 | {"name":"Window 4"} | {"cornerRadius":3,"x":60,"y":44,"fill":"$fam-commerce","width":12,"height":12} |
 | m89VF2 / Mkfzb | rectangle / Door | {"name":"Door"} | {"cornerRadius":[4,4,0,0],"x":48,"y":64,"fill":"$suite-tile","width":16,"height":18} |
@@ -42,7 +44,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | msaJ9 / VEkIA | rectangle / Annex | {"name":"Annex"} | {"cornerRadius":4,"x":10.666666666666666,"y":26.666666666666664,"fill":"$mark-secondary","width":16,"height":26.666666666666664} |
 | efmPL / VEkIA | rectangle / Tower | {"name":"Tower"} | {"cornerRadius":5.333333333333333,"x":21.333333333333332,"y":10.666666666666666,"fill":"$mark-primary","width":32,"height":42.666666666666664} |
 | m44kC / VEkIA | rectangle / Window 1 | {"name":"Window 1"} | {"cornerRadius":2,"x":26.666666666666664,"y":16,"fill":"$fam-communicate","width":8,"height":8} |
-| i5pXxx / VEkIA | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":2,"x":40,"y":16,"fill":"$fam-create","width":8,"height":8} |
+| i5pXxx / VEkIA | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":2,"x":40,"y":16,"fill":"$fam-files","width":8,"height":8} |
 | gfeju / VEkIA | rectangle / Window 3 | {"name":"Window 3"} | {"cornerRadius":2,"x":26.666666666666664,"y":29.333333333333332,"fill":"$fam-operate","width":8,"height":8} |
 | F5gRgI / VEkIA | rectangle / Window 4 | {"name":"Window 4"} | {"cornerRadius":2,"x":40,"y":29.333333333333332,"fill":"$fam-commerce","width":8,"height":8} |
 | O5gV5C / VEkIA | rectangle / Door | {"name":"Door"} | {"cornerRadius":[2.6666666666666665,2.6666666666666665,0,0],"x":32,"y":42.666666666666664,"fill":"$suite-tile","width":10.666666666666666,"height":12} |
@@ -52,7 +54,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | qxXLH / lHOjH | rectangle / Annex | {"name":"Annex"} | {"cornerRadius":3,"x":8,"y":20,"fill":"$mark-secondary","width":12,"height":20} |
 | jNEpv / lHOjH | rectangle / Tower | {"name":"Tower"} | {"cornerRadius":4,"x":16,"y":8,"fill":"$mark-primary","width":24,"height":32} |
 | n3PfZ / lHOjH | rectangle / Window 1 | {"name":"Window 1"} | {"cornerRadius":1.5,"x":20,"y":12,"fill":"$fam-communicate","width":6,"height":6} |
-| l9qqX / lHOjH | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":1.5,"x":30,"y":12,"fill":"$fam-create","width":6,"height":6} |
+| l9qqX / lHOjH | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":1.5,"x":30,"y":12,"fill":"$fam-files","width":6,"height":6} |
 | is0wJ / lHOjH | rectangle / Window 3 | {"name":"Window 3"} | {"cornerRadius":1.5,"x":20,"y":22,"fill":"$fam-operate","width":6,"height":6} |
 | LCaZn / lHOjH | rectangle / Window 4 | {"name":"Window 4"} | {"cornerRadius":1.5,"x":30,"y":22,"fill":"$fam-commerce","width":6,"height":6} |
 | uuqJS / lHOjH | rectangle / Door | {"name":"Door"} | {"cornerRadius":[2,2,0,0],"x":24,"y":32,"fill":"$suite-tile","width":8,"height":9} |
@@ -62,7 +64,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | Jk4Ck / R4Seb | rectangle / Annex | {"name":"Annex"} | {"cornerRadius":2,"x":5.333333333333333,"y":13.333333333333332,"fill":"$mark-secondary","width":8,"height":13.333333333333332} |
 | PMHDV / R4Seb | rectangle / Tower | {"name":"Tower"} | {"cornerRadius":2.6666666666666665,"x":10.666666666666666,"y":5.333333333333333,"fill":"$mark-primary","width":16,"height":21.333333333333332} |
 | zmVoz / R4Seb | rectangle / Window 1 | {"name":"Window 1"} | {"cornerRadius":1,"x":13.333333333333332,"y":8,"fill":"$fam-communicate","width":4,"height":4} |
-| pII25 / R4Seb | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":1,"x":20,"y":8,"fill":"$fam-create","width":4,"height":4} |
+| pII25 / R4Seb | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":1,"x":20,"y":8,"fill":"$fam-files","width":4,"height":4} |
 | J4tgIm / R4Seb | rectangle / Window 3 | {"name":"Window 3"} | {"cornerRadius":1,"x":13.333333333333332,"y":14.666666666666666,"fill":"$fam-operate","width":4,"height":4} |
 | u9npn / R4Seb | rectangle / Window 4 | {"name":"Window 4"} | {"cornerRadius":1,"x":20,"y":14.666666666666666,"fill":"$fam-commerce","width":4,"height":4} |
 | Dl140 / R4Seb | rectangle / Door | {"name":"Door"} | {"cornerRadius":[1.3333333333333333,1.3333333333333333,0,0],"x":16,"y":21.333333333333332,"fill":"$suite-tile","width":5.333333333333333,"height":6} |
@@ -72,7 +74,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | S5z7Zb / V9Iwkb | rectangle / Annex | {"name":"Annex"} | {"cornerRadius":1.5,"x":4,"y":10,"fill":"$mark-secondary","width":6,"height":10} |
 | FBX0C / V9Iwkb | rectangle / Tower | {"name":"Tower"} | {"cornerRadius":2,"x":8,"y":4,"fill":"$mark-primary","width":12,"height":16} |
 | KY6Sq / V9Iwkb | rectangle / Window 1 | {"name":"Window 1"} | {"cornerRadius":0.75,"x":10,"y":6,"fill":"$fam-communicate","width":3,"height":3} |
-| jgT05 / V9Iwkb | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":0.75,"x":15,"y":6,"fill":"$fam-create","width":3,"height":3} |
+| jgT05 / V9Iwkb | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":0.75,"x":15,"y":6,"fill":"$fam-files","width":3,"height":3} |
 | YiIRj / V9Iwkb | rectangle / Window 3 | {"name":"Window 3"} | {"cornerRadius":0.75,"x":10,"y":11,"fill":"$fam-operate","width":3,"height":3} |
 | PELbq / V9Iwkb | rectangle / Window 4 | {"name":"Window 4"} | {"cornerRadius":0.75,"x":15,"y":11,"fill":"$fam-commerce","width":3,"height":3} |
 | R77zlX / V9Iwkb | rectangle / Door | {"name":"Door"} | {"cornerRadius":[1,1,0,0],"x":12,"y":16,"fill":"$suite-tile","width":4,"height":4.5} |
@@ -82,7 +84,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | KMnR0 / DogOY | rectangle / Annex | {"name":"Annex"} | {"cornerRadius":1,"x":2.6666666666666665,"y":6.666666666666666,"fill":"$mark-secondary","width":4,"height":6.666666666666666} |
 | oZ1jS / DogOY | rectangle / Tower | {"name":"Tower"} | {"cornerRadius":1.3333333333333333,"x":5.333333333333333,"y":2.6666666666666665,"fill":"$mark-primary","width":8,"height":10.666666666666666} |
 | CvRLr / DogOY | rectangle / Window 1 | {"name":"Window 1"} | {"cornerRadius":0.5,"x":6.666666666666666,"y":4,"fill":"$fam-communicate","width":2,"height":2} |
-| F6W2P / DogOY | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":0.5,"x":10,"y":4,"fill":"$fam-create","width":2,"height":2} |
+| F6W2P / DogOY | rectangle / Window 2 | {"name":"Window 2"} | {"cornerRadius":0.5,"x":10,"y":4,"fill":"$fam-files","width":2,"height":2} |
 | v5g5Ex / DogOY | rectangle / Window 3 | {"name":"Window 3"} | {"cornerRadius":0.5,"x":6.666666666666666,"y":7.333333333333333,"fill":"$fam-operate","width":2,"height":2} |
 | U3K9P / DogOY | rectangle / Window 4 | {"name":"Window 4"} | {"cornerRadius":0.5,"x":10,"y":7.333333333333333,"fill":"$fam-commerce","width":2,"height":2} |
 | E3SK9 / DogOY | rectangle / Door | {"name":"Door"} | {"cornerRadius":[0.6666666666666666,0.6666666666666666,0,0],"x":8,"y":10.666666666666666,"fill":"$suite-tile","width":2.6666666666666665,"height":3} |

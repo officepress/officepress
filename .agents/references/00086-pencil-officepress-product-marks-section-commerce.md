@@ -6,6 +6,8 @@ Source: native `officepress.opcd`, extracted offline from its JSON frames with i
 
 Apply [accepted corrections](00078-officepress-source-decisions.md) — load when using these design records as guidance.
 
+Current extraction: [Files/Forge revision](00403-officepress-files-forge-revision.md), including lossless prior-record recovery.
+
 ## Node records
 
 | ID / parent | Type / name | Exact text, context and flags | Layout and styling properties |
@@ -15,7 +17,7 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | e9WPLU / aOcYn | frame / Family | {"name":"Family"} | {"gap":16,"alignItems":"center"} |
 | qE3No / e9WPLU | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":6,"fill":"$fam-commerce","width":20,"height":20} |
 | LgNYK / e9WPLU | text / Family Name | {"name":"Family Name","content":"Commerce"} | {"fill":"$ink","fontFamily":"$font-display","fontSize":32,"fontWeight":"700","letterSpacing":-0.8} |
-| aRleD / e9WPLU | text / Family No | {"name":"Family No","content":"04"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":12,"fontWeight":"normal"} |
+| aRleD / e9WPLU | text / Family No | {"name":"Family No","content":"05"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":12,"fontWeight":"normal"} |
 | huuO8 / aOcYn | text / Family Desc | {"name":"Family Desc","content":"Catalogue, orders and delivery."} | {"fill":"$muted","fontFamily":"$font-display","fontSize":15,"fontWeight":"normal"} |
 | ow5Vo / q8MhDM | frame / Marks | {"name":"Marks"} | {"width":"fill_container","layout":"vertical","gap":16} |
 | ejq7N / ow5Vo | frame / Row 1 | {"name":"Row 1"} | {"width":"fill_container","gap":16} |

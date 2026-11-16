@@ -1,0 +1,48 @@
+/* OfficePress UI — Files family
+ * Apps: Drive, Tables, Forms, Context, Forge
+ * Generated from officepress.opcd tokens, 2026-11-16.
+ * Load after officepress.css; select exactly one family stylesheet.
+ */
+
+:root,
+[data-mode="light"] {
+  --op-canvas: #F5F3FB;
+  --op-surface: #FFFFFF;
+  --op-column: #ECE7F8;
+  --op-toolbar: #EEEAF9;
+  --op-sunken: #F2EFFA;
+  --op-border: #DFD7F2;
+  --op-border-strong: #CABEE9;
+  --op-text: #241A3D;
+  --op-text-2: #685D83;
+  --op-nav: #281B4B;
+  --op-nav-text: #FFFFFF;
+  --op-nav-text-2: #B6A9D5;
+  --op-accent: #6A3BE4;
+  --op-accent-text: #6A3BE4;
+  --op-accent-strong: #6A3BE4;
+  --op-tint: #F2EEFD;
+  --op-tint-2: #E2D8FA;
+  --op-on-tint: #6A3BE4;
+}
+
+[data-mode="dark"] {
+  --op-canvas: #120C21;
+  --op-surface: #1E1634;
+  --op-column: #18112B;
+  --op-toolbar: #18102B;
+  --op-sunken: #160F28;
+  --op-border: #352857;
+  --op-border-strong: #45366B;
+  --op-text: #EDE8FA;
+  --op-text-2: #A59AC1;
+  --op-nav: #0E091A;
+  --op-nav-text: #EDE8FA;
+  --op-nav-text-2: #9488B4;
+  --op-accent: #8F6CEB;
+  --op-accent-text: #A082EE;
+  --op-accent-strong: #BBA6F3;
+  --op-tint: #301F5B;
+  --op-tint-2: #3B276D;
+  --op-on-tint: #B49DF2;
+}

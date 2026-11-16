@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Whiteboards">
+<title>Whiteboards</title>
+<defs><clipPath id="clip-oCsTj"><rect width="96" height="96" rx="24"/></clipPath></defs>
+<g id="node-oCsTj"><rect width="96" height="96" rx="24" fill="#D23F6F"/><g clip-path="url(#clip-oCsTj)"><g id="node-t3l1c3" transform="translate(28 62)"><rect width="5" height="18" rx="2" fill="#FFFFFF" fill-opacity="0.5490196078431373"/></g><g id="node-u84xVk" transform="translate(63 62)"><rect width="5" height="18" rx="2" fill="#FFFFFF" fill-opacity="0.5490196078431373"/></g><g id="node-QW94R" transform="translate(16 16)"><rect width="64" height="50" rx="6" fill="#FFFFFF"/></g><g id="node-j65sCb"><path d="M26 48c6-20 14-22 18-10s10 14 16 2 6-12 10-10" fill="none" stroke="#D23F6F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></g></g></g>
+</svg>

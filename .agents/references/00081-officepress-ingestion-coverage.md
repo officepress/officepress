@@ -41,7 +41,15 @@ The user asked for the Product Marks board, the kit, the repository `kit/` copy 
 
 The user replaced the former native resource with `officepress.opcd`. The [OPCD verification and preference-screen receipt](00399-officepress-opcd-user-preferences-direction.md) records its exact ZIP inventory, hash, format, preserved tokens and source limits. The archive adds 113 resolved preference-screen records. All 113 prior changed records (35 supplied layout edits and 78 extraction-method differences) remain recoverable from [migration history](00400-officepress-opcd-prior-design-records.md), extending the existing recovery chain to three revisions. No prior record was removed.
 
-The current verifier checks each of the 23 ZIP members, parses all JSON, validates frame/node/component identities and compares all resolved records and tokens with the KB. Current tables use authored native layout; 78 previous API-generated hidden-node positions/concrete widths are preserved in history instead of asserted as authored source. The unchanged historical kit/source blocks retain their original filenames and hashes. Current resource links resolve to the OPCD archive.
+At that revision, the verifier checked each of the 23 ZIP members, parses all JSON, validates frame/node/component identities and compares all resolved records and tokens with the KB. Current tables use authored native layout; 78 previous API-generated hidden-node positions/concrete widths are preserved in history instead of asserted as authored source. The unchanged historical kit/source blocks retain their original filenames and hashes. Current resource links resolve to the OPCD archive.
+
+## Files/Forge update on 2026-11-16
+
+The [Files/Forge revision](00403-officepress-files-forge-revision.md) records the complete supplied direction, five-family/35-mark taxonomy, six planned tools, derived asset exports, exact current CSS and the App Forge/Stackpress Rust boundary. The archive stays byte-identical. All 25 ZIP members are accounted for, including generated design-system Markdown and history. The loader accepts legacy filename lists and frame routing records; it verifies routing identities and rejects unsafe names, invalid JSON/UTF-8 and unsupported binary members.
+
+Current assets comprise 39 SVG/PNG pairs and 36 current ICOs. Superseded Create SVGs/ICOs and root PNGs remain recoverable in the dated history directory. The manifest tracks 13 additional preserved asset revisions, 20 current revised resources and two generated family stylesheets alongside the original 263-file source inventory. Seven root CSS files mirror the KB, including the unchanged historical Create stylesheet. Five newly ingested exact Markdown sources (the generated design-system/history and App Forge/Rust KB snapshots) bring the total source count to 58.
+
+All 135 changed and 10 removed prior design records remain in [new history](00404-officepress-files-forge-prior-design-records.md), with the 450 added IDs recorded in the manifest. The variable-history reversal recovers the prior definitions/themes; all four node-history reversals pass. Native tables, generated Files/Forge CSS and export bytes are checked against the supplied archive. Its prior Git serialization differs from the older recorded ZIP checkpoint but resolves to the identical previous graph; the revision records both identities explicitly.
 
 ## Native design extraction (current OPCD archive)
 
@@ -49,10 +57,10 @@ The current verifier checks each of the 23 ZIP members, parses all JSON, validat
 |---|---|
 | Root frames | 18 |
 | Reusable components | 11 |
-| Resolved nodes | 8,940 |
-| Nodes with content | 2,858 |
-| Variables | 205, including all themed values and legacy namespaces |
-| Theme axes | mode: light/dark; family: communicate/create/operate/commerce |
+| Resolved nodes | 9,380 |
+| Nodes with content | 2,992 |
+| Variables | 206, including all themed values and legacy namespaces |
+| Theme axes | mode: light/dark; active family: communicate/files/forge/operate/commerce; create retained in the native registry as legacy |
 | Extracted node references | 91 cohesive screen/component sections |
 | Variable references | 21 namespaces |
 

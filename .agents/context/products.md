@@ -1,6 +1,6 @@
 # OfficePress product catalogue
 
-The catalogue describes 30 apps: 28 products in the four established branded families and two `app-*` platform apps. The original 23 product descriptions come from the user's earlier notes; seven descriptions and the Clients/Content family corrections come from the user's 2026-10-13 directions. Those corrections supersede the older family lists in the preserved UI guidelines and logo catalogue for Clients and Content. These descriptions establish intended product meaning, not implemented or deployed capability.
+The current catalogue describes 37 identities: 35 marked products across Communicate, Files, Forge, Operate and Commerce, plus Develop and Cloud as unassigned platform apps. The 2026-11-16 user direction adds the App Forge shell and six planned creative tools, and the supplied design splits Create into Files and Forge. The original 23 product descriptions come from the user's earlier notes; seven descriptions and the Clients/Content family corrections come from the user's 2026-10-13 directions. Those corrections supersede the older family lists in the preserved UI guidelines and logo catalogue for Clients and Content. These descriptions establish intended product meaning, not implemented or deployed capability.
 
 ## Communicate
 
@@ -14,19 +14,33 @@ The catalogue describes 30 apps: 28 products in the four established branded fam
 | Agent | A personal workspace for setting up and working with AI agents. |
 | Clients | Client profiles, leads, assignments and relationship workflows in records and a board. |
 
-## Create
+## Files
 
 | Product | Primary purpose |
 |---|---|
 | Drive | Explorer for personal and app-managed files; supported files open in relevant Productivity apps, and other apps can register files. |
 | Tables | SQL-native grid over PostgreSQL, with database/schema navigation, typed editing, views, imports/CSV exports, live activity and governed MCP access. |
 | Forms | Dynamic forms and templates with submission, response and generated-file workflows. |
+| Context (`create-context`) | Turn an idea into a verified, versionable knowledge base through AI research, explicit gap resolution and experiments; freeze confirmed knowledge and share it as a file or live knowledge service. |
+| Forge (`app-forge`) | Desktop studio shell and marketplace bringing the creative tools together, with shared providers, skills and context; built with Stackpress Rust. |
+
+## Forge
+
+These tools are included in the App Forge direction. The last six are explicitly planned; marks and descriptions are not implementation receipts.
+
+| Product | Primary purpose |
+|---|---|
 | Whiteboards | Freeform drawing for quick visual thinking. |
 | Diagrams | Structured process, system and relationship diagrams. |
-| Context (`create-context`) | Turn an idea into a verified, versionable knowledge base through AI research, explicit gap resolution and experiments; freeze confirmed knowledge and share it as a file or live knowledge service. |
 | UIUX (`create-uiux`) | Turn plain-language app ideas into editable, clickable black-and-white wireframes focused on form and function, with canvas and device previews, direct edits and annotated feedback. |
 | Designs (`create-designs`) | Produce polished visual work from curated styles on an editable canvas, from graphics and slides to websites and app screens; support interactive previews, builder handoff and design-to-build checking. |
 | Graphics (`create-graphics`) | Edit vector-like shapes and text alongside pixels and layered effects, saving editable work inside an ordinary viewable PNG and exporting flat copies when needed. |
+| Layers — planned | Canva-like composition with independently editable layers. |
+| Models — planned | Work with 3D models. |
+| Films — planned | Work with videos. |
+| Waves — planned | Work with audio. |
+| Photos — planned | Photoshop-like photo/JPEG editing. |
+| Slides — planned | Create presentation slides. |
 
 ## Operate
 
@@ -52,7 +66,7 @@ The catalogue describes 30 apps: 28 products in the four established branded fam
 
 ## App platform
 
-These two `app-*` applications are part of this catalogue, but no branded family colour or product mark has been supplied for them.
+Develop and Cloud remain unassigned platform apps. The `app-forge` repository is a separately assigned Files-family product and is listed above; the repository prefix alone does not determine brand membership.
 
 | App | Primary purpose |
 |---|---|
@@ -66,11 +80,15 @@ These two `app-*` applications are part of this catalogue, but no branded family
 - Careers is part of the Resourcing description, not a separate app.
 - PostgreSQL remains Tables' source of truth for data, permissions and constraints. The product notes do not impose this database on every app.
 - Keep Procurement purchasing offers distinct from Products' catalogue and seller offers.
-- UIUX concentrates on form and function; Designs concentrates on look and feel. They are separate apps and neither is the existing Whiteboards or Diagrams description.
+- UIUX concentrates on form and function; Designs concentrates on look and feel. These remain distinct tools inside the App Forge direction; their purposes do not become the Whiteboards or Diagrams descriptions.
 - Pipelines maps work across back-office apps; its process nodes and live cards do not redefine an individual app's workflow board.
 - Since the 2026-10-13 [Product Marks revision](../references/00396-officepress-product-marks-revision.md), the kit files Clients under `communicate/` and Content under `operate/`, matching this catalogue. The earlier `operate/clients` and `create/content` files are preserved history only.
 
+- App Forge uses Stackpress Rust; consult [App Forge architecture and framework boundary](app-forge.md), not the TypeScript proof scaffold, for its implementation direction.
+
 ## Complete descriptions
+
+- [Files/Forge source, complete current request and marks](../references/00403-officepress-files-forge-revision.md) — load for current membership, the six planned tools, source KB snapshots and the precise Rust boundary.
 
 - [Full descriptions of all 23 products](../references/00079-officepress-user-product-descriptions.md) — load when planning a feature, writing product copy or needing details beyond this catalogue; every supplied description is retained here.
 - [Complete descriptions of the six added apps](../references/00394-officepress-new-app-descriptions.md) — load for the full user-supplied capability, workflow and file-format details, including the UIUX/Designs distinction and the App platform boundary.

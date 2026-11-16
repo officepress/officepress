@@ -6,6 +6,8 @@ Source: native `officepress.opcd`, extracted offline from its JSON frames with i
 
 Apply [accepted corrections](00078-officepress-source-decisions.md) — load when using these design records as guidance.
 
+Current extraction: [Files/Forge revision](00403-officepress-files-forge-revision.md), including lossless prior-record recovery.
+
 ## Node records
 
 | ID / parent | Type / name | Exact text, context and flags | Layout and styling properties |
@@ -21,13 +23,20 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | DoUEi / bAtTX | frame / dark | {"name":"dark","theme":{"mode":"dark","family":"communicate"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
 | R80jtm / DoUEi | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-sunken","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
 | m1OpR / DoUEi | text / Hex | {"name":"Hex","content":"#0E1429"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":10,"fontWeight":"normal"} |
-| mZvbB / SjCrD | frame / create | {"name":"create"} | {"width":"fill_container","gap":8} |
-| P5gojU / mZvbB | frame / light | {"name":"light","theme":{"mode":"light","family":"create"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
+| mZvbB / SjCrD | frame / files | {"name":"files"} | {"width":"fill_container","gap":8} |
+| P5gojU / mZvbB | frame / light | {"name":"light","theme":{"mode":"light","family":"files"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
 | DxWeD / P5gojU | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-sunken","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
 | DMlZy / P5gojU | text / Hex | {"name":"Hex","content":"#F2EFFA"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":10,"fontWeight":"normal"} |
-| XoxhL / mZvbB | frame / dark | {"name":"dark","theme":{"mode":"dark","family":"create"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
+| XoxhL / mZvbB | frame / dark | {"name":"dark","theme":{"mode":"dark","family":"files"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
 | IKQcZ / XoxhL | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-sunken","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
 | y5LpQT / XoxhL | text / Hex | {"name":"Hex","content":"#160F28"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":10,"fontWeight":"normal"} |
+| 8qQrt / SjCrD | frame / forge | {"name":"forge"} | {"width":"fill_container","gap":8} |
+| GNNCi / 8qQrt | frame / light | {"name":"light","theme":{"mode":"light","family":"forge"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
+| f7Phz / GNNCi | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-sunken","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
+| UBVxT / GNNCi | text / Hex | {"name":"Hex","content":"#F8F1F3"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":10,"fontWeight":"normal"} |
+| kxeN1 / 8qQrt | frame / dark | {"name":"dark","theme":{"mode":"dark","family":"forge"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
+| plelI / kxeN1 | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-sunken","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
+| paiD3 / kxeN1 | text / Hex | {"name":"Hex","content":"#221519"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":10,"fontWeight":"normal"} |
 | H7aQ0 / SjCrD | frame / operate | {"name":"operate"} | {"width":"fill_container","gap":8} |
 | M4YaH / H7aQ0 | frame / light | {"name":"light","theme":{"mode":"light","family":"operate"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
 | cPGCG / M4YaH | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-sunken","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
@@ -53,13 +62,20 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | VqTXK / Vc897 | frame / dark | {"name":"dark","theme":{"mode":"dark","family":"communicate"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
 | cQer5 / VqTXK | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-border","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
 | AcA9T / VqTXK | text / Hex | {"name":"Hex","content":"#26325A"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":10,"fontWeight":"normal"} |
-| dXrlA / u3nuG | frame / create | {"name":"create"} | {"width":"fill_container","gap":8} |
-| GtcdW / dXrlA | frame / light | {"name":"light","theme":{"mode":"light","family":"create"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
+| dXrlA / u3nuG | frame / files | {"name":"files"} | {"width":"fill_container","gap":8} |
+| GtcdW / dXrlA | frame / light | {"name":"light","theme":{"mode":"light","family":"files"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
 | JJ5oe / GtcdW | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-border","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
 | NnBeO / GtcdW | text / Hex | {"name":"Hex","content":"#DFD7F2"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":10,"fontWeight":"normal"} |
-| H6mtuj / dXrlA | frame / dark | {"name":"dark","theme":{"mode":"dark","family":"create"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
+| H6mtuj / dXrlA | frame / dark | {"name":"dark","theme":{"mode":"dark","family":"files"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
 | Rx92i / H6mtuj | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-border","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
 | rkTaB / H6mtuj | text / Hex | {"name":"Hex","content":"#352857"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":10,"fontWeight":"normal"} |
+| jgkUY / u3nuG | frame / forge | {"name":"forge"} | {"width":"fill_container","gap":8} |
+| dJRNV / jgkUY | frame / light | {"name":"light","theme":{"mode":"light","family":"forge"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
+| fejWm / dJRNV | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-border","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
+| h0vDl / dJRNV | text / Hex | {"name":"Hex","content":"#ECDDE2"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":10,"fontWeight":"normal"} |
+| mNqtL / jgkUY | frame / dark | {"name":"dark","theme":{"mode":"dark","family":"forge"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
+| OGZaj / mNqtL | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-border","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
+| aM5Rt / mNqtL | text / Hex | {"name":"Hex","content":"#4D333C"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":10,"fontWeight":"normal"} |
 | L7KkB / u3nuG | frame / operate | {"name":"operate"} | {"width":"fill_container","gap":8} |
 | qOaUA / L7KkB | frame / light | {"name":"light","theme":{"mode":"light","family":"operate"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
 | TH4qZ / qOaUA | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-border","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
@@ -85,13 +101,20 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | lwt1G / rt876 | frame / dark | {"name":"dark","theme":{"mode":"dark","family":"communicate"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
 | w7dATX / lwt1G | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-border-strong","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
 | m5o3K / lwt1G | text / Hex | {"name":"Hex","content":"#33416E"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":10,"fontWeight":"normal"} |
-| bVXZn / WlCRl | frame / create | {"name":"create"} | {"width":"fill_container","gap":8} |
-| CAX2h / bVXZn | frame / light | {"name":"light","theme":{"mode":"light","family":"create"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
+| bVXZn / WlCRl | frame / files | {"name":"files"} | {"width":"fill_container","gap":8} |
+| CAX2h / bVXZn | frame / light | {"name":"light","theme":{"mode":"light","family":"files"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
 | U7rXD / CAX2h | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-border-strong","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
 | bitK0 / CAX2h | text / Hex | {"name":"Hex","content":"#CABEE9"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":10,"fontWeight":"normal"} |
-| o784Ue / bVXZn | frame / dark | {"name":"dark","theme":{"mode":"dark","family":"create"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
+| o784Ue / bVXZn | frame / dark | {"name":"dark","theme":{"mode":"dark","family":"files"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
 | fVDv0 / o784Ue | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-border-strong","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
 | NilMX / o784Ue | text / Hex | {"name":"Hex","content":"#45366B"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":10,"fontWeight":"normal"} |
+| srheB / WlCRl | frame / forge | {"name":"forge"} | {"width":"fill_container","gap":8} |
+| SFJzd / srheB | frame / light | {"name":"light","theme":{"mode":"light","family":"forge"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
+| dh8wx / SFJzd | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-border-strong","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
+| 7h0qr / SFJzd | text / Hex | {"name":"Hex","content":"#E0C8D0"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":10,"fontWeight":"normal"} |
+| 4GyLF / srheB | frame / dark | {"name":"dark","theme":{"mode":"dark","family":"forge"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
+| rZdlZ / 4GyLF | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-border-strong","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
+| yol3k / 4GyLF | text / Hex | {"name":"Hex","content":"#5F424C"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":10,"fontWeight":"normal"} |
 | Ul5mw / WlCRl | frame / operate | {"name":"operate"} | {"width":"fill_container","gap":8} |
 | KxWzR / Ul5mw | frame / light | {"name":"light","theme":{"mode":"light","family":"operate"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
 | szghg / KxWzR | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-border-strong","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
@@ -117,13 +140,20 @@ Apply [accepted corrections](00078-officepress-source-decisions.md) — load whe
 | n7toh / vPaGh | frame / dark | {"name":"dark","theme":{"mode":"dark","family":"communicate"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
 | zkMzb / n7toh | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-text","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
 | n6Aokt / n7toh | text / Hex | {"name":"Hex","content":"#E7ECFB"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":10,"fontWeight":"normal"} |
-| EaxEL / tJeee | frame / create | {"name":"create"} | {"width":"fill_container","gap":8} |
-| zceW3 / EaxEL | frame / light | {"name":"light","theme":{"mode":"light","family":"create"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
+| EaxEL / tJeee | frame / files | {"name":"files"} | {"width":"fill_container","gap":8} |
+| zceW3 / EaxEL | frame / light | {"name":"light","theme":{"mode":"light","family":"files"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
 | NrX0i / zceW3 | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-text","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
 | m1TDQ / zceW3 | text / Hex | {"name":"Hex","content":"#241A3D"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":10,"fontWeight":"normal"} |
-| bHXsx / EaxEL | frame / dark | {"name":"dark","theme":{"mode":"dark","family":"create"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
+| bHXsx / EaxEL | frame / dark | {"name":"dark","theme":{"mode":"dark","family":"files"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
 | cEFUM / bHXsx | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-text","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
 | RUgSc / bHXsx | text / Hex | {"name":"Hex","content":"#EDE8FA"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":10,"fontWeight":"normal"} |
+| FXB7F / tJeee | frame / forge | {"name":"forge"} | {"width":"fill_container","gap":8} |
+| Vnf0L / FXB7F | frame / light | {"name":"light","theme":{"mode":"light","family":"forge"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
+| YeLW8 / Vnf0L | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-text","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
+| bX3FL / Vnf0L | text / Hex | {"name":"Hex","content":"#352229"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":10,"fontWeight":"normal"} |
+| ClJ9m / FXB7F | frame / dark | {"name":"dark","theme":{"mode":"dark","family":"forge"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
+| Pi1PH / ClJ9m | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-text","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
+| XeVvb / ClJ9m | text / Hex | {"name":"Hex","content":"#F6ECEF"} | {"fill":"$muted","fontFamily":"$font-mono","fontSize":10,"fontWeight":"normal"} |
 | iWxHZ / tJeee | frame / operate | {"name":"operate"} | {"width":"fill_container","gap":8} |
 | MjFGf / iWxHZ | frame / light | {"name":"light","theme":{"mode":"light","family":"operate"}} | {"width":"fill_container","gap":8,"alignItems":"center"} |
 | NUdFC / MjFGf | rectangle / Swatch | {"name":"Swatch"} | {"cornerRadius":4,"fill":"$op-text","width":32,"height":24,"stroke":"#15171C1F","strokeWidth":1} |
